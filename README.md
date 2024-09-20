@@ -1,2 +1,24 @@
-# UserStyles
-UserStyles Repo
+# Typpi's UserStyles
+Collection of UserStyles made by Typpi.
+
+```/* ==UserStyle==
+@name         wigle.net
+@version      20240920.03.42
+@namespace    wigle.net
+@description  Dark Mode for Wigle.net
+@author       Typpi
+@license      The UnLicense
+==/UserStyle== */
+
+@-moz-document domain("wigle.net") {
+:root {
+        filter: invert(1);
+        /*            background-color: black; */
+    }
+    img:not(.mwe-math-fallback-image-display):not(.mwe-math-fallback-image-inline) {
+        filter: invert(1);
+    }
+    .mw-logo {
+        filter: invert(100%);
+    }
+}```
