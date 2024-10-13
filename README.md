@@ -153,3 +153,24 @@ Collection of UserStyles made by Typpi.
     //  	padding-top: 75px !important;
     //  	background: url(http://i.cubeupload.com/Cw1wYQ.png) no-repeat !important;
     //  }}
+
+    //  /* ==UserStyle==
+    //  @name         Unroll.me Dark Mode
+    //  @version      20241013.22.59
+    //  @namespace    Unroll.me
+    //  @description  Dark Mode for Unroll.me
+    //  @author       Nick2bad4u
+    //  @license      The UnLicense
+    //  ==/UserStyle== */
+    //  @-moz-document domain("unroll.me") {
+    //  	:root {
+    //  		filter: invert(1);
+    //  		/*            background-color: black; */
+    //  	}
+    //  	img:not(.mwe-math-fallback-image-display):not(.mwe-math-fallback-image-inline):not(img[alt = "GPS"]) {
+    //  		filter: invert(1);
+    //  	}
+    //  	.mw-logo {
+    //  		filter: invert(100%);
+    //  	}
+    //  }
