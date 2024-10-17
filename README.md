@@ -1,6 +1,13 @@
+[![CodeQL](https://github.com/Nick2bad4u/UserStyles/actions/workflows/codeql.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/codeql.yml)
+[![Dependabot Updates](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependabot/dependabot-updates)
+[![Dependency Review](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml)
+[![pages-build-deployment](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment)
+[![Scorecard supply-chain security](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml)
+
+![RepoBeats](https://repobeats.axiom.co/api/embed/9831c07785869d711723400c1b0acbae9d78dc50.svg "Repobeats analytics image")
 # Typpi's UserStyles
 Collection of UserStyles made by Typpi.
-
+```
     //  /* ==UserStyle==
     //  @name         wigle.net
     //  @version      20240920.03.42
@@ -22,7 +29,8 @@ Collection of UserStyles made by Typpi.
     //          filter: invert(100%);
     //      }
     //  }
-
+```
+```
     //  /* ==UserStyle==
     //  @name         Wikipedia × OLED Pro Deep Black theme
     //  @namespace    USO Archive
@@ -48,7 +56,8 @@ Collection of UserStyles made by Typpi.
     //          filter: invert(100%);
     //      }
     //  }
-
+```
+```
     //  /* ==UserStyle==
     //  @name         kiwifarms - Vaporwave
     //  @namespace    USO Archive
@@ -153,7 +162,8 @@ Collection of UserStyles made by Typpi.
     //  	padding-top: 75px !important;
     //  	background: url(http://i.cubeupload.com/Cw1wYQ.png) no-repeat !important;
     //  }}
-
+```
+```
     //  /* ==UserStyle==
     //  @name         Unroll.me Dark Mode
     //  @version      20241013.22.59
@@ -174,3 +184,4 @@ Collection of UserStyles made by Typpi.
     //  		filter: invert(100%);
     //  	}
     //  }
+```
