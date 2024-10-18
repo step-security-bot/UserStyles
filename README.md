@@ -7,27 +7,28 @@
 ![RepoBeats](https://repobeats.axiom.co/api/embed/9831c07785869d711723400c1b0acbae9d78dc50.svg "Repobeats analytics image")
 # Typpi's UserStyles
 Collection of UserStyles made by Typpi.
+
+Styles also hosted here: https://userstyles.world/user/Nick2bad4u
 ```
 /* ==UserStyle==
-@name         wigle.net
-@version      20240920.03.42
+@name         Wigle.net Dark Mode
+@version      20240926.22.59
 @namespace    wigle.net
 @description  Dark Mode for Wigle.net
-@author       Typpi
+@author       Nick2bad4u
 @license      The UnLicense
 ==/UserStyle== */
-
 @-moz-document domain("wigle.net") {
-:root {
-        filter: invert(1);
-       /*            background-color: black; */
-    }
-    img:not(.mwe-math-fallback-image-display):not(.mwe-math-fallback-image-inline) {
-        filter: invert(1);
-    }
-    .mw-logo {
-        filter: invert(100%);
-    }
+	:root {
+		filter: invert(1);
+		/*            background-color: black; */
+	}
+	img:not(.mwe-math-fallback-image-display):not(.mwe-math-fallback-image-inline):not(img[alt="GPS"]):not(img[alt="Cell"]):not(img[alt="WiFi"]):not(img[alt="BT"]) {
+		filter: invert(1);
+	}
+	.mw-logo {
+		filter: invert(100%);
+	}
 }
 ```
 ```
@@ -40,7 +41,7 @@ Collection of UserStyles made by Typpi.
 @license      NONE
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document url-prefix("https://en.wikipedia.org/wiki/Special:Preferences") {
+@-moz-document regexp("https://..*wikipedia.org/wiki/Special:Preferences") {
     :root {
         filter: invert(1);
         /*            background-color: black; */
@@ -48,10 +49,6 @@ Collection of UserStyles made by Typpi.
     img:not(.mwe-math-fallback-image-display):not(.mwe-math-fallback-image-inline) {
         filter: invert(1);
     }
-    .mw-logo {
-        filter: invert(100%);
-    }
-}
     .mw-logo {
         filter: invert(100%);
     }
@@ -374,6 +371,14 @@ Collection of UserStyles made by Typpi.
 ```
 ```
 /* Dark Mode Theme for Klimat Weather Page */
+/* ==UserStyle==
+@name         klimat.app - Dark Mode
+@version      20241018.02.49
+@namespace    klimat.app
+@description  Klimat.app Dark Mode
+@author       Nick2bad4u@hotmail.com
+@license      UnLicense
+==/UserStyle== */
 body {
 	background-color: #121212;
 	color: #e0e0e0;
@@ -542,5 +547,254 @@ a {
 #uploadsTable,
 #mapBar {
 	filter: invert(1);
+}
+```
+```
+/* ==UserStyle==
+@name         Gyazo.com Dark Mode
+@version      20241018.21.02
+@namespace    https://userstyles.world/user/Nick2bad4u
+@description  Gyazo Dark Mode (WIP)
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("gyazo.com") {
+/* Additional elements */
+.header-block,
+.footer-block,
+.content-block,
+.sidebar-block,
+.side-block-items,
+.images-grid-view,
+.grid-view,
+.grid-view-cell,
+.grid-view-cell-inner-image,
+.main-block-stage,
+.image-infos,
+.captured-info-value,
+.edit-box-component,
+.image-desc-display.placeholder {
+	background-color: #121212 !important;
+	color: #e0e0e0 !important;
+}
+
+/* Links, buttons, inputs, images */
+a,
+span,
+button,
+input,
+img,
+.header-block.explorer-header-block {
+	color: #bb86fc !important;
+	background-color: #121212 !important;
+}
+
+/* Form controls, grid cells */
+.button,
+.input,
+.form-control,
+.grid-cell,
+.related-images-grid-view.related-info {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+	border: 1px solid #333 !important;
+}
+
+/* Header and footer borders */
+.header-block,
+.footer-block {
+	border-bottom: 1px solid #333 !important;
+}
+
+/* Sidebar border */
+.sidebar-block {
+	border-right: 1px solid #333 !important;
+}
+
+/* Card styling */
+.card.medium-card {
+	background-color: #1e1e1e !important;
+	color: #bb86fc !important;
+	border: 1px solid #333 !important;
+}
+
+/* Metadata and related info */
+.metadata,
+.images-after-origin,
+.container-close-date-images.related-info,
+.related-info-box-component,
+.testing-swap-image-container,
+.metadata-baseinfo {
+	background-color: #1e1e1e !important;
+	color: #bb86fc !important;
+	border: 1px solid #333 !important;
+}
+
+/* Additional elements */
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+table,
+th,
+td,
+section,
+article,
+aside,
+nav,
+header,
+footer,
+main {
+	background-color: #121212 !important;
+	color: #e0e0e0 !important;
+}
+
+.modal,
+.modal-content {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+	border: 1px solid #333 !important;
+}
+
+.tooltip,
+.popup {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+	border: 1px solid #333 !important;
+}
+
+select,
+option {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+}
+}
+```
+```
+/* ==UserStyle==
+@name         Wigle.net Dark Mode (Beta)
+@version      20241018.02.33
+@namespace    https://userstyles.world/user/Nick2bad4u
+@description  Dark Mode (Beta) for Wigle.net
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("wigle.net") {
+body,
+.panel-body,
+.toolsSection,
+td,
+#resultColumn,
+ul,
+div#newsBar,
+.newsItem,
+.contentall.contentwithheader.row,
+.dd-selected,
+ol.breadcrumb,
+.searchControl,
+#wigleMain > ul > li.active > a {
+	background-color: #121212;
+	color: #ffffff;
+}
+.navbar,
+.footer,
+.dropdown-menu,
+.modal-content {
+	background-color: #1e1e1e;
+	border-color: #444;
+}
+.navbar-brand img,
+.navbar-toggle .icon-bar,
+.navbar-nav > li > a,
+.dropdown-menu > li > a,
+#map_ext_wrapper,
+input.mapfilter,
+input#savelinkhereID {
+	filter: invert(1);
+}
+input,
+select,
+textarea {
+	background-color: #333;
+	color: #ffffff;
+	border: 1px solid #666;
+}
+a {
+	color: #bb86fc;
+}
+.btn,
+.btn-default,
+.btn-block {
+	background-color: #333;
+	color: #ffffff;
+	border: 1px solid #666;
+}
+.form-control {
+	background-color: #333;
+	color: #ffffff;
+}
+.mapBarItem,
+.mapForm,
+.mapFilter,
+.mapBarSlider,
+.mapBarStatus,
+.mapBarShowHide,
+.mapBarItem table,
+.mapBarItem input,
+.mapBarItem select,
+.mapBarItem label {
+	background-color: #1e1e1e;
+	color: #ffffff;
+}
+.statsGraphInner,
+.statsgraphcontainer,
+.graphContextLinks,
+.graphCaption {
+	background-color: #1e1e1e;
+	color: #ffffff;
+}
+.hilite-stats {
+	color: #bb86fc;
+}
+.modal-header,
+.modal-footer,
+.jumbotron {
+	background-color: #1e1e1e;
+	color: #ffffff;
+}
+.modal-header .close {
+	color: #ffffff;
+}
+.modal-body {
+	background-color: #1e1e1e;
+	color: #ffffff;
+}
+.container,
+.row,
+.col-sm-12,
+.col-sm-9,
+.col-sm-3,
+.col-sm-2,
+.col-sm-1 {
+	background-color: #1e1e1e;
+	color: #fff;
+}
+#newsBar,
+.graphCaption,
+.pageControls {
+	color: #000000;
+}
+#uploadsTable,
+#mapBar {
+	filter: invert(1);
+}
 }
 ```
