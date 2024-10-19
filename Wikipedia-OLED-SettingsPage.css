@@ -7,7 +7,7 @@
 @license      NONE
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document url-prefix("https://en.wikipedia.org/wiki/Special:Preferences") {
+@-moz-document regexp("https://..*wikipedia.org/wiki/Special:Preferences") {
     :root {
         filter: invert(1);
         /*            background-color: black; */

@@ -1,0 +1,126 @@
+/* ==UserStyle==
+@name         Gyazo.com Dark Mode
+@version      20241018.21.02
+@namespace    https://userstyles.world/user/Nick2bad4u
+@description  Gyazo Dark Mode (WIP)
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("gyazo.com") {
+/* Additional elements */
+.header-block,
+.footer-block,
+.content-block,
+.sidebar-block,
+.side-block-items,
+.images-grid-view,
+.grid-view,
+.grid-view-cell,
+.grid-view-cell-inner-image,
+.main-block-stage,
+.image-infos,
+.captured-info-value,
+.edit-box-component,
+.image-desc-display.placeholder {
+	background-color: #121212 !important;
+	color: #e0e0e0 !important;
+}
+
+/* Links, buttons, inputs, images */
+a,
+span,
+button,
+input,
+img,
+.header-block.explorer-header-block {
+	color: #bb86fc !important;
+	background-color: #121212 !important;
+}
+
+/* Form controls, grid cells */
+.button,
+.input,
+.form-control,
+.grid-cell,
+.related-images-grid-view.related-info {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+	border: 1px solid #333 !important;
+}
+
+/* Header and footer borders */
+.header-block,
+.footer-block {
+	border-bottom: 1px solid #333 !important;
+}
+
+/* Sidebar border */
+.sidebar-block {
+	border-right: 1px solid #333 !important;
+}
+
+/* Card styling */
+.card.medium-card {
+	background-color: #1e1e1e !important;
+	color: #bb86fc !important;
+	border: 1px solid #333 !important;
+}
+
+/* Metadata and related info */
+.metadata,
+.images-after-origin,
+.container-close-date-images.related-info,
+.related-info-box-component,
+.testing-swap-image-container,
+.metadata-baseinfo {
+	background-color: #1e1e1e !important;
+	color: #bb86fc !important;
+	border: 1px solid #333 !important;
+}
+
+/* Additional elements */
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+table,
+th,
+td,
+section,
+article,
+aside,
+nav,
+header,
+footer,
+main {
+	background-color: #121212 !important;
+	color: #e0e0e0 !important;
+}
+
+.modal,
+.modal-content {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+	border: 1px solid #333 !important;
+}
+
+.tooltip,
+.popup {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+	border: 1px solid #333 !important;
+}
+
+select,
+option {
+	background-color: #1e1e1e !important;
+	color: #e0e0e0 !important;
+}
+}
