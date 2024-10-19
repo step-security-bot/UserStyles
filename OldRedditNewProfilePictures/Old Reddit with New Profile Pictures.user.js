@@ -1,11 +1,14 @@
 // ==UserScript==
-// @name         Old Reddit with New Profile Pictures
+// @name         Old Reddit with New Reddit Profile Pictures
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Injects new Reddit profile pictures into Old Reddit next to the username
 // @author       Nick2bad4u
 // @match        https://*.reddit.com/*
+// @match        https://www.*.reddit.com/*
 // @grant        none
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures/Old%20Reddit%20with%20New%20Profile%20Pictures.user.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures/Old%20Reddit%20with%20New%20Profile%20Pictures.user.js
 // ==/UserScript==
 
 (function() {
