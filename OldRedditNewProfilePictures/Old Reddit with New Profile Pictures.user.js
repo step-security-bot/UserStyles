@@ -36,9 +36,6 @@
         console.log('Old cache entries flushed');
     }
 
-    flushOldCache();
-    console.log('Cache loaded:', profilePictureCache);
-
     async function fetchProfilePictures(usernames) {
         const uncachedUsernames = usernames.filter(username => !profilePictureCache[username]);
         if (uncachedUsernames.length === 0) {
@@ -94,16 +91,15 @@
         comments.forEach((comment, index) => {
             const username = usernames[index];
             const profilePictureUrl = profilePictureUrls[index];
-            if (profilePictureUrl) {
+            if (profilePictureUrl && !comment.previousElementSibling?.classList.contains('profile-picture')) {
                 console.log(`Injecting profile picture: ${username}`);
                 const img = document.createElement('img');
                 img.src = profilePictureUrl;
                 img.classList.add('profile-picture');
                 img.onerror = () => { img.style.display = 'none'; };
                 img.addEventListener('click', () => { window.open(profilePictureUrl, '_blank'); });
-                if (!comment.previousElementSibling || !comment.previousElementSibling.classList.contains('profile-picture')) {
-                    comment.insertAdjacentElement('beforebegin', img);
-                }
+                comment.insertAdjacentElement('beforebegin', img);
+
                 const enlargedImg = document.createElement('img');
                 enlargedImg.src = profilePictureUrl;
                 enlargedImg.classList.add('enlarged-profile-picture');
@@ -133,9 +129,16 @@
         console.log('Observer initialized');
     }
 
+    function runScript() {
+        flushOldCache();
+        console.log('Cache loaded:', profilePictureCache);
+        setupObserver();
+    }
+
     window.addEventListener('load', () => {
         console.log('Page loaded');
-        setupObserver();
+        runScript();
+        setInterval(runScript, 10000); // Run every 10 seconds
     });
 
     const style = document.createElement('style');
@@ -165,3 +168,4 @@
     `;
     document.head.appendChild(style);
 })();
+
