@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures
 // @namespace    http://tampermonkey.net/
-// @version      1.8
+// @version      2.1
 // @description  Injects new Reddit profile pictures into Old Reddit and reddit-stream.com next to the username
 // @author       Nick2bad4u
 // @match        https://*.reddit.com/*
@@ -22,11 +22,14 @@
     let profilePictureCache = GM_getValue('profilePictureCache', {});
     let cacheTimestamps = GM_getValue('cacheTimestamps', {});
     const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+    const MAX_CACHE_SIZE = 25000; // Maximum number of cache entries
 
     function flushOldCache() {
+        console.log('Flushing old cache');
         const now = Date.now();
         for (const username in cacheTimestamps) {
             if (now - cacheTimestamps[username] > CACHE_DURATION) {
+                console.log(`Deleting cache for ${username}`);
                 delete profilePictureCache[username];
                 delete cacheTimestamps[username];
             }
@@ -36,7 +39,24 @@
         console.log('Old cache entries flushed');
     }
 
+    function limitCacheSize() {
+        const cacheEntries = Object.keys(profilePictureCache);
+        if (cacheEntries.length > MAX_CACHE_SIZE) {
+            console.log('Cache size exceeded, removing oldest entries');
+            const sortedEntries = cacheEntries.sort((a, b) => cacheTimestamps[a] - cacheTimestamps[b]);
+            const entriesToRemove = sortedEntries.slice(0, cacheEntries.length - MAX_CACHE_SIZE);
+            entriesToRemove.forEach(username => {
+                delete profilePictureCache[username];
+                delete cacheTimestamps[username];
+            });
+            GM_setValue('profilePictureCache', profilePictureCache);
+            GM_setValue('cacheTimestamps', cacheTimestamps);
+            console.log('Cache size limited');
+        }
+    }
+
     async function fetchProfilePictures(usernames) {
+        console.log('Fetching profile pictures');
         const uncachedUsernames = usernames.filter(username => !profilePictureCache[username]);
         if (uncachedUsernames.length === 0) {
             console.log('All usernames are cached');
@@ -51,6 +71,7 @@
                         method: 'GET',
                         url: `https://www.reddit.com/user/${username}/about.json`,
                         onload: (response) => {
+                            console.log(`Response received for ${username}`);
                             const data = JSON.parse(response.responseText);
                             if (data.data.icon_img) {
                                 const profilePictureUrl = data.data.icon_img.split('?')[0];
@@ -75,9 +96,12 @@
 
             Promise.all(requests)
                 .then(results => {
+                    console.log('All profile pictures fetched');
+                    limitCacheSize();
                     resolve(usernames.map(username => profilePictureCache[username]));
                 })
                 .catch(error => {
+                    console.error('Error in fetching profile pictures', error);
                     reject(error);
                 });
         });
@@ -117,6 +141,7 @@
     }
 
     function setupObserver() {
+        console.log('Setting up observer');
         const observer = new MutationObserver((mutations) => {
             const comments = document.querySelectorAll('.author, .c-username');
             if (comments.length > 0) {
@@ -168,4 +193,3 @@
     `;
     document.head.appendChild(style);
 })();
-
