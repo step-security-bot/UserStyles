@@ -5,9 +5,9 @@
 // @description  Adds a floating button to scroll to the bottom, checkboxes to stay at the bottom, and to reload the page every 10 or 30 seconds on reddit-stream.com, with persistent settings and icons for clarity.
 // @author       Nick2bad4u
 // @match        *://*.reddit-stream.com/*
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/reddit-stream.com-Enhancements.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/reddit-stream.com-Enhancements.js
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/reddit-stream-Enhancements.js
+// @downloadURL  https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/reddit-stream-Enhancements.js
 // ==/UserScript==
 
 (function() {
