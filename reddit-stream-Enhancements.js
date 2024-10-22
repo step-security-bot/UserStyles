@@ -6,8 +6,6 @@
 // @author       Nick2bad4u
 // @match        *://*.reddit-stream.com/*
 // @grant        none
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/reddit-stream.com-Enhancements.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/reddit-stream.com-Enhancements.js
 // ==/UserScript==
 
 (function() {
