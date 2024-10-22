@@ -8,6 +8,7 @@
 // @grant        none
 // @updateURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/reddit-stream-Enhancements.user.js
 // @downloadURL  https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/reddit-stream-Enhancements.user.js
+// @license      Unlicense
 // ==/UserScript==
 
 (function() {
