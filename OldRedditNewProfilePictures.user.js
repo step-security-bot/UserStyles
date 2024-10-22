@@ -13,6 +13,7 @@
 // @connect      reddit.com
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures.user.js
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures.user.js
+// @license      Unlicense
 // ==/UserScript==
 
 (function() {
