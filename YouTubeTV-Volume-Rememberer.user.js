@@ -6,6 +6,8 @@
 // @author       Nick2bad4u
 // @match        *://tv.youtube.com/*
 // @grant        none
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTV-Volume-Rememberer.user.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTV-Volume-Rememberer.user.js
 // ==/UserScript==
 
 (() => {
