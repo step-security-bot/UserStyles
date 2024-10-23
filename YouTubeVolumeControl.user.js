@@ -38,7 +38,7 @@
     volumeInput.style.transition = 'border-color 0.3s, background-color 0.3s'; // Added background color transition
     volumeInput.style.outline = 'none';
     volumeInput.style.position = 'relative';
-    volumeInput.style.top = '12px'; // Adjust to lower the input 12 pixels
+    volumeInput.style.top = '13px'; // Adjust to lower the input 13 pixels
 
     // Change border color on focus
     volumeInput.addEventListener('focus', () => {
