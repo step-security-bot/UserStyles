@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Enlarge YouTube Chat Profile Pictures (HD Version with Caching)
 // @namespace    http://tampermonkey.net/
-// @version      1.4
-// @description  Enlarges YouTube chat profile pictures on mouse over, shows HD version, returns to normal after 3 seconds. Caches HD images for faster display using Tampermonkey caching.
+// @version      1.6
+// @description  Enlarges YouTube chat profile pictures on mouse over, shows HD version, Caches HD images for faster display using Tampermonkey caching.
 // @author       Nick2bad4u
 // @match        https://www.youtube.com/*
 // @grant        GM_setValue
@@ -10,6 +10,7 @@
 // @grant        GM_addStyle
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/EnlargeYouTubeChatProfilePictures.user.js
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/EnlargeYouTubeChatProfilePictures.user.js
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @license      UnLicense
 // ==/UserScript==
 

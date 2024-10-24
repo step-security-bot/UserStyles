@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Scroll to Bottom, Stay Button, and Auto-Reload with Persistence and Icons for reddit-stream.com
 // @namespace    http://tampermonkey.net/
-// @version      2.3
+// @version      2.4
 // @description  Adds a floating button to scroll to the bottom, checkboxes to stay at the bottom, and to reload the page every 10 or 30 seconds on reddit-stream.com, with persistent settings and icons for clarity.
 // @author       Nick2bad4u
 // @match        *://*.reddit-stream.com/*
@@ -9,6 +9,7 @@
 // @updateURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/reddit-stream-Enhancements.user.js
 // @downloadURL  https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/reddit-stream-Enhancements.user.js
 // @license      Unlicense
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
 // ==/UserScript==
 
 (function() {
