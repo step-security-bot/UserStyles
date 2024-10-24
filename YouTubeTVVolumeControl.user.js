@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         YouTubeTV Volume Control with Memory and Draggable UI
 // @namespace    http://tampermonkey.net/
-// @version      1.14
+// @version      1.15
 // @description  Remembers and controls volume levels on YouTube TV with keyboard shortcuts and a UI for manual input
 // @author       Nick2bad4u
 // @match        *://tv.youtube.com/*
 // @grant        none
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=tv.youtube.com
 // @license      UnLicense
 // ==/UserScript==
 
