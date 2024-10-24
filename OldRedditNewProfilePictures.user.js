@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures
 // @namespace    http://tampermonkey.net/
-// @version      2.4
-// @description  Injects new Reddit profile pictures into Old Reddit and reddit-stream.com next to the username
+// @version      2.5
+// @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username
 // @author       Nick2bad4u
 // @match        https://*.reddit.com/*
 // @match        https://www.*.reddit.com/*
