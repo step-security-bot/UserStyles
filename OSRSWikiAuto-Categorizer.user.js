@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, and Global Scope
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.5
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -16,7 +16,7 @@
     'use strict';
 
     // Global variables
-    const versionNumber = '1.4';
+    const versionNumber = '1.5';
     let categoryName = '';        // Stores the requested category name
     let pageLinks = [];           // Stores all applicable page links on the current page
     let selectedLinks = [];       // Stores selected page links for categorization
@@ -30,6 +30,7 @@
 
     // Add UI elements to start, cancel, and display progress of the categorization process
     function addButtonAndProgressBar() {
+        console.log("Adding UI elements for categorization.");
         const container = document.createElement('div');
         container.id = 'categorize-ui';
         container.style = `position: fixed; bottom: 20px; right: 20px; z-index: 1000;
@@ -71,19 +72,23 @@
 
         container.appendChild(progressBarContainer);
         document.body.appendChild(container);
+        console.log("UI elements added successfully.");
     }
 
     // Prompt user for category name and initiate the link fetching process
     function promptCategoryName() {
+        console.log("Prompting user for category name.");
         categoryName = prompt("Enter the category name you'd like to add:");
         if (!categoryName) {
             alert("Category name is required.");
+            console.warn("User did not enter a category name.");
             return;
         }
 
         getPageLinks();
         if (pageLinks.length === 0) {
             alert("No pages found to categorize.");
+            console.warn("No applicable pages found.");
             return;
         }
 
@@ -92,15 +97,19 @@
 
     // Retrieve applicable page links on the current page, filtering out excluded prefixes
     function getPageLinks() {
+        console.log("Retrieving applicable page links.");
         pageLinks = Array.from(document.querySelectorAll('#mw-content-text a'))
             .map(link => link.getAttribute('href'))
             .filter(href => href && href.startsWith('/w/'))
             .map(href => decodeURIComponent(href.replace('/w/', '')))
             .filter(page => !excludedPrefixes.some(prefix => page.startsWith(prefix)));
+
+        console.log(`Found ${pageLinks.length} page links.`);
     }
 
     // Display popup for selecting pages to categorize
     function displayPageSelectionPopup() {
+        console.log("Displaying page selection popup.");
         const popup = document.createElement('div');
         popup.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             z-index: 1001; background-color: #2b2b2b; padding: 15px; color: white;
@@ -134,11 +143,13 @@
             border: none; color: white; cursor: pointer; border-radius: 5px;`;
         confirmButton.onclick = () => {
             selectedLinks = Array.from(listContainer.querySelectorAll('input:checked')).map(input => input.value);
+            console.log("Selected links confirmed:", selectedLinks);
             document.body.removeChild(popup);
             if (selectedLinks.length > 0) {
                 startCategorization();
             } else {
                 alert("No pages selected.");
+                console.warn("User did not select any pages.");
             }
         };
 
@@ -148,6 +159,7 @@
             border: none; color: white; cursor: pointer; border-radius: 5px;`;
         cancelPopupButton.onclick = () => {
             document.body.removeChild(popup);
+            console.log("Popup canceled by user.");
         };
 
         buttonContainer.appendChild(confirmButton);
@@ -159,11 +171,12 @@
 
     // Start categorization process and fetch CSRF token for authorized API calls
     function startCategorization() {
+        console.log("Starting categorization process.");
         isCancelled = false;
         isRunning = true;
         currentIndex = 0;
         document.getElementById('progress-bar-container').style.display = 'block';
-        console.log("Starting categorization with CSRF token fetch.");
+        console.log("Fetching CSRF token...");
         fetchCsrfToken(() => processNextPage());
     }
 
@@ -171,88 +184,90 @@
     function processNextPage() {
         if (isCancelled || currentIndex >= selectedLinks.length) {
             isRunning = false;
-            alert(isCancelled ? "Categorization cancelled." : "Categorization complete!");
-            resetUI();
+            alert(isCancelled ? "Categorization canceled." : "Categorization complete.");
+            console.log("Categorization process completed or canceled.");
             return;
         }
 
-        const pageTitle = selectedLinks[currentIndex];
-        console.log(`Processing page: ${pageTitle}`);
-        updateProgressBar(`Processing: ${pageTitle}`);
-        addCategoryToPage(pageTitle, () => {
+        const page = selectedLinks[currentIndex];
+        console.log(`Processing page: ${page}`);
+        categorizePage(page, () => {
             currentIndex++;
-            updateProgressBar(`Processed: ${pageTitle}`);
+            updateProgress();
+            // Adaptive request timing
+            requestInterval = adjustRequestInterval();
             setTimeout(processNextPage, requestInterval);
         });
     }
 
-    // Fetch CSRF token needed for API authorization
+    // Fetch CSRF token from the server for authenticated requests
     function fetchCsrfToken(callback) {
+        console.log("Requesting CSRF token...");
         GM_xmlhttpRequest({
-            method: "GET",
-            url: "https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json",
-            onload: response => {
-                try {
+            method: 'GET',
+            url: 'https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=edit&format=json',
+            onload: function(response) {
+                if (response.status === 200) {
                     const data = JSON.parse(response.responseText);
                     csrfToken = data.query.tokens.csrftoken;
-                    console.log(`CSRF token fetched: ${csrfToken}`);
+                    console.log("CSRF token fetched:", csrfToken);
                     callback();
-                } catch (error) {
-                    console.error("Error fetching CSRF token:", error);
-                    alert("Failed to fetch CSRF token. Check console for details.");
-                }
-            }
-        });
-    }
-
-    // Add selected category to a specified page
-    function addCategoryToPage(pageTitle, callback) {
-        GM_xmlhttpRequest({
-            method: "POST",
-            url: "https://oldschool.runescape.wiki/api.php",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            data: `action=edit&format=json&title=${encodeURIComponent(pageTitle)}&appendtext=[[Category:${categoryName}]]&token=${encodeURIComponent(csrfToken)}`,
-            onload: response => {
-                const responseData = JSON.parse(response.responseText);
-                if (responseData.edit && responseData.edit.result === "Success") {
-                    console.log(`Successfully categorized: ${pageTitle}`);
-                    callback();
-                } else if (responseData.error && responseData.error.code === "ratelimited") {
-                    console.warn(`Rate limit hit. Slowing down request interval.`);
-                    requestInterval = Math.min(requestInterval + 500, maxInterval);
-                    setTimeout(callback, requestInterval);
                 } else {
-                    console.error(`Error categorizing ${pageTitle}:`, responseData);
-                    callback();
+                    console.error("Failed to fetch CSRF token:", response.statusText);
+                    alert("Error fetching CSRF token. Please try again.");
                 }
             }
         });
     }
 
-    // Update progress bar display
-    function updateProgressBar(text) {
-        const progress = (currentIndex / selectedLinks.length) * 100;
-        document.getElementById('progress-bar').style.width = `${progress}%`;
-        document.getElementById('progress-text').textContent = text;
+    // Categorize a specific page and handle possible errors
+    function categorizePage(page, callback) {
+        console.log(`Categorizing page: ${page}`);
+        GM_xmlhttpRequest({
+            method: 'POST',
+            url: 'https://oldschool.runescape.wiki/api.php',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: `action=edit&title=${encodeURIComponent(page)}&appendtext=[[Category:${encodeURIComponent(categoryName)}]]&token=${encodeURIComponent(csrfToken)}&format=json`,
+            onload: function(response) {
+                if (response.status === 200) {
+                    const data = JSON.parse(response.responseText);
+                    if (data.error) {
+                        console.error(`Error categorizing page: ${page} - ${data.error.info}`);
+                    } else {
+                        console.log(`Successfully categorized page: ${page}`);
+                    }
+                } else {
+                    console.error(`Failed to categorize page: ${page} - ${response.statusText}`);
+                }
+                callback();
+            }
+        });
     }
 
-    // Cancel ongoing categorization and reset UI elements
+    // Update the progress bar and text based on the current status
+    function updateProgress() {
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const progressPercentage = Math.floor((currentIndex / selectedLinks.length) * 100);
+        progressBar.style.width = `${progressPercentage}%`;
+        progressText.textContent = `Processing ${currentIndex + 1} of ${selectedLinks.length} pages`;
+        console.log(`Progress updated: ${progressText.textContent}`);
+    }
+
+    // Cancel the ongoing categorization process
     function cancelCategorization() {
-        if (isRunning) {
-            isCancelled = true;
-        } else {
-            alert("No categorization process is currently running.");
-        }
+        console.log("Categorization process has been cancelled by the user.");
+        isCancelled = true;
     }
 
-    // Reset UI elements after process completion or cancellation
-    function resetUI() {
-        document.getElementById('progress-bar').style.width = '0%';
-        document.getElementById('progress-text').textContent = '';
-        document.getElementById('progress-bar-container').style.display = 'none';
+    // Adjust the request interval based on API response
+    function adjustRequestInterval() {
+        // Add logic here based on your requirements, for example, increase delay on errors
+        return Math.min(requestInterval * 2, maxInterval); // Example: double the interval
     }
 
-    // Initialize the UI
+    // Initialize the script by adding UI elements
     addButtonAndProgressBar();
 })();
-
