@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, and Global Scope
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -15,7 +15,7 @@
 (function() {
     'use strict';
     // Current version of the script
-    const versionNumber = '1.1';
+    const versionNumber = '1.2';
     let categoryName = '';
     let pageLinks = [];
     let currentIndex = 0;
