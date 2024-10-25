@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, and Global Scope
 // @namespace    http://tampermonkey.net/
-// @version      0.9
+// @version      1.1
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -20,6 +20,7 @@
     let currentIndex = 0;
     let csrfToken = '';
     let isCancelled = false;
+    let isRunning = false; // Flag to track if the categorization is running
     let requestInterval = 500; // Start with a fast interval of 500ms
     const maxInterval = 5000; // Maximum interval of 5 seconds for rate-limited adjustments
     const excludedPrefixes = ["Template:", "File:", "Category:", "Module:"];
@@ -37,7 +38,6 @@
         container.style.border = '1px solid #595959';
         container.style.borderRadius = '8px';
         container.style.fontFamily = 'Arial, sans-serif';
-        // Fixed width for better text fitting
         container.style.width = '250px';
         container.id = 'categorize-ui';
 
@@ -98,6 +98,14 @@
         document.body.appendChild(container);
     }
 
+    // Warn user before closing the tab if categorization is running
+    window.addEventListener('beforeunload', function(event) {
+        if (isRunning) {
+            event.preventDefault();
+            event.returnValue = '';
+        }
+    });
+
     // Fetch CSRF token
     function fetchCsrfToken(callback) {
         const tokenUrl = `https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json`;
@@ -140,6 +148,8 @@
         }
 
         isCancelled = false;
+        // Mark as running
+        isRunning = true; 
         currentIndex = 0;
         document.getElementById('progress-bar-container').style.display = 'block';
         fetchCsrfToken(() => processNextPage());
@@ -148,6 +158,8 @@
     // Process each page with an adaptive delay to avoid rate limits
     function processNextPage() {
         if (isCancelled || currentIndex >= pageLinks.length) {
+            // Mark as not running
+            isRunning = false;
             if (isCancelled) alert("Categorization cancelled.");
             else alert("Categorization complete!");
             resetUI();
@@ -159,7 +171,8 @@
         addCategoryToPage(pageTitle, () => {
             currentIndex++;
             updateProgressBar(`Processed: ${pageTitle}`);
-            setTimeout(processNextPage, requestInterval); // Use adaptive request interval
+            // Use adaptive request interval
+            setTimeout(processNextPage, requestInterval);
         });
     }
 
@@ -184,17 +197,19 @@
                         url: editUrl,
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
-                            'Api-User-Agent': 'OSRSWikiAutoCategorizer/0.9 (SubLife)'
+                            'Api-User-Agent': 'OSRSWikiAutoCategorizer/1.1 (SubLife)'
                         },
                         data: `token=${encodeURIComponent(csrfToken)}`,
                         onload: function(editResponse) {
                             console.log(`Category added to ${pageTitle}`);
-                            requestInterval = Math.max(500, requestInterval - 500); // Decrease interval if successful
+                            // Decrease interval if successful
+                            requestInterval = Math.max(500, requestInterval - 500);
                             callback();
                         },
                         onerror: function() {
                             console.error(`Failed to add category to ${pageTitle}`);
-                            requestInterval = Math.min(maxInterval, requestInterval + 500); // Increase interval if error
+                            // Increase interval if error
+                            requestInterval = Math.min(maxInterval, requestInterval + 500);
                             callback();
                         }
                     });
