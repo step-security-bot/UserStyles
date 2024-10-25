@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, and Global Scope
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -184,7 +184,7 @@
                         url: editUrl,
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
-                            'Api-User-Agent': 'YourScriptName/0.6 (ContactInfo)'
+                            'Api-User-Agent': 'OSRSWikiAutoCategorizer/0.9 (SubLife)'
                         },
                         data: `token=${encodeURIComponent(csrfToken)}`,
                         onload: function(editResponse) {
