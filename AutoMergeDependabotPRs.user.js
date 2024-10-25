@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         Auto Merge Dependabot PRs
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  Automatically clicks the merge button on Dependabot PRs and "Done" button on the notification bar
+// @author       Nick2bad4u
 // @match        https://github.com/*/*/pull/*
 // @grant        none
-// @author       Nick2bad4u
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @license      UnLicense
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/AutoMergeDependabotPRs.user.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/AutoMergeDependabotPRs.user.js
 // ==/UserScript==
 
 (function() {
