@@ -6,7 +6,7 @@
 // @match        https://github.com/*/*/pull/*
 // @grant        none
 // @author       Nick2bad4u
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tv.youtube.com
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @license      UnLicense
 // ==/UserScript==
 
