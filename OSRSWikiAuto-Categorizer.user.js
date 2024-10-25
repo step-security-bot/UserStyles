@@ -14,15 +14,19 @@
 
 (function() {
     'use strict';
-
+    // Current version of the script
+    const versionNumber = '1.1';
     let categoryName = '';
     let pageLinks = [];
     let currentIndex = 0;
     let csrfToken = '';
     let isCancelled = false;
-    let isRunning = false; // Flag to track if the categorization is running
-    let requestInterval = 500; // Start with a fast interval of 500ms
-    const maxInterval = 5000; // Maximum interval of 5 seconds for rate-limited adjustments
+    // Flag to track if the categorization is running
+    let isRunning = false;
+    // Start with a fast interval of 500ms
+    let requestInterval = 500;
+    // Maximum interval of 5 seconds for rate-limited adjustments
+    const maxInterval = 5000;
     const excludedPrefixes = ["Template:", "File:", "Category:", "Module:"];
 
     // Add UI button, progress bar, and cancel button to the page
@@ -149,7 +153,7 @@
 
         isCancelled = false;
         // Mark as running
-        isRunning = true; 
+        isRunning = true;
         currentIndex = 0;
         document.getElementById('progress-bar-container').style.display = 'block';
         fetchCsrfToken(() => processNextPage());
@@ -197,7 +201,7 @@
                         url: editUrl,
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
-                            'Api-User-Agent': 'OSRSWikiAutoCategorizer/1.1 (SubLife)'
+                            'Api-User-Agent': `OSRSWikiAutoCategorizer/${versionNumber} (SubLife)`
                         },
                         data: `token=${encodeURIComponent(csrfToken)}`,
                         onload: function(editResponse) {
