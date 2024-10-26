@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube TV Volume Rememberer
 // @namespace    http://tampermonkey.net/
-// @version      1.12
+// @version      1.13
 // @description  Remembers and controls volume levels on YouTube TV with keyboard shortcuts
 // @author       Nick2bad4u
 // @match        *://tv.youtube.com/*
