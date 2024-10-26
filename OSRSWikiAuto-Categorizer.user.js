@@ -8,8 +8,8 @@
 // @grant        GM_xmlhttpRequest
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=oldschool.runescape.wiki
 // @license      UnLicense
-// @downloadURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20and%20Global%20Scope.user.js
-// @updateURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20and%20Global%20Scope.meta.js
+// @downloadURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker.user.js
+// @updateURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker.meta.js
 // ==/UserScript==
 
 (function() {
@@ -68,23 +68,40 @@
         container.appendChild(progressBarContainer);
         document.body.appendChild(container);
     }
-
+    function getHighlightedText() {
+        const selection = window.getSelection();
+        return selection.toString();
+    }
     function promptCategoryName() {
-        categoryName = prompt("Enter the category name you'd like to add:");
-        console.log("Category name entered:", categoryName);
-        if (!categoryName) {
-            alert("Category name is required.");
-            return;
-        }
+        const highlightedText = getHighlightedText();
+        if (highlightedText) {
+            console.log("Highlighted text detected:", highlightedText);
+            // Process only highlighted text
+            processHighlightedText(highlightedText);
+        } else {
+            categoryName = prompt("Enter the category name you'd like to add:");
+            console.log("Category name entered:", categoryName);
+            if (!categoryName) {
+                alert("Category name is required.");
+                return;
+            }
 
-        getPageLinks();
-        if (pageLinks.length === 0) {
-            alert("No pages found to categorize.");
-            console.log("No pages found after filtering.");
-            return;
-        }
+            getPageLinks();
+            if (pageLinks.length === 0) {
+                alert("No pages found to categorize.");
+                console.log("No pages found after filtering.");
+                return;
+            }
 
-        displayPageSelectionPopup();
+            displayPageSelectionPopup();
+        }
+    }
+
+    function processHighlightedText(highlightedText) {
+        // Implement functionality to process highlighted text
+        // For example, categorizing pages that contain the highlighted text
+        console.log("Processing highlighted text:", highlightedText);
+        // Add your logic here
     }
 
     function getPageLinks() {
