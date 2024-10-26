@@ -1,10 +1,42 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
-// @namespace    http://tampermonkey.net/
-// @version      4.0
+// @namespace    https://github.com/Nick2bad4u/UserStyles
+// @version      4.1
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, duplicate checker, and highlighted links option.
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
+// @match        https://runescape.wiki/*
+// @match        https://*.runescape.wiki/*
+// @match        https://api.runescape.wiki/*
+// @match        https://classic.runescape.wiki/*
+// @match        *://*.runescape.wiki/*
+// @name:cs      OSRS Wiki Auto-Categorizer s uživatelským rozhraním, adaptivní rychlostí, Duplicate Checker
+// @name:es-MX   Categorizador automático de wikis de OSRS con interfaz de usuario, velocidad adaptable y comprobador de duplicados
+// @name:ru      Автоматический классификатор OSRS Wiki с пользовательским интерфейсом, адаптивной скоростью и проверкой дубликатов
+// @name:zh      OSRS Wiki 自動分類器，附 UI、自適應速度、重複檢查器
+// @name:da      OSRS Wiki Auto-Categorizer med UI, Adaptive Speed, Duplicate Checker
+// @name:nl      OSRS Wiki Auto-Categorizer met UI, Adaptieve snelheid, Duplicatencontrole
+// @name:fi      OSRS Wiki Auto-kategorisoija käyttöliittymällä, mukautuvalla nopeudella, kaksoiskappaleiden tarkistuksella
+// @name:fr      Catégoriseur automatique OSRS Wiki avec interface utilisateur, vitesse adaptative, vérificateur de doublons
+// @name:de      OSRS Wiki-Autokategorizer mit Benutzeroberfläche, adaptiver Geschwindigkeit, Duplikatsprüfung
+// @name:he      OSRS Wiki Auto-Categorizer עם ממשק משתמש, מהירות מסתגלת, בודק שכפול
+// @name:hi      OSRS विकी ऑटो-कैटेगराइज़र यूआई, अनुकूली गति, डुप्लिकेट चेकर के साथ
+// @name:hu      OSRS Wiki automatikus kategorizáló felhasználói felülettel, adaptív sebességgel, másolat-ellenőrzővel
+// @name:is      OSRS Wiki Auto-Categorizer með notendaviðmóti, aðlögunarhraða, tvítekið afgreiðslumaður
+// @name:id      Kategori Otomatis Wiki OSRS dengan UI, Kecepatan Adaptif, Pemeriksa Duplikat
+// @name:kr      UI, 적응형 속도, 중복 검사기를 갖춘 OSRS Wiki 자동 분류기
+// @name:jp      UI、適応速度、重複チェッカーを備えた OSRS Wiki 自動分類ツール
+// @name:it      Auto-categorizzatore OSRS Wiki con interfaccia utente, velocità adattiva, controllo duplicati
+// @name:no      OSRS Wiki Auto-Categorizer med UI, Adaptive Speed, Duplicate Checker
+// @name:fa      OSRS Wiki Auto-categorizer با رابط کاربری، سرعت تطبیقی، جستجوگر تکراری
+// @name:sa      OSRS Wiki Auto-Categorizer with UI, अनुकूली गति, डुप्लिकेट चेकर
+// @name:sv      OSRS Wiki Auto-Categorizer med UI, Adaptive Speed, Duplicate Checker
+// @name:uk      OSRS Wiki Auto-Categorizer з інтерфейсом користувача, адаптивною швидкістю, перевіркою дублікатів
+// @name:vi      OSRS Wiki Auto-Categorizer với UI, Adaptive Speed, Duplicate Checker
+// @name:af      OSRS Wiki Outo-kategoriseerder met UI, Adaptive Speed, Duplicate Checker
+// @name:ar      أداة التصنيف التلقائي لـ OSRS Wiki مع واجهة المستخدم والسرعة التكيفية ومدقق التكرار
+// @name:bn      UI সহ ওএসআরএস উইকি অটো-ক্যাটেগরিজার, অভিযোজিত গতি, ডুপ্লিকেট চেকার
+// @name:hr      OSRS Wiki Auto-Categorizer s korisničkim sučeljem, prilagodljivom brzinom, provjerom duplikata
 // @grant        GM_xmlhttpRequest
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=oldschool.runescape.wiki
 // @license      UnLicense
@@ -14,7 +46,7 @@
 
 (function() {
     'use strict';
-    const versionNumber = '4.0';
+    const versionNumber = '4.1';
     let categoryName = '';
     let pageLinks = [];
     let selectedLinks = [];
