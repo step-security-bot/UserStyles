@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace    http://tampermonkey.net/
-// @version      3.1
+// @version      3.2
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -14,7 +14,7 @@
 
 (function() {
     'use strict';
-    const versionNumber = '3.1';
+    const versionNumber = '3.2';
     let categoryName = '';
     let pageLinks = [];
     let selectedLinks = [];
@@ -253,50 +253,87 @@
     }
 
     function addCategoryToPage(pageTitle, callback) {
-        const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&prop=categories&titles=${encodeURIComponent(pageTitle)}&format=json`;
-        console.log(`Checking categories for page: ${pageTitle}`);
+        const categories = []; // Collects all categories from paginated responses
 
-        GM_xmlhttpRequest({
-            method: 'GET',
-            url: apiUrl,
-            onload(response) {
-                const responseJson = JSON.parse(response.responseText);
-                const page = responseJson.query.pages[Object.keys(responseJson.query.pages)[0]];
-                const alreadyCategorized = page.categories && page.categories.some(cat => cat.title === `Category:${categoryName}`);
+        // Function to standardize category names for comparison
+        function standardizeCategoryName(name) {
+            return name.replace(/^Category:/, '') // Remove prefix "Category:"
+                .replace(/\s+/g, '_')     // Replace spaces with underscores
+                .toLowerCase();           // Convert to lowercase for case-insensitive comparison
+        }
 
-                if (alreadyCategorized) {
-                    console.log(`Page '${pageTitle}' is already in the category.`);
-                    actionLog.push(`Skipped: '${pageTitle}' already in '${categoryName}'`);
-                    callback();
-                } else {
-                    const editUrl = 'https://oldschool.runescape.wiki/api.php';
-                    const formData = new URLSearchParams();
-                    formData.append('action', 'edit');
-                    formData.append('title', pageTitle);
-                    formData.append('appendtext', `\n[[Category:${categoryName}]]`);
-                    formData.append('token', csrfToken);
-                    formData.append('format', 'json');
+        // Recursive function to handle pagination
+        function fetchCategories(clcontinue) {
+            const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&prop=categories&titles=${encodeURIComponent(pageTitle)}&format=json${clcontinue ? `&clcontinue=${clcontinue}` : ''}`;
+            console.log(`Checking categories for page: ${pageTitle}${clcontinue ? ` with clcontinue: ${clcontinue}` : ''}`);
 
-                    GM_xmlhttpRequest({
-                        method: 'POST',
-                        url: editUrl,
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        data: formData.toString(),
-                        onload(response) {
-                            if (response.status === 200) {
-                                actionLog.push(`Added: '${pageTitle}' to '${categoryName}'`);
-                                console.log(`Successfully added '${pageTitle}' to category '${categoryName}'.`);
-                                callback();
-                            } else {
-                                console.log(`Failed to add '${pageTitle}' to category.`);
-                                callback();
-                            }
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: apiUrl,
+                onload(response) {
+                    const responseJson = JSON.parse(response.responseText);
+                    const page = responseJson.query.pages[Object.keys(responseJson.query.pages)[0]];
+
+                    // Append the categories from this response to the categories list
+                    if (page.categories) {
+                        categories.push(...page.categories.map(cat => cat.title));
+                    }
+
+                    // Check if more categories need to be fetched (pagination)
+                    if (responseJson.continue && responseJson.continue.clcontinue) {
+                        fetchCategories(responseJson.continue.clcontinue); // Fetch next page
+                    } else {
+                        // All categories have been fetched
+                        console.log(`All categories for '${pageTitle}':`, categories);
+
+                        // Standardize target category name
+                        const standardizedCategoryName = standardizeCategoryName(`Category:${categoryName}`);
+
+                        // Check if page is already categorized
+                        const alreadyCategorized = categories.some(cat => {
+                            return standardizeCategoryName(cat) === standardizedCategoryName;
+                        });
+
+                        if (alreadyCategorized) {
+                            console.log(`Page '${pageTitle}' is already in the category.`);
+                            actionLog.push(`Skipped: '${pageTitle}' already in '${categoryName}'`);
+                            callback();
+                        } else {
+                            const editUrl = 'https://oldschool.runescape.wiki/api.php';
+                            const formData = new URLSearchParams();
+                            formData.append('action', 'edit');
+                            formData.append('title', pageTitle);
+                            formData.append('appendtext', `\n[[Category:${categoryName}]]`);
+                            formData.append('token', csrfToken);
+                            formData.append('format', 'json');
+
+                            GM_xmlhttpRequest({
+                                method: 'POST',
+                                url: editUrl,
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                data: formData.toString(),
+                                onload(response) {
+                                    if (response.status === 200) {
+                                        actionLog.push(`Added: '${pageTitle}' to '${categoryName}'`);
+                                        console.log(`Successfully added '${pageTitle}' to category '${categoryName}'.`);
+                                        callback();
+                                    } else {
+                                        console.log(`Failed to add '${pageTitle}' to category.`);
+                                        callback();
+                                    }
+                                }
+                            });
                         }
-                    });
+                    }
                 }
-            }
-        });
+            });
+        }
+
+        // Start fetching categories (pagination will handle all pages)
+        fetchCategories();
     }
+
+
 
     function fetchCsrfToken(callback) {
         const apiUrl = 'https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json';
