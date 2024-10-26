@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      3.0
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -14,7 +14,7 @@
 
 (function() {
     'use strict';
-    const versionNumber = '2.1';
+    const versionNumber = '3.0';
     let categoryName = '';
     let pageLinks = [];
     let selectedLinks = [];
@@ -88,7 +88,9 @@
     }
 
     function getPageLinks() {
-        pageLinks = Array.from(document.querySelectorAll('#mw-content-text a'))
+        // Use a Set to automatically filter out duplicate page links
+        pageLinks = Array.from(new Set(
+            Array.from(document.querySelectorAll('#mw-content-text a'))
             .map(link => link.getAttribute('href'))
             .filter(href => href && href.startsWith('/w/'))
             .map(href => decodeURIComponent(href.replace('/w/', '')))
@@ -97,10 +99,12 @@
                     !page.includes('?') &&
                     !page.includes('/') &&
                     !page.includes('#')
-                   );
+                   )
+        ));
 
-        console.log("Filtered page links:", pageLinks);
+        console.log("Filtered unique page links:", pageLinks);
     }
+
 
     function displayPageSelectionPopup() {
         console.log("Displaying page selection popup.");
@@ -155,46 +159,46 @@
         selectAllButton.textContent = 'Select All';
         selectAllButton.style = `padding: 5px 10px; background-color: #5bc0de; border: none;
         color: white; cursor: pointer; border-radius: 5px;`;
-    selectAllButton.onclick = () => {
-        listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.checked = allSelected;
-        });
-        selectAllButton.textContent = allSelected ? 'Deselect All' : 'Select All';
-        allSelected = !allSelected;
-        console.log(allSelected ? "Select All clicked: all checkboxes selected." : "Deselect All clicked: all checkboxes deselected.");
-    };
-    buttonContainer.appendChild(selectAllButton);
+        selectAllButton.onclick = () => {
+            listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = allSelected;
+            });
+            selectAllButton.textContent = allSelected ? 'Deselect All' : 'Select All';
+            allSelected = !allSelected;
+            console.log(allSelected ? "Select All clicked: all checkboxes selected." : "Deselect All clicked: all checkboxes deselected.");
+        };
+        buttonContainer.appendChild(selectAllButton);
 
-    const confirmButton = document.createElement('button');
-    confirmButton.textContent = 'Confirm Selection';
-    confirmButton.style = `padding: 5px 10px; background-color: #4caf50;
+        const confirmButton = document.createElement('button');
+        confirmButton.textContent = 'Confirm Selection';
+        confirmButton.style = `padding: 5px 10px; background-color: #4caf50;
             border: none; color: white; cursor: pointer; border-radius: 5px;`;
-    confirmButton.onclick = () => {
-        selectedLinks = Array.from(listContainer.querySelectorAll('input:checked')).map(input => input.value);
-        console.log("Confirmed selected links:", selectedLinks);
-        document.body.removeChild(popup);
-        if (selectedLinks.length > 0) {
-            startCategorization();
-        } else {
-            alert("No pages selected.");
-        }
-    };
+        confirmButton.onclick = () => {
+            selectedLinks = Array.from(listContainer.querySelectorAll('input:checked')).map(input => input.value);
+            console.log("Confirmed selected links:", selectedLinks);
+            document.body.removeChild(popup);
+            if (selectedLinks.length > 0) {
+                startCategorization();
+            } else {
+                alert("No pages selected.");
+            }
+        };
 
-    const cancelPopupButton = document.createElement('button');
-    cancelPopupButton.textContent = 'Cancel';
-    cancelPopupButton.style = `padding: 5px 10px; background-color: #d9534f;
+        const cancelPopupButton = document.createElement('button');
+        cancelPopupButton.textContent = 'Cancel';
+        cancelPopupButton.style = `padding: 5px 10px; background-color: #d9534f;
             border: none; color: white; cursor: pointer; border-radius: 5px;`;
-    cancelPopupButton.onclick = () => {
-        console.log("Popup canceled.");
-        document.body.removeChild(popup);
-    };
+        cancelPopupButton.onclick = () => {
+            console.log("Popup canceled.");
+            document.body.removeChild(popup);
+        };
 
-    buttonContainer.appendChild(confirmButton);
-    buttonContainer.appendChild(cancelPopupButton);
-    popup.appendChild(buttonContainer);
+        buttonContainer.appendChild(confirmButton);
+        buttonContainer.appendChild(cancelPopupButton);
+        popup.appendChild(buttonContainer);
 
-    document.body.appendChild(popup);
-}
+        document.body.appendChild(popup);
+    }
 
 
     function startCategorization() {
