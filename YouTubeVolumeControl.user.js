@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Volume Control with Memory and Draggable UI
 // @namespace    http://tampermonkey.net/
-// @version      2.8
+// @version      2.9
 // @description  Set YouTube volume manually on a scale of 1-100, remember last set volume, and inject the UI to the left of the volume slider on the video player. Syncs the slider, disables invalid inputs, and adds debugging.
 // @author       Nick2bad4u
 // @match        *://www.youtube.com/*

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Merge Dependabot PRs
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  Automatically clicks the merge button on Dependabot PRs and "Done" button on the notification bar
 // @author       Nick2bad4u
 // @match        https://github.com/*/*/pull/*
