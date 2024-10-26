@@ -87,24 +87,46 @@
         displayPageSelectionPopup();
     }
 
+    // Function to check for highlighted text
+    function getHighlightedText() {
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            const container = document.createElement('div');
+            for (let i = 0; i < selection.rangeCount; i++) {
+                container.appendChild(selection.getRangeAt(i).cloneContents());
+            }
+            return container.innerHTML;
+        }
+        return '';
+    }
+
+    // Modify getPageLinks to consider highlighted text
     function getPageLinks() {
-        // Use a Set to automatically filter out duplicate page links
+        let contextElement = document.querySelector('#mw-content-text');
+        const highlightedText = getHighlightedText();
+
+        if (highlightedText) {
+            // Create a temporary container to process the highlighted text
+            const tempContainer = document.createElement('div');
+            tempContainer.innerHTML = highlightedText;
+            contextElement = tempContainer;
+        }
+
         pageLinks = Array.from(new Set(
-            Array.from(document.querySelectorAll('#mw-content-text a'))
-            .map(link => link.getAttribute('href'))
-            .filter(href => href && href.startsWith('/w/'))
-            .map(href => decodeURIComponent(href.replace('/w/', '')))
-            .filter(page =>
+            Array.from(contextElement.querySelectorAll('a'))
+                .map(link => link.getAttribute('href'))
+                .filter(href => href && href.startsWith('/w/'))
+                .map(href => decodeURIComponent(href.replace('/w/', '')))
+                .filter(page =>
                     !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
                     !page.includes('?') &&
                     !page.includes('/') &&
                     !page.includes('#')
-                   )
+                )
         ));
 
         console.log("Filtered unique page links:", pageLinks);
     }
-
 
     function displayPageSelectionPopup() {
         console.log("Displaying page selection popup.");
@@ -199,7 +221,6 @@
 
         document.body.appendChild(popup);
     }
-
 
     function startCategorization() {
         console.log("Starting categorization process.");
