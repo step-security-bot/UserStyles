@@ -68,40 +68,23 @@
         container.appendChild(progressBarContainer);
         document.body.appendChild(container);
     }
-    function getHighlightedText() {
-        const selection = window.getSelection();
-        return selection.toString();
-    }
+
     function promptCategoryName() {
-        const highlightedText = getHighlightedText();
-        if (highlightedText) {
-            console.log("Highlighted text detected:", highlightedText);
-            // Process only highlighted text
-            processHighlightedText(highlightedText);
-        } else {
-            categoryName = prompt("Enter the category name you'd like to add:");
-            console.log("Category name entered:", categoryName);
-            if (!categoryName) {
-                alert("Category name is required.");
-                return;
-            }
-
-            getPageLinks();
-            if (pageLinks.length === 0) {
-                alert("No pages found to categorize.");
-                console.log("No pages found after filtering.");
-                return;
-            }
-
-            displayPageSelectionPopup();
+        categoryName = prompt("Enter the category name you'd like to add:");
+        console.log("Category name entered:", categoryName);
+        if (!categoryName) {
+            alert("Category name is required.");
+            return;
         }
-    }
 
-    function processHighlightedText(highlightedText) {
-        // Implement functionality to process highlighted text
-        // For example, categorizing pages that contain the highlighted text
-        console.log("Processing highlighted text:", highlightedText);
-        // Add your logic here
+        getPageLinks();
+        if (pageLinks.length === 0) {
+            alert("No pages found to categorize.");
+            console.log("No pages found after filtering.");
+            return;
+        }
+
+        displayPageSelectionPopup();
     }
 
     function getPageLinks() {
