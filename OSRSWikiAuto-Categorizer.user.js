@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      3.1
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -14,7 +14,7 @@
 
 (function() {
     'use strict';
-    const versionNumber = '3.0';
+    const versionNumber = '3.1';
     let categoryName = '';
     let pageLinks = [];
     let selectedLinks = [];
@@ -114,15 +114,15 @@
 
         pageLinks = Array.from(new Set(
             Array.from(contextElement.querySelectorAll('a'))
-                .map(link => link.getAttribute('href'))
-                .filter(href => href && href.startsWith('/w/'))
-                .map(href => decodeURIComponent(href.replace('/w/', '')))
-                .filter(page =>
+            .map(link => link.getAttribute('href'))
+            .filter(href => href && href.startsWith('/w/'))
+            .map(href => decodeURIComponent(href.replace('/w/', '')))
+            .filter(page =>
                     !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
                     !page.includes('?') &&
                     !page.includes('/') &&
                     !page.includes('#')
-                )
+                   )
         ));
 
         console.log("Filtered unique page links:", pageLinks);
