@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace    http://tampermonkey.net/
-// @version      3.2
-// @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
+// @version      4.0
+// @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, duplicate checker, and highlighted links option.
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
 // @grant        GM_xmlhttpRequest
@@ -14,7 +14,7 @@
 
 (function() {
     'use strict';
-    const versionNumber = '3.2';
+    const versionNumber = '4.0';
     let categoryName = '';
     let pageLinks = [];
     let selectedLinks = [];
@@ -258,8 +258,8 @@
         // Function to standardize category names for comparison
         function standardizeCategoryName(name) {
             return name.replace(/^Category:/, '') // Remove prefix "Category:"
-                .replace(/\s+/g, '_')     // Replace spaces with underscores
-                .toLowerCase();           // Convert to lowercase for case-insensitive comparison
+                .replace(/\s+/g, '_') // Replace spaces with underscores
+                .toLowerCase(); // Convert to lowercase for case-insensitive comparison
         }
 
         // Recursive function to handle pagination
