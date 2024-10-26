@@ -1,15 +1,16 @@
 // ==UserScript==
 // @name         YouTubeTV Volume Control with Memory and Draggable UI
 // @namespace    http://tampermonkey.net/
-// @version      1.15
+// @version      1.17
 // @description  Remembers and controls volume levels on YouTube TV with keyboard shortcuts and a UI for manual input
 // @author       Nick2bad4u
 // @match        *://tv.youtube.com/*
-// @grant        none
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
+// @grant        GM.setValue
+// @grant        GM.getValue
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tv.youtube.com
 // @license      UnLicense
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
 // ==/UserScript==
 
 (() => {
@@ -18,19 +19,21 @@
     const VOLUME_KEY = 'youtubeTVVolume';
     const DEFAULT_VOLUME = 100;
 
-    const createVolumeUI = () => {
+    const createVolumeUI = async () => {
         const sliderContainer = document.querySelector('.ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot');
         if (!sliderContainer) {
             console.error('Volume slider container not found, cannot create UI');
             return;
         }
 
+        const savedVolume = await GM.getValue(VOLUME_KEY, DEFAULT_VOLUME);
+
         // Create input box
         const volumeInput = document.createElement('input');
         volumeInput.type = 'number';
         volumeInput.min = 0;
         volumeInput.max = 100;
-        volumeInput.value = localStorage.getItem(VOLUME_KEY) || DEFAULT_VOLUME;
+        volumeInput.value = savedVolume;
         volumeInput.style.width = '35px';
         volumeInput.style.height = '24px';
         volumeInput.style.marginLeft = '10px';
@@ -76,7 +79,7 @@
         observer.observe(slider, { attributes: true, attributeFilter: ['value'] });
     };
 
-    const setVolume = (value) => {
+    const setVolume = async (value) => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         if (slider) {
             console.log(`Setting volume to: ${value}`);
@@ -87,18 +90,13 @@
         } else {
             console.error('Volume slider not found');
         }
-        localStorage.setItem(VOLUME_KEY, value);
+        await GM.setValue(VOLUME_KEY, value);
     };
 
-    const loadSavedVolume = () => {
-        const savedVolume = localStorage.getItem(VOLUME_KEY);
+    const loadSavedVolume = async () => {
+        const savedVolume = await GM.getValue(VOLUME_KEY, DEFAULT_VOLUME);
         console.log(`Saved volume found: ${savedVolume}`);
-        if (savedVolume) {
-            setVolume(parseFloat(savedVolume));
-        } else {
-            console.log('No saved volume found, defaulting to 100');
-            setVolume(DEFAULT_VOLUME);
-        }
+        setVolume(savedVolume);
     };
 
     const tryLoadVolume = () => {
@@ -116,10 +114,10 @@
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         if (slider) {
             console.log('Observing the volume slider for changes');
-            const observer = new MutationObserver(() => {
+            const observer = new MutationObserver(async () => {
                 const currentValue = slider.value;
                 console.log(`Current volume changed to: ${currentValue}`);
-                localStorage.setItem(VOLUME_KEY, currentValue);
+                await GM.setValue(VOLUME_KEY, currentValue);
             });
             observer.observe(slider, { attributes: true });
         } else {
