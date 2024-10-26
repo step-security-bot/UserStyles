@@ -1,42 +1,39 @@
 // ==UserScript==
-// @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, and Global Scope
+// @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      2.0
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
 // @grant        GM_xmlhttpRequest
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=oldschool.runescape.wiki
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Categorizer.user.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Categorizer.user.js
 // @license      UnLicense
+// @downloadURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20and%20Global%20Scope.user.js
+// @updateURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20and%20Global%20Scope.meta.js
 // ==/UserScript==
 
 (function() {
     'use strict';
+    const versionNumber = '1.3';
+    let categoryName = '';
+    let pageLinks = [];
+    let selectedLinks = [];
+    let currentIndex = 0;
+    let csrfToken = '';
+    let isCancelled = false;
+    let isRunning = false;
+    let requestInterval = 500;
+    const maxInterval = 5000;
+    const excludedPrefixes = ["Template:", "File:", "Category:", "Module:", "RuneScape:", "Update:", "Exchange:", "RuneScape:", "User:", "Help:"];
 
-    // Global variables
-    const versionNumber = '1.6';
-    let categoryName = '';        // Stores the requested category name
-    let pageLinks = [];           // Stores all applicable page links on the current page
-    let selectedLinks = [];       // Stores selected page links for categorization
-    let currentIndex = 0;         // Tracks current page being processed
-    let csrfToken = '';           // Stores CSRF token for authenticated actions
-    let isCancelled = false;      // Flag to cancel ongoing categorization
-    let isRunning = false;        // Indicates if categorization is in progress
-    let requestInterval = 500;    // Initial interval between API requests, adapts based on rate limiting
-    const maxInterval = 5000;     // Maximum interval to wait after rate limiting occurs
-    const excludedPrefixes = ["Template:", "File:", "Category:", "Module:"]; // Pages to exclude
-
-    // Add UI elements to start, cancel, and display progress of the categorization process
     function addButtonAndProgressBar() {
+        console.log("Adding button and progress bar to the UI.");
         const container = document.createElement('div');
         container.id = 'categorize-ui';
         container.style = `position: fixed; bottom: 20px; right: 20px; z-index: 1000;
             background-color: #2b2b2b; color: #ffffff; padding: 12px;
             border: 1px solid #595959; border-radius: 8px; font-family: Arial, sans-serif; width: 250px;`;
 
-        // Start Button
         const startButton = document.createElement('button');
         startButton.textContent = 'Start Categorizing';
         startButton.style = `background-color: #4caf50; color: #fff; border: none;
@@ -44,7 +41,6 @@
         startButton.onclick = promptCategoryName;
         container.appendChild(startButton);
 
-        // Cancel Button
         const cancelButton = document.createElement('button');
         cancelButton.textContent = 'Cancel';
         cancelButton.style = `background-color: #d9534f; color: #fff; border: none;
@@ -52,7 +48,6 @@
         cancelButton.onclick = cancelCategorization;
         container.appendChild(cancelButton);
 
-        // Progress Bar and Status Text
         const progressBarContainer = document.createElement('div');
         progressBarContainer.style = `width: 100%; margin-top: 10px; background-color: #3d3d3d;
             height: 20px; border-radius: 5px; position: relative;`;
@@ -73,9 +68,9 @@
         document.body.appendChild(container);
     }
 
-    // Prompt user for category name and initiate the link fetching process
     function promptCategoryName() {
         categoryName = prompt("Enter the category name you'd like to add:");
+        console.log("Category name entered:", categoryName);
         if (!categoryName) {
             alert("Category name is required.");
             return;
@@ -84,92 +79,131 @@
         getPageLinks();
         if (pageLinks.length === 0) {
             alert("No pages found to categorize.");
+            console.log("No pages found after filtering.");
             return;
         }
 
         displayPageSelectionPopup();
     }
 
-    // Retrieve applicable page links on the current page, filtering out excluded prefixes
     function getPageLinks() {
         pageLinks = Array.from(document.querySelectorAll('#mw-content-text a'))
             .map(link => link.getAttribute('href'))
             .filter(href => href && href.startsWith('/w/'))
             .map(href => decodeURIComponent(href.replace('/w/', '')))
-            .filter(page => !excludedPrefixes.some(prefix => page.startsWith(prefix)));
+            .filter(page =>
+                    !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
+                    !page.includes('?') &&
+                    !page.includes('/') &&
+                    !page.includes('#')
+                   );
+
+        console.log("Filtered page links:", pageLinks);
     }
 
-    // Display popup for selecting pages to categorize
     function displayPageSelectionPopup() {
+        console.log("Displaying page selection popup.");
         const popup = document.createElement('div');
         popup.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 1001; background-color: #2b2b2b; padding: 15px; color: white;
-            border-radius: 8px; max-height: 80vh; overflow-y: auto; border: 1px solid #595959;`;
+        z-index: 1001; background-color: #2b2b2b; padding: 15px; color: white;
+        border-radius: 8px; max-height: 80vh; overflow-y: auto; border: 1px solid #595959;`;
 
-        const title = document.createElement('h3');
-        title.textContent = 'Select Pages to Categorize';
-        title.style = `margin: 0 0 10px; font-family: Arial, sans-serif;`;
-        popup.appendChild(title);
+    const title = document.createElement('h3');
+    title.textContent = 'Select Pages to Categorize';
+    title.style = `margin: 0 0 10px; font-family: Arial, sans-serif;`;
+    popup.appendChild(title);
 
-        const listContainer = document.createElement('div');
-        listContainer.style = `max-height: 300px; overflow-y: auto;`;
-        pageLinks.forEach(link => {
-            const listItem = document.createElement('div');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.checked = true;
-            checkbox.value = link;
-            listItem.appendChild(checkbox);
-            listItem.appendChild(document.createTextNode(` ${link}`));
-            listContainer.appendChild(listItem);
-        });
-        popup.appendChild(listContainer);
+    const listContainer = document.createElement('div');
+    listContainer.style = `max-height: 300px; overflow-y: auto;`;
+    pageLinks.forEach(link => {
+        const listItem = document.createElement('div');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = true;
+        checkbox.value = link;
+        listItem.appendChild(checkbox);
+        listItem.appendChild(document.createTextNode(` ${link}`));
+        listContainer.appendChild(listItem);
 
-        const buttonContainer = document.createElement('div');
-        buttonContainer.style = `margin-top: 10px; display: flex; justify-content: space-between;`;
-
-        const confirmButton = document.createElement('button');
-        confirmButton.textContent = 'Confirm Selection';
-        confirmButton.style = `padding: 5px 10px; background-color: #4caf50;
-            border: none; color: white; cursor: pointer; border-radius: 5px;`;
-        confirmButton.onclick = () => {
-            selectedLinks = Array.from(listContainer.querySelectorAll('input:checked')).map(input => input.value);
-            document.body.removeChild(popup);
-            if (selectedLinks.length > 0) {
-                startCategorization();
-            } else {
-                alert("No pages selected.");
+        // Add shift-click range selection functionality
+        checkbox.addEventListener('click', function(e) {
+            if (e.shiftKey && lastChecked) {
+                let inBetween = false;
+                listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    if (checkbox === this || checkbox === lastChecked) {
+                        inBetween = !inBetween;
+                    }
+                    if (inBetween) {
+                        checkbox.checked = this.checked;
+                    }
+                });
             }
-        };
+            lastChecked = this;
+        });
+    });
+    popup.appendChild(listContainer);
 
-        const cancelPopupButton = document.createElement('button');
-        cancelPopupButton.textContent = 'Cancel';
-        cancelPopupButton.style = `padding: 5px 10px; background-color: #d9534f;
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style = `margin-top: 10px; display: flex; justify-content: space-between;`;
+
+    let allSelected = true; // Track select/deselect state
+    const selectAllButton = document.createElement('button');
+    selectAllButton.textContent = 'Select All';
+    selectAllButton.style = `padding: 5px 10px; background-color: #5bc0de; border: none;
+        color: white; cursor: pointer; border-radius: 5px;`;
+    selectAllButton.onclick = () => {
+        listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = allSelected;
+        });
+        selectAllButton.textContent = allSelected ? 'Deselect All' : 'Select All';
+        allSelected = !allSelected;
+        console.log(allSelected ? "Select All clicked: all checkboxes selected." : "Deselect All clicked: all checkboxes deselected.");
+    };
+    buttonContainer.appendChild(selectAllButton);
+
+    const confirmButton = document.createElement('button');
+    confirmButton.textContent = 'Confirm Selection';
+    confirmButton.style = `padding: 5px 10px; background-color: #4caf50;
             border: none; color: white; cursor: pointer; border-radius: 5px;`;
-        cancelPopupButton.onclick = () => {
-            document.body.removeChild(popup);
-        };
+    confirmButton.onclick = () => {
+        selectedLinks = Array.from(listContainer.querySelectorAll('input:checked')).map(input => input.value);
+        console.log("Confirmed selected links:", selectedLinks);
+        document.body.removeChild(popup);
+        if (selectedLinks.length > 0) {
+            startCategorization();
+        } else {
+            alert("No pages selected.");
+        }
+    };
 
-        buttonContainer.appendChild(confirmButton);
-        buttonContainer.appendChild(cancelPopupButton);
-        popup.appendChild(buttonContainer);
+    const cancelPopupButton = document.createElement('button');
+    cancelPopupButton.textContent = 'Cancel';
+    cancelPopupButton.style = `padding: 5px 10px; background-color: #d9534f;
+            border: none; color: white; cursor: pointer; border-radius: 5px;`;
+    cancelPopupButton.onclick = () => {
+        console.log("Popup canceled.");
+        document.body.removeChild(popup);
+    };
 
-        document.body.appendChild(popup);
-    }
+    buttonContainer.appendChild(confirmButton);
+    buttonContainer.appendChild(cancelPopupButton);
+    popup.appendChild(buttonContainer);
 
-    // Start categorization process and fetch CSRF token for authorized API calls
+    document.body.appendChild(popup);
+}
+
     function startCategorization() {
+        console.log("Starting categorization process.");
         isCancelled = false;
         isRunning = true;
         currentIndex = 0;
         document.getElementById('progress-bar-container').style.display = 'block';
-        console.log("Starting categorization with CSRF token fetch.");
         fetchCsrfToken(() => processNextPage());
     }
 
-    // Process each page one at a time, updating progress bar and adjusting speed for rate limits
     function processNextPage() {
         if (isCancelled || currentIndex >= selectedLinks.length) {
+            console.log("Categorization ended. Reason:", isCancelled ? "Cancelled" : "Completed");
             isRunning = false;
             alert(isCancelled ? "Categorization cancelled." : "Categorization complete!");
             resetUI();
@@ -177,8 +211,8 @@
         }
 
         const pageTitle = selectedLinks[currentIndex];
-        console.log(`Processing page: ${pageTitle}`);
         updateProgressBar(`Processing: ${pageTitle}`);
+        console.log(`Processing page: ${pageTitle}`);
         addCategoryToPage(pageTitle, () => {
             currentIndex++;
             updateProgressBar(`Processed: ${pageTitle}`);
@@ -186,72 +220,89 @@
         });
     }
 
-    // Fetch CSRF token needed for API authorization
-    function fetchCsrfToken(callback) {
-        GM_xmlhttpRequest({
-            method: "GET",
-            url: "https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json",
-            onload: response => {
-                try {
-                    const data = JSON.parse(response.responseText);
-                    csrfToken = data.query.tokens.csrftoken;
-                    console.log(`CSRF token fetched: ${csrfToken}`);
-                    callback();
-                } catch (error) {
-                    console.error("Error fetching CSRF token:", error);
-                    alert("Failed to fetch CSRF token. Check console for details.");
-                }
-            }
-        });
-    }
-
-    // Add selected category to a specified page
     function addCategoryToPage(pageTitle, callback) {
+        const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&prop=categories&titles=${encodeURIComponent(pageTitle)}&format=json`;
+        console.log(`Checking categories for page: ${pageTitle}`);
+
         GM_xmlhttpRequest({
-            method: "POST",
-            url: "https://oldschool.runescape.wiki/api.php",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            data: `action=edit&format=json&title=${encodeURIComponent(pageTitle)}&appendtext=[[Category:${categoryName}]]&token=${encodeURIComponent(csrfToken)}`,
-            onload: response => {
-                const responseData = JSON.parse(response.responseText);
-                if (responseData.edit && responseData.edit.result === "Success") {
-                    console.log(`Successfully categorized: ${pageTitle}`);
-                    callback();
-                } else if (responseData.error && responseData.error.code === "ratelimited") {
-                    console.warn(`Rate limit hit. Slowing down request interval.`);
-                    requestInterval = Math.min(requestInterval + 500, maxInterval);
-                    setTimeout(callback, requestInterval);
+            method: 'GET',
+            url: apiUrl,
+            onload: function(response) {
+                const data = JSON.parse(response.responseText);
+                const pageId = Object.keys(data.query.pages)[0];
+                const categories = data.query.pages[pageId].categories;
+
+                if (!categories || !categories.some(cat => cat.title === `Category:${categoryName}`)) {
+                    console.log(`Adding category to page: ${pageTitle}`);
+                    const editUrl = `https://oldschool.runescape.wiki/api.php?action=edit&title=${encodeURIComponent(pageTitle)}&appendtext=[[Category:${categoryName}]]&format=json`;
+
+                    GM_xmlhttpRequest({
+                        method: 'POST',
+                        url: editUrl,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'Api-User-Agent': `OSRSWikiAutoCategorizer/${versionNumber} (SubLife)`
+                        },
+                        data: `token=${encodeURIComponent(csrfToken)}`,
+                        onload: function() {
+                            console.log(`Category added to page: ${pageTitle}`);
+                            requestInterval = Math.max(500, requestInterval - 500);
+                            callback();
+                        },
+                        onerror: function() {
+                            console.log(`Failed to add category to page: ${pageTitle}`);
+                            requestInterval = Math.min(maxInterval, requestInterval + 500);
+                            callback();
+                        }
+                    });
                 } else {
-                    console.error(`Error categorizing ${pageTitle}:`, responseData);
+                    console.log(`Page already categorized: ${pageTitle}`);
                     callback();
                 }
             }
         });
     }
 
-    // Update progress bar display
-    function updateProgressBar(text) {
-        const progress = (currentIndex / selectedLinks.length) * 100;
-        document.getElementById('progress-bar').style.width = `${progress}%`;
-        document.getElementById('progress-text').textContent = text;
+    function updateProgressBar(status) {
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const progressPercent = (currentIndex / selectedLinks.length) * 100;
+
+        progressBar.style.width = `${progressPercent}%`;
+        progressText.textContent = status;
+        console.log(`Progress bar updated: ${progressPercent}% - ${status}`);
     }
 
-    // Cancel ongoing categorization and reset UI elements
+    function fetchCsrfToken(callback) {
+        const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json`;
+        console.log("Fetching CSRF token.");
+
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url: apiUrl,
+            onload: function(response) {
+                const data = JSON.parse(response.responseText);
+                csrfToken = data.query.tokens.csrftoken;
+                console.log("CSRF token fetched.");
+                callback();
+            }
+        });
+    }
+
     function cancelCategorization() {
-        if (isRunning) {
-            isCancelled = true;
-        } else {
-            alert("No categorization process is currently running.");
-        }
+        isCancelled = true;
+        isRunning = false;
+        console.log("Categorization process canceled.");
     }
 
-    // Reset UI elements after process completion or cancellation
     function resetUI() {
-        document.getElementById('progress-bar').style.width = '0%';
-        document.getElementById('progress-text').textContent = '';
-        document.getElementById('progress-bar-container').style.display = 'none';
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        progressBar.style.width = '0%';
+        progressText.textContent = '';
+        console.log("UI reset.");
     }
-
-    // Initialize the UI
+    let lastChecked = null;
     addButtonAndProgressBar();
 })();
+
