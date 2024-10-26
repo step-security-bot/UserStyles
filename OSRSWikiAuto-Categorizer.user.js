@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, and global compatibility
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -14,7 +14,7 @@
 
 (function() {
     'use strict';
-    const versionNumber = '1.3';
+    const versionNumber = '2.1';
     let categoryName = '';
     let pageLinks = [];
     let selectedLinks = [];
@@ -25,6 +25,7 @@
     let requestInterval = 500;
     const maxInterval = 5000;
     const excludedPrefixes = ["Template:", "File:", "Category:", "Module:", "RuneScape:", "Update:", "Exchange:", "RuneScape:", "User:", "Help:"];
+    let actionLog = []; // Track actions for summary
 
     function addButtonAndProgressBar() {
         console.log("Adding button and progress bar to the UI.");
@@ -105,51 +106,54 @@
         console.log("Displaying page selection popup.");
         const popup = document.createElement('div');
         popup.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        z-index: 1001; background-color: #2b2b2b; padding: 15px; color: white;
-        border-radius: 8px; max-height: 80vh; overflow-y: auto; border: 1px solid #595959;`;
+    z-index: 1001; background-color: #2b2b2b; padding: 15px; color: white;
+    border-radius: 8px; max-height: 80vh; overflow-y: auto; border: 1px solid #595959;`;
 
-    const title = document.createElement('h3');
-    title.textContent = 'Select Pages to Categorize';
-    title.style = `margin: 0 0 10px; font-family: Arial, sans-serif;`;
-    popup.appendChild(title);
+        const title = document.createElement('h3');
+        title.textContent = 'Select Pages to Categorize';
+        title.style = `margin: 0 0 10px; font-family: Arial, sans-serif;`;
+        popup.appendChild(title);
 
-    const listContainer = document.createElement('div');
-    listContainer.style = `max-height: 300px; overflow-y: auto;`;
-    pageLinks.forEach(link => {
-        const listItem = document.createElement('div');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = true;
-        checkbox.value = link;
-        listItem.appendChild(checkbox);
-        listItem.appendChild(document.createTextNode(` ${link}`));
-        listContainer.appendChild(listItem);
+        const listContainer = document.createElement('div');
+        listContainer.style = `max-height: 300px; overflow-y: auto;`;
 
-        // Add shift-click range selection functionality
-        checkbox.addEventListener('click', function(e) {
-            if (e.shiftKey && lastChecked) {
-                let inBetween = false;
-                listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                    if (checkbox === this || checkbox === lastChecked) {
-                        inBetween = !inBetween;
-                    }
-                    if (inBetween) {
-                        checkbox.checked = this.checked;
-                    }
-                });
-            }
-            lastChecked = this;
+        // Declare lastChecked outside the event listener to keep track of the last clicked checkbox
+        let lastChecked = null;
+
+        pageLinks.forEach(link => {
+            const listItem = document.createElement('div');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = true;
+            checkbox.value = link;
+            listItem.appendChild(checkbox);
+            listItem.appendChild(document.createTextNode(` ${link}`));
+            listContainer.appendChild(listItem);
+
+            checkbox.addEventListener('click', function(e) {
+                if (e.shiftKey && lastChecked) {
+                    let inBetween = false;
+                    listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                        if (checkbox === this || checkbox === lastChecked) {
+                            inBetween = !inBetween;
+                        }
+                        if (inBetween) {
+                            checkbox.checked = this.checked;
+                        }
+                    });
+                }
+                lastChecked = this;
+            });
         });
-    });
-    popup.appendChild(listContainer);
+        popup.appendChild(listContainer);
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style = `margin-top: 10px; display: flex; justify-content: space-between;`;
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style = `margin-top: 10px; display: flex; justify-content: space-between;`;
 
-    let allSelected = true; // Track select/deselect state
-    const selectAllButton = document.createElement('button');
-    selectAllButton.textContent = 'Select All';
-    selectAllButton.style = `padding: 5px 10px; background-color: #5bc0de; border: none;
+        let allSelected = true;
+        const selectAllButton = document.createElement('button');
+        selectAllButton.textContent = 'Select All';
+        selectAllButton.style = `padding: 5px 10px; background-color: #5bc0de; border: none;
         color: white; cursor: pointer; border-radius: 5px;`;
     selectAllButton.onclick = () => {
         listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
@@ -192,6 +196,7 @@
     document.body.appendChild(popup);
 }
 
+
     function startCategorization() {
         console.log("Starting categorization process.");
         isCancelled = false;
@@ -205,7 +210,9 @@
         if (isCancelled || currentIndex >= selectedLinks.length) {
             console.log("Categorization ended. Reason:", isCancelled ? "Cancelled" : "Completed");
             isRunning = false;
-            alert(isCancelled ? "Categorization cancelled." : "Categorization complete!");
+            if (!isCancelled) {
+                displayCompletionSummary(); // Show summary popup
+            }
             resetUI();
             return;
         }
@@ -227,38 +234,55 @@
         GM_xmlhttpRequest({
             method: 'GET',
             url: apiUrl,
-            onload: function(response) {
-                const data = JSON.parse(response.responseText);
-                const pageId = Object.keys(data.query.pages)[0];
-                const categories = data.query.pages[pageId].categories;
+            onload(response) {
+                const responseJson = JSON.parse(response.responseText);
+                const page = responseJson.query.pages[Object.keys(responseJson.query.pages)[0]];
+                const alreadyCategorized = page.categories && page.categories.some(cat => cat.title === `Category:${categoryName}`);
 
-                if (!categories || !categories.some(cat => cat.title === `Category:${categoryName}`)) {
-                    console.log(`Adding category to page: ${pageTitle}`);
-                    const editUrl = `https://oldschool.runescape.wiki/api.php?action=edit&title=${encodeURIComponent(pageTitle)}&appendtext=[[Category:${categoryName}]]&format=json`;
+                if (alreadyCategorized) {
+                    console.log(`Page '${pageTitle}' is already in the category.`);
+                    actionLog.push(`Skipped: '${pageTitle}' already in '${categoryName}'`);
+                    callback();
+                } else {
+                    const editUrl = 'https://oldschool.runescape.wiki/api.php';
+                    const formData = new URLSearchParams();
+                    formData.append('action', 'edit');
+                    formData.append('title', pageTitle);
+                    formData.append('appendtext', `\n[[Category:${categoryName}]]`);
+                    formData.append('token', csrfToken);
+                    formData.append('format', 'json');
 
                     GM_xmlhttpRequest({
                         method: 'POST',
                         url: editUrl,
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Api-User-Agent': `OSRSWikiAutoCategorizer/${versionNumber} (SubLife)`
-                        },
-                        data: `token=${encodeURIComponent(csrfToken)}`,
-                        onload: function() {
-                            console.log(`Category added to page: ${pageTitle}`);
-                            requestInterval = Math.max(500, requestInterval - 500);
-                            callback();
-                        },
-                        onerror: function() {
-                            console.log(`Failed to add category to page: ${pageTitle}`);
-                            requestInterval = Math.min(maxInterval, requestInterval + 500);
-                            callback();
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        data: formData.toString(),
+                        onload(response) {
+                            if (response.status === 200) {
+                                actionLog.push(`Added: '${pageTitle}' to '${categoryName}'`);
+                                console.log(`Successfully added '${pageTitle}' to category '${categoryName}'.`);
+                                callback();
+                            } else {
+                                console.log(`Failed to add '${pageTitle}' to category.`);
+                                callback();
+                            }
                         }
                     });
-                } else {
-                    console.log(`Page already categorized: ${pageTitle}`);
-                    callback();
                 }
+            }
+        });
+    }
+
+    function fetchCsrfToken(callback) {
+        const apiUrl = 'https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json';
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url: apiUrl,
+            onload(response) {
+                const responseJson = JSON.parse(response.responseText);
+                csrfToken = responseJson.query.tokens.csrftoken;
+                console.log("CSRF token fetched:", csrfToken);
+                callback();
             }
         });
     }
@@ -266,43 +290,58 @@
     function updateProgressBar(status) {
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
-        const progressPercent = (currentIndex / selectedLinks.length) * 100;
-
-        progressBar.style.width = `${progressPercent}%`;
-        progressText.textContent = status;
-        console.log(`Progress bar updated: ${progressPercent}% - ${status}`);
+        const progress = (currentIndex / selectedLinks.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        progressText.textContent = `${Math.round(progress)}% - ${status}`;
     }
 
-    function fetchCsrfToken(callback) {
-        const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&meta=tokens&type=csrf&format=json`;
-        console.log("Fetching CSRF token.");
+    function displayCompletionSummary() {
+        console.log("Displaying completion summary.");
+        const summaryPopup = document.createElement('div');
+        summaryPopup.style = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        z-index: 1001; background-color: #2b2b2b; padding: 15px; color: white;
+        border-radius: 8px; max-height: 80vh; overflow-y: auto; border: 1px solid #595959;`;
 
-        GM_xmlhttpRequest({
-            method: 'GET',
-            url: apiUrl,
-            onload: function(response) {
-                const data = JSON.parse(response.responseText);
-                csrfToken = data.query.tokens.csrftoken;
-                console.log("CSRF token fetched.");
-                callback();
-            }
+        const title = document.createElement('h3');
+        title.textContent = 'Categorization Summary';
+        title.style = `margin: 0 0 10px; font-family: Arial, sans-serif;`;
+        summaryPopup.appendChild(title);
+
+        const logList = document.createElement('ul');
+        logList.style = 'max-height: 300px; overflow-y: auto;';
+
+        actionLog.forEach(entry => {
+            const listItem = document.createElement('li');
+            listItem.textContent = entry;
+            logList.appendChild(listItem);
         });
-    }
 
-    function cancelCategorization() {
-        isCancelled = true;
-        isRunning = false;
-        console.log("Categorization process canceled.");
+        summaryPopup.appendChild(logList);
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.style = `margin-top: 10px; padding: 5px 10px; background-color: #4caf50;
+            border: none; color: white; cursor: pointer; border-radius: 5px;`;
+        closeButton.onclick = () => {
+            document.body.removeChild(summaryPopup);
+            actionLog = [];
+        };
+
+        summaryPopup.appendChild(closeButton);
+        document.body.appendChild(summaryPopup);
     }
 
     function resetUI() {
-        const progressBar = document.getElementById('progress-bar');
-        const progressText = document.getElementById('progress-text');
-        progressBar.style.width = '0%';
-        progressText.textContent = '';
-        console.log("UI reset.");
+        document.getElementById('progress-bar').style.width = '0%';
+        document.getElementById('progress-text').textContent = '';
+        document.getElementById('progress-bar-container').style.display = 'none';
+        isRunning = false;
     }
-    let lastChecked = null;
+
+    function cancelCategorization() {
+        console.log("Categorization cancelled by user.");
+        isCancelled = true;
+    }
+
     addButtonAndProgressBar();
 })();
-
