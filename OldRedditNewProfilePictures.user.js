@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures
-// @namespace    http://tampermonkey.net/
+// @namespace   https://github.com/Nick2bad4u/UserStyles
 // @version      2.6
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username
 // @author       Nick2bad4u
