@@ -291,6 +291,14 @@
                         // All categories have been fetched
                         console.log(`All categories for '${pageTitle}':`, categories);
 
+                        // Exit if the page has no categories
+                        if (categories.length === 0) {
+                            console.log(`Skipped: '${pageTitle}' has no existing categories.`);
+                            actionLog.push(`Skipped: '${pageTitle}' has no existing categories.`);
+                            callback();
+                            return;
+                        }
+
                         // Standardize target category name
                         const standardizedCategoryName = standardizeCategoryName(`Category:${categoryName}`);
 
@@ -337,6 +345,7 @@
         // Start fetching categories (pagination will handle all pages)
         fetchCategories();
     }
+
 
 
 
