@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker (Slow Version)
-// @namespace     https://github.com/Nick2bad4u/UserStyles
-// @version      4.4
+// @namespace    https://github.com/Nick2bad4u/UserStyles
+// @version      4.5
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, duplicate checker, and highlighted links option.
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -13,8 +13,8 @@
 // @grant        GM_xmlhttpRequest
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=oldschool.runescape.wiki
 // @license      UnLicense
-// @downloadURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker.user.js
-// @updateURL https://update.greasyfork.org/scripts/514053/OSRS%20Wiki%20Auto-Categorizer%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker.meta.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Categorizer-SlowMode.user.js
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Categorizer-SlowMode.user.js
 // ==/UserScript==
 
 (function() {
