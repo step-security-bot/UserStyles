@@ -13,8 +13,8 @@
 // @grant        GM_xmlhttpRequest
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=oldschool.runescape.wiki
 // @license      UnLicense
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Navbox-SlowMode.user.js
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Navbox-SlowMode.user.js
+// @downloadURL https://update.greasyfork.org/scripts/514515/OSRS%20Wiki%20Auto-Navbox%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker%20%28Slow%20Version%29.user.js
+// @updateURL https://update.greasyfork.org/scripts/514515/OSRS%20Wiki%20Auto-Navbox%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker%20%28Slow%20Version%29.meta.js
 // ==/UserScript==
 
 (function() {
