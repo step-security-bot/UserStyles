@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Navbox with UI, Adaptive Speed, Duplicate Checker (Slow Version)
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      5.0
+// @version      5.1
 // @description  Adds listed pages to a Navbox upon request with UI, CSRF token, adaptive speed, duplicate checker, and highlighted links option.
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
@@ -13,13 +13,13 @@
 // @grant        GM_xmlhttpRequest
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=oldschool.runescape.wiki
 // @license      UnLicense
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Navbox-SlowMode.user.js
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Navbox-SlowMode.user.js
+// @downloadURL https://update.greasyfork.org/scripts/514515/OSRS%20Wiki%20Auto-Navbox%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker%20%28Slow%20Version%29.user.js
+// @updateURL https://update.greasyfork.org/scripts/514515/OSRS%20Wiki%20Auto-Navbox%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker%20%28Slow%20Version%29.meta.js
 // ==/UserScript==
 
 (function() {
     'use strict';
-    const versionNumber = '5.0';
+    const versionNumber = '5.1';
     let navboxName = '';
     let pageLinks = [];
     let selectedLinks = [];
@@ -258,107 +258,72 @@
     }
 
     function addNavboxToPage(pageTitle, callback) {
-        const categories = []; // Collects all categories from paginated responses
+        const navboxTemplate = `{{${navboxName}}}`;
 
-        // Function to standardize Navbox names for comparison
-        function standardizenavboxName(name) {
-            return name.replace(/^Navbox:/, '') // Remove prefix "Navbox:"
-                .replace(/\s+/g, '_') // Replace spaces with underscores
-                .toLowerCase(); // Convert to lowercase for case-insensitive comparison
-        }
+        // Fetch page content to check for duplicate
+        const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&prop=revisions&titles=${encodeURIComponent(pageTitle)}&rvprop=content&format=json`;
 
-        // Recursive function to handle pagination
-        function fetchCategories(clcontinue) {
-            const apiUrl = `https://oldschool.runescape.wiki/api.php?action=query&prop=categories|revisions&titles=${encodeURIComponent(pageTitle)}&rvprop=content&format=json${clcontinue ? `&clcontinue=${clcontinue}` : ''}`;
-            console.log(`Checking categories for page: ${pageTitle}${clcontinue ? ` with clcontinue: ${clcontinue}` : ''}`);
+        GM_xmlhttpRequest({
+            method: 'GET',
+            url: apiUrl,
+            onload(response) {
+                const responseJson = JSON.parse(response.responseText);
+                const pageId = Object.keys(responseJson.query.pages)[0];
+                const page = responseJson.query.pages[pageId];
 
-            GM_xmlhttpRequest({
-                method: 'GET',
-                url: apiUrl,
-                onload(response) {
-                    const responseJson = JSON.parse(response.responseText);
-                    const pageId = Object.keys(responseJson.query.pages)[0];
-                    const page = responseJson.query.pages[pageId];
+                // If page content is undefined, skip processing this page
+                if (!page.revisions || !page.revisions[0]) {
+                    console.log(`Page content not found for '${pageTitle}', skipping.`);
+                    actionLog.push(`Skipped: '${pageTitle}' - page content not found.`);
+                    callback();
+                    return;
+                }
 
-                    // Append the categories from this response to the categories list
-                    if (page.categories) {
-                        categories.push(...page.categories.map(cat => cat.title));
-                    }
+                const pageContent = page.revisions[0]['*'];
 
-                    // Check if more categories need to be fetched (pagination)
-                    if (responseJson.continue && responseJson.continue.clcontinue) {
-                        fetchCategories(responseJson.continue.clcontinue); // Fetch next page
-                    } else {
-                        // All categories have been fetched
-                        console.log(`All categories for '${pageTitle}':`, categories);
+                // Check if the navbox already exists in the content
+                if (pageContent.includes(navboxTemplate)) {
+                    console.log(`Page '${pageTitle}' already contains the navbox '${navboxName}', skipping.`);
+                    actionLog.push(`Skipped: '${pageTitle}' already contains '${navboxName}'`);
+                    callback();
+                    return;
+                }
 
-                        // Exit if the page has no categories
-                        if (categories.length === 0) {
-                            console.log(`Skipped: '${pageTitle}' has no existing categories.`);
-                            actionLog.push(`Skipped: '${pageTitle}' has no existing categories.`);
-                            callback();
-                            return;
-                        }
+                // Find the index of the first category
+                const firstCategoryIndex = pageContent.indexOf('[[Category:');
 
-                        // Standardize target Navbox name
-                        const standardizedNavboxName = standardizenavboxName(`Navbox:${navboxName}`);
+                // Add the navbox above the first category, or append if no categories
+                const newContent = firstCategoryIndex === -1
+                ? pageContent + '\n' + navboxTemplate // Append if no categories
+                : pageContent.slice(0, firstCategoryIndex) + navboxTemplate + '\n' + pageContent.slice(firstCategoryIndex);
 
-                        // Check if page is already Navboxd
-                        const alreadyNavboxd = categories.some(cat => {
-                            return standardizenavboxName(cat) === standardizedNavboxName;
-                        });
+                const editUrl = 'https://oldschool.runescape.wiki/api.php';
+                const formData = new URLSearchParams();
+                formData.append('action', 'edit');
+                formData.append('title', pageTitle);
+                formData.append('text', newContent);
+                formData.append('token', csrfToken);
+                formData.append('format', 'json');
 
-                        if (alreadyNavboxd) {
-                            console.log(`Page '${pageTitle}' is already in the Navbox.`);
-                            actionLog.push(`Skipped: '${pageTitle}' already in '${navboxName}'`);
+                GM_xmlhttpRequest({
+                    method: 'POST',
+                    url: editUrl,
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    data: formData.toString(),
+                    onload(editResponse) {
+                        if (editResponse.status === 200) {
+                            actionLog.push(`Added: '${pageTitle}' to '${navboxName}'`);
+                            console.log(`Successfully added '${pageTitle}' to Navbox '${navboxName}'.`);
                             callback();
                         } else {
-                            // Fetch page content to locate the first category position
-                            const pageContent = page.revisions[0]['*'];
-                            const navboxTemplate = `{{${navboxName}}}\n`;
-
-                            // Find the first occurrence of a category tag
-                            const firstCategoryIndex = pageContent.indexOf('[[Category:');
-                            const newContent = firstCategoryIndex === -1
-                            ? pageContent + '\n' + navboxTemplate // No categories, just append Navbox
-                            : pageContent.slice(0, firstCategoryIndex) + navboxTemplate + pageContent.slice(firstCategoryIndex);
-
-                            const editUrl = 'https://oldschool.runescape.wiki/api.php';
-                            const formData = new URLSearchParams();
-                            formData.append('action', 'edit');
-                            formData.append('title', pageTitle);
-                            formData.append('text', newContent);
-                            formData.append('token', csrfToken);
-                            formData.append('format', 'json');
-
-                            GM_xmlhttpRequest({
-                                method: 'POST',
-                                url: editUrl,
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                data: formData.toString(),
-                                onload(response) {
-                                    if (response.status === 200) {
-                                        actionLog.push(`Added: '${pageTitle}' to '${navboxName}'`);
-                                        console.log(`Successfully added '${pageTitle}' to Navbox '${navboxName}'.`);
-                                        callback();
-                                    } else {
-                                        console.log(`Failed to add '${pageTitle}' to Navbox.`);
-                                        callback();
-                                    }
-                                }
-                            });
+                            console.log(`Failed to add '${pageTitle}' to Navbox.`);
+                            callback();
                         }
                     }
-                }
-            });
-        }
-
-        // Start fetching categories (pagination will handle all pages)
-        fetchCategories();
-
+                });
+            }
+        });
     }
-
-
 
 
     function fetchCsrfToken(callback) {
