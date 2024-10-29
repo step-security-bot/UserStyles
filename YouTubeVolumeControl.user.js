@@ -13,7 +13,7 @@
 // @license      UnLicense
 // ==/UserScript==
 
-(async function() {
+(async function () {
     'use strict';
 
     // Default volume if none is saved
@@ -61,7 +61,7 @@
     });
 
     // Prevent YouTube hotkeys when typing in the input
-    volumeInput.addEventListener('keydown', function(event) {
+    volumeInput.addEventListener('keydown', function (event) {
         event.stopPropagation();
         console.log('Keydown event in volume input, stopping propagation.');
     });

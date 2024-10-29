@@ -17,7 +17,7 @@
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWikiAuto-Categorizer-SlowMode.user.js
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
     const versionNumber = '4.6';
     let categoryName = '';
@@ -123,11 +123,11 @@
             .filter(href => href && href.startsWith('/w/'))
             .map(href => decodeURIComponent(href.replace('/w/', '')))
             .filter(page =>
-                    !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
-                    !page.includes('?') &&
-                    !page.includes('/') &&
-                    !page.includes('#')
-                   )
+                !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
+                !page.includes('?') &&
+                !page.includes('/') &&
+                !page.includes('#')
+            )
         ));
 
         console.log("Filtered unique page links:", pageLinks);
@@ -161,7 +161,7 @@
             listItem.appendChild(document.createTextNode(` ${link}`));
             listContainer.appendChild(listItem);
 
-            checkbox.addEventListener('click', function(e) {
+            checkbox.addEventListener('click', function (e) {
                 if (e.shiftKey && lastChecked) {
                     let inBetween = false;
                     listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
@@ -323,7 +323,9 @@
                             GM_xmlhttpRequest({
                                 method: 'POST',
                                 url: editUrl,
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
                                 data: formData.toString(),
                                 onload(response) {
                                     if (response.status === 200) {

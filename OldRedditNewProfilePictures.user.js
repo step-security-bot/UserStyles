@@ -17,7 +17,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
     console.log('Script loaded');
 
@@ -122,8 +122,12 @@
                 const img = document.createElement('img');
                 img.src = profilePictureUrl;
                 img.classList.add('profile-picture');
-                img.onerror = () => { img.style.display = 'none'; };
-                img.addEventListener('click', () => { window.open(profilePictureUrl, '_blank'); });
+                img.onerror = () => {
+                    img.style.display = 'none';
+                };
+                img.addEventListener('click', () => {
+                    window.open(profilePictureUrl, '_blank');
+                });
                 comment.insertAdjacentElement('beforebegin', img);
 
                 const enlargedImg = document.createElement('img');
@@ -136,7 +140,9 @@
                     enlargedImg.style.top = `${rect.top + window.scrollY + 20}px`;
                     enlargedImg.style.left = `${rect.left + window.scrollX + 20}px`;
                 });
-                img.addEventListener('mouseout', () => { enlargedImg.style.display = 'none'; });
+                img.addEventListener('mouseout', () => {
+                    enlargedImg.style.display = 'none';
+                });
             }
         });
         console.log('Profile pictures injected');
@@ -152,7 +158,10 @@
                 injectProfilePictures(comments);
             }
         });
-        observer.observe(document.body, { childList: true, subtree: true });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
         console.log('Observer initialized');
     }
 

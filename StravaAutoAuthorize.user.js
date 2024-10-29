@@ -16,6 +16,6 @@
 // @license MIT
 // ==/UserScript==
 
-setTimeout(function() {
+setTimeout(function () {
     document.getElementsByClassName("btn")[0].click();
 }, 1000)

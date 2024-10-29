@@ -24,8 +24,12 @@
             console.log(`Setting volume to: ${value}`);
             slider.value = value;
             slider.setAttribute('value', value);
-            slider.dispatchEvent(new Event('input', { bubbles: true }));
-            slider.dispatchEvent(new Event('change', { bubbles: true }));
+            slider.dispatchEvent(new Event('input', {
+                bubbles: true
+            }));
+            slider.dispatchEvent(new Event('change', {
+                bubbles: true
+            }));
         } else {
             console.error('Volume slider not found');
         }
@@ -68,7 +72,9 @@
                     }
                 }
             });
-            observer.observe(slider, { attributes: true });
+            observer.observe(slider, {
+                attributes: true
+            });
         } else {
             console.error('Volume slider not found during initialization');
             setTimeout(observeSliderChanges, 1000);

@@ -17,7 +17,7 @@
 // @updateURL https://update.greasyfork.org/scripts/514515/OSRS%20Wiki%20Auto-Navbox%20with%20UI%2C%20Adaptive%20Speed%2C%20Duplicate%20Checker%20%28Slow%20Version%29.meta.js
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
     const versionNumber = '5.1';
     let navboxName = '';
@@ -123,11 +123,11 @@
             .filter(href => href && href.startsWith('/w/'))
             .map(href => decodeURIComponent(href.replace('/w/', '')))
             .filter(page =>
-                    !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
-                    !page.includes('?') &&
-                    !page.includes('/') &&
-                    !page.includes('#')
-                   )
+                !excludedPrefixes.some(prefix => page.startsWith(prefix)) &&
+                !page.includes('?') &&
+                !page.includes('/') &&
+                !page.includes('#')
+            )
         ));
 
         console.log("Filtered unique page links:", pageLinks);
@@ -161,7 +161,7 @@
             listItem.appendChild(document.createTextNode(` ${link}`));
             listContainer.appendChild(listItem);
 
-            checkbox.addEventListener('click', function(e) {
+            checkbox.addEventListener('click', function (e) {
                 if (e.shiftKey && lastChecked) {
                     let inBetween = false;
                     listContainer.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
@@ -293,9 +293,10 @@
                 const firstCategoryIndex = pageContent.indexOf('[[Category:');
 
                 // Add the navbox above the first category, or append if no categories
-                const newContent = firstCategoryIndex === -1
-                ? pageContent + '\n' + navboxTemplate // Append if no categories
-                : pageContent.slice(0, firstCategoryIndex) + navboxTemplate + '\n' + pageContent.slice(firstCategoryIndex);
+                const newContent = firstCategoryIndex === -1 ?
+                    pageContent + '\n' + navboxTemplate // Append if no categories
+                    :
+                    pageContent.slice(0, firstCategoryIndex) + navboxTemplate + '\n' + pageContent.slice(firstCategoryIndex);
 
                 const editUrl = 'https://oldschool.runescape.wiki/api.php';
                 const formData = new URLSearchParams();
@@ -308,7 +309,9 @@
                 GM_xmlhttpRequest({
                     method: 'POST',
                     url: editUrl,
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
                     data: formData.toString(),
                     onload(editResponse) {
                         if (editResponse.status === 200) {

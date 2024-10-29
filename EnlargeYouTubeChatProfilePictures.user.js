@@ -14,7 +14,7 @@
 // @license      UnLicense
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     let debounceTimeout;
@@ -54,7 +54,10 @@
                 const img = new Image();
                 img.src = hdSrc;
                 preloadedImages.set(hdSrc, hdSrc); // Store in memory
-                cache[hdSrc] = { url: hdSrc, timestamp: Date.now() }; // Cache with timestamp
+                cache[hdSrc] = {
+                    url: hdSrc,
+                    timestamp: Date.now()
+                }; // Cache with timestamp
                 saveCache(cache); // Save the updated cache
             }
         }
@@ -67,7 +70,7 @@
             const img = event.target;
             const originalSrc = img.src;
             const hdSrc = originalSrc.replace(/=s32-c/, '=s800-c'); // Increase the size to 800px
-            img.dataset.originalSrc = originalSrc;  // Store the original src
+            img.dataset.originalSrc = originalSrc; // Store the original src
             // Swap in the HD version, check preloadedImages cache
             img.src = preloadedImages.get(hdSrc) || hdSrc;
             img.style.transform = 'scale(6) translateX(20px)';
@@ -84,7 +87,7 @@
 
     // Function to reset profile pictures to original size and source
     function resetProfilePic(img) {
-        img.src = img.dataset.originalSrc || img.src;  // Restore the original src if it was replaced
+        img.src = img.dataset.originalSrc || img.src; // Restore the original src if it was replaced
         img.style.transform = 'scale(1) translateX(0)';
         img.style.border = 'none';
         img.style.zIndex = 'auto';
@@ -95,7 +98,7 @@
     function addEventListeners() {
         const profilePics = document.querySelectorAll('.h-5.w-5.inline.align-middle.rounded-full.flex-none');
         profilePics.forEach(pic => {
-            preloadHDImage(pic.src);  // Preload HD image
+            preloadHDImage(pic.src); // Preload HD image
             pic.addEventListener('mouseover', enlargeProfilePic);
         });
     }
@@ -104,7 +107,10 @@
     const observer = new MutationObserver(() => {
         addEventListeners();
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 
     // Initial call to add event listeners
     addEventListeners();

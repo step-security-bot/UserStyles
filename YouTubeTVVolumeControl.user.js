@@ -76,7 +76,10 @@
 
         // Observe slider changes
         const observer = new MutationObserver(updateInput);
-        observer.observe(slider, { attributes: true, attributeFilter: ['value'] });
+        observer.observe(slider, {
+            attributes: true,
+            attributeFilter: ['value']
+        });
     };
 
     const setVolume = async (value) => {
@@ -85,8 +88,12 @@
             console.log(`Setting volume to: ${value}`);
             slider.value = value;
             slider.setAttribute('value', value);
-            slider.dispatchEvent(new Event('input', { bubbles: true }));
-            slider.dispatchEvent(new Event('change', { bubbles: true }));
+            slider.dispatchEvent(new Event('input', {
+                bubbles: true
+            }));
+            slider.dispatchEvent(new Event('change', {
+                bubbles: true
+            }));
         } else {
             console.error('Volume slider not found');
         }
@@ -119,7 +126,9 @@
                 console.log(`Current volume changed to: ${currentValue}`);
                 await GM.setValue(VOLUME_KEY, currentValue);
             });
-            observer.observe(slider, { attributes: true });
+            observer.observe(slider, {
+                attributes: true
+            });
         } else {
             console.error('Volume slider not found during initialization');
             setTimeout(observeSliderChanges, 1000);

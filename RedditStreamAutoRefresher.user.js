@@ -17,8 +17,8 @@
 // ==/UserScript==
 
 (function () {
-  'use strict';
-  setTimeout(function () {
-    location.reload();
-  }, 30 * 1000);
+    'use strict';
+    setTimeout(function () {
+        location.reload();
+    }, 30 * 1000);
 })();

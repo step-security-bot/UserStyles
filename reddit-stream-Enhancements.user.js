@@ -12,17 +12,17 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     console.log("Script initialized: Adding floating button, checkboxes, and persistence.");
 
     // Helper function for hover effect
     function handleHover(element) {
-        element.addEventListener('mouseover', function() {
+        element.addEventListener('mouseover', function () {
             element.style.opacity = '1';
         });
-        element.addEventListener('mouseout', function() {
+        element.addEventListener('mouseout', function () {
             element.style.opacity = '0.5';
         });
         console.log(`Hover effect applied to element: ${element}`);
@@ -90,7 +90,7 @@
     button.title = 'Click to scroll to the bottom';
     handleHover(button);
 
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
@@ -111,19 +111,19 @@
     stayAtBottomCheckbox.title = 'Check to stay at the bottom';
     stayAtBottomWrapper.insertBefore(stayAtBottomCheckbox, stayAtBottomWrapper.firstChild);
 
-    stayAtBottomCheckbox.addEventListener('change', function() {
+    stayAtBottomCheckbox.addEventListener('change', function () {
         saveCheckboxState('stayAtBottom', stayAtBottomCheckbox.checked);
     });
 
     let scrollTimeout;
     const debounce = (fn, delay) => {
-        return function() {
+        return function () {
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(fn, delay);
         };
     };
 
-    const keepAtBottom = debounce(function() {
+    const keepAtBottom = debounce(function () {
         if (stayAtBottomCheckbox.checked) {
             window.scrollTo({
                 top: document.body.scrollHeight,
@@ -136,7 +136,10 @@
     }, 200);
 
     const observer = new MutationObserver(keepAtBottom);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
     console.log("MutationObserver started for staying at the bottom.");
 
     // Auto-reload every 10 seconds checkbox with icon
@@ -153,6 +156,7 @@
     autoReload10Wrapper.insertBefore(autoReload10Checkbox, autoReload10Wrapper.firstChild);
 
     let reloadInterval10;
+
     function startAutoReload10() {
         reloadInterval10 = setInterval(() => {
             window.location.reload();
@@ -162,7 +166,7 @@
 
     if (autoReload10Checkbox.checked) startAutoReload10();
 
-    autoReload10Checkbox.addEventListener('change', function() {
+    autoReload10Checkbox.addEventListener('change', function () {
         saveCheckboxState('autoReload10', autoReload10Checkbox.checked);
         if (autoReload10Checkbox.checked) {
             startAutoReload10();
@@ -186,6 +190,7 @@
     autoReload30Wrapper.insertBefore(autoReload30Checkbox, autoReload30Wrapper.firstChild);
 
     let reloadInterval30;
+
     function startAutoReload30() {
         reloadInterval30 = setInterval(() => {
             window.location.reload();
@@ -195,7 +200,7 @@
 
     if (autoReload30Checkbox.checked) startAutoReload30();
 
-    autoReload30Checkbox.addEventListener('change', function() {
+    autoReload30Checkbox.addEventListener('change', function () {
         saveCheckboxState('autoReload30', autoReload30Checkbox.checked);
         if (autoReload30Checkbox.checked) {
             startAutoReload30();
