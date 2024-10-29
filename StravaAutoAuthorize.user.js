@@ -10,7 +10,8 @@
 // @homepage     https://github.com/Nick2bad4u/StravaAutoAuthorize
 // @homepageURL  https://github.com/Nick2bad4u/StravaAutoAuthorize
 // @supportURL   https://github.com/Nick2bad4u/StravaAutoAuthorize/issues
-// @downloadURL  https://raw.githubusercontent.com/Nick2bad4u/StravaAutoAuthorize/main/StravaAutoAuthorize.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/blob/main/StravaAutoAuthorize.user.js
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/blob/main/StravaAutoAuthorize.user.js
 // @license CC-BY-SA-3.0; http://creativecommons.org/licenses/by-sa/3.0/
 // @license MIT
 // ==/UserScript==
