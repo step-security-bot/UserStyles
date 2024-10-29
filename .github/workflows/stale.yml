@@ -9,6 +9,9 @@ on:
   schedule:
   - cron: '38 7 * * *'
 
+permissions:
+  contents: read
+
 jobs:
   stale:
 
@@ -18,10 +21,15 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/stale@v9
+    - name: Harden Runner
+      uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+      with:
+        egress-policy: audit
+
+    - uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9.0.0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
+        stale-issue-message: 'Stale issue'
+        stale-pr-message: 'Stale pull request'
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
