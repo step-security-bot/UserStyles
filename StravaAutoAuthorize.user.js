@@ -5,7 +5,7 @@
 // @author       Nick2bad4u
 // @match        https://www.strava.com/oauth/authorize*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
-// @version      2.0
+// @version      2.1
 // @grant        none
 // @homepage     https://github.com/Nick2bad4u/StravaAutoAuthorize
 // @homepageURL  https://github.com/Nick2bad4u/StravaAutoAuthorize
