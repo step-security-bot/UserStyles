@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Merge Dependabot PRs
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      1.1
+// @version      1.2
 // @description  Automatically clicks the merge button on Dependabot PRs and "Done" button on the notification bar
 // @author       Nick2bad4u
 // @match        https://github.com/*/*/pull/*
