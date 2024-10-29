@@ -93,7 +93,7 @@
         }
     };
 
-    window.addEventListener('load', () => {
+    globalThis.addEventListener('load', () => {
         console.log('YouTube TV Volume Rememberer script loaded');
         setTimeout(() => {
             tryLoadVolume();
@@ -102,7 +102,7 @@
         }, 1000);
     });
 
-    window.addEventListener('keydown', (event) => {
+    globalThis.addEventListener('keydown', (event) => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         if (!slider) return;
 

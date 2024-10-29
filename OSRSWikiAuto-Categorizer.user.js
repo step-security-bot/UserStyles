@@ -94,7 +94,7 @@
 
     // Function to check for highlighted text
     function getHighlightedText() {
-        const selection = window.getSelection();
+        const selection = globalThis.getSelection();
         if (selection.rangeCount > 0) {
             const container = document.createElement('div');
             for (let i = 0; i < selection.rangeCount; i++) {

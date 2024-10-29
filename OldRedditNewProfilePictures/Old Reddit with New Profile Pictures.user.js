@@ -121,7 +121,7 @@
                 img.src = profilePictureUrl;
                 img.classList.add('profile-picture');
                 img.onerror = () => { img.style.display = 'none'; };
-                img.addEventListener('click', () => { window.open(profilePictureUrl, '_blank'); });
+                img.addEventListener('click', () => { globalThis.open(profilePictureUrl, '_blank'); });
                 comment.insertAdjacentElement('beforebegin', img);
 
                 const enlargedImg = document.createElement('img');
@@ -131,8 +131,8 @@
                 img.addEventListener('mouseover', () => {
                     enlargedImg.style.display = 'block';
                     const rect = img.getBoundingClientRect();
-                    enlargedImg.style.top = `${rect.top + window.scrollY + 20}px`;
-                    enlargedImg.style.left = `${rect.left + window.scrollX + 20}px`;
+                    enlargedImg.style.top = `${rect.top + globalThis.scrollY + 20}px`;
+                    enlargedImg.style.left = `${rect.left + globalThis.scrollX + 20}px`;
                 });
                 img.addEventListener('mouseout', () => { enlargedImg.style.display = 'none'; });
             }
@@ -160,7 +160,7 @@
         setupObserver();
     }
 
-    window.addEventListener('load', () => {
+    globalThis.addEventListener('load', () => {
         console.log('Page loaded');
         runScript();
         setInterval(runScript, 10000); // Run every 10 seconds

@@ -67,7 +67,7 @@
     }
 
 
-    window.addEventListener('load', function () {
+    globalThis.addEventListener('load', function () {
         console.log('Page loaded');
 
         const targetNode = document.querySelector('.gh-header-meta');
