@@ -91,7 +91,7 @@
     handleHover(button);
 
     button.addEventListener('click', function () {
-        window.scrollTo({
+        globalThis.scrollTo({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
@@ -125,7 +125,7 @@
 
     const keepAtBottom = debounce(function () {
         if (stayAtBottomCheckbox.checked) {
-            window.scrollTo({
+            globalThis.scrollTo({
                 top: document.body.scrollHeight,
                 behavior: 'smooth'
             });
@@ -159,7 +159,7 @@
 
     function startAutoReload10() {
         reloadInterval10 = setInterval(() => {
-            window.location.reload();
+            globalThis.location.reload();
             console.log("Page reloading every 10 seconds.");
         }, 10000);
     }
@@ -193,7 +193,7 @@
 
     function startAutoReload30() {
         reloadInterval30 = setInterval(() => {
-            window.location.reload();
+            globalThis.location.reload();
             console.log("Page reloading every 30 seconds.");
         }, 30000);
     }
