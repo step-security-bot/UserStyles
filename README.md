@@ -8,4 +8,4 @@
 # Typpi's UserStyles
 Collection of UserStyles made by Typpi.
 
-Styles also hosted here: https://userstyles.world/user/Nick2bad4u
+Styles also hosted here: https://userstyles.world/user/Nick2bad4u and Userscripts here: https://greasyfork.org/en/users/872842-nick2bad4u
