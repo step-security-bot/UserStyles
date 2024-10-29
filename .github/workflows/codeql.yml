@@ -29,22 +29,22 @@ jobs:
 
     steps:
     - name: Harden Runner
-      uses: step-security/harden-runner@latest
+      uses: step-security/harden-runner
       with:
         egress-policy: audit
 
     - name: Checkout repository
-      uses: actions/checkout@latest
+      uses: actions/checkout
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@latest
+      uses: github/codeql-action/init
       with:
         languages: ${{ matrix.language }}
 
     # Autobuild attempts to build any compiled languages (e.g. C/C++, C#, or Java).
     - name: Autobuild
-      uses: github/codeql-action/autobuild@latest
+      uses: github/codeql-action/autobuild
 
     # If the Autobuild fails, you can specify custom build commands.
     # - name: Build
@@ -52,4 +52,4 @@ jobs:
     #     make
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@latest
+      uses: github/codeql-action/analyze
