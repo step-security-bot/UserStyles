@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OSRS Wiki Auto-Categorizer with UI, Adaptive Speed, Duplicate Checker
 // @namespace     https://github.com/Nick2bad4u/UserStyles
-// @version      4.3
+// @version      4.4
 // @description  Adds listed pages to a category upon request with UI, CSRF token, adaptive speed, duplicate checker, and highlighted links option.
 // @author       Nick2bad4u
 // @match        https://oldschool.runescape.wiki/*
