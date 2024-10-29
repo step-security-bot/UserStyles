@@ -12,7 +12,7 @@
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/AutoMergeDependabotPRs.user.js
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     let lastCheck = 0;
@@ -44,29 +44,32 @@
         }
     }
 
-   function observeDoneButton() {
-    console.log('Observing for Done button...');
-    const notificationBar = document.querySelector('.js-flash-container'); // Adjust as necessary
+    function observeDoneButton() {
+        console.log('Observing for Done button...');
+        const notificationBar = document.querySelector('.js-flash-container'); // Adjust as necessary
 
-    if (!notificationBar) {
-        console.log('Notification bar not found');
-        return;
+        if (!notificationBar) {
+            console.log('Notification bar not found');
+            return;
+        }
+
+        const doneButtonObserver = new MutationObserver(() => {
+            const doneButton = document.querySelector('button[aria-label="Done"].btn.btn-sm');
+            if (doneButton) {
+                console.log('Done button found, clicking it');
+                doneButton.click();
+                doneButtonObserver.disconnect(); // Stop observing after clicking
+            }
+        });
+
+        doneButtonObserver.observe(notificationBar, {
+            childList: true,
+            subtree: true
+        });
     }
 
-    const doneButtonObserver = new MutationObserver(() => {
-        const doneButton = document.querySelector('button[aria-label="Done"].btn.btn-sm');
-        if (doneButton) {
-            console.log('Done button found, clicking it');
-            doneButton.click();
-            doneButtonObserver.disconnect(); // Stop observing after clicking
-        }
-    });
 
-    doneButtonObserver.observe(notificationBar, { childList: true, subtree: true });
-}
-
-
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         console.log('Page loaded');
 
         const targetNode = document.querySelector('.gh-header-meta');
@@ -80,7 +83,10 @@
             checkAndMerge();
         });
 
-        observer.observe(targetNode, { childList: true, subtree: true });
+        observer.observe(targetNode, {
+            childList: true,
+            subtree: true
+        });
         checkAndMerge();
     }, false);
 })();
