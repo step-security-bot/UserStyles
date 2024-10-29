@@ -10,7 +10,8 @@
 // @homepage     https://github.com/Nick2bad4u/RedditCommentStreamRefresh
 // @homepageURL  https://github.com/Nick2bad4u/RedditCommentStreamRefresh
 // @supportURL   https://github.com/Nick2bad4u/RedditCommentStreamRefresh/issues
-// @downloadURL  https://raw.githubusercontent.com/Nick2bad4u/RedditCommentStreamRefresh/main/Auto-Refresh-Reddit-Stream-Faster.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/blob/main/RedditStreamAutoRefresherFasterFaster.user.js
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/blob/main/RedditStreamAutoRefresherFaster.user.js
 // @license CC-BY-SA-3.0; http://creativecommons.org/licenses/by-sa/3.0/
 // @license MIT
 // ==/UserScript==
