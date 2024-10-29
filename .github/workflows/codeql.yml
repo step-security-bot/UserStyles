@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        language: [ 'javascript', 'css' ]
+        language: [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby', 'swift' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby', 'swift' ]
         # Learn more about CodeQL language support at https://aka.ms/codeql/language-support
 
