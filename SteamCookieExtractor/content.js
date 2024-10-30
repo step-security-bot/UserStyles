@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  console.log('Content script started');
+
   // Create the button
   let button = document.createElement('button');
   button.textContent = 'Show Steam Cookies';
@@ -15,11 +17,15 @@
   button.style.cursor = 'pointer';
   button.style.zIndex = '10000';
 
+  console.log('Button created');
+
   // Add click event to open the popup
   button.addEventListener('click', () => {
+    console.log('Button clicked');
     chrome.runtime.sendMessage({ action: 'openPopup' });
   });
 
   // Append the button to the body
   document.body.appendChild(button);
+  console.log('Button appended to the body');
 })();
