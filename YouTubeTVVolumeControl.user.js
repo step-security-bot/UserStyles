@@ -9,8 +9,8 @@
 // @grant        GM.getValue
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tv.youtube.com
 // @license      UnLicense
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTVVolumeControl.user.js
+// @downloadURL  https://update.greasyfork.org/scripts/513786/YouTubeTV%20Volume%20Control%20with%20Memory.user.js
+// @updateURL    https://update.greasyfork.org/scripts/513786/YouTubeTV%20Volume%20Control%20with%20Memory.meta.js
 // ==/UserScript==
 
 (() => {
@@ -110,13 +110,16 @@
 
     const tryLoadVolume = () => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
-        if (slider) {
+        const sliderContainer = document.querySelector('.ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot');
+
+        if (slider && sliderContainer) {
             loadSavedVolume().then(createVolumeUI);
         } else {
-            console.error('Volume slider not found, retrying in 3 seconds');
+            console.error('Volume slider or container not found, retrying in 3 seconds');
             setTimeout(tryLoadVolume, 3000);
         }
     };
+
 
     const observeSliderChanges = () => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
