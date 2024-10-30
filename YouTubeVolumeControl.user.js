@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Volume Control with Memory
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.2
+// @version      3.3
 // @description  Set YouTube volume manually on a scale of 1-100, remember last set volume, and inject the UI to the left of the volume slider on the video player. Syncs the slider, disables invalid inputs, and adds debugging.
 // @author       Nick2bad4u
 // @match        *://www.youtube.com/*
@@ -9,15 +9,15 @@
 // @grant        GM.getValue
 // @grant        GM.setValue
 // @license      UnLicense
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeVolumeControl.user.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeVolumeControl.user.js
+// @downloadURL  https://update.greasyfork.org/scripts/513759/YouTube%20Volume%20Control%20with%20Memory.user.js
+// @updateURL    https://update.greasyfork.org/scripts/513759/YouTube%20Volume%20Control%20with%20Memory.meta.js
 // ==/UserScript==
 
 (async function () {
     'use strict';
 
     // Default volume if none is saved
-    let previousVolume = await GM.getValue('youtubeVolume', 50);
+    let previousVolume = await GM.getValue('youtubeVolume', 5);
 
     // Create input element for volume control
     const volumeInput = document.createElement('input');
@@ -123,11 +123,15 @@
     }
 
     // Inject the input box into YouTube's control bar
-    function injectVolumeControl() {
+    async function injectVolumeControl() {
         const volumeSliderPanel = document.querySelector('.ytp-volume-panel');
         if (volumeSliderPanel) {
+            // Fetch and set the volume immediately before setting the initial volume
+            previousVolume = await GM.getValue('youtubeVolume', 5);
+            volumeInput.value = previousVolume;
             volumeSliderPanel.parentNode.insertBefore(volumeInput, volumeSliderPanel);
             setVolume(previousVolume); // Set initial volume
+
             const player = document.querySelector('video');
             if (player) {
                 player.addEventListener('volumechange', updateVolumeInput);
@@ -140,8 +144,5 @@
             setTimeout(injectVolumeControl, 500);
         }
     }
-
-    // Inject the volume control when the page is ready
-    injectVolumeControl();
 
 })();
