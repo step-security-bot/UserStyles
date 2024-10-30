@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Steam Cookie Extractor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      width: 400px;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: #333333;
+      color: #ffffff;
+      border: 1px solid #555555;
+      padding: 5px;
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Steam Cookies</h1>
+  <label for="steamLoginSecure">steamLoginSecure:</label>
+  <input type="text" id="steamLoginSecure" readonly>
+  <label for="sessionid">sessionid:</label>
+  <input type="text" id="sessionid" readonly>
+  <script src="popup.js"></script>
+</body>
+</html>
