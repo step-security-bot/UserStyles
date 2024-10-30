@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name         YouTube Volume Control with Memory
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.1
+// @version      3.2
 // @description  Set YouTube volume manually on a scale of 1-100, remember last set volume, and inject the UI to the left of the volume slider on the video player. Syncs the slider, disables invalid inputs, and adds debugging.
 // @author       Nick2bad4u
 // @match        *://www.youtube.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        GM.getValue
 // @grant        GM.setValue
+// @license      UnLicense
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeVolumeControl.user.js
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeVolumeControl.user.js
-// @license      UnLicense
 // ==/UserScript==
 
 (async function () {
@@ -67,11 +67,9 @@
     });
 
     // Function to set the volume based on input value
-    async function setVolume() {
+    async function setVolume(volumeValue) {
         const player = document.querySelector('video');
         if (player) {
-            let volumeValue = volumeInput.value;
-
             // Validate input (must be between 0 and 100)
             if (volumeValue < 0) volumeValue = 0;
             if (volumeValue > 100) volumeValue = 100;
@@ -92,7 +90,7 @@
     }
 
     // Event listener for input change (manually changing the volume in the input box)
-    volumeInput.addEventListener('input', setVolume);
+    volumeInput.addEventListener('input', () => setVolume(volumeInput.value));
 
     // Function to update the input field when YouTube's player volume is changed
     async function updateVolumeInput() {
@@ -129,7 +127,7 @@
         const volumeSliderPanel = document.querySelector('.ytp-volume-panel');
         if (volumeSliderPanel) {
             volumeSliderPanel.parentNode.insertBefore(volumeInput, volumeSliderPanel);
-            setVolume(); // Set initial volume
+            setVolume(previousVolume); // Set initial volume
             const player = document.querySelector('video');
             if (player) {
                 player.addEventListener('volumechange', updateVolumeInput);
