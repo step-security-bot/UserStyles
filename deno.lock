@@ -10,6 +10,7 @@
     "jsr:@std/path@0.213.1": "0.213.1",
     "jsr:@std/path@~0.213.1": "0.213.1",
     "npm:@eslint/js@^9.13.0": "9.13.0",
+    "npm:@jsr/b-fuze__deno-dom@~0.1.48": "0.1.48",
     "npm:acorn-jsx@^5.3.2": "5.3.2_acorn@8.14.0",
     "npm:acorn@^8.14.0": "8.14.0",
     "npm:ajv@^6.12.6": "6.12.6",
@@ -200,6 +201,46 @@
     },
     "@humanwhocodes/retry@0.3.1": {
       "integrity": "sha512-JBxkERygn7Bv/GbN5Rv8Ul6LVknS+5Bp6RgDC/O8gEBU/yeH5Ui5C/OlWrTb6qct7LjjfT6Re2NxB0ln0yYybA=="
+    },
+    "@jsr/b-fuze__deno-dom@0.1.48": {
+      "integrity": "sha512-06Hrd5lkx1FUa3Pz46saZcxwHYX4ssHzcBjSulkJ2HCTNrYS/jBE6XLbFmi9oiGNBaQRAfTo9TPnCKdyJNg5iQ==",
+      "dependencies": [
+        "@jsr/denosaurs__plug"
+      ]
+    },
+    "@jsr/denosaurs__plug@1.0.3": {
+      "integrity": "sha512-L6QH5J5RL5RRAyHdoq5azKdnSXzHIN5ZA4nChF5Xqjgk+VdzmRiJ756C04Shuq3qNRbXjK/oQ63eOeSnSCnFTw==",
+      "dependencies": [
+        "@jsr/std__encoding",
+        "@jsr/std__fmt",
+        "@jsr/std__fs",
+        "@jsr/std__path"
+      ]
+    },
+    "@jsr/std__assert@0.213.1": {
+      "integrity": "sha512-mbq7QHPHeAJiJJlwmjNI0uoZlvIU2rG89df8ceeJB1pgE5b54DkiNhjQmmfBft0/fYO8/d933rBYwcNzuLxhXA==",
+      "dependencies": [
+        "@jsr/std__fmt"
+      ]
+    },
+    "@jsr/std__encoding@0.213.1": {
+      "integrity": "sha512-VW5Kxmaaj0fLjH1DNkycEgZs8awr75mRePwrP651rTSheG1DSKZK7wtxHMXWeIpj4aFlNWXZg78MQ+yjIHFwWQ=="
+    },
+    "@jsr/std__fmt@0.213.1": {
+      "integrity": "sha512-dFNL7NZoEb3dH8SlV2Ze1ZBPotEyTu/g5f6oawG79oxuMCUWE2xCTE1X+W7ySmZOYyAQuptVEplPnLsYgkc9PQ=="
+    },
+    "@jsr/std__fs@0.213.1": {
+      "integrity": "sha512-/JK8Qva6RovZ+r5rwYOfciu7Dcfe0keHkjhUVOQuF1lRiM556uAm8fM1SP89ByMjU7CV/p46CcE5KoNVJzCQew==",
+      "dependencies": [
+        "@jsr/std__assert",
+        "@jsr/std__path"
+      ]
+    },
+    "@jsr/std__path@0.213.1": {
+      "integrity": "sha512-9DWJ/tE+iGHtAKB3NDJ8/wg+KLjPRX0I6CmrDwpzntwO/m9Qrhe9eFZ7zYGWpsP4Vai96eNDtigK2MzDucbc4g==",
+      "dependencies": [
+        "@jsr/std__assert"
+      ]
     },
     "@nodelib/fs.scandir@2.1.5": {
       "integrity": "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==",
@@ -779,6 +820,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@eslint/js@^9.13.0",
+        "npm:@jsr/b-fuze__deno-dom@~0.1.48",
         "npm:acorn-jsx@^5.3.2",
         "npm:acorn@^8.14.0",
         "npm:ajv@^6.12.6",
@@ -826,6 +868,7 @@
         "npm:is-number@7",
         "npm:isexe@2",
         "npm:js-yaml@^4.1.0",
+        "npm:jsdom@^25.0.1",
         "npm:json-buffer@^3.0.1",
         "npm:json-schema-traverse@~0.4.1",
         "npm:json-stable-stringify-without-jsonify@^1.0.1",
