@@ -17,7 +17,7 @@
     'use strict';
  
     // Default volume if none is saved
-    let previousVolume = await GM.getValue('youtubeVolume', 50);
+    let previousVolume = await GM.getValue('youtubeVolume', 5);
  
     // Create input element for volume control
     const volumeInput = document.createElement('input');
