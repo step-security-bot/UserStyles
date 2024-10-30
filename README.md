@@ -3,6 +3,10 @@
 [![Dependency Review](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml)
 [![pages-build-deployment](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment)
 [![Scorecard supply-chain security](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml)
+[![Greetings](https://github.com/Nick2bad4u/UserStyles/actions/workflows/greetings.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/greetings.yml)
+[![Mark stale issues and pull requests](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml)
+[![Microsoft Defender For Devops](https://github.com/Nick2bad4u/UserStyles/actions/workflows/defender.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/defender.yml)
+
 
 ![RepoBeats](https://repobeats.axiom.co/api/embed/9831c07785869d711723400c1b0acbae9d78dc50.svg "Repobeats analytics image")
 # Typpi's UserStyles
