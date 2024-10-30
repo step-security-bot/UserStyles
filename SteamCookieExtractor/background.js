@@ -19,6 +19,9 @@ chrome.runtime.onInstalled.addListener(() => {
       }
     }
   });
+
+  // Fetch cookies when the extension is installed or updated
+  fetchSteamCookies();
 });
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -34,3 +37,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
   }
 });
+
+// Function to fetch Steam cookies
+function fetchSteamCookies() {
+  chrome.cookies.getAll({ domain: 'steampowered.com' }, (cookies) => {
+    const sessionidCookie = cookies.find(cookie => cookie.name === 'sessionid');
+    if (sessionidCookie) {
+      console.log('SessionID:', sessionidCookie.value);
+    } else {
+      console.log('SessionID cookie not found');
+    }
+  });
+}
