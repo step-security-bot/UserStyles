@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTubeTV Volume Control with Memory
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.1
+// @version      3.2
 // @description  Remembers and controls volume levels on YouTube TV with keyboard shortcuts and a UI for manual input
 // @author       Nick2bad4u
 // @match        *://tv.youtube.com/*
@@ -17,7 +17,7 @@
     'use strict';
 
     const VOLUME_KEY = 'youtubeTVVolume';
-    const DEFAULT_VOLUME = 100;
+    const DEFAULT_VOLUME = 5;
 
     const createVolumeUI = async () => {
         const sliderContainer = document.querySelector('.ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot');
@@ -88,12 +88,8 @@
             console.log(`Setting volume to: ${value}`);
             slider.value = value;
             slider.setAttribute('value', value);
-            slider.dispatchEvent(new Event('input', {
-                bubbles: true
-            }));
-            slider.dispatchEvent(new Event('change', {
-                bubbles: true
-            }));
+            slider.dispatchEvent(new Event('input', { bubbles: true }));
+            slider.dispatchEvent(new Event('change', { bubbles: true }));
         } else {
             console.error('Volume slider not found');
         }
@@ -102,15 +98,20 @@
 
     const loadSavedVolume = async () => {
         const savedVolume = await GM.getValue(VOLUME_KEY, DEFAULT_VOLUME);
-        console.log(`Saved volume found: ${savedVolume}`);
-        setVolume(savedVolume);
+        const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
+        if (slider) {
+            console.log(`Applying saved volume: ${savedVolume}`);
+            setVolume(savedVolume);
+        } else {
+            console.log('Slider not ready, retrying in 500ms');
+            setTimeout(loadSavedVolume, 500);
+        }
     };
 
     const tryLoadVolume = () => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         if (slider) {
-            loadSavedVolume();
-            createVolumeUI();
+            loadSavedVolume().then(createVolumeUI);
         } else {
             console.error('Volume slider not found, retrying in 3 seconds');
             setTimeout(tryLoadVolume, 3000);
@@ -135,7 +136,7 @@
         }
     };
 
-    globalThis.addEventListener('load', () => {
+    window.addEventListener('load', () => {
         console.log('YouTube TV Volume Rememberer script with UI loaded');
         setTimeout(() => {
             tryLoadVolume();
@@ -143,7 +144,7 @@
         }, 1000);
     });
 
-    globalThis.addEventListener('keydown', (event) => {
+    window.addEventListener('keydown', (event) => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         if (!slider) return;
 
