@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Volume Control with Memory",
+  "version": "3.6",
+  "description": "Set YouTube volume manually on a scale of 1-100, remember last set volume, and inject the UI to the left of the volume slider.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "host_permissions": ["*://www.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
