@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Steam Cookie Extractor",
-  "version": "1.5",
+  "version": "2.0.1",
   "description": "Extract steamLoginSecure and sessionid cookies and display them in a UI",
   "permissions": [
     "cookies",
@@ -30,6 +30,7 @@
       "128": "icons/icon128.png"
     }
   },
+  "options_page": "options.html",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

@@ -1,19 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Fetch and display cookies
-  chrome.cookies.get({ url: 'https://store.steampowered.com', name: 'steamLoginSecure' }, function(cookie) {
-    document.getElementById('steamLoginSecure').value = cookie ? cookie.value : 'Not found';
-  });
-
-  chrome.cookies.get({ url: 'https://store.steampowered.com', name: 'sessionid' }, function(cookie) {
-    document.getElementById('sessionid').value = cookie ? cookie.value : 'Not found';
-  });
-
-  // Load saved preferences
+document.addEventListener('DOMContentLoaded', () => {
   const disableSteamCommunityCheckbox = document.getElementById('disableSteamCommunity');
   const disableStoreCheckbox = document.getElementById('disableStore');
   const disableFetchCheckbox = document.getElementById('disableFetch');
   const fetchIntervalInput = document.getElementById('fetchInterval');
+  const saveButton = document.getElementById('saveButton');
 
+  // Load saved preferences
   chrome.storage.sync.get(['disableSteamCommunity', 'disableStore', 'disableFetch', 'fetchInterval'], (result) => {
     disableSteamCommunityCheckbox.checked = result.disableSteamCommunity || false;
     disableStoreCheckbox.checked = result.disableStore || false;
@@ -22,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Save preferences on button click
-  document.getElementById('saveButton').addEventListener('click', () => {
+  saveButton.addEventListener('click', () => {
     chrome.storage.sync.set({
       disableSteamCommunity: disableSteamCommunityCheckbox.checked,
       disableStore: disableStoreCheckbox.checked,

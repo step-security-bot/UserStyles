@@ -1,15 +1,21 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log('Extension installed');
-  fetchSteamCookies();  // Fetch cookies immediately upon installation
-  setFetchInterval();   // Set up the interval for periodic fetching
+  initializeFetch();
 });
 
-// Fetch cookies when the browser restarts
 chrome.runtime.onStartup.addListener(() => {
   console.log('Browser restarted');
-  fetchSteamCookies();  // Fetch cookies at startup
-  setFetchInterval();   // Set up the interval for periodic fetching
+  initializeFetch();
 });
+
+function initializeFetch() {
+  chrome.storage.sync.get(['disableFetch', 'fetchInterval'], (result) => {
+    if (!result.disableFetch) {
+      fetchSteamCookies();  // Fetch cookies immediately upon installation/startup
+      setFetchInterval(result.fetchInterval || 6);  // Set up the interval for periodic fetching
+    }
+  });
+}
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   console.log('Message received:', request);
@@ -54,8 +60,7 @@ function fetchSteamCookies() {
   });
 }
 
-// Set a 6-hour interval for fetching cookies
-function setFetchInterval() {
-  const sixHoursInMilliseconds = 6 * 60 * 60 * 1000;
-  setInterval(fetchSteamCookies, sixHoursInMilliseconds);
+function setFetchInterval(hours) {
+  const interval = hours * 60 * 60 * 1000;
+  setInterval(fetchSteamCookies, interval);
 }
