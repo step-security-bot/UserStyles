@@ -14,7 +14,9 @@
 
     const setValue = (key, value) => {
         return new Promise((resolve) => {
-            chrome.storage.local.set({ [key]: value }, () => {
+            chrome.storage.local.set({
+                [key]: value
+            }, () => {
                 resolve();
             });
         });
@@ -22,7 +24,7 @@
 
     const createVolumeUI = async () => {
         const sliderContainer = document.querySelector('.ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot');
-        if (!sliderContainer) {
+        if(!sliderContainer) {
             console.error('Volume slider container not found, cannot create UI');
             return;
         }
@@ -64,16 +66,16 @@
         // Event listener for manual input changes
         volumeInput.addEventListener('input', (e) => {
             let newValue = parseFloat(e.target.value);
-            if (newValue < 0) newValue = 0;
-            if (newValue > 100) newValue = 100;
+            if(newValue < 0) newValue = 0;
+            if(newValue > 100) newValue = 100;
             setVolume(newValue);
         });
 
         // Function to update input when slider moves
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         const updateInput = () => {
-    volumeInput.value = slider.getAttribute('aria-valuenow');
-};
+            volumeInput.value = slider.getAttribute('aria-valuenow');
+        };
 
         // Observe slider changes
         const observer = new MutationObserver(updateInput);
@@ -85,12 +87,16 @@
 
     const setVolume = async (value) => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
-        if (slider) {
+        if(slider) {
             console.log(`Setting volume to: ${value}`);
             slider.value = value;
             slider.setAttribute('value', value);
-            slider.dispatchEvent(new Event('input', { bubbles: true }));
-            slider.dispatchEvent(new Event('change', { bubbles: true }));
+            slider.dispatchEvent(new Event('input', {
+                bubbles: true
+            }));
+            slider.dispatchEvent(new Event('change', {
+                bubbles: true
+            }));
         } else {
             console.error('Volume slider not found');
         }
@@ -100,7 +106,7 @@
     const loadSavedVolume = async () => {
         const savedVolume = await getValue(VOLUME_KEY, DEFAULT_VOLUME);
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
-        if (slider) {
+        if(slider) {
             console.log(`Applying saved volume: ${savedVolume}`);
             setVolume(savedVolume);
         } else {
@@ -113,7 +119,7 @@
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
         const sliderContainer = document.querySelector('.ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot');
 
-        if (slider && sliderContainer) {
+        if(slider && sliderContainer) {
             loadSavedVolume().then(createVolumeUI);
         } else {
             console.error('Volume slider or container not found, retrying in 3 seconds');
@@ -122,28 +128,28 @@
     };
 
     const observeSliderChanges = () => {
-    const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
-    if (slider) {
-        console.log('Observing the volume slider for changes');
-        const observer = new MutationObserver(async (mutationsList) => {
-            for (const mutation of mutationsList) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'aria-valuenow') {
-                    const currentValue = slider.getAttribute('aria-valuenow');
-                    console.log(`Current volume changed to: ${currentValue}`);
-                    await setValue(VOLUME_KEY, currentValue);
-                    // Update the volume in the UI based on currentValue
+        const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
+        if(slider) {
+            console.log('Observing the volume slider for changes');
+            const observer = new MutationObserver(async (mutationsList) => {
+                for(const mutation of mutationsList) {
+                    if(mutation.type === 'attributes' && mutation.attributeName === 'aria-valuenow') {
+                        const currentValue = slider.getAttribute('aria-valuenow');
+                        console.log(`Current volume changed to: ${currentValue}`);
+                        await setValue(VOLUME_KEY, currentValue);
+                        // Update the volume in the UI based on currentValue
+                    }
                 }
-            }
-        });
-        observer.observe(slider, {
-            attributes: true,
-            attributeFilter: ['aria-valuenow']
-        });
-    } else {
-        console.error('Volume slider not found during initialization');
-        setTimeout(observeSliderChanges, 1000);
-    }
-};
+            });
+            observer.observe(slider, {
+                attributes: true,
+                attributeFilter: ['aria-valuenow']
+            });
+        } else {
+            console.error('Volume slider not found during initialization');
+            setTimeout(observeSliderChanges, 1000);
+        }
+    };
 
     window.addEventListener('load', () => {
         console.log('YouTube TV Volume Rememberer script with UI loaded');
@@ -155,14 +161,14 @@
 
     window.addEventListener('keydown', (event) => {
         const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
-        if (!slider) return;
+        if(!slider) return;
 
         const isShiftPressed = event.shiftKey;
 
-        if (isShiftPressed && event.key === 'ArrowUp') {
+        if(isShiftPressed && event.key === 'ArrowUp') {
             const newValue = Math.min(parseFloat(slider.value) + 5, 100);
             setVolume(newValue);
-        } else if (isShiftPressed && event.key === 'ArrowDown') {
+        } else if(isShiftPressed && event.key === 'ArrowDown') {
             const newValue = Math.max(parseFloat(slider.value) - 5, 0);
             setVolume(newValue);
         }
