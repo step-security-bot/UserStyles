@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const disableStoreCheckbox = document.getElementById('disableStore');
   const disableFetchCheckbox = document.getElementById('disableFetch');
   const fetchIntervalInput = document.getElementById('fetchInterval');
-  const saveButton = document.getElementById('saveButton');
 
   // Load saved preferences
   chrome.storage.sync.get(['disableSteamCommunity', 'disableStore', 'disableFetch', 'fetchInterval'], (result) => {
@@ -13,15 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchIntervalInput.value = result.fetchInterval || 6;
   });
 
-  // Save preferences on button click
-  saveButton.addEventListener('click', () => {
-    chrome.storage.sync.set({
-      disableSteamCommunity: disableSteamCommunityCheckbox.checked,
-      disableStore: disableStoreCheckbox.checked,
-      disableFetch: disableFetchCheckbox.checked,
-      fetchInterval: fetchIntervalInput.value
-    }, () => {
-      alert('Options saved.');
-    });
+  // Save preferences when checkboxes are clicked
+  disableSteamCommunityCheckbox.addEventListener('change', () => {
+    chrome.storage.sync.set({ disableSteamCommunity: disableSteamCommunityCheckbox.checked });
+  });
+
+  disableStoreCheckbox.addEventListener('change', () => {
+    chrome.storage.sync.set({ disableStore: disableStoreCheckbox.checked });
+  });
+
+  disableFetchCheckbox.addEventListener('change', () => {
+    chrome.storage.sync.set({ disableFetch: disableFetchCheckbox.checked });
+  });
+
+  // Save preferences when fetch interval input is changed
+  fetchIntervalInput.addEventListener('input', () => {
+    chrome.storage.sync.set({ fetchInterval: fetchIntervalInput.value });
   });
 });

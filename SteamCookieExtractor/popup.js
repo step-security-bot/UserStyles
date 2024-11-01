@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const disableStoreCheckbox = document.getElementById('disableStore');
   const disableFetchCheckbox = document.getElementById('disableFetch');
   const fetchIntervalInput = document.getElementById('fetchInterval');
+  const saveIndicator = document.getElementById('saveIndicator');
 
   chrome.storage.sync.get(['disableSteamCommunity', 'disableStore', 'disableFetch', 'fetchInterval'], (result) => {
     disableSteamCommunityCheckbox.checked = result.disableSteamCommunity || false;
@@ -21,15 +22,28 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchIntervalInput.value = result.fetchInterval || 6;
   });
 
-  // Save preferences on button click
-  document.getElementById('saveButton').addEventListener('click', () => {
-    chrome.storage.sync.set({
-      disableSteamCommunity: disableSteamCommunityCheckbox.checked,
-      disableStore: disableStoreCheckbox.checked,
-      disableFetch: disableFetchCheckbox.checked,
-      fetchInterval: fetchIntervalInput.value
-    }, () => {
-      alert('Options saved.');
-    });
+  function showSaveIndicator() {
+    saveIndicator.style.display = 'block';
+    setTimeout(() => {
+      saveIndicator.style.display = 'none';
+    }, 2000);
+  }
+
+  // Save preferences when checkboxes are clicked
+  disableSteamCommunityCheckbox.addEventListener('change', () => {
+    chrome.storage.sync.set({ disableSteamCommunity: disableSteamCommunityCheckbox.checked }, showSaveIndicator);
+  });
+
+  disableStoreCheckbox.addEventListener('change', () => {
+    chrome.storage.sync.set({ disableStore: disableStoreCheckbox.checked }, showSaveIndicator);
+  });
+
+  disableFetchCheckbox.addEventListener('change', () => {
+    chrome.storage.sync.set({ disableFetch: disableFetchCheckbox.checked }, showSaveIndicator);
+  });
+
+  // Save preferences when fetch interval input is changed
+  fetchIntervalInput.addEventListener('input', () => {
+    chrome.storage.sync.set({ fetchInterval: fetchIntervalInput.value }, showSaveIndicator);
   });
 });
