@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GOTOES Fit File Editor - Auto Close Popup
 // @namespace    https://userstyles.github.typpi.online
-// @version      2024.11.03
+// @version      2024.11.04
 // @description  Automatically clicks the close button on popup donation nag
 // @author       Nick2bad4u
 // @match        https://gotoes.org/*
@@ -11,7 +11,7 @@
 // @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/GOTOESFitFileEditor-AutoClosePopup.user.jss
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/GOTOESFitFileEditor-AutoClosePopup.user.js
-
+// @license      UnLicense
 // ==/UserScript==
 
 (function() {
