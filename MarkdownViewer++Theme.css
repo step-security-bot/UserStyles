@@ -1,0 +1,237 @@
+/* Custom CSS for MarkdownViewer++ Notepad++ Extension */
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.75;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #2c3e50;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  border-bottom: 3px solid #2c3e50;
+  padding-bottom: 5px;
+}
+
+h2 {
+  font-size: 1.75em;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 3px;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #34495e;
+}
+
+h4 {
+  font-size: 1.25em;
+  color: #4a4a4a;
+}
+
+h5 {
+  font-size: 1.1em;
+  color: #4a4a4a;
+}
+
+h6 {
+  font-size: 1em;
+  color: #4a4a4a;
+  font-weight: normal;
+}
+
+/* Paragraphs */
+p {
+  margin: 10px 0;
+  line-height: 1.8;
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px dotted #3498db;
+  transition:
+    color 0.2s ease,
+    border-bottom-color 0.2s ease;
+}
+
+a:hover {
+  color: #2980b9;
+  border-bottom: 1px solid #2980b9;
+}
+
+/* Emphasis */
+em,
+i {
+  color: #555;
+  font-style: italic;
+}
+
+strong,
+b {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Code Blocks */
+pre,
+code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #f5f5f5;
+  color: #2a2a2a;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+pre {
+  padding: 12px;
+  overflow: auto;
+  margin: 15px 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+  background-color: #f1f1f1;
+}
+
+code {
+  padding: 3px 5px;
+  font-size: 0.95em;
+  border-radius: 4px;
+  background-color: #e8e8e8;
+  color: #3a3a3a;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #2c3e50;
+  padding: 10px 20px;
+  margin: 15px 0;
+  background-color: #f8f8f8;
+  color: #666;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
+  color: #555;
+}
+
+/* Lists */
+ul,
+ol {
+  margin: 10px 0;
+  padding-left: 25px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+ul ul,
+ol ol {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: circle;
+}
+
+/* Horizontal Rule */
+hr {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 20px 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  display: block;
+  margin: 15px auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 15px 0;
+  font-size: 0.95em;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+td {
+  background-color: #ffffff;
+}
+
+tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+/* Footnotes */
+sup {
+  font-size: 0.85em;
+  vertical-align: super;
+}
+
+/* Task Lists (Checkboxes) */
+input[type="checkbox"] {
+  margin-right: 5px;
+  transform: scale(1.2);
+  vertical-align: middle;
+}
+
+/* Collapsible Details */
+details {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: #2c3e50;
+}
+
+summary:hover {
+  color: #34495e;
+}
+
+/* Footnotes */
+footer {
+  font-size: 0.85em;
+  color: #666;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+} \n
