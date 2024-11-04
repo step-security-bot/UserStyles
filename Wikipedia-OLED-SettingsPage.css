@@ -7,15 +7,18 @@
 @license      NONE
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document regexp("https://..*wikipedia.org/wiki/Special:Preferences") {
-    :root {
-        filter: invert(1);
-        /*            background-color: black; */
-    }
-    img:not(.mwe-math-fallback-image-display):not(.mwe-math-fallback-image-inline) {
-        filter: invert(1);
-    }
-    .mw-logo {
-        filter: invert(100%);
-    }
+@-moz-document regexp("https://..*wikipedia.org/wiki/Special:Preferences")
+{
+  :root {
+    filter: invert(1);
+    /*            background-color: black; */
+  }
+  img:not(.mwe-math-fallback-image-display):not(
+      .mwe-math-fallback-image-inline
+    ) {
+    filter: invert(1);
+  }
+  .mw-logo {
+    filter: invert(100%);
+  }
 }

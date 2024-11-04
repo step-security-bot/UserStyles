@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Reddit-Stream Auto-Refresh-Faster 
+// @name         Reddit-Stream Auto-Refresh-Faster
 // @namespace    nick2bad4u
 // @description  Auto-Refreshes your Reddit-Stream.com page every 30 seconds. Modify the script and change to any time you want.
 // @author       Nick2bad4u
@@ -17,8 +17,8 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
-    setTimeout(function () {
-        location.reload();
-    }, 10 * 1000);
+  "use strict";
+  setTimeout(function () {
+    location.reload();
+  }, 10 * 1000);
 })();

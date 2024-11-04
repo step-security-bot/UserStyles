@@ -1,86 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <title>Steam Cookie Extractor - Options</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            width: 400px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        width: 400px;
+      }
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
 
-        input[type="text"],
-        input[type="number"] {
-            width: calc(100% - 22px);
-            margin-bottom: 10px;
-            background-color: #34495e;
-            color: #ecf0f1;
-            border: 1px solid #555555;
-            padding: 10px;
-            border-radius: 5px;
-        }
+      input[type="text"],
+      input[type="number"] {
+        width: calc(100% - 22px);
+        margin-bottom: 10px;
+        background-color: #34495e;
+        color: #ecf0f1;
+        border: 1px solid #555555;
+        padding: 10px;
+        border-radius: 5px;
+      }
 
-        input[type="checkbox"] {
-            margin-right: 10px;
-        }
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
 
-        .container {
-            background-color: #34495e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-        }
+      .container {
+        background-color: #34495e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin-bottom: 20px;
+      }
 
-        .save-indicator {
-            text-align: center;
-            margin-top: 10px;
-            display: none;
-            color: #27ae60;
-        }
-
+      .save-indicator {
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+        color: #27ae60;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h1>Steam Cookies</h1>
-        <label for="steamLoginSecure">steamLoginSecure:</label>
-        <input type="text" id="steamLoginSecure" readonly>
-        <label for="sessionid">sessionid:</label>
-        <input type="text" id="sessionid" readonly>
+      <h1>Steam Cookies</h1>
+      <label for="steamLoginSecure">steamLoginSecure:</label>
+      <input type="text" id="steamLoginSecure" readonly />
+      <label for="sessionid">sessionid:</label>
+      <input type="text" id="sessionid" readonly />
     </div>
 
     <div class="container">
-        <h1>Options</h1>
-        <label>
-            <input type="checkbox" id="disableSteamCommunity"> Disable UI on Steam Community
-        </label>
-        <label>
-            <input type="checkbox" id="disableStore"> Disable UI on Steam Store
-        </label>
-        <label>
-            <input type="checkbox" id="disableFetch"> Disable Background Fetch
-        </label>
-        <label for="fetchInterval">Fetch Interval (hours):</label>
-        <input type="number" id="fetchInterval" min="1" max="24">
-        <div id="saveIndicator" class="save-indicator">Settings saved</div>
+      <h1>Options</h1>
+      <label>
+        <input type="checkbox" id="disableSteamCommunity" /> Disable UI on Steam
+        Community
+      </label>
+      <label>
+        <input type="checkbox" id="disableStore" /> Disable UI on Steam Store
+      </label>
+      <label>
+        <input type="checkbox" id="disableFetch" /> Disable Background Fetch
+      </label>
+      <label for="fetchInterval">Fetch Interval (hours):</label>
+      <input type="number" id="fetchInterval" min="1" max="24" />
+      <div id="saveIndicator" class="save-indicator">Settings saved</div>
     </div>
     <script src="popup.js"></script>
-</body>
-
+  </body>
 </html>

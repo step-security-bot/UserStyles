@@ -2,10 +2,10 @@
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
+| Version      | Supported          |
+| ------------ | ------------------ |
 | TamperMonkey | :white_check_mark: |
-| GreaseMonkey | :white_check_mark:           |
+| GreaseMonkey | :white_check_mark: |
 | UserScript   | :white_check_mark: |
 
 ## Reporting a Vulnerability

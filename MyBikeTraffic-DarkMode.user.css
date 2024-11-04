@@ -8,127 +8,127 @@
 ==/UserStyle== */
 
 @-moz-document domain("mybiketraffic.com") {
-body,
-.navbar,
-.container,
-.table,
-.thead-light,
-.footer,
-.terms {
-	background-color: #121212 !important;
-	color: #e0e0e0 !important;
-}
+  body,
+  .navbar,
+  .container,
+  .table,
+  .thead-light,
+  .footer,
+  .terms {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+  }
 
-/* Remove or comment out the following lines to prevent image inversion */
-/* .navbar-brand img, .nav-link img {
+  /* Remove or comment out the following lines to prevent image inversion */
+  /* .navbar-brand img, .nav-link img {
         filter: invert(1) !important;
     } */
-.nav-link,
-.nav-item a,
-.terms a,
-.footer a {
-	color: #bb86fc !important;
-}
+  .nav-link,
+  .nav-item a,
+  .terms a,
+  .footer a {
+    color: #bb86fc !important;
+  }
 
-.table th,
-.table td {
-	border-color: #333 !important;
-}
+  .table th,
+  .table td {
+    border-color: #333 !important;
+  }
 
-input,
-select,
-textarea {
-	background-color: #333 !important;
-	color: #e0e0e0 !important;
-	border: 1px solid #555 !important;
-}
+  input,
+  select,
+  textarea {
+    background-color: #333 !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #555 !important;
+  }
 
-.btn,
-.form-control {
-	background-color: #333 !important;
-	color: #e0e0e0 !important;
-	border: 1px solid #555 !important;
-}
+  .btn,
+  .form-control {
+    background-color: #333 !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #555 !important;
+  }
 
-.navbar-toggler {
-	border-color: #333 !important;
-}
+  .navbar-toggler {
+    border-color: #333 !important;
+  }
 
-.navbar-toggler-icon {
-	filter: invert(1) !important;
-}
+  .navbar-toggler-icon {
+    filter: invert(1) !important;
+  }
 
-.table thead th {
-	background-color: #333 !important;
-}
+  .table thead th {
+    background-color: #333 !important;
+  }
 
-.table tbody tr {
-	background-color: #1e1e1e !important;
-}
+  .table tbody tr {
+    background-color: #1e1e1e !important;
+  }
 
-.table tbody tr:hover {
-	background-color: #333 !important;
-}
+  .table tbody tr:hover {
+    background-color: #333 !important;
+  }
 
-.table tbody tr td {
-	border-color: #444 !important;
-}
+  .table tbody tr td {
+    border-color: #444 !important;
+  }
 
-.table tbody tr td span {
-	color: #bb86fc !important;
-}
+  .table tbody tr td span {
+    color: #bb86fc !important;
+  }
 
-.table tbody tr td span.imperial,
-.table tbody tr td span.metric {
-	color: #bb86fc !important;
-}
+  .table tbody tr td span.imperial,
+  .table tbody tr td span.metric {
+    color: #bb86fc !important;
+  }
 
-.chart-container {
-	background-color: #1e1e1e !important;
-}
+  .chart-container {
+    background-color: #1e1e1e !important;
+  }
 
-.chart-legend {
-	color: #e0e0e0 !important;
-}
+  .chart-legend {
+    color: #e0e0e0 !important;
+  }
 
-.form-check-input:checked {
-	background-color: #bb86fc !important;
-	border-color: #bb86fc !important;
-}
+  .form-check-input:checked {
+    background-color: #bb86fc !important;
+    border-color: #bb86fc !important;
+  }
 
-.form-check-label {
-	color: #e0e0e0 !important;
-}
+  .form-check-label {
+    color: #e0e0e0 !important;
+  }
 
-.tooltip-inner,
-.popover-body {
-	background-color: #333 !important;
-	color: #e0e0e0 !important;
-}
+  .tooltip-inner,
+  .popover-body {
+    background-color: #333 !important;
+    color: #e0e0e0 !important;
+  }
 
-.arrow::before {
-	border-color: #333 !important;
-}
+  .arrow::before {
+    border-color: #333 !important;
+  }
 
-.modal-content {
-	background-color: #1e1e1e !important;
-	color: #e0e0e0 !important;
-}
+  .modal-content {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+  }
 
-.modal-header,
-.modal-footer {
-	border-color: #333 !important;
-}
+  .modal-header,
+  .modal-footer {
+    border-color: #333 !important;
+  }
 
-.nav-link:hover,
-.nav-item a:hover,
-.terms a:hover,
-.footer a:hover {
-	color: #ff79c6 !important;
-}
+  .nav-link:hover,
+  .nav-item a:hover,
+  .terms a:hover,
+  .footer a:hover {
+    color: #ff79c6 !important;
+  }
 
-.btn:hover,
-.form-control:hover {
-	background-color: #444 !important;
-}
+  .btn:hover,
+  .form-control:hover {
+    background-color: #444 !important;
+  }
 }
