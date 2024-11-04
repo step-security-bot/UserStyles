@@ -3,7 +3,7 @@
 
 // ==UserScript==
 // @name			Supercharged Local Directory File Browser (Nick2bad4u Version)
-// @version			8.1.4
+// @version			8.1.5
 // @description		Makes directory index pages (either local or remote open directories) actually useful. Adds sidebar and content preview pane; keyboard navigation; sorting; light/dark UI; preview images/fonts in navigable grids; browse subdirectories w/o page reload (“tree view”); media playback, shuffle/loop options; basic playlist (m3u, extm3u) & cuesheet (.cue) support; create, edit, preview, save markdown/plain text files; open font files, view complete glyph repertoire, save glyphs as .svg; more.
 // @author			gaspar_schot
 // @author			Nick2bad4u
