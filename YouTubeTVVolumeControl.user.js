@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTubeTV Volume Control with Memory
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.3
+// @version      4.0
 // @description  Remembers and controls volume levels on YouTube TV with keyboard shortcuts and a UI for manual input
 // @author       Nick2bad4u
 // @match        *://tv.youtube.com/*
@@ -13,169 +13,174 @@
 // @updateURL    https://update.greasyfork.org/scripts/513786/YouTubeTV%20Volume%20Control%20with%20Memory.meta.js
 // ==/UserScript==
 
-(() => {
-  "use strict";
+(function() {
+    'use strict';
 
-  const VOLUME_KEY = "youtubeTVVolume";
-  const DEFAULT_VOLUME = 5;
+    // Wait for the YouTube player and controls to load
+    const playerReady = setInterval(() => {
+        const videoPlayer = document.querySelector("video");
+        const leftControls = document.querySelector(".ytp-left-controls");
+        const volumeSliderHandle = document.querySelector(".ytp-volume-slider-handle");
+        const volumePanel = document.querySelector(".ytp-volume-panel");
+        const muteButton = document.querySelector(".ytp-mute-button");
 
-  const createVolumeUI = async () => {
-    const sliderContainer = document.querySelector(
-      ".ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot",
-    );
-    if (!sliderContainer) {
-      console.error("Volume slider container not found, cannot create UI");
-      return;
-    }
+        if (videoPlayer && leftControls && volumeSliderHandle && muteButton) {
+            clearInterval(playerReady);
 
-    const savedVolume = await GM.getValue(VOLUME_KEY, DEFAULT_VOLUME);
+            // Retrieve the saved volume level from localStorage
+            let ytVolumeData = localStorage.getItem("yt-player-volume");
+            let savedVolume = videoPlayer.volume;
+            let savedMuted = videoPlayer.muted;
 
-    // Create input box
-    const volumeInput = document.createElement("input");
-    volumeInput.type = "number";
-    volumeInput.min = 0;
-    volumeInput.max = 100;
-    volumeInput.value = savedVolume;
-    volumeInput.style.width = "35px";
-    volumeInput.style.height = "24px";
-    volumeInput.style.marginLeft = "10px";
-    volumeInput.style.marginRight = "10px";
-    volumeInput.style.border = "1px solid #ccc";
-    volumeInput.style.background = "#1c1c1c";
-    volumeInput.style.color = "#fff";
-    volumeInput.style.textAlign = "center";
-    volumeInput.style.borderRadius = "4px";
-    volumeInput.style.outline = "none";
+            if (ytVolumeData) {
+                try {
+                    ytVolumeData = JSON.parse(ytVolumeData);
+                    const data = JSON.parse(ytVolumeData.data);
+                    savedVolume = data.volume / 100; // YouTube stores volume from 0 to 100
+                    savedMuted = data.muted;
+                } catch (e) {
+                    console.error("Failed to parse yt-player-volume:", e);
+                }
+            }
 
-    // Create a wrapper to position it properly
-    const wrapper = document.createElement("div");
-    wrapper.style.display = "flex";
-    wrapper.style.alignItems = "center";
-    wrapper.style.marginRight = "10px";
+            // Ensure savedVolume is within [0, 1] range
+            videoPlayer.volume = Math.max(0, Math.min(1, savedVolume));
+            videoPlayer.muted = savedMuted;
 
-    // Insert the input box into the correct container
-    wrapper.appendChild(volumeInput);
-    sliderContainer.parentNode.insertBefore(wrapper, sliderContainer);
+            // Update the slider handle position
+            const updateSliderHandle = () => {
+                if (videoPlayer.muted) {
+                    volumeSliderHandle.style.left = `0%`;
+                } else {
+                    volumeSliderHandle.style.left = `${videoPlayer.volume * 100}%`;
+                }
+            };
+            updateSliderHandle();
 
-    // Prevent key events from propagating while typing
-    volumeInput.addEventListener("keydown", (e) => {
-      e.stopPropagation();
-    });
+            // Set the aria-valuenow attribute on the volume panel
+            if (volumePanel) {
+                volumePanel.setAttribute("aria-valuenow", videoPlayer.volume * 100);
+            }
 
-    // Event listener for manual input changes
-    volumeInput.addEventListener("input", (e) => {
-      let newValue = parseFloat(e.target.value);
-      if (newValue < 0) newValue = 0;
-      if (newValue > 100) newValue = 100;
-      setVolume(newValue);
-    });
+            // Create input element for volume control
+            const volumeInput = document.createElement("input");
+            volumeInput.type = "number";
+            volumeInput.min = 0;
+            volumeInput.max = 100;
+            volumeInput.value = videoPlayer.muted
+                ? 0
+                : Math.round(videoPlayer.volume * 100);
 
-    // Function to update input when slider moves
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
-    const updateInput = () => {
-      volumeInput.value = slider.value;
-    };
+            // Style the input field
+            Object.assign(volumeInput.style, {
+                width: "40px",
+                marginLeft: "10px",
+                backgroundColor: "rgba(255, 255, 255, 0.0)",
+                color: "white",
+                border: "0px solid rgba(255, 255, 255, 0.0)",
+                borderRadius: "4px",
+                zIndex: 9999,
+                height: "24px",
+                fontSize: "16px",
+                padding: "0 4px",
+                transition: "border-color 0.3s, background-color 0.3s",
+                outline: "none",
+                position: "relative",
+                top: "13px",
+            });
 
-    // Observe slider changes
-    const observer = new MutationObserver(updateInput);
-    observer.observe(slider, {
-      attributes: true,
-      attributeFilter: ["value"],
-    });
-  };
+            // Prevent hotkeys from interfering with the input
+            volumeInput.addEventListener("keydown", (e) => e.stopPropagation());
 
-  const setVolume = async (value) => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
-    if (slider) {
-      console.log(`Setting volume to: ${value}`);
-      slider.value = value;
-      slider.setAttribute("value", value);
-      slider.dispatchEvent(new Event("input", { bubbles: true }));
-      slider.dispatchEvent(new Event("change", { bubbles: true }));
-    } else {
-      console.error("Volume slider not found");
-    }
-    await GM.setValue(VOLUME_KEY, value);
-  };
+            // Input focus and hover styling
+            volumeInput.addEventListener(
+                "focus",
+                () => (volumeInput.style.borderColor = "rgba(255, 255, 255, 0.6)")
+            );
+            volumeInput.addEventListener(
+                "blur",
+                () => (volumeInput.style.borderColor = "rgba(255, 255, 255, 0.3)")
+            );
+            volumeInput.addEventListener(
+                "mouseenter",
+                () => (volumeInput.style.backgroundColor = "rgba(0, 0, 0, 0.8)")
+            );
+            volumeInput.addEventListener(
+                "mouseleave",
+                () => (volumeInput.style.backgroundColor = "rgba(255, 255, 255, 0.0)")
+            );
 
-  const loadSavedVolume = async () => {
-    const savedVolume = await GM.getValue(VOLUME_KEY, DEFAULT_VOLUME);
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
-    if (slider) {
-      console.log(`Applying saved volume: ${savedVolume}`);
-      setVolume(savedVolume);
-    } else {
-      console.log("Slider not ready, retrying in 500ms");
-      setTimeout(loadSavedVolume, 500);
-    }
-  };
+            // Handle volume change from input
+            let lastSetVolume = videoPlayer.volume;
+            volumeInput.addEventListener("input", () => {
+                let volume = parseInt(volumeInput.value, 10);
+                volume = isNaN(volume) ? 100 : Math.max(0, Math.min(100, volume)); // Clamp between 0 and 100
 
-  const tryLoadVolume = () => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
-    const sliderContainer = document.querySelector(
-      ".ytu-player-controls.style-scope.ypcs-volume-control-slot.ypcs-control .ytu-volume-slider.style-scope.volume-button-slot",
-    );
+                videoPlayer.volume = volume / 100; // Convert to [0, 1] range
 
-    if (slider && sliderContainer) {
-      loadSavedVolume().then(createVolumeUI);
-    } else {
-      console.error(
-        "Volume slider or container not found, retrying in 3 seconds",
-      );
-      setTimeout(tryLoadVolume, 3000);
-    }
-  };
+                if (volume === 0) {
+                    videoPlayer.muted = true;
+                } else {
+                    videoPlayer.muted = false;
+                }
 
-  const observeSliderChanges = () => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
-    if (slider) {
-      console.log("Observing the volume slider for changes");
-      const observer = new MutationObserver(async () => {
-        const currentValue = slider.value;
-        console.log(`Current volume changed to: ${currentValue}`);
-        await GM.setValue(VOLUME_KEY, currentValue);
-      });
-      observer.observe(slider, {
-        attributes: true,
-      });
-    } else {
-      console.error("Volume slider not found during initialization");
-      setTimeout(observeSliderChanges, 1000);
-    }
-  };
+                lastSetVolume = videoPlayer.volume;
 
-  window.addEventListener("load", () => {
-    console.log("YouTube TV Volume Rememberer script with UI loaded");
-    setTimeout(() => {
-      tryLoadVolume();
-      observeSliderChanges();
-    }, 1000);
-  });
+                // Update the slider handle position
+                updateSliderHandle();
 
-  window.addEventListener("keydown", (event) => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
-    if (!slider) return;
+                // Save the new volume to localStorage
+                const ytVolumeObject = {
+                    data: JSON.stringify({
+                        volume: volume, // Volume from 0 to 100
+                        muted: videoPlayer.muted,
+                    }),
+                    expiration: Date.now() + 2592000000, // Expires in 30 days
+                    creation: Date.now(),
+                };
+                const ytVolumeString = JSON.stringify(ytVolumeObject);
+                localStorage.setItem("yt-player-volume", ytVolumeString);
+            });
 
-    const isShiftPressed = event.shiftKey;
+            // Update input value when volume changes from other controls
+            let previousMutedState = videoPlayer.muted;
 
-    if (isShiftPressed && event.key === "ArrowUp") {
-      const newValue = Math.min(parseFloat(slider.value) + 5, 100);
-      setVolume(newValue);
-    } else if (isShiftPressed && event.key === "ArrowDown") {
-      const newValue = Math.max(parseFloat(slider.value) - 5, 0);
-      setVolume(newValue);
-    }
-  });
+            videoPlayer.addEventListener("volumechange", () => {
+                if (previousMutedState && !videoPlayer.muted) {
+                    // Player was muted and is now unmuted
+                    videoPlayer.volume = lastSetVolume;
+                    volumeInput.value = Math.round(videoPlayer.volume * 100);
+                    updateSliderHandle();
+                }
+
+                previousMutedState = videoPlayer.muted;
+
+                // Update lastSetVolume if the volume changed and not muted
+                if (!videoPlayer.muted) lastSetVolume = videoPlayer.volume;
+
+                volumeInput.value = videoPlayer.muted
+                    ? 0
+                    : Math.round(videoPlayer.volume * 100);
+
+                // Update the slider handle position
+                updateSliderHandle();
+
+                // Save the volume to localStorage
+                const volumePercent = Math.round(videoPlayer.volume * 100);
+                const ytVolumeObject = {
+                    data: JSON.stringify({
+                        volume: volumePercent,
+                        muted: videoPlayer.muted,
+                    }),
+                    expiration: Date.now() + 2592000000,
+                    creation: Date.now(),
+                };
+                const ytVolumeString = JSON.stringify(ytVolumeObject);
+                localStorage.setItem("yt-player-volume", ytVolumeString);
+            });
+
+            // Insert the input into the left controls
+            leftControls.appendChild(volumeInput);
+        }
+    }, 500);
 })();
