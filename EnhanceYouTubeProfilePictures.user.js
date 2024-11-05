@@ -1,13 +1,11 @@
 // ==UserScript==
 // @name         Enhance YouTube Profile Pictures (HD Version with Caching)
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      4.0
-// @description  Enlarges YouTube profile pictures on mouse over, shows HD version, Caches HD images for faster display using Tampermonkey caching.
+// @version      5.2
+// @description  Enlarges YouTube profile pictures on mouse over, shows HD version, Caches HD images for faster display using localStorage caching. Enlarges profile picture when a creator hearts a comment.
 // @author       Nick2bad4u
 // @match        https://www.youtube.com/*
-// @grant        GM_setValue
-// @grant        GM_getValue
-// @grant        GM_addStyle
+// @grant        none
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/EnhanceYouTubeProfilePictures.user.js
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/EnhanceYouTubeProfilePictures.user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
@@ -21,9 +19,9 @@
   const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
   const preloadedImages = new Map();
 
-  // Load cache from Tampermonkey storage
+  // Load cache from localStorage
   function loadCache() {
-    const cache = GM_getValue("profilePicCache", {});
+    const cache = JSON.parse(localStorage.getItem("profilePicCache") || "{}");
     const now = Date.now();
     // Clear out expired cache entries
     Object.keys(cache).forEach((key) => {
@@ -31,13 +29,13 @@
         delete cache[key]; // Remove expired entry
       }
     });
-    GM_setValue("profilePicCache", cache); // Update cache after removing expired entries
+    localStorage.setItem("profilePicCache", JSON.stringify(cache)); // Update cache after removing expired entries
     return cache;
   }
 
-  // Save cache to Tampermonkey storage
+  // Save cache to localStorage
   function saveCache(cache) {
-    GM_setValue("profilePicCache", cache);
+    localStorage.setItem("profilePicCache", JSON.stringify(cache));
   }
 
   let cache = loadCache(); // Load the cache once when the script runs
@@ -82,7 +80,11 @@
       const rect = img.getBoundingClientRect();
 
       // Set fixed size, position relative to the original image
-      if (img.classList.contains("h-5.w-5.inline.align-middle.rounded-full.flex-none")) {
+      if (
+        img.classList.contains(
+          "h-5.w-5.inline.align-middle.rounded-full.flex-none",
+        )
+      ) {
         img.style.transform = "scale(6) translateX(20px)";
         img.style.transition = "transform 0.2s ease";
         img.style.border = "1px solid black";
@@ -131,25 +133,39 @@
     const profilePicsComments = document.querySelectorAll(
       ".style-scope yt-img-shadow img:not(#avatar-btn > yt-img-shadow img)",
     );
+    const heartedThumbnails = document.querySelectorAll(
+      "#creator-heart-button yt-img-shadow img, #creator-heart-button img",
+    );
 
     profilePicsChat.forEach((pic) => {
       preloadHDImage(pic.src); // Preload HD image
-      pic.addEventListener("mouseover", enlargeProfilePic);
+      pic.addEventListener("mouseenter", enlargeProfilePic);
     });
 
     profilePicsComments.forEach((pic) => {
       preloadHDImage(pic.src); // Preload HD image
-      pic.addEventListener("mouseover", enlargeProfilePic);
+      pic.addEventListener("mouseenter", enlargeProfilePic);
+    });
+
+    heartedThumbnails.forEach((pic) => {
+      preloadHDImage(pic.src); // Preload HD image
+      pic.addEventListener("mouseenter", enlargeProfilePic); // Add hover event
     });
   }
 
   // Observe changes in the chat and comments section to dynamically add event listeners
-  const observer = new MutationObserver(() => {
-    addEventListeners();
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length > 0) {
+        addEventListeners();
+      }
+    });
   });
   observer.observe(document.body, {
     childList: true,
     subtree: true,
+    attributes: true, // Observe attribute changes
+    attributeFilter: ["src"], // Only track changes in `src` attribute
   });
 
   // Initial call to add event listeners

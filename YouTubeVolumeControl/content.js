@@ -2,7 +2,9 @@
 const playerReady = setInterval(() => {
   const videoPlayer = document.querySelector("video");
   const leftControls = document.querySelector(".ytp-left-controls");
-  const volumeSliderHandle = document.querySelector(".ytp-volume-slider-handle");
+  const volumeSliderHandle = document.querySelector(
+    ".ytp-volume-slider-handle",
+  );
   const volumePanel = document.querySelector(".ytp-volume-panel");
   const muteButton = document.querySelector(".ytp-mute-button");
 
@@ -83,19 +85,19 @@ const playerReady = setInterval(() => {
     // Input focus and hover styling
     volumeInput.addEventListener(
       "focus",
-      () => (volumeInput.style.borderColor = "rgba(255, 255, 255, 0.6)")
+      () => (volumeInput.style.borderColor = "rgba(255, 255, 255, 0.6)"),
     );
     volumeInput.addEventListener(
       "blur",
-      () => (volumeInput.style.borderColor = "rgba(255, 255, 255, 0.3)")
+      () => (volumeInput.style.borderColor = "rgba(255, 255, 255, 0.3)"),
     );
     volumeInput.addEventListener(
       "mouseenter",
-      () => (volumeInput.style.backgroundColor = "rgba(0, 0, 0, 0.8)")
+      () => (volumeInput.style.backgroundColor = "rgba(0, 0, 0, 0.8)"),
     );
     volumeInput.addEventListener(
       "mouseleave",
-      () => (volumeInput.style.backgroundColor = "rgba(255, 255, 255, 0.0)")
+      () => (volumeInput.style.backgroundColor = "rgba(255, 255, 255, 0.0)"),
     );
 
     // Handle volume change from input
