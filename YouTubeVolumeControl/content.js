@@ -2,11 +2,12 @@
 const playerReady = setInterval(() => {
   const videoPlayer = document.querySelector("video");
   const leftControls = document.querySelector(".ytp-left-controls");
-  const volumeSlider = document.querySelector(
-    ".ytp-volume-panel .ytp-volume-slider",
+  const volumeSliderHandle = document.querySelector(
+    ".ytp-volume-slider-handle",
   );
+  const volumePanel = document.querySelector(".ytp-volume-panel");
 
-  if (videoPlayer && leftControls && volumeSlider) {
+  if (videoPlayer && leftControls && volumeSliderHandle) {
     clearInterval(playerReady);
 
     // Retrieve the saved volume level from localStorage
@@ -18,11 +19,16 @@ const playerReady = setInterval(() => {
     videoPlayer.volume = Math.max(0, Math.min(1, savedVolume));
     videoPlayer.muted = videoPlayer.volume === 0;
 
-    // Update the slider to reflect the saved volume
-    volumeSlider.style.setProperty(
-      "--ytp-volume-slider-value",
-      videoPlayer.volume * 100,
-    );
+    // Update the slider handle position to reflect the saved volume
+    const updateSliderHandle = (volume) => {
+      volumeSliderHandle.style.left = `${volume * 100}%`;
+    };
+    updateSliderHandle(videoPlayer.volume);
+
+    // Also set the aria-valuenow attribute on the .ytp-volume-panel element
+    if (volumePanel) {
+      volumePanel.setAttribute("aria-valuenow", videoPlayer.volume * 100);
+    }
 
     // Create input element for volume control
     const volumeInput = document.createElement("input");
@@ -82,8 +88,8 @@ const playerReady = setInterval(() => {
       videoPlayer.muted = volume === 0;
       lastSetVolume = videoPlayer.volume;
 
-      // Update the YouTube slider directly
-      volumeSlider.style.setProperty("--ytp-volume-slider-value", volume);
+      // Update the YouTube slider handle position
+      updateSliderHandle(videoPlayer.volume);
 
       // Save the new volume to localStorage
       localStorage.setItem("youtubeVolume", lastSetVolume);
@@ -96,6 +102,9 @@ const playerReady = setInterval(() => {
         ? 0
         : Math.round(videoPlayer.volume * 100);
 
+      // Update the slider handle position to reflect volume changes
+      updateSliderHandle(videoPlayer.volume);
+
       // Save the volume to localStorage when it changes
       localStorage.setItem("youtubeVolume", videoPlayer.volume);
     });
@@ -105,10 +114,7 @@ const playerReady = setInterval(() => {
       if (!videoPlayer.muted) {
         videoPlayer.volume = lastSetVolume;
         volumeInput.value = Math.round(videoPlayer.volume * 100);
-        volumeSlider.style.setProperty(
-          "--ytp-volume-slider-value",
-          lastSetVolume * 100,
-        );
+        updateSliderHandle(lastSetVolume);
       }
     });
     observer.observe(videoPlayer, {
@@ -118,5 +124,12 @@ const playerReady = setInterval(() => {
 
     // Insert the input into the left controls
     leftControls.appendChild(volumeInput);
+  } else {
+    console.log("Elements not found:", {
+      videoPlayer: !!videoPlayer,
+      leftControls: !!leftControls,
+      volumeSliderHandle: !!volumeSliderHandle,
+      volumePanel: !!volumePanel,
+    });
   }
 }, 500);
