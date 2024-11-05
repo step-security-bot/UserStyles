@@ -10,22 +10,39 @@ const playerReady = setInterval(() => {
   if (videoPlayer && leftControls && volumeSliderHandle) {
     clearInterval(playerReady);
 
-    // Retrieve the saved volume level from localStorage
-    let savedVolume = localStorage.getItem("youtubeVolume");
-    savedVolume =
-      savedVolume !== null ? parseFloat(savedVolume) : videoPlayer.volume;
+    // Retrieve the saved volume level from YouTube's localStorage or sessionStorage key "yt-player-volume"
+    let ytVolumeData =
+      localStorage.getItem("yt-player-volume") ||
+      sessionStorage.getItem("yt-player-volume");
+    let savedVolume = videoPlayer.volume;
+    let savedMuted = videoPlayer.muted;
+    let expiration = Date.now() + 2592000000; // Default expiration in 30 days
+    let creation = Date.now();
 
-    // Ensure savedVolume is within [0, 1] range for the video player's volume property
+    if (ytVolumeData) {
+      try {
+        ytVolumeData = JSON.parse(ytVolumeData);
+        const data = JSON.parse(ytVolumeData.data);
+        savedVolume = data.volume / 100; // YouTube stores volume from 0 to 100
+        savedMuted = data.muted;
+        expiration = ytVolumeData.expiration || expiration;
+        creation = ytVolumeData.creation || creation;
+      } catch (e) {
+        console.error("Failed to parse yt-player-volume:", e);
+      }
+    }
+
+    // Ensure savedVolume is within [0, 1] range
     videoPlayer.volume = Math.max(0, Math.min(1, savedVolume));
-    videoPlayer.muted = videoPlayer.volume === 0;
+    videoPlayer.muted = savedMuted;
 
-    // Update the slider handle position to reflect the saved volume
+    // Update the slider handle position
     const updateSliderHandle = (volume) => {
       volumeSliderHandle.style.left = `${volume * 100}%`;
     };
     updateSliderHandle(videoPlayer.volume);
 
-    // Also set the aria-valuenow attribute on the .ytp-volume-panel element
+    // Set the aria-valuenow attribute on the volume panel
     if (volumePanel) {
       volumePanel.setAttribute("aria-valuenow", videoPlayer.volume * 100);
     }
@@ -79,7 +96,7 @@ const playerReady = setInterval(() => {
     );
 
     // Handle volume change from input
-    let lastSetVolume = savedVolume;
+    let lastSetVolume = videoPlayer.volume;
     volumeInput.addEventListener("input", () => {
       let volume = parseInt(volumeInput.value, 10);
       volume = isNaN(volume) ? 100 : Math.max(0, Math.min(100, volume)); // Clamp between 0 and 100
@@ -88,11 +105,21 @@ const playerReady = setInterval(() => {
       videoPlayer.muted = volume === 0;
       lastSetVolume = videoPlayer.volume;
 
-      // Update the YouTube slider handle position
+      // Update the slider handle position
       updateSliderHandle(videoPlayer.volume);
 
-      // Save the new volume to localStorage
-      localStorage.setItem("youtubeVolume", lastSetVolume);
+      // Save the new volume to localStorage and sessionStorage
+      const ytVolumeObject = {
+        data: JSON.stringify({
+          volume: volume, // Volume from 0 to 100
+          muted: videoPlayer.muted,
+        }),
+        expiration: Date.now() + 2592000000, // Expires in 30 days
+        creation: Date.now(),
+      };
+      const ytVolumeString = JSON.stringify(ytVolumeObject);
+      localStorage.setItem("yt-player-volume", ytVolumeString);
+      sessionStorage.setItem("yt-player-volume", ytVolumeString);
     });
 
     // Update input value when volume changes from other controls
@@ -102,14 +129,25 @@ const playerReady = setInterval(() => {
         ? 0
         : Math.round(videoPlayer.volume * 100);
 
-      // Update the slider handle position to reflect volume changes
+      // Update the slider handle position
       updateSliderHandle(videoPlayer.volume);
 
-      // Save the volume to localStorage when it changes
-      localStorage.setItem("youtubeVolume", videoPlayer.volume);
+      // Save the volume to localStorage and sessionStorage
+      const volumePercent = Math.round(videoPlayer.volume * 100);
+      const ytVolumeObject = {
+        data: JSON.stringify({
+          volume: volumePercent,
+          muted: videoPlayer.muted,
+        }),
+        expiration: Date.now() + 2592000000,
+        creation: Date.now(),
+      };
+      const ytVolumeString = JSON.stringify(ytVolumeObject);
+      localStorage.setItem("yt-player-volume", ytVolumeString);
+      sessionStorage.setItem("yt-player-volume", ytVolumeString);
     });
 
-    // Listen for changes to the muted property and restore volume on unmute
+    // Observe changes to the muted property
     const observer = new MutationObserver(() => {
       if (!videoPlayer.muted) {
         videoPlayer.volume = lastSetVolume;
