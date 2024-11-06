@@ -451,7 +451,7 @@ function Show-DirectorySize {
   Write-Host "Calculating size of directory: $Path" -ForegroundColor Yellow
   if (Test-Path $Path) {
     $size = (Get-ChildItem $Path -Recurse | Measure-Object -Property Length -Sum).Sum
-    Write-Host ("Total size of directory {0}: {1} MB" -f $Path, [math]::Round($size / 1MB, 2)) -ForegroundColor Cyan
+    Write-Host ("Total size of directory {0}: {1} MB" -f $Path,[math]::Round($size / 1MB,2)) -ForegroundColor Cyan
   } else {
     Write-Host "Directory not found: $Path" -ForegroundColor Red
   }
@@ -460,31 +460,31 @@ function Show-DirectorySize {
 # Function to retrieve the list of services
 function Get-Services {
   Write-Host "Retrieving list of services..." -ForegroundColor Yellow
-  Get-Service | Format-Table DisplayName, Status
+  Get-Service | Format-Table DisplayName,Status
   Write-Host "Services list retrieved." -ForegroundColor Green
 }
 
 # Function to get system information
 function Get-SystemInfo {
-    $os = Get-CimInstance Win32_OperatingSystem
-    $cpu = Get-CimInstance Win32_Processor
-    $memory = Get-CimInstance Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
-    $disk = Get-CimInstance Win32_LogicalDisk
+  $os = Get-CimInstance Win32_OperatingSystem
+  $cpu = Get-CimInstance Win32_Processor
+  $memory = Get-CimInstance Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
+  $disk = Get-CimInstance Win32_LogicalDisk
 
-    [PSCustomObject]@{
-        OS             = $os.Caption
-        OS_Version     = $os.Version
-        CPU            = $cpu.Name
-        CPU_Cores      = $cpu.NumberOfCores
-        Total_Memory   = [math]::Round($memory.Sum / 1GB, 2)
-        Disk_Space     = $disk | ForEach-Object { [PSCustomObject]@{ $_.DeviceID = [math]::Round($_.Size / 1GB, 2) } }
-    } | Format-Table -AutoSize
+  [pscustomobject]@{
+    OS = $os.Caption
+    OS_Version = $os.Version
+    CPU = $cpu.Name
+    CPU_Cores = $cpu.NumberOfCores
+    Total_Memory = [math]::Round($memory.Sum / 1GB,2)
+    Disk_Space = $disk | ForEach-Object { [pscustomobject]@{ $_.DeviceID = [math]::Round($_.Size / 1GB,2) } }
+  } | Format-Table -AutoSize
 }
 
 # Function to retrieve environment variables
 function Get-EnvironmentVariables {
   Write-Host "Retrieving environment variables..." -ForegroundColor Yellow
-  Get-ChildItem Env: | Format-Table Name, Value
+  Get-ChildItem Env: | Format-Table Name,Value
   Write-Host "Environment variables retrieved." -ForegroundColor Green
 }
 
@@ -501,7 +501,7 @@ function Backup-Files {
 
 function Get-InstalledSoftware {
   Write-Host "Retrieving installed software list..." -ForegroundColor Yellow
-  Get-WmiObject -Class Win32_Product | Select-Object Name, Version | Format-Table -AutoSize
+  Get-WmiObject -Class Win32_Product | Select-Object Name,Version | Format-Table -AutoSize
 }
 
 function Schedule-Task {
@@ -525,7 +525,7 @@ function Get-FileHash {
 
   Write-Host "Calculating file hash for: $FilePath" -ForegroundColor Yellow
   if (Test-Path $FilePath) {
-    Get-FileHash -Path $FilePath | Format-Table Algorithm, Hash
+    Get-FileHash -Path $FilePath | Format-Table Algorithm,Hash
   } else {
     Write-Host "File not found: $FilePath" -ForegroundColor Red
   }
@@ -533,31 +533,31 @@ function Get-FileHash {
 
 function editprofile {
   Write-Host "Opening Notepad++ with your profile" -ForegroundColor Yellow
-  C:\"Program Files"\Notepad++\notepad++.exe "C:\Users\Nick\Dropbox\PC (2)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+  C:\Program Files\Notepad++\notepad++.exe "C:\Users\Nick\Dropbox\PC (2)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 }
 
 function notepad++ {
   Write-Host "Opening Notepad++" -ForegroundColor Yellow
-  C:\"Program Files"\Notepad++\notepad++.exe
+  C:\Program Files\Notepad++\notepad++.exe
 }
 
 # Function to quickly open Visual Studio Code in the current directory
 function Open-Code {
-    code .
+  code .
 }
 
 # Function to get the size of a directory
 function Get-DirSize {
-    param (
-        [string]$path = "."
-    )
-    $size = (Get-ChildItem -Recurse -ErrorAction SilentlyContinue $path | Measure-Object -Property Length -Sum).Sum
-    [math]::Round($size / 1MB, 2)
+  param(
+    [string]$path = "."
+  )
+  $size = (Get-ChildItem -Recurse -ErrorAction SilentlyContinue $path | Measure-Object -Property Length -Sum).Sum
+  [math]::Round($size / 1MB,2)
 }
 
 # Function to list the top 10 processes by memory usage
 function Get-TopProcesses {
-    Get-Process | Sort-Object -Property WorkingSet -Descending | Select-Object -First 10 | Format-Table -Property Id, ProcessName, @{Label="Memory (MB)"; Expression={[math]::Round($_.WorkingSet / 1MB, 2)}}
+  Get-Process | Sort-Object -Property WorkingSet -Descending | Select-Object -First 10 | Format-Table -Property Id,ProcessName,@{ Label = "Memory (MB)"; Expression = { [math]::Round($_.WorkingSet / 1MB,2) } }
 }
 
 # Checks and displays available and used disk space for a specified drive.
@@ -569,7 +569,7 @@ function Check-DiskSpace {
   Write-Host "Checking disk space on drive $DriveLetter..." -ForegroundColor Yellow
   $disk = Get-PSDrive -Name $DriveLetter
   if ($disk) {
-    Write-Host ("Drive {0}: Used: {1} GB, Free: {2} GB" -f $DriveLetter, [math]::Round($disk.Used / 1GB, 2), [math]::Round($disk.Free / 1GB, 2)) -ForegroundColor Cyan
+    Write-Host ("Drive {0}: Used: {1} GB, Free: {2} GB" -f $DriveLetter,[math]::Round($disk.Used / 1GB,2),[math]::Round($disk.Free / 1GB,2)) -ForegroundColor Cyan
   } else {
     Write-Host "Drive not found." -ForegroundColor Red
   }
@@ -611,7 +611,7 @@ function Restart-Explorer {
   Write-Host "Explorer restarted." -ForegroundColor Green
 }
 
-# Deletes files in the system’s temporary folder to free up space.
+# Deletes files in the system?s temporary folder to free up space.
 function Clean-TempFiles {
   Write-Host "Cleaning temporary files..." -ForegroundColor Yellow
   Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue
@@ -648,7 +648,7 @@ function Set-Wallpaper {
           public static extern int SystemParametersInfo (int uAction, int uParam, string lpvParam, int fuWinIni);
       }
 "@
-    [Wallpaper]::SystemParametersInfo(0x0014, 0, $ImagePath, 0x0001)
+    [Wallpaper]::SystemParametersInfo(0x0014,0,$ImagePath,0x0001)
     Write-Host "Wallpaper set successfully." -ForegroundColor Green
   } else {
     Write-Host "Image file not found: $ImagePath" -ForegroundColor Red
@@ -665,7 +665,7 @@ function Show-LastBootTime {
 # Empties the Recycle Bin for all users on the system.
 function Empty-RecycleBin {
   Write-Host "Emptying Recycle Bin..." -ForegroundColor Yellow
-  (New-Object -ComObject Shell.Application).NameSpace(10).Items() | ForEach-Object { $_.InvokeVerb("delete") }
+  (New-Object -ComObject Shell.Application).Namespace(10).Items() | ForEach-Object { $_.InvokeVerb("delete") }
   Write-Host "Recycle Bin emptied." -ForegroundColor Green
 }
 
@@ -678,14 +678,14 @@ function Lock-Workstation {
 
 # Function to monitor a log file in real-time (old)
 function Monitor-LogFileOld {
-    param (
-        [string]$filePath
-    )
-    if (Test-Path $filePath) {
-        Get-Content $filePath -Wait -Tail 10
-    } else {
-        Write-Host "File not found!"
-    }
+  param(
+    [string]$filePath
+  )
+  if (Test-Path $filePath) {
+    Get-Content $filePath -Wait -Tail 10
+  } else {
+    Write-Host "File not found!"
+  }
 }
 
 # Function to monitor a log file in real-time
@@ -711,125 +711,125 @@ function Monitor-LogFile {
 
 # Function to search for a string in files within a directory
 function Search-InFiles {
-    param (
-        [string]$directory,
-        [string]$searchString
-    )
-    if (Test-Path $directory) {
-        Get-ChildItem -Path $directory -Recurse -File |
-        Select-String -Pattern $searchString |
-        ForEach-Object {
-            [PSCustomObject]@{
-                FilePath = $_.Path
-                LineNumber = $_.LineNumber
-                Line = $_.Line
-            }
-        } | Format-Table -AutoSize
-    } else {
-        Write-Host "Directory not found!"
-    }
+  param(
+    [string]$directory,
+    [string]$searchString
+  )
+  if (Test-Path $directory) {
+    Get-ChildItem -Path $directory -Recurse -File |
+    Select-String -Pattern $searchString |
+    ForEach-Object {
+      [pscustomobject]@{
+        FilePath = $_.Path
+        LineNumber = $_.LineNumber
+        Line = $_.Line
+      }
+    } | Format-Table -AutoSize
+  } else {
+    Write-Host "Directory not found!"
+  }
 }
 
 # Function to download a file from a URL
 function Download-File {
-    param (
-        [string]$url,
-        [string]$destinationPath
-    )
-    try {
-        Invoke-WebRequest -Uri $url -OutFile $destinationPath
-        Write-Host "File downloaded successfully to $destinationPath"
-    } catch {
-        Write-Host "Failed to download file: $_"
-    }
+  param(
+    [string]$url,
+    [string]$destinationPath
+  )
+  try {
+    Invoke-WebRequest -Uri $url -OutFile $destinationPath
+    Write-Host "File downloaded successfully to $destinationPath"
+  } catch {
+    Write-Host "Failed to download file: $_"
+  }
 }
 
 # Function to check the status of a website
 function Check-WebsiteStatus {
-    param (
-        [string]$url
-    )
-    try {
-        $response = Invoke-WebRequest -Uri $url -UseBasicParsing
-        Write-Host "Website is up. Status code: $($response.StatusCode)"
-    } catch {
-        Write-Host "Website is down or inaccessible: $_"
-    }
+  param(
+    [string]$url
+  )
+  try {
+    $response = Invoke-WebRequest -Uri $url -UseBasicParsing
+    Write-Host "Website is up. Status code: $($response.StatusCode)"
+  } catch {
+    Write-Host "Website is down or inaccessible: $_"
+  }
 }
 
 # Function to get the IP address of a hostname
 function Get-IPFromHostname {
-    param (
-        [string]$hostname
-    )
-    try {
-        $ip = [System.Net.Dns]::GetHostAddresses($hostname)
-        Write-Host "IP Address(es) for $hostname $ip"
-    } catch {
-        Write-Host "Failed to resolve hostname: $_"
-    }
+  param(
+    [string]$hostname
+  )
+  try {
+    $ip = [System.Net.Dns]::GetHostAddresses($hostname)
+    Write-Host "IP Address(es) for $hostname $ip"
+  } catch {
+    Write-Host "Failed to resolve hostname: $_"
+  }
 }
 
 # Function to archive old files in a directory
 function Archive-OldFiles {
-    param (
-        [string]$directory,
-        [int]$daysOld
-    )
-    $archivePath = Join-Path $directory "Archive_$(Get-Date -Format 'yyyyMMdd')"
-    New-Item -ItemType Directory -Path $archivePath -Force
+  param(
+    [string]$directory,
+    [int]$daysOld
+  )
+  $archivePath = Join-Path $directory "Archive_$(Get-Date -Format 'yyyyMMdd')"
+  New-Item -ItemType Directory -Path $archivePath -Force
 
-    Get-ChildItem -Path $directory -File | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-$daysOld) } | ForEach-Object {
-        Move-Item -Path $_.FullName -Destination $archivePath
-    }
+  Get-ChildItem -Path $directory -File | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(- $daysOld) } | ForEach-Object {
+    Move-Item -Path $_.FullName -Destination $archivePath
+  }
 
-    Write-Host "Files older than $daysOld days have been archived to $archivePath"
+  Write-Host "Files older than $daysOld days have been archived to $archivePath"
 }
 
 # Function to monitor CPU and memory usage
 function Monitor-SystemUsage {
-    [CmdletBinding()]
-    param (
-        [int]$interval = 5,
-        [int]$duration = 60
-    )
+  [CmdletBinding()]
+  param(
+    [int]$interval = 5,
+    [int]$duration = 60
+  )
 
-    $endTime = (Get-Date).AddSeconds($duration)
-    while ((Get-Date) -lt $endTime) {
-        $cpu = Get-Counter '\Processor(_Total)\% Processor Time'
-        $memory = Get-Counter '\Memory\Available MBytes'
+  $endTime = (Get-Date).AddSeconds($duration)
+  while ((Get-Date) -lt $endTime) {
+    $cpu = Get-Counter '\Processor(_Total)\% Processor Time'
+    $memory = Get-Counter '\Memory\Available MBytes'
 
-        [PSCustomObject]@{
-            TimeStamp = Get-Date
-            CPU_Usage = [math]::Round($cpu.CounterSamples.CookedValue, 2)
-            AvailableMemory_MB = [math]::Round($memory.CounterSamples.CookedValue, 2)
-        } | Format-Table -AutoSize
+    [pscustomobject]@{
+      TimeStamp = Get-Date
+      CPU_Usage = [math]::Round($cpu.CounterSamples.CookedValue,2)
+      AvailableMemory_MB = [math]::Round($memory.CounterSamples.CookedValue,2)
+    } | Format-Table -AutoSize
 
-        Start-Sleep -Seconds $interval
-    }
+    Start-Sleep -Seconds $interval
+  }
 }
 
 # Function to send an email with system information
 function Send-SystemInfoEmail {
-    param (
-        [string]$to,
-        [string]$from,
-        [string]$smtpServer
-    )
+  param(
+    [string]$to,
+    [string]$from,
+    [string]$smtpServer
+  )
 
-    $systemInfo = Get-SystemInfo
-    $body = $systemInfo | Out-String
+  $systemInfo = Get-SystemInfo
+  $body = $systemInfo | Out-String
 
-    $message = @{
-        To      = $to
-        From    = $from
-        Subject = "System Information Report"
-        Body    = $body
-        SmtpServer = $smtpServer
-    }
+  $message = @{
+    To = $to
+    From = $from
+    Subject = "System Information Report"
+    Body = $body
+    SmtpServer = $smtpServer
+  }
 
-    Send-MailMessage @message
-    Write-Host "System information email sent to $to"
+  Send-MailMessage @message
+  Write-Host "System information email sent to $to"
 }
 
 function Backup-And-Compress {
@@ -844,14 +844,14 @@ function Backup-And-Compress {
     $timestamp = (Get-Date -Format "yyyyMMdd_HHmmss")
     $zipPath = Join-Path -Path $DestinationFolder -ChildPath "${ArchiveName}_$timestamp.zip"
     Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::CreateFromDirectory($SourcePath, $zipPath)
+    [System.IO.Compression.ZipFile]::CreateFromDirectory($SourcePath,$zipPath)
     Write-Host "Backup created: $zipPath" -ForegroundColor Green
   } else {
     Write-Host "Source path not found: $SourcePath" -ForegroundColor Red
   }
 }
 
- # function provides system uptime details and warns the user if the uptime exceeds a specified threshold, prompting them to restart the machine.
+# function provides system uptime details and warns the user if the uptime exceeds a specified threshold, prompting them to restart the machine.
 function Check-SystemUptime {
   param(
     [int]$RestartThresholdHours = 72
@@ -859,8 +859,8 @@ function Check-SystemUptime {
 
   Write-Host "Checking system uptime..." -ForegroundColor Yellow
   $uptime = (Get-Date) - (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
-  Write-Host ("System uptime: {0} days, {1} hours" -f $uptime.Days, $uptime.Hours) -ForegroundColor Cyan
-  
+  Write-Host ("System uptime: {0} days, {1} hours" -f $uptime.Days,$uptime.Hours) -ForegroundColor Cyan
+
   if ($uptime.TotalHours -ge $RestartThresholdHours) {
     Write-Host ("WARNING: System uptime exceeds {0} hours. A restart is recommended." -f $RestartThresholdHours) -ForegroundColor Red
   } else {
@@ -881,61 +881,61 @@ function Update-WindowsDefender {
 }
 
 function Test-NetworkLatency {
-    param(
-        [hashtable]$Servers = @{
-            "Google DNS"            = "8.8.8.8";
-            "Cloudflare DNS"        = "1.1.1.1";
-            "OpenDNS"               = "208.67.222.222";
-            "Quad9 DNS"             = "9.9.9.9";
-            "Microsoft Azure"       = "13.107.21.200";
-            "Cloudflare Backup DNS" = "1.0.0.1";
-            "Google (US)"           = "www.google.com";
-            "YouTube (US)"          = "142.251.32.110";
-            "GitHub"                = "199.232.68.133";
-            "StackOverflow"         = "104.16.248.249";
-            "Reddit (Fastly)"       = "151.101.1.140";
-            "AWS (Amazon)"          = "52.95.110.1";
-            "Twitter (US, Fastly)"  = "151.101.65.69";
-            "AWS Global DNS"        = "205.251.242.103";
-            "GitHub Pages (US)"     = "185.199.108.153";
-            "Telstra (Australia)"   = "203.98.7.65";
-            "TPG (Australia)"       = "202.9.36.5";
-            "Etisalat (UAE)"        = "195.229.241.222";
-            "Google (EU, Germany)"  = "194.42.48.50";
-            "Cloudflare EU"         = "185.45.22.35";
-        }
-    )
-
-    Write-Host "Testing network latency to specified servers..." -ForegroundColor Yellow
-    $results = @()
-
-    foreach ($serverName in $Servers.Keys) {
-        $serverAddress = $Servers[$serverName]
-        Write-Host "Pinging ${serverName} (${serverAddress})..." -ForegroundColor Cyan
-
-        $latency = (Test-Connection -ComputerName $serverAddress -Count 5 -ErrorAction SilentlyContinue |
-                    Measure-Object -Property Latency -Average).Average
-
-        if ($latency) {
-            $roundedLatency = [math]::Round($latency, 2)
-            Write-Host "Latency to ${serverName}: $roundedLatency ms" -ForegroundColor Green
-            $results += [pscustomobject]@{
-                Server  = $serverName
-                Address = $serverAddress
-                Latency = "$roundedLatency ms"
-            }
-        } else {
-            Write-Host "Could not reach ${serverName} (${serverAddress})." -ForegroundColor Red
-            $results += [pscustomobject]@{
-                Server  = $serverName
-                Address = $serverAddress
-                Latency = "Unreachable"
-            }
-        }
+  param(
+    [hashtable]$Servers = @{
+      "Google DNS" = "8.8.8.8";
+      "Cloudflare DNS" = "1.1.1.1";
+      "OpenDNS" = "208.67.222.222";
+      "Quad9 DNS" = "9.9.9.9";
+      "Microsoft Azure" = "13.107.21.200";
+      "Cloudflare Backup DNS" = "1.0.0.1";
+      "Google (US)" = "www.google.com";
+      "YouTube (US)" = "142.251.32.110";
+      "GitHub" = "199.232.68.133";
+      "StackOverflow" = "104.16.248.249";
+      "Reddit (Fastly)" = "151.101.1.140";
+      "AWS (Amazon)" = "52.95.110.1";
+      "Twitter (US, Fastly)" = "151.101.65.69";
+      "AWS Global DNS" = "205.251.242.103";
+      "GitHub Pages (US)" = "185.199.108.153";
+      "Telstra (Australia)" = "203.98.7.65";
+      "TPG (Australia)" = "202.9.36.5";
+      "Etisalat (UAE)" = "195.229.241.222";
+      "Google (EU, Germany)" = "194.42.48.50";
+      "Cloudflare EU" = "185.45.22.35";
     }
+  )
 
-    Write-Host "Latency Results" -ForegroundColor Yellow
-    $results | Format-Table -AutoSize
+  Write-Host "Testing network latency to specified servers..." -ForegroundColor Yellow
+  $results = @()
+
+  foreach ($serverName in $Servers.Keys) {
+    $serverAddress = $Servers[$serverName]
+    Write-Host "Pinging ${serverName} (${serverAddress})..." -ForegroundColor Cyan
+
+    $latency = (Test-Connection -ComputerName $serverAddress -Count 5 -ErrorAction SilentlyContinue |
+      Measure-Object -Property Latency -Average).Average
+
+    if ($latency) {
+      $roundedLatency = [math]::Round($latency,2)
+      Write-Host "Latency to ${serverName}: $roundedLatency ms" -ForegroundColor Green
+      $results += [pscustomobject]@{
+        Server = $serverName
+        Address = $serverAddress
+        Latency = "$roundedLatency ms"
+      }
+    } else {
+      Write-Host "Could not reach ${serverName} (${serverAddress})." -ForegroundColor Red
+      $results += [pscustomobject]@{
+        Server = $serverName
+        Address = $serverAddress
+        Latency = "Unreachable"
+      }
+    }
+  }
+
+  Write-Host "Latency Results" -ForegroundColor Yellow
+  $results | Format-Table -AutoSize
 }
 
 
@@ -947,7 +947,7 @@ function Get-SecurityAuditLogs {
   )
 
   Write-Host "Retrieving security audit logs from the past $Days days..." -ForegroundColor Yellow
-  Get-EventLog -LogName Security -After (Get-Date).AddDays(-$Days) | Select-Object TimeGenerated, EntryType, Source, EventID, Message | Format-Table -AutoSize
+  Get-EventLog -LogName Security -After (Get-Date).AddDays(- $Days) | Select-Object TimeGenerated,EntryType,Source,EventID,Message | Format-Table -AutoSize
   Write-Host "Security audit logs retrieved." -ForegroundColor Green
 }
 
@@ -963,7 +963,7 @@ function Get-DiskUsageReport {
       $size = (Get-ChildItem -Path $_.FullName -Recurse -File | Measure-Object -Property Length -Sum).Sum
       [pscustomobject]@{
         FolderName = $_.Name
-        SizeMB     = [math]::Round($size / 1MB, 2)
+        SizeMB = [math]::Round($size / 1MB,2)
       }
     } | Sort-Object SizeMB -Descending | Format-Table -AutoSize
   } else {
