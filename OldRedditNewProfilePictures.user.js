@@ -212,14 +212,14 @@
             cursor: pointer;
         }
         .enlarged-profile-picture {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             position: absolute;
             display: none;
             z-index: 1000;
             pointer-events: none;
-            outline: 2px solid #000;
+            outline: 3px solid #000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
             background-color: rgba(0, 0, 0, 1);
         }
