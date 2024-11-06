@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - Universal Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.3
+// @version      3.4
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage.
 // @author       Nick2bad4u
 // @match        https://*.reddit.com/*
 // @match        https://www.*.reddit.com/*
 // @match        https://reddit-stream.com/*
-// @grant        GM_xmlhttpRequest
 // @connect      reddit.com
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-UniversalVersion.user.js
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-UniversalVersion.user.js
