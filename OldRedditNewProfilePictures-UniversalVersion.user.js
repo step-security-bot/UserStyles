@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - Universal Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.0
+// @version      3.1
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage.
 // @author       Nick2bad4u
 // @match        https://*.reddit.com/*
@@ -11,8 +11,8 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @connect      reddit.com
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures.user.js
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures.user.js
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-UniversalVersion.user.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-UniversalVersion.user.js
 // @license      Unlicense
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // ==/UserScript==
@@ -21,13 +21,20 @@
   "use strict";
   console.log("Script loaded");
 
-  let profilePictureCache = JSON.parse(localStorage.getItem("profilePictureCache") || '{}');
-  let cacheTimestamps = JSON.parse(localStorage.getItem("cacheTimestamps") || '{}');
+  let profilePictureCache = JSON.parse(
+    localStorage.getItem("profilePictureCache") || "{}",
+  );
+  let cacheTimestamps = JSON.parse(
+    localStorage.getItem("cacheTimestamps") || "{}",
+  );
   const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
   const MAX_CACHE_SIZE = 25000; // Maximum number of cache entries
 
   function saveCache() {
-    localStorage.setItem("profilePictureCache", JSON.stringify(profilePictureCache));
+    localStorage.setItem(
+      "profilePictureCache",
+      JSON.stringify(profilePictureCache),
+    );
     localStorage.setItem("cacheTimestamps", JSON.stringify(cacheTimestamps));
   }
 
@@ -84,9 +91,13 @@
 
     const fetchPromises = uncachedUsernames.map(async (username) => {
       try {
-        const response = await fetch(`https://www.reddit.com/user/${username}/about.json`);
+        const response = await fetch(
+          `https://www.reddit.com/user/${username}/about.json`,
+        );
         if (!response.ok) {
-          console.error(`Error fetching profile picture for ${username}: ${response.statusText}`);
+          console.error(
+            `Error fetching profile picture for ${username}: ${response.statusText}`,
+          );
           return null;
         }
         const data = await response.json();
