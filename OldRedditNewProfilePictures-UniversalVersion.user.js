@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - Universal Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      3.5
+// @version      3.6
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage.
 // @author       Nick2bad4u
 // @match        https://*.reddit.com/*
@@ -20,18 +20,20 @@
   console.log("Script loaded");
 
   let profilePictureCache = JSON.parse(
-    localStorage.getItem("profilePictureCache") || "{}",
+    localStorage.getItem("profilePictureCache") || "{}"
   );
   let cacheTimestamps = JSON.parse(
-    localStorage.getItem("cacheTimestamps") || "{}",
+    localStorage.getItem("cacheTimestamps") || "{}"
   );
   const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
   const MAX_CACHE_SIZE = 25000; // Maximum number of cache entries
+  const REQUEST_DELAY = 100; // Delay between requests in milliseconds
+  const LONG_DELAY = 5000; // Long delay after every 100 requests
 
   function saveCache() {
     localStorage.setItem(
       "profilePictureCache",
-      JSON.stringify(profilePictureCache),
+      JSON.stringify(profilePictureCache)
     );
     localStorage.setItem("cacheTimestamps", JSON.stringify(cacheTimestamps));
   }
@@ -55,11 +57,11 @@
     if (cacheEntries.length > MAX_CACHE_SIZE) {
       console.log("Cache size exceeded, removing oldest entries");
       const sortedEntries = cacheEntries.sort(
-        (a, b) => cacheTimestamps[a] - cacheTimestamps[b],
+        (a, b) => cacheTimestamps[a] - cacheTimestamps[b]
       );
       const entriesToRemove = sortedEntries.slice(
         0,
-        cacheEntries.length - MAX_CACHE_SIZE,
+        cacheEntries.length - MAX_CACHE_SIZE
       );
       entriesToRemove.forEach((username) => {
         delete profilePictureCache[username];
@@ -70,13 +72,17 @@
     }
   }
 
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   async function fetchProfilePictures(usernames) {
     console.log("Fetching profile pictures");
     const uncachedUsernames = usernames.filter(
       (username) =>
         !profilePictureCache[username] &&
         username !== "[deleted]" &&
-        username !== "[removed]",
+        username !== "[removed]"
     );
     if (uncachedUsernames.length === 0) {
       console.log("All usernames are cached");
@@ -84,19 +90,28 @@
     }
 
     console.log(
-      `Fetching profile pictures for: ${uncachedUsernames.join(", ")}`,
+      `Fetching profile pictures for: ${uncachedUsernames.join(", ")}`
     );
 
-    const fetchPromises = uncachedUsernames.map(async (username) => {
+    let fetchCount = 0;
+    for (const username of uncachedUsernames) {
+      if (fetchCount > 0 && fetchCount % 100 === 0) {
+        console.log(`Long delay after ${fetchCount} requests`);
+        await delay(LONG_DELAY); // Long delay after every 100 requests
+      } else {
+        await delay(REQUEST_DELAY); // Regular delay between requests
+      }
+      fetchCount++;
+
       try {
         const response = await fetch(
-          `https://www.reddit.com/user/${username}/about.json`,
+          `https://www.reddit.com/user/${username}/about.json`
         );
         if (!response.ok) {
           console.error(
-            `Error fetching profile picture for ${username}: ${response.statusText}`,
+            `Error fetching profile picture for ${username}: ${response.statusText}`
           );
-          return null;
+          continue;
         }
         const data = await response.json();
         if (data.data && data.data.icon_img) {
@@ -105,18 +120,17 @@
           cacheTimestamps[username] = Date.now();
           saveCache();
           console.log(`Fetched profile picture: ${username}`);
-          return profilePictureUrl;
         } else {
           console.warn(`No profile picture found for: ${username}`);
-          return null;
         }
       } catch (error) {
-        console.error(`Error fetching profile picture for ${username}:`, error);
-        return null;
+        console.error(
+          `Error fetching profile picture for ${username}:`,
+          error
+        );
       }
-    });
+    }
 
-    const results = await Promise.all(fetchPromises);
     limitCacheSize();
     return usernames.map((username) => profilePictureCache[username]);
   }
@@ -126,7 +140,7 @@
     const usernames = Array.from(comments)
       .map((comment) => comment.textContent.trim())
       .filter(
-        (username) => username !== "[deleted]" && username !== "[removed]",
+        (username) => username !== "[deleted]" && username !== "[removed]"
       );
     const profilePictureUrls = await fetchProfilePictures(usernames);
 
@@ -198,28 +212,28 @@
 
   const style = document.createElement("style");
   style.textContent = `
-        .profile-picture {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 5px;
-            transition: transform 0.2s ease-in-out;
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-        }
-        .enlarged-profile-picture {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            position: absolute;
-            display: none;
-            z-index: 1000;
-            pointer-events: none;
-            outline: 3px solid #000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
-            background-color: rgba(0, 0, 0, 1);
-        }
-    `;
+          .profile-picture {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              margin-right: 5px;
+              transition: transform 0.2s ease-in-out;
+              position: relative;
+              z-index: 1;
+              cursor: pointer;
+          }
+          .enlarged-profile-picture {
+              width: 250px;
+              height: 250px;
+              border-radius: 50%;
+              position: absolute;
+              display: none;
+              z-index: 1000;
+              pointer-events: none;
+              outline: 3px solid #000;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+              background-color: rgba(0, 0, 0, 1);
+          }
+      `;
   document.head.appendChild(style);
 })();
