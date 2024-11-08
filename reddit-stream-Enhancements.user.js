@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Scroll to Bottom, Stay Button, and Auto-Reload with Persistence and Icons for reddit-stream.com
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      2.9
+// @version      2.10
 // @description  Adds a floating button to scroll to the bottom, checkboxes to stay at the bottom, and to reload the page every 10, 15, 20, or 30 seconds on reddit-stream.com, with persistent settings and icons for clarity.
 // @author       Nick2bad4u
 // @match        *://*.reddit-stream.com/*
@@ -76,7 +76,7 @@
     button.innerHTML = '⬇️';
     button.style.position = 'fixed';
     button.style.bottom = '20px';
-    button.style.left = '20px';
+    button.style.right = '20px';
     button.style.zIndex = '1000';
     button.style.padding = '10px';
     button.style.borderRadius = '50%';
