@@ -67,7 +67,7 @@
   function limitCacheSize() {
     const cacheEntries = Object.keys(profilePictureCache);
     if (cacheEntries.length > MAX_CACHE_SIZE) {
-      console.log(`Current cache size: ${cacheEntries.length} URLs`);
+      console.log(`Current cache size: ${cacheEntries.length}`);
       console.log('Cache size exceeded, removing oldest entries');
       const sortedEntries = cacheEntries.sort((a, b) => cacheTimestamps[a] - cacheTimestamps[b]);
       const entriesToRemove = sortedEntries.slice(0, cacheEntries.length - MAX_CACHE_SIZE);
@@ -272,7 +272,7 @@
 
     console.log(`Profile pictures injected this run: ${injectedCount}`);
     console.log(`Current cache size: ${cacheEntries.length}`);
-    console.log(`Cache size limited to ${MAX_CACHE_SIZE.toLocaleString()} URLs`);
+    console.log(`Cache size limited to ${MAX_CACHE_SIZE}`);
     const currentCacheSizeMB = getCacheSizeInMB();
     const currentCacheSizeKB = getCacheSizeInKB();
     console.log(
@@ -283,30 +283,59 @@
     const minutesRemaining = Math.floor(timeRemaining / 60000);
     const secondsRemaining = Math.floor((timeRemaining % 60000) / 1000);
     console.log(
-      `Rate Limit Requests Remaining: ${rateLimitRemaining} requests, refresh in ${minutesRemaining} minutes and ${secondsRemaining} seconds`
+      `Rate Limit Requests Remaining: ${rateLimitRemaining}, refresh in ${minutesRemaining} minutes and ${secondsRemaining} seconds`
     );
   }
 
-  // Set up an observer to detect new comments
+  // Set up a MutationObserver to detect new comments
   function setupObserver() {
+    console.log('Setting up observer to detect reddit comments');
+
+    const processedComments = new Set(); // Track already processed comments
+    let newCommentsBatch = []; // Store new comments temporarily
+    let batchTimeout; // Timeout variable for batching
+    let isFirstRun = true; // Flag to check if it's the first run
+
     const observer = new MutationObserver((mutations) => {
-      const newComments = [];
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === 1 && (node.classList.contains('author') || node.classList.contains('c-username'))) {
-            newComments.push(node);
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const newComments = Array.from(node.querySelectorAll('.author, .c-username')).filter(
+              (comment) => !processedComments.has(comment)
+            );
+
+            if (newComments.length > 0) {
+              newComments.forEach((comment) => {
+                processedComments.add(comment);
+                newCommentsBatch.push(comment); // Add to batch
+              });
+
+              // Clear previous timeout and set a new one for batching
+              clearTimeout(batchTimeout);
+
+              // Set a delay for the first run, then use regular debounce for others
+              batchTimeout = setTimeout(
+                () => {
+                  injectProfilePictures(newCommentsBatch);
+                  newCommentsBatch = []; // Reset the batch
+                  isFirstRun = false; // Disable first run flag after initial run
+                },
+                isFirstRun ? 150 : 100
+              ); // First run delay: 1000ms, regular: 300ms
+            }
           }
         });
       });
-      if (newComments.length > 0) {
-        injectProfilePictures(newComments);
-      }
     });
+
     observer.observe(document.body, {
       childList: true,
       subtree: true,
     });
+
+    console.log('Observer initialized');
   }
+
   // Run the script
   function runScript() {
     flushOldCache();
