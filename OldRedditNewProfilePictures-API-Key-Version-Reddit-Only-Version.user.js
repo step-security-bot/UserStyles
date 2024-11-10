@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - API Key Version - Reddit Only Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      6.6
+// @version      7.0
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage. This version requires an API key. Enter your API Key under CLIENT_ID and CLIENT_SECRET or it will not work.
 // @author       Nick2bad4u
 // @match        *://*.reddit.com/*
@@ -15,8 +15,8 @@
 // @icon64       https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @run-at       document-start
 // @tag          reddit
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version.user.js
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version.user.js
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version-Reddit-Only-Version.user.js
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version-Reddit-Only-Version.user.js
 // ==/UserScript==
 
 (function () {
@@ -26,7 +26,7 @@
   // Reddit API credentials
   const CLIENT_ID = 'EnterClientIDHere';
   const CLIENT_SECRET = 'EnterClientSecretHere';
-  const USER_AGENT = 'ProfilePictureInjector/6.6 by Nick2bad4u';
+  const USER_AGENT = 'ProfilePictureInjector/7.0 by Nick2bad4u';
   let accessToken = localStorage.getItem('accessToken');
 
   // Retrieve cached profile pictures and timestamps from localStorage
