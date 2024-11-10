@@ -1,10 +1,9 @@
 // ==UserScript==
-// @name         Old Reddit with New Reddit Profile Pictures - API Key Version
+// @name         Old Reddit with New Reddit Profile Pictures - API Key Version - Reddit-Stream Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      6.6
+// @version      6.7
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage. This version requires an API key. Enter your API Key under CLIENT_ID and CLIENT_SECRET or it will not work.
 // @author       Nick2bad4u
-// @match        *://*.reddit.com/*
 // @match        *://reddit-stream.com/*
 // @connect      reddit.com
 // @connect      reddit-stream.com
@@ -27,7 +26,7 @@
   // Reddit API credentials
   const CLIENT_ID = 'EnterClientIDHere';
   const CLIENT_SECRET = 'EnterClientSecretHere';
-  const USER_AGENT = 'ProfilePictureInjector/6.6 by Nick2bad4u';
+  const USER_AGENT = 'ProfilePictureInjector/6.7 by Nick2bad4u';
   let accessToken = localStorage.getItem('accessToken');
 
   // Retrieve cached profile pictures and timestamps from localStorage
@@ -194,7 +193,7 @@
         const secondsRemaining = Math.floor((timeRemaining % 60000) / 1000);
 
         console.log(
-          `Rate Limit Requests Remaining: ${rateLimitRemaining}, 1000 more requests will be added in ${minutesRemaining} minutes and ${secondsRemaining} seconds`
+          `Rate Limit Requests Remaining: ${rateLimitRemaining} requests, reset in ${minutesRemaining} minutes and ${secondsRemaining} seconds`
         );
 
         if (!response.ok) {
@@ -288,23 +287,26 @@
     );
   }
 
+  // Set up an observer to detect new comments
   function setupObserver() {
-    console.log('Setting up observer');
     const observer = new MutationObserver((mutations) => {
-      const comments = document.querySelectorAll('.author, .c-username');
-      if (comments.length > 0) {
-        console.log('New comments detected');
-        observer.disconnect();
-        injectProfilePictures(comments);
+      const newComments = [];
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1 && (node.classList.contains('author') || node.classList.contains('c-username'))) {
+            newComments.push(node);
+          }
+        });
+      });
+      if (newComments.length > 0) {
+        injectProfilePictures(newComments);
       }
     });
     observer.observe(document.body, {
       childList: true,
       subtree: true,
     });
-    console.log('Observer initialized');
   }
-
   // Run the script
   function runScript() {
     flushOldCache();
