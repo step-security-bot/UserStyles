@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - API Key Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      6.2
+// @version      6.3
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage. This version requires an API key.
 // @author       Nick2bad4u
 // @match        *://*.reddit.com/*
@@ -25,7 +25,7 @@
   // Reddit API credentials
   const CLIENT_ID = 'EnterClientIDHere';
   const CLIENT_SECRET = 'EnterClientSecretHere';
-  const USER_AGENT = 'ProfilePictureInjector/6.2 by Nick2bad4u';
+  const USER_AGENT = 'ProfilePictureInjector/6.3 by Nick2bad4u';
   let accessToken = localStorage.getItem('accessToken');
 
   // Retrieve cached profile pictures and timestamps from localStorage
