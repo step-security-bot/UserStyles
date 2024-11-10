@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - API Key Version
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      6.5
+// @version      6.6
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage. This version requires an API key. Enter your API Key under CLIENT_ID and CLIENT_SECRET or it will not work.
 // @author       Nick2bad4u
 // @match        *://*.reddit.com/*
@@ -16,6 +16,8 @@
 // @icon64       https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @run-at       document-start
 // @tag          reddit
+// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version.user.js
+// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version.user.js
 // ==/UserScript==
 
 (function () {
@@ -25,7 +27,7 @@
   // Reddit API credentials
   const CLIENT_ID = 'EnterClientIDHere';
   const CLIENT_SECRET = 'EnterClientSecretHere';
-  const USER_AGENT = 'ProfilePictureInjector/6.5 by Nick2bad4u';
+  const USER_AGENT = 'ProfilePictureInjector/6.6 by Nick2bad4u';
   let accessToken = localStorage.getItem('accessToken');
 
   // Retrieve cached profile pictures and timestamps from localStorage
@@ -286,52 +288,20 @@
     );
   }
 
-  // Set up a MutationObserver to detect new comments
   function setupObserver() {
-    console.log('Setting up observer to detect reddit comments');
-
-    const processedComments = new Set(); // Track already processed comments
-    let newCommentsBatch = []; // Store new comments temporarily
-    let batchTimeout; // Timeout variable for batching
-    let isFirstRun = true; // Flag to check if it's the first run
-
+    console.log('Setting up observer');
     const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            const newComments = Array.from(node.querySelectorAll('.author, .c-username')).filter(
-              (comment) => !processedComments.has(comment)
-            );
-
-            if (newComments.length > 0) {
-              newComments.forEach((comment) => {
-                processedComments.add(comment);
-                newCommentsBatch.push(comment); // Add to batch
-              });
-
-              // Clear previous timeout and set a new one for batching
-              clearTimeout(batchTimeout);
-
-              // Set a delay for the first run, then use regular debounce for others
-              batchTimeout = setTimeout(
-                () => {
-                  injectProfilePictures(newCommentsBatch);
-                  newCommentsBatch = []; // Reset the batch
-                  isFirstRun = false; // Disable first run flag after initial run
-                },
-                isFirstRun ? 150 : 100
-              ); // First run delay: 1000ms, regular: 300ms
-            }
-          }
-        });
-      });
+      const comments = document.querySelectorAll('.author, .c-username');
+      if (comments.length > 0) {
+        console.log('New comments detected');
+        observer.disconnect();
+        injectProfilePictures(comments);
+      }
     });
-
     observer.observe(document.body, {
       childList: true,
       subtree: true,
     });
-
     console.log('Observer initialized');
   }
 
