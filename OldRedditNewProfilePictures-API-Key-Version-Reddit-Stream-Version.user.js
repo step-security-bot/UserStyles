@@ -10,9 +10,9 @@
 // @grant        GM_xmlhttpRequest
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @license      Unlicense
-// @resource     https://www.google.com/s2/favicons?sz=64&domain=reddit.com
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
-// @icon64       https://www.google.com/s2/favicons?sz=64&domain=reddit.com
+// @resource     https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
+// @icon64       https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
 // @run-at       document-start
 // @tag          reddit
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures-API-Key-Version-Reddit-Stream-Version.user.js
