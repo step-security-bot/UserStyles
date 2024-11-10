@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 (function () {
-  "use strict";
+  'use strict';
 
   let lastCheck = 0;
   const CHECK_INTERVAL = 1000;
@@ -22,44 +22,39 @@
     if (now - lastCheck < CHECK_INTERVAL) return;
     lastCheck = now;
 
-    console.log("checkAndMerge function called");
+    console.log('checkAndMerge function called');
 
-    const authorElement = document.querySelector(".author");
-    if (
-      authorElement &&
-      /dependabot(\[bot\])?|Nick2bad4u/.test(authorElement.textContent.trim())
-    ) {
+    const authorElement = document.querySelector('.author');
+    if (authorElement && /dependabot(\[bot\])?|Nick2bad4u/.test(authorElement.textContent.trim())) {
       setTimeout(() => {
-        const mergeButton = document.querySelector(".btn.btn-sm");
+        const mergeButton = document.querySelector('.btn.btn-sm');
         if (mergeButton && !mergeButton.disabled) {
-          console.log("Merge button is enabled, clicking it");
+          console.log('Merge button is enabled, clicking it');
           mergeButton.click();
           if (observer) observer.disconnect();
           observeDoneButton();
         } else {
-          console.log("Merge button is disabled or not found");
+          console.log('Merge button is disabled or not found');
         }
       }, 500);
     } else {
-      console.log("PR is not created by dependabot");
+      console.log('PR is not created by dependabot');
     }
   }
 
   function observeDoneButton() {
-    console.log("Observing for Done button...");
-    const notificationBar = document.querySelector(".js-flash-container"); // Adjust as necessary
+    console.log('Observing for Done button...');
+    const notificationBar = document.querySelector('.js-flash-container'); // Adjust as necessary
 
     if (!notificationBar) {
-      console.log("Notification bar not found");
+      console.log('Notification bar not found');
       return;
     }
 
     const doneButtonObserver = new MutationObserver(() => {
-      const doneButton = document.querySelector(
-        'button[aria-label="Done"].btn.btn-sm',
-      );
+      const doneButton = document.querySelector('button[aria-label="Done"].btn.btn-sm');
       if (doneButton) {
-        console.log("Done button found, clicking it");
+        console.log('Done button found, clicking it');
         doneButton.click();
         doneButtonObserver.disconnect(); // Stop observing after clicking
       }
@@ -72,18 +67,18 @@
   }
 
   globalThis.addEventListener(
-    "load",
+    'load',
     function () {
-      console.log("Page loaded");
+      console.log('Page loaded');
 
-      const targetNode = document.querySelector(".gh-header-meta");
+      const targetNode = document.querySelector('.gh-header-meta');
       if (!targetNode) {
-        console.log("Target node for observation not found");
+        console.log('Target node for observation not found');
         return;
       }
 
       observer = new MutationObserver(() => {
-        console.log("Relevant DOM mutation detected");
+        console.log('Relevant DOM mutation detected');
         checkAndMerge();
       });
 
@@ -93,6 +88,6 @@
       });
       checkAndMerge();
     },
-    false,
+    false
   );
 })();

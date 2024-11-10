@@ -21,28 +21,21 @@
 // ==/UserScript==
 
 (function () {
-  "use strict";
-  console.log("Script loaded");
+  'use strict';
+  console.log('Script loaded');
 
-  let profilePictureCache = JSON.parse(
-    localStorage.getItem("profilePictureCache") || "{}",
-  );
-  let cacheTimestamps = JSON.parse(
-    localStorage.getItem("cacheTimestamps") || "{}",
-  );
+  let profilePictureCache = JSON.parse(localStorage.getItem('profilePictureCache') || '{}');
+  let cacheTimestamps = JSON.parse(localStorage.getItem('cacheTimestamps') || '{}');
   const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
   const MAX_CACHE_SIZE = 25000; // Maximum number of cache entries
 
   function saveCache() {
-    localStorage.setItem(
-      "profilePictureCache",
-      JSON.stringify(profilePictureCache),
-    );
-    localStorage.setItem("cacheTimestamps", JSON.stringify(cacheTimestamps));
+    localStorage.setItem('profilePictureCache', JSON.stringify(profilePictureCache));
+    localStorage.setItem('cacheTimestamps', JSON.stringify(cacheTimestamps));
   }
 
   function flushOldCache() {
-    console.log("Flushing old cache");
+    console.log('Flushing old cache');
     const now = Date.now();
     for (const username in cacheTimestamps) {
       if (now - cacheTimestamps[username] > CACHE_DURATION) {
@@ -52,60 +45,47 @@
       }
     }
     saveCache();
-    console.log("Old cache entries flushed");
+    console.log('Old cache entries flushed');
   }
 
   function limitCacheSize() {
     const cacheEntries = Object.keys(profilePictureCache);
     if (cacheEntries.length > MAX_CACHE_SIZE) {
-      console.log("Cache size exceeded, removing oldest entries");
-      const sortedEntries = cacheEntries.sort(
-        (a, b) => cacheTimestamps[a] - cacheTimestamps[b],
-      );
-      const entriesToRemove = sortedEntries.slice(
-        0,
-        cacheEntries.length - MAX_CACHE_SIZE,
-      );
+      console.log('Cache size exceeded, removing oldest entries');
+      const sortedEntries = cacheEntries.sort((a, b) => cacheTimestamps[a] - cacheTimestamps[b]);
+      const entriesToRemove = sortedEntries.slice(0, cacheEntries.length - MAX_CACHE_SIZE);
       entriesToRemove.forEach((username) => {
         delete profilePictureCache[username];
         delete cacheTimestamps[username];
       });
       saveCache();
-      console.log("Cache size limited");
+      console.log('Cache size limited');
     }
   }
 
   async function fetchProfilePictures(usernames) {
-    console.log("Fetching profile pictures");
+    console.log('Fetching profile pictures');
     const uncachedUsernames = usernames.filter(
       (username) =>
-        !profilePictureCache[username] &&
-        username !== "[deleted]" &&
-        username !== "[removed]",
+        !profilePictureCache[username] && username !== '[deleted]' && username !== '[removed]'
     );
     if (uncachedUsernames.length === 0) {
-      console.log("All usernames are cached");
+      console.log('All usernames are cached');
       return usernames.map((username) => profilePictureCache[username]);
     }
 
-    console.log(
-      `Fetching profile pictures for: ${uncachedUsernames.join(", ")}`,
-    );
+    console.log(`Fetching profile pictures for: ${uncachedUsernames.join(', ')}`);
 
     const fetchPromises = uncachedUsernames.map(async (username) => {
       try {
-        const response = await fetch(
-          `https://www.reddit.com/user/${username}/about.json`,
-        );
+        const response = await fetch(`https://www.reddit.com/user/${username}/about.json`);
         if (!response.ok) {
-          console.error(
-            `Error fetching profile picture for ${username}: ${response.statusText}`,
-          );
+          console.error(`Error fetching profile picture for ${username}: ${response.statusText}`);
           return null;
         }
         const data = await response.json();
         if (data.data && data.data.icon_img) {
-          const profilePictureUrl = data.data.icon_img.split("?")[0];
+          const profilePictureUrl = data.data.icon_img.split('?')[0];
           profilePictureCache[username] = profilePictureUrl;
           cacheTimestamps[username] = Date.now();
           saveCache();
@@ -130,9 +110,7 @@
     console.log(`Comments found: ${comments.length}`);
     const usernames = Array.from(comments)
       .map((comment) => comment.textContent.trim())
-      .filter(
-        (username) => username !== "[deleted]" && username !== "[removed]",
-      );
+      .filter((username) => username !== '[deleted]' && username !== '[removed]');
     const profilePictureUrls = await fetchProfilePictures(usernames);
 
     comments.forEach((comment, index) => {
@@ -140,44 +118,44 @@
       const profilePictureUrl = profilePictureUrls[index];
       if (
         profilePictureUrl &&
-        !comment.previousElementSibling?.classList.contains("profile-picture")
+        !comment.previousElementSibling?.classList.contains('profile-picture')
       ) {
         console.log(`Injecting profile picture: ${username}`);
-        const img = document.createElement("img");
+        const img = document.createElement('img');
         img.src = profilePictureUrl;
-        img.classList.add("profile-picture");
+        img.classList.add('profile-picture');
         img.onerror = () => {
-          img.style.display = "none";
+          img.style.display = 'none';
         };
-        img.addEventListener("click", () => {
-          window.open(profilePictureUrl, "_blank");
+        img.addEventListener('click', () => {
+          window.open(profilePictureUrl, '_blank');
         });
-        comment.insertAdjacentElement("beforebegin", img);
+        comment.insertAdjacentElement('beforebegin', img);
 
-        const enlargedImg = document.createElement("img");
+        const enlargedImg = document.createElement('img');
         enlargedImg.src = profilePictureUrl;
-        enlargedImg.classList.add("enlarged-profile-picture");
+        enlargedImg.classList.add('enlarged-profile-picture');
         document.body.appendChild(enlargedImg);
-        img.addEventListener("mouseover", () => {
-          enlargedImg.style.display = "block";
+        img.addEventListener('mouseover', () => {
+          enlargedImg.style.display = 'block';
           const rect = img.getBoundingClientRect();
           enlargedImg.style.top = `${rect.top + window.scrollY + 20}px`;
           enlargedImg.style.left = `${rect.left + window.scrollX + 20}px`;
         });
-        img.addEventListener("mouseout", () => {
-          enlargedImg.style.display = "none";
+        img.addEventListener('mouseout', () => {
+          enlargedImg.style.display = 'none';
         });
       }
     });
-    console.log("Profile pictures injected");
+    console.log('Profile pictures injected');
   }
 
   function setupObserver() {
-    console.log("Setting up observer");
+    console.log('Setting up observer');
     const observer = new MutationObserver((mutations) => {
-      const comments = document.querySelectorAll(".author, .c-username");
+      const comments = document.querySelectorAll('.author, .c-username');
       if (comments.length > 0) {
-        console.log("New comments detected");
+        console.log('New comments detected');
         observer.disconnect();
         injectProfilePictures(comments);
       }
@@ -186,22 +164,22 @@
       childList: true,
       subtree: true,
     });
-    console.log("Observer initialized");
+    console.log('Observer initialized');
   }
 
   function runScript() {
     flushOldCache();
-    console.log("Cache loaded:", profilePictureCache);
+    console.log('Cache loaded:', profilePictureCache);
     setupObserver();
   }
 
-  window.addEventListener("load", () => {
-    console.log("Page loaded");
+  window.addEventListener('load', () => {
+    console.log('Page loaded');
     runScript();
     setInterval(runScript, 10000); // Run every 10 seconds
   });
 
-  const style = document.createElement("style");
+  const style = document.createElement('style');
   style.textContent = `
         .profile-picture {
             width: 20px;

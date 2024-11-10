@@ -4,8 +4,8 @@ chrome.runtime.onInstalled.addListener(() => {
       youtubeTVVolume: 5,
     },
     () => {
-      console.log("Default volume set to 5");
-    },
+      console.log('Default volume set to 5');
+    }
   );
 });
 

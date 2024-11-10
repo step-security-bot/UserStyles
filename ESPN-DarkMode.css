@@ -36,7 +36,7 @@
   }
 
   #my-players-table .tablehead td,
-  #my-players-table table.tablehead th[style="text-align: right !important;"],
+  #my-players-table table.tablehead th[style='text-align: right !important;'],
   .Nav__Secondary__Menu__Item--espnplus .Nav__Secondary__Menu__Link,
   .Table--align-right:not(.Table--fixed) .Table__TH,
   .Table2__table__wrapper td:nth-child(2),
@@ -48,8 +48,8 @@
   .tablehead td,
   .tablehead th,
   .tar,
-  td[align="left"],
-  td[align="right"] {
+  td[align='left'],
+  td[align='right'] {
     text-align: center !important;
   }
 
@@ -97,17 +97,11 @@
     text-shadow: none !important;
   }
 
-  .player-card .tablehead td:not([colspan="14"]) {
+  .player-card .tablehead td:not([colspan='14']) {
     border: 1px solid #fff !important;
   }
 
-  .mpTable
-    > table.pickemTable
-    tr
-    td.picked
-    .wpwOutsideWrapper
-    .wpwWrapper
-    .games-greenbar-pickem {
+  .mpTable > table.pickemTable tr td.picked .wpwOutsideWrapper .wpwWrapper .games-greenbar-pickem {
     text-indent: 6px !important;
   }
 
@@ -132,21 +126,17 @@
     border-spacing: 0 !important;
   }
 
-  [title="Minimum Plate Appearances"] {
+  [title='Minimum Plate Appearances'] {
     color: #0000;
   }
 
-  [title="Minimum Plate Appearances"]:after {
-    content: "Minimum Plate Appearances";
+  [title='Minimum Plate Appearances']:after {
+    content: 'Minimum Plate Appearances';
     margin-left: -3.5rem !important;
   }
 
   .Table2--hasFixed-left .Table2__table__wrapper > tbody > tr > td:first-child,
-  .Table2--hasFixed-right
-    .Table2__table__wrapper
-    > tbody
-    > tr
-    > td:first-child {
+  .Table2--hasFixed-right .Table2__table__wrapper > tbody > tr > td:first-child {
     width: 12% !important;
   }
 
@@ -165,16 +155,12 @@
   }
 
   .news-feed-item .timestamp + .author:before {
-    content: "";
+    content: '';
     padding: 0;
   }
 
   .col-one .current-leaders .leader-content .away-leader .player-detail,
-  .sub-module-split
-    .current-leaders
-    .leader-content
-    .away-leader
-    .player-detail {
+  .sub-module-split .current-leaders .leader-content .away-leader .player-detail {
     text-align: left;
   }
 
@@ -324,9 +310,7 @@
   .contentFeed .scoreEvent__event--irl .cscore_score--record,
   .contentFeed .scoreEvent__event--premier .cscore_score--record,
   .contentFeed > .contentItem .cscore_score--record,
-  .contentItem__content--story.has-image:not(.miniCard):not(
-      .contentItem__content--enhanced
-    )
+  .contentItem__content--story.has-image:not(.miniCard):not(.contentItem__content--enhanced)
     .contentItem__subhead,
   .contentItem__contentMeta--bottom span,
   .cscore_date-time,
@@ -347,12 +331,7 @@
   .game-strip .game-strip__round_text,
   .game-strip.post .game-time,
   .game-strip.pre .game-time:first-child,
-  .gameSettingsForm
-    .gameSettings
-    .gameSetting
-    .scoringSystem
-    .content
-    .scoringSystemDetail,
+  .gameSettingsForm .gameSettings .gameSetting .scoringSystem .content .scoringSystemDetail,
   .h9,
   .hs9,
   .insider-content .btn.sm,
@@ -461,8 +440,7 @@
   .bracketRounds .round .date,
   .mod-game.matchup-splits.current .mod-content .game-details .time,
   .mod-game.matchup-splits.current .mod-content .game-details .venue,
-  .standings-prp.withBracketInformationTooltip
-    #bracketInformationTooltip:before,
+  .standings-prp.withBracketInformationTooltip #bracketInformationTooltip:before,
   p {
     line-height: 22px !important;
   }
@@ -744,12 +722,7 @@
   }
 
   #global-scoreboard .wrap .scoreboard-content .scores-carousel,
-  #global-scoreboard
-    .wrap
-    .scoreboard-content
-    .scores-carousel
-    #leagues
-    .league,
+  #global-scoreboard .wrap .scoreboard-content .scores-carousel #leagues .league,
   #global-scoreboard .cscore_link {
     height: 97px !important;
   }
@@ -758,9 +731,7 @@
     height: 6rem !important;
   }
 
-  .contentItem__content--story.has-image:not(.miniCard):not(
-      .contentItem__content--enhanced
-    )
+  .contentItem__content--story.has-image:not(.miniCard):not(.contentItem__content--enhanced)
     .contentItem__subhead {
     max-height: calc((45px * 2) + 2px);
   }
@@ -984,22 +955,12 @@
   .contentFeed .one-feed-wrapper .items > .contentItem .cricket .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .golf-match .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .mlb .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .college-baseball
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .college-baseball .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .nba .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .nfl .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .nhl .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .rugby .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .rugby-league
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .rugby-league .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .soccer .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .wnba .cscore_team,
   .contentFeed > .contentItem .cricket .cscore_team,
@@ -1025,23 +986,11 @@
   .contentFeed .scoreCollection .soccer .cscore_team,
   .contentFeed .scoreCollection .wnba .cscore_team,
   .contentFeed .scoreEvent__event--premier .college-football .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .mens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .mens-olympic-basketball
-    .cscore_team,
+  .contentFeed .scoreEvent__event--premier .mens-college-basketball .cscore_team,
+  .contentFeed .scoreEvent__event--premier .mens-olympic-basketball .cscore_team,
   .contentFeed .scoreEvent__event--premier .tennis .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .womens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .womens-olympic-basketball
-    .cscore_team,
+  .contentFeed .scoreEvent__event--premier .womens-college-basketball .cscore_team,
+  .contentFeed .scoreEvent__event--premier .womens-olympic-basketball .cscore_team,
   .contentFeed .scoreEvent__event--irl .college-football .cscore_team,
   .contentFeed .scoreEvent__event--irl .mens-college-basketball .cscore_team,
   .contentFeed .scoreEvent__event--irl .mens-olympic-basketball .cscore_team,
@@ -1060,37 +1009,12 @@
   .contentFeed .scoreEvent__event--golf .tennis .cscore_team,
   .contentFeed .scoreEvent__event--golf .womens-college-basketball .cscore_team,
   .contentFeed .scoreEvent__event--golf .womens-olympic-basketball .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .college-football
-    .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .mens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .mens-olympic-basketball
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .college-football .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .mens-college-basketball .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .mens-olympic-basketball .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .tennis .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .womens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .womens-olympic-basketball
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .womens-college-basketball .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .womens-olympic-basketball .cscore_team,
   .contentFeed > .contentItem .college-football .cscore_team,
   .contentFeed > .contentItem .mens-college-basketball .cscore_team,
   .contentFeed > .contentItem .mens-olympic-basketball .cscore_team,
@@ -1227,13 +1151,13 @@
 
     /* Round of 64 ______________________________________________________________________*/
     /*____________________________________*/
-    [data-index="0"],
-    [data-index="16"] {
+    [data-index='0'],
+    [data-index='16'] {
       top: -3.3rem !important;
     }
 
-    [data-index="1"],
-    [data-index="17"] {
+    [data-index='1'],
+    [data-index='17'] {
       bottom: -3rem !important;
     }
 
@@ -1243,13 +1167,13 @@
     }
 
     /*____________________________________*/
-    [data-index="2"],
-    [data-index="18"] {
+    [data-index='2'],
+    [data-index='18'] {
       top: -3rem !important;
     }
 
-    [data-index="3"],
-    [data-index="19"] {
+    [data-index='3'],
+    [data-index='19'] {
       bottom: -3rem !important;
     }
 
@@ -1259,13 +1183,13 @@
     }
 
     /*____________________________________*/
-    [data-index="4"],
-    [data-index="20"] {
+    [data-index='4'],
+    [data-index='20'] {
       top: -3rem !important;
     }
 
-    [data-index="5"],
-    [data-index="21"] {
+    [data-index='5'],
+    [data-index='21'] {
       bottom: -3rem !important;
     }
 
@@ -1275,13 +1199,13 @@
     }
 
     /*____________________________________*/
-    [data-index="6"],
-    [data-index="22"] {
+    [data-index='6'],
+    [data-index='22'] {
       top: -3rem !important;
     }
 
-    [data-index="7"],
-    [data-index="23"] {
+    [data-index='7'],
+    [data-index='23'] {
       bottom: -3rem !important;
     }
 
@@ -1291,13 +1215,13 @@
     }
 
     /*____________________________________*/
-    [data-index="8"],
-    [data-index="24"] {
+    [data-index='8'],
+    [data-index='24'] {
       top: -3rem !important;
     }
 
-    [data-index="9"],
-    [data-index="25"] {
+    [data-index='9'],
+    [data-index='25'] {
       bottom: -3rem !important;
     }
 
@@ -1308,13 +1232,13 @@
 
     /* East*/
     /*____________________________________*/
-    [data-index="10"],
-    [data-index="26"] {
+    [data-index='10'],
+    [data-index='26'] {
       top: -3rem !important;
     }
 
-    [data-index="11"],
-    [data-index="27"] {
+    [data-index='11'],
+    [data-index='27'] {
       bottom: -3rem !important;
     }
     .bracket .mW.mW_6,
@@ -1322,13 +1246,13 @@
       bottom: 27rem;
     }
     /*____________________________________*/
-    [data-index="12"],
-    [data-index="28"] {
+    [data-index='12'],
+    [data-index='28'] {
       top: -3rem !important;
     }
 
-    [data-index="13"],
-    [data-index="29"] {
+    [data-index='13'],
+    [data-index='29'] {
       bottom: -3rem !important;
     }
 
@@ -1337,13 +1261,13 @@
       bottom: 15rem;
     }
     /*____________________________________*/
-    [data-index="14"],
-    [data-index="30"] {
+    [data-index='14'],
+    [data-index='30'] {
       top: -3rem !important;
     }
 
-    [data-index="15"],
-    [data-index="31"] {
+    [data-index='15'],
+    [data-index='31'] {
       bottom: -3rem !important;
     }
 
@@ -1359,13 +1283,13 @@
 
     /* East */
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="32"],
-    .bracket:not(.userPickable) [data-index="40"] {
+    .bracket:not(.userPickable) [data-index='32'],
+    .bracket:not(.userPickable) [data-index='40'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="33"],
-    .bracket:not(.userPickable) [data-index="41"] {
+    .bracket:not(.userPickable) [data-index='33'],
+    .bracket:not(.userPickable) [data-index='41'] {
       bottom: -3rem !important;
     }
 
@@ -1377,13 +1301,13 @@
     }
 
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="34"],
-    .bracket:not(.userPickable) [data-index="42"] {
+    .bracket:not(.userPickable) [data-index='34'],
+    .bracket:not(.userPickable) [data-index='42'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="35"],
-    .bracket:not(.userPickable) [data-index="43"] {
+    .bracket:not(.userPickable) [data-index='35'],
+    .bracket:not(.userPickable) [data-index='43'] {
       bottom: -3rem !important;
     }
 
@@ -1399,13 +1323,13 @@
       height: 12rem !important;
     }
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="36"],
-    .bracket:not(.userPickable) [data-index="44"] {
+    .bracket:not(.userPickable) [data-index='36'],
+    .bracket:not(.userPickable) [data-index='44'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="37"],
-    .bracket:not(.userPickable) [data-index="45"] {
+    .bracket:not(.userPickable) [data-index='37'],
+    .bracket:not(.userPickable) [data-index='45'] {
       bottom: -3rem !important;
     }
 
@@ -1415,13 +1339,13 @@
     }
 
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="38"],
-    .bracket:not(.userPickable) [data-index="46"] {
+    .bracket:not(.userPickable) [data-index='38'],
+    .bracket:not(.userPickable) [data-index='46'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="39"],
-    .bracket:not(.userPickable) [data-index="47"] {
+    .bracket:not(.userPickable) [data-index='39'],
+    .bracket:not(.userPickable) [data-index='47'] {
       bottom: -3rem !important;
     }
 
@@ -1432,13 +1356,13 @@
 
     /* Sweet 16 ______________________________________________________________________*/
     /*____________________________________*/
-    bracket:not(.userPickable) [data-index="48"],
-    .bracket:not(.userPickable) [data-index="52"] {
+    bracket:not(.userPickable) [data-index='48'],
+    .bracket:not(.userPickable) [data-index='52'] {
       top: -47px !important;
     }
 
-    .bracket:not(.userPickable) [data-index="49"],
-    .bracket:not(.userPickable) [data-index="53"] {
+    .bracket:not(.userPickable) [data-index='49'],
+    .bracket:not(.userPickable) [data-index='53'] {
       bottom: -3rem !important;
     }
 
@@ -1453,13 +1377,13 @@
     }
 
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="50"],
-    .bracket:not(.userPickable) [data-index="54"] {
+    .bracket:not(.userPickable) [data-index='50'],
+    .bracket:not(.userPickable) [data-index='54'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="51"],
-    .bracket:not(.userPickable) [data-index="55"] {
+    .bracket:not(.userPickable) [data-index='51'],
+    .bracket:not(.userPickable) [data-index='55'] {
       bottom: -3rem !important;
     }
 
@@ -1468,13 +1392,13 @@
       bottom: 10rem;
     }
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="56"],
-    .bracket:not(.userPickable) [data-index="58"] {
+    .bracket:not(.userPickable) [data-index='56'],
+    .bracket:not(.userPickable) [data-index='58'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="57"],
-    .bracket:not(.userPickable) [data-index="59"] {
+    .bracket:not(.userPickable) [data-index='57'],
+    .bracket:not(.userPickable) [data-index='59'] {
       bottom: -3rem !important;
     }
 
@@ -1487,22 +1411,22 @@
     }
 
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="58"],
-    .bracket:not(.userPickable) [data-index="60"] {
+    .bracket:not(.userPickable) [data-index='58'],
+    .bracket:not(.userPickable) [data-index='60'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="59"],
-    .bracket:not(.userPickable) [data-index="61"] {
+    .bracket:not(.userPickable) [data-index='59'],
+    .bracket:not(.userPickable) [data-index='61'] {
       bottom: -3rem !important;
     }
 
     /*____________________________________*/
-    .bracket:not(.userPickable) [data-index="60"] {
+    .bracket:not(.userPickable) [data-index='60'] {
       top: -3rem !important;
     }
 
-    .bracket:not(.userPickable) [data-index="61"] {
+    .bracket:not(.userPickable) [data-index='61'] {
       bottom: -3rem !important;
     }
 
@@ -1514,7 +1438,7 @@
       left: -8rem;
     }
 
-    .bracket:not(.userPickable) [data-index="63"] {
+    .bracket:not(.userPickable) [data-index='63'] {
       top: -3rem !important;
     }
 
@@ -1605,13 +1529,7 @@
 
   /*__________________________________________________________________________________*/
   #matchupPreview .previewPanel.preview .matchupDetails .matchup .team .seed,
-  #matchupPreview
-    .previewPanel.preview
-    .insiderContent
-    .modelsList
-    .teams
-    .team
-    .seed,
+  #matchupPreview .previewPanel.preview .insiderContent .modelsList .teams .team .seed,
   .BracketCell__Rank,
   .ScoreCell__Score.ScoreCell__Score--record,
   .away-score,
@@ -1648,8 +1566,8 @@
   .winner,
   a[href]:hover,
   h1,
-  input[type="checkbox"]:checked + label,
-  input[type="radio"]:checked + label {
+  input[type='checkbox']:checked + label,
+  input[type='radio']:checked + label {
     color: #ff0 !important;
     text-shadow: 1px 1px #000 !important;
   }
@@ -1660,19 +1578,9 @@
   #promoModule .header,
   #matchupPreview .previewPanel.preview .stats .statsList .stat .value,
   #matchupPreview .previewPanel.preview .matchupDetails .header,
-  #matchupPreview
-    .previewPanel.preview
-    .notableResults
-    .notableResultsList
-    .notableResult
-    .value,
+  #matchupPreview .previewPanel.preview .notableResults .notableResultsList .notableResult .value,
   #matchupPreview .previewPanel.preview .seedFact .fact,
-  #matchupPreview
-    .previewPanel.preview
-    .teamSummary
-    .teamSummaryList
-    .summary
-    .value,
+  #matchupPreview .previewPanel.preview .teamSummary .teamSummaryList .summary .value,
   .Button--eplus.Button--default:hover,
   .News__Item__Description,
   .Table__Title,
@@ -1697,30 +1605,10 @@
   .cscore_network,
   .cscore_notes,
   .cscore_odds,
-  .current-leaders
-    .leader-content
-    .grid-row
-    .away-leader
-    .player-detail
-    .player-stats,
-  .current-leaders
-    .leader-content
-    .grid-row
-    .away-leader
-    .player-image
-    .player-stats,
-  .current-leaders
-    .leader-content
-    .grid-row
-    .home-leader
-    .player-detail
-    .player-stats,
-  .current-leaders
-    .leader-content
-    .grid-row
-    .home-leader
-    .player-image
-    .player-stats,
+  .current-leaders .leader-content .grid-row .away-leader .player-detail .player-stats,
+  .current-leaders .leader-content .grid-row .away-leader .player-image .player-stats,
+  .current-leaders .leader-content .grid-row .home-leader .player-detail .player-stats,
+  .current-leaders .leader-content .grid-row .home-leader .player-image .player-stats,
   .drives-summary table .headline,
   .drives-summary table .score-type,
   .dropdown-wrapper ul.dropdown-menu > li a,
@@ -1757,11 +1645,7 @@
   .play-by-play table .headline,
   .play-by-play table .score-type,
   .premiumEngagement .description,
-  .context_game
-    #main-container
-    .entries-wrapper
-    .entryCounter
-    .entryCounterLabel,
+  .context_game #main-container .entries-wrapper .entryCounter .entryCounterLabel,
   .context_game
     #main-container
     .entries-wrapper
@@ -1810,35 +1694,14 @@
   }
 
   /*___ Khaki ________________________________________________________________________*/
-  #global-nav
-    > ul
-    > li.more-espn
-    > div
-    > ul
-    > li
-    > div
-    > ul
-    > li.header-title
-    span,
+  #global-nav > ul > li.more-espn > div > ul > li > div > ul > li.header-title span,
   #global-nav ul > li.teams div:not(.link-text) > ul > li.conference span,
-  #global-nav-secondary
-    ul
-    li.teams
-    div:not(.link-text)
-    > ul
-    > li.conference
-    span,
+  #global-nav-secondary ul li.teams div:not(.link-text) > ul > li.conference span,
   #matchupPreview .previewPanel.preview .matchupDetails .matchup .team .abbrev,
   #matchupPreview .previewPanel.preview .matchupDetails .matchup .team .name,
   #season-results .sr-body-entry,
   #season-results .sr-header-entry,
-  #matchupPreview
-    .previewPanel.preview
-    .insiderContent
-    .modelsList
-    .teams
-    .team
-    .abbrev,
+  #matchupPreview .previewPanel.preview .insiderContent .modelsList .teams .team .abbrev,
   .AxMp,
   .EtBY,
   .ScoreCell__TeamName.ScoreCell__TeamName--abbev.truncate.db,
@@ -1885,18 +1748,8 @@
   #matchupPreview .previewPanel.preview .seedFact,
   #matchupPreview .previewPanel.preview .stats,
   #matchupPreview .previewPanel.preview .teamSummary,
-  #matchupPreview
-    .previewPanel.preview
-    .insiderContent
-    .modelsList
-    .model
-    .label,
-  #matchupPreview
-    .previewPanel.preview
-    .insiderContent
-    .modelsList
-    .teams
-    .label,
+  #matchupPreview .previewPanel.preview .insiderContent .modelsList .model .label,
+  #matchupPreview .previewPanel.preview .insiderContent .modelsList .teams .label,
   .Editions__Item__Title,
   .News__Item__Headline,
   .ScoreCell__NetworkItem,
@@ -1904,18 +1757,8 @@
   .clr-gray-02,
   .collection_item_truncate > span,
   .context_entry .create-entry-upsell .header,
-  .current-leaders
-    .leader-content
-    .grid-row
-    .away-leader
-    .player-image
-    .player-team,
-  .current-leaders
-    .leader-content
-    .grid-row
-    .home-leader
-    .player-image
-    .player-team,
+  .current-leaders .leader-content .grid-row .away-leader .player-image .player-team,
+  .current-leaders .leader-content .grid-row .home-leader .player-image .player-team,
   .fanshop .fanshop__item__shipping,
   .favItem__subHead,
   .global-user .current-favorites ul > li > a div > span,
@@ -1939,13 +1782,7 @@
   .autoPicker .label,
   .compareLineGraph .chartLabel,
   .entry-details-status .status-header,
-  .gameSettingsForm
-    .gameSettings
-    .gameSetting
-    .scoringSystem
-    .content
-    .scoringSystemDetail
-    .name,
+  .gameSettingsForm .gameSettings .gameSetting .scoringSystem .content .scoringSystemDetail .name,
   .glossary__abbr,
   .groupDetails .groupDetail .label,
   .mod-page-header .floatleft,
@@ -1960,7 +1797,7 @@
   .user-entries-entry-details .entry-details-gamemode .gamemode-header,
   .user-entries-entry-groups .entry-groups-header,
   .user-entries-entry-standings .standings-prp .standings-prp-item .header,
-  [title="Minimum Plate Appearances"]:after,
+  [title='Minimum Plate Appearances']:after,
   h5,
   h6,
   label,
@@ -2023,14 +1860,7 @@
   }
 
   /*___ Green ________________________________________________________________________*/
-  .bracket.locked
-    .mW
-    .matchup
-    .slots
-    .slot
-    .actual
-    + .picked.selectedToAdvance.correct
-    span,
+  .bracket.locked .mW .matchup .slots .slot .actual + .picked.selectedToAdvance.correct span,
   .fanshop .fanshop__item__price {
     color: #07ff24 !important;
     text-shadow: 1px 1px #000 !important;
@@ -2053,12 +1883,12 @@
   .button-filter,
   .mod-split-menu .split-select a.btn-split-btn,
   input,
-  input[type="email"],
-  input[type="number"],
-  input[type="password"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="text"],
+  input[type='email'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='text'],
   select,
   textarea {
     background-color: #1d0909 !important;
@@ -2164,7 +1994,7 @@ ________________________________________________________________________________
   .player-card .mod-page-tabs,
   .tertiary #global-nav-secondary .ClubhouseHeader,
   .watchProvider__title,
-  [data-pagetype="gamepackage"] .game-strip,
+  [data-pagetype='gamepackage'] .game-strip,
   body.golf .stathead td {
     background: #060505 !important;
     background-color: #060505 !important;
@@ -2237,7 +2067,7 @@ ________________________________________________________________________________
   .bracket .mW .matchup .slots a.slot:hover .actual,
   .bracket .mW .matchup .slots a.slot:hover .picked,
   .bracket .mW .matchup button.matchupPreview:hover,
-  .bracket .optIns .optIn .contentWrapper input[type="checkbox"] + label:before,
+  .bracket .optIns .optIn .contentWrapper input[type='checkbox'] + label:before,
   .bracketRounds,
   .btn--filter:not(.btn--dark),
   .button-filter-alt,
@@ -2426,7 +2256,7 @@ ________________________________________________________________________________
     border-radius: 22px !important;
     bottom: 0;
     color: #ff0 !important;
-    content: "";
+    content: '';
     left: 0;
     opacity: 0 !important;
     position: absolute !important;
@@ -2462,7 +2292,7 @@ ________________________________________________________________________________
     border-radius: 22px !important;
     bottom: 0;
     color: #ff0 !important;
-    content: "";
+    content: '';
     left: 0;
     opacity: 0 !important;
     position: absolute !important;
@@ -2497,7 +2327,7 @@ ________________________________________________________________________________
     border-radius: 22px !important;
     bottom: 0;
     color: #ff0 !important;
-    content: "";
+    content: '';
     left: 0;
     opacity: 0 !important;
     position: absolute !important;
@@ -2536,7 +2366,7 @@ ________________________________________________________________________________
     border-radius: 22px !important;
     bottom: 0;
     color: #ff0 !important;
-    content: "";
+    content: '';
     left: 0;
     opacity: 0 !important;
     position: absolute !important;
@@ -2573,7 +2403,7 @@ ________________________________________________________________________________
     border-radius: 22px !important;
     bottom: 0;
     color: #ff0 !important;
-    content: "";
+    content: '';
     left: 0;
     opacity: 0 !important;
     position: absolute !important;
@@ -2612,7 +2442,7 @@ ________________________________________________________________________________
     border-radius: 22px !important;
     bottom: 0;
     color: #ff0 !important;
-    content: "";
+    content: '';
     left: 0;
     opacity: 0 !important;
     position: absolute !important;
@@ -2676,12 +2506,7 @@ ________________________________________________________________________________
   #favfeed-footer,
   #favfeed-mx-date,
   #global-header .container .tools > li.hover .global-user,
-  #global-header
-    .container
-    .tools
-    > li.user.hover
-    .global-user-container
-    > ul.favs,
+  #global-header .container .tools > li.user.hover .global-user-container > ul.favs,
   #global-nav .espnplus-cols > div > .list-wrapper,
   #global-nav > ul > li > div,
   #main-container .container,
@@ -2714,32 +2539,12 @@ ________________________________________________________________________________
   .watchProvider__list-items--is-premier > li,
   :not(.alt-format) #global-nav-secondary .global-nav-container > ul > li > div,
   :not(.alt-format) #global-nav-secondary .global-nav-container > ul > li > div,
-  :not(.alt-format)
-    #global-nav-secondary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div,
-  :not(.alt-format)
-    #global-nav-secondary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div,
+  :not(.alt-format) #global-nav-secondary .tertiary-nav-container > ul > li > div,
+  :not(.alt-format) #global-nav-secondary .tertiary-nav-container > ul > li > div,
   :not(.alt-format) #global-nav-tertiary .global-nav-container > ul > li > div,
   :not(.alt-format) #global-nav-tertiary .global-nav-container > ul > li > div,
-  :not(.alt-format)
-    #global-nav-tertiary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div,
-  :not(.alt-format)
-    #global-nav-tertiary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div {
+  :not(.alt-format) #global-nav-tertiary .tertiary-nav-container > ul > li > div,
+  :not(.alt-format) #global-nav-tertiary .tertiary-nav-container > ul > li > div {
     background-color: #111 !important;
     border-radius: 22px !important;
     border: 1px solid rgba(0, 0, 0, 0.25) !important;
@@ -2754,12 +2559,7 @@ ________________________________________________________________________________
   #article-feed .article:hover,
   #favfeed-footer:hover,
   #favfeed-mx-date:hover,
-  #global-header
-    .container
-    .tools
-    > li.user.hover
-    .global-user-container
-    > ul.favs:hover,
+  #global-header .container .tools > li.user.hover .global-user-container > ul.favs:hover,
   #global-nav .espnplus-cols > div > .list-wrapper:hover,
   #global-nav ul > li.teams div:not(.link-text):not(.nav-logo-wrap):hover,
   #global-nav-secondary ul li.teams div:not(.link-text):hover,
@@ -2818,54 +2618,14 @@ ________________________________________________________________________________
   .watch-schedule:hover,
   .watch-tab div:nth-child(2):hover,
   .watchProvider__list-items--is-premier > li:hover,
-  :not(.alt-format)
-    #global-nav-secondary
-    .global-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-secondary
-    .global-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-secondary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-secondary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-tertiary
-    .global-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-tertiary
-    .global-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-tertiary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div:hover,
-  :not(.alt-format)
-    #global-nav-tertiary
-    .tertiary-nav-container
-    > ul
-    > li
-    > div:hover {
+  :not(.alt-format) #global-nav-secondary .global-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-secondary .global-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-secondary .tertiary-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-secondary .tertiary-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-tertiary .global-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-tertiary .global-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-tertiary .tertiary-nav-container > ul > li > div:hover,
+  :not(.alt-format) #global-nav-tertiary .tertiary-nav-container > ul > li > div:hover {
     box-shadow:
       inset 0 0 5px #0006,
       #9b9b9b 0 1px 0,
@@ -2878,8 +2638,8 @@ ________________________________________________________________________________
   #bracketcast,
   #my-players-table .tablehead tr:hover,
   #promoModule,
-  .Table2__even:not([data-idx="0"]):hover,
-  .Table2__tr:not([data-idx="0"]):hover,
+  .Table2__even:not([data-idx='0']):hover,
+  .Table2__tr:not([data-idx='0']):hover,
   .bracket .mW .matchup .slots .slot.userPickable.highlight .picked,
   .contentItem__breakingNews,
   .get-started-button-wrapper,
@@ -2889,7 +2649,7 @@ ________________________________________________________________________________
   .mpTable > table tr:hover,
   .stat-graph li:nth-child(2) span.bar-percentage,
   .sub.active a,
-  .tablehead [class*="player"]:hover,
+  .tablehead [class*='player']:hover,
   .tabs li.active,
   .tabs li:hover,
   .tabs .tab.active,
@@ -2917,7 +2677,7 @@ ________________________________________________________________________________
   .mod-header,
   .scorePromo__content,
   .top-stories.has-media header.top-stories__story-header,
-  [style*="background-color: rgb(33, 119, 176)"],
+  [style*='background-color: rgb(33, 119, 176)'],
   body.mlb .stathead td,
   body.mlb .stathead {
     background: linear-gradient(to bottom, #03193c, #000 100%) !important;
@@ -2930,14 +2690,8 @@ ________________________________________________________________________________
   .games-status.games-success,
   .matchupRow.locked.correct,
   .mod-pagenav-tabs ul.ui-tabs li.active a,
-  .mpTable
-    > table.pickemTable
-    tr
-    td.picked
-    .wpwOutsideWrapper
-    .wpwWrapper
-    .games-greenbar-pickem,
-  [style="background-color: #2177b0;width: 100%;"] {
+  .mpTable > table.pickemTable tr td.picked .wpwOutsideWrapper .wpwWrapper .games-greenbar-pickem,
+  [style='background-color: #2177b0;width: 100%;'] {
     background: linear-gradient(to bottom, #2177b0 0%, #000 100%) !important;
   }
 
@@ -2971,18 +2725,13 @@ ________________________________________________________________________________
   /* Code 
 _____________________________________________________________________________________________________*/
   pre {
-    background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png)
-      #111 !important;
+    background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png) #111 !important;
     background-size: 100% !important;
   }
 
   /* Highlight Background 
 _____________________________________________________________________________________________________*/
-  #global-header
-    .tools
-    .global-user-container
-    > ul:first-child:not(.alt-format)
-    > li:hover,
+  #global-header .tools .global-user-container > ul:first-child:not(.alt-format) > li:hover,
   .MediaList__item:hover,
   .QuickLinks__Item:hover,
   .TVProviders__Lightbox li:hover,
@@ -3017,17 +2766,7 @@ ________________________________________________________________________________
 @-moz-document domain("espn.com") {
   /* Image Settings */
   #global-nav ul > li.teams div:not(.link-text):not(.nav-logo-wrap) > ul > li,
-  #global-nav
-    > ul
-    > li.more-espn
-    > div
-    > .Editions__Group
-    ul.featured
-    > li
-    > div
-    > ul
-    > li
-    > a,
+  #global-nav > ul > li.more-espn > div > .Editions__Group ul.featured > li > div > ul > li > a,
   #my-players-table .tablehead tr,
   .CarouselSlide,
   .ContentList__Item,
@@ -3084,12 +2823,7 @@ ________________________________________________________________________________
     > .global-user
     > ul:first-child:not(.alt-format)
     > li.display-user:hover,
-  #global-nav
-    ul
-    > li.teams
-    div:not(.link-text):not(.nav-logo-wrap)
-    > ul
-    > li:hover,
+  #global-nav ul > li.teams div:not(.link-text):not(.nav-logo-wrap) > ul > li:hover,
   #global-nav > ul > li.more-espn .undefeated > a:hover,
   #global-nav
     > ul
@@ -3177,14 +2911,14 @@ ________________________________________________________________________________
 
 @-moz-document domain("espn.com") {
   /* New Icons */
-  input[type="checkbox"],
-  input[type="radio"] {
+  input[type='checkbox'],
+  input[type='radio'] {
     appearance: none !important;
   }
 
   /* Avatar _____________*/
   #global-user-trigger:after {
-    content: "";
+    content: '';
   }
 
   #global-header .container .tools > li > a:after {
@@ -3211,7 +2945,7 @@ ________________________________________________________________________________
 
   /* Close (x) _______________________________________________________________*/
   #promoModule .button.dismiss:before {
-    content: "";
+    content: '';
   }
 
   #promoModule .button.dismiss {
@@ -3232,7 +2966,7 @@ ________________________________________________________________________________
 
   /* Edit _______________________________________________________________*/
   .icon.edit:before {
-    content: "";
+    content: '';
   }
 
   /* Edit ____________________________*/
@@ -3255,20 +2989,16 @@ ________________________________________________________________________________
   }
 
   /* Info ______________________________________________________________________________________________*/
-  .standings-prp.withBracketInformationTooltip
-    #bracketInformationTooltip:before {
-    content: "";
+  .standings-prp.withBracketInformationTooltip #bracketInformationTooltip:before {
+    content: '';
   }
 
-  .standings-prp.withBracketInformationTooltip
-    #bracketInformationTooltip:before {
-    background: url(https://i.ibb.co/Lhfjqf4/information-sign-1024x1024.png)
-      no-repeat !important;
+  .standings-prp.withBracketInformationTooltip #bracketInformationTooltip:before {
+    background: url(https://i.ibb.co/Lhfjqf4/information-sign-1024x1024.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .standings-prp.withBracketInformationTooltip
-    #bracketInformationTooltip:before {
+  .standings-prp.withBracketInformationTooltip #bracketInformationTooltip:before {
     background-size: 25px !important;
     height: 36px !important;
     padding-left: 25px !important;
@@ -3303,7 +3033,7 @@ ________________________________________________________________________________
   .icon.printer:before,
   .icon-print-solid-before:before,
   .icon-print-solid-after:after {
-    content: "";
+    content: '';
   }
 
   .icon.printer:before,
@@ -3325,7 +3055,7 @@ ________________________________________________________________________________
   /* Search _______________________________________________________________*/
   .icon-search-solid-before:before,
   .icon-search-solid-after:after {
-    content: "";
+    content: '';
   }
 
   .Nav__Primary__Menu__Item.Nav__Search > .icon__svg,
@@ -3346,7 +3076,7 @@ ________________________________________________________________________________
 
   /* Settings ___________________________________________________________________________________*/
   .user-entries-entry-details .entry-details-header .settings-link:after {
-    content: "";
+    content: '';
   }
 
   .user-entries-entry-details .entry-details-header .settings-link:after {
@@ -3364,7 +3094,7 @@ ________________________________________________________________________________
   /* Share _______________________________________________________________*/
   .icon-share-solid-before:before,
   .icon-share-solid-after:after {
-    content: "";
+    content: '';
   }
 
   .shareMenu__toggle {
@@ -3439,22 +3169,12 @@ ________________________________________________________________________________
   .contentFeed .one-feed-wrapper .items > .contentItem .cricket .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .golf-match .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .mlb .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .college-baseball
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .college-baseball .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .nba .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .nfl .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .nhl .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .rugby .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .rugby-league
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .rugby-league .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .soccer .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .wnba .cscore_team,
   .contentFeed > .contentItem .cricket .cscore_team,
@@ -3480,23 +3200,11 @@ ________________________________________________________________________________
   .contentFeed .scoreCollection .soccer .cscore_team,
   .contentFeed .scoreCollection .wnba .cscore_team,
   .contentFeed .scoreEvent__event--premier .college-football .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .mens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .mens-olympic-basketball
-    .cscore_team,
+  .contentFeed .scoreEvent__event--premier .mens-college-basketball .cscore_team,
+  .contentFeed .scoreEvent__event--premier .mens-olympic-basketball .cscore_team,
   .contentFeed .scoreEvent__event--premier .tennis .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .womens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .scoreEvent__event--premier
-    .womens-olympic-basketball
-    .cscore_team,
+  .contentFeed .scoreEvent__event--premier .womens-college-basketball .cscore_team,
+  .contentFeed .scoreEvent__event--premier .womens-olympic-basketball .cscore_team,
   .contentFeed .scoreEvent__event--irl .college-football .cscore_team,
   .contentFeed .scoreEvent__event--irl .mens-college-basketball .cscore_team,
   .contentFeed .scoreEvent__event--irl .mens-olympic-basketball .cscore_team,
@@ -3515,37 +3223,12 @@ ________________________________________________________________________________
   .contentFeed .scoreEvent__event--golf .tennis .cscore_team,
   .contentFeed .scoreEvent__event--golf .womens-college-basketball .cscore_team,
   .contentFeed .scoreEvent__event--golf .womens-olympic-basketball .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .college-football
-    .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .mens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .mens-olympic-basketball
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .college-football .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .mens-college-basketball .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .mens-olympic-basketball .cscore_team,
   .contentFeed .one-feed-wrapper .items > .contentItem .tennis .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .womens-college-basketball
-    .cscore_team,
-  .contentFeed
-    .one-feed-wrapper
-    .items
-    > .contentItem
-    .womens-olympic-basketball
-    .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .womens-college-basketball .cscore_team,
+  .contentFeed .one-feed-wrapper .items > .contentItem .womens-olympic-basketball .cscore_team,
   .contentFeed > .contentItem .college-football .cscore_team,
   .contentFeed > .contentItem .mens-college-basketball .cscore_team,
   .contentFeed > .contentItem .mens-olympic-basketball .cscore_team,
@@ -3654,7 +3337,7 @@ ________________________________________________________________________________
   }
 
   /* Team Icons _________________________________________________________________________*/
-  [alt="Miami"] {
+  [alt='Miami'] {
     background: url(https://i.ibb.co/VmC0y8y/postit.png) no-repeat !important;
     box-sizing: border-box !important;
     background-size: 20px !important;
@@ -3685,26 +3368,26 @@ ________________________________________________________________________________
   }
 
   /* Arizona Diamondbacks ____________________________________________*/
-  [src*="teamlogos/mlb/500/ARI"] {
+  [src*='teamlogos/mlb/500/ARI'] {
     background: url(https://i.ibb.co/SBxP9mX/Arizona-Diamondbacks.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/ARI"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/ARI'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/ARI"] {
+  .cscore_logo [src*='teamlogos/mlb/500/ARI'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/ARI"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/ARI'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3712,13 +3395,13 @@ ________________________________________________________________________________
   }
 
   /* Atlanta Braves _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/ATL"],
-  [src*="teamlogos/mlb/500/atl"] {
+  [src*='teamlogos/mlb/500/ATL'],
+  [src*='teamlogos/mlb/500/atl'] {
     background: url(https://i.ibb.co/3mnqNKY/Braves-A.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/atl"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/atl'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
@@ -3734,7 +3417,7 @@ ________________________________________________________________________________
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/ATL"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/ATL'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3742,26 +3425,26 @@ ________________________________________________________________________________
   }
 
   /* Baltimore _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/BAL"] {
+  [src*='teamlogos/mlb/500/BAL'] {
     background: url(https://i.ibb.co/pKj2bWf/Baltimore-Orioles.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/BAL"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/BAL'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/BAL"] {
+  .cscore_logo [src*='teamlogos/mlb/500/BAL'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/BAL"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/BAL'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3769,26 +3452,26 @@ ________________________________________________________________________________
   }
 
   /* Boston _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/BOS"] {
+  [src*='teamlogos/mlb/500/BOS'] {
     background: url(https://i.ibb.co/M76xQBW/Boston-Red-Sox-2png.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/BOS"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/BOS'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/BOS"] {
+  .cscore_logo [src*='teamlogos/mlb/500/BOS'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/BOS"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/BOS'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3796,26 +3479,26 @@ ________________________________________________________________________________
   }
 
   /* Chicago Cubs _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/CHC"] {
+  [src*='teamlogos/mlb/500/CHC'] {
     background: url(https://i.ibb.co/JpWt5r6/Chicago-Cubs.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/CHC"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/CHC'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/CHC"] {
+  .cscore_logo [src*='teamlogos/mlb/500/CHC'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/CHC"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/CHC'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3823,26 +3506,26 @@ ________________________________________________________________________________
   }
 
   /* Chicago White Sox _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/CHW"] {
+  [src*='teamlogos/mlb/500/CHW'] {
     background: url(https://i.ibb.co/64Hb4JB/chw.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/CHW"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/CHW'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/CHW"] {
+  .cscore_logo [src*='teamlogos/mlb/500/CHW'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/CHW"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/CHW'] {
     background-size: 26px !important;
     height: 35px !important;
     padding-left: 27px !important;
@@ -3850,26 +3533,26 @@ ________________________________________________________________________________
   }
 
   /* Cincinnati Reds _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/CIN"] {
+  [src*='teamlogos/mlb/500/CIN'] {
     background: url(https://i.ibb.co/847R824/Cincinnati-Reds.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/CIN"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/CIN'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/CIN"] {
+  .cscore_logo [src*='teamlogos/mlb/500/CIN'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/CIN"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/CIN'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3877,26 +3560,26 @@ ________________________________________________________________________________
   }
 
   /* Cleveland Indians _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/CLE"] {
+  [src*='teamlogos/mlb/500/CLE'] {
     background: url(https://i.ibb.co/4f1v630/Cleveland-Indians.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/CLE"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/CLE'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/CLE"] {
+  .cscore_logo [src*='teamlogos/mlb/500/CLE'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/CLE"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/CLE'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3904,26 +3587,26 @@ ________________________________________________________________________________
   }
 
   /* Colorado Rockies ____________________________________________*/
-  [src*="teamlogos/mlb/500/COL"] {
+  [src*='teamlogos/mlb/500/COL'] {
     background: url(https://i.ibb.co/sjGJMXY/Colorado-Rockies.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/COL"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/COL'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/COL"] {
+  .cscore_logo [src*='teamlogos/mlb/500/COL'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/COL"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/COL'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3931,26 +3614,26 @@ ________________________________________________________________________________
   }
 
   /* Detroit Tigers _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/DET"] {
+  [src*='teamlogos/mlb/500/DET'] {
     background: url(https://i.ibb.co/fxWdNKg/Detroit-Tigers.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/DET"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/DET'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/DET"] {
+  .cscore_logo [src*='teamlogos/mlb/500/DET'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/DET"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/DET'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -3991,26 +3674,26 @@ ________________________________________________________________________________
   }
 
   /* Houston Astros _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/HOU"] {
+  [src*='teamlogos/mlb/500/HOU'] {
     background: url(https://i.ibb.co/gztGYJ9/Houston-Astros.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/HOU"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/HOU'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/HOU"] {
+  .cscore_logo [src*='teamlogos/mlb/500/HOU'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/HOU"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/HOU'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4018,26 +3701,26 @@ ________________________________________________________________________________
   }
 
   /* Kansas City Royals _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/KC"] {
+  [src*='teamlogos/mlb/500/KC'] {
     background: url(https://i.ibb.co/6nvNn7P/Kansas-City-Royals.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/KC"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/KC'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/KC"] {
+  .cscore_logo [src*='teamlogos/mlb/500/KC'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/KC"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/KC'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4045,26 +3728,26 @@ ________________________________________________________________________________
   }
 
   /* Los Angeles Angels _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/LAA"] {
+  [src*='teamlogos/mlb/500/LAA'] {
     background: url(https://i.ibb.co/vvdKLR1/Los-Angeles-Angels.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/LAA"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/LAA'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/LAA"] {
+  .cscore_logo [src*='teamlogos/mlb/500/LAA'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/LAA"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/LAA'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4072,26 +3755,26 @@ ________________________________________________________________________________
   }
 
   /* Los Angeles Dodgers ____________________________________________*/
-  [src*="teamlogos/mlb/500/LAD"] {
+  [src*='teamlogos/mlb/500/LAD'] {
     background: url(https://i.ibb.co/Vq724Mr/Los-Angeles-Dodgers.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/LAD"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/LAD'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/LAD"] {
+  .cscore_logo [src*='teamlogos/mlb/500/LAD'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/LAD"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/LAD'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4121,21 +3804,21 @@ ________________________________________________________________________________
   }
 
   /* Marlins _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/MIA"],
-  [alt="Miami"] {
+  [src*='teamlogos/mlb/500/MIA'],
+  [alt='Miami'] {
     background: url(https://i.ibb.co/dPSRWMX/Marlins-team-2.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/MIA"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/MIA'] {
     background-size: 41px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/MIA"],
-  .nav-logo-wrap [alt="Miami"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/MIA'],
+  .nav-logo-wrap [alt='Miami'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4143,26 +3826,26 @@ ________________________________________________________________________________
   }
 
   /* Milwaukee Brewers _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/MIL"] {
+  [src*='teamlogos/mlb/500/MIL'] {
     background: url(https://i.ibb.co/VDg7gG5/Milwaukee-Brewers.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/MIL"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/MIL'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/MIL"] {
+  .cscore_logo [src*='teamlogos/mlb/500/MIL'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/MIL"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/MIL'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4170,26 +3853,26 @@ ________________________________________________________________________________
   }
 
   /* Minnesota Twins _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/MIN"] {
+  [src*='teamlogos/mlb/500/MIN'] {
     background: url(https://i.ibb.co/Lh53hw3/Minnesota-Twins.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/MIN"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/MIN'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/MIN"] {
+  .cscore_logo [src*='teamlogos/mlb/500/MIN'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/MIN"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/MIN'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4197,26 +3880,26 @@ ________________________________________________________________________________
   }
 
   /* New York Mets _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/NYM"] {
+  [src*='teamlogos/mlb/500/NYM'] {
     background: url(https://i.ibb.co/t41CsSh/New-York-Mets.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/NYM"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/NYM'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/NYM"] {
+  .cscore_logo [src*='teamlogos/mlb/500/NYM'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/NYM"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/NYM'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4224,26 +3907,26 @@ ________________________________________________________________________________
   }
 
   /* Oakland Athletics _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/OAK"] {
+  [src*='teamlogos/mlb/500/OAK'] {
     background: url(https://i.ibb.co/RhT2bZt/Oakland-Athletics.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/OAK"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/OAK'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/OAK"] {
+  .cscore_logo [src*='teamlogos/mlb/500/OAK'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/OAK"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/OAK'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4251,27 +3934,26 @@ ________________________________________________________________________________
   }
 
   /* Philadelphia Phillies _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/PHI"] {
-    background: url(https://i.ibb.co/FBykk91/Philadelphia-Phillies.png)
-      no-repeat !important;
+  [src*='teamlogos/mlb/500/PHI'] {
+    background: url(https://i.ibb.co/FBykk91/Philadelphia-Phillies.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/PHI"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/PHI'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/PHI"] {
+  .cscore_logo [src*='teamlogos/mlb/500/PHI'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/PHI"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/PHI'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4279,26 +3961,26 @@ ________________________________________________________________________________
   }
 
   /* Pittsburgh Pirates _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/PIT"] {
+  [src*='teamlogos/mlb/500/PIT'] {
     background: url(https://i.ibb.co/x6pFWGw/Pittsburgh-Pirates.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/PIT"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/PIT'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/PIT"] {
+  .cscore_logo [src*='teamlogos/mlb/500/PIT'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/PIT"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/PIT'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4340,26 +4022,26 @@ ________________________________________________________________________________
   }
 
   /* Seattle Mariners _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/SEA"] {
+  [src*='teamlogos/mlb/500/SEA'] {
     background: url(https://i.ibb.co/r0jqhPb/Seattle-Mariners.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/SEA"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/SEA'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/SEA"] {
+  .cscore_logo [src*='teamlogos/mlb/500/SEA'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/SEA"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/SEA'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4367,26 +4049,26 @@ ________________________________________________________________________________
   }
 
   /* San Diego Padres ____________________________________________*/
-  [src*="teamlogos/mlb/500/SD"] {
+  [src*='teamlogos/mlb/500/SD'] {
     background: url(https://i.ibb.co/fFJMMQH/San-Diego-Padres.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/SD"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/SD'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/SD"] {
+  .cscore_logo [src*='teamlogos/mlb/500/SD'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/SD"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/SD'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4394,26 +4076,26 @@ ________________________________________________________________________________
   }
 
   /* San Francisco Giant ____________________________________________*/
-  [src*="teamlogos/mlb/500/SF"] {
+  [src*='teamlogos/mlb/500/SF'] {
     background: url(https://i.ibb.co/D5DcpMK/San-Francisco-Giant.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/SF"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/SF'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/SF"] {
+  .cscore_logo [src*='teamlogos/mlb/500/SF'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/SF"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/SF'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4421,26 +4103,26 @@ ________________________________________________________________________________
   }
 
   /* St. Louis Cardinals _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/STL"] {
+  [src*='teamlogos/mlb/500/STL'] {
     background: url(https://i.ibb.co/KyqVdzf/St-Louis-Cardinals.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/STL"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/STL'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/STL"] {
+  .cscore_logo [src*='teamlogos/mlb/500/STL'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/STL"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/STL'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4448,26 +4130,26 @@ ________________________________________________________________________________
   }
 
   /* Tampa Bey Rays _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/TB"] {
+  [src*='teamlogos/mlb/500/TB'] {
     background: url(https://i.ibb.co/6P041Fs/Tampa-Bay-Rays.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/TB"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/TB'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/TB"] {
+  .cscore_logo [src*='teamlogos/mlb/500/TB'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/TB"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/TB'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4475,26 +4157,26 @@ ________________________________________________________________________________
   }
 
   /* Texas Rangers _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/TEX"] {
+  [src*='teamlogos/mlb/500/TEX'] {
     background: url(https://i.ibb.co/B6vrX55/Texas-Rangers.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/TEX"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/TEX'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/TEX"] {
+  .cscore_logo [src*='teamlogos/mlb/500/TEX'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/TEX"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/TEX'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4502,26 +4184,26 @@ ________________________________________________________________________________
   }
 
   /* Toronto Blue Jays _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/TOR"] {
+  [src*='teamlogos/mlb/500/TOR'] {
     background: url(https://i.ibb.co/RB2Tz1r/Toronto-Blue-Jays.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/TOR"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/TOR'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/TOR"] {
+  .cscore_logo [src*='teamlogos/mlb/500/TOR'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/TOR"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/TOR'] {
     background-size: 26px !important;
     height: 25px !important;
     padding-left: 27px !important;
@@ -4529,26 +4211,26 @@ ________________________________________________________________________________
   }
 
   /* Washington Nationals _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/WSH"] {
+  [src*='teamlogos/mlb/500/WSH'] {
     background: url(https://i.ibb.co/F6gPkC7/Washington-Nationals.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/WSH"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/WSH'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/WSH"] {
+  .cscore_logo [src*='teamlogos/mlb/500/WSH'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/WSH"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/WSH'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4556,26 +4238,26 @@ ________________________________________________________________________________
   }
 
   /* Yankees _______________________________________________________________*/
-  [src*="teamlogos/mlb/500/NYY"] {
+  [src*='teamlogos/mlb/500/NYY'] {
     background: url(https://i.ibb.co/dQwwFwV/New-York-Yankees-2.png) no-repeat !important;
     box-sizing: border-box;
   }
 
-  .game-strip .team-info-logo [src*="teamlogos/mlb/500/NYY"] {
+  .game-strip .team-info-logo [src*='teamlogos/mlb/500/NYY'] {
     background-size: 33px !important;
     height: 47px !important;
     padding-left: 51px !important;
     width: 10px !important;
   }
 
-  .cscore_logo [src*="teamlogos/mlb/500/NYY"] {
+  .cscore_logo [src*='teamlogos/mlb/500/NYY'] {
     background-size: 28px !important;
     height: 25px !important;
     padding-left: 29px !important;
     width: 10px !important;
   }
 
-  .nav-logo-wrap [src*="teamlogos/mlb/500/NYY"] {
+  .nav-logo-wrap [src*='teamlogos/mlb/500/NYY'] {
     background-size: 30px !important;
     height: 35px !important;
     padding-left: 31px !important;
@@ -4608,7 +4290,7 @@ ________________________________________________________________________________
   /* Facebook _____________*/
   .icon-facebook-messenger-solid-before:before,
   .icon-facebook-messenger-solid-after:after {
-    content: "";
+    content: '';
   }
 
   .icon-facebook-messenger-solid-before:before,
@@ -4649,7 +4331,7 @@ ________________________________________________________________________________
   /* Pinterest _____________*/
   .icon-pinterest-solid-before:before,
   .icon-pinterest-solid-after:after {
-    content: "";
+    content: '';
   }
 
   .icon-pinterest-solid-before:before,
@@ -4669,7 +4351,7 @@ ________________________________________________________________________________
   /* Twitter _____________*/
   .icon-twitter-solid-before:before,
   .icon-twitter-solid-after:after {
-    content: "";
+    content: '';
   }
 
   .icon-twitter-solid-before:before,
@@ -4695,8 +4377,7 @@ ________________________________________________________________________________
   /* YouTube _____________*/
   [href *= "https://www.youtube.com/"] img
   {
-    background: url(https://i.ibb.co/8cHpnPV/You-Tube-logo-play-icon-30x23.png)
-      no-repeat !important;
+    background: url(https://i.ibb.co/8cHpnPV/You-Tube-logo-play-icon-30x23.png) no-repeat !important;
     box-sizing: border-box;
   }
 
@@ -4725,8 +4406,7 @@ ________________________________________________________________________________
   /* Color of handle 
 __________________________________________________________________________________________________________________________________*/
   ::-webkit-scrollbar-thumb {
-    background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png)
-      #111 !important;
+    background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png) #111 !important;
     background-size: 100% !important;
     box-shadow:
       inset 0 0 5px rgba(0, 0, 0, 0.4),
@@ -4736,8 +4416,7 @@ ________________________________________________________________________________
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png)
-      #111 !important;
+    background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png) #111 !important;
     background-size: 100% !important;
     border-radius: 22px !important;
     box-shadow:

@@ -31,7 +31,7 @@
 
 (function () {
   // ************ J + M + J ************* //
-  "use strict";
+  'use strict';
   // ***** UI SETTINGS ***** //
   const UI_Prefs_Bool = {
     alternate_background: true,
@@ -59,291 +59,227 @@
   const UI_Prefs_Non_Bool = {
     grid_font_size: 1, // Default = 1
     grid_image_size: 200, // Default = 184 (200px - 16px)
-    sort_by: "default", // Choose from: 'name', 'size', 'date', 'kind', 'ext', 'default ( = Chrome sorting: dirs on top, files alphabetical).
-    sort_direction: "ascending", // Choose from: 'ascending' (A-Z) [default] or 'descending' (Z-A).
-    texteditor_view: "styled", // Options: 'raw','styled','html'
-    theme: "dark", // Options: 'light' or 'dark'
-    ui_font: "system-ui, sans-serif", // Choose an installed font for the UI; if undefined, use browser defaults instead. [system-ui, sans-serif]
-    ui_font_size: "14px", // Choose a default UI font size; use any standard CSS units.
-    ui_scale: "120",
+    sort_by: 'default', // Choose from: 'name', 'size', 'date', 'kind', 'ext', 'default ( = Chrome sorting: dirs on top, files alphabetical).
+    sort_direction: 'ascending', // Choose from: 'ascending' (A-Z) [default] or 'descending' (Z-A).
+    texteditor_view: 'styled', // Options: 'raw','styled','html'
+    theme: 'dark', // Options: 'light' or 'dark'
+    ui_font: 'system-ui, sans-serif', // Choose an installed font for the UI; if undefined, use browser defaults instead. [system-ui, sans-serif]
+    ui_font_size: '14px', // Choose a default UI font size; use any standard CSS units.
+    ui_scale: '120',
   };
   let UI_Settings = { ...UI_Prefs_Bool, ...UI_Prefs_Non_Bool };
   const Item_Kinds = {
-    dir: ["/"], // loaded in iframe#content_iframe
-    app: [
-      "app/",
-      "app",
-      "appimage",
-      "apk",
-      "exe",
-      "ipa",
-      "ipk",
-      "jar",
-      "msi",
-      "wsf",
-    ], // generally ignored; some apps may be opened as directories
-    alias: ["alias", "desktop", "directory", "lnk", "symlink", "symlink/"],
+    dir: ['/'], // loaded in iframe#content_iframe
+    app: ['app/', 'app', 'appimage', 'apk', 'exe', 'ipa', 'ipk', 'jar', 'msi', 'wsf'], // generally ignored; some apps may be opened as directories
+    alias: ['alias', 'desktop', 'directory', 'lnk', 'symlink', 'symlink/'],
     archive: [
-      "7z",
-      "archive",
-      "b6z",
-      "bin",
-      "bzip",
-      "bz2",
-      "cbr",
-      "dmg",
-      "gz",
-      "iso",
-      "mpkg",
-      "pkg",
-      "rar",
-      "sit",
-      "sitx",
-      "tar",
-      "tar.gz",
-      "zip",
-      "zipx",
-      "zxp",
+      '7z',
+      'archive',
+      'b6z',
+      'bin',
+      'bzip',
+      'bz2',
+      'cbr',
+      'dmg',
+      'gz',
+      'iso',
+      'mpkg',
+      'pkg',
+      'rar',
+      'sit',
+      'sitx',
+      'tar',
+      'tar.gz',
+      'zip',
+      'zipx',
+      'zxp',
     ], // ignored
-    audio: [
-      "aac",
-      "aif",
-      "aiff",
-      "ape",
-      "flac",
-      "m4a",
-      "mka",
-      "mp3",
-      "ogg",
-      "opus",
-      "wav",
-    ], // loaded in audio#audio
+    audio: ['aac', 'aif', 'aiff', 'ape', 'flac', 'm4a', 'mka', 'mp3', 'ogg', 'opus', 'wav'], // loaded in audio#audio
     bin: [
-      "a",
-      "ase",
-      "bundle",
-      "dll",
-      "dyld",
-      "dylib",
-      "gem",
-      "icc",
-      "msi",
-      "profraw",
-      "pyc",
-      "pyo",
-      "o",
-      "rakefile",
-      "ri",
-      "so",
-      "torrent",
-      "xml",
-      "2",
-      "opml",
-      "qm",
-      "scpt",
-      "uo",
-      "vsix",
-      "zwc",
+      'a',
+      'ase',
+      'bundle',
+      'dll',
+      'dyld',
+      'dylib',
+      'gem',
+      'icc',
+      'msi',
+      'profraw',
+      'pyc',
+      'pyo',
+      'o',
+      'rakefile',
+      'ri',
+      'so',
+      'torrent',
+      'xml',
+      '2',
+      'opml',
+      'qm',
+      'scpt',
+      'uo',
+      'vsix',
+      'zwc',
     ], // ignored
     code: [
-      "bak",
-      "bash",
-      "bash_profile",
-      "bashrc",
-      "bat",
-      "cgi",
-      "com",
-      "c",
-      "cfg",
-      "cnf",
-      "codes",
-      "coffee",
-      "conf",
-      "csh",
-      "cshrc",
-      "cson",
-      "css",
-      "cuetxt",
-      "custom_aliases",
-      "d",
-      "default",
-      "description",
-      "dist",
-      "editorconfig",
-      "emacs",
-      "example",
-      "gemspec",
-      "gitconfig",
-      "gitignore",
-      "gitignore_global",
-      "h",
-      "hd",
-      "ini",
-      "js",
-      "json",
-      "jsx",
-      "less",
-      "list",
-      "local",
-      "login",
-      "logout",
-      "lua",
-      "mkshrc",
-      "old",
-      "pc",
-      "php",
-      "pl",
-      "plist",
-      "pre-oh-my-zsh",
-      "profile",
-      "pth",
-      "py",
-      "rb",
-      "rc",
-      "rdoc",
-      "sass",
-      "settings",
-      "sh",
-      "strings",
-      "taskrc",
-      "tcl",
-      "viminfo",
-      "vimrc",
-      "vue",
-      "vtt",
-      "yaml",
-      "yml",
-      "zlogin",
-      "zlogout",
-      "zpreztorc",
-      "zprofile",
-      "zsh",
-      "zshenv",
-      "zshrc",
+      'bak',
+      'bash',
+      'bash_profile',
+      'bashrc',
+      'bat',
+      'cgi',
+      'com',
+      'c',
+      'cfg',
+      'cnf',
+      'codes',
+      'coffee',
+      'conf',
+      'csh',
+      'cshrc',
+      'cson',
+      'css',
+      'cuetxt',
+      'custom_aliases',
+      'd',
+      'default',
+      'description',
+      'dist',
+      'editorconfig',
+      'emacs',
+      'example',
+      'gemspec',
+      'gitconfig',
+      'gitignore',
+      'gitignore_global',
+      'h',
+      'hd',
+      'ini',
+      'js',
+      'json',
+      'jsx',
+      'less',
+      'list',
+      'local',
+      'login',
+      'logout',
+      'lua',
+      'mkshrc',
+      'old',
+      'pc',
+      'php',
+      'pl',
+      'plist',
+      'pre-oh-my-zsh',
+      'profile',
+      'pth',
+      'py',
+      'rb',
+      'rc',
+      'rdoc',
+      'sass',
+      'settings',
+      'sh',
+      'strings',
+      'taskrc',
+      'tcl',
+      'viminfo',
+      'vimrc',
+      'vue',
+      'vtt',
+      'yaml',
+      'yml',
+      'zlogin',
+      'zlogout',
+      'zpreztorc',
+      'zprofile',
+      'zsh',
+      'zshenv',
+      'zshrc',
     ], // treated as text, opened in iframe#content_iframe text editor
-    database: [
-      "accdb",
-      "db",
-      "dbf",
-      "mdb",
-      "pdb",
-      "sql",
-      "sqlite",
-      "sqlitedb",
-      "sqlite3",
-    ], // ignored
-    ebook: [
-      "azw",
-      "azw1",
-      "azw3",
-      "azw4",
-      "epub",
-      "ibook",
-      "kfx",
-      "mobi",
-      "tpz",
-    ], // ignored
-    font: ["otf", "ttf", "woff", "woff2", "afm", "pfb", "pfm", "tfm"], // opened in div#content_font
+    database: ['accdb', 'db', 'dbf', 'mdb', 'pdb', 'sql', 'sqlite', 'sqlitedb', 'sqlite3'], // ignored
+    ebook: ['azw', 'azw1', 'azw3', 'azw4', 'epub', 'ibook', 'kfx', 'mobi', 'tpz'], // ignored
+    font: ['otf', 'ttf', 'woff', 'woff2', 'afm', 'pfb', 'pfm', 'tfm'], // opened in div#content_font
     graphics: [
-      "afdesign",
-      "afpub",
-      "ai",
-      "book",
-      "dtp",
-      "eps",
-      "fm",
-      "icml",
-      "icns",
-      "idml",
-      "indb",
-      "indd",
-      "indt",
-      "inx",
-      "mif",
-      "pmd",
-      "pub",
-      "qxb",
-      "qxd",
-      "qxp",
-      "sla",
-      "swf",
-      "ai",
-      "arw",
-      "cr2",
-      "dng",
-      "eps",
-      "jpf",
-      "nef",
-      "psd",
-      "psd",
-      "raw",
-      "tif",
-      "tiff",
+      'afdesign',
+      'afpub',
+      'ai',
+      'book',
+      'dtp',
+      'eps',
+      'fm',
+      'icml',
+      'icns',
+      'idml',
+      'indb',
+      'indd',
+      'indt',
+      'inx',
+      'mif',
+      'pmd',
+      'pub',
+      'qxb',
+      'qxd',
+      'qxp',
+      'sla',
+      'swf',
+      'ai',
+      'arw',
+      'cr2',
+      'dng',
+      'eps',
+      'jpf',
+      'nef',
+      'psd',
+      'psd',
+      'raw',
+      'tif',
+      'tiff',
     ], // ignored
-    htm: ["htm", "html", "xhtm", "xhtml"], // opened in iframe#content_iframe
-    image: [
-      "apng",
-      "avif",
-      "bmp",
-      "gif",
-      "ico",
-      "jpeg",
-      "jpg",
-      "png",
-      "svg",
-      "webp",
-    ],
-    link: ["url", "webloc", "inetloc"],
-    markdown: [
-      "md",
-      "markdown",
-      "mdown",
-      "mkdn",
-      "mkd",
-      "mdwn",
-      "mdtxt",
-      "mdtext",
-      "mk",
-    ], // treated as text, opened in iframe#content_iframe text editor
-    other_ignored: ["alias", "cue", "dat", "dic", "idx", "xmp"],
+    htm: ['htm', 'html', 'xhtm', 'xhtml'], // opened in iframe#content_iframe
+    image: ['apng', 'avif', 'bmp', 'gif', 'ico', 'jpeg', 'jpg', 'png', 'svg', 'webp'],
+    link: ['url', 'webloc', 'inetloc'],
+    markdown: ['md', 'markdown', 'mdown', 'mkdn', 'mkd', 'mdwn', 'mdtxt', 'mdtext', 'mk'], // treated as text, opened in iframe#content_iframe text editor
+    other_ignored: ['alias', 'cue', 'dat', 'dic', 'idx', 'xmp'],
     office: [
-      "csv",
-      "doc",
-      "docx",
-      "key",
-      "numbers",
-      "odf",
-      "ods",
-      "odt",
-      "pages",
-      "rtf",
-      "scriv",
-      "wpd",
-      "wps",
-      "xlr",
-      "xls",
-      "xlsx",
-      "xlm",
+      'csv',
+      'doc',
+      'docx',
+      'key',
+      'numbers',
+      'odf',
+      'ods',
+      'odt',
+      'pages',
+      'rtf',
+      'scriv',
+      'wpd',
+      'wps',
+      'xlr',
+      'xls',
+      'xlsx',
+      'xlm',
     ], // ignored
-    playlist: ["m3u", "m3u8", "pls", "asx", "wpl", "xspf"],
-    pdf: ["pdf"], // open in #content_pdf
+    playlist: ['m3u', 'm3u8', 'pls', 'asx', 'wpl', 'xspf'],
+    pdf: ['pdf'], // open in #content_pdf
     system: [
-      "DS_Store",
-      "ds_store",
-      "icon",
-      "ics",
-      "spotlight-v100/",
-      "temporaryitems/",
-      "documentrevisions-v100/",
-      "trashes/",
-      "fseventsd/",
-      "dbfseventsd",
-      "file",
-      "programdata",
-      "localized",
+      'DS_Store',
+      'ds_store',
+      'icon',
+      'ics',
+      'spotlight-v100/',
+      'temporaryitems/',
+      'documentrevisions-v100/',
+      'trashes/',
+      'fseventsd/',
+      'dbfseventsd',
+      'file',
+      'programdata',
+      'localized',
     ], // ignored system items
-    text: ["log", "nfo", "txt", "text", "readme"], // opened in iframe#content_iframe text editor
-    video: ["m4v", "mkv", "mov", "mp4", "mpeg", "webm"], // loaded in video#content_video
+    text: ['log', 'nfo', 'txt', 'text', 'readme'], // opened in iframe#content_iframe text editor
+    video: ['m4v', 'mkv', 'mov', 'mp4', 'mpeg', 'webm'], // loaded in video#content_video
   };
   const Item_Settings = {
     // ITEM_SETTINGS: Ignore or Exclude files by extension (prevents browser from attempting to download the file).
@@ -364,17 +300,14 @@
     // ===> LOAD FILE URL
     // if window.location points to a file, change the location to the file's container dir, add search_param of file name; then load the file's container dir and load file in content pane.
     let search_params = searchParamsGet();
-    search_params.set("file", window.location.pathname.split("/").reverse()[0]);
+    search_params.set('file', window.location.pathname.split('/').reverse()[0]);
     window.location =
-      window.location.pathname.slice(
-        0,
-        window.location.pathname.lastIndexOf("/"),
-      ) +
-      "/?" +
+      window.location.pathname.slice(0, window.location.pathname.lastIndexOf('/')) +
+      '/?' +
       search_params;
     return;
   }
-  if (!window.location.pathname.endsWith("/") && window.top === window.self) {
+  if (!window.location.pathname.endsWith('/') && window.top === window.self) {
     loadFileURL();
   } // load file urls
   //==============================//
@@ -388,17 +321,17 @@
         ? navigator.userAgentData.brands[1].brand.toLowerCase()
         : navigator.userAgent;
     switch (true) {
-      case brand === "chromium" || /chrome?chromium/.test(brand):
-        return "is_chrome";
-      case brand === "msie" || /msie/.test(brand):
-        return "is_explorer";
+      case brand === 'chromium' || /chrome?chromium/.test(brand):
+        return 'is_chrome';
+      case brand === 'msie' || /msie/.test(brand):
+        return 'is_explorer';
       // case brand === 'edge'	  || ( /edge/.test(brand) ):	return 'is_edge'; // need case for ms edge
-      case brand === "opera" || /opera/.test(brand):
-        return "is_opera";
-      case brand === "safari" || /safari/.test(brand):
-        return "is_safari";
-      case brand === "firefox" || !/chrome|chromium/.test(brand):
-        return "is_gecko";
+      case brand === 'opera' || /opera/.test(brand):
+        return 'is_opera';
+      case brand === 'safari' || /safari/.test(brand):
+        return 'is_safari';
+      case brand === 'firefox' || !/chrome|chromium/.test(brand):
+        return 'is_gecko';
     }
   }
   function getOS() {
@@ -408,26 +341,20 @@
         ? navigator.userAgentData.platform
         : window.navigator.platform
     ).toLowerCase();
-    let macos_platforms = [
-        "macos",
-        "macintosh",
-        "macintel",
-        "macppc",
-        "mac68k",
-      ],
-      windows_platforms = ["win32", "win64", "windows", "wince"],
+    let macos_platforms = ['macos', 'macintosh', 'macintel', 'macppc', 'mac68k'],
+      windows_platforms = ['win32', 'win64', 'windows', 'wince'],
       os = null;
     switch (true) {
       case macos_platforms.indexOf(platform) !== -1:
-        os = "macos";
+        os = 'macos';
         break;
       case windows_platforms.indexOf(platform) !== -1:
-        os = "windows";
+        os = 'windows';
         break;
       // case iosPlatforms.indexOf(platform) !== -1:		os = 'ios';		break; // just in case;
       // case /Android/.test(userAgent):					os = 'android';	break; // just in case;
       case !os && /Linux/.test(platform):
-        os = "linux";
+        os = 'linux';
         break;
     }
     return os;
@@ -444,9 +371,10 @@
       return str;
     } // ===> DECODE URI COMPONENT SAFE; // Fix "%" error in file name; see stackoverflow.com/questions/7449588/why-does-decodeuricomponent-lock-up-my-browser
     try {
-      return decodeURIComponent(
-        str.replace(/%(?![0-9a-fA-F]{2})/g, "%25"),
-      ).replace(/\"/g, "&quot;");
+      return decodeURIComponent(str.replace(/%(?![0-9a-fA-F]{2})/g, '%25')).replace(
+        /\"/g,
+        '&quot;'
+      );
     } catch (e) {
       return str;
     } // replace % with %25 if not followed by two a-f/number; replace " with html entity
@@ -458,18 +386,16 @@
   }
   function convertDecimal2Hex(d, padding) {
     let hex = Number(d).toString(16);
-    hex = isNaN(hex) ? null : "000000".substr(0, padding - hex.length) + hex;
+    hex = isNaN(hex) ? null : '000000'.substr(0, padding - hex.length) + hex;
     return hex;
   }
   //==============================//
   const window_protocol = window.location.protocol; // GLOBAL: protocol
   //const window_origin = window_protocol +'//'+ window.location.host;																					// GLOBAL: origin
   let window_location = decodeURIComponentSafe(
-    [location.protocol, "//", location.host, location.pathname].join(""),
+    [location.protocol, '//', location.host, location.pathname].join('')
   ); // GLOBAL: current location
-  const current_dir_path = window_location
-    .replace(/([/|_|—])/g, "$1<wbr>")
-    .replace(/\\/g, "/"); // GLOBAL: current dir path w/o query string for display
+  const current_dir_path = window_location.replace(/([/|_|—])/g, '$1<wbr>').replace(/\\/g, '/'); // GLOBAL: current dir path w/o query string for display
   // const current_dir = window_location.split('/').slice(-2,-1).toString();																				// GLOBAL: current dir
   //==============================//
   function setLocation(link) {
@@ -478,16 +404,16 @@
   function changeLocation(args) {
     // args[0] === href, args[1] === 'external || ok'
     switch (true) {
-      case args[1] === "external":
+      case args[1] === 'external':
         window.open(args[0]);
         break; // open external menu links: about, coffee, contact
-      case args[1] === "ok":
+      case args[1] === 'ok':
         window.location = args[0];
         break;
-      case /has_\w+list/.test(getClassNames("body")):
+      case /has_\w+list/.test(getClassNames('body')):
         args = window.location.href; // nobreak; show playlist warning
       default:
-        showWarning("setLocation", args.toString());
+        showWarning('setLocation', args.toString());
     }
   }
   function searchParamsGet() {
@@ -513,13 +439,13 @@
     search_params.sort(); // sort and sanitize params
     let search_params_str = search_params
       .toString()
-      .replace(/%2F/g, "")
-      .replace("/", "")
-      .replace(/%2Cfalse/g, ""); // further sanitization
+      .replace(/%2F/g, '')
+      .replace('/', '')
+      .replace(/%2Cfalse/g, ''); // further sanitization
     let new_location =
       search_params_str.length === 0
         ? window.location.pathname
-        : window.location.pathname + "?" + search_params_str; // don't add ? if no search params
+        : window.location.pathname + '?' + search_params_str; // don't add ? if no search params
     window.history.replaceState({}, document.title, new_location); // set new location
     if (isTopWindow()) {
       updateParentLinks();
@@ -537,26 +463,23 @@
   function getCurrentUIPref(pref_id) {
     // ===> GET SEARCH PARAM value by key
     let search_params = searchParamsGet(),
-      value = "";
+      value = '';
     switch (true) {
-      case pref_id === "width":
+      case pref_id === 'width':
         if (!isTopWindow()) {
           return;
         } // width: set the stored sidebar width or use default 30%
         value =
           !search_params.has(pref_id) || window.innerWidth === 0
             ? 30
-            : Math.round(
-                (100 * Number.parseInt(search_params.get("width"))) /
-                  window.innerWidth,
-              );
+            : Math.round((100 * Number.parseInt(search_params.get('width'))) / window.innerWidth);
         break; // percentage
-      case pref_id === "parent_id":
+      case pref_id === 'parent_id':
         value = search_params.has(pref_id)
           ? search_params.get(pref_id)
           : UI_Settings?.[pref_id]
             ? UI_Settings[pref_id]?.toString()
-            : "";
+            : '';
         break; //
       default: // if query_string has key/value pair, use it, else use key/value pair from UI_Settings
         value = (
@@ -566,7 +489,7 @@
               ? UI_Settings[pref_id]?.toString()
               : pref_id
         )?.toString();
-        value = value?.replace("%2F", "")?.replace("/", "") || ""; // some servers add a '/' to end of query string
+        value = value?.replace('%2F', '')?.replace('/', '') || ''; // some servers add a '/' to end of query string
     }
     return value;
   }
@@ -574,32 +497,30 @@
     let value,
       bool_prefs = Object.keys(UI_Prefs_Bool);
     let non_bool_prefs = {
-      sort_direction_ascending: { sort_direction: "descending" },
-      sort_direction_descending: { sort_direction: "ascending" },
-      sort_by_name: { sort_by: "name" },
-      sort_by_default: { sort_by: "default" },
-      sort_by_duration: { sort_by: "duration" },
-      sort_by_size: { sort_by: "size" },
-      sort_by_date: { sort_by: "date" },
-      sort_by_kind: { sort_by: "kind" },
-      sort_by_ext: { sort_by: "ext" },
-      texteditor_view: { texteditor_view: getCurrentUIPref("texteditor_view") },
-      texteditor_view_raw: { texteditor_view: "raw" },
-      texteditor_view_styled: { texteditor_view: "styled" },
-      texteditor_view_html: { texteditor_view: "html" },
+      sort_direction_ascending: { sort_direction: 'descending' },
+      sort_direction_descending: { sort_direction: 'ascending' },
+      sort_by_name: { sort_by: 'name' },
+      sort_by_default: { sort_by: 'default' },
+      sort_by_duration: { sort_by: 'duration' },
+      sort_by_size: { sort_by: 'size' },
+      sort_by_date: { sort_by: 'date' },
+      sort_by_kind: { sort_by: 'kind' },
+      sort_by_ext: { sort_by: 'ext' },
+      texteditor_view: { texteditor_view: getCurrentUIPref('texteditor_view') },
+      texteditor_view_raw: { texteditor_view: 'raw' },
+      texteditor_view_styled: { texteditor_view: 'styled' },
+      texteditor_view_html: { texteditor_view: 'html' },
       theme: {
-        theme: getCurrentUIPref("theme") === "light" ? "dark" : "light",
+        theme: getCurrentUIPref('theme') === 'light' ? 'dark' : 'light',
       },
-      theme_dark: { theme: "dark" },
-      theme_light: { theme: "light" },
-      ui_font: { ui_font: getCurrentUIPref("ui_font") },
-      ui_scale: { ui_scale: getCurrentUIPref("ui_scale") },
+      theme_dark: { theme: 'dark' },
+      theme_light: { theme: 'light' },
+      ui_font: { ui_font: getCurrentUIPref('ui_font') },
+      ui_scale: { ui_scale: getCurrentUIPref('ui_scale') },
     };
     switch (true) {
       case bool_prefs.includes(key):
-        return getCurrentUIPref(key) === "true"
-          ? [key, "false"]
-          : [key, "true"]; // toggle bool prefs
+        return getCurrentUIPref(key) === 'true' ? [key, 'false'] : [key, 'true']; // toggle bool prefs
       default:
         value = Object.values(non_bool_prefs[key]).toString();
         key = Object.keys(non_bool_prefs[key]).toString();
@@ -607,10 +528,10 @@
     }
   }
   let setWarningItemNotLoadedID;
-  let str = ""; // global str var;
+  let str = ''; // global str var;
   function timeoutID() {
     return window.setTimeout(() => {
-      str = "";
+      str = '';
     }, 1000);
   } // ===> TIMEOUT ID: reset typed string to '' after 1.5 sec.
   //==============================//
@@ -636,7 +557,7 @@
     let els = Array.from(getEls(sel)).filter((el) => {
       let el_styles = window.getComputedStyle(el);
       return (
-        el_styles.getPropertyValue("display") !== "none" ||
+        el_styles.getPropertyValue('display') !== 'none' ||
         el?.offsetWidth > 0 ||
         el?.offsetHeight > 0
       );
@@ -644,27 +565,24 @@
     return els;
   }
   function getContentPaneData() {
-    return getAttr("#content_pane", "data-content");
+    return getAttr('#content_pane', 'data-content');
   } // ===> GET CONTENT_PANE DATA content
   function hasContent(args) {
     // ===> HAS CONTENT?
     switch (true) {
       case args === undefined:
-        return hasClass("#content_pane", "has_audio") ||
-          getContentPaneData() !== "has_null"
+        return hasClass('#content_pane', 'has_audio') || getContentPaneData() !== 'has_null'
           ? true
           : false; // has any content
-      case args.includes("audio"):
-        return hasClass("#content_pane", "has_audio") &&
-          (args.includes("ignore") || getContentPaneData() === "has_null")
+      case args.includes('audio'):
+        return hasClass('#content_pane', 'has_audio') &&
+          (args.includes('ignore') || getContentPaneData() === 'has_null')
           ? true
           : false; // has audio only or ignore other content
-      case args.includes("_"):
-        return hasClass("#content_pane", "has_" + args);
+      case args.includes('_'):
+        return hasClass('#content_pane', 'has_' + args);
       default:
-        return args.split(",").includes(getContentPaneData()?.split("_")[1])
-          ? true
-          : false; // has named content (e.g., pdf, iframe)
+        return args.split(',').includes(getContentPaneData()?.split('_')[1]) ? true : false; // has named content (e.g., pdf, iframe)
     }
   }
   //==============================//
@@ -677,15 +595,15 @@
   } // ===> HAS CLASS
   function addClass(sel, classname) {
     let els = Array.from(getEls(sel)),
-      classes = classname.split(" ").filter((item) => item);
+      classes = classname.split(' ').filter((item) => item);
     els?.forEach((el) => el.classList.add(...classes));
   } // ===> ADD CLASS
   function removeClass(sel, classname) {
     // ===> REMOVE CLASS
     let els = Array.from(getEls(sel)),
-      classes = classname?.split(" ")?.filter((item) => item) || null;
+      classes = classname?.split(' ')?.filter((item) => item) || null;
     if (classname === undefined || classes === null) {
-      els?.forEach((el) => el.removeAttribute("class"));
+      els?.forEach((el) => el.removeAttribute('class'));
     } else {
       els?.forEach((el) => el.classList.remove(...classes));
     } // if no className, remove all classes
@@ -696,9 +614,7 @@
       siblings = el?.parentElement.children;
     if (el !== null) {
       Array.from(siblings).forEach((sibling) =>
-        sibling.classList.remove(
-          ...classname.replace(/\s{2,}/g, " ").split(" "),
-        ),
+        sibling.classList.remove(...classname.replace(/\s{2,}/g, ' ').split(' '))
       );
       addClass(sel, classname);
     } // remove class from els & add class to selected el
@@ -715,27 +631,25 @@
   } // ===> SET ATTRIBUTE
   function removeAttr(sel, attributeNamesArr) {
     // ===> REMOVE ATTRIBUTE
-    if (typeof attributeNamesArr === "string") {
+    if (typeof attributeNamesArr === 'string') {
       attributeNamesArr = [attributeNamesArr];
     }
     let els = getEls(sel);
     Array.from(els)?.forEach((el) =>
-      attributeNamesArr.forEach((attributeName) =>
-        el.removeAttribute(attributeName),
-      ),
+      attributeNamesArr.forEach((attributeName) => el.removeAttribute(attributeName))
     );
   }
   function getData(sel, keyname) {
-    let el = typeof sel === "string" ? getEl(sel) : sel;
-    return el?.getAttribute("data-" + keyname);
+    let el = typeof sel === 'string' ? getEl(sel) : sel;
+    return el?.getAttribute('data-' + keyname);
   } // ===> GET DATASET
   function setData(sel, keyname, value) {
     if (elExists(sel)) {
-      setAttr(sel, "data-" + keyname, value);
+      setAttr(sel, 'data-' + keyname, value);
     }
   } // ===> SET DATASET
   function deleteData(sel, keyname) {
-    removeAttr(sel, "data-" + keyname);
+    removeAttr(sel, 'data-' + keyname);
   } // ===> REMOVE DATASET
   function setStyle(sel, property, value) {
     getEl(sel)?.style.setProperty(property, value);
@@ -746,7 +660,7 @@
   //==============================//
   function clickThis(sel) {
     let el = getEl(sel);
-    el?.querySelector("a")?.click() || el?.click();
+    el?.querySelector('a')?.click() || el?.click();
   } // ===> CLICK THIS by CSS selector
   // function dblclick(el,func)							{ var evt = new MouseEvent('dblclick'); el.addEventListener(evt,func); el.dispatchEvent(evt); }			// ===> DOUBLE CLICK
   function altKey(e) {
@@ -775,45 +689,34 @@
     // ===> SCROLL to Selected Item
     let container = getEl(container_ID);
     const isInViewport = (sel) => {
-      const rect =
-        getEl(sel) !== null ? getEl(sel).getBoundingClientRect() : null;
+      const rect = getEl(sel) !== null ? getEl(sel).getBoundingClientRect() : null;
       if (rect === null) {
         return false;
       }
       return (
-        rect.top >= getEl("#sidebar_header").offsetHeight &&
+        rect.top >= getEl('#sidebar_header').offsetHeight &&
         rect.bottom <=
-          (window.innerHeight - getEl("#sidebar_footer").offsetHeight ||
-            document.documentElement.clientHeight -
-              getEl("#sidebar_footer").offsetHeight)
+          (window.innerHeight - getEl('#sidebar_footer').offsetHeight ||
+            document.documentElement.clientHeight - getEl('#sidebar_footer').offsetHeight)
       );
     };
     if (container?.height === 0 || isInViewport(sel)) {
       return;
     } // don't scroll hidden elements
     let scroll_el = container?.querySelector(sel),
-      scroll_behavior =
-        bool !== undefined || bool === true ? "instant" : "smooth",
-      scroll_block = hasClass("body", "is_gecko") ? "start" : "center";
+      scroll_behavior = bool !== undefined || bool === true ? 'instant' : 'smooth',
+      scroll_block = hasClass('body', 'is_gecko') ? 'start' : 'center';
     scroll_el?.scrollIntoView({
       behavior: scroll_behavior,
       block: scroll_block,
-      inline: "nearest",
+      inline: 'nearest',
     });
   }
   function mouseMove(e, sel, startX, startY, elOffsetLeft, elOffsetTop) {
     // ===> Init events to allow glyphs to be dragged into view
-    let scale_factor = sel === "#font_specimen_glyph" ? 2 : 1; // scale_factor needed for svg glyphs
-    setStyle(
-      sel,
-      "left",
-      elOffsetLeft + (e.pageX - startX) * scale_factor + "px",
-    );
-    setStyle(
-      sel,
-      "top",
-      elOffsetTop + (e.pageY - startY) * scale_factor + "px",
-    );
+    let scale_factor = sel === '#font_specimen_glyph' ? 2 : 1; // scale_factor needed for svg glyphs
+    setStyle(sel, 'left', elOffsetLeft + (e.pageX - startX) * scale_factor + 'px');
+    setStyle(sel, 'top', elOffsetTop + (e.pageY - startY) * scale_factor + 'px');
   }
   //==============================// OPEN/SAVE FILES
   function openFile(args) {
@@ -824,37 +727,35 @@
         id = args[1],
         reader = new FileReader();
       switch (id) {
-        case "open_font":
+        case 'open_font':
           reader.readAsArrayBuffer(files);
           break;
-        case "open_playlist":
+        case 'open_playlist':
           reader.readAsText(files);
           break;
       } // get the file reader
       reader.onload = () => {
         // on file reader load
         switch (true) {
-          case id === "open_font":
+          case id === 'open_font':
             openFontFile(files, reader);
             break;
-          case id === "open_playlist":
-            openPlaylist(files.name, "", reader.result);
+          case id === 'open_playlist':
+            openPlaylist(files.name, '', reader.result);
             break;
         } // open the file
         return true;
       };
-      getEl("#" + id).value = ""; // reset input to allow same item to be reopened immediately after closing
+      getEl('#' + id).value = ''; // reset input to allow same item to be reopened immediately after closing
     } else {
-      alert(
-        "Can't open file: file APIs are not fully supported in this browser.",
-      );
+      alert("Can't open file: file APIs are not fully supported in this browser.");
     } // else error
   }
   function saveFile(content, mimetype, file_name) {
     // ===> SAVE FILE
     let blob = new Blob([content], { type: mimetype });
-    let download_el = window.document.createElement("a");
-    download_el.style = "display:none";
+    let download_el = window.document.createElement('a');
+    download_el.style = 'display:none';
     download_el.href = window.URL.createObjectURL(blob);
     download_el.download = file_name; // define & style download_el
     document.body.appendChild(download_el);
@@ -869,27 +770,25 @@
     //*** decrement selected and history values ***//											// ===> UPDATE PARENT LINK SEARCH PARAMS
     let query_str = new URLSearchParams(str);
     query_str.sort(); // make new search params from window.location.search
-    let history = query_str.has("history")
-      ? query_str.get("history")
-      : undefined;
+    let history = query_str.has('history') ? query_str.get('history') : undefined;
     switch (true) {
       case history !== undefined:
-        history = history.split(" ");
+        history = history.split(' ');
         switch (true) {
           case history.length > 1:
-            query_str.set("selected", history[0]);
+            query_str.set('selected', history[0]);
             history.shift();
-            query_str.set("history", history.join("+"));
+            query_str.set('history', history.join('+'));
             break;
           case history.length === 1:
-            query_str.set("selected", history[0]);
+            query_str.set('selected', history[0]);
             history.shift();
-            query_str.delete("history");
+            query_str.delete('history');
             break;
         }
         break;
       default:
-        query_str.delete("selected");
+        query_str.delete('selected');
     }
     return decodeURIComponentSafe(query_str.toString());
   }
@@ -900,12 +799,12 @@
       search_params = searchParamsGet();
     search_params.sort();
     let query_str = search_params.toString();
-    let link_pieces = window_location.split("/");
+    let link_pieces = window_location.split('/');
     link_pieces = link_pieces.slice(2, -2); // make array of parent directories; remove beginning and ending empty elements and current directory
     while (link_pieces.length > 0) {
       // while there are link pieces...
       query_str = updateParentLinkSearchParams(query_str); // update selected and history
-      link = window_protocol + "//" + link_pieces.join("/") + "/?" + query_str;
+      link = window_protocol + '//' + link_pieces.join('/') + '/?' + query_str;
       links.push(link);
       link_pieces.pop(); // assemble link; add to link array; remove last link piece and repeat...
     }
@@ -916,26 +815,26 @@
     let parent_link_menu_items = [],
       links = createParentLinks();
     for (let i = 0; i < links.length; i++) {
-      let display_name = links[i].split("/?")[0];
-      display_name = display_name.replace(/\//g, "/<wbr>");
+      let display_name = links[i].split('/?')[0];
+      display_name = display_name.replace(/\//g, '/<wbr>');
       let menu_item = `<li><a id="parents_link_${i}" href="${links[i]}" class="display_block padding_4_8">${display_name}/</a></li>`;
       parent_link_menu_items.push(menu_item);
     }
     let parent_link = links[0] === undefined ? window.location.href : links[0];
-    parent_link = parent_link.replace(/parents_link_/, "parent_link_");
-    return [parent_link_menu_items.join(""), parent_link]; // return parents link items
+    parent_link = parent_link.replace(/parents_link_/, 'parent_link_');
+    return [parent_link_menu_items.join(''), parent_link]; // return parents link items
   }
   function updateParentLinks() {
     // ===> UPDATE PARENT LINKS and init new item events
     let links = createParentLinkItems();
-    getEl("#parents_links").innerHTML = links[0];
-    getEl("#parent_dir_nav a").href = links[1]; // add the links
-    getEls("#sidebar_menu_parent a,#parents_links a").forEach(
+    getEl('#parents_links').innerHTML = links[0];
+    getEl('#parent_dir_nav a').href = links[1]; // add the links
+    getEls('#sidebar_menu_parent a,#parents_links a').forEach(
       (el) =>
         (el.onclick = function (e) {
           eStopPrevent(e);
-          showWarning("changeLocation", [this.href, "false"]);
-        }),
+          showWarning('changeLocation', [this.href, 'false']);
+        })
     ); // reinit onclick
   }
   //==============================//
@@ -959,8 +858,7 @@
       "<svg viewBox='0 0 20 20'><path fill='%23222' d='m0 4c0-1.1.9-2 2-2h7l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2-2zm2 2v10h16v-10z'/></svg>",
     grid: "<svg viewBox='0 0 20 20'><path fill='currentColor' d='M0 0h9v9H0V0zm2 2v5h5V2H2zm-2 9h9v9H0v-9zm2 2v5h5v-5H2zm9-13h9v9h-9V0zm2 2v5h5V2h-5zm-2 9h9v9h-9v-9zm2 2v5h5v-5h-5z' /></svg>",
     menu: "<svg viewBox='0 0 13 10'><g fill='%23222'><path d='m0 0h13v2h-13z'/><path d='m0 4h13v2h-13z'/><path d='m0 8h13v2h-13z'/></g></svg>",
-    minus:
-      "<svg viewBox='0 0 20 20'><path fill='%23222' d='m1 8h18v4h-18z'/></svg>",
+    minus: "<svg viewBox='0 0 20 20'><path fill='%23222' d='m1 8h18v4h-18z'/></svg>",
     multiply:
       "<svg viewBox='0 0 20 20' id='svg_multiply'><path fill='%23222' d='m10 7 6-6 3 3-6 6 6 6-3 3-6-6-6 6-3-3 6-6-6-6 3-3z'/></svg>",
     music:
@@ -1028,8 +926,8 @@
       "<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path d='m14 0h-14v14h14z' fill='%236a6a95'/><g fill='%23fff'><path d='m6.5 1.5h6v1h-6z'/><path d='m1.5 1.5h3.5v3.5h-3.5z'/><path d='m1.5 6.5h11v1h-11z'/><path d='m6.5 4h6v1h-6z'/><path d='m1.5 11.5h8v1h-8z'/><path d='m1.5 9h11v1h-11z'/></g></svg>",
     file_icon_video:
       "<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path d='m14 14v-14h-14v14z'/><g fill='%23fff'><path d='m9.5 3v-2h-2v2z'/><path d='m3.5 3v-2h-2v2z'/><path d='m6.5 3v-2h-2v2z'/><path d='m12.5 3v-2h-2v2z'/><path d='m9.5 13v-2h-2v2z'/><path d='m3.5 13v-2h-2v2z'/><path d='m6.5 13v-2h-2v2z'/><path d='m12.5 13v-2h-2v2z'/></g><path d='m12.5 10v-6h-11v6z' fill='%23eda412'/></svg>",
-    file_icon_bin: "",
-    file_icon_other: "", // <-- these two use file_icon_system:
+    file_icon_bin: '',
+    file_icon_other: '', // <-- these two use file_icon_system:
     file_icon_system:
       "<svg viewBox='0 0 14 14' xmlns='http://www.w3.org/2000/svg'><path d='m0 0h14v14h-14z' fill='%23808080'/><g fill='%23ccc'><path d='m1.247 6.495h3.263v-1.067h-.881v-3.835h-.974c-.371.232-.727.371-1.284.479v.82h.928v2.536h-1.052z'/><path d='m7 6.588c1.082 0 1.825-.89 1.825-2.567 0-1.67-.743-2.521-1.825-2.521s-1.825.843-1.825 2.521c0 1.677.743 2.567 1.825 2.567zm0-1.021c-.309 0-.572-.247-.572-1.546s.263-1.5.572-1.5.572.201.572 1.5-.263 1.546-.572 1.546z'/><path d='m9.598 6.495h3.263v-1.067h-.882v-3.835h-.974c-.371.232-.727.371-1.283.479v.82h.927v2.536h-1.051z'/><path d='m2.825 12.588c1.082 0 1.824-.89 1.824-2.567 0-1.67-.742-2.521-1.824-2.521-1.083 0-1.825.843-1.825 2.521 0 1.677.742 2.567 1.825 2.567zm0-1.021c-.31 0-.572-.247-.572-1.546s.262-1.5.572-1.5c.309 0 .572.201.572 1.5s-.263 1.546-.572 1.546z'/><path d='m5.423 12.495h3.263v-1.067h-.882v-3.835h-.974c-.371.232-.727.371-1.284.479v.82h.928v2.536h-1.051z'/><path d='m11.175 12.588c1.083 0 1.825-.89 1.825-2.567 0-1.67-.742-2.521-1.825-2.521-1.082 0-1.824.843-1.824 2.521 0 1.677.742 2.567 1.824 2.567zm0-1.021c-.309 0-.572-.247-.572-1.546s.263-1.5.572-1.5c.31 0 .572.201.572 1.5s-.262 1.546-.572 1.546z'/></g></svg>",
   };
@@ -1057,46 +955,44 @@
   function get_SVG_UI_File_Icon(icon_name) {
     // ===> GET SVG UI FILE Icon by name
     switch (icon_name) {
-      case "favicon":
+      case 'favicon':
         return '<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAACVBMVEUmRcmZzP8zmf8pVcWPAAAAAXRSTlMAQObYZgAAAFBJREFUeF7tyqERwDAMBEE3mX5UiqDmqwwziTPHjG7xrmzrLFtRaApDIRiKQlMYCsFQFJrCUAiGotAU5hTA1WB4fhkMBsOJwWAwgHvB8CHpBcTbpxy4RZNvAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" />';
-      case "file_icon_dir_default":
+      case 'file_icon_dir_default':
         return 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAd5JREFUeNqMU79rFUEQ/vbuodFEEkzAImBpkUabFP4ldpaJhZXYm/RiZWsv/hkWFglBUyTIgyAIIfgIRjHv3r39MePM7N3LcbxAFvZ2b2bn22/mm3XMjF+HL3YW7q28YSIw8mBKoBihhhgCsoORot9d3/ywg3YowMXwNde/PzGnk2vn6PitrT+/PGeNaecg4+qNY3D43vy16A5wDDd4Aqg/ngmrjl/GoN0U5V1QquHQG3q+TPDVhVwyBffcmQGJmSVfyZk7R3SngI4JKfwDJ2+05zIg8gbiereTZRHhJ5KCMOwDFLjhoBTn2g0ghagfKeIYJDPFyibJVBtTREwq60SpYvh5++PpwatHsxSm9QRLSQpEVSd7/TYJUb49TX7gztpjjEffnoVw66+Ytovs14Yp7HaKmUXeX9rKUoMoLNW3srqI5fWn8JejrVkK0QcrkFLOgS39yoKUQe292WJ1guUHG8K2o8K00oO1BTvXoW4yasclUTgZYJY9aFNfAThX5CZRmczAV52oAPoupHhWRIUUAOoyUIlYVaAa/VbLbyiZUiyFbjQFNwiZQSGl4IDy9sO5Wrty0QLKhdZPxmgGcDo8ejn+c/6eiK9poz15Kw7Dr/vN/z6W7q++091/AQYA5mZ8GYJ9K0AAAAAASUVORK5CYII= ")';
-      case "file_icon_file_default":
+      case 'file_icon_file_default':
         return 'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAABnRSTlMAAAAAAABupgeRAAABHUlEQVR42o2RMW7DIBiF3498iHRJD5JKHurL+CRVBp+i2T16tTynF2gO0KSb5ZrBBl4HHDBuK/WXACH4eO9/CAAAbdvijzLGNE1TVZXfZuHg6XCAQESAZXbOKaXO57eiKG6ft9PrKQIkCQqFoIiQFBGlFIB5nvM8t9aOX2Nd18oDzjnPgCDpn/BH4zh2XZdlWVmWiUK4IgCBoFMUz9eP6zRN75cLgEQhcmTQIbl72O0f9865qLAAsURAAgKBJKEtgLXWvyjLuFsThCSstb8rBCaAQhDYWgIZ7myM+TUBjDHrHlZcbMYYk34cN0YSLcgS+wL0fe9TXDMbY33fR2AYBvyQ8L0Gk8MwREBrTfKe4TpTzwhArXWi8HI84h/1DfwI5mhxJamFAAAAAElFTkSuQmCC ")';
       default:
-        return (
-          'url("data:image/svg+xml;utf8,' + SVG_UI_File_Icons[icon_name] + '")'
-        );
+        return 'url("data:image/svg+xml;utf8,' + SVG_UI_File_Icons[icon_name] + '")';
     }
   }
   function CSS_UI_Icon_Rules() {
     // programatically add File icon CSS rules																// ===> CSS UI ICON RULES
-    let rules = "",
+    let rules = '',
       kind,
       class_name;
     for (let icon in SVG_UI_File_Icons) {
-      kind = icon.slice(icon.lastIndexOf("_") + 1);
+      kind = icon.slice(icon.lastIndexOf('_') + 1);
       class_name = kind;
-      if (class_name !== "file") {
+      if (class_name !== 'file') {
         // exceptions:
-        if (kind === "dirinvisible") {
-          class_name = "dir.invisible";
+        if (kind === 'dirinvisible') {
+          class_name = 'dir.invisible';
         }
-        if (kind === "ignoredimage") {
-          class_name = "ignored_image";
+        if (kind === 'ignoredimage') {
+          class_name = 'ignored_image';
         }
-        if (kind === "open") {
-          class_name = "has_subdirectory";
-          kind = "dir_open";
+        if (kind === 'open') {
+          class_name = 'has_subdirectory';
+          kind = 'dir_open';
         }
         if (/alias|symlink/.test(kind)) {
-          class_name = "link";
+          class_name = 'link';
         }
         if (/bin|other/.test(kind)) {
-          kind = "system";
+          kind = 'system';
         }
         // add rules for dir_list items, content_header, stats details:
-        rules += `body:not(.use_custom_icons_false) .${class_name} .has_icon_before_before, #content_pane[data-content^="has_${class_name}"] #content_title span::before,body:not(.use_custom_icons_false) .${class_name}.has_icon_before::before, .${class_name} .has_icon_before::before { background-image: url("data:image/svg+xml;utf8,${SVG_UI_File_Icons["file_icon_" + kind]}"); }`; // add custom file icons
+        rules += `body:not(.use_custom_icons_false) .${class_name} .has_icon_before_before, #content_pane[data-content^="has_${class_name}"] #content_title span::before,body:not(.use_custom_icons_false) .${class_name}.has_icon_before::before, .${class_name} .has_icon_before::before { background-image: url("data:image/svg+xml;utf8,${SVG_UI_File_Icons['file_icon_' + kind]}"); }`; // add custom file icons
       }
     }
     return rules;
@@ -1127,16 +1023,15 @@
 	`;
     const sidebar_header_elements = function (body_id, parent_link) {
       let parent_links = createParentLinkItems(),
-        sidebar_header_title_element = "",
-        sidebar_header_menus = "",
-        sidebar_texteditor_element = "";
-      let checked =
-        getCurrentUIPref("show_invisibles") === "true" ? 'checked="true"' : "";
+        sidebar_header_title_element = '',
+        sidebar_header_menus = '',
+        sidebar_texteditor_element = '';
+      let checked = getCurrentUIPref('show_invisibles') === 'true' ? 'checked="true"' : '';
       const sidebar_header_utilities_row_1 = `<div id="sidebar_header_utilities_row_1" class="background_grey_80">	<ul class="display_flex flex_row position_relative background_grey_80 border_bottom">					<li id="directory_buttons_left" class="display_flex no_highlight">     <button id="show_details" class="toggle_UI_pref pointer outline_none" data-ui_pref="show_details" tabindex="-1" title="Toggle display of directory item detail information (&#8984;&#8679;D)"><span id="show"> details</span></button></li>     <li class="display_flex no_highlight"><label id="show_invisibles_container" for="inv_checkbox" class="margin_0 padding_0 flex_justify_center_row"><input class="toggle_UI_pref margin_0" type="checkbox" id="show_invisibles" data-ui_pref="show_invisibles" title="Toggle display of invisible items (&#8984&#8679;;I)" name="inv_checkbox" tabindex="-1"${checked} /><span>&nbsp;Show Invisibles</span></label>     </li>								<li id="show_grid_btn" class="has_flyout_menu width_24px display_none position_relative pointer margin_0 padding_0 z_index_9997 no_highlight" tabindex="-1" title="Show Grid (&#8984;G)"><div class="display_flex width_14px_contents background_grey_80">${SVG_UI_Icons.grid}</div>     <ul class="menu has_popout_menu display_none position_absolute margin_0 padding_0 box_shadow_menu border_all background_grey_80"><div class="display_flex width_24px width_14px_contents">${SVG_UI_Icons.grid}</div>     <li id="show_image_grid" class="item_1 border_right border_bottom background_grey_80">Show Image Grid</li>     <li id="show_font_grid" class="item_2 border_right background_grey_80">Show Font Grid</li>     </ul>								</li></ul></div>`;
       const sidebar_header_utilities_row_2 = `<div id="sidebar_header_utilities_row_2" class="background_grey_80">							<ul id="sorting_row_1" class="whitespace_pre pointer container display_flex flex_justify_contents border_bottom">     <li id="sort_by_name" class="whitespace_pre pointer toggle_UI_pref name sorting align_left no_highlight" data-ui_pref="sort_by_name" title="Sort by name"><span><input id="play_toggle" class="whitespace_pre pointer display_none position_relative" type="checkbox" tabindex="-1" checked="true" />Name</span></li>     <li id="sort_by_default" class="whitespace_pre pointer toggle_UI_pref sorting align_right no_highlight" data-ui_pref="sort_by_default" title="Default sort"><span>Default</span></li>     <li id="sort_by_duration" class="whitespace_pre pointer toggle_UI_pref sorting align_right display_none no_highlight" data-ui_pref="sort_by_duration" title="Sort by media duration"><span>Duration</span></li>     </ul>
 					<ul id="sorting_row_2" class="whitespace_pre pointer iframe_item border_bottom display_none">     <li id="sort_by_ext" class="whitespace_pre pointer toggle_UI_pref details sorting align_left no_highlight" data-ui_pref="sort_by_ext" title="Sort by extension"><span>Ext</span></li>     <li id="sort_by_duration" class="whitespace_pre pointer toggle_UI_pref sorting align_right display_none no_highlight" data-ui_pref="sort_by_duration" title="Sort by media duration"><span>Duration</span></li>     <li id="sort_by_size" class="whitespace_pre pointer toggle_UI_pref details sorting align_center no_highlight" data-ui_pref="sort_by_size" title="Sort by size"><span>Size</span></li>     <li id="sort_by_date" class="whitespace_pre pointer toggle_UI_pref details sorting align_center no_highlight" data-ui_pref="sort_by_date" title="Sort by date"><span>Date</span></li>     <li id="sort_by_kind" class="whitespace_pre pointer toggle_UI_pref details sorting align_right no_highlight" data-ui_pref="sort_by_kind" title="Sort by kind"><span>Kind</span></li>     </ul>						</div>`;
       switch (body_id) {
-        case "top_body":
+        case 'top_body':
           sidebar_header_title_element = `<div id="sidebar_header_title" class="display_flex flex_row border_bottom background_grey_75 normal"><div id="sidebar_header_title_div" class="align_center padding_4_6"></div></div>`;
           sidebar_header_menus = `<div id="sidebar_menus" class="display_flex flex_row background_grey_75 border_bottom pointer">
 					<div id="sidebar_menu_parent" class="menu_container flex_justify_center width_24px padding_0">     <nav id="parent_dir_nav" class="flex_justify_center invert"><a href="${parent_links[1]}" title="Parent Directory (&#8984;&uarr;)" class="flex_justify_center"><div class="display_flex">${SVG_UI_Icons.chevron}${SVG_UI_Icons.multiply}</div></a></nav>     </div>
@@ -1144,7 +1039,7 @@
 					<div id="sidebar_menu_main_container" class="menu_container width_24px flex_justify_center margin_0 padding_0">     <nav id="dir_menu_main_container_nav" class="invert pointer width_14px_contents" title="Show main menu (&#8984;E); navigate by arrow keys or typed string."><div class="display_flex">${SVG_UI_Icons.menu}</div></nav>     <ul id="sidebar_menu_main" class="menu position_absolute background_grey_80 border_top border_bottom margin_0 padding_0 display_none box_shadow_menu position_LR_0 z_index_9998">     ${sidebar_header_menu_elements}     </ul>     </div>		</div>`;
           sidebar_texteditor_element = `<ul id="show_texteditor" class="bold border_bottom display_none"><li class="padding_4_6 width_100 background_grey_80" title="Toggle Text Editor (&#8984;&#8679;E)"><span>Text Editor</span></li></ul>`;
           break;
-        case "iframe":
+        case 'iframe':
           sidebar_header_menus = `<ul id="change_dirs" class="flex_justify_center_row flex_justify_contents border_bottom background_grey_75">     <li id="parent" class="flex_grow_1 no_highlight"><a href="${parent_link}" id="iframe_parent_link" class="display_inline_flex" title="Go to parent directory"><span class="width_14px_contents invert">${SVG_UI_Icons.chevron}</span>Parent Directory</a></li>     <li id="open_in_sidebar" class="align_right flex_grow_1 no_highlight"><a href="#" title="Open this directory in sidebar">Open in Sidebar<span class="width_14px_contents invert transform_rotate_270_contents">${SVG_UI_Icons.chevron}</span></a></li>     </ul>`;
           break;
       }
@@ -1152,16 +1047,16 @@
 					<div id="sidebar_header_utilities" class="display_flex flex_column"> ${sidebar_header_menus} ${sidebar_header_utilities_row_1} ${sidebar_header_utilities_row_2} ${sidebar_texteditor_element} </div>
 					</header>`;
     };
-    let sidebar_footer_utilities = "",
-      sidebar_utilities = "";
-    if (body_id === "top_body") {
+    let sidebar_footer_utilities = '',
+      sidebar_utilities = '';
+    if (body_id === 'top_body') {
       // various elements not needed in iframe directories
       sidebar_footer_utilities = `<div id="sidebar_footer_utilities" class="width_24px flex_justify_center position_relative pointer z_index_1 background_grey_80 border_left border_right"><div class="width_18px_contents display_flex transform_rotate_180"><span class="invert">${SVG_UI_Icons.toggle}</span></div>     <ul class="has_popout_menu margin_0 padding_0 display_none border_all position_absolute background_grey_80">     <li id="open_in_content_pane" class="align_right border_bottom padding_4_6">Open Sidebar in Content Pane</li>     <li id="show_directory_source" class="align_right padding_4_6" data-kind="show_directory_source">View Sidebar Directory Source</li>     </ul>     </div>`;
       sidebar_utilities = `<div id="sidebar_utilities"><div id="handle" class="position_absolute z_index_1"></div>     <div id="show_sidebar" class="toggle_UI_pref width_24px width_18px_contents position_absolute flex_justify_center invert pointer z_index_9997" data-ui_pref="show_sidebar" title="Toggle Sidebar (&#8984;\\)">${SVG_UI_Icons.toggle}</div></div>     </div>`;
     }
     const sidebar_nav = `<nav id="sidebar_nav" class="display_flex flex_column background_grey_85 font_size_small"><div id="dir_nav_inner" class="position_relative">		<div id="directory_list_outer" class="position_relative"><ol id="directory_list" class="display_flex flex_column margin_0 padding_0 text_color_default border_bottom" tabindex="0">insert_prepped_index</ol></div>			</div></nav>`;
     const sidebar_footer = `<footer id="sidebar_footer" class="display_flex flex_row position_relative background_grey_85 border_top text_color_default error_display_none font_size_small user_select_none">insert_stats${sidebar_footer_utilities}</footer>`;
-    return `<div id="sidebar" class="${body_id} display_flex flex_column position_relative border_right padding_0 z_index_1" style="width:${Number(getCurrentUIPref("width"))}%">	${sidebar_header_elements(body_id, parent_link)} ${sidebar_nav} ${sidebar_footer} ${sidebar_utilities}		</div>`;
+    return `<div id="sidebar" class="${body_id} display_flex flex_column position_relative border_right padding_0 z_index_1" style="width:${Number(getCurrentUIPref('width'))}%">	${sidebar_header_elements(body_id, parent_link)} ${sidebar_nav} ${sidebar_footer} ${sidebar_utilities}		</div>`;
   }
   //==============================//
   // CONTENT PANE ELEMENTS
@@ -1226,9 +1121,9 @@
     switch (
       true // ASSEMBLE CONTENT ELEMENTS
     ) {
-      case id === "content_font_viewer":
+      case id === 'content_font_viewer':
         return content_font_viewer;
-      case id === "content_text_elements":
+      case id === 'content_text_elements':
         return content_text_elements;
       default:
         return `<div id="content_pane" class="display_flex flex_column flex_grow_1 position_relative padding_0" data-content="has_null">		${content_header_elements}	<main id="content_container" class="display_flex position_relative background_grey_90 no_hover margin_0 padding_0">     ${SVG_UI_Icons.spinner}     <ol id="content_grid" class="content_el" data-kind="grid"></ol>     ${content_text_elements}     <div id="content_font" class="content_el background_grey_90 hyphens_none position_relative text_color_default" spellcheck="false" data-kind="font">${content_font_elements}</div>     <div id="content_image_container" class="content_el background_grey_95 position_relative margin_0" data-kind="image"><img id="content_image" class="content_el position_relative" src="#" alt="" tabindex="0" /></div>     <embed id="content_pdf" class="content_el position_relative border_0" tabindex="0" data-kind="pdf">     <div id="content_video_container" class="display_none track_title_container"><video id="content_video" class="content_el media_player background_grey_95 media" controls data-kind="video">Your browser does not support the video tag.</video></div>     <iframe id="content_iframe" class="content_el position_relative border_0 background_grey_85" name="content_iframe" sandbox="allow-scripts allow-same-origin allow-modals allow-popups" tabindex="0"></iframe>     <iframe id="content_iframe_utility" class="display_none" name="content_iframe_utility" sandbox="allow-scripts allow-same-origin allow-modals allow-popups" tabindex="0"></iframe>     </main></div>`;
@@ -1270,8 +1165,8 @@
 		<article><h2 id="troubleshooting" class="border_top_x padding_top_1rem"><strong>V. TROUBLESHOOTING</strong></h2>
 <dl><dt>The script doesn&rsquo;t work with a specific directory.</dt><dd>If you have a javascript blocker installed in your browser (and if you don&rsquo;t, you should), try disabling some of the site-specific scripts and XHR requests, as they may be interfering with the execution of this script.</dd>    <dd>Alternately, if you do have a javascript blocker installed, you may need to allow some scripts and XHR requests instead.</dd>    <dd>If the open directory still does not display correctly, check to see if cookies from the site are blocked.</dd>    <dd>Try deleting preferences from the Main Menu or removing the query string from the URL in the browser.</dd></dl>            <dl><dt>A specific item in a directory does not display correctly.</dt><dd>Confirm that the file is one that browser is capable of rendering. This script cannot display files that the browser itself cannot display.</dd>    <dd>If the item is from a playlist (m3u) and links to a remote site (e.g., archive.org), check your javascript blocker and cookies for any that need to be allowed from that site.</dd></dl>            <dl><dt>If you think you have found a bug, please <a class="ignore_warning" href="mailto:mshroud@protonmail.com"><b><i>contact me</i></b></a>.</dt></dl><p>&nbsp;</p>
 		</article></section>`;
-    let help_elements = "";
-    if (body_id === "top_body") {
+    let help_elements = '';
+    if (body_id === 'top_body') {
       help_elements = `<aside id="help_container" class="background_grey_95 text_color_default no_hover display_none">${utilities_help_elements}</aside>`;
     }
     return `<div id="utilities" class="position_absolute display_none position_LR_0 z_index_9999"> <aside id="warnings_container" class="overflow_hidden background_grey_90 hyphens_none z_index_9999">${utilities_warning_elements}</aside> ${help_elements} </div>`;
@@ -1283,36 +1178,36 @@
 		.menu_item::before										{ content:""; width:12px; max-width:12px; min-width:12px; height:9px; margin:2px 0 -2px; background-position:center; background-repeat:no-repeat; display:flex; }
 		.submenu .menu_item::before								{ width:24px; max-width:24px; min-width:24px; }
 		.has_background, .has_background_before::before, .has_background_after::after	{ background-repeat:no-repeat; background-position:center; background-color:transparent !important; }
-		.bookmark > a::before															{ background-image:${get_SVG_UI_Icon("bookmark")}; }
+		.bookmark > a::before															{ background-image:${get_SVG_UI_Icon('bookmark')}; }
 		:is(.sort_by_default #menu_sort_by_default, .sort_by_name #menu_sort_by_name, .sort_by_duration #menu_sort_by_duration, .sort_by_size #menu_sort_by_size, .sort_by_date #menu_sort_by_date, .sort_by_kind #menu_sort_by_kind, .sort_by_ext #menu_sort_by_ext, #menu_theme_container, #toggle_text_editing)  .menu_item::before,     :is(.sort_by_default #sort_by_default, .sort_by_name #sort_by_name, .sort_by_duration #sort_by_duration, .sort_by_size #sort_by_size, .sort_by_date #sort_by_date, .sort_by_kind #sort_by_kind, .sort_by_ext #sort_by_ext) span::before,     .loop_media #loop_media_menu::before, .shuffle_media #shuffle_media_menu::before, .background_color_check_mark::before,     .texteditor_view_raw #toggle_texteditor_raw::before, .texteditor_view_styled #toggle_texteditor_preview::before, .texteditor_view_html #toggle_texteditor_html::before,     body:not(.text_editing_enable_false) #text_editing_enable::before, .texteditor_view_html #texteditor_view_html::before, .cuesheet_track.selected .cue_track_id::before, .menu_item.checkmark::before
-																						{ background-image:${get_SVG_UI_Icon("check_mark")}; }
+																						{ background-image:${get_SVG_UI_Icon('check_mark')}; }
 		:is( .show_invisibles_false #show_invisible_items, .alternate_background_false #alternate_background, .show_numbers_false #show_numbers, .use_custom_icons_false #use_custom_icons, .show_image_thumbnails_false #show_image_thumbnails, .show_large_image_thumbnails_false #show_large_image_thumbnails, .show_ignored_items_false #show_ignored_items, .ignore_ignored_items_false #ignore_ignored_items, .autoload_index_files_false #autoload_index_files, .media_autoload_false #media_autoload, .media_autoplay_false #media_autoplay, .media_play_all_false #media_play_all, .texteditor_split_view_false:not(.has_texteditor) #texteditor_split_view, .show_media_name_in_window_title_false #show_media_name_in_window_title, .audio_player_on_top_false #audio_player_on_top, .iframe_theme_false #iframe_theme) .menu_item.checkmark::before
 																						{ background-image:none; }
-		.sort_by_default #sort_by_default span::after, .sort_by_name #sort_by_name span::after, .sort_by_duration #sort_by_duration span::after, .sort_by_size #sort_by_size span::after, .sort_by_date #sort_by_date span::after, .sort_by_kind #sort_by_kind span::after, .sort_by_ext #sort_by_ext span::after			{ background-image:${get_SVG_UI_Icon("chevron")}; background-size:75%; transform:rotate(180deg); }
-		.is_error #sidebar_nav, .is_error #current_dir_path span::before				{ background-image:${get_SVG_UI_Icon("error")}; }
+		.sort_by_default #sort_by_default span::after, .sort_by_name #sort_by_name span::after, .sort_by_duration #sort_by_duration span::after, .sort_by_size #sort_by_size span::after, .sort_by_date #sort_by_date span::after, .sort_by_kind #sort_by_kind span::after, .sort_by_ext #sort_by_ext span::after			{ background-image:${get_SVG_UI_Icon('chevron')}; background-size:75%; transform:rotate(180deg); }
+		.is_error #sidebar_nav, .is_error #current_dir_path span::before				{ background-image:${get_SVG_UI_Icon('error')}; }
 		.is_error #sidebar_nav															{ background-repeat:no-repeat; background-position:center top 6rem; background-size:6rem;}
 		.is_error #current_dir_path span::before										{ float:none; display:inline-flex; margin:0 0 -2px 0; width:24px; }
-		#content_pane[data-content="has_ignored"] #content_container					{ background-image:${get_SVG_UI_File_Icon("file_icon_ignored")}; background-size:28px; }
+		#content_pane[data-content="has_ignored"] #content_container					{ background-image:${get_SVG_UI_File_Icon('file_icon_ignored')}; background-size:28px; }
 		#content_pane.has_audio[data-content="has_null"]:not([data-loaded="unloaded"]) #content_container, #content_pane.has_audio:not([data-content]) #content_container, .has_audio #content_pane[data-content="has_null"]:not([data-loaded="unloaded"]) #content_container, .has_audio #content_pane:not([data-content])[data-loaded="loaded"] #content_container
-																						{ background-image:${get_SVG_UI_Icon("music")}; }
+																						{ background-image:${get_SVG_UI_Icon('music')}; }
 			${CSS_UI_Icon_Rules()}
-		#sidebar_menu_main ul a::before													{ background-image:${get_SVG_UI_File_Icon("file_icon_file")}; }
-		#sidebar_menu_main ul a[href^="file"]::before, #current_dir_path span::before	{ background-image:${get_SVG_UI_File_Icon("file_icon_dir")}; margin-bottom:-3px; }
-		#sidebar_menu_main ul a[href^="http"]::before									{ background-image:${get_SVG_UI_File_Icon("file_icon_htm")}; }
-		body.use_custom_icons_false .dir .has_icon_before_before						{ background-image:${get_SVG_UI_File_Icon("file_icon_dir_default")}; background-size:auto 13px; }
+		#sidebar_menu_main ul a::before													{ background-image:${get_SVG_UI_File_Icon('file_icon_file')}; }
+		#sidebar_menu_main ul a[href^="file"]::before, #current_dir_path span::before	{ background-image:${get_SVG_UI_File_Icon('file_icon_dir')}; margin-bottom:-3px; }
+		#sidebar_menu_main ul a[href^="http"]::before									{ background-image:${get_SVG_UI_File_Icon('file_icon_htm')}; }
+		body.use_custom_icons_false .dir .has_icon_before_before						{ background-image:${get_SVG_UI_File_Icon('file_icon_dir_default')}; background-size:auto 13px; }
 		body.use_custom_icons_false.show_image_thumbnails_false .file:not(.app) .has_icon_before_before, body.use_custom_icons_false:not(.show_image_thumbnails_false) .file:not(.app) .has_icon_before_before
-																						{ background-image:${get_SVG_UI_File_Icon("file_icon_file_default")}; background-size:auto 13px; }
-		body:not(.use_custom_icons_false).show_image_thumbnails_false .image .has_icon_before_before	{ background-image:${get_SVG_UI_File_Icon("file_icon_image")} }
-		.has_playlist #current_dir_path span::before									{ background-image:${get_SVG_UI_File_Icon("file_icon_playlist")}; display:inline-flex; margin:-2px 0 0; width:24px; vertical-align:middle;}
-		.dirlist_item.dir:not(.has_subdirectory) .has_icon_before_before:hover			{ background-image:${get_SVG_UI_Icon("chevron")}; transform:rotate(90deg);  filter:invert(1); }
-		.dirlist_item.dir.has_subdirectory .has_icon_before_before:hover				{ background-image:${get_SVG_UI_Icon("chevron")}; transform:rotate(180deg); filter:invert(1); }
-		.dirlist_item.non_local .name_span span::before									{ background-image:${get_SVG_UI_Icon("external_link")}; content:""; width:20px; min-width:20px; height:14px; margin-top:-3px; margin-bottom:-3px; background-position:left center; background-repeat:no-repeat; background-blend-mode:screen; display:inline-block; }
+																						{ background-image:${get_SVG_UI_File_Icon('file_icon_file_default')}; background-size:auto 13px; }
+		body:not(.use_custom_icons_false).show_image_thumbnails_false .image .has_icon_before_before	{ background-image:${get_SVG_UI_File_Icon('file_icon_image')} }
+		.has_playlist #current_dir_path span::before									{ background-image:${get_SVG_UI_File_Icon('file_icon_playlist')}; display:inline-flex; margin:-2px 0 0; width:24px; vertical-align:middle;}
+		.dirlist_item.dir:not(.has_subdirectory) .has_icon_before_before:hover			{ background-image:${get_SVG_UI_Icon('chevron')}; transform:rotate(90deg);  filter:invert(1); }
+		.dirlist_item.dir.has_subdirectory .has_icon_before_before:hover				{ background-image:${get_SVG_UI_Icon('chevron')}; transform:rotate(180deg); filter:invert(1); }
+		.dirlist_item.non_local .name_span span::before									{ background-image:${get_SVG_UI_Icon('external_link')}; content:""; width:20px; min-width:20px; height:14px; margin-top:-3px; margin-bottom:-3px; background-position:left center; background-repeat:no-repeat; background-blend-mode:screen; display:inline-block; }
 		.dirlist_item:is(.dir,.other,.system,.bin,.invisible,.markdown):is(.selected,:hover) a .has_icon_before_before												{ filter:brightness(var(--brightness_low)); }
 		.theme_light .dirlist_item.audio:is(.selected,:hover) a .has_icon_before_before													{ mix-blend-mode: hard-light; filter:brightness(0.75) contrast(2) saturate(2.66); }
 		.theme_dark  .dirlist_item.audio:is(.selected,:hover) a .has_icon_before_before, .dirlist_item.content_loaded.non_local .name_span span::before				{ filter:brightness(1.33); }
 		.dirlist_item.selected:is(.archive,.app) a .has_icon_before_before, .dirlist_item:is(.archive,.app):hover a .has_icon_before_before							{ filter:brightness(var(--brightness_high)) saturate(6); }
 		.dirlist_item.non_local:is(.selected,.audio_loaded) .name_span span::before, body:not(.no_hover) .dirlist_item.non_local:hover .name_span span::before		{ filter:brightness(2); }
-		.dirlist_subdir_loading .has_icon_before_before									{ background-image:${get_SVG_UI_Icon("spinner")} !important; filter:invert(1); background-size:20px; }
+		.dirlist_subdir_loading .has_icon_before_before									{ background-image:${get_SVG_UI_Icon('spinner')} !important; filter:invert(1); background-size:20px; }
 	`;
   const global_styles = `
 		.theme_light {	--percent_100:100%; --percent_95:95%; --percent_90:90%; --percent_85:85%; --percent_80:80%; --percent_75:75%; --percent_70:70%; --percent_65:65%; --percent_60:60%; --percent_55:55%;
@@ -1451,7 +1346,7 @@
 		#utilities															{ top:0; justify-content:center; }
 		#warnings_container													{ width:26em; flex-direction:column; border-radius:0 0 3px 3px; box-shadow:0px 2px 12px #333; font-size:0.875em; color:#111; display:none; }
 		#warnings_header													{ padding:1rem 1.5rem; background-position:left 1.25rem center; background-repeat:no-repeat; background-size:24px; }
-		#warnings_container:not(.warning_make_playlist) #warnings_header	{ background-image:${get_SVG_UI_Icon("error")}; }
+		#warnings_container:not(.warning_make_playlist) #warnings_header	{ background-image:${get_SVG_UI_Icon('error')}; }
 		#warnings_header h3													{ text-indent:2.25em; }
 		#warnings_container:not(.warning_make_playlist) h3#warning_header, #warnings_container.warning_make_playlist h3#make_playlist_header, .warning_button.show, #warnings div.show, .has_warning #utilities, .has_warning #warnings_container, .has_help #utilities, .has_help #help_container, .warning_open_font #warnings #warning_open_font, .warning_unsaved_text #warnings #warning_unsaved_text, .warning_clear_text #warnings #warning_clear_text, .warning_local_file #warnings #warning_local_file, .warning_close_playlist #warnings #warning_close_playlist, .warning_local_playlist #warnings #warning_local_playlist, .warning_non_local_file #warnings #warning_non_local_file, .warning_close_font #warnings #warning_close_font		{ display:flex;}
 		#warnings .warning													{ padding:0 1.5rem 1rem; display:none; }
@@ -1468,7 +1363,7 @@
 		#help_container h2		{ color: var(--non_media_background); }		#help_container dd		{ margin-inline-start:1em; }				#help_container dd:before { content:"\u2219"; margin-right:6px; }
 		#help_container dl + p	{ margin-top:1rem; padding-top:1rem; }		#help_container ol li { list-style:decimal; }
 		#help_container kbd	{ min-width:1em; height:fit-content; padding:2px 6px; display:inline-block; border:solid 1px #888; border-radius:3px; text-align:center; font-family:inherit; font-size:0.875em; background-color:hsl(0,0%,var(--percent_90)); }								#help_main_menu svg { margin: 0 0 -2px; width:12px; }		#help_container svg.icon_arrow { height:14px; margin-bottom:-2px; }
-		#help_bookmarks::before	{ background-image: ${get_SVG_UI_Icon("bookmark")}; }
+		#help_bookmarks::before	{ background-image: ${get_SVG_UI_Icon('bookmark')}; }
 		.has_help #utilities, .has_help #help_container { bottom:0; }
 	`;
   const sidebar_header_menu_styles = `
@@ -1562,7 +1457,7 @@
 		.iframe_item.media	.dirlist_item_media_duration				{ grid-column:2; }
 		.media:not(.local)	.dirlist_item_media_duration				{ display:unset; }
 		.dirlist_item.media	.dirlist_item_media_duration:not([data-duration="NaN"]):empty
-																		{ background-image:${get_SVG_UI_Icon("spinner")} !important; background-position:top 3px right 10px; background-repeat:no-repeat; background-size:20px; }
+																		{ background-image:${get_SVG_UI_Icon('spinner')} !important; background-position:top 3px right 10px; background-repeat:no-repeat; background-size:20px; }
 		.dirlist_item_media_duration[data-duration="NaN"]::after		{ content:"[Error]"; }
 			/* SORTING BORDERS */
 		.sort_by_default:not(.show_invisibles_false) .dir.invisible + .dir:not(.invisible), .sort_by_default:not(.show_invisibles_false) .dir:not(.invisible) + .dir.invisible	{border-top:solid 1px hsl(0,0%,var(--border_lum));}
@@ -1589,7 +1484,7 @@
 
 	`;
   const iframe_dir_styles = `${global_styles}
-		#content_body																{ overflow-x:auto; font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) * 0.875 + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, "")}; }
+		#content_body																{ overflow-x:auto; font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) * 0.875 + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, '')}; }
 		.theme_dark .sorting span::before, .theme_dark .sorting span::after			{ filter:invert(1); }
 		#content_body:not(.show_details_false) #show::before						{ content:"Hide "; }
 		#content_body.show_details_false .iframe_item								{ grid-template-columns:auto; }
@@ -1613,15 +1508,15 @@
 		#content_body.has_quicklook #content_pane[class*="has_font_specimen"] #font_specimen_viewer											{ display:flex; }
 		#content_body.has_quicklook #content_image_container, #content_body.has_quicklook #content_iframe									{ max-height:88vh; }
 		#content_header, #content_body.has_quicklook #content_image_container, #content_body.has_quicklook #content_container:has(#content_video.has_content)	{ padding:0; z-index:11; }
-		#content_pane[data-content="has_pdf"] #content_container					{ background-image:${get_SVG_UI_File_Icon("file_icon_ignored")}; background-size:28px; }
+		#content_pane[data-content="has_pdf"] #content_container					{ background-image:${get_SVG_UI_File_Icon('file_icon_ignored')}; background-size:28px; }
 	`;
   const sidebar_footer_styles = `	/* for both sidebar and content_iframe */
 		.has_menu_stats #stats_summary, .stats_kind span.file, .stats_kind span.media, .has_menu_stats #sidebar_footer_utilities			{ display:none; }
 		#stats_container										{ max-height:33vh; }
 		.theme_light #sidebar_footer_utilities:hover ul, .theme_light #sidebar_footer:hover, .theme_light #stats_details_summary			{ box-shadow:0px -4px 4px 0px rgba(128,128,128,0.6); }
 		.theme_dark #sidebar_footer_utilities:hover ul,  .theme_dark #sidebar_footer:hover,  .theme_dark #stats_details_summary				{ box-shadow:0px -4px 4px 0px rgba(32,32,32,0.6); }
-		#stats_details_summary_dirs  .stats_kind::before		{ background-image:${get_SVG_UI_File_Icon("file_icon_dir")}; }
-		#stats_details_summary_files .stats_kind::before		{ background-image:${get_SVG_UI_File_Icon("file_icon_file_default")}; }
+		#stats_details_summary_dirs  .stats_kind::before		{ background-image:${get_SVG_UI_File_Icon('file_icon_dir')}; }
+		#stats_details_summary_files .stats_kind::before		{ background-image:${get_SVG_UI_File_Icon('file_icon_file_default')}; }
 		#stats_details_summary, #stats_details_items_container	{ overflow-y:scroll; }
 		#stats_summary_totals, .has_media #total_duration		{ display:flex; text-align:left; white-space:normal; padding-right:1em; }
 		#stats a												{ padding:3px 12px 3px 0; }
@@ -1659,7 +1554,7 @@
 		#content_pane.has_font_specimen																		#content_title div::before		{ content:"Font"; }
 		#content_pane.has_font_file #content_title div::before,		#content_pane.has_font_file_glyph	#content_title div::before			{ content:"Glyphs from font"; }
 		.has_directory_source																				#content_title div::before		{ content:"Source of" !important; }
-		.has_directory_source											#content_title span::before	{ background-image:${get_SVG_UI_File_Icon("file_icon_dir_default")}; height:14px !important; background-size:contain; }
+		.has_directory_source											#content_title span::before	{ background-image:${get_SVG_UI_File_Icon('file_icon_dir_default')}; height:14px !important; background-size:contain; }
 		#content_pane[data-content="has_grid"]																#content_title div::before		{ content:"Fonts and Images from"; }
 		#content_pane[data-content="has_grid"].has_font_grid												#content_title div::before		{ content:"Fonts from"; }
 		#content_pane[data-content="has_grid"].has_image_grid												#content_title div::before		{ content:"Images from"; }
@@ -1671,7 +1566,7 @@
 		body.has_texteditor																					#content_title div::before		{ content:"Text Editor" !important ; font-weight:bold; }
 		body.texteditor_edited.has_texteditor																#content_title div::before		{ content:"Text Editor (edited)" !important; font-weight:bold; }
 		body.has_texteditor																					#content_title span				{ display:none; }
-		body.has_texteditor																					#content_title span::before		{ background-image:${get_SVG_UI_File_Icon("file_icon_markdown")}; }
+		body.has_texteditor																					#content_title span::before		{ background-image:${get_SVG_UI_File_Icon('file_icon_markdown')}; }
 		#content_pane:is([data-content="has_htm"]) #content_title span::after	{ display:none; }
 		body:not(.text_editing_enable_false):not(.has_quicklook) #content_pane:is([data-content="has_text"],[data-content="has_code"],[data-content="has_markdown"]) #content_title span::after
 																								{ background-image:url("data:image/svg+xml;utf8,${SVG_UI_File_Icons.file_icon_ebook}"); pointer-events:all; opacity:0.66; }
@@ -1682,10 +1577,10 @@
 		#content_pane[data-loaded="unloaded"]																#content_title					{ display:flex; justify-content:center; align-items:center; }
 		#content_pane[data-loaded="unloaded"]																#content_title div::before		{ content:"Loading..." }
 		#content_pane[data-loaded="unloaded"]																#content_title span				{ display:none; }
-		#content_pane[data-content="has_grid"]																#content_title span::before		{ background-image:${get_SVG_UI_File_Icon("file_icon_dir")}; height:14px !important;}
+		#content_pane[data-content="has_grid"]																#content_title span::before		{ background-image:${get_SVG_UI_File_Icon('file_icon_dir')}; height:14px !important;}
 		#content_pane[data-content="has_grid"]																#content_title span::after		{ content:attr(data-grid_item_count); font-weight:normal; white-space:pre; margin:0; }
 		#content_pane[data-content="has_image"]																#content_title span::after		{ content:attr(data-after); font-weight:normal; white-space:pre; margin:0; }
-		#content_pane.content_error #content_title span::before, #content_pane.content_error #content_container, #content_pane.has_audio_error #content_audio_title span::before {background-image:${get_SVG_UI_Icon("error")}; }
+		#content_pane.content_error #content_title span::before, #content_pane.content_error #content_container, #content_pane.has_audio_error #content_audio_title span::before {background-image:${get_SVG_UI_Icon('error')}; }
 		body.is_error:not(.has_directory_source) #content_title span::before, #content_pane.content_error #content_title div::before	{ content:"ERROR:"; white-space:pre; display:inline; }
 			/* CONTENT TITLE BUTTONS LEFT */
 		#reload_btn { width:52px; }				#reload_btn::before { content:"Reload"; }
@@ -1700,7 +1595,7 @@
   const content_pane_audio_styles = `
 			/* CONTENT AUDIO TITLE */
 		#content_audio_title span									{ padding:4px 6px 0; }
-		#content_audio_title span::before							{ content:""; padding-right:22px; height:14px !important; font-weight:normal; background-image:${get_SVG_UI_File_Icon("file_icon_audio")}; background-position:center; background-position:right 4px center; background-repeat:no-repeat; }
+		#content_audio_title span::before							{ content:""; padding-right:22px; height:14px !important; font-weight:normal; background-image:${get_SVG_UI_File_Icon('file_icon_audio')}; background-position:center; background-position:right 4px center; background-repeat:no-repeat; }
 		#content_pane.has_audio #content_audio_title span::before, #content_pane[data-content="has_video"] #content_title div::before	{ content:"Playing:"; }
 		#content_pane.has_audio.has_audio_error #content_audio_title span::before														{ content:"ERROR:"; }
 		#content_pane.has_audio.has_audio_error #content_audio_container		{ padding-top:0; }
@@ -1716,9 +1611,9 @@
 		#loop_label input											{ margin:0px 4px 2px; }
 		#shuffle_label input										{ margin:2px 4px 0px; }							#shuffle_label::after	{ content:attr(data-shufflecount); }
 			/* CUE SHEET MENU */
-		#content_pane.has_audio .cuesheet_track .icon.has_icon_before_before { background-image:${get_SVG_UI_File_Icon("file_icon_audio")}; }
-		#content_pane.has_video .cuesheet_track .icon.has_icon_before_before { background-image:${get_SVG_UI_File_Icon("file_icon_video")}; }
-		.cuesheet_track_list_container								{ background-image:${get_SVG_UI_File_Icon("file_icon_playlist")}; background-repeat:no-repeat; background-size:18px; background-color:inherit; display:none; }
+		#content_pane.has_audio .cuesheet_track .icon.has_icon_before_before { background-image:${get_SVG_UI_File_Icon('file_icon_audio')}; }
+		#content_pane.has_video .cuesheet_track .icon.has_icon_before_before { background-image:${get_SVG_UI_File_Icon('file_icon_video')}; }
+		.cuesheet_track_list_container								{ background-image:${get_SVG_UI_File_Icon('file_icon_playlist')}; background-repeat:no-repeat; background-size:18px; background-color:inherit; display:none; }
 		.cuesheet_track_list_container:hover > div, .cuesheet_track_list_container.has_menu > div					{ display:flex; flex-direction:column; margin-top:-1px; overflow:hidden; max-height:100%; }
 		.cuesheet_track_list_container:hover .cuesheet_track_list, .cuesheet_track_list_container.has_menu, .cuesheet_track_list, #content_grid a	{ display:block; }
 		#cuesheet_track_list_container_audio						{ width:32px; background-position:center; }		
@@ -1852,7 +1747,7 @@
 		button.focus, button:focus							{ outline:none; border-radius:3px !important; border-style:solid !important; border-width:1px !important; border-color:#222 !important; }
 		.is_texteditor #content_texteditor, body.is_text #content_texteditor					{ display:flex; }
 			/* TOOLBAR */
-		#texteditor_toolbar									{ overflow:visible; z-index:100; font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) * 0.875 + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, "")}; }
+		#texteditor_toolbar									{ overflow:visible; z-index:100; font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) * 0.875 + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, '')}; }
 		.toolbar_icon										{ margin:0 4px; padding:4px; min-width:16px; height:16px; cursor:pointer; opacity:0.5; }
 		#texteditor_sync_scroll								{ opacity:1; height:24px; padding:0 8px; flex-grow:unset; }
 		#texteditor_sync_scroll input						{ margin:0 4px 0 0; z-index:-1; }
@@ -1863,7 +1758,7 @@
 		.texteditor_edited #save_btn svg					{ color:red !important; }
 		#texteditor_toolbar li:hover, .texteditor_view_raw #toggle_texteditor_view_raw, body:not(.texteditor_split_view_false) #toggle_texteditor_view_raw, body:not(.texteditor_split_view_false):not(.texteditor_view_html) #toggle_texteditor_view_styled, .texteditor_view_styled #toggle_texteditor_view_styled, .texteditor_view_html #toggle_texteditor_view_html, body:not(.texteditor_split_view_false) #toggle_texteditor_split_view							{ opacity:1; }
 			/* TEXT CONTENT CONTAINERS */
-		.texteditor_pane																{ padding:1em; overflow-y:scroll; box-sizing:border-box; background:transparent; font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, "")}; }
+		.texteditor_pane																{ padding:1em; overflow-y:scroll; box-sizing:border-box; background:transparent; font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, '')}; }
 		body:not(.text_editing_enable_false) .texteditor_pane, body:not(.texteditor_split_view_false) .texteditor_pane		{ width:50%; }
 		body:is(.text_editing_enable_false,.texteditor_split_view_false) .texteditor_pane									{ width:100% !important; }
 		#text_container .texteditor_pane:focus											{ background-color:hsl(0,0%,var(--percent_90)); outline:none; box-shadow:inset 0px 0px 4px hsl(0,0%,var(--percent_95)); }
@@ -1888,7 +1783,7 @@
 		.theme_dark #content_texteditor .text_color_default, .texteditor_theme_dark #content_texteditor .text_color_default											{ color:#EEE; }
 			/* custom previewed text styles */
 		#texteditor_styled_pane															{ word-break:break-word; }
-		#texteditor_styled_pane pre														{ font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, "")}; border:solid 1px #CCC; border-radius:3px; white-space:pre-wrap; word-break:break-word; }
+		#texteditor_styled_pane pre														{ font-size:${parseFloat(UI_Prefs_Non_Bool.ui_font_size) + UI_Prefs_Non_Bool.ui_font_size.replace(/\d*/, '')}; border:solid 1px #CCC; border-radius:3px; white-space:pre-wrap; word-break:break-word; }
 		#texteditor_styled_pane th, #texteditor_styled_pane td							{ vertical-align:top; }
 		#texteditor_styled_pane blockquote												{ margin-top:1em; margin-bottom:1em; color:#555; }
 		#texteditor_styled_pane blockquote + blockquote									{ margin-top:0; }
@@ -1935,13 +1830,13 @@
     // ===> ADD STYLES
     let default_styles = `<style id="main_styles">${global_styles} ${sidebar_styles} ${content_pane_styles} ${utilities_styles}</style>     <style id="conditional_styles">${conditional_styles}</style>     <style id="font_styles"></style>     <style id="font_grid_styles"></style>`;
     switch (user_agent) {
-      case user_agent === "is_gecko":
+      case user_agent === 'is_gecko':
         default_styles += `<style id="gecko_style_rules">${gecko_style_rules}</style>`;
         break;
-      case user_agent === "is_safari":
+      case user_agent === 'is_safari':
         default_styles += `<style id="safari_style_rules">${safari_style_rules}</style>`;
         break;
-      case user_agent === "is_chrome":
+      case user_agent === 'is_chrome':
         default_styles += `<style id="chrome_style_rules">${chrome_style_rules}</style>`;
         break;
     }
@@ -1954,28 +1849,26 @@
   function getIndexType() {
     // ===> GET INDEX TYPE
     let index_el = getEls(
-      "body > ul, body ul, body > pre, body > table:last-of-type, body div table",
+      'body > ul, body ul, body > pre, body > table:last-of-type, body div table'
     );
     if (index_el.length > 1) {
       index_el =
-        Array.from(index_el).filter(
-          (el) => el?.nodeName?.toLowerCase() === "table",
-        ) || index_el.reverse()[0];
+        Array.from(index_el).filter((el) => el?.nodeName?.toLowerCase() === 'table') ||
+        index_el.reverse()[0];
     } // some index pages have pre and table elements; list is usually table
     index_el = index_el[0];
-    let node_name =
-      index_el !== undefined ? index_el.nodeName.toLowerCase() : "body"; // "body" is likely to be an error page
+    let node_name = index_el !== undefined ? index_el.nodeName.toLowerCase() : 'body'; // "body" is likely to be an error page
     let types = {
-      gecko: "gecko",
-      ul: "list",
-      pre: "pre",
-      table: "table",
-      th: "table",
-      td: "table",
-      div: "default",
-      error: "error",
-      body: "error",
-      permission_denied: "permission_denied",
+      gecko: 'gecko',
+      ul: 'list',
+      pre: 'pre',
+      table: 'table',
+      th: 'table',
+      td: 'table',
+      div: 'default',
+      error: 'error',
+      body: 'error',
+      permission_denied: 'permission_denied',
     }; // object array of types
     return types[node_name]; // return index type
   }
@@ -1983,31 +1876,31 @@
     let type = getIndexType(agent),
       items; // ===> GET INDEX ITEMS // get index type, define items
     switch (type) {
-      case "error":
-        items = document.getElementsByTagName("html")[0].outerHTML;
+      case 'error':
+        items = document.getElementsByTagName('html')[0].outerHTML;
         break; // error type
-      case "pre":
-        items = getEl("body > pre").innerHTML;
+      case 'pre':
+        items = getEl('body > pre').innerHTML;
         break; // pre type
-      case "list":
-        items = getEls("body > ul li, body > * > ul li");
+      case 'list':
+        items = getEls('body > ul li, body > * > ul li');
         break; // list type
-      case "table":
-      case "td": // table types
+      case 'table':
+      case 'td': // table types
         switch (true) {
-          case elExists("table > tbody"):
-            items = getEls("body table > tbody tr");
+          case elExists('table > tbody'):
+            items = getEls('body table > tbody tr');
             break; // ordinary tables
-          case !elExists("table > tbody"):
-            items = getEls("body table tr");
+          case !elExists('table > tbody'):
+            items = getEls('body table tr');
             break; // tables without tbody element
         }
         break;
-      case "gecko":
-        items = getEls("body > table > tbody > tr");
+      case 'gecko':
+        items = getEls('body > table > tbody > tr');
         break; // gecko type
-      case "default":
-        items = getEls("body > table > tbody tr");
+      case 'default':
+        items = getEls('body > table > tbody tr');
         break; // default: how is this different from table type?
     }
     return [items, type]; // return index items and index type
@@ -2017,48 +1910,43 @@
     // ===> PREP PRE TYPE
     let prepped_index = [],
       parser = new DOMParser(),
-      items_HTML = parser.parseFromString(items_str, "text/html"); // convert items_str to DOM html
-    items_HTML.querySelectorAll("hr,img").forEach((el) => el.remove()); // remove junk elements
-    items_HTML.querySelectorAll("a").forEach(
+      items_HTML = parser.parseFromString(items_str, 'text/html'); // convert items_str to DOM html
+    items_HTML.querySelectorAll('hr,img').forEach((el) => el.remove()); // remove junk elements
+    items_HTML.querySelectorAll('a').forEach(
       // remove junk links (sorting and parent links) or define item_link
       (el) => {
         if (
-          /^\?|^\./m.test(el.getAttribute("href")) ||
-          /^Parent$|^Parent Directory$|^\s*Up\s*$|^\s*Root\s*$/im.test(
-            el.innerText,
-          )
+          /^\?|^\./m.test(el.getAttribute('href')) ||
+          /^Parent$|^Parent Directory$|^\s*Up\s*$|^\s*Root\s*$/im.test(el.innerText)
         ) {
           el.remove();
         }
-      },
+      }
     );
-    items_str = items_HTML.querySelector("body").innerHTML; // convert DOM html back to str
+    items_str = items_HTML.querySelector('body').innerHTML; // convert DOM html back to str
     // remove header elements | link text nodes | links with empty text nodes (which are sometimes duplicated) | name, last modified, size, description)
     items_str = items_str
-      .replace(/\&lt;dir\&gt;/gm, "  ")
-      .replace(/<br>/gi, "\n")
-      .replace(/[ ]*<h\d>[^<]*<\/h\d>[ ]*/gim, "")
-      .replace(/[ ]*(<a[^>]+?>)[^<]*(<\/a>)/g, "$1$2  ")
-      .replace(/(\w)<a /g, "$1  <a "); // clean string
-    const items = items_str.split("\n"); // create array of item strings from items
+      .replace(/\&lt;dir\&gt;/gm, '  ')
+      .replace(/<br>/gi, '\n')
+      .replace(/[ ]*<h\d>[^<]*<\/h\d>[ ]*/gim, '')
+      .replace(/[ ]*(<a[^>]+?>)[^<]*(<\/a>)/g, '$1$2  ')
+      .replace(/(\w)<a /g, '$1  <a '); // clean string
+    const items = items_str.split('\n'); // create array of item strings from items
     for (let i = items.length; i--; ) {
       let prepped_item = [],
         link;
       let cells = items[i].split(/\s{2,}/);
       for (let j = cells.length; j--; ) {
         let cell = cells[j];
-        if (cell.trim().length > 0 && cell.trim() !== "-") {
-          if (!cell.startsWith("<a ")) {
+        if (cell.trim().length > 0 && cell.trim() !== '-') {
+          if (!cell.startsWith('<a ')) {
             prepped_item.push(cell);
           } else {
             link = cell.split('"')[1];
           } // extract link
         }
       }
-      if (
-        link === undefined ||
-        /^\.\.$|^\.\.\/$|^\/$|^\?|\?sort=|\?path=\&/im.test(link)
-      ) {
+      if (link === undefined || /^\.\.$|^\.\.\/$|^\/$|^\?|\?sort=|\?path=\&/im.test(link)) {
         prepped_item = [];
       } else {
         prepped_item.unshift(link);
@@ -2074,23 +1962,20 @@
     let prepped_index = [];
     for (let i = items.length; i--; ) {
       let item = items[i];
-      if (item.innerHTML.indexOf("Parent Directory") === -1) {
+      if (item.innerHTML.indexOf('Parent Directory') === -1) {
         let prepped_item = [],
-          link = item.querySelector("a")?.href;
-        item.querySelector("a")?.remove();
+          link = item.querySelector('a')?.href;
+        item.querySelector('a')?.remove();
         Array.from(item.children).forEach((child) => {
-          if (child.innerText === "") {
+          if (child.innerText === '') {
             child.remove();
           }
         }); // remove link and empty child elements
-        let cells = item.innerHTML.split(" "); //	create array from remaining elements
+        let cells = item.innerHTML.split(' '); //	create array from remaining elements
         for (let cell of cells) {
           prepped_item.push(cell);
         }
-        if (
-          link === undefined ||
-          /^\.\.$|^\.\.\/$|^\/$|^\?|\?sort=|\?path=\&/im.test(link)
-        ) {
+        if (link === undefined || /^\.\.$|^\.\.\/$|^\/$|^\?|\?sort=|\?path=\&/im.test(link)) {
           prepped_item = [];
         } else {
           prepped_item.unshift(link);
@@ -2107,21 +1992,18 @@
     let prepped_index = [];
     for (let item of items) {
       let prepped_item = [],
-        cellContents = "",
+        cellContents = '',
         cells = item.cells,
         link = item.innerHTML.split('href="')[1].split('">')[0];
       for (let cell of cells) {
         cellContents = cell.innerText;
-        cellContents = cellContents !== undefined ? cellContents.trim() : "";
+        cellContents = cellContents !== undefined ? cellContents.trim() : '';
         prepped_item.push(cellContents);
       }
-      prepped_item[1] = prepped_item[1].replace(/\s*KB/, "000"); // convert reported size in KB to total bytes
-      prepped_item[2] = prepped_item[2] + " " + prepped_item[3];
+      prepped_item[1] = prepped_item[1].replace(/\s*KB/, '000'); // convert reported size in KB to total bytes
+      prepped_item[2] = prepped_item[2] + ' ' + prepped_item[3];
       prepped_item = prepped_item.slice(1, -1);
-      if (
-        link === undefined ||
-        /^\.\.$|^\.\.\/$|^\/$|^\?|\?sort=|\?path=\&/im.test(link)
-      ) {
+      if (link === undefined || /^\.\.$|^\.\.\/$|^\/$|^\?|\?sort=|\?path=\&/im.test(link)) {
         prepped_item = [];
       } else {
         prepped_item.unshift(link);
@@ -2141,19 +2023,17 @@
       cell,
       cell_text;
     for (item of items) {
-      if (item.querySelector("td a") !== null) {
+      if (item.querySelector('td a') !== null) {
         let link;
         prepped_item = []; // get legitimate items (i.e., those containing a link)
         for (cell of item.cells) {
           // get text from remaining cells (date & size)
           switch (true) {
-            case cell.querySelector("a") !== null && link === undefined:
-              link = item.querySelector("a")?.getAttribute("href"); // get link; add to prepped_item; ignore if link already defined
+            case cell.querySelector('a') !== null && link === undefined:
+              link = item.querySelector('a')?.getAttribute('href'); // get link; add to prepped_item; ignore if link already defined
               if (
                 !/^\?|^\.\.\/$|^\|\"\/\".$/m.test(link) &&
-                !/^\s*parent directory\*$|^\*up\s*$/m.test(
-                  item.innerText.toLowerCase(),
-                )
+                !/^\s*parent directory\*$|^\*up\s*$/m.test(item.innerText.toLowerCase())
               ) {
                 prepped_item.unshift(link);
               } // else { prepped_item.unshift(''); }
@@ -2161,18 +2041,18 @@
             default:
               cell_text = cell.innerText
                 .trim()
-                .replace(/(^[ ]*-[ ]*$|[ ]*-[ ]*\&nbsp;[ ]*$)|\&nbsp;/m, ""); // prep cells and clean cell text
+                .replace(/(^[ ]*-[ ]*$|[ ]*-[ ]*\&nbsp;[ ]*$)|\&nbsp;/m, ''); // prep cells and clean cell text
               if (
                 !/<td\s*[^>]*>dir|directory|file<\/td>|>\w*\s*file<|>\w*\s*unknown</i.test(
-                  cell.outerHTML.toLowerCase(),
+                  cell.outerHTML.toLowerCase()
                 ) &&
-                cell_text !== ""
+                cell_text !== ''
               ) {
                 prepped_item.push(cell_text);
               } // exclude various cells
           }
         }
-        if (prepped_item.length > 1 && prepped_item[0] !== "") {
+        if (prepped_item.length > 1 && prepped_item[0] !== '') {
           prepped_index.push(prepped_item);
         } // prepped_item.length > 2 in order to omit parent directory item
       }
@@ -2188,37 +2068,37 @@
     let prepped_item, link, duration, name, info;
     let items_arr, type;
     items = items
-      .replace(/\s*#EXTM3U.*\s*/g, "")
-      .replace(/^\*\n{2,}/gm, "\n")
-      .replace(/\.pdf\?.+?\n/g, ".pdf\n"); //.replace(/\?/g,'%3F');		// remove header comment and multiple returns
+      .replace(/\s*#EXTM3U.*\s*/g, '')
+      .replace(/^\*\n{2,}/gm, '\n')
+      .replace(/\.pdf\?.+?\n/g, '.pdf\n'); //.replace(/\?/g,'%3F');		// remove header comment and multiple returns
     switch (
       true // determine playlist type;
     ) {
       case /#EXTINF:/i.test(items):
-        type = "extm3u";
-        items_arr = items.split("#EXTINF:");
+        type = 'extm3u';
+        items_arr = items.split('#EXTINF:');
         break; // rows made by splitting at "#EXTIMG:" prefix
       default:
-        type = "m3u";
-        items_arr = items.split("\n");
+        type = 'm3u';
+        items_arr = items.split('\n');
         break; // rows are just naked links
     }
     items_arr.forEach((item) => {
       switch (
         true // get entry information: title, link, etc.
       ) {
-        case type === "extm3u":
-          item = item.trim().split("\n");
+        case type === 'extm3u':
+          item = item.trim().split('\n');
           link = item[1];
-          info = item[0].split(",");
+          info = item[0].split(',');
           duration = info.shift();
-          name = info.join(",");
+          name = info.join(',');
           if (item[1] !== undefined) {
-            prepped_item = [link, duration, "", name];
+            prepped_item = [link, duration, '', name];
           }
           break;
-        case type === "m3u":
-          prepped_item = [item, "", ""];
+        case type === 'm3u':
+          prepped_item = [item, '', ''];
           break; // m3u with urls only
       }
       if (prepped_item !== undefined) {
@@ -2230,20 +2110,20 @@
   function convertIndexItems(items, type) {
     let converted = []; // ===> CONVERT INDEX ITEMS by type; returns [prepped_index]
     switch (type) {
-      case "gecko":
+      case 'gecko':
         converted = prepGeckoType(items);
         break;
-      case "list":
+      case 'list':
         converted = prepListType(items);
         break;
-      case "pre":
+      case 'pre':
         converted = prepPreType(items);
         break;
-      case "table":
-      case "default":
+      case 'table':
+      case 'default':
         converted = prepTableType(items, type);
         break;
-      case "error":
+      case 'error':
         converted = prepErrorType(items);
         break;
     }
@@ -2255,7 +2135,7 @@
     let i,
       new_index_items = [],
       body_classes = new Set();
-    let index_html = "";
+    let index_html = '';
     let new_item,
       item,
       item_info = [],
@@ -2288,19 +2168,16 @@
       stats_total_size = 0,
       media_count = 0;
     let dir_list_parent_class =
-        body_id === (null || "top_body") || type === "playlist"
-          ? "top_item"
-          : "iframe_item",
-      is_playlist = type === "playlist" ? type + "_" : ""; // id used to set dir list details style
-    let parent_id = getCurrentUIPref("parent_id") || "",
-      connector = getCurrentUIPref("parent_id") ? "_" : "",
-      level = Number(getCurrentUIPref("level")) || 0,
-      level_style =
-        level === 0 ? "" : `style="padding-left:${Number(level) * 22}px;"`; // ensure unique ids (with parent_id) and set indents for subdirectory items
+        body_id === (null || 'top_body') || type === 'playlist' ? 'top_item' : 'iframe_item',
+      is_playlist = type === 'playlist' ? type + '_' : ''; // id used to set dir list details style
+    let parent_id = getCurrentUIPref('parent_id') || '',
+      connector = getCurrentUIPref('parent_id') ? '_' : '',
+      level = Number(getCurrentUIPref('level')) || 0,
+      level_style = level === 0 ? '' : `style="padding-left:${Number(level) * 22}px;"`; // ensure unique ids (with parent_id) and set indents for subdirectory items
     if (prepped_index_length > 5000) {
       if (
         confirm(
-          `This directory contains ${prepped_index_length} items; it may take a long time to process and could cause your browser to crash. Are you sure you want to open it?`,
+          `This directory contains ${prepped_index_length} items; it may take a long time to process and could cause your browser to crash. Are you sure you want to open it?`
         ) === false
       ) {
         return;
@@ -2309,21 +2186,21 @@
     switch (
       type // add body classes according to index type
     ) {
-      case "error":
-        body_classes.add("is_error");
+      case 'error':
+        body_classes.add('is_error');
         break;
-      case "pre":
-        body_classes.add("is_converted_pre");
+      case 'pre':
+        body_classes.add('is_converted_pre');
         break;
-      case "list":
-        body_classes.add("is_converted_list");
+      case 'list':
+        body_classes.add('is_converted_list');
         break;
-      case "table":
-      case "td":
-        body_classes.add("is_converted_table");
+      case 'table':
+      case 'td':
+        body_classes.add('is_converted_table');
         break;
-      case "default":
-        body_classes.add("is_default");
+      case 'default':
+        body_classes.add('is_default');
         break;
     }
     // create and format directory item
@@ -2340,13 +2217,12 @@
       item_sort_date = item_size_and_date[3];
       item_ext = item_info[2];
       item_sort_kind = item_info[3];
-      item_classes = item_info[4] + " " + dir_list_parent_class;
-      item_disabled = /local/.test(item_classes) ? ' disabled="disabled"' : ""; // disable media if local file on non_local page or vice versa
+      item_classes = item_info[4] + ' ' + dir_list_parent_class;
+      item_disabled = /local/.test(item_classes) ? ' disabled="disabled"' : ''; // disable media if local file on non_local page or vice versa
       item_input =
-        (/audio|video/.test(item_sort_kind) && /top/.test(body_id)) ||
-        type === "playlist"
+        (/audio|video/.test(item_sort_kind) && /top/.test(body_id)) || type === 'playlist'
           ? `<input class="dirlist_item_input" type="checkbox" tabindex="-1" checked="true" ${item_disabled} autocomplete="off" />`
-          : "";
+          : '';
       // Assemble item elements
       name_span = `<span class="icon has_icon_before_before"></span><span class="name_span display_flex">${item_input}<span>${item_name}</span></span>`;
       cell_link = `<a href="${item_link}" class="icon dirlist_item_name name dirlist_item_name_a position_relative">${name_span}</a>`;
@@ -2359,49 +2235,36 @@
       item_description =
         item[3] !== undefined
           ? `<span class="desc dirlist_item_details"><i>Description</i>: ${item[3]} </span>`
-          : ""; // some servers provide a description of the item
+          : ''; // some servers provide a description of the item
       // Assemble item
-      new_item = `<li id="${parent_id}${connector}${is_playlist}rowid-${prepped_index.length - i}" class="dirlist_item ${item_classes}" data-title="${item_name}" data-name="${item_sort_name.split("/")[0]}" data-kind="${item_sort_kind}" data-ext="${item_ext}" data-level="${level}" ${level_style}>${cell_name} ${cell_time} ${cell_size} ${cell_date} ${cell_kind} ${cell_ext} ${item_description}</li>\n`;
+      new_item = `<li id="${parent_id}${connector}${is_playlist}rowid-${prepped_index.length - i}" class="dirlist_item ${item_classes}" data-title="${item_name}" data-name="${item_sort_name.split('/')[0]}" data-kind="${item_sort_kind}" data-ext="${item_ext}" data-level="${level}" ${level_style}>${cell_name} ${cell_time} ${cell_size} ${cell_date} ${cell_kind} ${cell_ext} ${item_description}</li>\n`;
       if (/audio|video/.test(item_sort_kind)) {
         media_count += 1; // if media item...
         let media_kind = item_sort_kind,
           media_item_id =
-            parent_id +
-            connector +
-            is_playlist +
-            "rowid-" +
-            (prepped_index.length - i),
-          is_subdir = /subdirectory/.test(window.location.search)
-            ? true
-            : false;
+            parent_id + connector + is_playlist + 'rowid-' + (prepped_index.length - i),
+          is_subdir = /subdirectory/.test(window.location.search) ? true : false;
         // get media duration, not in utility subdir (limit to 1000 calls):
         if (media_count < 1000 && is_subdir !== true) {
           getMediaDuration(item_link, media_kind, media_item_id, is_subdir);
         } else {
-          new_item = new_item.replace(
-            /data-duration="">/,
-            'data-duration="NaN">',
-          );
+          new_item = new_item.replace(/data-duration="">/, 'data-duration="NaN">');
         }
       }
       new_index_items.push(new_item); // add item to index items
-      body_classes.add(item_info[5].join(" ")); // add item classes to body_classes
+      body_classes.add(item_info[5].join(' ')); // add item classes to body_classes
       stats_kinds.push(item_sort_kind);
       stats_total_size += Number(item_sort_size);
       stats_classes.push(item_info[6]); // STATS: add item kind; update total size; add to stats classes
     }
     body_classes = [...body_classes].filter((body_class) => body_class).sort(); // BODY CLASSES: body_classes to array, filter empty items, sort
     stats = buildStats(stats_classes, stats_kinds, stats_total_size); // STATS: build stats
-    if (sort === "" || sort === undefined) {
-      sort = getCurrentUIPref("sort_by");
+    if (sort === '' || sort === undefined) {
+      sort = getCurrentUIPref('sort_by');
     } // SORT ITEMS: get sort_by pref
-    let sort_direction = getCurrentUIPref("sort_direction"); // get sort_direction pref
-    let sorted_index_items = sortDirListItems(
-      new_index_items,
-      "sort_by_" + sort,
-      sort_direction,
-    ); // make initial sort
-    return [sorted_index_items, body_classes.join(" "), stats, index_html]; // RETURN [sorted_index_items, body_classes, stats, index_html]
+    let sort_direction = getCurrentUIPref('sort_direction'); // get sort_direction pref
+    let sorted_index_items = sortDirListItems(new_index_items, 'sort_by_' + sort, sort_direction); // make initial sort
+    return [sorted_index_items, body_classes.join(' '), stats, index_html]; // RETURN [sorted_index_items, body_classes, stats, index_html]
   }
   //==============================//
   function getLinkInfo(link) {
@@ -2410,19 +2273,19 @@
       case link === undefined:
         return; // return if link undefined
       case link === null:
-        link = getEl("#content_iframe").src;
+        link = getEl('#content_iframe').src;
         break; // link from opening local link files links in iframe
-      case link.startsWith("file://") && window.location.protocol === "file:":
-        link = link.split("file://")[1];
+      case link.startsWith('file://') && window.location.protocol === 'file:':
+        link = link.split('file://')[1];
         break; // local links
-      case link.startsWith("/") && window.location.protocol === "file:":
-        link = "file://" + link;
+      case link.startsWith('/') && window.location.protocol === 'file:':
+        link = 'file://' + link;
         break; // local links
-      case !link.startsWith("/") && !link.endsWith("/") && !/\./.test(link):
-        link = "/" + link + "";
+      case !link.startsWith('/') && !link.endsWith('/') && !/\./.test(link):
+        link = '/' + link + '';
         break;
     }
-    link = link.replace(/%3C/g, "&lt;").replace(/\.pdf\..+/, ".pdf"); // fix and sanitize links
+    link = link.replace(/%3C/g, '&lt;').replace(/\.pdf\..+/, '.pdf'); // fix and sanitize links
     //		if ( /\.php\?(\w+)=/.test(link) )		{ link = link.split('\.php')[1]; }																		// attempt to deal with some php links
     let URL = newURL(decodeURIComponentSafe(encodeURIComponent(link)));
     let prepped_link,
@@ -2432,27 +2295,27 @@
       item_classes = [],
       body_classes = [],
       stats_classes = [],
-      aliases = new RegExp(/(symlink|alias|symbolic link)$/, "m"),
+      aliases = new RegExp(/(symlink|alias|symbolic link)$/, 'm'),
       link_protocol = URL.protocol;
     switch (
       true // prep link
     ) {
-      case window_protocol !== "file:": // for non-local pages
+      case window_protocol !== 'file:': // for non-local pages
         switch (true) {
-          case URL.protocol === "file:":
+          case URL.protocol === 'file:':
           case URL.protocol === undefined:
             prepped_link = link;
-            item_classes.push("local", "ignored");
+            item_classes.push('local', 'ignored');
             break; // local links from non-local pages
           default:
             prepped_link = URL.href; // non-local pages
         }
         break;
-      case window_protocol === "file:": // for non-local pages
+      case window_protocol === 'file:': // for non-local pages
         switch (true) {
-          case URL.protocol !== "file:":
+          case URL.protocol !== 'file:':
             prepped_link = URL.href;
-            item_classes.push("non_local");
+            item_classes.push('non_local');
             break;
           default:
             prepped_link = URL.pathname;
@@ -2461,117 +2324,109 @@
     switch (
       true // prepare display name, body_classes, and item_classes
     ) {
-      case /youtube.com|youtu.be/.test(link) && !link.indexOf("/."):
-        prepped_link = link.replace(/watch%3F/, "watch?");
-        kind = "video";
-        item_classes.push("video", "media");
+      case /youtube.com|youtu.be/.test(link) && !link.indexOf('/.'):
+        prepped_link = link.replace(/watch%3F/, 'watch?');
+        kind = 'video';
+        item_classes.push('video', 'media');
         display_name = undefined;
         break; // youtube videos from playlists
-      case URL.pathname.endsWith("/"):
+      case URL.pathname.endsWith('/'):
       case /\.php\?/.test(link): // nobreak; dirs, apps and index.php? links
-        display_name = URL.pathname.endsWith("/")
-          ? URL.pathname.split("/").reverse()[1] + "/"
+        display_name = URL.pathname.endsWith('/')
+          ? URL.pathname.split('/').reverse()[1] + '/'
           : /\.php\?/.test(link)
             ? link
             : null;
         switch (true) {
           case /\.app$|\.app\/$|\.exe$/m.test(display_name):
-            ext = "app";
+            ext = 'app';
             kind = ext; // apps
             if (UI_Prefs_Bool.apps_as_dirs === false) {
-              item_classes.sort().unshift("file", "app");
+              item_classes.sort().unshift('file', 'app');
             } else {
-              item_classes.sort().unshift("dir", "app");
+              item_classes.sort().unshift('dir', 'app');
             }
             break;
           default:
-            ext = "dir";
-            kind = "dir";
+            ext = 'dir';
+            kind = 'dir';
             item_classes.unshift(kind); // dirs; remove kind from item_classes
         }
-        item_classes.push("non_media"); // add "non_media" to item_classes
-        if (display_name.startsWith(".")) {
-          item_classes.push("invisible");
-          stats_classes.push("invisible");
+        item_classes.push('non_media'); // add "non_media" to item_classes
+        if (display_name.startsWith('.')) {
+          item_classes.push('invisible');
+          stats_classes.push('invisible');
         }
         break;
       default: // files
-        display_name = prepped_link
-          .trim()
-          .split("/?")[0]
-          .split("/")
-          .reverse()[0];
+        display_name = prepped_link.trim().split('/?')[0].split('/').reverse()[0];
         switch (true) {
-          case display_name.toLowerCase().endsWith("symlink"):
-            ext = "symlink";
+          case display_name.toLowerCase().endsWith('symlink'):
+            ext = 'symlink';
             break;
           case !/\./.test(display_name):
             ext = display_name.toLowerCase();
             break; // if no '.' in link (typical for bin files), ...
           default: // find the last . and get the remaining characters
-            ext = display_name
-              .slice(display_name.lastIndexOf(".") + 1)
-              .toLowerCase();
+            ext = display_name.slice(display_name.lastIndexOf('.') + 1).toLowerCase();
             for (let item_kind in Item_Kinds) {
               if (Item_Kinds[item_kind].includes(ext)) {
                 kind = item_kind;
               }
             } // kind = types
             if (/url|url\/|webloc|webloc\//.test(ext)) {
-              kind = "link";
+              kind = 'link';
             } // links
             switch (true) {
-              case kind === "audio":
-                item_classes.push("media");
-                body_classes.push("has_media", "has_audio");
+              case kind === 'audio':
+                item_classes.push('media');
+                body_classes.push('has_media', 'has_audio');
                 break;
-              case kind === "video":
-                item_classes.push("media");
-                body_classes.push("has_media", "has_video");
+              case kind === 'video':
+                item_classes.push('media');
+                body_classes.push('has_media', 'has_video');
                 break;
-              case kind === "font":
-                body_classes.push("has_fonts");
+              case kind === 'font':
+                body_classes.push('has_fonts');
                 break;
-              case kind === "image":
-                body_classes.push("has_images");
+              case kind === 'image':
+                body_classes.push('has_images');
                 break;
             }
             if (Item_Settings.ignored.includes(ext)) {
-              item_classes.push("ignored");
-              stats_classes.push("ignored");
+              item_classes.push('ignored');
+              stats_classes.push('ignored');
             }
-            if (display_name.startsWith(".")) {
-              item_classes.push("invisible");
-              stats_classes.push("invisible");
+            if (display_name.startsWith('.')) {
+              item_classes.push('invisible');
+              stats_classes.push('invisible');
             }
         }
         if (kind === undefined) {
-          kind = "other";
+          kind = 'other';
         }
         if (!/audio|video/.test(kind)) {
-          item_classes.push("non_media");
+          item_classes.push('non_media');
         }
         item_classes.unshift(kind);
-        item_classes.unshift("file");
-        prepped_link = decodeURIComponentSafe(
-          encodeURIComponent(prepped_link),
-        )?.trim();
+        item_classes.unshift('file');
+        prepped_link = decodeURIComponentSafe(encodeURIComponent(prepped_link))?.trim();
     }
     stats_classes.push(kind);
     if (ext === undefined) {
-      ext = "";
+      ext = '';
     }
     if (aliases.test(display_name)) {
-      item_classes.push("alias");
+      item_classes.push('alias');
     }
     for (let item_kind_system of Item_Kinds.system) {
       if (display_name?.endsWith(item_kind_system)) {
-        item_classes.push("ignored");
+        item_classes.push('ignored');
       }
     } // ignore various system items
     item_classes = Array.from(new Set(item_classes))
       .filter((item) => item)
-      .join(" "); // remove dupe or empty classes, join
+      .join(' '); // remove dupe or empty classes, join
     return [
       prepped_link,
       decodeURIComponentSafe(display_name)?.trim(),
@@ -2579,7 +2434,7 @@
       kind,
       item_classes,
       body_classes,
-      stats_classes.join(" "),
+      stats_classes.join(' '),
       link_protocol,
       URL.origin + URL.pathname,
     ];
@@ -2606,12 +2461,11 @@
     switch (
       true // get size
     ) {
-      case item_display_size !== undefined &&
-        item_display_size.toLowerCase() === "dir":
+      case item_display_size !== undefined && item_display_size.toLowerCase() === 'dir':
       case /undefined|—|-|,|\*/.test(item_display_size):
-      case item_display_size === "":
-        item_display_size = "&mdash;";
-        item_sort_size = "0";
+      case item_display_size === '':
+        item_display_size = '&mdash;';
+        item_sort_size = '0';
         break; // if size is undefined, empty, or punctuation, use these defaults
       default:
         item_sort_size = getItemSortSize(item_display_size);
@@ -2621,42 +2475,37 @@
             break; // if provided size is only numeric, format byte size
           default:
             item_display_size = item_display_size
-              .replace("K", "k")
-              .replace(/(\d+)\s*([A-z])/, "$1 $2"); // default: format and ensure display size has space between number and units
+              .replace('K', 'k')
+              .replace(/(\d+)\s*([A-z])/, '$1 $2'); // default: format and ensure display size has space between number and units
         }
         break;
     }
-    if (item_display_size === "NaN undefined") {
-      item_display_size = "0 B";
+    if (item_display_size === 'NaN undefined') {
+      item_display_size = '0 B';
     }
     // get date
-    if ([undefined, "", "-"].includes(item_display_date)) {
-      item_display_date = "&mdash;";
-      item_sort_date = "0";
+    if ([undefined, '', '-'].includes(item_display_date)) {
+      item_display_date = '&mdash;';
+      item_sort_date = '0';
     } else {
       item_sort_date = getItemDate(item_display_date);
     }
     item_display_date = item_display_date
-      .replace(/, (.+)/, "<wbr>,&nbsp$1")
-      .replace(/ (AM|PM)$/im, "<wbr> $1")
-      .replace(/\s/g, "&nbsp;"); // ensure that time acts as a block for wrapping in narrow sidebar
-    item_size_and_date.push(
-      item_display_size,
-      item_sort_size,
-      item_display_date,
-      item_sort_date,
-    );
+      .replace(/, (.+)/, '<wbr>,&nbsp$1')
+      .replace(/ (AM|PM)$/im, '<wbr> $1')
+      .replace(/\s/g, '&nbsp;'); // ensure that time acts as a block for wrapping in narrow sidebar
+    item_size_and_date.push(item_display_size, item_sort_size, item_display_date, item_sort_date);
     return item_size_and_date;
   }
   function getItemSortSize(val) {
     // GET ITEM SORT SIZE
     let sort_size,
-      values = val.replace(/(\d+)\s*([A-z]+)/, "$1 $2").split(" "),
+      values = val.replace(/(\d+)\s*([A-z]+)/, '$1 $2').split(' '),
       size = values[0],
       unit = values[1];
     const factor = {
       undefined: 1,
-      "": 1,
+      '': 1,
       B: 1,
       K: 1000,
       KB: 1000,
@@ -2683,26 +2532,26 @@
     // ===> FORMAT BYTES: format numeric sizes for display
     const k = 1024,
       dm = decimals < 0 ? 0 : decimals,
-      sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+      sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
       i = Math.floor(Math.log(val) / Math.log(k));
     if (val === 0) {
-      return "0 Bytes";
+      return '0 Bytes';
     } else {
-      return parseFloat((val / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+      return parseFloat((val / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
   }
   function processDate(match, p1, p2, p3) {
     //***date formats: 2017-10-09 13:12 || 2015-07-25T02:02:57.000Z || 12-Mon-2017 21:11 ***//		// ===> PROCESS DATE
-    const mo = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(p2) / 3 + 1; // e.g., convert month into number, or use number
-    return p3 + "-" + mo + "-" + p1; // return assembled date: YYYY-MM-DD
+    const mo = 'JanFebMarAprMayJunJulAugSepOctNovDec'.indexOf(p2) / 3 + 1; // e.g., convert month into number, or use number
+    return p3 + '-' + mo + '-' + p1; // return assembled date: YYYY-MM-DD
   }
   function getItemDate(val) {
     // ===> GET ITEM DATE: for sorting (YYYY-MM-DD)
     let sort_date = val
       .replace(/^(\d{2})-(\w{3})-(\d{4})/m, processDate) // convert Month to number
-      .replace(/\b(\d{1})[-:/]/g, "0$1/") // add leading 0 for single digit numbers
-      .replace(/(\d{2})\/(\d{2})\/(\d{2}),/, "$3$1$2") // reorder MM/DD/YY dates to YY/MM/DD
-      .replace(/-|:|\s+|\//g, ""); // remove spacing characters
+      .replace(/\b(\d{1})[-:/]/g, '0$1/') // add leading 0 for single digit numbers
+      .replace(/(\d{2})\/(\d{2})\/(\d{2}),/, '$3$1$2') // reorder MM/DD/YY dates to YY/MM/DD
+      .replace(/-|:|\s+|\//g, ''); // remove spacing characters
     return sort_date;
   }
   //==============================//
@@ -2716,22 +2565,21 @@
       minutes = Math.floor(sec_num / 60) % 60,
       seconds = sec_num % 60;
     let formattedTime = [hours, minutes, seconds]
-      .map((v) => (v < 10 ? "0" + v : v))
-      .filter((v, i) => v !== "00" || i > 0)
-      .join(":");
-    formattedTime = formattedTime.replace(/^0/m, "");
+      .map((v) => (v < 10 ? '0' + v : v))
+      .filter((v, i) => v !== '00' || i > 0)
+      .join(':');
+    formattedTime = formattedTime.replace(/^0/m, '');
     return formattedTime; // remove initial 0 and return formatted time
   };
   async function fetchMediaDuration(link, kind) {
     // ===> ASYNC FETCH MEDIA DURATION
     return new Promise((resolve, reject) => {
-      const media =
-        kind === "audio" ? new Audio() : document.createElement("video");
-      media.addEventListener("loadedmetadata", () => {
+      const media = kind === 'audio' ? new Audio() : document.createElement('video');
+      media.addEventListener('loadedmetadata', () => {
         resolve(media.duration);
       });
-      media.addEventListener("error", reject);
-      media.src = link.replace(/\&amp;/g, "&");
+      media.addEventListener('error', reject);
+      media.src = link.replace(/\&amp;/g, '&');
     });
   }
   async function getMediaDuration(link, media_kind, id) {
@@ -2741,8 +2589,8 @@
       setMediaDuration(id, media_kind, duration); // await media duration; set media duration
     } catch (error) {
       if (
-        (id?.indexOf("playlist") && hasClass("body", "has_playlist")) ||
-        (!id?.indexOf("playlist") && !hasClass("body", "has_playlist"))
+        (id?.indexOf('playlist') && hasClass('body', 'has_playlist')) ||
+        (!id?.indexOf('playlist') && !hasClass('body', 'has_playlist'))
       ) {
         setMediaDuration(id, media_kind, Number.NaN);
       } // on error, set dur = NaN
@@ -2750,39 +2598,32 @@
   }
   // SET MEDIA DURATIONS
   function getThisDuration(id) {
-    let item_dur = Number(
-      getData("#" + id + " .dirlist_item_media_duration", "duration"),
-    );
+    let item_dur = Number(getData('#' + id + ' .dirlist_item_media_duration', 'duration'));
     if (id !== undefined) {
       return isNaN(item_dur) ? Number.NaN : item_dur;
     }
   } // return dur or NaN
   function setThisDuration(id, dur) {
-    getEl("#" + id).querySelector(
-      ".dirlist_item_media_duration",
-    ).dataset.duration = dur;
+    getEl('#' + id).querySelector('.dirlist_item_media_duration').dataset.duration = dur;
   }
   function setMediaDuration(id, kind, duration) {
     let el; // ===>  SET MEDIA DURATION
-    if (
-      id === "content_iframe_file" ||
-      /youtube.com|youtu.be/.test(getEl("#" + id + " a")?.href)
-    ) {
+    if (id === 'content_iframe_file' || /youtube.com|youtu.be/.test(getEl('#' + id + ' a')?.href)) {
       return;
     } // do not attempt to set duration for iframe files or youtube playlist items
     try {
-      el = getEl("#" + id);
+      el = getEl('#' + id);
       setThisDuration(id, duration);
       switch (true) {
         case Number(duration) === 0:
         case isNaN(Number(duration)):
-          el.classList.add("disabled");
+          el.classList.add('disabled');
           break; // if duration is NaN, disable and show spinner
         default:
-          el.querySelector(".dirlist_item_media_duration").innerText =
+          el.querySelector('.dirlist_item_media_duration').innerText =
             getFormattedDuration(duration);
-          el.classList.remove("disabled");
-          el.querySelector("input")?.removeAttribute("disabled");
+          el.classList.remove('disabled');
+          el.querySelector('input')?.removeAttribute('disabled');
           statsSetTotalDuration(duration, kind);
           break; // if duration is a number, update stats
       }
@@ -2791,22 +2632,19 @@
     }
   }
   function statsSetTotalDuration(duration, kind) {
-    let media_items = getEls(".dirlist_item.media");
+    let media_items = getEls('.dirlist_item.media');
     if (!media_items) {
       return;
     } // if no media items, or total times already calculated, abort
-    let total_duration = Number(
-        getEl("#total_duration")?.dataset.total_duration,
-      ),
+    let total_duration = Number(getEl('#total_duration')?.dataset.total_duration),
       audio_duration = 0,
       video_duration = 0;
     switch (true) {
-      case kind !== "refresh_all":
-        addClass("body", "has_" + kind); // after opening subdir
+      case kind !== 'refresh_all':
+        addClass('body', 'has_' + kind); // after opening subdir
         total_duration = Number(total_duration) + Number(duration);
-        getEl("#total_duration").dataset.total_duration = total_duration;
-        getEl("#total_duration").innerText =
-          getFormattedDuration(total_duration);
+        getEl('#total_duration').dataset.total_duration = total_duration;
+        getEl('#total_duration').innerText = getFormattedDuration(total_duration);
         break; // set display total duration
       default:
         for (let i = 0; i < media_items.length; i++) {
@@ -2819,46 +2657,43 @@
           switch (
             true // update audio and video total durations
           ) {
-            case kind === "audio":
+            case kind === 'audio':
               audio_duration = Number(audio_duration) + Number(duration); // add has_audio class, increment total audio duration
               setAttr(
-                "#stats_details_items span.audio",
-                "data-audio_duration",
-                " (Total Time: " + getFormattedDuration(audio_duration) + ")",
+                '#stats_details_items span.audio',
+                'data-audio_duration',
+                ' (Total Time: ' + getFormattedDuration(audio_duration) + ')'
               );
               break;
-            case kind === "video":
+            case kind === 'video':
               video_duration = Number(video_duration) + Number(duration); // add has_video class, increment total video duration
               setAttr(
-                "#stats_details_items span.video",
-                "data-video_duration",
-                " (Total Time: " + getFormattedDuration(video_duration) + ")",
+                '#stats_details_items span.video',
+                'data-video_duration',
+                ' (Total Time: ' + getFormattedDuration(video_duration) + ')'
               );
               break;
           }
-          setAttr("#total_duration", "data-total_duration", total_duration);
-          getEl("#total_duration").innerText =
-            getFormattedDuration(total_duration); // set display total duration
+          setAttr('#total_duration', 'data-total_duration', total_duration);
+          getEl('#total_duration').innerText = getFormattedDuration(total_duration); // set display total duration
         }
     }
   }
   // REFRESH MEDIA DURATIONS
   function refreshMediaDurations(id) {
     let media_items,
-      item = getEl("#" + id),
-      link = item?.querySelector("a")?.href,
+      item = getEl('#' + id),
+      link = item?.querySelector('a')?.href,
       kind = item?.dataset?.kind; // ===> REFRESH MEDIA DURATIONS from menu or selecting [Error] media file
     switch (true) {
-      case id === "refresh_media_durations": // refresh all durations; from click refresh media durations menu item
-        media_items = Array.from(getEls(".dirlist_item.media"));
+      case id === 'refresh_media_durations': // refresh all durations; from click refresh media durations menu item
+        media_items = Array.from(getEls('.dirlist_item.media'));
         media_items = media_items.filter((el) => {
-          return (
-            isNaN(getThisDuration(el?.id)) || getThisDuration(el?.id) === 0
-          );
+          return isNaN(getThisDuration(el?.id)) || getThisDuration(el?.id) === 0;
         }); // only update if dur is falsey
         media_items.forEach((el) => refreshMediaDurations(el?.id)); // send each media item with id back to function for default processing
         if (isTopWindow()) {
-          messageSend("iframe", "refresh_media_durations");
+          messageSend('iframe', 'refresh_media_durations');
         }
         break; // send refresh message to iframe
       default:
@@ -2881,20 +2716,17 @@
       total_files = 0,
       total_dirs_invisible = 0,
       total_files_invisible = 0,
-      total_invisibles = "";
+      total_invisibles = '';
     for (let i = 0; i < total_items; i++) {
       // Get counts
-      stats_classes[i] = stats_classes[i].split(" ").reverse().join(" "); // reorder classes to make invisible/ignored last
+      stats_classes[i] = stats_classes[i].split(' ').reverse().join(' '); // reorder classes to make invisible/ignored last
       counts[stats_classes[i]] = 1 + (counts[stats_classes[i]] || 0); // get key/value pairs for item_classes/total counts
       switch (true) {
         case !/invisible|ignored/.test(stats_classes[i]):
           break; // don't count :not(.invisible) and :not(.ignored)
-        case getCurrentUIPref("show_invisibles") === "true" &&
-          getCurrentUIPref("show_ignored_items") === "false": // show_invisibles && hide_ignored
-          if (
-            /invisible/.test(stats_classes[i]) &&
-            /ignored/.test(stats_classes[i])
-          ) {
+        case getCurrentUIPref('show_invisibles') === 'true' &&
+          getCurrentUIPref('show_ignored_items') === 'false': // show_invisibles && hide_ignored
+          if (/invisible/.test(stats_classes[i]) && /ignored/.test(stats_classes[i])) {
             break;
           } // don't count .invisible.ignored
           if (/dir/.test(stats_classes[i])) {
@@ -2903,23 +2735,20 @@
             total_files_invisible++;
           }
           break; // else count .ignored
-        case getCurrentUIPref("show_invisibles") === "false" &&
-          getCurrentUIPref("show_ignored_items") === "false": // hide_invisibles && hide_ignored (hide all)
+        case getCurrentUIPref('show_invisibles') === 'false' &&
+          getCurrentUIPref('show_ignored_items') === 'false': // hide_invisibles && hide_ignored (hide all)
           if (/dir/.test(stats_classes[i])) {
             total_dirs_invisible++;
           } else {
             total_files_invisible++;
           }
           break; // count .invisible and .ignored (count all)
-        case getCurrentUIPref("show_invisibles") === "true" &&
-          getCurrentUIPref("show_ignored_items") === "true":
+        case getCurrentUIPref('show_invisibles') === 'true' &&
+          getCurrentUIPref('show_ignored_items') === 'true':
           break; // don't count .invisible or .ignored (count none)
-        case getCurrentUIPref("show_invisibles") === "false" &&
-          getCurrentUIPref("show_ignored_items") === "true": // hide_invisibles && show_ignored
-          if (
-            !/invisible/.test(stats_classes[i]) &&
-            /ignored/.test(stats_classes[i])
-          ) {
+        case getCurrentUIPref('show_invisibles') === 'false' &&
+          getCurrentUIPref('show_ignored_items') === 'true': // hide_invisibles && show_ignored
+          if (!/invisible/.test(stats_classes[i]) && /ignored/.test(stats_classes[i])) {
             break;
           } // don't count .ignored:not(.invisible)
           if (/dir/.test(stats_classes[i])) {
@@ -2936,78 +2765,65 @@
     total_dirs = kinds.dir || 0;
     total_files = total_items - total_dirs; // total dirs && files count
     if (
-      getCurrentUIPref("show_invisibles") === "false" ||
-      getCurrentUIPref("show_ignored_items") === "false"
+      getCurrentUIPref('show_invisibles') === 'false' ||
+      getCurrentUIPref('show_ignored_items') === 'false'
     ) {
-      total_invisibles =
-        " (+" + (total_dirs_invisible + total_files_invisible) + ")";
-      total_items =
-        total_items - (total_dirs_invisible + total_files_invisible);
+      total_invisibles = ' (+' + (total_dirs_invisible + total_files_invisible) + ')';
+      total_items = total_items - (total_dirs_invisible + total_files_invisible);
       total_dirs = total_dirs - total_dirs_invisible;
       total_files = total_files - total_files_invisible;
     }
     for (let count in counts) {
       // make detail item for each kind of dirlist item --> doesn't preserve order
-      let kinds_items = count.split(" "),
+      let kinds_items = count.split(' '),
         temp_items = [],
-        stats_Item_Kinds = "";
+        stats_Item_Kinds = '';
       kinds_items.forEach((item) =>
-        !/ignored|invisible/.test(item)
-          ? temp_items.unshift(item)
-          : temp_items.push(item),
+        !/ignored|invisible/.test(item) ? temp_items.unshift(item) : temp_items.push(item)
       );
       kinds_items = temp_items;
       kinds_items.forEach(
         (item) =>
           (stats_Item_Kinds +=
             `<span class="${item}" >` +
-            (/ignored|invisible/.test(item) ? " (" + item + ")" : item.trim()) +
-            `</span>`),
+            (/ignored|invisible/.test(item) ? ' (' + item + ')' : item.trim()) +
+            `</span>`)
       );
       let stats_item = `<li class="stats_list_item display_grid ${kinds_items[0]}" data-kind="${kinds_items[0]}"><a class="icon stats_list_item_name_a display_flex"  data-count="${counts[count]}"><span class="has_icon_before_before"></span><span class="stats_list_item_name_a_span">${stats_Item_Kinds}</span></a></li>`;
       stats_items.push(stats_item);
     }
     stats_items.sort();
-    return `<nav id="stats_container" class="display_flex width_100"><div id="stats" class="normal pointer overflow_hidden font_size_small">    <ol id="stats_summary" class="background_grey_80 text_color_default margin_0 padding_0">    <li class="stats_list_item line_height_1_2 no_highlight padding_4_8"><span id="stats_summary_totals" class="display_flex align_left" data-size="${stats_total_size}">${total_items} Items${total_invisibles}: ${total_dirs} Dirs, ${total_files} Files (${formatBytes(stats_total_size, 2)})</span><span id="total_duration" class="display_none" data-total_duration=""></span></li>    </ol>    <ol id="stats_details_summary" class="border_bottom position_relative background_grey_80 text_color_default margin_0 padding_0 display_none">    <li id="stats_details_summary_total" class="summary_detailed border_bottom padding_4_8 no_highlight"><span>${total_items} Items (${total_dirs_invisible + total_files_invisible} invisible or ignored)</span></li>    <li id="stats_details_summary_dirs" class="stats_list_item line_height_1_2 dir summary_detailed background_grey_85 padding_0"><a class="icon stats_list_item_name_a display_flex" data-count="${total_dirs}"> <span class="stats_list_item_name_a_span display_flex has_icon_before stats_kind">Dirs (${total_dirs_invisible} invisible or ignored)</span> </a></li>    <li id="stats_details_summary_files" class="stats_list_item line_height_1_2 file summary_detailed background_grey_85 padding_0"><a class="icon stats_list_item_name_a display_flex" data-count="${total_files}"><span class="stats_list_item_name_a_span display_flex has_icon_before stats_kind">Files (${total_files_invisible} invisible or ignored)</span></a></li>    </ol>    <div id="stats_details_items_container">    <ol id="stats_details_items" class="margin_0 padding_0 position_relative display_none">    ${stats_items.join("\n")}    </ol>    </div>    </div></nav>`;
+    return `<nav id="stats_container" class="display_flex width_100"><div id="stats" class="normal pointer overflow_hidden font_size_small">    <ol id="stats_summary" class="background_grey_80 text_color_default margin_0 padding_0">    <li class="stats_list_item line_height_1_2 no_highlight padding_4_8"><span id="stats_summary_totals" class="display_flex align_left" data-size="${stats_total_size}">${total_items} Items${total_invisibles}: ${total_dirs} Dirs, ${total_files} Files (${formatBytes(stats_total_size, 2)})</span><span id="total_duration" class="display_none" data-total_duration=""></span></li>    </ol>    <ol id="stats_details_summary" class="border_bottom position_relative background_grey_80 text_color_default margin_0 padding_0 display_none">    <li id="stats_details_summary_total" class="summary_detailed border_bottom padding_4_8 no_highlight"><span>${total_items} Items (${total_dirs_invisible + total_files_invisible} invisible or ignored)</span></li>    <li id="stats_details_summary_dirs" class="stats_list_item line_height_1_2 dir summary_detailed background_grey_85 padding_0"><a class="icon stats_list_item_name_a display_flex" data-count="${total_dirs}"> <span class="stats_list_item_name_a_span display_flex has_icon_before stats_kind">Dirs (${total_dirs_invisible} invisible or ignored)</span> </a></li>    <li id="stats_details_summary_files" class="stats_list_item line_height_1_2 file summary_detailed background_grey_85 padding_0"><a class="icon stats_list_item_name_a display_flex" data-count="${total_files}"><span class="stats_list_item_name_a_span display_flex has_icon_before stats_kind">Files (${total_files_invisible} invisible or ignored)</span></a></li>    </ol>    <div id="stats_details_items_container">    <ol id="stats_details_items" class="margin_0 padding_0 position_relative display_none">    ${stats_items.join('\n')}    </ol>    </div>    </div></nav>`;
   }
   function updateStats(bool) {
     // ===> UPDATE STATS (bool: add or subtract size from total)
-    let items = getEls(".dirlist_item"),
+    let items = getEls('.dirlist_item'),
       item_info,
       total_item_size,
       stats_classes = [],
       stats_kinds = [],
       item_classlist = [],
       total_size = 0; // get all dir_list items
-    getEls(".dirlist_item_details.size").forEach(
-      (el) => (total_size += Number(el.dataset.size)),
-    );
+    getEls('.dirlist_item_details.size').forEach((el) => (total_size += Number(el.dataset.size)));
     total_item_size =
-      bool === false
-        ? total_size
-        : Number(getData("#stats_summary_totals", "size"));
+      bool === false ? total_size : Number(getData('#stats_summary_totals', 'size'));
     for (let i = 0; i < items.length; i++) {
       // get classes and kind for each item
-      item_info = getLinkInfo(
-        items[i].getElementsByClassName("dirlist_item_name_a")[0].href,
-      ); // get item info = [link,name,ext,kind,item_classes,body_classes];
+      item_info = getLinkInfo(items[i].getElementsByClassName('dirlist_item_name_a')[0].href); // get item info = [link,name,ext,kind,item_classes,body_classes];
       item_classlist = item_info[4];
       item_classlist = item_classlist
-        .replace(
-          /file|media|audio_loaded|content_loaded|has_subdirectory|selected|non_/g,
-          "",
-        )
+        .replace(/file|media|audio_loaded|content_loaded|has_subdirectory|selected|non_/g, '')
         .trim(); // get item_classlist; remove unwanted classes
       stats_classes.push(item_classlist);
       stats_kinds.push(item_info[3]); // add item_classlist to stats_classes;  add Item_Kinds to stats_kinds
-      total_item_size += Number(items[i].querySelector(".size").dataset.size);
+      total_item_size += Number(items[i].querySelector('.size').dataset.size);
     }
-    getEl("#stats_container").remove();
-    getEl("#sidebar_footer").insertAdjacentHTML(
-      "afterbegin",
-      buildStats(stats_classes, stats_kinds, total_item_size, 2),
+    getEl('#stats_container').remove();
+    getEl('#sidebar_footer').insertAdjacentHTML(
+      'afterbegin',
+      buildStats(stats_classes, stats_kinds, total_item_size, 2)
     ); // remove old stats; build new stats and add to sidebar_footer
-    statsSetTotalDuration(null, "refresh_all");
+    statsSetTotalDuration(null, 'refresh_all');
     initStatsEvents(); // initial event listeners for new stats items
   }
   // ***** END DIR_LIST SETUP ***** //
@@ -3015,23 +2831,23 @@
   // ***** UI SETUP ***** //
   function prepDocHead(agent) {
     // ===> PREP DOC HEAD
-    document.title = "Index of " + window_location; // change the doc title to current location
-    for (let attr_name of getEl("html").getAttributeNames()) {
-      getEl("html").removeAttribute(attr_name);
+    document.title = 'Index of ' + window_location; // change the doc title to current location
+    for (let attr_name of getEl('html').getAttributeNames()) {
+      getEl('html').removeAttribute(attr_name);
     } // remove html attributes, if any
-    getEl("head title").removeAttribute("id");
-    getEls(
-      "head meta, head base, head link, head style, head script, head noscript",
-    ).forEach((headEl) => headEl.remove()); // remove various head elements
+    getEl('head title').removeAttribute('id');
+    getEls('head meta, head base, head link, head style, head script, head noscript').forEach(
+      (headEl) => headEl.remove()
+    ); // remove various head elements
     let head_content =
       '<meta charset="utf-8"><base href="' +
       window.location.origin +
       '">' +
-      getEl("head").innerHTML.replace(/<!--(?!>)[\S\s]*?-->/g, ""); // add meta and remove conditional comments
-    if (window.location.protocol.startsWith("file")) {
-      head_content = get_SVG_UI_File_Icon("favicon") + head_content;
+      getEl('head').innerHTML.replace(/<!--(?!>)[\S\s]*?-->/g, ''); // add meta and remove conditional comments
+    if (window.location.protocol.startsWith('file')) {
+      head_content = get_SVG_UI_File_Icon('favicon') + head_content;
     } // add custom favicon for local directories
-    getEl("head").innerHTML = head_content + addStyles(agent); // replace head content with prepped content
+    getEl('head').innerHTML = head_content + addStyles(agent); // replace head content with prepped content
   }
   function getUIPrefBodyClasses(agent) {
     // ===> GET UI PREF BODY CLASSES and other initial settings
@@ -3042,26 +2858,24 @@
     for (let key in settings) {
       switch (true) {
         case [
-          "grid_font_size",
-          "grid_image_size",
-          "ui_font",
-          "ui_scale",
-          "show_image_thumbnails",
+          'grid_font_size',
+          'grid_image_size',
+          'ui_font',
+          'ui_scale',
+          'show_image_thumbnails',
         ].includes(key):
           break; // ignore these keys (values set in css or by buildTextEditorUI)
-        case ["sort_by", "sort_direction", "theme", "texteditor_view"].includes(
-          key,
-        ):
-          body_classes.push(key + "_" + getCurrentUIPref(key));
+        case ['sort_by', 'sort_direction', 'theme', 'texteditor_view'].includes(key):
+          body_classes.push(key + '_' + getCurrentUIPref(key));
           break; // other non-booleans: class = key + value
-        case getCurrentUIPref(key) === "false":
-          body_classes.push(key + "_false");
+        case getCurrentUIPref(key) === 'false':
+          body_classes.push(key + '_false');
           break; // booleans: only add false values
       }
     }
     body_classes.push(agent);
-    body_classes.push("is_" + getOS()); // add browser and os classes
-    return body_classes.sort().join(" ");
+    body_classes.push('is_' + getOS()); // add browser and os classes
+    return body_classes.sort().join(' ');
   }
   function makeNewIndex(el, sort, agent, body_id) {
     // ===> MAKE NEW INDEX
@@ -3070,18 +2884,18 @@
       type = index_items[1];
     const converted_index = convertIndexItems(items, type); // = array of rows: ["link","date","size"]
     switch (type) {
-      case "error":
+      case 'error':
         return [
           [
             [
               '<tr id="is_error"><td id="is_error_items" class="padding_6_8">' +
-                (items === undefined ? "" : items) +
-                "</td></tr>",
+                (items === undefined ? '' : items) +
+                '</td></tr>',
             ],
-            "is_error",
+            'is_error',
           ],
-          "",
-          "",
+          '',
+          '',
           index_items,
         ];
       default:
@@ -3090,12 +2904,10 @@
   }
   // ===> BUILD IFRAME DIR LIST UI, with utility iframe for subdirectories add
   function buildIframeUI(src, file_name, agent) {
-    let parent_link = src.split("/").slice(0, -2).join("/") + "/",
-      query_str = new URLSearchParams(
-        window.location.search.toString().slice(1),
-      );
-    let subdirectory = query_str.get("subdirectory") || null,
-      body_id = query_str.get("body_id");
+    let parent_link = src.split('/').slice(0, -2).join('/') + '/',
+      query_str = new URLSearchParams(window.location.search.toString().slice(1));
+    let subdirectory = query_str.get('subdirectory') || null,
+      body_id = query_str.get('body_id');
     let iframe_directory,
       iframe_head,
       iframe_dir_list,
@@ -3111,94 +2923,82 @@
       return;
     }; // init receive messages
     switch (true) {
-      case window.location.search === "": // nobreak; case is true when opening dirs from sidebar source dir
-      case (query_str.get("show_directory_source") ||
-        query_str.get("is_error")) === "true":
-        if (elExists("#iframe_dir_styles")) {
-          getEl("#iframe_dir_styles").remove();
+      case window.location.search === '': // nobreak; case is true when opening dirs from sidebar source dir
+      case (query_str.get('show_directory_source') || query_str.get('is_error')) === 'true':
+        if (elExists('#iframe_dir_styles')) {
+          getEl('#iframe_dir_styles').remove();
         }
         break; // do nothing when viewing directory source or if error page...
       default: // ...else set up iframe directory:
-        iframe_head = getEl("head");
-        content_body = getEl("body");
-        iframe_dir_list = "";
-        gecko_styles = "";
+        iframe_head = getEl('head');
+        content_body = getEl('body');
+        iframe_dir_list = '';
+        gecko_styles = '';
         body_classes = [];
         iframe_utility_iframe =
           '<iframe id="content_iframe_utility" sandbox="allow-scripts allow-same-origin allow-modals allow-popups" style="display:none;"></iframe>';
         if (/\.php\?/.test(src)) {
-          query_str = new URLSearchParams(makeSrcSearchParams("dir"));
+          query_str = new URLSearchParams(makeSrcSearchParams('dir'));
         } // define default params for index.php?folder=... pages
         for (let key of query_str.keys()) {
           // add various body_classes...
           switch (true) {
             case /show_details|ui_font/.test(key):
               break; // show details by default
-            case query_str.get(key) === "true":
+            case query_str.get(key) === 'true':
               break; // ignore true booleans
-            case query_str.get(key) === "false":
-              body_classes.push(key + "_false");
+            case query_str.get(key) === 'false':
+              body_classes.push(key + '_false');
               break; // add body classes for false boolean params
             default:
-              body_classes.push(key + "_" + getCurrentUIPref(key));
+              body_classes.push(key + '_' + getCurrentUIPref(key));
               break; // non-boolean params (theme, sort)
           }
         }
-        if (agent === "is_gecko") {
-          gecko_styles =
-            '<style id="gecko_style_rules">' + gecko_style_rules + "</style>";
+        if (agent === 'is_gecko') {
+          gecko_styles = '<style id="gecko_style_rules">' + gecko_style_rules + '</style>';
         }
-        new_index = makeNewIndex(
-          content_body,
-          query_str.get("sort_by"),
-          "",
-          body_id,
-        ); // make new index
+        new_index = makeNewIndex(content_body, query_str.get('sort_by'), '', body_id); // make new index
         make_new_index = new_index[0];
-        additional_classes = new_index[0][1]
-          .trim()
-          .split(/\s+/)
-          .concat(body_classes); // define additional body classes
+        additional_classes = new_index[0][1].trim().split(/\s+/).concat(body_classes); // define additional body classes
         if (!/is_error/.test(new_index[0][1])) {
           // if not an a error page...build the ui
           iframe_head
-            .querySelectorAll(
-              'style,script,meta,link[rel="stylesheet"],link[href$="css"]',
-            )
+            .querySelectorAll('style,script,meta,link[rel="stylesheet"],link[href$="css"]')
             .forEach((el) => el.remove()); // remove any existing directory index styles
           iframe_head.insertAdjacentHTML(
-            "beforeend",
-            `<style id="iframe_dir_styles">${iframe_dir_styles}</style><style id="sidebar_styles">${sidebar_styles}</style><style>${content_pane_styles}</style><style id="font_styles"></style><style id="font_grid_styles"></style>${gecko_styles}`,
+            'beforeend',
+            `<style id="iframe_dir_styles">${iframe_dir_styles}</style><style id="sidebar_styles">${sidebar_styles}</style><style>${content_pane_styles}</style><style id="font_styles"></style><style id="font_grid_styles"></style>${gecko_styles}`
           ); // assemble the iframe head
           switch (
             true // Assemble content_iframe and utility_iframe content
           ) {
-            case subdirectory === "true":
+            case subdirectory === 'true':
               iframe_dir_list = `<div id="directory_list_outer"><ol id="directory_list" class="border_bottom text_color_default">${make_new_index[0]}</ol></div>`;
               break;
             default:
-              iframe_directory = Sidebar_Elements("iframe", parent_link); // create iframe directory elements
+              iframe_directory = Sidebar_Elements('iframe', parent_link); // create iframe directory elements
               iframe_dir_list = iframe_directory
                 .replace(/insert_prepped_index/, make_new_index[0])
                 .replace(/insert_stats/, make_new_index[2]); // assemble iframe directory
-              content_body.removeAttribute("style");
-              content_body.style.fontFamily = getCurrentUIPref("ui_font"); // remove any body inline styles; set ui_font
+              content_body.removeAttribute('style');
+              content_body.style.fontFamily = getCurrentUIPref('ui_font'); // remove any body inline styles; set ui_font
               content_body.classList.add(...additional_classes); // add body styles
           }
           content_body.innerHTML = iframe_dir_list + Content_Pane_Elements(); // append iframe_dir_list and content_pane for quicklook
         }
         if (subdirectory === null) {
-          content_body.insertAdjacentHTML("beforeend", iframe_utility_iframe);
+          content_body.insertAdjacentHTML('beforeend', iframe_utility_iframe);
           initIframeEvents();
         } // don't multiply utility_iframes; init iframe event listeners
-        if (subdirectory === "true") {
-          messageSend("top_body", "dirlist_subdir_loaded", "", [
-            getEl("#directory_list").innerHTML,
+        if (subdirectory === 'true') {
+          messageSend('top_body', 'dirlist_subdir_loaded', '', [
+            getEl('#directory_list').innerHTML,
             make_new_index[1],
-            getCurrentUIPref("parent_id"),
+            getCurrentUIPref('parent_id'),
           ]); // send prepped subdir to parent window
         } else {
-          messageSend("top_body", "iframe_loaded", "", [src, file_name, "dir"]); // else send iframe_loaded message
+          messageSend('top_body', 'iframe_loaded', '', [src, file_name, 'dir']); // else send iframe_loaded message
         }
     }
   }
@@ -3213,19 +3013,19 @@
       //messageSend('top_body','iframe_loaded','',[window_location,'',kind,null,content]);
       return;
     }
-    if (!hasClass("body", "has_texteditorUI")) {
+    if (!hasClass('body', 'has_texteditorUI')) {
       // add classes, styles, and scripts; only add once
-      getEl("head").insertAdjacentHTML(
-        "beforeend",
-        '<style id="texteditor_styles">' + texteditor_styles + "</style>",
+      getEl('head').insertAdjacentHTML(
+        'beforeend',
+        '<style id="texteditor_styles">' + texteditor_styles + '</style>'
       );
-      getEl("head").insertAdjacentHTML(
-        "beforeend",
-        '<link id="github_markdown_css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"></link>',
+      getEl('head').insertAdjacentHTML(
+        'beforeend',
+        '<link id="github_markdown_css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"></link>'
       );
       body_classes.push(
-        "has_texteditorUI",
-        "texteditor_view_" + getCurrentUIPref("texteditor_view"),
+        'has_texteditorUI',
+        'texteditor_view_' + getCurrentUIPref('texteditor_view')
       );
     }
     switch (
@@ -3236,65 +3036,59 @@
           messageReceive(e);
           return false;
         }; // init receive messages is_link
-        getEl("head").insertAdjacentHTML(
-          "afterbegin",
-          '<meta charset="utf-8" /><meta http-equiv="Content-Type" content="text/plain; charset="utf-8">',
+        getEl('head').insertAdjacentHTML(
+          'afterbegin',
+          '<meta charset="utf-8" /><meta http-equiv="Content-Type" content="text/plain; charset="utf-8">'
         );
-        getEl("head").insertAdjacentHTML(
-          "beforeend",
+        getEl('head').insertAdjacentHTML(
+          'beforeend',
           '<style id="global_styles">' +
             global_styles +
             '</style><style id="utilities_styles">' +
             utilities_styles +
-            "</style>",
+            '</style>'
         ); // add iframe text editing styles
-        if (kind === "link") {
+        if (kind === 'link') {
           tempHideTexteditor();
         } // prevent FOUC for some kinds of content...
-        raw_markdown = decodeURIComponentSafe(getEl("body").innerText); // get source text and decode Unicode chars.
+        raw_markdown = decodeURIComponentSafe(getEl('body').innerText); // get source text and decode Unicode chars.
         document.body.innerHTML =
-          Content_Pane_Elements("content_text_elements") +
-          Utilities_Elements("texteditor"); // add the UI
-        getEl("#texteditor_raw_pane").value = raw_markdown; // set the source text value
-        getEl("#texteditor_raw_pane").setSelectionRange(0, 0); // set the insertion point to the beginning of the text
-        if (/^\#EXTM3U/m.test(getEl("#texteditor_raw_pane").value)) {
-          content = getEl("#texteditor_raw_pane").value.trim();
-          messageSend("top_body", "iframe_playlist", "", content);
+          Content_Pane_Elements('content_text_elements') + Utilities_Elements('texteditor'); // add the UI
+        getEl('#texteditor_raw_pane').value = raw_markdown; // set the source text value
+        getEl('#texteditor_raw_pane').setSelectionRange(0, 0); // set the insertion point to the beginning of the text
+        if (/^\#EXTM3U/m.test(getEl('#texteditor_raw_pane').value)) {
+          content = getEl('#texteditor_raw_pane').value.trim();
+          messageSend('top_body', 'iframe_playlist', '', content);
         } // playlists & filelists
-        addClass("body", "is_text");
+        addClass('body', 'is_text');
         searchParamsGet().forEach((key, value) => {
-          addClass("body", value + "_" + key);
+          addClass('body', value + '_' + key);
         }); // add text editor body classes
         break;
     }
     switch (
       true // assemble text editing body classes
     ) {
-      case getCurrentUIPref("text_editing_enable") === "false" &&
-        !isTopWindow(): // if text editing disabled...
-        if (hasClass("body", "texteditor_view_html")) {
-          searchParamSet("texteditor_view", "raw");
+      case getCurrentUIPref('text_editing_enable') === 'false' && !isTopWindow(): // if text editing disabled...
+        if (hasClass('body', 'texteditor_view_html')) {
+          searchParamSet('texteditor_view', 'raw');
         }
-        removeClass("body", "texteditor_view_html texteditor_split_view_true"); // remove split_view and view_html classes
+        removeClass('body', 'texteditor_view_html texteditor_split_view_true'); // remove split_view and view_html classes
         body_classes.push(
-          "text_editing_enable_false",
-          "texteditor_split_view_false",
-          "texteditor_view_" + getCurrentUIPref("texteditor_view"),
+          'text_editing_enable_false',
+          'texteditor_split_view_false',
+          'texteditor_view_' + getCurrentUIPref('texteditor_view')
         ); // show the raw text, no split view
-        setAttr("#texteditor_raw_pane", "readonly", "");
+        setAttr('#texteditor_raw_pane', 'readonly', '');
         break; // disable textarea editing
       default: // ...otherwise set up text editing
         textEditorTogglePrefs(
-          "texteditor_split_view",
-          getCurrentUIPref("texteditor_split_view") === "false"
-            ? "false"
-            : "true",
+          'texteditor_split_view',
+          getCurrentUIPref('texteditor_split_view') === 'false' ? 'false' : 'true'
         ); // set split view
         textEditorTogglePrefs(
-          "texteditor_sync_scroll",
-          getCurrentUIPref("texteditor_sync_scroll") === "false"
-            ? "false"
-            : "true",
+          'texteditor_sync_scroll',
+          getCurrentUIPref('texteditor_sync_scroll') === 'false' ? 'false' : 'true'
         ); // set sync scroll
     }
     TextEditing();
@@ -3312,51 +3106,46 @@
       iframe_src;
     switch (true) {
       case isTopWindow(): // if it's not an iframe...
-        make_new_index = makeNewIndex("body", "", agent, "top_body"); // make index
+        make_new_index = makeNewIndex('body', '', agent, 'top_body'); // make index
         if (make_new_index[0] === undefined) {
           return;
         } // in case user cancels processing of large directory > 5000 items
-        body_classes = make_new_index[0][1] + " " + getUIPrefBodyClasses(agent); // delete extra spaces, create array of body class names
-        main_content = `${Sidebar_Elements("top_body")}     ${Content_Pane_Elements()}     ${Utilities_Elements("top_body")}`; // assemble html elements
-        if (make_new_index[0][1] !== "is_error") {
+        body_classes = make_new_index[0][1] + ' ' + getUIPrefBodyClasses(agent); // delete extra spaces, create array of body class names
+        main_content = `${Sidebar_Elements('top_body')}     ${Content_Pane_Elements()}     ${Utilities_Elements('top_body')}`; // assemble html elements
+        if (make_new_index[0][1] !== 'is_error') {
           main_content = main_content
             .replace(/insert_prepped_index/, make_new_index[0][0])
             .replace(/insert_stats/, make_new_index[0][2]); // build dir_index and stats, add to MainContent
         } else {
           main_content = main_content
-            .replace(/insert_prepped_index/, "")
+            .replace(/insert_prepped_index/, '')
             .replace(
               /<ul id=\"sidebar_header_utilities_row_1[\s\S]+Show Font Grid<\/li>\s*<\/ul>\s*<\/li>\s*<\/ul>/m,
-              "",
+              ''
             )
-            .replace(
-              /<ul id=\"show_texteditor[\s\S]+Text Editor<\/span><\/li><\/ul>/,
-              "",
-            )
-            .replace(/<footer[\s\S]+footer>/, ""); // build error ui
+            .replace(/<ul id=\"show_texteditor[\s\S]+Text Editor<\/span><\/li><\/ul>/, '')
+            .replace(/<footer[\s\S]+footer>/, ''); // build error ui
         }
-        document.body.innerHTML = ""; // remove body contents
+        document.body.innerHTML = ''; // remove body contents
         prepDocHead(agent); // add title, favicon, meta tags, styles to head
-        setAttr("body", "id", "top_body"); // add body id
-        setAttr("body", "lang", "en"); // add body lang attr
-        if (document.body.getAttribute("class") !== null) {
-          document.body.removeAttribute("class");
+        setAttr('body', 'id', 'top_body'); // add body id
+        setAttr('body', 'lang', 'en'); // add body lang attr
+        if (document.body.getAttribute('class') !== null) {
+          document.body.removeAttribute('class');
         } // remove body classes, if any
-        addClass("body", body_classes); // add body classes
+        addClass('body', body_classes); // add body classes
         document.body.innerHTML = main_content; // add main content to body
         uiPrefFontSet();
-        uiPrefScaleSet(null, Number(getCurrentUIPref("ui_scale")), true); // set ui font and scale
-        if (make_new_index[0][1] !== "is_error") {
+        uiPrefScaleSet(null, Number(getCurrentUIPref('ui_scale')), true); // set ui font and scale
+        if (make_new_index[0][1] !== 'is_error') {
           initEvents();
           autoLoadItems();
         } else {
           initBaseEvents();
           showDirectorySource(
-            window.location.origin +
-              window.location.pathname +
-              "?error=is_error",
+            window.location.origin + window.location.pathname + '?error=is_error'
           );
-          addClass("#content_iframe", "has_content");
+          addClass('#content_iframe', 'has_content');
         }
         break;
       case !isTopWindow() && !/\.pdf$/.test(window.location.pathname): // if iframe and not pdf (i.e. embed el), setup iframe UI
@@ -3364,51 +3153,46 @@
         link_info = getLinkInfo(iframe_src);
         file_name = link_info[1];
         kind = link_info[3];
-        setAttr("body", "id", "content_body"); // add iframe body id
+        setAttr('body', 'id', 'content_body'); // add iframe body id
         switch (
           true // determine UI type...
         ) {
           case /\.php\?/.test(iframe_src): // attempt to deal with some .php?folder links
           case /app|dir/.test(kind) && !/is_error/.test(iframe_src):
             buildIframeUI(iframe_src, file_name, agent);
-            addClass("body", "is_dir");
+            addClass('body', 'is_dir');
             break; // if dir, set up iframe dir list UI
-          case kind === "link":
-          case link_info[2] === "cuetxt":
-            main_content =
-              document.body?.innerText || document.documentElement.textContent; // nobreak; if link or cuetxt, send file content
-            if (
-              link_info[2].startsWith("webloc") &&
-              window_protocol !== "file:"
-            ) {
-              kind = "remote_webloc";
+          case kind === 'link':
+          case link_info[2] === 'cuetxt':
+            main_content = document.body?.innerText || document.documentElement.textContent; // nobreak; if link or cuetxt, send file content
+            if (link_info[2].startsWith('webloc') && window_protocol !== 'file:') {
+              kind = 'remote_webloc';
               break;
             } // if remote webloc file w/o document.body
-          case /code|text|markdown|other/.test(kind) &&
-            !(window.parent !== window.top):
+          case /code|text|markdown|other/.test(kind) && !(window.parent !== window.top):
             buildTextEditorUI(kind);
-            addClass("body", "is_text"); // if text file, set up iframe text editor
-            main_content = getEl("#texteditor_raw_pane")?.value;
+            addClass('body', 'is_text'); // if text file, set up iframe text editor
+            main_content = getEl('#texteditor_raw_pane')?.value;
             break; // get text content for optional processing (cuetxt)
-          case kind === "htm":
-            main_content = getEl("html").outerHTML;
-            addClass("body", "is_html");
-            if (document.head.querySelector("#supercharged_styles") === null) {
-              getEl("head").insertAdjacentHTML(
-                "beforeend",
-                '<style id="supercharged_styles">body.theme_dark img { filter:invert(1) hue-rotate(180deg) saturate(0.5) !important; }</style>',
+          case kind === 'htm':
+            main_content = getEl('html').outerHTML;
+            addClass('body', 'is_html');
+            if (document.head.querySelector('#supercharged_styles') === null) {
+              getEl('head').insertAdjacentHTML(
+                'beforeend',
+                '<style id="supercharged_styles">body.theme_dark img { filter:invert(1) hue-rotate(180deg) saturate(0.5) !important; }</style>'
               );
             }
-            if (getCurrentUIPref("theme") === "dark") {
-              addClass("body", "theme_dark");
+            if (getCurrentUIPref('theme') === 'dark') {
+              addClass('body', 'theme_dark');
             } else {
-              removeClass("body", "theme_dark");
+              removeClass('body', 'theme_dark');
             } // nobreak; if html file, get innerHTML
           default:
             initIframeEvents();
             break; // if any other iframe content
         }
-        messageSend("top_body", "iframe_loaded", "", [
+        messageSend('top_body', 'iframe_loaded', '', [
           iframe_src,
           file_name,
           kind,
@@ -3417,7 +3201,7 @@
         ]); // send iframe_loaded message (not dir|link file) with args
         break;
     }
-    uiPrefImgThumbsToggle(getCurrentUIPref("show_image_thumbnails")); // load image thumbnails after building ui
+    uiPrefImgThumbsToggle(getCurrentUIPref('show_image_thumbnails')); // load image thumbnails after building ui
   }
   buildUI();
   //============================//
@@ -3430,152 +3214,146 @@
     initDirListEvents();
     initStatsEvents();
     initWarningEvents(); // ===> INIT EVENT LISTENERS // init base events, stats events, and dir list events
-    getEl("#default_settings").onclick = function (e) {
+    getEl('#default_settings').onclick = function (e) {
       uiPrefsReset(e);
     }; // settings to default
-    getEl("#show_directory_source").onclick = function (e) {
+    getEl('#show_directory_source').onclick = function (e) {
       e.stopPropagation();
-      showWarning("showDirectorySource");
+      showWarning('showDirectorySource');
     }; // toggle show directory source
-    getEl("#open_in_content_pane").onclick = function (e) {
+    getEl('#open_in_content_pane').onclick = function (e) {
       e.stopPropagation();
-      showWarning("openSidebarInContentPane");
+      showWarning('openSidebarInContentPane');
     }; // open sidebar in content pane
-    getEl("#open_in_texteditor").onclick = function (e) {
+    getEl('#open_in_texteditor').onclick = function (e) {
       e.preventDefault();
       openInTextEditor();
     }; // openInTextEditor
     getEls(
-      "#open_font_label, #open_playlist_label, textarea, div[contenteditable], select, #scale",
+      '#open_font_label, #open_playlist_label, textarea, div[contenteditable], select, #scale'
     ).forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
-        }),
+        })
     ); // stopProp on various clicks
     getEls(
-      "#show_font_grid, #show_grid_btn, #show_image_grid, #show_texteditor, #texteditor",
+      '#show_font_grid, #show_grid_btn, #show_image_grid, #show_texteditor, #texteditor'
     ).forEach(
       (el) =>
         (el.onclick = function (e) {
           eStopPrevent(e);
           showThis(el.id, false, true);
-        }),
+        })
     ); // show grids or text editor
-    getEl("#show_grid_btn").onmouseenter = function () {
-      addClass("body", "has_menu_grid");
+    getEl('#show_grid_btn').onmouseenter = function () {
+      addClass('body', 'has_menu_grid');
     };
-    getEl("#show_grid_btn").onmouseleave = function () {
-      removeClass("body", "has_menu_grid");
+    getEl('#show_grid_btn').onmouseleave = function () {
+      removeClass('body', 'has_menu_grid');
     };
-    getEl("#close_audio").onclick = function (e) {
+    getEl('#close_audio').onclick = function (e) {
       e.stopPropagation();
-      showMedia("close_audio");
+      showMedia('close_audio');
     }; // close audio button click
-    getEl("#sidebar_footer").onclick = function () {
-      removeClass(".dirlist_item", "hovered");
+    getEl('#sidebar_footer').onclick = function () {
+      removeClass('.dirlist_item', 'hovered');
     }; //
-    getEl("#content_image").onclick = function (e) {
+    getEl('#content_image').onclick = function (e) {
       e.stopPropagation();
       scaleImages(e);
     }; // Zoom image on click
-    getEls("#content_title,#content_audio_title").forEach(
+    getEls('#content_title,#content_audio_title').forEach(
       (el) =>
         (el.onclick = function () {
           playlistShowItem(el.id);
-        }),
+        })
     );
     window.onresize = function (e) {
-      if (hasClass("body", "audio_player_on_top_false")) {
-        audioPlayerPositionToggle("reset");
+      if (hasClass('body', 'audio_player_on_top_false')) {
+        audioPlayerPositionToggle('reset');
       }
-      menuShow(e, "cuesheet_track_list_container_audio");
+      menuShow(e, 'cuesheet_track_list_container_audio');
     }; // reset text editor split
-    getEls("#open_font,#open_playlist").forEach(
+    getEls('#open_font,#open_playlist').forEach(
       (el) =>
         (el.onclick = function (e) {
           openFiles(e, el.id);
-        }),
+        })
     ); // Open files (onclick show warnings)
-    getEls("#open_font,#open_playlist").forEach(
+    getEls('#open_font,#open_playlist').forEach(
       (el) =>
         (el.onchange = function (e) {
           e.preventDefault();
           e.stopPropagation();
           openFiles(e, el.id);
-        }),
+        })
     ); // Open font and playlist files
-    getEl("#go_to_item").onclick = function (e) {
+    getEl('#go_to_item').onclick = function (e) {
       goToItem(e);
     }; // Go to item
-    getEl("#show_invisible_items").onclick = function () {
-      getEl("#show_invisibles").click();
-      getEl("#show_invisibles").blur();
+    getEl('#show_invisible_items').onclick = function () {
+      getEl('#show_invisibles').click();
+      getEl('#show_invisibles').blur();
     }; //
-    getEl("#play_toggle").onclick = function (e) {
+    getEl('#play_toggle').onclick = function (e) {
       toggleAllChecked(e);
     }; // toggle media checkboxes
-    getEl("#make_playlist").onclick = function (e) {
+    getEl('#make_playlist').onclick = function (e) {
       eStopPrevent(e);
-      showWarning("warning_make_playlist");
+      showWarning('warning_make_playlist');
     }; // make playlist
-    getEl("#save_svg").onclick = function (e) {
+    getEl('#save_svg').onclick = function (e) {
       e.stopPropagation();
       fontGlyphSave();
     }; // save glyph as svg
-    getEl("#sidebar_footer_utilities").onmouseenter = function () {
-      addClass(
-        "body:not(.has_menu), body:not(.has_menu_parents)",
-        "has_menu_footer",
-      );
+    getEl('#sidebar_footer_utilities').onmouseenter = function () {
+      addClass('body:not(.has_menu), body:not(.has_menu_parents)', 'has_menu_footer');
     };
-    getEl("#sidebar_footer_utilities").onmouseleave = function () {
-      removeClass(
-        "body:not(.has_menu), body:not(.has_menu_parents)",
-        "has_menu_footer",
-      );
+    getEl('#sidebar_footer_utilities').onmouseleave = function () {
+      removeClass('body:not(.has_menu), body:not(.has_menu_parents)', 'has_menu_footer');
     };
-    getEls(".prev_next_btn").forEach(
+    getEls('.prev_next_btn').forEach(
       (el) =>
         (el.onclick = function (e) {
           contentHeaderButtons(e, el.id);
-        }),
+        })
     ); // ============> combine with next?
-    getEls("#increase,#decrease").forEach(
+    getEls('#increase,#decrease').forEach(
       (el) =>
         (el.onmousedown = function (e) {
           e.preventDefault();
           contentHeaderButtons(e, this.id);
-        }),
+        })
     ); // onclick scale buttons
-    getEls(".media_player").forEach(
+    getEls('.media_player').forEach(
       (el) =>
         (el.onended = function () {
-          navigateByArrowKey(["ArrowRight", true]);
-        }),
+          navigateByArrowKey(['ArrowRight', true]);
+        })
     ); // autoplay media onended
     getEls(
-      "#loop_media_files,#shuffle_media_files,#audio_options input,#audio_options label",
+      '#loop_media_files,#shuffle_media_files,#audio_options input,#audio_options label'
     ).forEach(
       (el) =>
         (el.onclick = function (e) {
           el.blur();
           mediaPlaybackOptions(e, el.id);
-        }),
+        })
     ); // media loop/shuffle options
-    getEl("#refresh_media_durations").onclick = function () {
-      refreshMediaDurations("refresh_media_durations");
+    getEl('#refresh_media_durations').onclick = function () {
+      refreshMediaDurations('refresh_media_durations');
     };
-    getEls("#parent_dir_nav #svg_multiply,#close_playlist").forEach(
+    getEls('#parent_dir_nav #svg_multiply,#close_playlist').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.preventDefault();
           e.stopPropagation();
-          showWarning("closePlaylist", "close_playlist");
-        }),
+          showWarning('closePlaylist', 'close_playlist');
+        })
     );
-    getEl("#text_editing_enable").onclick = function () {
-      textEditorTogglePrefs("text_editing_enable");
+    getEl('#text_editing_enable').onclick = function () {
+      textEditorTogglePrefs('text_editing_enable');
       menuClose();
     };
     // getEl('#audio').ontimeupdate =																getMediaTimeRemaining;			// update remaining media time; !!!disabled until remaining time fixed
@@ -3589,370 +3367,339 @@
     document.body.onclick = function () {
       menuClose();
     }; // close menu click
-    getEls(".menu_container").forEach(
+    getEls('.menu_container').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           menuShow(e, el.id);
-        }),
+        })
     ); // toggle menus on click
-    getEls("#sidebar_menu_main li").forEach(
+    getEls('#sidebar_menu_main li').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           menuClick();
           menuClose(e);
-        }),
+        })
     );
-    getEls("#sidebar_menu_main li").forEach(
+    getEls('#sidebar_menu_main li').forEach(
       (el) =>
         (el.onmouseenter = function () {
-          removeClass("#sidebar_menu_main li", "selected hovered");
-          addClass("#sidebar_menu_main li:hover", "selected");
-        }),
+          removeClass('#sidebar_menu_main li', 'selected hovered');
+          addClass('#sidebar_menu_main li:hover', 'selected');
+        })
     );
-    getEls(".toggle_UI_pref").forEach(
+    getEls('.toggle_UI_pref').forEach(
       (el) =>
         (el.onclick = function (e) {
           uiPrefToggleOnClick(e, this.id);
           menuClose(e);
-        }),
+        })
     ); // toggle UI prefs click
-    getEl("#font_toolbar").onclick = function (e) {
+    getEl('#font_toolbar').onclick = function (e) {
       e.stopPropagation();
     };
-    getEls("#sidebar,#content_header").forEach(
+    getEls('#sidebar,#content_header').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
-          focusEl("#top_body");
-        }),
+          focusEl('#top_body');
+        })
     ); // focus sidebar on click
-    getEls("#content_pane, #content_pane .content_el").forEach(
+    getEls('#content_pane, #content_pane .content_el').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
-          focusEl("#" + el.id);
-        }),
+          focusEl('#' + el.id);
+        })
     ); // focus content on click
-    getEls(
-      "#content_audio,#content_font,#content_image,#content_video",
-    ).forEach(
+    getEls('#content_audio,#content_font,#content_image,#content_video').forEach(
       (el) =>
         (el.onerror = function (e) {
-          setWarningItemNotLoaded([null, el.id.split("_")[1]]);
-        }),
+          setWarningItemNotLoaded([null, el.id.split('_')[1]]);
+        })
     ); // audio,font,image,video load error
-    getEl("#ui_font").onclick = function (e) {
+    getEl('#ui_font').onclick = function (e) {
       uiPrefFontSet(e, this.id);
     }; // show the UI font textarea
-    getEl("#ui_scale input").oninput = function (e) {
+    getEl('#ui_scale input').oninput = function (e) {
       e.stopPropagation();
-      setData(
-        "#ui_scale span.menu_item",
-        "value",
-        Math.round(this.value) + "%",
-      );
+      setData('#ui_scale span.menu_item', 'value', Math.round(this.value) + '%');
     }; // show scale %
-    getEl("#ui_scale input").onmouseup = function (e) {
+    getEl('#ui_scale input').onmouseup = function (e) {
       uiPrefScaleSet(e, this.value);
     }; // scale UI
-    getEl("#ui_scale").ondblclick = function (e) {
+    getEl('#ui_scale').ondblclick = function (e) {
       uiPrefScaleSet(e, 100);
     }; // set 100% scale on dblclick
-    getEl("#show_help").onclick = function (e) {
+    getEl('#show_help').onclick = function (e) {
       e.preventDefault();
-      addClass("#top_body", "has_help");
+      addClass('#top_body', 'has_help');
     }; // show help click
-    getEl("#close_help").onclick = function (e) {
+    getEl('#close_help').onclick = function (e) {
       e.preventDefault();
-      removeClass("body", "has_help");
+      removeClass('body', 'has_help');
     }; // close help click
-    getEl("#help_container").onclick = function (e) {
+    getEl('#help_container').onclick = function (e) {
       e.stopPropagation();
     }; // help container: ignore clicks
-    getEl("#close_btn").onclick = function (e) {
+    getEl('#close_btn').onclick = function (e) {
       eStopPrevent(e);
       closeContent();
       this.blur();
     }; // close button
-    getEl("#reload_btn").onclick = function (e) {
+    getEl('#reload_btn').onclick = function (e) {
       eStopPrevent(e);
       resetContent();
       this.blur();
-      this.classList.remove("reset");
+      this.classList.remove('reset');
     }; // reset btn
-    getEl("#handle").onmousedown = function (e) {
+    getEl('#handle').onmousedown = function (e) {
       resizeSidebar(e);
     }; // resize sidebar
-    getEls("a.internal").forEach(
+    getEls('a.internal').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.preventDefault();
-          scrollThis("#help_container", this.getAttribute("href"));
-        }),
+          scrollThis('#help_container', this.getAttribute('href'));
+        })
     );
-    document.addEventListener("mouseup", function () {
+    document.addEventListener('mouseup', function () {
       document.onmousemove = null;
     }); // revoke drag on mouseup
-    document.addEventListener("mousemove", function () {
-      removeClass("body", "no_hover");
+    document.addEventListener('mousemove', function () {
+      removeClass('body', 'no_hover');
     }); // remove no_hover class
-    document.addEventListener("DOMContentLoaded", lazyLoadImageThumbs());
+    document.addEventListener('DOMContentLoaded', lazyLoadImageThumbs());
   }
   function initWarningEvents() {
-    getEls("#warnings_container button")?.forEach(
+    getEls('#warnings_container button')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           eStopPrevent(e);
           warningButtons(el.id);
-        }),
+        })
     );
-    getEls("body.has_overlay, body.has_warning").forEach(
+    getEls('body.has_overlay, body.has_warning').forEach(
       (el) =>
         (el.onclick = function (e) {
           eStopPrevent(e);
           return;
-        }),
+        })
     ); // prevent user actions with warning or overlay
-    getEls("body.has_overlay, body.has_warning").forEach(
+    getEls('body.has_overlay, body.has_warning').forEach(
       (el) =>
         (el.onmousedown = function (e) {
           eStopPrevent(e);
           return;
-        }),
+        })
     ); // prevent user actions with warning or overlay
-    getEls("body.has_overlay, body.has_warning").forEach(
+    getEls('body.has_overlay, body.has_warning').forEach(
       (el) =>
         (el.onmouseup = function (e) {
           eStopPrevent(e);
           return;
-        }),
+        })
     ); // prevent user actions with warning or overlay
   }
   function initDirListEvents() {
     if (!isTopWindow()) {
       return;
     } // ===> INIT DIR_LIST EVENT LISTENERS; called whenever new dir list items added
-    getEls(".dirlist_item")?.forEach(
+    getEls('.dirlist_item')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           clickDirListItem(e, el.id);
-        }),
+        })
     ); // show item or play/pause media
-    getEls(".dirlist_item.dir .has_icon_before_before")?.forEach(
+    getEls('.dirlist_item.dir .has_icon_before_before')?.forEach(
       (el) =>
         (el.onclick = function (e) {
-          subDirOpenClose(e, el.closest(".dirlist_item").id);
-        }),
+          subDirOpenClose(e, el.closest('.dirlist_item').id);
+        })
     ); // open/close subdirectories
-    getEls(".dirlist_item.dir")?.forEach(
+    getEls('.dirlist_item.dir')?.forEach(
       (el) =>
         (el.ondblclick = function (e) {
           e.preventDefault();
-          showWarning("dirOpen", [el.id, el.querySelector("a").href]);
-        }),
+          showWarning('dirOpen', [el.id, el.querySelector('a').href]);
+        })
     );
-    getEls(".dirlist_item.link")?.forEach(
+    getEls('.dirlist_item.link')?.forEach(
       (el) =>
         (el.ondblclick = function (e) {
           openLinkFile(e, el.id);
-        }),
+        })
     ); // open link files on dblclick
-    getEls(".dirlist_item.media input")?.forEach(
+    getEls('.dirlist_item.media input')?.forEach(
       (el) =>
         (el.onmousedown = function (e) {
-          toggleChecked(e, el.closest(".dirlist_item").id);
-        }),
+          toggleChecked(e, el.closest('.dirlist_item').id);
+        })
     ); // toggle media checkboxes
-    getEls(".dirlist_item.media input")?.forEach(
+    getEls('.dirlist_item.media input')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           el.blur();
           e.preventDefault();
           e.stopPropagation();
-        }),
+        })
     ); // Click media checkboxes
-    getEls(".dirlist_item.playlist")?.forEach(
+    getEls('.dirlist_item.playlist')?.forEach(
       (el) =>
         (el.ondblclick = function (e) {
           eStopPrevent(e);
-          clickThis("#open_playlist");
-        }),
+          clickThis('#open_playlist');
+        })
     ); // open playlist
-    getEls(".dirlist_item.non_local")?.forEach(
+    getEls('.dirlist_item.non_local')?.forEach(
       (el) =>
         (el.onmouseenter = function () {
-          el.title = "Non-local file";
-        }),
+          el.title = 'Non-local file';
+        })
     ); // add non-local title prop
-    getEl("#show_invisibles_container")?.addEventListener(
-      "click",
-      function (e) {
-        e.stopPropagation();
-        clickThis("#show_invisibles_container input");
-      },
-    );
+    getEl('#show_invisibles_container')?.addEventListener('click', function (e) {
+      e.stopPropagation();
+      clickThis('#show_invisibles_container input');
+    });
   }
   function initStatsEvents() {
     // ===> INIT STATS EVENT LISTENERS
-    getEl("#stats")?.addEventListener("mouseleave", function () {
+    getEl('#stats')?.addEventListener('mouseleave', function () {
       menuClose();
     });
-    getEl("#stats_summary")?.addEventListener("click", function (e) {
+    getEl('#stats_summary')?.addEventListener('click', function (e) {
       e.stopPropagation();
-      menuShow(e, "stats_summary");
+      menuShow(e, 'stats_summary');
     }); // show stats
     getEls(
-      "#stats_details_items li, #stats_details_summary_dirs, #stats_details_summary_files",
+      '#stats_details_items li, #stats_details_summary_dirs, #stats_details_summary_files'
     )?.forEach(
       (el) =>
         (el.onmouseenter = function () {
-          getEls(".dirlist_item" + statsGetHoveredListClass(el))?.forEach(
-            (el) => el.classList.add("hovered"),
+          getEls('.dirlist_item' + statsGetHoveredListClass(el))?.forEach((el) =>
+            el.classList.add('hovered')
           ); // add the hovered class
-          getEl(".dirlist_item.hovered")?.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "nearest",
+          getEl('.dirlist_item.hovered')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest',
           }); // scroll 1st matched el
-        }),
+        })
     );
-    getEl("#stats_details_summary_total")?.addEventListener(
-      "click",
-      function () {
-        menuClose();
-      },
-    );
+    getEl('#stats_details_summary_total')?.addEventListener('click', function () {
+      menuClose();
+    });
     getEls(
-      "#stats_details_items li, #stats_details_summary_dirs, #stats_details_summary_files",
+      '#stats_details_items li, #stats_details_summary_dirs, #stats_details_summary_files'
     )?.forEach(
       (el) =>
         (el.onmouseleave = function () {
-          removeClass(".dirlist_item.hovered", "hovered");
-        }),
+          removeClass('.dirlist_item.hovered', 'hovered');
+        })
     );
     getEls(
-      "#stats_details_items li, #stats_details_summary_dirs, #stats_details_summary_files",
+      '#stats_details_items li, #stats_details_summary_dirs, #stats_details_summary_files'
     )?.forEach(
       (el) =>
         (el.onclick = function () {
           // onclick stats footer detail items
-          if (!hasClass("body", "sort_by_kind")) {
-            clickThis("#sort_by_kind");
+          if (!hasClass('body', 'sort_by_kind')) {
+            clickThis('#sort_by_kind');
           } // sort by kind
-          if (getEl(".dirlist_item" + statsGetHoveredListClass(el)) !== null) {
+          if (getEl('.dirlist_item' + statsGetHoveredListClass(el)) !== null) {
             if (
-              el.classList.contains("invisible") &&
-              getCurrentUIPref("show_invisibles") === "false"
+              el.classList.contains('invisible') &&
+              getCurrentUIPref('show_invisibles') === 'false'
             ) {
-              clickThis("#show_invisibles");
+              clickThis('#show_invisibles');
             }
             if (
-              el.classList.contains("ignored") &&
-              getCurrentUIPref("show_ignored_items") === "true"
+              el.classList.contains('ignored') &&
+              getCurrentUIPref('show_ignored_items') === 'true'
             ) {
-              clickThis("#show_ignored_items");
+              clickThis('#show_ignored_items');
             }
             if (isTopWindow()) {
-              showThis(
-                getEl(".dirlist_item" + statsGetHoveredListClass(el)).id,
-              );
+              showThis(getEl('.dirlist_item' + statsGetHoveredListClass(el)).id);
             } else {
-              showThis(
-                getEl(".dirlist_item" + statsGetHoveredListClass(el)).id,
-                true,
-                false,
-              );
+              showThis(getEl('.dirlist_item' + statsGetHoveredListClass(el)).id, true, false);
             } // click first matched item
           }
-        }),
+        })
     );
   }
   function initGridItemEvents() {
     // ===> INIT GRID ITEM EVENT LISTENERS
-    getEls("#content_grid .grid_item")?.forEach(
+    getEls('#content_grid .grid_item')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           e.preventDefault();
           e.stopPropagation();
-          showContentGridItem(
-            el.dataset.id,
-            el.querySelector("a").href,
-            el.dataset.kind,
-          );
-        }),
+          showContentGridItem(el.dataset.id, el.querySelector('a').href, el.dataset.kind);
+        })
     ); // grid item
-    getEls("#content_grid .grid_item:not(.selected)")?.forEach(
+    getEls('#content_grid .grid_item:not(.selected)')?.forEach(
       (el) =>
         (el.onmouseenter = function () {
-          addClass("#" + el.dataset.id, "hovered");
-          scrollThis("#directory_list", ".hovered");
-        }),
+          addClass('#' + el.dataset.id, 'hovered');
+          scrollThis('#directory_list', '.hovered');
+        })
     );
-    getEls("#content_grid .grid_item:not(.selected)")?.forEach(
+    getEls('#content_grid .grid_item:not(.selected)')?.forEach(
       (el) =>
         (el.onmouseleave = function () {
-          removeClass("#" + el.dataset.id, "hovered");
-        }),
+          removeClass('#' + el.dataset.id, 'hovered');
+        })
     );
-    getEls(".dirlist_item.image,.dirlist_item.font")?.forEach(
+    getEls('.dirlist_item.image,.dirlist_item.font')?.forEach(
       (el) =>
         (el.onmouseenter = function () {
-          if (hasContent("grid")) {
-            addClass(
-              '#content_grid > .grid_item[data-id="' + el.id + '"]',
-              "hovered",
-            );
-            scrollThis("#content_grid", ".hovered");
+          if (hasContent('grid')) {
+            addClass('#content_grid > .grid_item[data-id="' + el.id + '"]', 'hovered');
+            scrollThis('#content_grid', '.hovered');
           }
-        }),
+        })
     );
-    getEls(".dirlist_item.image,.dirlist_item.font")?.forEach(
+    getEls('.dirlist_item.image,.dirlist_item.font')?.forEach(
       (el) =>
         (el.onmouseleave = function () {
-          if (hasContent("grid")) {
-            removeClass(
-              '#content_grid > .grid_item[data-id="' + el.id + '"]',
-              "hovered",
-            );
-            scrollThis("#content_grid", ".hovered");
+          if (hasContent('grid')) {
+            removeClass('#content_grid > .grid_item[data-id="' + el.id + '"]', 'hovered');
+            scrollThis('#content_grid', '.hovered');
           }
-        }),
+        })
     );
   }
   function initCuesheetEvents() {
     // ===> INIT CUESHEET EVENT LISTENERS
-    getEls(".cuesheet_track_list_container").forEach(
+    getEls('.cuesheet_track_list_container').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           menuShow(e, el.id);
-          el.classList.toggle("has_menu");
-        }),
+          el.classList.toggle('has_menu');
+        })
     ); // don't focus content on click
-    getEls(".cuesheet_track_list_container li")?.forEach(
+    getEls('.cuesheet_track_list_container li')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           menuShow(e, el.id);
           cueSheetMenuUpdate();
-          addClass("body", "focus_content");
-          el.closest("nav").querySelector(".cuesheet_track_list").focus();
-        }),
+          addClass('body', 'focus_content');
+          el.closest('nav').querySelector('.cuesheet_track_list').focus();
+        })
     );
     // update the menu on track click
-    getEls(".cuesheet_track_list_container")?.forEach(
+    getEls('.cuesheet_track_list_container')?.forEach(
       (el) =>
         (el.onmouseenter = function (e) {
           menuShow(e, el.id);
-        }),
+        })
     ); // show track list on mouseenter
-    getEl(".media_player[src]")?.addEventListener(
-      "timeupdate",
-      cueSheetMenuUpdate,
-    ); // update cuesheet menu selected track and title
-    getEl(".media_player[src]")?.addEventListener("click", cueSheetMenuUpdate);
+    getEl('.media_player[src]')?.addEventListener('timeupdate', cueSheetMenuUpdate); // update cuesheet menu selected track and title
+    getEl('.media_player[src]')?.addEventListener('click', cueSheetMenuUpdate);
   }
   //============================//
   // INITIALIZE IFRAME EVENT LISTENERS
@@ -3963,212 +3710,199 @@
     } // ===> INIT IFRAME EVENT LISTENERS
     document.body.onclick = function (e) {
       e.preventDefault();
-      focusEl("#content_iframe");
+      focusEl('#content_iframe');
     }; // focus iframe
-    document.body
-      .querySelectorAll("body,textarea,form,select,input,option,#sidebar")
-      ?.forEach(
+    document.body.querySelectorAll('body,textarea,form,select,input,option,#sidebar')?.forEach(
+      (el) =>
+        (el.onclick = function (e) {
+          e.stopPropagation();
+          messageSend('top_body', 'blur_top');
+          el.focus();
+        })
+    ); // focus iframe
+    if (hasClass('body', 'is_html') || window.location.href.includes('.php')) {
+      getEls('a')?.forEach(
         (el) =>
           (el.onclick = function (e) {
-            e.stopPropagation();
-            messageSend("top_body", "blur_top");
-            el.focus();
-          }),
-      ); // focus iframe
-    if (hasClass("body", "is_html") || window.location.href.includes(".php")) {
-      getEls("a")?.forEach(
-        (el) =>
-          (el.onclick = function (e) {
-            iframeClick(e, "", "link", el.getAttribute("href"));
-          }),
+            iframeClick(e, '', 'link', el.getAttribute('href'));
+          })
       );
       return; // return if html; rest unneeded
     }
-    document.addEventListener("mousemove", function () {
-      removeClass("body", "no_hover");
+    document.addEventListener('mousemove', function () {
+      removeClass('body', 'no_hover');
     }); // remove no_hover class
-    getEls(".dirlist_item")?.forEach(
+    getEls('.dirlist_item')?.forEach(
       (el) =>
         (el.onclick = function () {
           showThis(el.id, true, false);
-        }),
+        })
     ); // select clicked iframe dirlist item
-    getEls(".dirlist_item a")?.forEach(
+    getEls('.dirlist_item a')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           e.preventDefault();
-        }),
+        })
     ); // do nothing for iframe dirlist links
-    getEls(".dirlist_item.dir .has_icon_before_before")?.forEach(
+    getEls('.dirlist_item.dir .has_icon_before_before')?.forEach(
       (el) =>
         (el.onclick = function (e) {
-          subDirOpenClose(e, el.closest(".dirlist_item").id);
-        }),
+          subDirOpenClose(e, el.closest('.dirlist_item').id);
+        })
     ); // open/close subdirs
-    getEls(".dirlist_item:not(.ignored)")?.forEach(
+    getEls('.dirlist_item:not(.ignored)')?.forEach(
       (el) =>
         (el.ondblclick = function (e) {
-          iframeClick(e, el.id, "link", el.querySelector("a").href);
-        }),
+          iframeClick(e, el.id, 'link', el.querySelector('a').href);
+        })
     ); // dblclick open iframe dirs/files
-    getEls("ul,li")?.forEach(
+    getEls('ul,li')?.forEach(
       (el) =>
         (el.onmousedown = function () {
-          messageSend("top_body", "menu_close");
-        }),
+          messageSend('top_body', 'menu_close');
+        })
     );
-    getEl("#open_in_sidebar a")?.addEventListener("click", function (e) {
+    getEl('#open_in_sidebar a')?.addEventListener('click', function (e) {
       e.preventDefault();
-      messageSend(
-        "top_body",
-        "open_iframe_dir_in_sidebar",
-        "",
-        window.location.href,
-      );
+      messageSend('top_body', 'open_iframe_dir_in_sidebar', '', window.location.href);
     }); // no break;
-    getEl("#iframe_parent_link")?.addEventListener("click", function (e) {
-      iframeClick(e, "iframe_parent_link", "link", this.href);
+    getEl('#iframe_parent_link')?.addEventListener('click', function (e) {
+      iframeClick(e, 'iframe_parent_link', 'link', this.href);
     }); // iframe parent
-    getEls(".toggle_UI_pref")?.forEach(
+    getEls('.toggle_UI_pref')?.forEach(
       (el) =>
         (el.onclick = function (e) {
           uiPrefToggleOnClick(e, el.id);
-        }),
+        })
     ); // toggle UI prefs
     initStatsEvents(); // initialize stats events listeners
     lazyLoadImageThumbs();
   }
   function initSubframeEvents() {
     if (window.parent !== window.top) {
-      getEl("#content_body").addEventListener("click", function (e) {
+      getEl('#content_body').addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
       });
     }
   } // prevent events in quicklook
   function initTextEditorEvents() {
-    let preview = getEl("#texteditor_styled_pane"); // ===> INIT TEXT EDITOR EVENT LISTENERS
-    getEls(
-      "#content_texteditor, #content_texteditor *, #texteditor_styled_pane *",
-    ).forEach(
+    let preview = getEl('#texteditor_styled_pane'); // ===> INIT TEXT EDITOR EVENT LISTENERS
+    getEls('#content_texteditor, #content_texteditor *, #texteditor_styled_pane *').forEach(
       (el) =>
         (el.onclick = function (e) {
           let el_id; // focus texteditor on click
           e.stopPropagation();
           el_id =
-            el.closest("#texteditor_styled_pane") !== null
-              ? "#texteditor_styled_pane"
-              : el.id;
+            el.closest('#texteditor_styled_pane') !== null ? '#texteditor_styled_pane' : el.id;
           focusEl(el_id);
           if (!isTopWindow()) {
-            messageSend("top_body", "focus_iframe");
+            messageSend('top_body', 'focus_iframe');
           }
-        }),
+        })
     );
-    getEls("#toolbar_buttons .toggle_UI_pref").forEach(
+    getEls('#toolbar_buttons .toggle_UI_pref').forEach(
       (el) =>
         (el.onmouseup = function (e) {
           uiPrefToggleOnClick(e, el.id);
-        }),
+        })
     ); // text editing UI is not in DOM on page load;
-    getEl("#texteditor_toolbar").onmousedown = function (e) {
+    getEl('#texteditor_toolbar').onmousedown = function (e) {
       e.preventDefault();
     }; // prevent textarea from losing focus if sidebar clicked
     window.onresize = function () {
       texteditor_ResetSplit();
     }; // reset text editor split
-    getEl("#text_editing_handle").ondblclick = function (e) {
+    getEl('#text_editing_handle').ondblclick = function (e) {
       e.stopPropagation();
       texteditor_ResetSplit();
     }; // reset text editor split
-    getEl("#text_editing_handle").onmousedown = function (e) {
+    getEl('#text_editing_handle').onmousedown = function (e) {
       eStopPrevent(e);
       texteditor_ResizeSplit();
     }; // resize text editor panes
-    getEl("#text_editing_handle").onmouseup = function () {
+    getEl('#text_editing_handle').onmouseup = function () {
       document.onmousemove = null;
     }; // remove onmousemove
-    getEls(".checkbox_container").forEach(
+    getEls('.checkbox_container').forEach(
       (el) =>
         (el.onclick = function (e) {
           toggleCheckBox(e, this.id);
-        }),
+        })
     ); // toggle checkboxes (texteditor_preview, toolbar)
-    getEl("#texteditor_raw_pane").oninput = function () {
+    getEl('#texteditor_raw_pane').oninput = function () {
       // add edited body class; if iframe, send edited message; update live markdown preview
-      if (!hasClass("body", "texteditor_edited")) {
-        addClass("body", "texteditor_edited");
+      if (!hasClass('body', 'texteditor_edited')) {
+        addClass('body', 'texteditor_edited');
         if (!isTopWindow()) {
-          messageSend("top_body", "iframe_edited", "", "");
+          messageSend('top_body', 'iframe_edited', '', '');
         }
       }
       MDlivePreview();
     };
-    messageSend("top_body", "menu_close");
-    getEls(".texteditor_pane").forEach(
+    messageSend('top_body', 'menu_close');
+    getEls('.texteditor_pane').forEach(
       (el) =>
         (el.onscroll = function (e) {
           texteditor_SyncScroll(e, this.id);
-        }),
+        })
     );
-    getEls("#save_btn li").forEach(
+    getEls('#save_btn li').forEach(
       (el) =>
         (el.onclick = function () {
           texteditorSaveBtn(el.id);
-        }),
+        })
     ); // save text editor content
-    getEl("#clear_text").onclick = function () {
-      showWarning("texteditorClear");
+    getEl('#clear_text').onclick = function () {
+      showWarning('texteditorClear');
     }; // clear text button
-    preview.querySelectorAll(".checklist input").forEach(
+    preview.querySelectorAll('.checklist input').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           MDliveCheckBoxes(el);
-        }),
+        })
     ); // Live checkboxes
-    preview.querySelectorAll(".table-of-contents a").forEach(
+    preview.querySelectorAll('.table-of-contents a').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.preventDefault();
           MDtocClick(el.id);
-        }),
+        })
     ); // Preview TOC click navigation
-    preview.querySelectorAll(".uplink").forEach(
+    preview.querySelectorAll('.uplink').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           MDheaderClick();
-        }),
+        })
     ); // Click header uplinks
     initWarningEvents();
   }
   function initFontPreviewEvents() {
     // ==> INIT FONT PREVIEW_EVENTS
-    getEls(
-      "#font_toolbar select,#font_toolbar textarea,#font_toolbar input",
-    ).forEach(
+    getEls('#font_toolbar select,#font_toolbar textarea,#font_toolbar input').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
           el.focus();
-        }),
+        })
     );
-    getEls("#font_toolbar label").forEach(
+    getEls('#font_toolbar label').forEach(
       (el) =>
         (el.onclick = function (e) {
           e.stopPropagation();
-          el.parentElement.querySelector("input").focus();
-        }),
+          el.parentElement.querySelector('input').focus();
+        })
     ); // Stop click propagation
-    getEls("#content_font *").forEach(
+    getEls('#content_font *').forEach(
       (el) =>
         (el.onmousedown = function (e) {
           e.stopPropagation();
           focusEl(el.id);
-        }),
+        })
     ); // Stop click propagation
-    getEls("#font_toolbar select").forEach(
+    getEls('#font_toolbar select').forEach(
       (el) =>
         (el.onchange = function (e) {
           fontOptions(
@@ -4176,39 +3910,39 @@
             el.id,
             el.value,
             el.options[el.selectedIndex].dataset?.prop,
-            el.options[el.selectedIndex].dataset?.value,
+            el.options[el.selectedIndex].dataset?.value
           );
-        }),
+        })
     );
-    getEls("#font_toolbar textarea").forEach(
+    getEls('#font_toolbar textarea').forEach(
       (el) =>
         (el.onkeydown = function (e) {
           if (/enter/.test(e.key.toLowerCase())) {
             e.preventDefault();
           }
-        }),
+        })
     ); // prevent typing return in textareas
-    getEls("#font_toolbar textarea,#font_toolbar input").forEach(
+    getEls('#font_toolbar textarea,#font_toolbar input').forEach(
       (el) =>
         (el.oninput = function (e) {
           fontOptions(e, el.id, el.value);
-        }),
+        })
     ); // init font toolbar specimen modifications
-    getEls("#font_specimen_adjustments li").forEach(
+    getEls('#font_specimen_adjustments li').forEach(
       (el) =>
         (el.ondblclick = function (e) {
           e.stopPropagation();
           fontReset(el.dataset.inputid);
-        }),
+        })
     ); // reset adjustments
-    getEls(".font_glyph_item").forEach(
+    getEls('.font_glyph_item').forEach(
       (el) =>
         (el.onclick = (e) => {
           showFontGlyph(e, el.id);
-        }),
+        })
     ); // show font specimen glyph on click
-    getEl("#font_specimen_glyph").onmousedown = (e) => {
-      fontGlyphMove(e, "#font_specimen_glyph");
+    getEl('#font_specimen_glyph').onmousedown = (e) => {
+      fontGlyphMove(e, '#font_specimen_glyph');
     }; // init move glyph
   }
   //============================//
@@ -4218,19 +3952,19 @@
     switch (true) {
       case cmdShiftKey(e): // Cmd Shift + \ : toggle split
         switch (true) {
-          case isTopWindow() && hasContent("text,code,markdown"):
-            messageSend("iframe", "texteditor_split_view");
+          case isTopWindow() && hasContent('text,code,markdown'):
+            messageSend('iframe', 'texteditor_split_view');
             break; // send toggle split view message
-          case getEl("#texteditor_split_view").height > 0:
-            getEl("#texteditor_split_view").click();
+          case getEl('#texteditor_split_view').height > 0:
+            getEl('#texteditor_split_view').click();
             break; // if split view visible...click toggle split
         }
         break;
       case cmdKey(e):
         if (!isTopWindow()) {
-          messageSend("top_body", "show_sidebar");
+          messageSend('top_body', 'show_sidebar');
         } else {
-          getEl("#show_sidebar").click();
+          getEl('#show_sidebar').click();
         }
         break; // Cmd + \ : toggle sidebar
     }
@@ -4238,78 +3972,69 @@
   function eKey_Enter(e) {
     // "ENTER" KEY
     let selected_el =
-      hasContent("font_file") ||
-      hasContent("font_specimen") ||
-      hasContent("grid")
-        ? getEls("#content_font .selected,#content_grid .selected")[0]
-        : getEls(".dirlist_item.selected")[0];
+      hasContent('font_file') || hasContent('font_specimen') || hasContent('grid')
+        ? getEls('#content_font .selected,#content_grid .selected')[0]
+        : getEls('.dirlist_item.selected')[0];
     switch (true) {
-      case hasClass("body", "has_menu"):
+      case hasClass('body', 'has_menu'):
         e.preventDefault();
         menuClick();
         menuClose();
-        messageSend("iframe", "menu_close");
+        messageSend('iframe', 'menu_close');
         break; // click selected menu item
-      case hasClass("body", "has_warning") || hasClass("body", "has_help"):
+      case hasClass('body', 'has_warning') || hasClass('body', 'has_help'):
         e.preventDefault();
-        clickThis("button.focus, button:focus");
+        clickThis('button.focus, button:focus');
         break; // click focused warning btn
-      case hasClass("body", "focus_content") &&
-        hasContent("font") &&
-        selected_el !== null:
+      case hasClass('body', 'focus_content') && hasContent('font') && selected_el !== null:
         showFontGlyph(e, selected_el.id);
         break; // show font glyph
       case !isTopWindow(): // if iframe...
         switch (true) {
-          case hasClass("body", "has_top_menu"):
-            messageSend("top_body", "menuClick");
+          case hasClass('body', 'has_top_menu'):
+            messageSend('top_body', 'menuClick');
             break; // close main menu
-          case elExists(".dirlist_item.audio.selected") &&
-            !hasClass(".dirlist_item.audio.selected", "audio_loaded"):
+          case elExists('.dirlist_item.audio.selected') &&
+            !hasClass('.dirlist_item.audio.selected', 'audio_loaded'):
             iframeClick(
               e,
-              getEl(".dirlist_item.selected").id,
-              "dblclick",
-              getEl(".dirlist_item.selected a").href,
+              getEl('.dirlist_item.selected').id,
+              'dblclick',
+              getEl('.dirlist_item.selected a').href
             );
             break;
-          case elExists(".dirlist_item.selected") && cmdKey(e):
+          case elExists('.dirlist_item.selected') && cmdKey(e):
             iframeClick(
               e,
-              getEl(".dirlist_item.selected").id,
-              "dblclick",
-              getEl(".dirlist_item.selected a").href,
+              getEl('.dirlist_item.selected').id,
+              'dblclick',
+              getEl('.dirlist_item.selected a').href
             );
             break; // webloc or url file
-          case elExists(".dirlist_item.audio_loaded") &&
-            !hasClass(".dirlist_item.selected", "audio_loaded"):
+          case elExists('.dirlist_item.audio_loaded') &&
+            !hasClass('.dirlist_item.selected', 'audio_loaded'):
             eStopPrevent(e);
             mediaPlayPause();
             break; // play/pause media
         }
         break;
-      case selected_el?.classList.contains("app") &&
-        UI_Prefs_Bool.apps_as_dirs === false:
+      case selected_el?.classList.contains('app') && UI_Prefs_Bool.apps_as_dirs === false:
         break; // don't open app folders
       default:
         switch (true) {
-          case selected_el?.classList.contains(".disabled"):
-          case hasContent("texteditor"):
+          case selected_el?.classList.contains('.disabled'):
+          case hasContent('texteditor'):
             break; // no nothing for disabled or default behavior
-          case selected_el?.classList.contains("audio") &&
-            !selected_el.classList.contains("audio_loaded"):
-            showMedia("audio", getEl(".dirlist_item.audio.selected").id);
+          case selected_el?.classList.contains('audio') &&
+            !selected_el.classList.contains('audio_loaded'):
+            showMedia('audio', getEl('.dirlist_item.audio.selected').id);
             break; // show selected audio file
-          case selected_el?.classList.contains("media"):
+          case selected_el?.classList.contains('media'):
             eStopPrevent(e);
             mediaPlayPause();
             break; // else play/pause media
           case /dir|link|playlist/.test(selected_el?.classList) && cmdKey(e):
-            dirOpen(
-              e,
-              getEl(".dirlist_item.selected").id,
-              getEl(".dirlist_item.selected a").href,
-            );
+            dirOpen(e, getEl('.dirlist_item.selected').id, getEl('.dirlist_item.selected a').href);
             break; // open dirs, links, playlists
           case /dir|link/.test(selected_el?.classList): // nobreak
           default:
@@ -4320,61 +4045,61 @@
   }
   function eKey_Escape() {
     // "ESCAPE" KEY
-    if (getAttr("#content_pane", "data-loaded") !== "loaded") {
-      removeAttr("#content_pane", "data-loaded");
-      removeAttr("#content_iframe", "src");
+    if (getAttr('#content_pane', 'data-loaded') !== 'loaded') {
+      removeAttr('#content_pane', 'data-loaded');
+      removeAttr('#content_iframe', 'src');
     } // close loading iframe
     switch (true) {
       case !isTopWindow():
-        if (hasClass("body", "has_quicklook")) {
-          quickLookThis("close");
+        if (hasClass('body', 'has_quicklook')) {
+          quickLookThis('close');
         } else {
-          messageSend("top_body", "focus_top");
+          messageSend('top_body', 'focus_top');
         }
         break; // focus top from iframe content
-      case document.activeElement.tagName.toLowerCase() !== "body":
-      case hasClass("body", "focus_content") && !hasClass("body", "has_menu"):
-        focusEl("#top_body");
+      case document.activeElement.tagName.toLowerCase() !== 'body':
+      case hasClass('body', 'focus_content') && !hasClass('body', 'has_menu'):
+        focusEl('#top_body');
         break; // focus top from non-iframe content
-      case document.activeElement.tagName.toLowerCase() === "body": // if top already focussed...
+      case document.activeElement.tagName.toLowerCase() === 'body': // if top already focussed...
         switch (true) {
-          case hasClass("body", "has_menu"):
-          case hasClass("body", "has_menu_stats"):
+          case hasClass('body', 'has_menu'):
+          case hasClass('body', 'has_menu_stats'):
             menuClose();
             break; // close menu or
           default:
-            /* closeContent('esc'); */ focusEl("#top_body"); // close content
+            /* closeContent('esc'); */ focusEl('#top_body'); // close content
         }
     }
     document.onmousemove = null;
     window.getSelection().removeAllRanges();
     window.stop(); // remove text selections; stop loading; cancel mousemove event watcher
-    removeClass("body", "has_overlay");
-    removeClass(".dirlist_item", "dirlist_subdir_loading");
-    getEls(".dirlist_item.selected,.dirlist_item.content_loaded").forEach(
-      (el) => el.classList.remove("selected", "content_loaded"),
+    removeClass('body', 'has_overlay');
+    removeClass('.dirlist_item', 'dirlist_subdir_loading');
+    getEls('.dirlist_item.selected,.dirlist_item.content_loaded').forEach((el) =>
+      el.classList.remove('selected', 'content_loaded')
     );
-    getEls(".dirlist_item.media").forEach((el) => {
-      if (el.querySelector(".dirlist_item_media_duration").innerHTML === "") {
+    getEls('.dirlist_item.media').forEach((el) => {
+      if (el.querySelector('.dirlist_item_media_duration').innerHTML === '') {
         setMediaDuration(el.id, el.dataset.kind, Number.NaN);
       }
     }); // set loading durations to error
-    getEls(".show_input input")?.forEach((el) => (el.value = ""));
-    removeClass(".show_input", "show_input");
-    if (hasClass("body", "has_warning") || hasClass("body", "has_help")) {
-      getEls("#warning_btn_cancel,#close_help").forEach((el) => el.click());
+    getEls('.show_input input')?.forEach((el) => (el.value = ''));
+    removeClass('.show_input', 'show_input');
+    if (hasClass('body', 'has_warning') || hasClass('body', 'has_help')) {
+      getEls('#warning_btn_cancel,#close_help').forEach((el) => el.click());
     } // close warnings or help
   }
   function eKey_Period(e) {
     // close loading iframe
     window.stop();
-    removeClass(".dirlist_item", "dirlist_subdir_loading");
-    if (hasClass("body", "has_warning")) {
+    removeClass('.dirlist_item', 'dirlist_subdir_loading');
+    if (hasClass('body', 'has_warning')) {
       e.preventDefault();
-      getEl("#warning_btn_cancel,#close_help").click();
+      getEl('#warning_btn_cancel,#close_help').click();
     }
-    if (getAttr("#content_pane", "data-loaded") !== "loaded") {
-      closeContent("iframe");
+    if (getAttr('#content_pane', 'data-loaded') !== 'loaded') {
+      closeContent('iframe');
     }
   }
   function eKey_Space(e) {
@@ -4382,51 +4107,48 @@
     switch (true) {
       case isTopWindow():
         switch (true) {
-          case hasContent(["audio", "ignore"]):
-          case hasContent("video"):
+          case hasContent(['audio', 'ignore']):
+          case hasContent('video'):
             e.preventDefault();
             mediaPlayPause();
             break; // media play/pause
-          case (hasContent("image") || hasContent("font_specimen")) &&
-            hasContent("hidden_grid"):
+          case (hasContent('image') || hasContent('font_specimen')) && hasContent('hidden_grid'):
             e.preventDefault();
             closeContent();
             break; // close grid image
-          case hasContent("font_file_glyph"):
-          case hasContent("font_specimen_glyph"):
+          case hasContent('font_file_glyph'):
+          case hasContent('font_specimen_glyph'):
             e.preventDefault();
             closeFont();
             break; // close glyph
-          case hasContent("font") &&
-            getEl(".font_glyph_item.selected") !== null:
+          case hasContent('font') && getEl('.font_glyph_item.selected') !== null:
             e.preventDefault();
-            showFontGlyph(null, getEl(".font_glyph_item.selected").id);
+            showFontGlyph(null, getEl('.font_glyph_item.selected').id);
             break; // show glyph
-          case hasContent("grid") && getEl(".grid_item.selected") !== null:
+          case hasContent('grid') && getEl('.grid_item.selected') !== null:
             e.preventDefault();
-            getEl(".grid_item.selected").click();
+            getEl('.grid_item.selected').click();
             break; // show grid items
         }
         break;
       case !isTopWindow(): // not top window
         switch (true) {
-          case hasClass("body", "is_html"):
-          case hasClass("body", "is_text"):
+          case hasClass('body', 'is_html'):
+          case hasClass('body', 'is_text'):
             return;
-          case elExists(".dirlist_item.audio_loaded") &&
-            !hasClass("body", "has_quicklook"):
+          case elExists('.dirlist_item.audio_loaded') && !hasClass('body', 'has_quicklook'):
             e.preventDefault();
-            messageSend("top_body", "iframe_play_pause_media");
+            messageSend('top_body', 'iframe_play_pause_media');
             break; // play/pause top media if no quicklook
-          case hasClass("body", "has_quicklook"):
+          case hasClass('body', 'has_quicklook'):
             e.preventDefault();
-            quickLookThis("close");
+            quickLookThis('close');
             break; // close quicklook
-          case getEl(".dirlist_item.selected") !== null:
+          case getEl('.dirlist_item.selected') !== null:
             e.preventDefault();
             quickLookThis(
-              getEl(".dirlist_item.selected").id,
-              getData(".dirlist_item.selected", "kind"),
+              getEl('.dirlist_item.selected').id,
+              getData('.dirlist_item.selected', 'kind')
             );
             break; // show quicklook
         }
@@ -4443,23 +4165,23 @@
   function eKey_E(e) {
     // "E" KEY
     switch (true) {
-      case hasClass("body", "has_warning"):
+      case hasClass('body', 'has_warning'):
         break;
       case cmdShiftKey(e):
         eStopPrevent(e);
         if (!isTopWindow()) {
-          messageSend("top_body", "toggle_texteditor");
+          messageSend('top_body', 'toggle_texteditor');
         } else {
-          getEl("#show_texteditor a").click();
+          getEl('#show_texteditor a').click();
         }
-        addClass("#top_body", "focus_content");
+        addClass('#top_body', 'focus_content');
         break; // toggle text editor
       case cmdKey(e):
         eStopPrevent(e);
         if (!isTopWindow()) {
-          messageSend("top_body", "toggle_menu");
+          messageSend('top_body', 'toggle_menu');
         } else {
-          menuShow(e, "sidebar_menu_main_container");
+          menuShow(e, 'sidebar_menu_main_container');
         }
         break; // toggle main menu
     }
@@ -4469,18 +4191,18 @@
     switch (true) {
       case cmdKey(e) && !isTopWindow():
         e.preventDefault();
-        messageSend("top_body", "reload");
+        messageSend('top_body', 'reload');
         break; // send reload message to top
-      case cmdKey(e) && hasClass("#content_body", "texteditor_edited"):
+      case cmdKey(e) && hasClass('#content_body', 'texteditor_edited'):
         e.preventDefault();
-        showWarning("resetContent");
+        showWarning('resetContent');
         break; // warn before reloading edited iframe text files from textarea
       case cmdKey(e):
-        if (!hasContent("audio") && !hasContent()) {
+        if (!hasContent('audio') && !hasContent()) {
           return true;
         } else {
           e.preventDefault();
-          showWarning("resetContent");
+          showWarning('resetContent');
         }
         break; // reload window if no content open else reload/reset content
     }
@@ -4490,18 +4212,18 @@
     switch (true) {
       case !isTopWindow():
         e.preventDefault();
-        messageSend("top_body", "close");
+        messageSend('top_body', 'close');
         break; // send close message to top
-      case hasClass("body", "has_help"):
-        getEl("#close_help").click();
+      case hasClass('body', 'has_help'):
+        getEl('#close_help').click();
         break; // close help
-      case hasContent("audio") && hasContent("null"):
-        closeContent("audio");
+      case hasContent('audio') && hasContent('null'):
+        closeContent('audio');
         break; // close audio when nothing else open
-      case /has_\w+list/.test(getClassNames("body")) && !hasContent():
-        showWarning("closeContent", ["closePlaylist", "false"]);
+      case /has_\w+list/.test(getClassNames('body')) && !hasContent():
+        showWarning('closeContent', ['closePlaylist', 'false']);
         break; // close playlist
-      case !hasContent("null"):
+      case !hasContent('null'):
         e.preventDefault();
         closeContent();
         break; // close content
@@ -4509,7 +4231,7 @@
         return; // else close window (or normal behavior)
     }
   }
-  getEls("#top_body, #content_body").forEach(
+  getEls('#top_body, #content_body').forEach(
     (el) =>
       (el.onkeydown = function (e) {
         if (window.parent !== window.top) {
@@ -4518,7 +4240,7 @@
         let active_el = document.activeElement,
           active_el_tag = active_el.tagName.toLowerCase(); // allow default: buttons, inputs, selects, textareas
         switch (true) {
-          case e.key === "Enter":
+          case e.key === 'Enter':
             switch (true) {
               case /ui_font/.test(active_el.id):
                 uiPrefFontSet(e);
@@ -4534,22 +4256,20 @@
             !/escape|tab|shiftkey|metakey|altkey/.test(e.key.toLowerCase()) &&
             !(cmdKey(e) && /r|w|-|=/.test(e.key)):
             return; // prevent/allow certain key combos
-          case active_el.hasAttribute("contentEditable") &&
+          case active_el.hasAttribute('contentEditable') &&
             !(
               /escape|tab|shiftkey|metakey|altkey/.test(e.key.toLowerCase()) &&
               !(cmdKey(e) && /r|w|-|=/.test(e.key))
             ):
             return; // ...in certain situations.
-          case e.key === "Escape":
+          case e.key === 'Escape':
             eKey_Escape();
             break;
-          case /has_warning|has_help/.test(getClassNames("body")) &&
-            !(
-              cmdKey(e) || /escape|tab|shiftkey|enter/.test(e.key.toLowerCase())
-            ): // nobreak
-          case e.key === "shiftKey" &&
-            (hasClass("body", "has_warning") || hasClass("body", "has_help")):
-            if (e.key !== "Enter" && e.key !== "Tab") {
+          case /has_warning|has_help/.test(getClassNames('body')) &&
+            !(cmdKey(e) || /escape|tab|shiftkey|enter/.test(e.key.toLowerCase())): // nobreak
+          case e.key === 'shiftKey' &&
+            (hasClass('body', 'has_warning') || hasClass('body', 'has_help')):
+            if (e.key !== 'Enter' && e.key !== 'Tab') {
               e.preventDefault();
               return false;
             }
@@ -4557,78 +4277,71 @@
           case /Arrow/.test(e.key):
             arrowKeyFunctions(e, false, el);
             break; // (e,bool,selected_el.id); id for dblclick iframe item
-          case e.key === " ":
+          case e.key === ' ':
             eKey_Space(e);
             break; // Key = Space
           case e.key &&
             !e.metaKey &&
             !e.altKey &&
             !e.ctrlKey &&
-            e.key !== "Tab" &&
+            e.key !== 'Tab' &&
             !/Arrow/.test(e.key):
             navigateByTypedStr(e);
             break; // alphanumeric navigation
-          case e.key === "a" && cmdKey(e):
+          case e.key === 'a' && cmdKey(e):
             eKey_A(e);
             break; // Cmd + a: select all
-          case e.key === "d" &&
-            cmdShiftKey(e) &&
-            !hasClass("body", "has_warning"):
+          case e.key === 'd' && cmdShiftKey(e) && !hasClass('body', 'has_warning'):
             e.preventDefault();
-            getEl("#show_details").click();
+            getEl('#show_details').click();
             break; // Cmd/Ctrl + D: Toggle Details
-          case e.key === "e":
+          case e.key === 'e':
             eKey_E(e);
             break; // Cmd/Ctrl + E: Toggle Main Menu or Text Editor
-          case e.key === "g" &&
+          case e.key === 'g' &&
             cmdKey(e) &&
-            (hasClass("#top_body", "has_images") ||
-              hasClass("#top_body", "has_fonts")):
+            (hasClass('#top_body', 'has_images') || hasClass('#top_body', 'has_fonts')):
             e.preventDefault();
-            getEl("#show_grid_btn").click();
+            getEl('#show_grid_btn').click();
             break; // Show grids
-          case e.key === "i" && cmdShiftKey(e):
+          case e.key === 'i' && cmdShiftKey(e):
             if (!isTopWindow()) {
-              messageSend("top_body", "toggle_invisibles");
+              messageSend('top_body', 'toggle_invisibles');
             } else {
-              getEl("#show_invisibles_container input").click();
+              getEl('#show_invisibles_container input').click();
             }
             break; // Toggle invisibles
-          case e.key === "j" && cmdShiftKey(e):
+          case e.key === 'j' && cmdShiftKey(e):
             goToItem(e);
             break;
-          case e.key === "o" && cmdShiftKey(e):
-            window.open(getAttr(".dirlist_item.selected a", "href"));
+          case e.key === 'o' && cmdShiftKey(e):
+            window.open(getAttr('.dirlist_item.selected a', 'href'));
             break; // Cmd+Shift+O: Open in new window
-          case e.key === "r":
+          case e.key === 'r':
             eKey_R(e);
             break; // Cmd/Ctrl + Shift + R: Refresh
-          case e.key === "w" && cmdKey(e):
+          case e.key === 'w' && cmdKey(e):
             eKey_W(e);
             break; // KEY = W && Cmd/Ctrl: close content
-          case e.key === "=" &&
-            cmdKey(e) &&
-            hasContent("grid,image,font,glyph"):
+          case e.key === '=' && cmdKey(e) && hasContent('grid,image,font,glyph'):
             e.preventDefault();
-            contentHeaderButtons(e, "increase");
+            contentHeaderButtons(e, 'increase');
             break; // Cmd/Ctrl + equals: scale larger
-          case e.key === "-" &&
-            cmdKey(e) &&
-            hasContent("grid,image,font,glyph"):
+          case e.key === '-' && cmdKey(e) && hasContent('grid,image,font,glyph'):
             e.preventDefault();
-            contentHeaderButtons(e, "decrease");
+            contentHeaderButtons(e, 'decrease');
             break; // Cmd/Ctrl + hyphen: scale smaller
-          case e.key === "\\":
+          case e.key === '\\':
             eKey_BackSlash(e);
             break; // KEY = \ BACKSLASH
-          case e.key === "Tab":
+          case e.key === 'Tab':
             eKey_Tab(e);
             break; // KEY = TAB
-          case e.key === "." && cmdKey(e):
+          case e.key === '.' && cmdKey(e):
             eKey_Period(e);
             break; // click cancel button
         }
-      }),
+      })
   );
   // ***** END EVENT LISTENER INITIALIZATION
   //============================//
@@ -4637,110 +4350,103 @@
     if (e !== null) {
       e.stopPropagation();
     }
-    if (/sidebar_menu/.test(id) && /has_menu/.test(getClassNames("body"))) {
+    if (/sidebar_menu/.test(id) && /has_menu/.test(getClassNames('body'))) {
       menuClose();
       return;
     } // close menu on click if open
     removeClass(
-      "body",
-      "has_top_menu has_menu has_menu_parents has_menu_stats is_blurred,show_sidebar_false",
+      'body',
+      'has_top_menu has_menu has_menu_parents has_menu_stats is_blurred,show_sidebar_false'
     );
-    removeClass("#sidebar_menu_main *", "selected hovered show_input"); // remove classes
+    removeClass('#sidebar_menu_main *', 'selected hovered show_input'); // remove classes
     let el,
-      menu_el = getEl("#" + id),
+      menu_el = getEl('#' + id),
       menu_el_classlist = menu_el.classList,
       time,
-      position = getEl("#sidebar_header_utilities_row_1").offsetTop - 1 + "px",
+      position = getEl('#sidebar_header_utilities_row_1').offsetTop - 1 + 'px',
       track,
       media_el;
     switch (true) {
-      case id === "sidebar_menu_main_container":
-        setStyle("#" + id + " > ul", "top", position);
-        addClass("#top_body", "has_menu");
+      case id === 'sidebar_menu_main_container':
+        setStyle('#' + id + ' > ul', 'top', position);
+        addClass('#top_body', 'has_menu');
         break; // show main menu
-      case id === "sidebar_menu_parents":
-        setStyle("#" + id + " > ul", "top", position);
-        addClass("body", "has_menu_parents");
+      case id === 'sidebar_menu_parents':
+        setStyle('#' + id + ' > ul', 'top', position);
+        addClass('body', 'has_menu_parents');
         break; // show sidebar_menu_parents
-      case id === "stats_summary":
+      case id === 'stats_summary':
         setStyle(
-          "#stats_details_items",
-          "height",
-          getEl("#stats_container").height -
-            getEl("#stats_details_summary").height -
-            4,
+          '#stats_details_items',
+          'height',
+          getEl('#stats_container').height - getEl('#stats_details_summary').height - 4
         ); // show stats menu
-        addClass("body", "has_menu_stats");
+        addClass('body', 'has_menu_stats');
         break; // update durations, set classes
-      case menu_el_classlist.contains("has_submenu"):
-        removeClass("li.has_submenu", "selected hovered");
-        menu_el.classList.toggle("selected");
+      case menu_el_classlist.contains('has_submenu'):
+        removeClass('li.has_submenu', 'selected hovered');
+        menu_el.classList.toggle('selected');
         break; // toggle open submenu
       case /about_link|donate_link|contact_link/.test(id):
-        changeLocation([menu_el.href, "external"]);
+        changeLocation([menu_el.href, 'external']);
         break; // open external menu links
       case /cuesheet_track_list_container/.test(id): // show cue_sheet track menu
-        el = getEl("#" + id);
-        if (el.id === "cuesheet_track_list_container_video") {
-          getEl("#cuesheet_track_list_video").style.top = getEl(
-            "#content_title_container",
+        el = getEl('#' + id);
+        if (el.id === 'cuesheet_track_list_container_video') {
+          getEl('#cuesheet_track_list_video').style.top = getEl(
+            '#content_title_container'
           ).clientHeight;
         }
-        el.querySelector(".cuesheet_track_list").style.height =
-          getEl("#content_container").height +
-          getEl("#content_title_container").height; // set height of cue sheet track list
-        setStyle(
-          "#" + id + " > div",
-          "top",
-          el.offsetTop + el.clientHeight - 5 + "px",
-        );
+        el.querySelector('.cuesheet_track_list').style.height =
+          getEl('#content_container').height + getEl('#content_title_container').height; // set height of cue sheet track list
+        setStyle('#' + id + ' > div', 'top', el.offsetTop + el.clientHeight - 5 + 'px');
         break; // set y position of cuesheet track list
-      case id.startsWith("cuesheet_item_"): // click cuesheet track list items
+      case id.startsWith('cuesheet_item_'): // click cuesheet track list items
         switch (true) {
-          case menu_el.classList.contains("selected"):
+          case menu_el.classList.contains('selected'):
             mediaPlayPause();
             break; // play/pause if already selected
           default:
-            track = getEl("#" + id); // otherwise select new cuesheet track list item
-            media_el = track.closest("nav").id.split("_").reverse()[0];
+            track = getEl('#' + id); // otherwise select new cuesheet track list item
+            media_el = track.closest('nav').id.split('_').reverse()[0];
             time = track.dataset.position; // get the media type from the cuesheet menu nav; get position from track dataset
-            addRemoveClassSiblings("#" + id, "selected");
-            if (time < getEl("#content_" + media_el).duration) {
-              getEl("#content_" + media_el).currentTime = time;
+            addRemoveClassSiblings('#' + id, 'selected');
+            if (time < getEl('#content_' + media_el).duration) {
+              getEl('#content_' + media_el).currentTime = time;
             } //
             setCueSheetTrackTitle(id, media_el); // set cuesheet track title
         }
     }
   }
   function menuClick() {
-    getEl("#sidebar_menu_main .selected:not(.hovered)")
-      ?.querySelectorAll("a,span,label")[0]
+    getEl('#sidebar_menu_main .selected:not(.hovered)')
+      ?.querySelectorAll('a,span,label')[0]
       ?.click();
-    if (hasClass("body", "focus_content")) {
-      messageSend("iframe", "menu_close");
+    if (hasClass('body', 'focus_content')) {
+      messageSend('iframe', 'menu_close');
     }
   } // ===> CLICK MENU
   function menuClose() {
     removeClass(
-      "body,.cuesheet_track_list_container",
-      "has_top_menu has_menu has_menu_parents has_menu_stats is_blurred",
+      'body,.cuesheet_track_list_container',
+      'has_top_menu has_menu has_menu_parents has_menu_stats is_blurred'
     );
-    removeClass("#sidebar_menu_main *", "selected hovered show_input");
+    removeClass('#sidebar_menu_main *', 'selected hovered show_input');
   } // ==> CLOSE MENUS
   function statsGetHoveredListClass(el) {
-    let this_class = "." + el?.dataset?.kind?.split(", "); // ===> GET HOVERED STATS CLASS
+    let this_class = '.' + el?.dataset?.kind?.split(', '); // ===> GET HOVERED STATS CLASS
     switch (true) {
-      case el.id === "stats_details_summary_dirs":
-        this_class = ".dir";
+      case el.id === 'stats_details_summary_dirs':
+        this_class = '.dir';
         break;
-      case el.id === "stats_details_summary_files":
-        this_class = ".file";
+      case el.id === 'stats_details_summary_files':
+        this_class = '.file';
         break;
-      case this_class === ".dir":
-        this_class = ".dir:not(.ignored):not(.invisible):not(.app)";
+      case this_class === '.dir':
+        this_class = '.dir:not(.ignored):not(.invisible):not(.app)';
         break;
-      case this_class === ".dir.app":
-        this_class = ".dir.app:not(.ignored):not(.invisible)";
+      case this_class === '.dir.app':
+        this_class = '.dir.app:not(.ignored):not(.invisible)';
         break;
     }
     return this_class;
@@ -4749,8 +4455,8 @@
   // DIRLIST CLICK AND SELECT FUNCTIONS
   function clickDirListItem(e, id) {
     e.preventDefault();
-    let el = getEl("#" + id),
-      src = el.querySelector("a").href; // ===> CLICK DIR LIST ITEM
+    let el = getEl('#' + id),
+      src = el.querySelector('a').href; // ===> CLICK DIR LIST ITEM
     switch (true) {
       case window.parent !== window.top:
         return;
@@ -4765,115 +4471,113 @@
       case !isTopWindow():
         e.stopPropagation();
         showThis(id, true, true); // iframe dirlist items
-        if (hasClass("#" + id, "audio_loaded")) {
-          messageSend("top_body", "iframe_play_pause_media");
+        if (hasClass('#' + id, 'audio_loaded')) {
+          messageSend('top_body', 'iframe_play_pause_media');
         }
         break; // play/pause iframe audio onclick
-      case hasClass("#" + id, "audio"):
-        if (hasClass("#" + id, "audio_loaded")) {
+      case hasClass('#' + id, 'audio'):
+        if (hasClass('#' + id, 'audio_loaded')) {
           mediaPlayPause();
-          removeClass(".dirlist_item.selected", "selected");
-          addClass("#" + id, "selected");
+          removeClass('.dirlist_item.selected', 'selected');
+          addClass('#' + id, 'selected');
           return;
         } // else...showThis:
         showThis(id, true, true);
         break;
-      case hasClass("#" + id, "video"):
+      case hasClass('#' + id, 'video'):
         if (/youtube.com|youtu.be/.test(src)) {
           showThis(id);
           return;
         }
-        if (hasClass("#" + id, "content_loaded")) {
+        if (hasClass('#' + id, 'content_loaded')) {
           mediaPlayPause();
         } else {
-          showWarning("showThis", [id]);
+          showWarning('showThis', [id]);
         }
         break; // ''    ''
       default:
         switch (true) {
-          case hasClass("body", "texteditor_edited") ||
-            /has_\w+list/.test(getClassNames("#top_body")):
+          case hasClass('body', 'texteditor_edited') ||
+            /has_\w+list/.test(getClassNames('#top_body')):
             showThis(id);
             break; // if top edited, show item (i.e.hide text editor)
-          case hasClass("body", "iframe_edited"):
-            messageSend("iframe", "unloading", "", ["showThis", id]);
+          case hasClass('body', 'iframe_edited'):
+            messageSend('iframe', 'unloading', '', ['showThis', id]);
             break; // if iframe edited, show warning
           default:
-            showWarning("showThis", [id]); // default: show content with warning
+            showWarning('showThis', [id]); // default: show content with warning
         }
     }
   }
   function iframeClickLink(e, id, link) {
     let url, kind; // ===> IFRAME CLICK LINKS from html files
-    if (!link.startsWith("#")) {
+    if (!link.startsWith('#')) {
       url = newURL(link);
       if (e !== null) {
         e.preventDefault();
       }
     } // if link is not a link fragment, create url, prevent default
     switch (true) {
-      case link.startsWith("#"):
+      case link.startsWith('#'):
         document.getElementById(link.slice(1))?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
         }) ||
-          document
-            .querySelector('[name="' + link.slice(1) + '"]')
-            ?.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-              inline: "nearest",
-            });
+          document.querySelector('[name="' + link.slice(1) + '"]')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
+          });
         break; // allow default link fragment behavior
-      case url.href.startsWith("file:///?"):
+      case url.href.startsWith('file:///?'):
       case url === undefined:
         break;
-      case id === "tbody":
-        window.location = link + "?&show_directory_source=true";
+      case id === 'tbody':
+        window.location = link + '?&show_directory_source=true';
         break; //
-      case id === "iframe_parent_link":
-        messageSend("top_body", "show_iframe_parent", "", [
-          getEl("#iframe_parent_link").href,
-          "dir",
-          "iframe_parent",
+      case id === 'iframe_parent_link':
+        messageSend('top_body', 'show_iframe_parent', '', [
+          getEl('#iframe_parent_link').href,
+          'dir',
+          'iframe_parent',
         ]);
         break; // send message "show_iframe_parent"
-      case url.protocol === "file:" && window.location.protocol !== "file:":
-        messageSend("top_body", "local_link");
+      case url.protocol === 'file:' && window.location.protocol !== 'file:':
+        messageSend('top_body', 'local_link');
         break; // show warning when attempting to open local links from non-local pages
-      case url.protocol !== "file:" && window.location.protocol === "file:":
-        window.open(link, "_blank");
+      case url.protocol !== 'file:' && window.location.protocol === 'file:':
+        window.open(link, '_blank');
         break; // open remote link from local page in new tab/window
-      case url.protocol === "file:" && window.location.protocol === "file:": // nobreak; open local links to local files in iframe
-      case url.protocol === "about:": // nobreak; document #link fragments
+      case url.protocol === 'file:' && window.location.protocol === 'file:': // nobreak; open local links to local files in iframe
+      case url.protocol === 'about:': // nobreak; document #link fragments
       case RegExp(url.hostname).test(window.location.hostname): // nobreak; same origin links (might not include TLD) (just covering bases)
       case RegExp(window.location.hostname).test(url.hostname): // no break; same origin links (might not include TLD) (just covering bases)
         kind = getLinkInfo(url.href)[3];
         if (/dir|app/.test(kind)) {
-          messageSend("top_body", "show_iframe_dir", "", [url.href, kind, id]);
+          messageSend('top_body', 'show_iframe_dir', '', [url.href, kind, id]);
         } else {
-          messageSend("top_body", "show_iframe_file", "", [url.href, kind, id]);
+          messageSend('top_body', 'show_iframe_file', '', [url.href, kind, id]);
         }
         break;
       default:
-        window.open(link, "_blank");
+        window.open(link, '_blank');
         break; // else open external document links in new tab
     }
   }
   function iframedblClickThis(e, id, link) {
     e.stopPropagation(); // ===> IFRAME DOUBLECLICK THIS iframe dir_list items (files and dirs)
     if (/_/.test(id)) {
-      id = id.split("_")[0];
+      id = id.split('_')[0];
     } // temp: if double-clicking a subdir item, id === top parent item id; we'd like to send full subdir item id so that it can be reopened when the subdir item is closed.
-    let el = getEl("#" + id);
+    let el = getEl('#' + id);
     let kind = el.dataset.kind,
-      message = /dir|app/.test(kind) ? "show_iframe_dir" : "show_iframe_file"; // get item kind
-    if (kind === "audio") {
-      removeClass(".dirlist_item.audio", "audio_loaded selected");
-      el.classList.add("audio_loaded", "selected");
+      message = /dir|app/.test(kind) ? 'show_iframe_dir' : 'show_iframe_file'; // get item kind
+    if (kind === 'audio') {
+      removeClass('.dirlist_item.audio', 'audio_loaded selected');
+      el.classList.add('audio_loaded', 'selected');
     } // iframe audio
-    messageSend("top_body", message, "", [link, kind, id]); // send message
+    messageSend('top_body', message, '', [link, kind, id]); // send message
   }
   function iframeClick(e, id, kind, link) {
     e.preventDefault();
@@ -4881,14 +4585,14 @@
       case window.parent !== window.top:
         e.stopPropagation();
         return;
-      case kind === "dblclick":
-      case e.type === "dblclick":
+      case kind === 'dblclick':
+      case e.type === 'dblclick':
         iframedblClickThis(e, id, link);
         break;
-      case kind === "dirlist_item":
+      case kind === 'dirlist_item':
         clickDirListItem(e, id);
         break;
-      case kind === "link":
+      case kind === 'link':
         iframeClickLink(e, id, link);
         break;
     }
@@ -4898,50 +4602,46 @@
   function uiPrefToggleOnClick(e, id) {
     e.stopPropagation();
     e.stopImmediatePropagation();
-    showWarning("uiPrefToggle", getEl("#" + id).getAttribute("data-ui_pref"));
+    showWarning('uiPrefToggle', getEl('#' + id).getAttribute('data-ui_pref'));
   }
   function uiPrefToggle(pref_id) {
     // ===> TOGGLE UI PREFS: and update searchParams
-    let settings_value = [pref_id, UI_Settings[pref_id]].join("_"),
+    let settings_value = [pref_id, UI_Settings[pref_id]].join('_'),
       current_value = getCurrentUIPref(pref_id),
       new_value = getNewUIPref(pref_id);
-    let message_target = isTopWindow() ? "iframe" : "top_body",
-      send = "false";
-    if (
-      /button|label|select|input/.test(
-        document.activeElement.tagName.toLowerCase(),
-      )
-    ) {
+    let message_target = isTopWindow() ? 'iframe' : 'top_body',
+      send = 'false';
+    if (/button|label|select|input/.test(document.activeElement.tagName.toLowerCase())) {
       document.activeElement.blur();
     } // blur any focused form elements
     switch (true) {
-      case pref_id === "audio_player_on_top":
+      case pref_id === 'audio_player_on_top':
         audioPlayerPositionToggle();
         break;
-      case pref_id === "show_image_thumbnails":
+      case pref_id === 'show_image_thumbnails':
         uiPrefImgThumbsToggle(new_value[1]);
-        send = "true";
+        send = 'true';
         break;
-      case pref_id === "show_media_name_in_window_title":
-        toggleMediaNameInWindowTitle("toggle");
+      case pref_id === 'show_media_name_in_window_title':
+        toggleMediaNameInWindowTitle('toggle');
         break; // nobreak;
       case /texteditor_|text_editing/.test(pref_id):
         textEditorTogglePrefs(pref_id);
-        send = "true";
+        send = 'true';
         break; // Text Editor Preferences
-      case !hasClass("#content_body", "show_details_false") &&
-        pref_id === "show_details" &&
+      case !hasClass('#content_body', 'show_details_false') &&
+        pref_id === 'show_details' &&
         !isTopWindow(): // nobreak; hide iframe details on first toggle
-      case new_value[1] === "false":
-        addClass("body", pref_id + "_false");
-        searchParamSet(pref_id, "false");
-        send = "true";
+      case new_value[1] === 'false':
+        addClass('body', pref_id + '_false');
+        searchParamSet(pref_id, 'false');
+        send = 'true';
         break;
-      case new_value[1] === "true":
-      case current_value === "false":
-        removeClass("body", pref_id + "_false");
+      case new_value[1] === 'true':
+      case current_value === 'false':
+        removeClass('body', pref_id + '_false');
         searchParamDelete(pref_id);
-        send = "true";
+        send = 'true';
         break;
       case /sort_by_/.test(pref_id):
         uiPrefSortToggle(pref_id);
@@ -4949,19 +4649,15 @@
       case /theme|theme_light|theme_dark/.test(pref_id):
         uiPrefThemeToggle(new_value);
         break; // toggle light/dark theme
-      case new_value.length > 1 && settings_value === new_value.join("_"): // nobreak; new value === settings value
+      case new_value.length > 1 && settings_value === new_value.join('_'): // nobreak; new value === settings value
       default: // other non-booleans
-        searchParamSet(getNewUIPref(pref_id)[0], new_value.join("_")); // set searchParam
-        removeClass("body", [pref_id, current_value].join("_"));
-        addClass("body", new_value.join("_")); // remove old bodyclass; add new bodyclass
-        send = "true";
+        searchParamSet(getNewUIPref(pref_id)[0], new_value.join('_')); // set searchParam
+        removeClass('body', [pref_id, current_value].join('_'));
+        addClass('body', new_value.join('_')); // remove old bodyclass; add new bodyclass
+        send = 'true';
     }
-    if (
-      send === "true" &&
-      isTopWindow() &&
-      !/show_details|show_sidebar/.test(pref_id)
-    ) {
-      messageSend(message_target, "uiPrefToggle", "", pref_id);
+    if (send === 'true' && isTopWindow() && !/show_details|show_sidebar/.test(pref_id)) {
+      messageSend(message_target, 'uiPrefToggle', '', pref_id);
     } // send message to iframe
     if (/show_invisibles|show_ignored_items/.test(pref_id)) {
       updateStats();
@@ -4971,91 +4667,85 @@
     eStopPrevent(e); // ===> DEFAULT SETTINGS: remove queries;
     if (
       window.confirm(
-        "Are you sure you want to remove all your temporary UI settings from the URL query string?",
+        'Are you sure you want to remove all your temporary UI settings from the URL query string?'
       )
     ) {
-      removeClass("body", "has_menu");
-      let query_str = "",
-        selected_str = "",
-        history_str = "";
-      if (
-        getCurrentUIPref("selected").length &&
-        getCurrentUIPref("selected").match(/[0-9\+]+?/)
-      ) {
-        selected_str += "selected=" + getCurrentUIPref("selected");
+      removeClass('body', 'has_menu');
+      let query_str = '',
+        selected_str = '',
+        history_str = '';
+      if (getCurrentUIPref('selected').length && getCurrentUIPref('selected').match(/[0-9\+]+?/)) {
+        selected_str += 'selected=' + getCurrentUIPref('selected');
       }
-      if (
-        getCurrentUIPref("history").length &&
-        getCurrentUIPref("history").match(/[0-9\+]+?/)
-      ) {
-        history_str += "history=" + getCurrentUIPref("history");
+      if (getCurrentUIPref('history').length && getCurrentUIPref('history').match(/[0-9\+]+?/)) {
+        history_str += 'history=' + getCurrentUIPref('history');
       }
-      query_str = history_str + "&" + selected_str;
+      query_str = history_str + '&' + selected_str;
       if (query_str.length > 1) {
-        query_str = "?" + query_str.replace(/\s/g, "+");
+        query_str = '?' + query_str.replace(/\s/g, '+');
       }
       window.location.assign(window_location + query_str);
     }
   }
   //============================//
   function uiPrefThemeToggle(new_value) {
-    let iframe_src = getEl("#content_iframe").src; // ===> TOGGLE UI PREF THEME
-    new_value = new_value.join("_"); // "theme_[light|dark]"
-    removeClass("body", "theme_dark theme_light");
-    addClass("body", new_value); // set top level theme classes
-    if (new_value === "theme_light") {
-      searchParamDelete("theme");
+    let iframe_src = getEl('#content_iframe').src; // ===> TOGGLE UI PREF THEME
+    new_value = new_value.join('_'); // "theme_[light|dark]"
+    removeClass('body', 'theme_dark theme_light');
+    addClass('body', new_value); // set top level theme classes
+    if (new_value === 'theme_light') {
+      searchParamDelete('theme');
     } else {
-      searchParamSet("theme", "dark");
+      searchParamSet('theme', 'dark');
     } // set top level theme search param
     switch (isTopWindow()) {
-      case getContentPaneData() === "has_htm":
+      case getContentPaneData() === 'has_htm':
         switch (true) {
-          case new_value === "theme_light":
-            iframe_src = iframe_src.replace(/\?theme=dark/, "");
+          case new_value === 'theme_light':
+            iframe_src = iframe_src.replace(/\?theme=dark/, '');
             break;
-          case new_value !== "theme_light" && !/\\?theme=dark/.test(iframe_src):
-            iframe_src = iframe_src + "?theme=dark";
+          case new_value !== 'theme_light' && !/\\?theme=dark/.test(iframe_src):
+            iframe_src = iframe_src + '?theme=dark';
         }
-        getEl("#content_iframe").src = iframe_src;
+        getEl('#content_iframe').src = iframe_src;
         break;
-      case getEl("#content_iframe").src.startsWith("data:text/html;"): // toggle iframe data src
-        let src = getEl("#content_iframe").src;
+      case getEl('#content_iframe').src.startsWith('data:text/html;'): // toggle iframe data src
+        let src = getEl('#content_iframe').src;
         src = src.replace(
           /texteditor_view_styled.20theme_[^%]+?.20/,
-          "texteditor_view_styled%20" + new_value + "%20",
+          'texteditor_view_styled%20' + new_value + '%20'
         );
-        getEl("#content_iframe").src = src;
+        getEl('#content_iframe').src = src;
         break;
       default:
-        messageSend("iframe", "uiPrefToggle", "", new_value); // else default iframe toggle: send message to iframe
+        messageSend('iframe', 'uiPrefToggle', '', new_value); // else default iframe toggle: send message to iframe
     }
   }
   function uiPrefFontSet(e) {
     eStopPrevent(e);
     let value; // ===> SET UI FONT
     switch (true) {
-      case e?.type === "click":
-        getEl("#ui_font input").value = getCurrentUIPref("ui_font");
-        addClass("#ui_font", "show_input");
-        getEl("#ui_font input").focus();
+      case e?.type === 'click':
+        getEl('#ui_font input').value = getCurrentUIPref('ui_font');
+        addClass('#ui_font', 'show_input');
+        getEl('#ui_font input').focus();
         break; // show input & current ui font on click
-      case e?.key === "Enter":
-        value = getEl("#ui_font input").value; // get the entered ui font
-        if (value !== "") {
+      case e?.key === 'Enter':
+        value = getEl('#ui_font input').value; // get the entered ui font
+        if (value !== '') {
           document.body.style.fontFamily = value;
-          searchParamSet("ui_font", value);
+          searchParamSet('ui_font', value);
         } else {
           document.body.style.fontFamily = null;
-          searchParamDelete("ui_font");
+          searchParamDelete('ui_font');
         }
-        messageSend("iframe", "set_ui_font", "", value);
-        removeClass("#ui_font", "show_input");
+        messageSend('iframe', 'set_ui_font', '', value);
+        removeClass('#ui_font', 'show_input');
         menuClose();
         break; // set the font; close menu
       default:
-        if (UI_Prefs_Non_Bool.ui_font !== getCurrentUIPref("ui_font")) {
-          document.body.style.fontFamily = getCurrentUIPref("ui_font");
+        if (UI_Prefs_Non_Bool.ui_font !== getCurrentUIPref('ui_font')) {
+          document.body.style.fontFamily = getCurrentUIPref('ui_font');
         } // set the ui font on page load
     }
   }
@@ -5066,68 +4756,62 @@
     }
     switch (true) {
       case Math.round(value) === 100:
-        document.body.style.removeProperty("transform");
-        document.body.style.removeProperty("width");
-        document.body.style.removeProperty("height"); // remove body styles
-        setData("#ui_scale .menu_item", "value", "100%");
-        getEl("#ui_scale_input").value = 100; // reset input
-        searchParamDelete("ui_scale");
+        document.body.style.removeProperty('transform');
+        document.body.style.removeProperty('width');
+        document.body.style.removeProperty('height'); // remove body styles
+        setData('#ui_scale .menu_item', 'value', '100%');
+        getEl('#ui_scale_input').value = 100; // reset input
+        searchParamDelete('ui_scale');
         break; // delete the searchParam
       default:
-        document.body.style.transform = "scale(" + value + "%)";
-        document.body.style.width = Math.round(10000 / Number(value)) + "%";
-        document.body.style.height = Math.round(10000 / Number(value)) + "%"; // add body styles
-        searchParamSet("ui_scale", Math.round(value)); // set the searchParam
+        document.body.style.transform = 'scale(' + value + '%)';
+        document.body.style.width = Math.round(10000 / Number(value)) + '%';
+        document.body.style.height = Math.round(10000 / Number(value)) + '%'; // add body styles
+        searchParamSet('ui_scale', Math.round(value)); // set the searchParam
     }
     if (Number(value) < 100) {
-      document.documentElement.style.width =
-        Math.round(10000 / Number(value)) + "%";
+      document.documentElement.style.width = Math.round(10000 / Number(value)) + '%';
     } else {
-      document.documentElement.style.removeProperty("width");
+      document.documentElement.style.removeProperty('width');
     } // scale the html element if value < 1
     if (bool === true) {
-      setData("#ui_scale .menu_item", "value", value + "%");
-      getEl("#ui_scale_input").value = value;
+      setData('#ui_scale .menu_item', 'value', value + '%');
+      getEl('#ui_scale_input').value = value;
     } // set the input on load
   }
   function uiPrefImgThumbsToggle(bool) {
     // ===> TOGGLE UI PREF IMG THUMBS
-    let image_files = getEls(".dirlist_item.image"),
+    let image_files = getEls('.dirlist_item.image'),
       current_background_image,
       max_count = 2000; // Add/remove image thumbnails as background icons
     switch (true) {
-      case bool === "false":
-        addClass("body", "show_image_thumbnails_false");
-        searchParamSet("show_image_thumbnails", "false");
+      case bool === 'false':
+        addClass('body', 'show_image_thumbnails_false');
+        searchParamSet('show_image_thumbnails', 'false');
         break;
       default:
-        removeClass("body", "show_image_thumbnails_false");
-        searchParamDelete("show_image_thumbnails");
+        removeClass('body', 'show_image_thumbnails_false');
+        searchParamDelete('show_image_thumbnails');
     }
     image_files.forEach((image) => {
-      current_background_image = image.querySelector(
-        "a .has_icon_before_before",
-      ).style.backgroundImage; // get the current background_image, save for future toggle
+      current_background_image = image.querySelector('a .has_icon_before_before').style
+        .backgroundImage; // get the current background_image, save for future toggle
       switch (
         true // toggle thumbnail display
       ) {
-        case bool === "false": // show default icon, don't remove existing thumbnail
-          image.querySelector(
-            "a .has_icon_before_before",
-          ).style.backgroundImage =
-            get_SVG_UI_File_Icon("file_icon_image") +
-            "," +
-            current_background_image; // only first background image is visible
+        case bool === 'false': // show default icon, don't remove existing thumbnail
+          image.querySelector('a .has_icon_before_before').style.backgroundImage =
+            get_SVG_UI_File_Icon('file_icon_image') + ',' + current_background_image; // only first background image is visible
           break;
         default: // remove default image icon or load image thumbnail
-          image.querySelector("a .has_icon_before_before").dataset.image_url =
-            'url("' + image.querySelector("a").href + '")';
+          image.querySelector('a .has_icon_before_before').dataset.image_url =
+            'url("' + image.querySelector('a').href + '")';
           lazyLoadImageThumbs();
       }
     });
   }
   function lazyLoadImageThumbs() {
-    if (getCurrentUIPref("show_image_thumbnails") === "false") {
+    if (getCurrentUIPref('show_image_thumbnails') === 'false') {
       return;
     }
     const handleIntersection = (entries) => {
@@ -5139,29 +4823,27 @@
       });
     };
     const observer = new IntersectionObserver(handleIntersection, {
-      rootMargin: "100px",
+      rootMargin: '100px',
     });
-    const thumbs = document.querySelectorAll(
-      ".dirlist_item.image a .has_icon_before_before",
-    );
+    const thumbs = document.querySelectorAll('.dirlist_item.image a .has_icon_before_before');
     thumbs.forEach((thumb) => observer.observe(thumb));
   }
   function uiPrefSortToggle(pref_id) {
     // ===> TOGGLE UI SORT PREF
-    let current_sort_by = getCurrentUIPref("sort_by"),
-      new_sort_by = pref_id.split("_").reverse()[0];
-    let current_sort_direction = getCurrentUIPref("sort_direction"),
+    let current_sort_by = getCurrentUIPref('sort_by'),
+      new_sort_by = pref_id.split('_').reverse()[0];
+    let current_sort_direction = getCurrentUIPref('sort_direction'),
       new_sort_direction =
         new_sort_by !== current_sort_by
-          ? "ascending"
-          : getNewUIPref("sort_direction_" + current_sort_direction)[1];
+          ? 'ascending'
+          : getNewUIPref('sort_direction_' + current_sort_direction)[1];
     switch (
       true // toggle sort_by
     ) {
       case new_sort_by !== current_sort_by:
-        new_sort_by === "default"
-          ? searchParamDelete("sort_by")
-          : searchParamSet("sort_by", new_sort_by);
+        new_sort_by === 'default'
+          ? searchParamDelete('sort_by')
+          : searchParamSet('sort_by', new_sort_by);
         break;
       case new_sort_by === current_sort_by:
         break;
@@ -5170,18 +4852,18 @@
       true // toggle sort_direction
     ) {
       case new_sort_by !== current_sort_by: // nobreak
-      case current_sort_direction === "descending":
-        searchParamDelete("sort_direction");
+      case current_sort_direction === 'descending':
+        searchParamDelete('sort_direction');
         break; // delete search_param if new sort is ascending (default)
-      case current_sort_direction === "ascending":
-        searchParamSet("sort_direction", "descending");
+      case current_sort_direction === 'ascending':
+        searchParamSet('sort_direction', 'descending');
         break; // add descending search_param
     }
     removeClass(
-      "body",
-      "has_menu sort_by_name sort_by_default sort_by_duration sort_by_size sort_by_date sort_by_kind sort_by_ext sort_direction_ascending sort_direction_descending",
+      'body',
+      'has_menu sort_by_name sort_by_default sort_by_duration sort_by_size sort_by_date sort_by_kind sort_by_ext sort_direction_ascending sort_direction_descending'
     ); // remove all sorting body classes
-    addClass("body", pref_id, "sort_direction_" + new_sort_direction);
+    addClass('body', pref_id, 'sort_direction_' + new_sort_direction);
     subDirClose(); // close subdirs
     // RE-SORT DIRECTORY ITEMS:
     let has_dir = false,
@@ -5190,191 +4872,177 @@
       iframe_url,
       iframe_params,
       items_html_arr = [];
-    if (isTopWindow() && hasContent("dir")) {
+    if (isTopWindow() && hasContent('dir')) {
       has_dir = true;
-      iframe_src = getEl("#content_iframe").src;
+      iframe_src = getEl('#content_iframe').src;
     }
-    Array.from(getEls(".dirlist_item")).forEach((el) =>
-      items_html_arr.push(
-        el.outerHTML.replace(/border_bottom |border_top /g, ""),
-      ),
+    Array.from(getEls('.dirlist_item')).forEach((el) =>
+      items_html_arr.push(el.outerHTML.replace(/border_bottom |border_top /g, ''))
     ); // get elements for new sort
-    sorted = sortDirListItems(
-      Array.from(items_html_arr),
-      pref_id,
-      new_sort_direction,
-    ); // sort the items
-    getEl("#directory_list").innerHTML = sorted; // insert sorted items into dir_list
+    sorted = sortDirListItems(Array.from(items_html_arr), pref_id, new_sort_direction); // sort the items
+    getEl('#directory_list').innerHTML = sorted; // insert sorted items into dir_list
     initDirListEvents();
     initIframeEvents(); // re-initialize dir_list event listeners
     switch (true) {
-      case hasContent("font_grid"):
-        showGrid("show_font_grid");
+      case hasContent('font_grid'):
+        showGrid('show_font_grid');
         break; // sort grids --> change this to actual sort, not reload
-      case hasContent("image_grid"):
-        showGrid("show_image_grid");
+      case hasContent('image_grid'):
+        showGrid('show_image_grid');
         break; // sort grids --> change this to actual sort, not reload
-      case hasContent("grid"):
-        showGrid("show_grid");
+      case hasContent('grid'):
+        showGrid('show_grid');
         break; // sort grids --> change this to actual sort, not reload
       case has_dir === true: // re-sort iframe directory
-        if (elExists(".dirlist_item.selected")) {
-          showThis(getEl(".dirlist_item.selected").id);
+        if (elExists('.dirlist_item.selected')) {
+          showThis(getEl('.dirlist_item.selected').id);
         } // show the selected directory
         iframe_url = new URL(iframe_src); // create url obj
         iframe_params = new URLSearchParams(iframe_url.search); // create url search params
-        iframe_params.set(
-          "sort_by",
-          pref_id.slice(pref_id.lastIndexOf("_") + 1),
-        ); // set sort_by
-        iframe_params.set("sort_direction", new_sort_direction); // set sort_direction params
+        iframe_params.set('sort_by', pref_id.slice(pref_id.lastIndexOf('_') + 1)); // set sort_by
+        iframe_params.set('sort_direction', new_sort_direction); // set sort_direction params
         iframe_url.search = iframe_params.toString(); // update url search params
-        getEl("#content_iframe").src = iframe_url.href;
+        getEl('#content_iframe').src = iframe_url.href;
         break; // reload the iframe with new src url
-      case elExists(".dirlist_item.selected:not(.audio)"):
-        showThis(getEl(".dirlist_item.selected").id);
+      case elExists('.dirlist_item.selected:not(.audio)'):
+        showThis(getEl('.dirlist_item.selected').id);
         break; // after sort, show selected item; don't autoloadcoverart
     }
   }
   function audioPlayerPositionToggle(option) {
     switch (true) {
-      case option === "reset":
-        getEl("#content_container").style.paddingBottom =
-          Number(getEl("#audio_wrapper").offsetHeight) + "px";
+      case option === 'reset':
+        getEl('#content_container').style.paddingBottom =
+          Number(getEl('#audio_wrapper').offsetHeight) + 'px';
         break;
-      case hasClass("body", "audio_player_on_top_false"):
-        getEl("#content_container").style.paddingBottom = 0;
-        searchParamDelete("audio_player_on_top");
-        removeClass("body", "audio_player_on_top_false");
+      case hasClass('body', 'audio_player_on_top_false'):
+        getEl('#content_container').style.paddingBottom = 0;
+        searchParamDelete('audio_player_on_top');
+        removeClass('body', 'audio_player_on_top_false');
         break;
       default:
-        addClass("body", "audio_player_on_top_false");
-        getEl("#content_container").style.paddingBottom =
-          Number(getEl("#audio_wrapper").offsetHeight) + "px";
-        searchParamSet("audio_player_on_top", "false");
+        addClass('body', 'audio_player_on_top_false');
+        getEl('#content_container').style.paddingBottom =
+          Number(getEl('#audio_wrapper').offsetHeight) + 'px';
+        searchParamSet('audio_player_on_top', 'false');
     }
   }
   function textEditorTogglePrefs(pref_id, bool) {
     let args = []; // ===> TOGGLE TEXT EDITOR PREFERENCES (from menus or toolbar buttons); bool from UIsetup
     switch (true) {
       case /text_editing_enable/.test(pref_id): // toggle text editing
-        bool = hasClass("body", "text_editing_enable_false") ? "true" : "false";
+        bool = hasClass('body', 'text_editing_enable_false') ? 'true' : 'false';
         switch (true) {
-          case bool === "false":
-            addClass("body", "text_editing_enable_false");
-            searchParamSet("text_editing_enable", "false");
-            setAttr("#content_body #texteditor_raw_pane", "readonly", ""); // set readonly
-            removeClass("body", "texteditor_split_view_true");
-            addClass("body", "texteditor_split_view_false");
+          case bool === 'false':
+            addClass('body', 'text_editing_enable_false');
+            searchParamSet('text_editing_enable', 'false');
+            setAttr('#content_body #texteditor_raw_pane', 'readonly', ''); // set readonly
+            removeClass('body', 'texteditor_split_view_true');
+            addClass('body', 'texteditor_split_view_false');
             break;
           default:
             removeClass(
-              "body",
-              "text_editing_enable_false texteditor_split_view_false texteditor_split_view_true texteditor_sync_scroll_false texteditor_sync_scroll_true",
+              'body',
+              'text_editing_enable_false texteditor_split_view_false texteditor_split_view_true texteditor_sync_scroll_false texteditor_sync_scroll_true'
             );
-            searchParamDelete("text_editing_enable");
-            removeAttr("#content_body #texteditor_raw_pane", "readonly"); // remove readonly
+            searchParamDelete('text_editing_enable');
+            removeAttr('#content_body #texteditor_raw_pane', 'readonly'); // remove readonly
             textEditorTogglePrefs(
-              "texteditor_split_view",
-              getCurrentUIPref("texteditor_split_view") !== undefined
-                ? getCurrentUIPref("texteditor_split_view")
-                : "true",
+              'texteditor_split_view',
+              getCurrentUIPref('texteditor_split_view') !== undefined
+                ? getCurrentUIPref('texteditor_split_view')
+                : 'true'
             );
             textEditorTogglePrefs(
-              "texteditor_sync_scroll",
-              getCurrentUIPref("texteditor_sync_scroll") !== undefined
-                ? getCurrentUIPref("texteditor_sync_scroll")
-                : "true",
+              'texteditor_sync_scroll',
+              getCurrentUIPref('texteditor_sync_scroll') !== undefined
+                ? getCurrentUIPref('texteditor_sync_scroll')
+                : 'true'
             );
             break;
         }
         if (isTopWindow()) {
-          messageSend("iframe", "uiPrefToggle", "", "text_editing_enable");
+          messageSend('iframe', 'uiPrefToggle', '', 'text_editing_enable');
         }
         break;
-      case /texteditor_view_raw|texteditor_view_styled|texteditor_view_html/.test(
-        pref_id,
-      ): // toggle texteditor_preview & html panes
-        args = ["texteditor_view", pref_id.split("_").reverse()[0]];
-        bool = hasClass("body", pref_id) ? "true" : "false"; // set args
-        removeClass(
-          "body",
-          "texteditor_view_raw texteditor_view_styled texteditor_view_html",
-        );
-        addClass("body", pref_id);
-        if (bool === "true" && hasClass("body", pref_id)) {
-          textEditorTogglePrefs("texteditor_split_view");
+      case /texteditor_view_raw|texteditor_view_styled|texteditor_view_html/.test(pref_id): // toggle texteditor_preview & html panes
+        args = ['texteditor_view', pref_id.split('_').reverse()[0]];
+        bool = hasClass('body', pref_id) ? 'true' : 'false'; // set args
+        removeClass('body', 'texteditor_view_raw texteditor_view_styled texteditor_view_html');
+        addClass('body', pref_id);
+        if (bool === 'true' && hasClass('body', pref_id)) {
+          textEditorTogglePrefs('texteditor_split_view');
         } // toggle split if same view clicked
         break; // add pref_id body_class
       case /texteditor_split_view/.test(pref_id):
         bool = /true|false/.test(bool)
           ? bool
-          : hasClass("body", "texteditor_split_view_true") ||
-              hasClass("body", "text_editing_enable_false")
-            ? "false"
-            : "true"; // set bool
-        args = ["texteditor_split_view", bool];
-        addClass("body", "texteditor_split_view_" + bool);
-        searchParamSet("texteditor_split_view"); // set args, add body_class, set search param
+          : hasClass('body', 'texteditor_split_view_true') ||
+              hasClass('body', 'text_editing_enable_false')
+            ? 'false'
+            : 'true'; // set bool
+        args = ['texteditor_split_view', bool];
+        addClass('body', 'texteditor_split_view_' + bool);
+        searchParamSet('texteditor_split_view'); // set args, add body_class, set search param
         switch (true) {
-          case bool === "true":
-            removeClass("body", "texteditor_split_view_false");
-            if (getCurrentUIPref("texteditor_view") === "raw") {
-              addClass("body", "texteditor_view_styled");
+          case bool === 'true':
+            removeClass('body', 'texteditor_split_view_false');
+            if (getCurrentUIPref('texteditor_view') === 'raw') {
+              addClass('body', 'texteditor_view_styled');
             }
             break;
-          case bool === "false":
-            removeClass("body", "texteditor_split_view_true");
-            focusEl("#texteditor_raw_pane");
+          case bool === 'false':
+            removeClass('body', 'texteditor_split_view_true');
+            focusEl('#texteditor_raw_pane');
             break;
         }
         break;
       case /texteditor_sync_scroll/.test(pref_id): // sync_scroll
         bool = /true|false/.test(bool)
           ? bool
-          : getCurrentUIPref("texteditor_sync_scroll") === "true"
-            ? "false"
-            : "true";
-        args = ["texteditor_sync_scroll", bool]; // set bool and args
-        searchParamSet("texteditor_sync_scroll", bool); // set search param
-        if (bool === "false") {
-          getEl("#texteditor_sync_scroll input").checked = false;
+          : getCurrentUIPref('texteditor_sync_scroll') === 'true'
+            ? 'false'
+            : 'true';
+        args = ['texteditor_sync_scroll', bool]; // set bool and args
+        searchParamSet('texteditor_sync_scroll', bool); // set search param
+        if (bool === 'false') {
+          getEl('#texteditor_sync_scroll input').checked = false;
         } else {
-          getEl("#texteditor_sync_scroll input").checked = true;
+          getEl('#texteditor_sync_scroll input').checked = true;
         }
         break;
     }
     if (!isTopWindow()) {
-      messageSend("top_body", "searchParamSet", "", args);
-      messageSend("top_body", "menu_close");
+      messageSend('top_body', 'searchParamSet', '', args);
+      messageSend('top_body', 'menu_close');
     } // send messages to top: set search param, close menu
   }
   //============================//
   function resizeSidebar(e) {
     e.preventDefault(); // ===> RESIZE SIDEBAR/Content Pane
     menuClose();
-    let sidebar = getEl("#sidebar"),
+    let sidebar = getEl('#sidebar'),
       startX = e.pageX,
       window_width = window.innerWidth,
       sidebar_width = sidebar.offsetWidth;
-    addClass("body", "has_overlay"); // prevent interference from the rest of ui
+    addClass('body', 'has_overlay'); // prevent interference from the rest of ui
     document.onmousemove = (f) => {
       f.stopPropagation();
       f.preventDefault();
       let deltaX = f.pageX - startX;
       if (f.pageX > 230 && f.pageX < window_width - 200) {
-        sidebar.style.width = sidebar_width + deltaX + "px";
+        sidebar.style.width = sidebar_width + deltaX + 'px';
       }
-      scrollThis("#directory_list", ".selected", false); // true = instant scroll
-      if (hasClass("body", "audio_player_on_top_false")) {
-        audioPlayerPositionToggle("reset");
+      scrollThis('#directory_list', '.selected', false); // true = instant scroll
+      if (hasClass('body', 'audio_player_on_top_false')) {
+        audioPlayerPositionToggle('reset');
       }
     };
     document.onmouseup = (e) => {
       e.stopPropagation();
-      removeClass("body", "has_overlay");
+      removeClass('body', 'has_overlay');
       document.onmousemove = null;
-      searchParamSet("width", sidebar.offsetWidth);
+      searchParamSet('width', sidebar.offsetWidth);
     };
   }
   //============================//
@@ -5390,10 +5058,10 @@
     return sorted;
   }
   function sortItems(items_html_arr, sort_type, sort_direction) {
-    let sort_id = sort_type.split("_").reverse()[0]; // ===> SORT INDEX ITEMS
+    let sort_id = sort_type.split('_').reverse()[0]; // ===> SORT INDEX ITEMS
     const new_sort = new Intl.Collator(undefined, {
       numeric: true,
-      sensitivity: "base",
+      sensitivity: 'base',
     });
     let sorted = [],
       aName,
@@ -5406,33 +5074,26 @@
       if (!/data-name/.test(a) || !/data-name/.test(b)) {
         null;
       } else {
-        aName = a.replace(/(.+?)data-name="([^"]+?)"(.+)/g, "$2");
-        bName = b.replace(/(.+?)data-name="([^"]+?)"(.+)/g, "$2");
+        aName = a.replace(/(.+?)data-name="([^"]+?)"(.+)/g, '$2');
+        bName = b.replace(/(.+?)data-name="([^"]+?)"(.+)/g, '$2');
       } // get data-name
       switch (
         true // aData, bData = size, date, kind, ext, time
       ) {
-        case !new RegExp("data-" + sort_id).test(a) ||
-          !new RegExp("data-" + sort_id).test(b):
+        case !new RegExp('data-' + sort_id).test(a) || !new RegExp('data-' + sort_id).test(b):
           break;
         default:
-          aData = a.replace(
-            new RegExp(".+?data-" + sort_id + '="([^"]+?)".+'),
-            "$1",
-          );
-          bData = b.replace(
-            new RegExp(".+?data-" + sort_id + '="([^"]+?)".+'),
-            "$1",
-          );
+          aData = a.replace(new RegExp('.+?data-' + sort_id + '="([^"]+?)".+'), '$1');
+          bData = b.replace(new RegExp('.+?data-' + sort_id + '="([^"]+?)".+'), '$1');
       }
       switch (
         true // sort 'em!
       ) {
-        case sort_direction === "ascending":
+        case sort_direction === 'ascending':
           return new_sort.compare(aData, bData) === 0
             ? new_sort.compare(aName, bName)
             : new_sort.compare(aData, bData); // A-Z
-        case sort_direction === "descending":
+        case sort_direction === 'descending':
           return new_sort.compare(bData, aData) === 0
             ? new_sort.compare(bName, aName)
             : new_sort.compare(bData, aData); // Z-A
@@ -5444,41 +5105,35 @@
     // ===> SORT DIR LIST on click
     let sorted = [],
       sort_all = items_html_arr,
-      sort_dirs = items_html_arr.filter((item) =>
-        /data-kind=\"dir\"/.test(item),
-      ),
-      sort_files = items_html_arr.filter(
-        (item) => !/data-kind=\"dir\"/.test(item),
-      );
+      sort_dirs = items_html_arr.filter((item) => /data-kind=\"dir\"/.test(item)),
+      sort_files = items_html_arr.filter((item) => !/data-kind=\"dir\"/.test(item));
     switch (true) {
       case /sort_by_size|sort_by_date/.test(sort_type) &&
-        /has_\w+list/.test(getClassNames("#top_body")):
-        return items_html_arr.join("\n"); // don't sort playlists by size/date
-      case sort_type === "sort_by_default": // if sort default
+        /has_\w+list/.test(getClassNames('#top_body')):
+        return items_html_arr.join('\n'); // don't sort playlists by size/date
+      case sort_type === 'sort_by_default': // if sort default
         const sorted_dirs = sortItems(sort_dirs, sort_type, sort_direction),
           sorted_files = sortItems(sort_files, sort_type, sort_direction); // ...sort dirs and files separately
         switch (true) {
-          case sort_direction === "ascending": // if sort ascending...
+          case sort_direction === 'ascending': // if sort ascending...
             if (
               sorted_files[0] !== undefined &&
               sorted_dirs[0] !== undefined &&
               !/sort_by_name|sort_by_kind|sort_by_ext/.test(sort_type)
             ) {
-              sorted_files[0] = sorted_files[0].replace(
-                /class=\"/,
-                'class="border_top ',
-              ); // add border class
+              sorted_files[0] = sorted_files[0].replace(/class=\"/, 'class="border_top '); // add border class
             }
             sorted = [...sorted_dirs, ...sorted_files]; //	sorted = sorted_dirs.concat(sorted_files); // ...dirs before files
             break;
-          case sort_direction === "descending": // sort descending...
+          case sort_direction === 'descending': // sort descending...
             if (
               sorted_dirs[0] !== undefined &&
               !/sort_by_name|sort_by_kind|sort_by_ext/.test(sort_type)
             ) {
-              sorted_dirs[sorted_dirs.length - 1] = sorted_dirs[
-                sorted_dirs.length - 1
-              ].replace(/class=\"/, 'class="border_top '); // add border class
+              sorted_dirs[sorted_dirs.length - 1] = sorted_dirs[sorted_dirs.length - 1].replace(
+                /class=\"/,
+                'class="border_top '
+              ); // add border class
             }
             sorted = [...sorted_dirs, ...sorted_files]; // ...else files before dirs
         }
@@ -5489,7 +5144,7 @@
     if (/sort_by_kind|sort_by_ext/.test(sort_type)) {
       sorted = sortAddBorders(sorted);
     } // add borders for sort by kind and ext
-    return sorted.join("\n");
+    return sorted.join('\n');
   }
   // ***** END BASIC UI FUNCTIONS ***** //
   //============================//
@@ -5501,19 +5156,19 @@
     switch (true) {
       case /prev|next/.test(id): // PREV/NEXT item or audio track
         let key = /prev_btn|prev_track/.test(id)
-          ? "ArrowLeft"
+          ? 'ArrowLeft'
           : /next_btn|next_track/.test(id)
-            ? "ArrowRight"
+            ? 'ArrowRight'
             : null; // define arrowkey
-        if (hasClass("body", "focus_content")) {
-          focusEl("#content_pane");
+        if (hasClass('body', 'focus_content')) {
+          focusEl('#content_pane');
         } else {
-          getEl("#" + id).parentElement.blur();
+          getEl('#' + id).parentElement.blur();
         }
         navigateGetEl([key, false]);
         break; // get the next item
       case /increase|decrease/.test(id):
-        incr = hasContent("font_file") ? 1.0625 : 1.125;
+        incr = hasContent('font_file') ? 1.0625 : 1.125;
         scaleItems(e, incr, id, getContentPaneData());
         break; // SCALE BUTTONS; set scaling increment
     }
@@ -5521,114 +5176,102 @@
   // ===> SHOW INDIVIDUAL CONTENT TYPES
   //============================// MEDIA
   function showMedia(kind, id, src, file_name, bool) {
-    let title = "";
-    removeAttr("#content_audio_container,#content_video", "data-track_title");
-    getEl(".media_player[src]")?.removeEventListener(
-      "timeupdate",
-      cueSheetMenuUpdate,
-    );
-    getEl(".media_player[src]")?.removeEventListener(
-      "click",
-      cueSheetMenuUpdate,
-    ); // remove cuesheet attrs and event listener
+    let title = '';
+    removeAttr('#content_audio_container,#content_video', 'data-track_title');
+    getEl('.media_player[src]')?.removeEventListener('timeupdate', cueSheetMenuUpdate);
+    getEl('.media_player[src]')?.removeEventListener('click', cueSheetMenuUpdate); // remove cuesheet attrs and event listener
     switch (kind) {
-      case "audio":
-        showMedia("close_video");
-        removeClass("#content_pane", "has_audio_error");
+      case 'audio':
+        showMedia('close_video');
+        removeClass('#content_pane', 'has_audio_error');
         switch (true) {
-          case id === "content_iframe_file": // clicked iframe audio files
+          case id === 'content_iframe_file': // clicked iframe audio files
             src = decodeURIComponentSafe(src);
-            title = src.slice(src.lastIndexOf("/") + 1);
-            addClass("#content_pane", "has_audio has_iframe_audio");
-            setAttr("#content_iframe_utility", "src", src.slice(0, -4));
+            title = src.slice(src.lastIndexOf('/') + 1);
+            addClass('#content_pane', 'has_audio has_iframe_audio');
+            setAttr('#content_iframe_utility', 'src', src.slice(0, -4));
             break;
           default: // dir_list audio files
             switch (true) {
-              case hasClass("#" + id, "local"):
+              case hasClass('#' + id, 'local'):
                 break;
-              case bool === "true": // bool !== undefined: if from autoLoadItems, just select file (don't add .audio_loaded class)
-                if (getEl(".dir.content_loaded") !== undefined) {
-                  addRemoveClassSiblings(".dir.content_loaded", "selected");
+              case bool === 'true': // bool !== undefined: if from autoLoadItems, just select file (don't add .audio_loaded class)
+                if (getEl('.dir.content_loaded') !== undefined) {
+                  addRemoveClassSiblings('.dir.content_loaded', 'selected');
                 } // select dir.selected instead of media
-                addClass("#" + id, "selected");
+                addClass('#' + id, 'selected');
                 break;
               default:
-                addRemoveClassSiblings("#" + id, "audio_loaded selected"); // otherwise select loaded media
+                addRemoveClassSiblings('#' + id, 'audio_loaded selected'); // otherwise select loaded media
             }
-            title = getEl("#" + id).querySelector("a").innerText;
-            addClass("#content_pane", "has_audio");
-            removeClass("#content_pane", "has_iframe_audio");
-            src = getEl("#" + id)
-              .querySelector("a")
-              .getAttribute("href");
-            cuesheetGet(id, src, "audio"); // get cuesheet
+            title = getEl('#' + id).querySelector('a').innerText;
+            addClass('#content_pane', 'has_audio');
+            removeClass('#content_pane', 'has_iframe_audio');
+            src = getEl('#' + id)
+              .querySelector('a')
+              .getAttribute('href');
+            cuesheetGet(id, src, 'audio'); // get cuesheet
         }
-        if (hasClass("body", "audio_player_on_top_false")) {
-          audioPlayerPositionToggle("reset");
+        if (hasClass('body', 'audio_player_on_top_false')) {
+          audioPlayerPositionToggle('reset');
         }
-        if (hasClass("body", "has_quicklook")) {
+        if (hasClass('body', 'has_quicklook')) {
           closeContent();
         }
         autoLoadCoverArt(bool, id);
-        setAttr("#content_audio", "src", src);
-        setAttr("#content_audio", "data-src_id", id);
-        getEl("#content_audio_title span").innerText = title;
-        removeClass("#content_audio_playlist_item", "has_content");
+        setAttr('#content_audio', 'src', src);
+        setAttr('#content_audio', 'data-src_id', id);
+        getEl('#content_audio_title span').innerText = title;
+        removeClass('#content_audio_playlist_item', 'has_content');
         break;
-      case "close_audio": // CLOSE AUDIO; pause media; needed in each case, not outside switch
-        getEl("#content_audio_title span").innerHTML = "";
-        removeAttr("#content_audio", "data-src_id");
-        removeAttr("#content_container", "style");
-        removeClass("body", "is_playing is_paused");
-        removeClass(".dirlist_item.audio_loaded", "audio_loaded");
-        removeClass(
-          "#content_pane",
-          "has_audio has_iframe_audio has_audio_error",
-        );
-        removeClass("#content_audio_playlist_item", "has_content");
-        messageSend("iframe", "close_iframe_audio");
-        mediaPlayPause("close");
+      case 'close_audio': // CLOSE AUDIO; pause media; needed in each case, not outside switch
+        getEl('#content_audio_title span').innerHTML = '';
+        removeAttr('#content_audio', 'data-src_id');
+        removeAttr('#content_container', 'style');
+        removeClass('body', 'is_playing is_paused');
+        removeClass('.dirlist_item.audio_loaded', 'audio_loaded');
+        removeClass('#content_pane', 'has_audio has_iframe_audio has_audio_error');
+        removeClass('#content_audio_playlist_item', 'has_content');
+        messageSend('iframe', 'close_iframe_audio');
+        mediaPlayPause('close');
         break;
-      case "video":
-        setAttr("#content_video", "data-src_id", id); // SHOW VIDEO
-        showMedia("close_audio");
-        cuesheetGet(id, src, "video");
-        setData("#content_pane", "content", "has_video");
-        addClass("#content_video", "has_content");
+      case 'video':
+        setAttr('#content_video', 'data-src_id', id); // SHOW VIDEO
+        showMedia('close_audio');
+        cuesheetGet(id, src, 'video');
+        setData('#content_pane', 'content', 'has_video');
+        addClass('#content_video', 'has_content');
         break;
-      case "close_video": // CLOSE VIDEO; pause media; needed in each case, not outside switch
-        mediaPlayPause("close");
-        removeClass(".dirlist_item.video.content_loaded", "content_loaded");
-        removeClass("#content_video", "has_content");
-        removeAttr("#content_video", "src");
-        removeAttr("#content_pane", "data-content");
+      case 'close_video': // CLOSE VIDEO; pause media; needed in each case, not outside switch
+        mediaPlayPause('close');
+        removeClass('.dirlist_item.video.content_loaded', 'content_loaded');
+        removeClass('#content_video', 'has_content');
+        removeAttr('#content_video', 'src');
+        removeAttr('#content_pane', 'data-content');
         break;
     }
-    if (getCurrentUIPref("show_media_name_in_window_title") === "true") {
+    if (getCurrentUIPref('show_media_name_in_window_title') === 'true') {
       toggleMediaNameInWindowTitle(kind, file_name);
     }
   }
   function toggleMediaNameInWindowTitle(kind, file_name) {
     let document_title = / :: /.test(document.title)
-      ? document.title.split(" :: ")[1]
+      ? document.title.split(' :: ')[1]
       : document.title; // add playing media item to document.title
     switch (true) {
       case /close/.test(kind):
         break;
-      case kind === "toggle" &&
-        getCurrentUIPref("show_media_name_in_window_title") === "true":
-        searchParamSet("show_media_name_in_window_title", "false");
-        document.body.classList.add("show_media_name_in_window_title_false");
+      case kind === 'toggle' && getCurrentUIPref('show_media_name_in_window_title') === 'true':
+        searchParamSet('show_media_name_in_window_title', 'false');
+        document.body.classList.add('show_media_name_in_window_title_false');
         break; // toggle off; add searchParam and body class
-      case kind === "toggle" &&
-        getCurrentUIPref("show_media_name_in_window_title") === "false":
-        searchParamDelete("show_media_name_in_window_title");
-        document.body.classList.remove("show_media_name_in_window_title_false"); // toggle on; delete searchParam and body class
-        file_name = getEls(
-          ".dirlist_item.media.audio_loaded,.dirlist_item.media.content_loaded",
-        )[0].dataset.title; // nobreak
+      case kind === 'toggle' && getCurrentUIPref('show_media_name_in_window_title') === 'false':
+        searchParamDelete('show_media_name_in_window_title');
+        document.body.classList.remove('show_media_name_in_window_title_false'); // toggle on; delete searchParam and body class
+        file_name = getEls('.dirlist_item.media.audio_loaded,.dirlist_item.media.content_loaded')[0]
+          .dataset.title; // nobreak
       case !/close/.test(kind):
-        document_title = "Playing: " + file_name + " :: " + document_title;
+        document_title = 'Playing: ' + file_name + ' :: ' + document_title;
         break; // default add name to document title
     }
     document.title = document_title;
@@ -5638,9 +5281,9 @@
     let shuffle_list; // ===> UPDATE SHUFFLE LIST; bool === false: there is a selected media item
     const mediaGetUpdatedShuffleArray = () => {
       let playlist = [];
-      Array.from(
-        getEls(".dirlist_item.media:not(.unchecked,.disabled)"),
-      ).forEach((el) => playlist.push(el.id));
+      Array.from(getEls('.dirlist_item.media:not(.unchecked,.disabled)')).forEach((el) =>
+        playlist.push(el.id)
+      );
       return playlist;
     };
     const mediaShuffleArray = (array) => {
@@ -5651,18 +5294,14 @@
       return array;
     };
     switch (true) {
-      case !hasClass("body", "shuffle_media"):
+      case !hasClass('body', 'shuffle_media'):
         return; // don't shuffle if normal playback
       case id !== undefined:
-        shuffle_list = getData("#content_audio_container", "shufflelist").split(
-          ",",
-        ); // handle checked and unchecked media items: id = checked/unchecked item.id
+        shuffle_list = getData('#content_audio_container', 'shufflelist').split(','); // handle checked and unchecked media items: id = checked/unchecked item.id
         switch (true) {
           case bool === false:
-          case hasClass("#" + id, "unchecked"):
-            shuffle_list = shuffle_list.filter(
-              (shuffle_item_id) => shuffle_item_id !== id,
-            );
+          case hasClass('#' + id, 'unchecked'):
+            shuffle_list = shuffle_list.filter((shuffle_item_id) => shuffle_item_id !== id);
             break; // remove selected or unchecked items
           default:
             shuffle_list.push(id);
@@ -5671,93 +5310,80 @@
         break;
       default:
         shuffle_list = mediaShuffleArray(mediaGetUpdatedShuffleArray()); // reset shufflelist when shuffle option checked
-        if (
-          !mediaIsPlaying("content_audio") ||
-          !mediaIsPlaying("content_video")
-        ) {
+        if (!mediaIsPlaying('content_audio') || !mediaIsPlaying('content_video')) {
           showThis(shuffle_list[0]);
           shuffle_list.shift(); // if nothing playing, load first item from list and remove it
         } else {
           shuffle_list = shuffle_list.filter(
-            (shuffle_item_id) =>
-              shuffle_item_id !== getEls(".dirlist_item.media.audio_loaded").id,
+            (shuffle_item_id) => shuffle_item_id !== getEls('.dirlist_item.media.audio_loaded').id
           ); // else just remove the current item from the shuffle list
         }
     }
     setMediaShuffleListData(shuffle_list); // set shufflelist data and remaining count
   }
   function setMediaShuffleListData(shuffle_list) {
-    shuffle_list =
-      typeof shuffle_list === "string" ? shuffle_list.split(",") : shuffle_list;
-    let shufflecount = shuffle_list[0] === "" ? "0" : shuffle_list.length;
-    setData("#content_audio_container", "shufflelist", shuffle_list);
-    setData(
-      "#shuffle_label",
-      "shufflecount",
-      " (" + shufflecount + " remaining)",
-    ); // set shufflelist data and remaining count
+    shuffle_list = typeof shuffle_list === 'string' ? shuffle_list.split(',') : shuffle_list;
+    let shufflecount = shuffle_list[0] === '' ? '0' : shuffle_list.length;
+    setData('#content_audio_container', 'shufflelist', shuffle_list);
+    setData('#shuffle_label', 'shufflecount', ' (' + shufflecount + ' remaining)'); // set shufflelist data and remaining count
   }
   function toggleCheckBox(e, id) {
-    let input_el = getEl("#" + id).querySelector("input");
+    let input_el = getEl('#' + id).querySelector('input');
     input_el.checked = !input_el.checked;
     input_el.blur();
   }
   function toggleChecked(e, id) {
     e?.stopPropagation();
-    let el = getEl("#" + id),
-      input_el = getEl("#" + id).querySelector("input");
+    let el = getEl('#' + id),
+      input_el = getEl('#' + id).querySelector('input');
     input_el.checked = !input_el.checked;
-    el.classList.toggle("unchecked");
+    el.classList.toggle('unchecked');
     mediaShuffleListUpdate(id);
   }
   function toggleAllChecked(e) {
     e.stopPropagation();
-    getEls(".dirlist_item.media").forEach((el) => toggleCheckBox(e, el.id));
+    getEls('.dirlist_item.media').forEach((el) => toggleCheckBox(e, el.id));
     mediaShuffleListUpdate();
   } // ===> TOGGLE ALL MEDIA CHECKBOXES; update shufflelist
   function mediaScrub(e, args) {
     let factor, skip; // ===> MEDIA SKIP +/-10/30 seconds
     switch (true) {
       case e !== undefined:
-        factor = e.key === "ArrowLeft" ? -1 : 1;
+        factor = e.key === 'ArrowLeft' ? -1 : 1;
         skip = e.altKey && e.shiftKey ? 30 : e.altKey ? 10 : null;
         break; // from top
       case args !== undefined:
-        factor = args[0] === "ArrowLeft" ? -1 : 1;
+        factor = args[0] === 'ArrowLeft' ? -1 : 1;
         skip = args[1] || 0;
         break; // from iframe
     }
-    const player = hasContent("video")
-        ? getEl("#content_video")
-        : getEl("#content_audio"),
+    const player = hasContent('video') ? getEl('#content_video') : getEl('#content_audio'),
       time = player.currentTime; // get current time
     player.currentTime = time + factor * skip; // set new time
   }
   function mediaIsPlaying(id) {
     // ===> IS PLAYING; returns true if all conditions are true
     switch (true) {
-      case !isTopWindow() && !hasClass("body", "has_quicklook"):
-        return hasClass("body", "is_playing") ? true : false;
+      case !isTopWindow() && !hasClass('body', 'has_quicklook'):
+        return hasClass('body', 'is_playing') ? true : false;
       default:
         return (
           id !== undefined &&
-          getEl("#" + id).currentTime > 0 &&
-          !getEl("#" + id).paused &&
-          !getEl("#" + id).ended
+          getEl('#' + id).currentTime > 0 &&
+          !getEl('#' + id).paused &&
+          !getEl('#' + id).ended
         );
     }
   }
   function mediaPlayPause(task) {
-    let player_el = hasContent("video")
-        ? getEl("#content_video")
-        : getEl("#content_audio"),
+    let player_el = hasContent('video') ? getEl('#content_video') : getEl('#content_audio'),
       playing = mediaIsPlaying(player_el.id); // ===> PLAY/PAUSE MEDIA
     switch (true) {
       case player_el === null:
         break;
-      case task === "close":
-        player_el.removeAttribute("src"); // nobreak;
-      case task === "pause":
+      case task === 'close':
+        player_el.removeAttribute('src'); // nobreak;
+      case task === 'pause':
       case playing === true:
         try {
           player_el.pause();
@@ -5765,7 +5391,7 @@
           null;
         }
         break;
-      case task === "play":
+      case task === 'play':
       case playing === false:
         try {
           player_el.play();
@@ -5774,45 +5400,41 @@
         }
         break;
     }
-    if (hasContent("iframe_audio")) {
-      messageSend("iframe", "setIframePlayerStatus", "", task);
+    if (hasContent('iframe_audio')) {
+      messageSend('iframe', 'setIframePlayerStatus', '', task);
     }
   }
   function mediaPlayPrevNextIframeItem() {
     if (!isTopWindow()) {
-      getEl(".dirlist_item.selected.media a").trigger("dblclick");
-      messageSend("top_body", "iframe_play_pause_media");
+      getEl('.dirlist_item.selected.media a').trigger('dblclick');
+      messageSend('top_body', 'iframe_play_pause_media');
     }
   } // ===> PLAY PREV/NEXT IFRAME MEDIA ITEM
   function mediaPlaybackOptions(e, id) {
     e.stopPropagation(); // ===> AUDIO PLAYBACK OPTIONS (shuffle, loop)
-    let loop_el = getEl("#loop"),
-      shuffle_el = getEl("#shuffle");
+    let loop_el = getEl('#loop'),
+      shuffle_el = getEl('#shuffle');
     switch (true) {
-      case id === "loop":
-      case id === "loop_media_files":
-        document.body.classList.toggle("loop_media");
+      case id === 'loop':
+      case id === 'loop_media_files':
+        document.body.classList.toggle('loop_media');
         break;
-      case id === "shuffle":
-      case id === "shuffle_media_files":
-        document.body.classList.toggle("shuffle_media");
+      case id === 'shuffle':
+      case id === 'shuffle_media_files':
+        document.body.classList.toggle('shuffle_media');
         mediaShuffleListUpdate();
         break; // set shufflelist
     }
     switch (
       true // change audio checkboxes prop
     ) {
-      case id === "loop_media_files":
-        loop_el.checked === true
-          ? (loop_el.checked = false)
-          : (loop_el.checked = true);
+      case id === 'loop_media_files':
+        loop_el.checked === true ? (loop_el.checked = false) : (loop_el.checked = true);
         break;
-      case id === "shuffle_media_files":
-        shuffle_el.checked === true
-          ? (shuffle_el.checked = false)
-          : (shuffle_el.checked = true);
+      case id === 'shuffle_media_files':
+        shuffle_el.checked === true ? (shuffle_el.checked = false) : (shuffle_el.checked = true);
         if (shuffle_el.checked === false) {
-          delete getEl("#shuffle_label").dataset("shufflecount");
+          delete getEl('#shuffle_label').dataset('shufflecount');
         }
         break; // remove shufflecount
     }
@@ -5820,47 +5442,42 @@
   //============================// PLAYLISTS/FILELISTS
   function openPlaylist(file_name, reader, data) {
     let bool, list_class; // files & reader = open .m3u file; data = m3u.txtfile content//	// ===> OPEN PLAYLIST
-    if (!data.startsWith("#EXTM3U")) {
+    if (!data.startsWith('#EXTM3U')) {
       return;
     } // prevent reading non-playlist files
-    if (!/has_\w+list/.test(getClassNames("body"))) {
+    if (!/has_\w+list/.test(getClassNames('body'))) {
       // if body does not already have playlist or filelist...
       let body_classes = document.body.classList; // ...store original dir_list and body "has_"classes as data
-      setData(
-        "#directory_list",
-        "dir_list",
-        getEl("#directory_list").innerHTML,
-      );
-      setData("#directory_list", "body_classes", body_classes.value); // store the original dir_list and body classes
+      setData('#directory_list', 'dir_list', getEl('#directory_list').innerHTML);
+      setData('#directory_list', 'body_classes', body_classes.value); // store the original dir_list and body classes
       body_classes.forEach((body_class) => {
-        if (body_class.startsWith("has_")) {
-          removeClass("body", body_class);
+        if (body_class.startsWith('has_')) {
+          removeClass('body', body_class);
         }
       }); // remove media and other body classes
     }
     file_name =
-      file_name !== ""
+      file_name !== ''
         ? file_name
-        : getEl(".dirlist_item.selected.playlist .dirlist_item_name_a")
-            .innerText; // get the file name for the title and current_dir_path
-    getEl("#current_dir_path span").innerHTML = file_name; // set sidebar header title
-    let new_index = buildNewIndex("", prepPlaylist(data), "", "playlist"); // build the new dir_list
-    addClass("body", new_index[1]); // add playlist body classes (has_media, has_audio, etc.)
+        : getEl('.dirlist_item.selected.playlist .dirlist_item_name_a').innerText; // get the file name for the title and current_dir_path
+    getEl('#current_dir_path span').innerHTML = file_name; // set sidebar header title
+    let new_index = buildNewIndex('', prepPlaylist(data), '', 'playlist'); // build the new dir_list
+    addClass('body', new_index[1]); // add playlist body classes (has_media, has_audio, etc.)
     list_class = new_index[1]
-      .split(" ")
-      .every((el) => ["has_audio", "has_media", "has_video"].includes(el))
-      ? "has_playlist"
-      : "has_filelist";
-    addClass("body", list_class); // set play- or filelist class
+      .split(' ')
+      .every((el) => ['has_audio', 'has_media', 'has_video'].includes(el))
+      ? 'has_playlist'
+      : 'has_filelist';
+    addClass('body', list_class); // set play- or filelist class
     if (/file:/.test(new_index) && !/file:/.test(window_protocol)) {
-      addClass("body", "has_warning");
-      addClass("#directory_list", "local");
-      showWarning("openPlaylist", "warning_local_playlist");
+      addClass('body', 'has_warning');
+      addClass('#directory_list', 'local');
+      showWarning('openPlaylist', 'warning_local_playlist');
     } // warn local on non-local
-    getEl("#directory_list").innerHTML = new_index[0]; // replace dir_list with prepared playlist
+    getEl('#directory_list').innerHTML = new_index[0]; // replace dir_list with prepared playlist
     autoLoadItems(); // if autoload media...
-    scrollThis("#directory_list", ".selected", false);
-    document.title = "Playlist: " + file_name;
+    scrollThis('#directory_list', '.selected', false);
+    document.title = 'Playlist: ' + file_name;
     bool = true;
     initEvents();
     updateStats(bool);
@@ -5868,47 +5485,47 @@
   function closePlaylist() {
     // files & reader = open .m3u file; data = m3u.txtfile content//						// ===> OPEN PLAYLIST
     window.stop();
-    closeContent("audio");
+    closeContent('audio');
     closeContent();
-    removeClass("body"); // close all content, remove all body classes, stop window resource loading
-    addClass("body", getData("#directory_list", "body_classes")); // restore original body classes
-    getEl("head title").innerText = "Index of " + window_location; // restore window title
-    getEl("#current_dir_path span").innerHTML = current_dir_path; // restore current_dir_path tilte
-    getEl("#directory_list").innerHTML = getData("#directory_list", "dir_list"); // restore original dir_list...
-    deleteData("#directory_list", "dir_list");
-    deleteData("#directory_list", "body_classes"); // ...and remove data
-    showThis(getEl(".dirlist_item.audio.audio_loaded")?.id);
-    showThis(getEl(".dirlist_item.content_loaded")?.id); // reload previously loaded content
+    removeClass('body'); // close all content, remove all body classes, stop window resource loading
+    addClass('body', getData('#directory_list', 'body_classes')); // restore original body classes
+    getEl('head title').innerText = 'Index of ' + window_location; // restore window title
+    getEl('#current_dir_path span').innerHTML = current_dir_path; // restore current_dir_path tilte
+    getEl('#directory_list').innerHTML = getData('#directory_list', 'dir_list'); // restore original dir_list...
+    deleteData('#directory_list', 'dir_list');
+    deleteData('#directory_list', 'body_classes'); // ...and remove data
+    showThis(getEl('.dirlist_item.audio.audio_loaded')?.id);
+    showThis(getEl('.dirlist_item.content_loaded')?.id); // reload previously loaded content
     initEvents();
     updateStats(false);
   }
   function playlistMake() {
     let items,
       playlist = []; // ===> MAKE PLAYLIST file from directory files for export as m3u
-    let playlist_type = getEl("#make_playlist_form input:checked").id;
+    let playlist_type = getEl('#make_playlist_form input:checked').id;
     switch (
       playlist_type // get playlist items according to selected type
     ) {
-      case "media_files_only":
-        items = getEls(".dirlist_item.media:not(.unchecked)");
+      case 'media_files_only':
+        items = getEls('.dirlist_item.media:not(.unchecked)');
         break;
-      case "audio_files_only":
-        items = getEls(".dirlist_item.audio:not(.unchecked)");
+      case 'audio_files_only':
+        items = getEls('.dirlist_item.audio:not(.unchecked)');
         break;
-      case "video_files_only":
-        items = getEls(".dirlist_item.video:not(.unchecked)");
+      case 'video_files_only':
+        items = getEls('.dirlist_item.video:not(.unchecked)');
         break;
-      case "all_non_media_files":
-        items = getEls(".dirlist_item.non_media");
+      case 'all_non_media_files':
+        items = getEls('.dirlist_item.non_media');
         break;
-      case "all_items":
-        items = getEls(".dirlist_item");
+      case 'all_items':
+        items = getEls('.dirlist_item');
         break;
-      case "directories_only":
-        items = getEls(".dirlist_item.dir");
+      case 'directories_only':
+        items = getEls('.dirlist_item.dir');
         break;
-      case "files_only":
-        items = getEls(".dirlist_item.file");
+      case 'files_only':
+        items = getEls('.dirlist_item.file');
         break;
     }
     switch (true) {
@@ -5916,11 +5533,11 @@
         items.forEach((item) => {
           playlist.push(playlistMakeItem(item.id, true));
         }); // make playlist entry for each item
-        playlist = "#EXTM3U\n" + playlist.join("\n"); // add playlist header id
+        playlist = '#EXTM3U\n' + playlist.join('\n'); // add playlist header id
         saveFile(
           playlist,
-          "audio/mpeg-url",
-          getEl("#current_dir_path").innerText.split("/").reverse()[1] + ".m3u",
+          'audio/mpeg-url',
+          getEl('#current_dir_path').innerText.split('/').reverse()[1] + '.m3u'
         ); // save m3u with default name = current dir name
         closeWarning(); // close warning
     }
@@ -5931,111 +5548,94 @@
     let title,
       link,
       duration,
-      full_path =
-        window.location.protocol +
-        window.location.hostname +
-        window.location.pathname;
+      full_path = window.location.protocol + window.location.hostname + window.location.pathname;
     title =
-      hasContent("grid") && id === "content_title"
-        ? "Files from: " + full_path
+      hasContent('grid') && id === 'content_title'
+        ? 'Files from: ' + full_path
         : bool === true
-          ? getEl("#" + id).dataset.name
-          : getEl("#" + id).innerText; // get title txt
+          ? getEl('#' + id).dataset.name
+          : getEl('#' + id).innerText; // get title txt
     switch (
       true // Get link
     ) {
       case bool === true:
-        link = getEl("#" + id).querySelector("a").href;
+        link = getEl('#' + id).querySelector('a').href;
         break; // get item link for filelists
-      case hasContent("grid") && id === "content_title":
+      case hasContent('grid') && id === 'content_title':
         link = full_path;
         break; // grid link = dir path
-      case id === "content_title":
-        link = hasContent("image")
-          ? getAttr("#content_image", "src")
-          : getAttr(".content_el.has_content", "src");
+      case id === 'content_title':
+        link = hasContent('image')
+          ? getAttr('#content_image', 'src')
+          : getAttr('.content_el.has_content', 'src');
         break; // content link
-      case id === "content_audio_title":
-        link = getLinkInfo(getAttr("#content_audio", "src"))[0].trim();
+      case id === 'content_audio_title':
+        link = getLinkInfo(getAttr('#content_audio', 'src'))[0].trim();
         break; // audio link
     }
-    link = link.startsWith("/") ? window.location.protocol + "//" + link : link; // fix links without protocols (local files)
+    link = link.startsWith('/') ? window.location.protocol + '//' + link : link; // fix links without protocols (local files)
     link = new URL(link); // make new URL from link
-    link = link.protocol + "//" + link.hostname + link.pathname; // compose link
-    duration = hasContent("video")
-      ? Number.parseInt(getEl("#video").duration)
-      : id === "content_audio_title"
-        ? Number.parseInt(getEl("#content_audio").duration)
-        : "";
-    return "#EXTINF:" + duration + "," + title + "\n" + link + "\n"; // return composed playlist entry
+    link = link.protocol + '//' + link.hostname + link.pathname; // compose link
+    duration = hasContent('video')
+      ? Number.parseInt(getEl('#video').duration)
+      : id === 'content_audio_title'
+        ? Number.parseInt(getEl('#content_audio').duration)
+        : '';
+    return '#EXTINF:' + duration + ',' + title + '\n' + link + '\n'; // return composed playlist entry
   }
   function playlistShowItem(id) {
     // ===> SHOW PLAYLIST ENTRY
     switch (true) {
-      case id === "close":
-        removeClass(
-          "#content_playlist_item,#content_audio_playlist_item",
-          "has_content",
-        );
-        getEls("#content_header textarea").forEach((el) => (el.value = ""));
+      case id === 'close':
+        removeClass('#content_playlist_item,#content_audio_playlist_item', 'has_content');
+        getEls('#content_header textarea').forEach((el) => (el.value = ''));
         return;
-      case hasClass("body", "has_quicklook") && id === "content_audio_title":
-        closeContent("audio");
+      case hasClass('body', 'has_quicklook') && id === 'content_audio_title':
+        closeContent('audio');
       case !hasContent():
-      case hasContent("texteditor"):
+      case hasContent('texteditor'):
         return;
     }
     let el_id =
-      id === "content_title"
-        ? "content_playlist_item"
-        : id === "content_audio_title"
-          ? "content_audio_playlist_item"
-          : "";
-    document.getElementById(el_id).classList.toggle("has_content");
-    document.getElementById(el_id).querySelector("textarea").value =
-      playlistMakeItem(id);
-    textareaSelectContent(
-      document.getElementById(el_id).querySelector("textarea").id,
-    ); // add entry to the textarea
-    document.getElementById(el_id).querySelector("textarea").focus();
+      id === 'content_title'
+        ? 'content_playlist_item'
+        : id === 'content_audio_title'
+          ? 'content_audio_playlist_item'
+          : '';
+    document.getElementById(el_id).classList.toggle('has_content');
+    document.getElementById(el_id).querySelector('textarea').value = playlistMakeItem(id);
+    textareaSelectContent(document.getElementById(el_id).querySelector('textarea').id); // add entry to the textarea
+    document.getElementById(el_id).querySelector('textarea').focus();
   }
   //============================// CUESHEETS
   function cuesheetGet(id, link, kind) {
     // id = 'content_iframe_file' or 'dir_list.media.id', link = selected.href, kind = audio/video // ===> GET CUE SHEET
-    if (id === "content_iframe_file") {
+    if (id === 'content_iframe_file') {
       return;
     } // prevent error for iframe files
-    removeClass(".cuesheet_track_list_container", "has_cue_sheet"); // reset cuesheet container
-    getEl("#cuesheet_track_list_audio").innerHTML = ""; // empty existing cue sheet track list
-    let media_file_name = decodeURIComponentSafe(getEl("#" + id).dataset.name);
+    removeClass('.cuesheet_track_list_container', 'has_cue_sheet'); // reset cuesheet container
+    getEl('#cuesheet_track_list_audio').innerHTML = ''; // empty existing cue sheet track list
+    let media_file_name = decodeURIComponentSafe(getEl('#' + id).dataset.name);
     let cue_file_name =
-        decodeURIComponentSafe(media_file_name).slice(
-          0,
-          media_file_name.lastIndexOf("."),
-        ) + ".cuetxt",
-      cue_file_link = "";
-    let cue_file = getEl(
-      '.dirlist_item.code[data-name="' + cue_file_name + '"',
-    ); // get the cuesheet id
+        decodeURIComponentSafe(media_file_name).slice(0, media_file_name.lastIndexOf('.')) +
+        '.cuetxt',
+      cue_file_link = '';
+    let cue_file = getEl('.dirlist_item.code[data-name="' + cue_file_name + '"'); // get the cuesheet id
     if (cue_file !== null) {
-      cue_file_link = document
-        .getElementById(cue_file.id)
-        .querySelector("a")
-        .href.trim();
-      getEl("#content_iframe_utility").src = cue_file_link; // set utility iframe src for processing
+      cue_file_link = document.getElementById(cue_file.id).querySelector('a').href.trim();
+      getEl('#content_iframe_utility').src = cue_file_link; // set utility iframe src for processing
       setAttr(
-        "#cuesheet_track_list_container_" + kind,
-        "data-duration",
-        getEl("#content_" + kind).duration,
+        '#cuesheet_track_list_container_' + kind,
+        'data-duration',
+        getEl('#content_' + kind).duration
       );
     }
   }
   function cuesheetProcess(cuesheet_text) {
     // ===> PROCESS CUE SHEET
-    let commands_arr = ["PERFORMER", "TITLE", "INDEX"],
+    let commands_arr = ['PERFORMER', 'TITLE', 'INDEX'],
       track_command,
-      classes =
-        "cuesheet_track display_grid background_grey_85 pointer padding_4_6";
+      classes = 'cuesheet_track display_grid background_grey_85 pointer padding_4_6';
     let cuesheet_tracks,
       track,
       prepped_track,
@@ -6048,17 +5648,14 @@
       position,
       previous_position,
       container_id;
-    cuesheet_text = cuesheet_text.replace(/\t/g, " ");
-    cuesheet_tracks = !cuesheet_text.startsWith("TRACK")
-      ? cuesheet_text
-          .slice(cuesheet_text.indexOf("TRACK "))
-          .split("TRACK ")
-          .reverse()
-      : cuesheet_text.split("TRACK ").reverse();
+    cuesheet_text = cuesheet_text.replace(/\t/g, ' ');
+    cuesheet_tracks = !cuesheet_text.startsWith('TRACK')
+      ? cuesheet_text.slice(cuesheet_text.indexOf('TRACK ')).split('TRACK ').reverse()
+      : cuesheet_text.split('TRACK ').reverse();
     for (track of cuesheet_tracks) {
       prepped_track = [];
       track = track.trim().split(/[\n\r]/);
-      track_id = track.shift().split(" ")[0]; // for each track in the cue sheet...
+      track_id = track.shift().split(' ')[0]; // for each track in the cue sheet...
       for (let i = 0; i < commands_arr.length; i++) {
         // and for each command in commands_arr...
         for (track_command of track) {
@@ -6066,66 +5663,63 @@
           if (track_command.match(commands_arr[i])) {
             track_command = track_command
               .trim()
-              .replace(/^(performer|title|index\s+\d+)\s*/gim, "")
-              .replace(/^('|\"|\&quot;)|('|\"|\&quot;)$/gim, ""); // prep the displayed track information
-            if (commands_arr[i] === "INDEX") {
+              .replace(/^(performer|title|index\s+\d+)\s*/gim, '')
+              .replace(/^('|\"|\&quot;)|('|\"|\&quot;)$/gim, ''); // prep the displayed track information
+            if (commands_arr[i] === 'INDEX') {
               // format INDEX command; N.B.: cuesheet time format = mm:ss:ff (ff = frames @ 75fr/sec):
               previous_position =
                 position ||
-                getEl(
-                  ".dirlist_item.media.content_loaded .dirlist_item_media_duration",
-                )?.dataset.duration; // first track won't have position, so use length of audio file
-              display_time = track_command.replace(/INDEX\s+\d+\s+/, "");
-              index = display_time.split(":").reverse(); // split the display time
+                getEl('.dirlist_item.media.content_loaded .dirlist_item_media_duration')?.dataset
+                  .duration; // first track won't have position, so use length of audio file
+              display_time = track_command.replace(/INDEX\s+\d+\s+/, '');
+              index = display_time.split(':').reverse(); // split the display time
               position = index[0] / 75 + index[1] * 1 + index[2] * 60; // sum the parts to get total seconds for audio position
               track_command =
                 getFormattedDuration(Math.abs(previous_position - position)) +
                 '</span><span class="cue_position">' +
                 getFormattedDuration(position); // display duration of track
-              duration = getFormattedDuration(
-                Math.abs(previous_position - position),
-              );
+              duration = getFormattedDuration(Math.abs(previous_position - position));
             }
             prepped_track[i] =
               '<span class="cue_' +
               commands_arr[i].toLowerCase() +
               '">' +
-              (track_command.length === 0 ? "—" : track_command) +
-              "</span>"; // make span for each track command
+              (track_command.length === 0 ? '—' : track_command) +
+              '</span>'; // make span for each track command
           }
         }
       }
       prepped_track.unshift(
-        `<li id="cuesheet_item_${track_id}" class="${classes}" data-duration="${duration}" data-position="${position}"><span class="cue_index align_right">${track_id}</span><span class="icon has_icon_before_before"></span>`,
+        `<li id="cuesheet_item_${track_id}" class="${classes}" data-duration="${duration}" data-position="${position}"><span class="cue_index align_right">${track_id}</span><span class="icon has_icon_before_before"></span>`
       ); // add prepped_track prefix html (track number/index, icon)
-      prepped_track_list.push(prepped_track.join("")); // add prepped_track to prepped_track_list
+      prepped_track_list.push(prepped_track.join('')); // add prepped_track to prepped_track_list
     }
     prepped_track_list.pop();
-    prepped_track_list = prepped_track_list.reverse().join("</li>") + "</li>"; // remove mystery empty track item; create prepped track list
+    prepped_track_list = prepped_track_list.reverse().join('</li>') + '</li>'; // remove mystery empty track item; create prepped track list
     track_header =
       '<li class="cuesheet_track header display_grid cursor_default background_grey_85 border_top border_bottom bold"><span class="cue_track_id"></span><span class="icon"></span><span class="cue_performer">Performer</span><span class="cue_title">Title</span><span class="cue_index">Time</span><span class="cue_position">Position</span></li>'; // tracklist menu header elements
     switch (true) {
-      case elExists(".dirlist_item.audio_loaded"):
-      case hasContent("iframe_audio"):
-        container_id = "#cuesheet_track_list_audio";
+      case elExists('.dirlist_item.audio_loaded'):
+      case hasContent('iframe_audio'):
+        container_id = '#cuesheet_track_list_audio';
         break;
-      case elExists(".dirlist_item.video.content_loaded"):
-      case hasContent("iframe_file"):
-        container_id = "#cuesheet_track_list_video";
+      case elExists('.dirlist_item.video.content_loaded'):
+      case hasContent('iframe_file'):
+        container_id = '#cuesheet_track_list_video';
         break;
     }
-    getEl(container_id)?.closest("nav")?.classList.add("has_cue_sheet");
+    getEl(container_id)?.closest('nav')?.classList.add('has_cue_sheet');
     getEl(container_id).innerHTML = track_header + prepped_track_list; // add cue sheet track list to menu
     initCuesheetEvents();
     cueSheetMenuUpdate(); // init cuesheet event listeners
   }
   function cueSheetMenuUpdate() {
-    let media_el = getEl(".media_player[src]"); // UPDATE CUESHEET MENU: continuously on timeupdate
+    let media_el = getEl('.media_player[src]'); // UPDATE CUESHEET MENU: continuously on timeupdate
     let current_time = media_el?.currentTime;
     let current_track =
-      getEl(".cuesheet_track.selected") !== null
-        ? getEl(".cuesheet_track.selected")
-        : getEl("#cuesheet_item_1");
+      getEl('.cuesheet_track.selected') !== null
+        ? getEl('.cuesheet_track.selected')
+        : getEl('#cuesheet_item_1');
     let current_position = current_track?.dataset.position,
       next_track = current_track?.nextElementSibling,
       next_position = next_track?.dataset.position,
@@ -6134,129 +5728,121 @@
     switch (true) {
       case current_time >= current_position && current_time < next_position:
         bool = true;
-        if (!current_track.classList.contains("selected")) {
-          current_track.classList.add("selected");
+        if (!current_track.classList.contains('selected')) {
+          current_track.classList.add('selected');
         }
         break; // current track playing
       case current_track === null && current_position === undefined: // nobreak; click media player timeline with nothing selected
       case current_time < current_position || current_time > next_position: // nobreak; click media player timeline outside of current track
       case current_time < next_position:
         bool = false; // or when scrubbing backwards...
-        current_track?.classList.remove("selected");
-        current_track = Array.from(getEls(".cuesheet_track"))
+        current_track?.classList.remove('selected');
+        current_track = Array.from(getEls('.cuesheet_track'))
           .reverse()
           .find((el) => el.dataset.position < current_time);
         break; // ...select current track by position
       case current_time > next_position:
         bool = false; // when current track ends (playing or scrubbing forward...
-        current_track.classList.remove("selected");
+        current_track.classList.remove('selected');
         current_track = next_track; // redefine current track
     }
     next_track = current_track?.nextElementSibling; // redefine next track
     track_title =
-      current_track?.querySelector(".cue_performer").innerText +
-      ": " +
-      current_track?.querySelector(".cue_title").innerText; // get the current track title
-    media_el.closest(".track_title_container").dataset.track_title =
-      track_title; // else update title
+      current_track?.querySelector('.cue_performer').innerText +
+      ': ' +
+      current_track?.querySelector('.cue_title').innerText; // get the current track title
+    media_el.closest('.track_title_container').dataset.track_title = track_title; // else update title
     if (bool !== true) {
-      current_track?.classList.add("selected");
-      scrollThis("#cuesheet_track_list_audio", ".cuesheet_track.selected");
+      current_track?.classList.add('selected');
+      scrollThis('#cuesheet_track_list_audio', '.cuesheet_track.selected');
     } // select and scroll to current track
   }
   function updateCueSheetDisplay() {
     null;
   }
   function setCueSheetTrackTitle(id, media_el) {
-    let current_track = getEl(".cuesheet_track.selected");
+    let current_track = getEl('.cuesheet_track.selected');
     let track_title =
-      current_track.querySelector(".cue_performer").innerText +
-      ": " +
-      current_track.querySelector(".cue_title").innerText; // get the current track title
-    getEl("#content_" + media_el).dataset.track_title = track_title; // set media player data-track_title
+      current_track.querySelector('.cue_performer').innerText +
+      ': ' +
+      current_track.querySelector('.cue_title').innerText; // get the current track title
+    getEl('#content_' + media_el).dataset.track_title = track_title; // set media player data-track_title
   }
   //============================// FONTS
   function fontRestoreOptions(id) {
     // restore font toolbar values after closing previewed glyph with modified options values
-    getEl("#font_size").value = getEl(id).dataset.scale;
-    getEl("#text_color").value = getEl(id).style.color; // restore size and color
+    getEl('#font_size').value = getEl(id).dataset.scale;
+    getEl('#text_color').value = getEl(id).style.color; // restore size and color
     switch (
       true // restore text stroke color & width
     ) {
-      case id === "#font_file_grid":
-        getEl("#text_stroke_width").value =
+      case id === '#font_file_grid':
+        getEl('#text_stroke_width').value =
           getEl(id)
-            .querySelector("svg path")
-            .getAttribute("stroke-width")
-            ?.replace(/[A-z]+/, "") || "";
-        getEl("#text_stroke_color").value =
-          getEl(id).querySelector("svg path").getAttribute("stroke") || "";
+            .querySelector('svg path')
+            .getAttribute('stroke-width')
+            ?.replace(/[A-z]+/, '') || '';
+        getEl('#text_stroke_color').value =
+          getEl(id).querySelector('svg path').getAttribute('stroke') || '';
         break;
-      case id === "#font_specimen_viewer":
-        getEl("#text_stroke_width").value = getEl(
-          id,
-        ).style.webkitTextStrokeWidth.replace(/[A-z]+/, "");
-        getEl("#text_stroke_color").value =
-          getEl(id).style.webkitTextStrokeColor;
+      case id === '#font_specimen_viewer':
+        getEl('#text_stroke_width').value = getEl(id).style.webkitTextStrokeWidth.replace(
+          /[A-z]+/,
+          ''
+        );
+        getEl('#text_stroke_color').value = getEl(id).style.webkitTextStrokeColor;
         break;
     }
   }
   function setFontSpecimenViewerStyles(font_family) {
     if (font_family !== false) {
-      getEl("#font_specimen_viewer").style.fontFamily = '"' + font_family + '"';
+      getEl('#font_specimen_viewer').style.fontFamily = '"' + font_family + '"';
     } // set content font styles
-    getEl("#font_specimen_viewer").style.fontSize =
-      getEl("#font_size").value + "em"; // ""    ""
-    getEl("#font_specimen_viewer").style.lineHeight =
-      Number(getEl("#line_height").value) === 0
-        ? 1.2
-        : Number(getEl("#line_height").value) + 1.2; // ""    ""
-    getEl("#font_specimen_viewer").style.letterSpacing =
-      getEl("#letter_spacing").value; // ""    ""
-    getEl("#font_specimen_viewer").style.webkitTextStrokeWidth =
-      getEl("#text_stroke_width").value; // ""    ""
-    getEl("#text_color").value = getEl("#font_specimen_viewer").style.color;
-    getEl("#text_stroke_color").value = getEl(
-      "#font_specimen_viewer",
-    ).style.webkitTextStrokeColor;
+    getEl('#font_specimen_viewer').style.fontSize = getEl('#font_size').value + 'em'; // ""    ""
+    getEl('#font_specimen_viewer').style.lineHeight =
+      Number(getEl('#line_height').value) === 0 ? 1.2 : Number(getEl('#line_height').value) + 1.2; // ""    ""
+    getEl('#font_specimen_viewer').style.letterSpacing = getEl('#letter_spacing').value; // ""    ""
+    getEl('#font_specimen_viewer').style.webkitTextStrokeWidth = getEl('#text_stroke_width').value; // ""    ""
+    getEl('#text_color').value = getEl('#font_specimen_viewer').style.color;
+    getEl('#text_stroke_color').value = getEl('#font_specimen_viewer').style.webkitTextStrokeColor;
   }
   function showFont(id, bool, font_grid, link, i, font_items_length) {
     // ===> SET FONT CSS rules or create font grid items (bool === true) // id from gridMakeFontItems(); link = from previewed directory
-    let font_styles = getEl("#font_styles"),
-      border_class = "",
-      last_item_class = "",
+    let font_styles = getEl('#font_styles'),
+      border_class = '',
+      last_item_class = '',
       display_name,
-      font_grid_item_info = "",
-      font_grid_item_el = "";
+      font_grid_item_info = '',
+      font_grid_item_el = '';
     let font_family =
-      link !== ""
-        ? link?.slice(link.lastIndexOf("/") + 1, link?.lastIndexOf("."))
-        : getEl("#" + id).dataset.name;
+      link !== ''
+        ? link?.slice(link.lastIndexOf('/') + 1, link?.lastIndexOf('.'))
+        : getEl('#' + id).dataset.name;
     font_family = decodeURIComponentSafe(font_family); // get CSS font family
-    let font_url = link !== "" ? link : getAttr("#" + id + " a", "href");
+    let font_url = link !== '' ? link : getAttr('#' + id + ' a', 'href');
     font_url = decodeURIComponentSafe(font_url); // get CSS font src
-    setWarningItemNotLoaded(link, "font");
+    setWarningItemNotLoaded(link, 'font');
     switch (true) {
       case bool === false: // If bool === false, set CSS rules for previewed fonts
         font_styles.innerHTML = `@font-face { font-family: "${font_family}"; src: url("${font_url}"); }`; // insert new @font-face rule
-        addClass("#content_pane", "has_font_specimen");
+        addClass('#content_pane', 'has_font_specimen');
         setFontSpecimenViewerStyles(font_family);
         break;
-      case font_grid === "font_grid": // ...else (if bool === true) make grid font items
+      case font_grid === 'font_grid': // ...else (if bool === true) make grid font items
         display_name = font_family;
         if (i === font_items_length - 1) {
-          last_item_class = "border_bottom_x";
+          last_item_class = 'border_bottom_x';
         }
         if (i > 0) {
-          border_class = "border_top_x";
+          border_class = 'border_top_x';
         }
-        font_grid_item_info = `<p class="font_grid_item_info margin_0 text_color_default font_size_small line_height_1">${display_name.toUpperCase()}</p><h2 style=\'font-family: "${font_family}"\'; class="margin_0 normal"><a class="text_color_default" href="${font_url}">${display_name.slice(0, font_family.lastIndexOf("."))}</a></h2>`;
+        font_grid_item_info = `<p class="font_grid_item_info margin_0 text_color_default font_size_small line_height_1">${display_name.toUpperCase()}</p><h2 style=\'font-family: "${font_family}"\'; class="margin_0 normal"><a class="text_color_default" href="${font_url}">${display_name.slice(0, font_family.lastIndexOf('.'))}</a></h2>`;
         font_grid_item_el = `<li class="grid_item font_grid_item ${border_class} ${last_item_class} background_grey_90" data-id="${id}" data-kind="font">${font_grid_item_info}</li>`;
-        if (!/font_family/.test(getEl("#font_grid_styles").innerHTML)) {
+        if (!/font_family/.test(getEl('#font_grid_styles').innerHTML)) {
           // only add font family style if it isn't already there
-          getEl("#font_grid_styles").insertAdjacentHTML(
-            "beforeend",
-            `@font-face { font-family: "${font_family}"; src: url("${font_url}"); }`,
+          getEl('#font_grid_styles').insertAdjacentHTML(
+            'beforeend',
+            `@font-face { font-family: "${font_family}"; src: url("${font_url}"); }`
           );
         }
         return font_grid_item_el;
@@ -6265,54 +5851,54 @@
   }
   function closeFont() {
     switch (true) {
-      case hasContent("iframe_file,iframe_dir"):
-        showThis(getEl(".dirlist_item.non_media.selected")?.id);
+      case hasContent('iframe_file,iframe_dir'):
+        showThis(getEl('.dirlist_item.non_media.selected')?.id);
         break; // if iframe item, reopen sidebar dir
-      case hasContent("font_file_glyph"): // CLOSE FONT_FILE_GLYPH font_specimen_grid
-        removeClass("#content_pane", "has_font_file_glyph");
-        addClass("#content_pane", "has_font_file");
-        getEl("#svg_container g").style.transform = "scale(1)";
-        fontRestoreOptions("#font_file_grid");
+      case hasContent('font_file_glyph'): // CLOSE FONT_FILE_GLYPH font_specimen_grid
+        removeClass('#content_pane', 'has_font_file_glyph');
+        addClass('#content_pane', 'has_font_file');
+        getEl('#svg_container g').style.transform = 'scale(1)';
+        fontRestoreOptions('#font_file_grid');
         break; // reset font_scale slider
-      case hasContent("font_specimen_glyph"): // CLOSE FONT_SPECIMEN_GLYPH
-        removeClass("#content_pane", "has_font_specimen_glyph");
-        addClass("#content_pane", "has_font_specimen");
-        removeAttr("#font_specimen_glyph", "style");
-        removeAttr("#font_specimen_viewer", ["data-char", "data-unicode_hex"]);
-        getEl("#font_specimen_glyph").innerText = "";
-        fontRestoreOptions("#font_specimen_viewer");
+      case hasContent('font_specimen_glyph'): // CLOSE FONT_SPECIMEN_GLYPH
+        removeClass('#content_pane', 'has_font_specimen_glyph');
+        addClass('#content_pane', 'has_font_specimen');
+        removeAttr('#font_specimen_glyph', 'style');
+        removeAttr('#font_specimen_viewer', ['data-char', 'data-unicode_hex']);
+        getEl('#font_specimen_glyph').innerText = '';
+        fontRestoreOptions('#font_specimen_viewer');
         break; // reset font_scale slider
-      case hasContent("font_file"):
-        showWarning("showFont", "close");
+      case hasContent('font_file'):
+        showWarning('showFont', 'close');
         break; // CLOSE FONT FILE with warning
-      case getEl("#font_specimen_grid").children?.length > 0:
-        getEl("#font_specimen_grid").innerHTML = "";
-        getEl("#unicode_char_ranges_select").value = "";
-        showContentPaneEl("font");
+      case getEl('#font_specimen_grid').children?.length > 0:
+        getEl('#font_specimen_grid').innerHTML = '';
+        getEl('#unicode_char_ranges_select').value = '';
+        showContentPaneEl('font');
         break;
-      case hasContent("font_specimen"):
-        if (getEl(".dirlist_item.dir.selected")) {
-          showThis(getEl(".dirlist_item.dir.selected").id);
+      case hasContent('font_specimen'):
+        if (getEl('.dirlist_item.dir.selected')) {
+          showThis(getEl('.dirlist_item.dir.selected').id);
         } // reopen selected sidebar dir
         else {
-          setData("#content_pane", "content", "has_null");
-          setData("#content_pane", "loaded_id", "null"); // else close sidebar font
-          removeClass("#content_pane", "has_font_specimen has_file");
-          removeClass("#content_font", "has_content");
-          setContentTitle("close");
+          setData('#content_pane', 'content', 'has_null');
+          setData('#content_pane', 'loaded_id', 'null'); // else close sidebar font
+          removeClass('#content_pane', 'has_font_specimen has_file');
+          removeClass('#content_font', 'has_content');
+          setContentTitle('close');
         }
         break;
       default:
-        setAttr("#content_pane", "data-content", "has_null");
+        setAttr('#content_pane', 'data-content', 'has_null');
         removeClass(
-          "#content_pane",
-          "has_font_specimen has_font_specimen_glyph has_font_file has_font_file_glyph",
+          '#content_pane',
+          'has_font_specimen has_font_specimen_glyph has_font_file has_font_file_glyph'
         );
-        removeClass("#content_font", "has_content");
-        removeAttr("#content_font", "src");
-        removeAttr("#font_specimen_viewer", "style");
-        setContentTitle("close");
-        focusEl("#top_body");
+        removeClass('#content_font', 'has_content');
+        removeAttr('#content_font', 'src');
+        removeAttr('#font_specimen_viewer', 'style');
+        setContentTitle('close');
+        focusEl('#top_body');
         break;
     }
   }
@@ -6325,163 +5911,147 @@
       unicode_dec,
       unicode_hex,
       svg_container;
-    if (
-      (e?.type === "click" || e?.key === "Enter") &&
-      /glyph_container/.test(id)
-    ) {
-      removeClass("#font_file_grid .selected", "selected");
-      addClass("#" + id, "selected");
+    if ((e?.type === 'click' || e?.key === 'Enter') && /glyph_container/.test(id)) {
+      removeClass('#font_file_grid .selected', 'selected');
+      addClass('#' + id, 'selected');
     } // select clicked or
-    if (!hasContent("font_file_glyph") && !hasContent("font_specimen_glyph")) {
-      getEl("#font_size").value = 1;
+    if (!hasContent('font_file_glyph') && !hasContent('font_specimen_glyph')) {
+      getEl('#font_size').value = 1;
     }
     switch (true) {
-      case id === "close":
-      case id === "close_specimen":
-        closeContent("font");
+      case id === 'close':
+      case id === 'close_specimen':
+        closeContent('font');
         return; // close font glyph
       case /font_specimen/.test(id):
-      case hasContent("font_specimen"):
-      case hasContent("font_specimen_glyph"): // font specimens and font specimen glyphs
-        this_glyph = getEl("#" + id);
-        glyph_viewer = getEl("#font_specimen_viewer");
-        getEl("#font_specimen_glyph").innerText = String.fromCodePoint(
-          this_glyph.dataset.unicode_dec,
+      case hasContent('font_specimen'):
+      case hasContent('font_specimen_glyph'): // font specimens and font specimen glyphs
+        this_glyph = getEl('#' + id);
+        glyph_viewer = getEl('#font_specimen_viewer');
+        getEl('#font_specimen_glyph').innerText = String.fromCodePoint(
+          this_glyph.dataset.unicode_dec
         ); // add glyph to specimen glyph
         glyph_name = String.fromCodePoint(this_glyph.dataset.unicode_dec);
         unicode_dec = this_glyph.dataset.unicode_dec;
         unicode_hex = this_glyph.dataset.unicode_hex;
-        removeClass("#content_pane", "has_font_specimen");
-        addClass("#content_pane", "has_font_specimen_glyph");
-        focusEl("#content_pane");
-        getEl("#content_pane .font_glyph_item.selected")?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
+        removeClass('#content_pane', 'has_font_specimen');
+        addClass('#content_pane', 'has_font_specimen_glyph');
+        focusEl('#content_pane');
+        getEl('#content_pane .font_glyph_item.selected')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
         });
         break; // hide font_specimen, show font_specimen glyph
-      case hasContent("font_file"):
-      case hasContent("font_file_glyph"): // font files and font file glyphs
-        this_glyph = getEl("#" + id) || getEl("#font_file_grid .selected");
-        glyph_viewer = getEl("#font_file_glyph_viewer");
-        data_glyph_SVG = this_glyph.querySelector("svg").cloneNode(true); // get glyph by id, glyph path, & glyph SVG
-        data_glyph_SVG.setAttribute("viewBox", "0 0 50 160");
-        data_glyph_SVG.style.width = "100%";
-        data_glyph_SVG.style.height = "100%";
-        data_glyph_SVG.style.color = getEl("#text_color").value; // set attrs & styles
-        data_glyph_SVG.classList.remove("invert");
-        data_glyph_SVG.classList.add("overflow_visible");
-        data_glyph_SVG.querySelector("g").style.transform =
-          "scale(" + glyph_viewer.dataset.scale + ")";
-        if (elExists("#svg_container")) {
+      case hasContent('font_file'):
+      case hasContent('font_file_glyph'): // font files and font file glyphs
+        this_glyph = getEl('#' + id) || getEl('#font_file_grid .selected');
+        glyph_viewer = getEl('#font_file_glyph_viewer');
+        data_glyph_SVG = this_glyph.querySelector('svg').cloneNode(true); // get glyph by id, glyph path, & glyph SVG
+        data_glyph_SVG.setAttribute('viewBox', '0 0 50 160');
+        data_glyph_SVG.style.width = '100%';
+        data_glyph_SVG.style.height = '100%';
+        data_glyph_SVG.style.color = getEl('#text_color').value; // set attrs & styles
+        data_glyph_SVG.classList.remove('invert');
+        data_glyph_SVG.classList.add('overflow_visible');
+        data_glyph_SVG.querySelector('g').style.transform =
+          'scale(' + glyph_viewer.dataset.scale + ')';
+        if (elExists('#svg_container')) {
           // if a glyph is being shown...
-          getEl("#svg_container svg").remove();
-          getEl("#svg_container").insertAdjacentHTML(
-            "beforeend",
-            data_glyph_SVG.outerHTML,
-          );
-          svg_container = getEl("#svg_container").outerHTML; // get svg_container, add new svg;
+          getEl('#svg_container svg').remove();
+          getEl('#svg_container').insertAdjacentHTML('beforeend', data_glyph_SVG.outerHTML);
+          svg_container = getEl('#svg_container').outerHTML; // get svg_container, add new svg;
         } else {
           // ...and so preserve any added styles
           svg_container =
             '<div id="svg_container" class="display_flex invert position_relative width_100 height_100">' +
             data_glyph_SVG.outerHTML +
-            "</div>"; // else create new svg container
+            '</div>'; // else create new svg container
         }
-        getEl("#glyph_container")?.remove(); // remove existing glyph_container
+        getEl('#glyph_container')?.remove(); // remove existing glyph_container
         glyph_viewer.insertAdjacentHTML(
-          "beforeend",
-          '<div id="glyph_container" class="flex_justify_center">' +
-            svg_container +
-            "</div>",
+          'beforeend',
+          '<div id="glyph_container" class="flex_justify_center">' + svg_container + '</div>'
         ); // add the glyph_container to font_file_glyph_viewer
         glyph_name = this_glyph.dataset.glyph_name;
         unicode_dec = this_glyph.dataset.unicode_dec;
         unicode_hex = this_glyph.dataset.unicode_hex;
-        getEl("#svg_container").onmousedown = function (e) {
-          fontGlyphMove(e, "#svg_container");
+        getEl('#svg_container').onmousedown = function (e) {
+          fontGlyphMove(e, '#svg_container');
         }; // init fontGlyphMove
-        removeClass("#content_pane", "has_font_file");
-        addClass("#content_pane", "has_font_file_glyph");
-        focusEl("#content_pane");
-        getEl("#content_pane .font_glyph_item.selected")?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
+        removeClass('#content_pane', 'has_font_file');
+        addClass('#content_pane', 'has_font_file_glyph');
+        focusEl('#content_pane');
+        getEl('#content_pane .font_glyph_item.selected')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
         });
         break; // hide font_file grid, show font_file_glyph
     }
     glyph_viewer.dataset.glyph_name = glyph_name;
-    glyph_viewer.dataset.unicode_dec = "Unicode Dec: " + unicode_dec;
-    glyph_viewer.dataset.unicode_hex = "Unicode Hex: " + unicode_hex;
+    glyph_viewer.dataset.unicode_dec = 'Unicode Dec: ' + unicode_dec;
+    glyph_viewer.dataset.unicode_hex = 'Unicode Hex: ' + unicode_hex;
   }
   function openFontFile(files, reader, bool) {
     // ===> OPEN FONT FILE
-    getEl("#font_file_viewer").remove();
-    getEl("#content_font").insertAdjacentHTML(
-      "beforeend",
-      Content_Pane_Elements("content_font_viewer"),
+    getEl('#font_file_viewer').remove();
+    getEl('#content_font').insertAdjacentHTML(
+      'beforeend',
+      Content_Pane_Elements('content_font_viewer')
     ); // reset font_file_viewer
     switch (true) {
-      case files === "close": // close font file
-        removeClass("body", "focus_content");
-        removeAttr("#content_pane", "data-content");
+      case files === 'close': // close font file
+        removeClass('body', 'focus_content');
+        removeAttr('#content_pane', 'data-content');
         removeClass(
-          "#content_pane",
-          "has_font_specimen has_font_specimen_glyph has_font_file has_font_file_glyph",
+          '#content_pane',
+          'has_font_specimen has_font_specimen_glyph has_font_file has_font_file_glyph'
         ); // remove content_pane attrs and classes
-        removeClass("#content_font", "has_content"); // remove content_font classes
-        getEl("#font_file_grid").innerHTML = "";
-        getEl("#content_title span").innerHTML = ""; // empty font_file_grid and content_title
+        removeClass('#content_font', 'has_content'); // remove content_font classes
+        getEl('#font_file_grid').innerHTML = '';
+        getEl('#content_title span').innerHTML = ''; // empty font_file_grid and content_title
         if (bool === undefined) {
           // show previously loaded content or close content, but not if bool
-          if (getEl(".dirlist_item.content_loaded")) {
-            showThis(getEl(".dirlist_item.content_loaded")?.id);
+          if (getEl('.dirlist_item.content_loaded')) {
+            showThis(getEl('.dirlist_item.content_loaded')?.id);
           } else {
-            showThis("close");
+            showThis('close');
           } // (but not when opening new font file)
         }
         break;
       default: // show font file
-        if (
-          !hasContent("font_file") &&
-          !/has_\w+list/.test(getClassNames("#top_body"))
-        ) {
-          showThis("close");
+        if (!hasContent('font_file') && !/has_\w+list/.test(getClassNames('#top_body'))) {
+          showThis('close');
         } // close content & hide grids
         removeClass(
-          "#content_pane",
-          "has_font_specimen has_font_specimen_glyph has_font_file_glyph",
+          '#content_pane',
+          'has_font_specimen has_font_specimen_glyph has_font_file_glyph'
         );
-        addClass("#content_pane", "has_font_file"); // content_pane classes
-        setContentPaneAttrs(files.name, "font", "content_font", files.name);
-        showContentPaneEl("font");
-        setData("#font_file_glyph_viewer", "scale", "1"); // reset font file glyph viewer
-        makeFontGlyphItems("font_file", reader.result); // => make glyph items from font file
-        getEls(".glyph_container").forEach((el) =>
-          el.addEventListener("click", (e) => showFontGlyph(e, el.id)),
+        addClass('#content_pane', 'has_font_file'); // content_pane classes
+        setContentPaneAttrs(files.name, 'font', 'content_font', files.name);
+        showContentPaneEl('font');
+        setData('#font_file_glyph_viewer', 'scale', '1'); // reset font file glyph viewer
+        makeFontGlyphItems('font_file', reader.result); // => make glyph items from font file
+        getEls('.glyph_container').forEach((el) =>
+          el.addEventListener('click', (e) => showFontGlyph(e, el.id))
         ); // init click listener for each glyph
-        focusEl("#font_file_grid"); // focus font_file_grid
+        focusEl('#font_file_grid'); // focus font_file_grid
     }
   }
   function getFontFileInfo(font) {
     let font_names = font.names,
-      font_info_details = "",
+      font_info_details = '',
       name,
       value; // ===> GET FONT INFO
     for (name in font_names) {
       value = font_names[name].en;
-      if (name.endsWith("URL")) {
-        let href = !value.startsWith("http") ? "http://" + value : value; // in case url without protocol is used
-        value =
-          '<a class="bold" href="' +
-          href +
-          '" target="_blank">' +
-          value +
-          "</a>";
+      if (name.endsWith('URL')) {
+        let href = !value.startsWith('http') ? 'http://' + value : value; // in case url without protocol is used
+        value = '<a class="bold" href="' + href + '" target="_blank">' + value + '</a>';
       }
       font_info_details += `<li class="display_none"><span class="col_1 font_info_name align_right"> ${name}: </span><span class="font_info_value">${value}</span></li>`;
     }
     let font_info = `<ul id="font_info" class="info_list font_size_small border_all margin_0 padding_0 text_color_default background_grey_80 position_fixed z_index_2">     <li class="info_list_header align_center bold"><span>FONT INFO:${font.names.fullName.en.toUpperCase()}</span></li>     ${font_info_details}     <li class="display_none"><span class="col_1 font_info_name align_right">numGlyphs: </span><span class="font_info_value">${font.numGlyphs}</span></li>     </ul>`;
-    getEl("#font_file_viewer").insertAdjacentHTML("beforeend", font_info);
+    getEl('#font_file_viewer').insertAdjacentHTML('beforeend', font_info);
   }
   // FONT GLYPHS
   function makeFontGlyphItem(kind, index, glyph) {
@@ -6493,13 +6063,13 @@
       glyph_hex,
       glyph_path,
       glyph_boundingbox,
-      tab_order = index === 0 ? 'data-tab_order="0"' : ""; // glyph_width,glyph_height,glyph_advancewidth,glyph_leftsidebearing;
+      tab_order = index === 0 ? 'data-tab_order="0"' : ''; // glyph_width,glyph_height,glyph_advancewidth,glyph_leftsidebearing;
     switch (kind) {
-      case "font_file":
+      case 'font_file':
         glyph_name = glyph.name;
         glyph_index = glyph.index;
-        glyph_dec = glyph.unicode !== undefined ? glyph.unicode : "";
-        glyph_hex = glyph_dec !== null ? convertDecimal2Hex(glyph_dec, 4) : ""; // get glyph dec and hex values
+        glyph_dec = glyph.unicode !== undefined ? glyph.unicode : '';
+        glyph_hex = glyph_dec !== null ? convertDecimal2Hex(glyph_dec, 4) : ''; // get glyph dec and hex values
         glyph_path = glyph.getPath(0, 100, 72);
         glyph_boundingbox = glyph_path.getBoundingBox();
         glyph_path = glyph_path
@@ -6508,40 +6078,33 @@
           .replace(/path /g, "path fill='currentColor' "); // define glyph svg path and escape "
         glyph_svg = `<svg xmlns=\'http://www.w3.org/2000/svg\' x=\'0px\' y=\'0px\' viewBox=\'${glyph_boundingbox.x1 < 0 ? 0 : glyph_boundingbox.x1} 20 ${Math.abs(glyph_boundingbox.x2)} ${glyph_boundingbox.y2}\' xml:space=\'preserve\' preserveAspectRatio=\'xMidYMid meet\'><g>${glyph_path}</g></svg>`;
         break;
-      case "font_specimen":
+      case 'font_specimen':
         glyph_index = index;
         glyph_dec = index;
         glyph_hex = convertDecimal2Hex(index, 4);
         break;
     }
-    return `<li id="${kind}_glyph_container_${glyph_index}" data-id="glyph_container_${glyph_index}" data-glyph_name="${glyph_name || ""}" ${tab_order} data-unicode_dec="${glyph_dec}" data-unicode_hex="U+${glyph_hex}" class="grid_item font_glyph_item glyph_container flex_justify_center border_right_x border_bottom_x position_relative"><div class="glyph display_block">${glyph_svg || String.fromCharCode(glyph_index)}</div></li>`; // return glyph item
+    return `<li id="${kind}_glyph_container_${glyph_index}" data-id="glyph_container_${glyph_index}" data-glyph_name="${glyph_name || ''}" ${tab_order} data-unicode_dec="${glyph_dec}" data-unicode_hex="U+${glyph_hex}" class="grid_item font_glyph_item glyph_container flex_justify_center border_right_x border_bottom_x position_relative"><div class="glyph display_block">${glyph_svg || String.fromCharCode(glyph_index)}</div></li>`; // return glyph item
   }
   function makeFontGlyphItems(kind, data, bool) {
     // MAKE FONT GLYPH GRIDS; kind,data === font_specimen,char_block_id or font_file,fontblob
-    let glyph_items = "",
+    let glyph_items = '',
       font_file,
       font_glyphs,
-      font_file_grid = getEl("#font_file_grid"),
+      font_file_grid = getEl('#font_file_grid'),
       loop_start,
       loop_end;
     switch (kind) {
-      case "font_file": // display font_file glyphs
+      case 'font_file': // display font_file glyphs
         font_file = window.opentype.parse(data); // parse font (req opentype.js)
         font_glyphs = font_file.glyphs; // get font glyphs
-        setData(
-          "#font_file_glyph_viewer",
-          "font_name",
-          font_file.names.fullName.en,
-        ); // add font name to glyph viewer dataset
+        setData('#font_file_glyph_viewer', 'font_name', font_file.names.fullName.en); // add font name to glyph viewer dataset
         (loop_start = 0), (loop_end = font_glyphs.length);
         break;
-      case "font_specimen": // for displaying unicode char_block ranges
-        if (data !== "") {
-          loop_start = convertHex2Decimal(
-            getEl("#" + data).dataset.block_start,
-          );
-          loop_end =
-            convertHex2Decimal(getEl("#" + data).dataset.block_end) + 1;
+      case 'font_specimen': // for displaying unicode char_block ranges
+        if (data !== '') {
+          loop_start = convertHex2Decimal(getEl('#' + data).dataset.block_start);
+          loop_end = convertHex2Decimal(getEl('#' + data).dataset.block_end) + 1;
         }
         break; // loop char_block start/end range
     }
@@ -6551,18 +6114,18 @@
     switch (true) {
       case bool:
         return glyph_items;
-      case data === "":
-        getEl("#font_specimen_grid").innerHTML = "";
+      case data === '':
+        getEl('#font_specimen_grid').innerHTML = '';
         break; // close font_specimen_grid
-      case kind === "font_file":
+      case kind === 'font_file':
         getFontFileInfo(font_file);
-        font_file_grid.insertAdjacentHTML("beforeend", glyph_items);
+        font_file_grid.insertAdjacentHTML('beforeend', glyph_items);
         initFontPreviewEvents();
         break;
-      case kind === "font_specimen":
-        getEl("#font_specimen_grid").innerHTML = glyph_items.trim();
+      case kind === 'font_specimen':
+        getEl('#font_specimen_grid').innerHTML = glyph_items.trim();
         initFontPreviewEvents();
-        focusEl("#content_pane");
+        focusEl('#content_pane');
         break;
     }
   }
@@ -6578,177 +6141,166 @@
   }
   function fontGlyphSave() {
     // ===> SAVE GLYPH SVG
-    let data = getEl("#svg_container svg").cloneNode(true),
+    let data = getEl('#svg_container svg').cloneNode(true),
       file_name =
-        getData("#font_file_glyph_viewer", "font_name") +
-        "_" +
-        getData("#font_file_glyph_viewer", "glyph_name");
-    data.setAttribute("viewBox", "0 0 120 120");
-    data.removeAttribute("class");
-    data.querySelector("g").removeAttribute("style");
-    saveFile(data.outerHTML, "image/svg+xml", file_name);
+        getData('#font_file_glyph_viewer', 'font_name') +
+        '_' +
+        getData('#font_file_glyph_viewer', 'glyph_name');
+    data.setAttribute('viewBox', '0 0 120 120');
+    data.removeAttribute('class');
+    data.querySelector('g').removeAttribute('style');
+    saveFile(data.outerHTML, 'image/svg+xml', file_name);
   }
   // FONT UTILITIES
   function fontOptions(e, id, value, variant_prop, variant_value) {
     eStopPrevent(e); // value sets select el and font-feature-settings; if variant_prop exists, it is used to set font-variant value
     let props = {
-      font_size: "font-size",
-      line_height: "line-height",
-      letter_spacing: "letter-spacing",
-      text_color: "color",
-      text_stroke_width: "-webkit-text-stroke-width",
-      text_stroke_color: "-webkit-text-stroke-color",
+      font_size: 'font-size',
+      line_height: 'line-height',
+      letter_spacing: 'letter-spacing',
+      text_color: 'color',
+      text_stroke_width: '-webkit-text-stroke-width',
+      text_stroke_color: '-webkit-text-stroke-color',
     };
-    let prop = variant_prop || props[id] || "font-feature-settings",
-      units = /font_size|letter_spacing|text_stroke_width/.test(id) ? "em" : "",
+    let prop = variant_prop || props[id] || 'font-feature-settings',
+      units = /font_size|letter_spacing|text_stroke_width/.test(id) ? 'em' : '',
       text_stroke_color,
       current_stroke_color,
       fontElId;
-    let el = getEl("#" + id);
+    let el = getEl('#' + id);
     switch (
       true // font_toolbar row 1: #font_specimen_variants
     ) {
       case /font_variant_select/.test(id):
-        setValue("#font_tag_textarea", value);
+        setValue('#font_tag_textarea', value);
         el.focus();
         break; // select variants/stylistic sets
-      case id === "font_tag_textarea": // textarea font tags; set corresponding font_variant_select value
+      case id === 'font_tag_textarea': // textarea font tags; set corresponding font_variant_select value
         switch (true) {
           case value === null:
-            setValue("#font_tag_textarea", "");
+            setValue('#font_tag_textarea', '');
             return; // if value === null: reset
           case Number(value?.length) < 4:
-            setValue("#font_variant_select", "");
+            setValue('#font_variant_select', '');
             break; //
-          case value?.startsWith("cv"):
-            setValue("#font_variant_select", "cv01");
+          case value?.startsWith('cv'):
+            setValue('#font_variant_select', 'cv01');
             break; //
-          case value?.startsWith("nalt"):
-            setValue("#font_variant_select", "nalt");
+          case value?.startsWith('nalt'):
+            setValue('#font_variant_select', 'nalt');
             break; //
-          case value?.startsWith("ornm"):
-            setValue("#font_variant_select", "ornm");
+          case value?.startsWith('ornm'):
+            setValue('#font_variant_select', 'ornm');
             break; //
-          case value?.startsWith("salt"):
-            setValue("#font_variant_select", "salt");
+          case value?.startsWith('salt'):
+            setValue('#font_variant_select', 'salt');
             break; //
-          case value?.startsWith("ss"):
-            setValue("#font_variant_select", "ss01");
+          case value?.startsWith('ss'):
+            setValue('#font_variant_select', 'ss01');
             break; //
-          case value?.startsWith("swsh"):
-            setValue("#font_variant_select", "swsh");
+          case value?.startsWith('swsh'):
+            setValue('#font_variant_select', 'swsh');
             break; //
           default:
-            setValue("#font_variant_select", value.slice(0, 4));
+            setValue('#font_variant_select', value.slice(0, 4));
             break; //
         }
         break; // focus font_tag_textarea
-      case id === "unicode_char_ranges_select":
-        makeFontGlyphItems("font_specimen", value);
-        getEl("#content_font").scroll(0, 0);
+      case id === 'unicode_char_ranges_select':
+        makeFontGlyphItems('font_specimen', value);
+        getEl('#content_font').scroll(0, 0);
         return; // unicode chars startsWith
-      case id === "font_size":
-        scaleFonts(null, value, "font_size");
+      case id === 'font_size':
+        scaleFonts(null, value, 'font_size');
         return;
-      case id === "line_height":
+      case id === 'line_height':
         value = Number(value) + 1.2;
         if (value === 1.2) {
           el.value = 0;
         }
         break; // line-height; default 1.2
-      case id === "letter_spacing":
+      case id === 'letter_spacing':
         value = Number(value) < 0 ? value / 50 : Math.pow(value / 50, 2);
         if (value === 0) {
           el.value = 0;
         }
         break; // letter-spacing
-      case id === "text_color":
+      case id === 'text_color':
         if (value === null) {
-          el.value = "";
-          value = "";
+          el.value = '';
+          value = '';
         }
         break; // if value === null: reset
-      case id === "text_stroke_width":
-        current_stroke_color = getEl("#text_stroke_color").value;
+      case id === 'text_stroke_width':
+        current_stroke_color = getEl('#text_stroke_color').value;
         text_stroke_color =
           value < 0
-            ? "white"
-            : (current_stroke_color === "" ||
-                  /white|black/.test(current_stroke_color)) &&
-                value > 0
-              ? "black"
+            ? 'white'
+            : (current_stroke_color === '' || /white|black/.test(current_stroke_color)) && value > 0
+              ? 'black'
               : current_stroke_color;
-        getEl("#font_specimen_viewer")?.style.setProperty(
-          "-webkit-text-stroke-color",
-          text_stroke_color,
+        getEl('#font_specimen_viewer')?.style.setProperty(
+          '-webkit-text-stroke-color',
+          text_stroke_color
         );
         value = Math.abs(Number(value));
         if (value === 0) {
           el.value = 0;
-          getEl("#text_stroke_color").value = "";
+          getEl('#text_stroke_color').value = '';
         }
         break; // if value === 0: reset
-      case id === "text_stroke_color":
+      case id === 'text_stroke_color':
         if (value === null) {
-          el.value = "";
-          fontOptions(null, "text_stroke_width", null);
+          el.value = '';
+          fontOptions(null, 'text_stroke_width', null);
         } // if value === null: reset
         value =
-          getEl("#text_stroke_width").value < 0
-            ? "white"
-            : getEl("#text_stroke_color").value !== ""
-              ? getEl("#text_stroke_color").value
-              : "black";
+          getEl('#text_stroke_width').value < 0
+            ? 'white'
+            : getEl('#text_stroke_color').value !== ''
+              ? getEl('#text_stroke_color').value
+              : 'black';
         break;
     }
     switch (
       true // determine element(s) to target
     ) {
-      case hasContent("font_file_glyph"):
-        fontElId = /text_stroke/.test(id)
-          ? "#svg_container path"
-          : "#svg_container";
+      case hasContent('font_file_glyph'):
+        fontElId = /text_stroke/.test(id) ? '#svg_container path' : '#svg_container';
         break; // el = svg_container or svg path
-      case hasContent("font_file"):
-        fontElId = /text_stroke/.test(id)
-          ? "#font_file_viewer path"
-          : "#font_file_grid";
+      case hasContent('font_file'):
+        fontElId = /text_stroke/.test(id) ? '#font_file_viewer path' : '#font_file_grid';
         break; // el = svg_container or svg path
-      case hasContent("font_specimen_glyph"):
-        fontElId = "#font_specimen_glyph";
+      case hasContent('font_specimen_glyph'):
+        fontElId = '#font_specimen_glyph';
         break;
-      case hasContent("font_specimen"):
-        fontElId = "#font_specimen_viewer";
+      case hasContent('font_specimen'):
+        fontElId = '#font_specimen_viewer';
         break;
     }
     switch (
       true // apply style to font element
     ) {
-      case hasContent("font_file") && /text_stroke/.test(id): // if font_file and text_stroke style...
-        current_stroke_color = getEl("#text_stroke_color").value;
+      case hasContent('font_file') && /text_stroke/.test(id): // if font_file and text_stroke style...
+        current_stroke_color = getEl('#text_stroke_color').value;
         text_stroke_color =
-          getEl("#text_stroke_width").value < 0
-            ? "white"
-            : (current_stroke_color === "" ||
-                  /white|black/.test(current_stroke_color)) &&
-                value > 0
-              ? "black"
+          getEl('#text_stroke_width').value < 0
+            ? 'white'
+            : (current_stroke_color === '' || /white|black/.test(current_stroke_color)) && value > 0
+              ? 'black'
               : current_stroke_color;
-        prop = id === "text_stroke_width" ? "stroke-width" : "stroke";
+        prop = id === 'text_stroke_width' ? 'stroke-width' : 'stroke';
         getEls(fontElId).forEach((el) => el.setAttribute(prop, value + units));
-        if (id === "text_stroke_width") {
-          getEls(fontElId).forEach((el) =>
-            el.setAttribute("stroke", text_stroke_color),
-          );
+        if (id === 'text_stroke_width') {
+          getEls(fontElId).forEach((el) => el.setAttribute('stroke', text_stroke_color));
         }
         break; // set prop on font file svg paths
       default:
         switch (true) {
-          case /^cv|^ss|salt|swsh|ornm|nalt/.test(value) ||
-            id === "font_tag_textarea":
-            prop = "font-feature-settings";
+          case /^cv|^ss|salt|swsh|ornm|nalt/.test(value) || id === 'font_tag_textarea':
+            prop = 'font-feature-settings';
             value = '"' + value.slice(0, 4) + '" ' + value.slice(4);
-            getEl("#font_tag_textarea").focus();
+            getEl('#font_tag_textarea').focus();
             break;
           case props[id] !== undefined:
             break;
@@ -6756,7 +6308,7 @@
             value = variant_value;
             break;
           case value?.length < 4:
-            value = "";
+            value = '';
             break;
         }
         getEl(fontElId)?.style.setProperty(prop, value + units); // default: set style properties
@@ -6764,43 +6316,41 @@
   }
   function fontReset(id) {
     let el_ids = [
-        "font_tag_textarea",
-        "font_size",
-        "line_height",
-        "letter_spacing",
-        "text_color",
-        "text_stroke_width",
-        "text_stroke_color",
+        'font_tag_textarea',
+        'font_size',
+        'line_height',
+        'letter_spacing',
+        'text_color',
+        'text_stroke_width',
+        'text_stroke_color',
       ],
       current_font;
     switch (true) {
-      case id === "reset":
-        setValue("#font_variant_select", "");
-        el_ids.forEach((el_id) => (getEl("#" + el_id).value = null)); // default toolbar values
+      case id === 'reset':
+        setValue('#font_variant_select', '');
+        el_ids.forEach((el_id) => (getEl('#' + el_id).value = null)); // default toolbar values
         switch (true) {
-          case hasContent("font_specimen"):
+          case hasContent('font_specimen'):
             setFontSpecimenViewerStyles(false);
             break; // reset font_specimen
-          case hasContent("font_file"):
-            setData("#font_file_grid", "scale", "1"); // reset font_file
-            getEls("#font_file_grid, #font_file_grid svg g").forEach((el) =>
-              el.removeAttribute("style"),
+          case hasContent('font_file'):
+            setData('#font_file_grid', 'scale', '1'); // reset font_file
+            getEls('#font_file_grid, #font_file_grid svg g').forEach((el) =>
+              el.removeAttribute('style')
             );
-            getEls("#font_file_grid svg path").forEach((el) =>
-              el.removeAttribute("stroke"),
-            );
+            getEls('#font_file_grid svg path').forEach((el) => el.removeAttribute('stroke'));
             break;
         }
       default:
-        if (id === "font_size" && hasContent("font_file")) {
+        if (id === 'font_size' && hasContent('font_file')) {
           // reset all font options...
-          getEl("#font_file_grid").removeAttribute("style");
-          getEl("#font_file_grid")
-            .querySelectorAll("svg g")
+          getEl('#font_file_grid').removeAttribute('style');
+          getEl('#font_file_grid')
+            .querySelectorAll('svg g')
             .forEach(function (el) {
-              el.style.transform = "none";
+              el.style.transform = 'none';
             });
-          getEl("#" + id).value = 1;
+          getEl('#' + id).value = 1;
         } else {
           fontOptions(null, id, null); // or reset individual font options by id
         }
@@ -6808,118 +6358,99 @@
   }
   //============================// GRIDS
   function showGrid(id, bool) {
-    let selected_ID = id || getEl(".dirlist_item.selected")?.id; // ===> SHOW GRID
-    if (
-      id !== undefined &&
-      !elExists('#content_pane li[data-id="' + selected_ID + '"]')
-    ) {
+    let selected_ID = id || getEl('.dirlist_item.selected')?.id; // ===> SHOW GRID
+    if (id !== undefined && !elExists('#content_pane li[data-id="' + selected_ID + '"]')) {
       gridMake(id);
     } // initial make grid items, no dupes; else just unhide existing grid (see below)
-    addClass("#show_grid_btn", "has_grid"); // add class to #show_grid_btn button
-    setAttr("#content_pane", "data-content", "has_grid"); // set content_pane data-content attribute
+    addClass('#show_grid_btn', 'has_grid'); // add class to #show_grid_btn button
+    setAttr('#content_pane', 'data-content', 'has_grid'); // set content_pane data-content attribute
     removeClass(
-      "#content_pane",
-      "has_hidden_grid has_dir has_file has_font_specimen has_zoom_image",
+      '#content_pane',
+      'has_hidden_grid has_dir has_file has_font_specimen has_zoom_image'
     );
-    removeClass("#content_pane div", "selected hovered"); // remove classes; show hidden grid
-    setContentTitle("", "grid"); // set content title
-    addClass('#content_pane div[data-id="' + selected_ID + '"]', "selected"); // reselect selected grid item
+    removeClass('#content_pane div', 'selected hovered'); // remove classes; show hidden grid
+    setContentTitle('', 'grid'); // set content title
+    addClass('#content_pane div[data-id="' + selected_ID + '"]', 'selected'); // reselect selected grid item
     if (bool !== false) {
-      focusEl("#content_grid");
+      focusEl('#content_grid');
     } // focus grid, unless shift navigating (bool === false => selecting multiple items)
-    scrollThis("#content_grid", ".grid_item.selected"); // scroll first item into view
+    scrollThis('#content_grid', '.grid_item.selected'); // scroll first item into view
   }
   function closeGrid(id) {
     // ===> CLOSE GRID
     switch (true) {
-      case id === "hide":
-        removeAttr("#content_pane", "data-content");
-        addClass("#content_pane", "has_hidden_grid");
+      case id === 'hide':
+        removeAttr('#content_pane', 'data-content');
+        addClass('#content_pane', 'has_hidden_grid');
         break; // hide grid, e.g., when viewing a grid item or other item
-      case id !== "close" && (hasContent("font") || hasContent("image")):
+      case id !== 'close' && (hasContent('font') || hasContent('image')):
         showGrid();
         break;
       default:
-        removeClass("#show_grid_btn", "has_grid"); // remove #show_grid_btn button class
-        if (id === "close") {
-          removeClass("#content_pane", "has_hidden_grid");
+        removeClass('#show_grid_btn', 'has_grid'); // remove #show_grid_btn button class
+        if (id === 'close') {
+          removeClass('#content_pane', 'has_hidden_grid');
         }
-        removeClass(
-          "#content_pane",
-          "has_image_grid has_font_grid has_zoom_image",
-        );
-        removeAttr("#content_pane", "data-content"); // remove data-content
-        removeAttr("#content_title span", "data-grid_item_count"); // remove data-grid_item_count
-        removeAttr("#content_grid,.image_grid_item img", "style"); // remove styles
-        getEl("#content_grid").innerHTML = ""; // empty #content_grid
-        focusEl("#top_body");
-        if (getEl(".dirlist_item.hovered") !== null) {
-          showThis(getEl(".dirlist_item.hovered").id);
-          removeClass(".dirlist_item.hovered", "hovered");
+        removeClass('#content_pane', 'has_image_grid has_font_grid has_zoom_image');
+        removeAttr('#content_pane', 'data-content'); // remove data-content
+        removeAttr('#content_title span', 'data-grid_item_count'); // remove data-grid_item_count
+        removeAttr('#content_grid,.image_grid_item img', 'style'); // remove styles
+        getEl('#content_grid').innerHTML = ''; // empty #content_grid
+        focusEl('#top_body');
+        if (getEl('.dirlist_item.hovered') !== null) {
+          showThis(getEl('.dirlist_item.hovered').id);
+          removeClass('.dirlist_item.hovered', 'hovered');
         } else {
-          showThis(getVisibleElsBySelector(".dirlist_item")[0].id); // focus sidebar; show 1st sidebar item
+          showThis(getVisibleElsBySelector('.dirlist_item')[0].id); // focus sidebar; show 1st sidebar item
         }
         break;
     }
   }
   function showContentGridItem(id, src, kind) {
-    closeGrid("hide"); // ===> SHOW GRID ITEM
+    closeGrid('hide'); // ===> SHOW GRID ITEM
     switch (true) {
-      case elExists("#" + id):
-        addRemoveClassSiblings("#" + id, "selected", "selected");
-        removeClass(".grid_item.selected", "selected");
-        addClass('.grid_item[data-id="' + id + '"', "selected");
-        getEl("#" + id).click();
+      case elExists('#' + id):
+        addRemoveClassSiblings('#' + id, 'selected', 'selected');
+        removeClass('.grid_item.selected', 'selected');
+        addClass('.grid_item[data-id="' + id + '"', 'selected');
+        getEl('#' + id).click();
         break; // normal grid item display
-      case !elExists("#" + id):
-        showThis("", false, true, [src, kind]);
+      case !elExists('#' + id):
+        showThis('', false, true, [src, kind]);
         break; // show grid items from closed subdirectory
     }
-    focusEl("#content_pane .has_content");
+    focusEl('#content_pane .has_content');
   }
   // ***** IMAGE/FONT GRID SETUP
   function gridMakeFontItems(id) {
     // ===> FONT GRID ITEMS
-    let font_grid_items = "",
-      font_files =
-        id !== undefined ? getEls("#" + id) : getEls(".dirlist_item.font"),
+    let font_grid_items = '',
+      font_files = id !== undefined ? getEls('#' + id) : getEls('.dirlist_item.font'),
       new_grid_item,
       font_items_length = font_files.length;
     for (let i = 0; i < font_items_length; i++) {
       // for each font...
-      new_grid_item = showFont(
-        font_files[i].id,
-        true,
-        "font_grid",
-        "",
-        i,
-        font_items_length,
-      );
+      new_grid_item = showFont(font_files[i].id, true, 'font_grid', '', i, font_items_length);
       font_grid_items += new_grid_item; // make new font_grid_item and add it to the font_grid_items
     }
     return font_grid_items; // return font_grid_items
   }
   function gridMakeImageItems(id) {
     // ===> IMAGE GRID ITEMS
-    let image_grid_items = "",
+    let image_grid_items = '',
       this_id,
       this_link,
       exts,
       title_name;
     let image_files =
-      id !== undefined
-        ? getEls("#" + id)
-        : getEls(".dirlist_item.image:not(.ignored)");
+      id !== undefined ? getEls('#' + id) : getEls('.dirlist_item.image:not(.ignored)');
     let image_files_length = image_files.length,
-      classes =
-        "grid_item image_grid_item flex_justify_center border_right_x border_bottom_x";
+      classes = 'grid_item image_grid_item flex_justify_center border_right_x border_bottom_x';
     for (let i = 0; i < image_files_length; i++) {
       this_id = image_files[i].id;
-      this_link = image_files[i].querySelector("a").href;
-      title_name = this_link.slice(this_link.lastIndexOf("/") + 1);
-      exts = Item_Kinds.image.filter(
-        (ext) => !Item_Settings.ignored.includes(ext),
-      ); // decide which image files can be displayed
+      this_link = image_files[i].querySelector('a').href;
+      title_name = this_link.slice(this_link.lastIndexOf('/') + 1);
+      exts = Item_Kinds.image.filter((ext) => !Item_Settings.ignored.includes(ext)); // decide which image files can be displayed
       if (exts.includes(image_files[i].dataset.ext)) {
         // if item ext is in the image extension array...
         let item = `<li class="${classes} background_grey_90" data-ID="${this_id}" data-index="${i}" data-kind="image"><a href="${this_link}"><img src="${this_link}" title="${title_name}" loading="lazy" /></a></li>`; // make new image_grid_item
@@ -6931,25 +6462,18 @@
   function gridMake(id) {
     let el, kind; // ===> MAKE GRIDS
     const gridItemCount = () => {
-      let count = getEl("#content_grid")?.children?.length,
-        str = count !== 1 ? " items" : " item";
-      setAttr(
-        "#content_title span",
-        "data-grid_item_count",
-        " [" + count.toString() + str + "]",
-      );
+      let count = getEl('#content_grid')?.children?.length,
+        str = count !== 1 ? ' items' : ' item';
+      setAttr('#content_title span', 'data-grid_item_count', ' [' + count.toString() + str + ']');
     };
     if (/rowid/.test(id)) {
-      el = getEl("#" + id);
+      el = getEl('#' + id);
       kind = el.dataset.kind;
     } else {
-      getEl("#content_grid").innerHTML = "";
+      getEl('#content_grid').innerHTML = '';
     } // remove previous grid items or make single grid item
-    removeClass(
-      "#content_pane",
-      "has_hidden_grid has_image_grid has_font_grid",
-    );
-    removeAttr("#content_title span", "data-grid_item_count"); // reset content_pane grid classes and data
+    removeClass('#content_pane', 'has_hidden_grid has_image_grid has_font_grid');
+    removeAttr('#content_title span', 'data-grid_item_count'); // reset content_pane grid classes and data
     switch (
       true // determine which grid type to make
     ) {
@@ -6957,87 +6481,76 @@
         switch (
           kind // make single grid items on cmd-click
         ) {
-          case "font":
-            getEl("#content_grid").insertAdjacentHTML(
-              "beforeend",
-              gridMakeFontItems(id),
-            );
+          case 'font':
+            getEl('#content_grid').insertAdjacentHTML('beforeend', gridMakeFontItems(id));
             break; // make single font grid item
-          case "image":
-            getEl("#content_grid").insertAdjacentHTML(
-              "beforeend",
-              gridMakeImageItems(id),
-            );
+          case 'image':
+            getEl('#content_grid').insertAdjacentHTML('beforeend', gridMakeImageItems(id));
             break; // make single image grid item
         }
         break;
-      case id === "show_font_grid":
-        addClass("#content_pane", "has_font_grid");
-        getEl("#content_grid").innerHTML = gridMakeFontItems();
+      case id === 'show_font_grid':
+        addClass('#content_pane', 'has_font_grid');
+        getEl('#content_grid').innerHTML = gridMakeFontItems();
         break; // make font grid
-      case id === "show_image_grid":
-        addClass("#content_pane", "has_image_grid");
-        getEl("#content_grid").innerHTML = gridMakeImageItems();
+      case id === 'show_image_grid':
+        addClass('#content_pane', 'has_image_grid');
+        getEl('#content_grid').innerHTML = gridMakeImageItems();
         break; // make image grid
       default:
-        getEl("#content_grid").innerHTML =
-          gridMakeImageItems() + gridMakeFontItems(); // make image and font grid
+        getEl('#content_grid').innerHTML = gridMakeImageItems() + gridMakeFontItems(); // make image and font grid
     }
     gridItemCount(); // add grid item count to content_title
     initGridItemEvents(); // register event watchers for added grid elements
   }
   // ***** IMAGE/FONT/GLYPH SCALE
   function scaleItems(e, incr, id, kind) {
-    addClass("#reload_btn", "reset"); // add reset class to reload button
+    addClass('#reload_btn', 'reset'); // add reset class to reload button
     switch (kind) {
-      case "has_grid":
+      case 'has_grid':
         scaleFonts(e, incr, id);
         scaleImages(e, incr, id);
         break; // scale grids
-      case "has_font":
+      case 'has_font':
         scaleFonts(e, incr, id);
         break; // scale glyphs
-      case "has_image":
+      case 'has_image':
         scaleImages(e, incr, id);
         break; // scale glyphs or images and fonts
     }
   }
   function scaleFonts(e, scale, id) {
-    scale = scale <= 0 ? (1, (getEl("#font_size").value = 1)) : scale;
+    scale = scale <= 0 ? (1, (getEl('#font_size').value = 1)) : scale;
     let incr = Number(scale).toFixed(4);
-    if (id === "decrease") {
+    if (id === 'decrease') {
       incr = 1 / incr;
       scale = 1 / scale;
     } // ===> SCALE FONT
-    let content_grid = getEl("#content_grid"),
-      font_specimen_viewer = getEl("#font_specimen_viewer"),
+    let content_grid = getEl('#content_grid'),
+      font_specimen_viewer = getEl('#font_specimen_viewer'),
       font_file_glyph,
-      font_file_grid = getEl("#font_file_grid"),
+      font_file_grid = getEl('#font_file_grid'),
       value,
       font_input_value,
       data_scale,
       transform_scale,
       translateY,
       el_id;
-    let font_size = parseInt(getComputedStyle(document.body).fontSize).toFixed(
-        4,
-      ),
+    let font_size = parseInt(getComputedStyle(document.body).fontSize).toFixed(4),
       fontGetSize = function (el) {
-        return Number.parseFloat(window.getComputedStyle(el).fontSize).toFixed(
-          4,
-        );
+        return Number.parseFloat(window.getComputedStyle(el).fontSize).toFixed(4);
       };
     switch (true) {
-      case hasContent("grid"):
+      case hasContent('grid'):
         setStyle(
-          "#content_grid",
-          "font-size",
-          (fontGetSize(content_grid) / font_size) * incr + "em",
+          '#content_grid',
+          'font-size',
+          (fontGetSize(content_grid) / font_size) * incr + 'em'
         );
         break; // scale grid font items
       // font files
-      case hasContent("font_file_glyph"):
-        font_file_glyph = getEl("#font_file_glyph_viewer g"); // scale font file glyph
+      case hasContent('font_file_glyph'):
+        font_file_glyph = getEl('#font_file_glyph_viewer g'); // scale font file glyph
         data_scale = font_file_glyph.style.transform;
         data_scale = Number(data_scale.match(/[\.\d]+/g));
         if (data_scale === 0) {
@@ -7053,12 +6566,11 @@
             font_input_value = Math.pow(data_scale, 0.2);
             break; // ...for +/- buttons; set #font-size value
           default:
-            data_scale =
-              data_scale >= 1 ? Math.pow(incr, 5) : Math.pow(incr, 1.25); // ...for #font_size slider
+            data_scale = data_scale >= 1 ? Math.pow(incr, 5) : Math.pow(incr, 1.25); // ...for #font_size slider
         }
-        font_file_glyph.style.transform = "scale(" + data_scale + ")";
+        font_file_glyph.style.transform = 'scale(' + data_scale + ')';
         break; // scale glyph
-      case hasContent("font_file"):
+      case hasContent('font_file'):
         if (/increase|decrease/.test(id)) {
           scale =
             font_file_grid.dataset.scale === undefined
@@ -7069,129 +6581,119 @@
           scale = Number(scale) * Number(incr);
           font_input_value = scale; // set slider value
         }
-        transform_scale =
-          scale >= 1 ? Math.pow(scale, 4) : Math.pow(scale, 1.125);
-        translateY =
-          Number(scale) < 0.5 ? 0.5 : Number(scale) < 1.5 ? 1 - scale : -0.5; // transform_scale & translateY
-        font_file_grid.querySelectorAll("svg g").forEach(function (el) {
-          el.style.transform =
-            "scale(" + transform_scale + ") translateY(" + translateY + "em)";
+        transform_scale = scale >= 1 ? Math.pow(scale, 4) : Math.pow(scale, 1.125);
+        translateY = Number(scale) < 0.5 ? 0.5 : Number(scale) < 1.5 ? 1 - scale : -0.5; // transform_scale & translateY
+        font_file_grid.querySelectorAll('svg g').forEach(function (el) {
+          el.style.transform = 'scale(' + transform_scale + ') translateY(' + translateY + 'em)';
         }); // set transform scale & translateY
         if (scale > 0.33) {
           font_file_grid.style.gridTemplateColumns =
-            "repeat(auto-fit, minmax(max(52px," +
-            Math.pow(scale, 3) * 1.33 +
-            "em ), 1.5fr))"; // scale font file grid cols
+            'repeat(auto-fit, minmax(max(52px,' + Math.pow(scale, 3) * 1.33 + 'em ), 1.5fr))'; // scale font file grid cols
           font_file_grid.style.gridAutoRows =
-            "minmax(max(52px," +
-            Math.pow(scale, 3.33) * 1.33 +
-            "em), max-content)"; // scale font file grid rows
+            'minmax(max(52px,' + Math.pow(scale, 3.33) * 1.33 + 'em), max-content)'; // scale font file grid rows
         }
         font_file_grid.dataset.scale = scale;
         break;
       // font specimens
-      case hasContent("font_specimen_glyph"):
-        el_id = "#font_specimen_glyph"; // scale font specimen glyph (in vw)
+      case hasContent('font_specimen_glyph'):
+        el_id = '#font_specimen_glyph'; // scale font specimen glyph (in vw)
         switch (id) {
-          case "font_size": // from font_size input slider
+          case 'font_size': // from font_size input slider
             if (incr === null) {
               value = 64;
             } else {
               value = 64 * Math.pow(incr, 3);
             } // max value of incr = 64 * 2^3 = 512													// reset if scale is 0
-            setStyle(el_id, "font-size", value + "vw");
+            setStyle(el_id, 'font-size', value + 'vw');
             getEl(el_id).dataset.scale = Number(value / 64).toFixed(4);
             break;
           default: // from increase/decrease buttons
-            getEl(el_id).dataset.scale =
-              Number(getEl(el_id).dataset.scale) * incr;
+            getEl(el_id).dataset.scale = Number(getEl(el_id).dataset.scale) * incr;
             data_scale = Number(getEl(el_id).dataset.scale); // update data-scale; define data_scale
-            value = 64 * data_scale + "vw";
-            setStyle(el_id, "font-size", value);
+            value = 64 * data_scale + 'vw';
+            setStyle(el_id, 'font-size', value);
             font_input_value = Math.pow(data_scale, 0.3333); // set the font-size using data-scale
         }
         break;
-      case hasContent("font_specimen"):
-        el_id = "#font_specimen_viewer";
+      case hasContent('font_specimen'):
+        el_id = '#font_specimen_viewer';
         switch (
           id // scale font specimen
         ) {
-          case "font_size": // from font_size input slider
+          case 'font_size': // from font_size input slider
             if (Number(incr) === Number(0.0)) {
               incr = 1;
-              getEl("#" + id).value = 1;
+              getEl('#' + id).value = 1;
             } // reset font size
-            setStyle(el_id, "font-size", Math.pow(incr, 4) + "em");
+            setStyle(el_id, 'font-size', Math.pow(incr, 4) + 'em');
             getEl(el_id).dataset.scale = Number(incr).toFixed(4);
             break; // set the font size
           default: // from increase/decrease buttons
             if (Number(fontGetSize(font_specimen_viewer)) === 0) {
               incr = 1;
             } else {
-              incr = Number(
-                (fontGetSize(font_specimen_viewer) / font_size) * incr,
-              );
+              incr = Number((fontGetSize(font_specimen_viewer) / font_size) * incr);
             } // reset if scale is 0
             getEl(el_id).dataset.scale = incr.toFixed(4);
-            setStyle(el_id, "font-size", incr.toFixed(4) + "em");
+            setStyle(el_id, 'font-size', incr.toFixed(4) + 'em');
             font_input_value = Math.pow(incr, 0.25);
         }
         break;
     }
-    if ((id === "font_size" && scale === null) || id !== "font_size") {
-      getEl("#font_size").value = font_input_value;
+    if ((id === 'font_size' && scale === null) || id !== 'font_size') {
+      getEl('#font_size').value = font_input_value;
     } // set #font_size input value
-    scrollThis("#content_container", "#content_font"); // scroll content_font
+    scrollThis('#content_container', '#content_font'); // scroll content_font
   }
   function scaleImages(e, incr, id) {
     // ===> ZOOM IMAGES ON CLICK
     let content_el =
-      elExists("#content_body") && elExists("#content_body > img")
-        ? getEl("#content_body")
-        : getEl("#content_container");
-    let this_img = elExists("#content_body > img")
-      ? getEl("#content_body > img")
-      : getEl("#content_image"); // define this_img
+      elExists('#content_body') && elExists('#content_body > img')
+        ? getEl('#content_body')
+        : getEl('#content_container');
+    let this_img = elExists('#content_body > img')
+      ? getEl('#content_body > img')
+      : getEl('#content_image'); // define this_img
     let CC_width = Math.round(content_el.offsetWidth),
       CC_height = Math.round(content_el.offsetHeight); // content_container dimensions
     let img_width = Math.round(this_img.offsetWidth),
       img_height = Math.round(this_img.offsetHeight); // this_img dimensions
     let CC_offset, img_offset, percentX, percentY, scrollX, scrollY;
     const iframe_delta =
-      getEls("#content_body > img").length === 1
-        ? Number.parseInt(getEl("#content_body").style.padding)
+      getEls('#content_body > img').length === 1
+        ? Number.parseInt(getEl('#content_body').style.padding)
         : 0;
     switch (true) {
-      case hasContent("grid"):
+      case hasContent('grid'):
         scaleImageGrid(incr, id);
         break; // scale grid images
       default: // scale single images
         imageGetDimensions(this_img.src, (width, height) => {
           switch (true) {
             case incr !== undefined && id !== undefined: // scale images by increment
-              addClass("#content_pane", "has_scaled_image");
-              removeClass("#content_pane", "has_zoom_image"); // remove zoom classes in case window resized after zoom
+              addClass('#content_pane', 'has_scaled_image');
+              removeClass('#content_pane', 'has_zoom_image'); // remove zoom classes in case window resized after zoom
               switch (true) {
-                case id === "increase":
+                case id === 'increase':
                   this_img.style.cssText = `width:${img_width * incr}px; height:auto; max-width:none; max-height:none;`;
                   break;
-                case id === "decrease" && img_width >= 1 && img_height >= 1:
+                case id === 'decrease' && img_width >= 1 && img_height >= 1:
                   this_img.style.cssText = `width:${img_width / incr}px; height:auto; max-width:none; max-height:none;`;
                   break;
               }
               if (Math.round(this_img.offsetWidth) >= CC_width) {
-                getEl("#content_image_container").scrollLeft =
+                getEl('#content_image_container').scrollLeft =
                   (Math.round(this_img.offsetWidth) - CC_width) / 2;
               } // keep scaled img centered
               switch (
                 true // keep scaled img centered
               ) {
                 case Math.round(this_img.offsetHeight) <= CC_height:
-                  getEl("#content_image_container").scrollTop =
+                  getEl('#content_image_container').scrollTop =
                     (CC_height - Math.round(this_img.offsetHeight)) / 2;
                   break;
                 default:
-                  getEl("#content_image_container").scrollTop =
+                  getEl('#content_image_container').scrollTop =
                     (Math.round(this_img.offsetHeight) - CC_height) / 2;
                   break;
               }
@@ -7199,59 +6701,45 @@
             default: // else zoom single image on click
               if (width <= CC_width && height <= CC_height) {
                 // click to toggle small images between 100% and full size
-                if (/100%/.test(this_img.getAttribute("style"))) {
-                  this_img.removeAttribute("style");
+                if (/100%/.test(this_img.getAttribute('style'))) {
+                  this_img.removeAttribute('style');
                 } else {
-                  this_img.style.width = "100%";
+                  this_img.style.width = '100%';
                 }
-                removeClass("#content_pane", "has_zoom_image has_scaled_image");
+                removeClass('#content_pane', 'has_zoom_image has_scaled_image');
                 return; // no need to set scroll position
               }
               CC_offset = content_el.getBoundingClientRect();
               img_offset = this_img.getBoundingClientRect(); // get offsets
-              percentX = Number(
-                (e.pageX - img_offset.left) / img_width,
-              ).toFixed(2);
-              percentY = Number(
-                (e.pageY - img_offset.top) / img_height,
-              ).toFixed(2); // x,y coordinates of zoom click as % of image width/height
+              percentX = Number((e.pageX - img_offset.left) / img_width).toFixed(2);
+              percentY = Number((e.pageY - img_offset.top) / img_height).toFixed(2); // x,y coordinates of zoom click as % of image width/height
               scrollX =
-                width * percentX -
-                e.pageX +
-                CC_offset.left -
-                (iframe_delta * width) / img_width; // calculate clicked x-coordinates for full-size image
+                width * percentX - e.pageX + CC_offset.left - (iframe_delta * width) / img_width; // calculate clicked x-coordinates for full-size image
               scrollY =
-                height * percentY -
-                e.pageY +
-                CC_offset.top -
-                (iframe_delta * height) / img_height; // calculate clicked y-coordinate for full-size image
-              removeClass("#content_pane", "has_scaled_image"); // in case image scaled already
-              getEl("#content_pane").classList.toggle("has_zoom_image");
-              getEl("#content_image_container").scrollTo(scrollX, scrollY); // scroll to clicked position
+                height * percentY - e.pageY + CC_offset.top - (iframe_delta * height) / img_height; // calculate clicked y-coordinate for full-size image
+              removeClass('#content_pane', 'has_scaled_image'); // in case image scaled already
+              getEl('#content_pane').classList.toggle('has_zoom_image');
+              getEl('#content_image_container').scrollTo(scrollX, scrollY); // scroll to clicked position
           }
         });
         imageSetDimensions();
-        focusEl("#content_image_container"); // set image dimensions
+        focusEl('#content_image_container'); // set image dimensions
     }
   }
   function scaleImageGrid(incr, id) {
     // ===> SCALE IMAGE GRID ITEMS
-    if (id === "decrease") {
+    if (id === 'decrease') {
       incr = 1 / incr;
     }
-    let grid_container = getEl("#content_grid"),
-      grid_items = getEls(".image_grid_item img");
+    let grid_container = getEl('#content_grid'),
+      grid_items = getEls('.image_grid_item img');
     if (!grid_items?.length) {
       return;
     }
-    let grid_item_width =
-      Number.parseFloat(grid_items[0].offsetWidth, 10) * incr;
-    let grid_item_height =
-      Number.parseFloat(grid_items[0].offsetHeight, 10) * incr;
-    let grid_item_max_width =
-      Number.parseFloat(grid_items[0].style.maxWidth, 10) * incr;
-    let grid_item_max_height =
-      Number.parseFloat(grid_items[0].style.maxHeight, 10) * incr;
+    let grid_item_width = Number.parseFloat(grid_items[0].offsetWidth, 10) * incr;
+    let grid_item_height = Number.parseFloat(grid_items[0].offsetHeight, 10) * incr;
+    let grid_item_max_width = Number.parseFloat(grid_items[0].style.maxWidth, 10) * incr;
+    let grid_item_max_height = Number.parseFloat(grid_items[0].style.maxHeight, 10) * incr;
     if (grid_item_width < grid_item_max_width) {
       grid_item_width = grid_item_max_width;
     } // don't reduce grid image size on first scale click
@@ -7259,10 +6747,10 @@
       grid_item_height = grid_item_max_height;
     } // don't reduce grid image size on first scale click
     grid_container.style.gridTemplateColumns =
-      "repeat(auto-fill, minmax(" + (grid_item_width + 16) + "px, auto ) )"; // set grid properties
+      'repeat(auto-fill, minmax(' + (grid_item_width + 16) + 'px, auto ) )'; // set grid properties
     grid_items.forEach((el) => {
-      el.style.maxWidth = grid_item_width + "px";
-      el.style.maxHeight = grid_item_height + "px";
+      el.style.maxWidth = grid_item_width + 'px';
+      el.style.maxHeight = grid_item_height + 'px';
     }); // set grid properties
     return;
   }
@@ -7281,25 +6769,19 @@
       return;
     } // ===> SET IMAGE DIMENSIONS; // ignore iframe image
     switch (true) {
-      case hasContent("image"):
-        imageGetDimensions(
-          getAttr("#content_image", "src"),
-          function (width, height) {
-            // imageGetDimensions()
-            let percentage = (
-              (getEl("#content_image").width / width) *
-              100
-            ).toFixed(1); // define percentage
-            setAttr(
-              "#content_title span",
-              "data-after",
-              " (" + width + "px × " + height + "px) (" + percentage + "%)",
-            ); // set dataset.after for content_title
-          },
-        );
+      case hasContent('image'):
+        imageGetDimensions(getAttr('#content_image', 'src'), function (width, height) {
+          // imageGetDimensions()
+          let percentage = ((getEl('#content_image').width / width) * 100).toFixed(1); // define percentage
+          setAttr(
+            '#content_title span',
+            'data-after',
+            ' (' + width + 'px × ' + height + 'px) (' + percentage + '%)'
+          ); // set dataset.after for content_title
+        });
         break;
       default:
-        removeAttr("#content_title span", "data-after"); // remove image dimensions
+        removeAttr('#content_title span', 'data-after'); // remove image dimensions
     }
   }
   //============================// SHOW TEXT EDITOR
@@ -7307,61 +6789,58 @@
     // ===> SHOW TEXT EDITOR; bool === false => hide editor
     switch (true) {
       case bool === false:
-      case hasClass("body", "has_texteditor"):
-        removeClass("body", "has_texteditor");
-        if (elExists(".dirlist_item.selected")) {
+      case hasClass('body', 'has_texteditor'):
+        removeClass('body', 'has_texteditor');
+        if (elExists('.dirlist_item.selected')) {
           null;
         } else {
-          focusEl("#top_body");
+          focusEl('#top_body');
         }
         break; // close editor
-      case !hasClass("body", "has_texteditorUI"):
+      case !hasClass('body', 'has_texteditorUI'):
         buildTextEditorUI(); // no break; add the text editor UI if needed
       default:
-        addClass("body", "has_texteditor");
-        addClass("#top_body", "focus_content");
-        getEl("#texteditor_raw_pane").focus(); // show editor: add class, focus texteditor
+        addClass('body', 'has_texteditor');
+        addClass('#top_body', 'focus_content');
+        getEl('#texteditor_raw_pane').focus(); // show editor: add class, focus texteditor
     }
   }
   function tempHideTexteditor() {
-    getEl("head").insertAdjacentHTML(
-      "beforeend",
-      '<style id="temp_styles">#text_container {display:none;}</style>',
+    getEl('head').insertAdjacentHTML(
+      'beforeend',
+      '<style id="temp_styles">#text_container {display:none;}</style>'
     );
   } // ...hide editor UI for link files until formatted_link received from top
   // to prevent FOUC for some kinds of content...
   function showTexteditorPreview(content) {
     // ===> SHOW TEXTEDITOR PREVIEW
-    removeClass("#content_body", "texteditor_view_raw texteditor_view_html"); // remove classes
+    removeClass('#content_body', 'texteditor_view_raw texteditor_view_html'); // remove classes
     addClass(
-      "#content_body",
-      "is_link texteditor_split_view_false texteditor_view_styled text_editing_enable_false",
+      '#content_body',
+      'is_link texteditor_split_view_false texteditor_view_styled text_editing_enable_false'
     ); // add classes to prevent editing without changing UI_Pref
-    getEl("#texteditor_styled_pane").innerHTML = content; // insert processed text from top
-    getEl("#temp_styles").remove(); // show texteditor after hiding it until processed content received
+    getEl('#texteditor_styled_pane').innerHTML = content; // insert processed text from top
+    getEl('#temp_styles').remove(); // show texteditor after hiding it until processed content received
   }
   //============================// PDF
   function showPDF() {
     // ===> SET UP CONTENT_PDF
     let pdf_container = `<embed id="content_pdf" class="content_el position_relative border_0" tabindex="0" data-kind="pdf">`; // replace content_pdf for each pdf
-    getEl("#content_pdf").remove(); // remove existing content_pdf el
-    getEl("#content_image_container").insertAdjacentHTML(
-      "afterend",
-      pdf_container,
-    ); // add new content_pdf el
+    getEl('#content_pdf').remove(); // remove existing content_pdf el
+    getEl('#content_image_container').insertAdjacentHTML('afterend', pdf_container); // add new content_pdf el
   }
   //============================// LINK FILES
   function openLinkFile(e, id) {
     eStopPrevent(e); // ===> OPEN LINK FILES: on cmd-arrowdown or dblclick (webloc, url)
-    let link = getEl("#" + id).dataset.link; // get the link
+    let link = getEl('#' + id).dataset.link; // get the link
     switch (true) {
       case link === undefined:
         break;
-      case !hasClass("#" + id, "non_local"):
+      case !hasClass('#' + id, 'non_local'):
         if (!isTopWindow()) {
           window.location = link;
         } else {
-          showThis("open_link_file", false, true, [link, "link"]);
+          showThis('open_link_file', false, true, [link, 'link']);
         }
         break;
       default:
@@ -7370,162 +6849,136 @@
   }
   function linkFileProcess(kind, content) {
     // ===> LINK FILE PROCESS: on "iframe_loaded" message received
-    let link_item = getEl(".dirlist_item.content_loaded.link"),
-      link_content = content || getData(link_item, "html_content") || "",
+    let link_item = getEl('.dirlist_item.content_loaded.link'),
+      link_content = content || getData(link_item, 'html_content') || '',
       regex = /URL\=(.+?)$|<key>URL<\/key>\s*<string\>(.+?)<\/string\>/im;
-    let link =
-      link_content?.match(regex)?.[1] || link_content?.match(regex)?.[2];
-    let link_class = "",
-      link_target = "",
+    let link = link_content?.match(regex)?.[1] || link_content?.match(regex)?.[2];
+    let link_class = '',
+      link_target = '',
       formatted_link; // get the link; define link elements
     switch (true) {
-      case kind === "remote_webloc" && window_protocol !== "file:":
-        content = content.trim().replace(/^URL[\s\W\t\n\r]+/i, "");
-        getEl("#content_iframe").src =
-          "data:text/html;charset=utf-8," +
+      case kind === 'remote_webloc' && window_protocol !== 'file:':
+        content = content.trim().replace(/^URL[\s\W\t\n\r]+/i, '');
+        getEl('#content_iframe').src =
+          'data:text/html;charset=utf-8,' +
           escape(
-            `<html><head><meta name="color-scheme" content="light dark"><style id="texteditor_styles">${texteditor_styles}</style><style id="global_styles">${global_styles}</style><style id="utilities_styles">${utilities_styles}</style></head><body id="content_body" class="is_text text_editing_enable_true texteditor_split_view_true texteditor_sync_scroll_true texteditor_view_styled theme_${getCurrentUIPref("theme")} is_link texteditor_split_view_false text_editing_enable_false"><div id="content_texteditor" class="background_grey_85 margin_0 padding_0 width_100 height_100 overflow_hidden position_absolute z_index_1 flex_column flex_grow_1 display_none"><div id="text_container" class="display_flex flex_grow_1 overflow_hidden"><div id="texteditor_styled_pane" class="texteditor_pane margin_0 border_0 line_height_1_2 text_color_default height_100 display_none markdown_body z_index_1"><a href="${content}">${content}</a></div></div></div></body></html>`,
+            `<html><head><meta name="color-scheme" content="light dark"><style id="texteditor_styles">${texteditor_styles}</style><style id="global_styles">${global_styles}</style><style id="utilities_styles">${utilities_styles}</style></head><body id="content_body" class="is_text text_editing_enable_true texteditor_split_view_true texteditor_sync_scroll_true texteditor_view_styled theme_${getCurrentUIPref('theme')} is_link texteditor_split_view_false text_editing_enable_false"><div id="content_texteditor" class="background_grey_85 margin_0 padding_0 width_100 height_100 overflow_hidden position_absolute z_index_1 flex_column flex_grow_1 display_none"><div id="text_container" class="display_flex flex_grow_1 overflow_hidden"><div id="texteditor_styled_pane" class="texteditor_pane margin_0 border_0 line_height_1_2 text_color_default height_100 display_none markdown_body z_index_1"><a href="${content}">${content}</a></div></div></div></body></html>`
           );
         return;
-      case window_protocol === "file:" && !link?.startsWith("file"):
-        getEl(".dirlist_item.selected").classList.add("non_local");
+      case window_protocol === 'file:' && !link?.startsWith('file'):
+        getEl('.dirlist_item.selected').classList.add('non_local');
         link_class = ' class="non_local"';
         link_target = ' target="_blank"';
         break;
-      case window_protocol !== "file:" && link?.startsWith("file"):
-        getEl(".dirlist_item.selected").classList.add("local");
+      case window_protocol !== 'file:' && link?.startsWith('file'):
+        getEl('.dirlist_item.selected').classList.add('local');
         link_class = ' class="local"';
         break;
     }
     formatted_link =
-      '<a id="link_file_01" href="' +
-      link +
-      '"' +
-      link_class +
-      link_target +
-      ">" +
-      link +
-      "</a>"; // assemble formatted link
+      '<a id="link_file_01" href="' + link + '"' + link_class + link_target + '>' + link + '</a>'; // assemble formatted link
     link_item.dataset.link = link; // set data-link on sidebar item
     link_item.dataset.html_content = null; // remove data-html_content
-    messageSend("iframe", "show_texteditor_preview", "", formatted_link); // send formatted link to iframe for display
+    messageSend('iframe', 'show_texteditor_preview', '', formatted_link); // send formatted link to iframe for display
   }
   //============================// DIRECTORY SOURCE
   function showDirectorySource(link) {
     // ===> SHOW DIRECTORY SOURCE
     switch (true) {
-      case hasClass("body", "has_directory_source"):
-        removeClass("body", "has_directory_source");
-        showThis(getEl(".dirlist_item.non_media.selected").id);
+      case hasClass('body', 'has_directory_source'):
+        removeClass('body', 'has_directory_source');
+        showThis(getEl('.dirlist_item.non_media.selected').id);
         break; // close if open
       default:
-        addClass("body", "has_directory_source");
-        showThis("show_directory_source", false, true, [
-          link || window_location,
-        ]);
-        setAttr("#content_pane", "data-loaded", "loaded"); // else show directory source
+        addClass('body', 'has_directory_source');
+        showThis('show_directory_source', false, true, [link || window_location]);
+        setAttr('#content_pane', 'data-loaded', 'loaded'); // else show directory source
     }
   }
   function openSidebarInContentPane() {
-    showThis("open_sidebar_in_content_pane", false, true, [
-      window_location,
-      "dir",
-    ]);
-    addClass("#top_body", "open_sidebar_in_content_pane");
+    showThis('open_sidebar_in_content_pane', false, true, [window_location, 'dir']);
+    addClass('#top_body', 'open_sidebar_in_content_pane');
   } // ===> OPEN SIDEBAR IN CONTENT PANE
   function openInTextEditor() {
     // ===> OPEN IN TEXT EDITOR
-    let html = getData(".dirlist_item.htm.content_loaded", "html_content");
+    let html = getData('.dirlist_item.htm.content_loaded', 'html_content');
     showTextEditor(true);
     if (html !== undefined) {
-      getEl("#texteditor_raw_pane").value = html;
-      getEl("#texteditor_styled_pane").value = html;
-      getEl("#texteditor_html_pane").value = html;
+      getEl('#texteditor_raw_pane').value = html;
+      getEl('#texteditor_styled_pane').value = html;
+      getEl('#texteditor_html_pane').value = html;
     } // set previewed text
-    getEl("#open_in_texteditor")?.blur();
+    getEl('#open_in_texteditor')?.blur();
   }
   // END SHOW INDIVIDUAL CONTENT TYPES
   //============================// AUTOLOAD CONTENT
   function autoLoadItems() {
     // ===> AUTOLOAD FILE: index files or files from the file shortcut list
     let selected_el = getEl(
-      '.dirlist_item.dir[id="rowid-' +
-        Number(getCurrentUIPref("selected")) +
-        '"]',
+      '.dirlist_item.dir[id="rowid-' + Number(getCurrentUIPref('selected')) + '"]'
     );
     switch (true) {
-      case selected_el !== null &&
-        isTopWindow() &&
-        searchParamsGet().has("selected"):
+      case selected_el !== null && isTopWindow() && searchParamsGet().has('selected'):
         showThis(selected_el.id);
         break; // select from searchParam; prevents being overridden by autoload media
-      case getCurrentUIPref("autoload_index_files") !== "false" &&
+      case getCurrentUIPref('autoload_index_files') !== 'false' &&
         elExists('.dirlist_item.file.htm a[href*="/index."]'): // load index file
-        showThis(
-          getEl('.dirlist_item.file.htm a[href*="/index."]').closest(
-            ".dirlist_item",
-          ).id,
-        );
+        showThis(getEl('.dirlist_item.file.htm a[href*="/index."]').closest('.dirlist_item').id);
         break;
-      case selected_el !== null && selected_el.classList.contains("local"):
+      case selected_el !== null && selected_el.classList.contains('local'):
       case !isTopWindow():
         break; // do nothing for local files or iframes
-      case searchParamsGet().has("file"):
+      case searchParamsGet().has('file'):
         {
           // load files (from bookmark or url)
-          let file_name = decodeURIComponentSafe(getCurrentUIPref("file"));
-          let file = Array.from(getEls(".dirlist_item.file")).filter(
-            (el) => el.dataset.name === file_name,
+          let file_name = decodeURIComponentSafe(getCurrentUIPref('file'));
+          let file = Array.from(getEls('.dirlist_item.file')).filter(
+            (el) => el.dataset.name === file_name
           );
           if (file[0] !== undefined) {
             showThis(file[0].id);
           }
-          searchParamDelete("file");
+          searchParamDelete('file');
         }
         break;
-      case hasClass("body", "has_video"):
-        getEl("video").volume = "0.5"; // video; set video volume
-        if (
-          getCurrentUIPref("media_autoload") === "true" &&
-          !hasClass("body", "has_audio")
-        ) {
-          showThis(getEl(".dirlist_item.video")?.id);
+      case hasClass('body', 'has_video'):
+        getEl('video').volume = '0.5'; // video; set video volume
+        if (getCurrentUIPref('media_autoload') === 'true' && !hasClass('body', 'has_audio')) {
+          showThis(getEl('.dirlist_item.video')?.id);
           break;
         } // load video only if no audio
-      case hasClass("body", "has_audio"):
-        getEl("#content_audio").volume = "0.5"; // audio; set audio volume
-        if (getCurrentUIPref("media_autoload") === "true") {
-          showThis(getEl(".dirlist_item.audio")?.id);
+      case hasClass('body', 'has_audio'):
+        getEl('#content_audio').volume = '0.5'; // audio; set audio volume
+        if (getCurrentUIPref('media_autoload') === 'true') {
+          showThis(getEl('.dirlist_item.audio')?.id);
         }
         break; // load audio
       case selected_el !== null:
         showThis(selected_el.id, false, true);
         break;
     }
-    if (getEl(".content_el.has_content") === null) {
-      setData("#content_pane", "content", "has_null");
+    if (getEl('.content_el.has_content') === null) {
+      setData('#content_pane', 'content', 'has_null');
     }
     if (selected_el !== null) {
-      scrollThis("#directory_list", ".selected");
+      scrollThis('#directory_list', '.selected');
     }
   }
   function getImageNames(id) {
     // ===> GET IMAGE NAMES (for cover art)
-    let images = getEls(".dirlist_item.image"),
+    let images = getEls('.dirlist_item.image'),
       image_names = [],
       image_name,
       subdir_prefix;
-    if (id.includes("_")) {
-      subdir_prefix = RegExp("^" + id.slice(0, id.lastIndexOf("_") + 1), "m");
-      images = Array.from(images).filter((image) =>
-        subdir_prefix.test(image.id),
-      ); // filter images by subdir of selected item
+    if (id.includes('_')) {
+      subdir_prefix = RegExp('^' + id.slice(0, id.lastIndexOf('_') + 1), 'm');
+      images = Array.from(images).filter((image) => subdir_prefix.test(image.id)); // filter images by subdir of selected item
     }
     for (let image of images) {
-      if (image.id.split("_").length === id.split("_").length) {
+      if (image.id.split('_').length === id.split('_').length) {
         // if audio and found image in same dir level...
         image_name = image.dataset.name;
-        image_name = image_name.slice(0, image_name.lastIndexOf("."));
+        image_name = image_name.slice(0, image_name.lastIndexOf('.'));
         image_names.push({ id: image.id, name: image_name }); // get image name w/o extension, add to image_names
       }
     }
@@ -7537,29 +6990,25 @@
       match,
       exact_match,
       cover_names = [
-        "cover",
-        "front",
-        "album",
-        "jacket",
-        "sleeve",
-        "cd",
-        "disc",
-        "insert",
-        "liner",
-        "notes",
+        'cover',
+        'front',
+        'album',
+        'jacket',
+        'sleeve',
+        'cd',
+        'disc',
+        'insert',
+        'liner',
+        'notes',
       ];
-    let selected_audio_name =
-      getData(".file.audio.selected", "name") || undefined; // is there an image file with the same name?
+    let selected_audio_name = getData('.file.audio.selected', 'name') || undefined; // is there an image file with the same name?
     if (selected_audio_name !== undefined) {
-      selected_audio_name = selected_audio_name.slice(
-        0,
-        selected_audio_name.lastIndexOf("."),
-      );
+      selected_audio_name = selected_audio_name.slice(0, selected_audio_name.lastIndexOf('.'));
       cover_names.unshift(selected_audio_name);
     } // prep the name & add to cover names
     const image_names = getImageNames(id); // get names of all image files
     if (image_names?.length === 0) {
-      closeContent("image");
+      closeContent('image');
       return;
     } // close existing image if no cover art found
     for (let cover_name of cover_names) {
@@ -7580,26 +7029,23 @@
   function autoLoadCoverArt(bool, id) {
     // ===> AUTOLOAD COVER ART if dir contains audio & images
     if (bool === false || !isTopWindow()) {
-      setData("#content_pane", "content", "has_null");
+      setData('#content_pane', 'content', 'has_null');
       return;
     }
-    if (!hasClass("body", "has_images")) {
+    if (!hasClass('body', 'has_images')) {
       return;
     } // do nothing if no audio or images
     let cover_ID = getCoverArtID(id),
       selected_ID =
-        getCurrentUIPref("selected").length > 0
-          ? "rowid-" + getCurrentUIPref("selected")
+        getCurrentUIPref('selected').length > 0
+          ? 'rowid-' + getCurrentUIPref('selected')
           : undefined;
     if (cover_ID !== undefined) {
-      showThis(cover_ID, true, true, [
-        getEl("#" + cover_ID).querySelector("a").href,
-        false,
-      ]);
-      removeClass("#" + cover_ID, "selected");
-      addClass(".dirlist_item.audio_loaded", "selected");
+      showThis(cover_ID, true, true, [getEl('#' + cover_ID).querySelector('a').href, false]);
+      removeClass('#' + cover_ID, 'selected');
+      addClass('.dirlist_item.audio_loaded', 'selected');
     } else {
-      removeClass(".dirlist_item.image", "content_loaded");
+      removeClass('.dirlist_item.image', 'content_loaded');
     }
     //if ( selected_ID !== undefined && typeof selected_ID === 'number' ) { removeClass('.dirlist_item.media','selected'); addClass('#'+selected_ID,'selected'); }
   }
@@ -7609,7 +7055,7 @@
   // LINKS, SEARCH PARAMS, AND QUERIES
   function makeSrcSearchParams(kind) {
     // ===> GET LINK QUERIES
-    let query_str = "",
+    let query_str = '',
       params;
     const makeSearchParams = (params, query_str) => {
       query_str = new URLSearchParams();
@@ -7621,45 +7067,45 @@
     switch (true) {
       case /audio|font|image|video/.test(kind):
         break; // no query_str for audio, fonts, images, video, or htm
-      case kind === "show_directory_source":
-        query_str = "?&show_directory_source=true";
+      case kind === 'show_directory_source':
+        query_str = '?&show_directory_source=true';
         break; // view directory source
-      case kind === "pdf":
-        query_str = "#view=fitB&scrollbar=1&toolbar=1&navpanes=1";
+      case kind === 'pdf':
+        query_str = '#view=fitB&scrollbar=1&toolbar=1&navpanes=1';
         break; // query_str for pdfs
-      case kind === "htm":
-        query_str = "?theme=" + getCurrentUIPref("theme");
+      case kind === 'htm':
+        query_str = '?theme=' + getCurrentUIPref('theme');
         break; // query_str for htm files; allow improved dark mode styles
       case /text|markdown|code|other|link/.test(kind): // editable text files (including dot and plaintext files ["other"])
         params = [
-          "theme",
-          "text_editing_enable",
-          "texteditor_view",
-          "texteditor_split_view",
-          "texteditor_sync_scroll",
+          'theme',
+          'text_editing_enable',
+          'texteditor_view',
+          'texteditor_split_view',
+          'texteditor_sync_scroll',
         ]; // define array of required params for text editing
-        query_str = "?" + makeSearchParams(params).toString();
+        query_str = '?' + makeSearchParams(params).toString();
         break; // compose query_str for text files
       case /app|dir/.test(kind):
         params = [
-          "sort_by",
-          "sort_direction",
-          "show_details",
-          "show_image_thumbnails",
-          "show_large_image_thumbnails",
-          "show_numbers",
-          "use_custom_icons",
-          "show_invisibles",
-          "show_ignored_items",
-          "ignore_ignored_items",
-          "alternate_background",
-          "theme",
-          "media_play_all",
+          'sort_by',
+          'sort_direction',
+          'show_details',
+          'show_image_thumbnails',
+          'show_large_image_thumbnails',
+          'show_numbers',
+          'use_custom_icons',
+          'show_invisibles',
+          'show_ignored_items',
+          'ignore_ignored_items',
+          'alternate_background',
+          'theme',
+          'media_play_all',
         ];
-        if (searchParamsGet().has("ui_font")) {
-          params.push("ui_font");
+        if (searchParamsGet().has('ui_font')) {
+          params.push('ui_font');
         }
-        query_str = "?" + makeSearchParams(params).toString();
+        query_str = '?' + makeSearchParams(params).toString();
         break; // define array of params for dirs; compose query_str for dirs
     }
     return query_str; // return query_str
@@ -7668,78 +7114,73 @@
   function dirOpen(args) {
     // args: [dir.selected.id,dir.selected a.href]																// ===> OPEN DIR (dirs only): update selected and history searchParam in querystring
     const updateHistory = function (id) {
-      let id_arr = id.split("_");
-      id_arr = id_arr.map((el) => el.split("-")[1]);
-      return id_arr.reverse().join("+");
+      let id_arr = id.split('_');
+      id_arr = id_arr.map((el) => el.split('-')[1]);
+      return id_arr.reverse().join('+');
     }; // get numerical part(s) of selected dir/subdir id
     let item = document.getElementById(args[0]),
       history = updateHistory(args[0]),
       searchParams = searchParamsGet(); // get selected item, history, and searchParams object
     if (
-      item.classList.contains("dir") &&
-      item.classList.contains("invisible") &&
-      item.classList.contains("ignored")
+      item.classList.contains('dir') &&
+      item.classList.contains('invisible') &&
+      item.classList.contains('ignored')
     ) {
       return;
     } // don't attempt to open ignored invisible dirs (chiefly system dirs)
-    searchParams.delete("selected"); // delete 'selected' searchParam
-    history = searchParams.has("history")
-      ? history + "+" + searchParams.get("history")
-      : history;
-    searchParams.set("history", history); // configure and set 'history' searchParam
-    window.location =
-      args[1] + "?" + searchParams.toString().replace(/%2B/g, "+"); // set the window location, replacing encoded + sign.
+    searchParams.delete('selected'); // delete 'selected' searchParam
+    history = searchParams.has('history') ? history + '+' + searchParams.get('history') : history;
+    searchParams.set('history', history); // configure and set 'history' searchParam
+    window.location = args[1] + '?' + searchParams.toString().replace(/%2B/g, '+'); // set the window location, replacing encoded + sign.
   }
   function subDirOpen(parent_id) {
     // ===> OPEN SUDIRECTORY
     let parent_el = document.getElementById(parent_id),
-      parent_link = parent_el.querySelector("a").href,
+      parent_link = parent_el.querySelector('a').href,
       level = Number(parent_el.dataset.level) + 1,
       body_id = document.body.id; // define subdir level
     let content_iframe_utility_src =
       parent_link +
-      makeSrcSearchParams("dir") +
-      "&parent_id=" +
+      makeSrcSearchParams('dir') +
+      '&parent_id=' +
       parent_id +
-      "&subdirectory=true&level=" +
+      '&subdirectory=true&level=' +
       level +
-      "&body_id=" +
+      '&body_id=' +
       body_id; // assemble src link for utility_iframe
-    setAttr("#content_iframe_utility", "src", content_iframe_utility_src); // set src for utility_iframe (which processes dir & sends it back to top)
-    parent_el.classList.add("dirlist_subdir_loading"); // removed when iframe_utility sends loaded message with subdir data
+    setAttr('#content_iframe_utility', 'src', content_iframe_utility_src); // set src for utility_iframe (which processes dir & sends it back to top)
+    parent_el.classList.add('dirlist_subdir_loading'); // removed when iframe_utility sends loaded message with subdir data
   }
   function subDirClose(subdir_id) {
     subdir_id = [subdir_id]; // ===> CLOSE SUBDIRECTOY
-    if (!elExists(".dirlist_item.has_subdirectory")) {
+    if (!elExists('.dirlist_item.has_subdirectory')) {
       return;
     }
     let classes = [
-      { font: "has_fonts" },
-      { image: "has_images" },
-      { media: "has_media" },
-      { audio: "has_audio" },
+      { font: 'has_fonts' },
+      { image: 'has_images' },
+      { media: 'has_media' },
+      { audio: 'has_audio' },
     ]; // if no items with these classes found, remove the body class
     if (subdir_id[0] === undefined) {
       subdir_id = [];
-      Array.from(getEls(".dirlist_item.has_subdirectory")).forEach((el) =>
-        subdir_id.push(el.id),
-      );
+      Array.from(getEls('.dirlist_item.has_subdirectory')).forEach((el) => subdir_id.push(el.id));
     } // close all subdirs if no id given
     subdir_id.forEach((el_id) => {
-      removeClass("#" + el_id, "has_subdirectory content_loaded");
-      getEls(".dirlist_item").forEach((el) => {
-        if (el.id.startsWith(el_id + "_")) {
+      removeClass('#' + el_id, 'has_subdirectory content_loaded');
+      getEls('.dirlist_item').forEach((el) => {
+        if (el.id.startsWith(el_id + '_')) {
           el.remove();
         }
       }); // remove all items whose id begins with subdirectory parent id
       classes.forEach((item) => {
         let key = Object.keys(item).toString();
-        if (!elExists("#directory_list li." + key)) {
-          removeClass("body", item[key].toString());
+        if (!elExists('#directory_list li.' + key)) {
+          removeClass('body', item[key].toString());
         }
       });
-      if (!elExists(".dirlist_item.selected")) {
-        getEl("#" + el_id).classList.add("selected");
+      if (!elExists('.dirlist_item.selected')) {
+        getEl('#' + el_id).classList.add('selected');
       } // select closed dir if no other selected item exists
     });
     updateStats(false);
@@ -7749,17 +7190,17 @@
       eStopPrevent(e);
       e.stopImmediatePropagation();
     } // ===> OPEN CLOSE SUBDIRECTORY; e === null when opening multiple subdirs
-    let parent_el = getEl("#" + id);
-    removeClass("body", "has_menu_stats");
+    let parent_el = getEl('#' + id);
+    removeClass('body', 'has_menu_stats');
     switch (true) {
-      case parent_el.querySelector(".name") !== null &&
+      case parent_el.querySelector('.name') !== null &&
         /\.trashes|\.temporaryitems|\.spotlight-v\d+/.test(
-          parent_el.querySelector(".name").dataset.name,
+          parent_el.querySelector('.name').dataset.name
         ):
-        parent_el.classList.remove("dirlist_subdir_loading");
+        parent_el.classList.remove('dirlist_subdir_loading');
         break;
       default:
-        if (parent_el.classList.contains("has_subdirectory")) {
+        if (parent_el.classList.contains('has_subdirectory')) {
           subDirClose(id);
         } else {
           subDirOpen(id);
@@ -7769,57 +7210,53 @@
   function subDirInsert(args) {
     // args = [items,classes,parent_id]; message received: add the subdirectory to the dir_list, update stats, check for additional selected dirs
     let parent_item, source_el;
-    if (!elExists(".dirlist_item.dirlist_subdir_loading")) {
+    if (!elExists('.dirlist_item.dirlist_subdir_loading')) {
       return;
     } else {
       parent_item = document.getElementById(args[2]);
     } // select loading dir by id (args[2])
-    parent_item.classList.remove("dirlist_subdir_loading");
-    parent_item.classList.add("has_subdirectory"); // remove "loading" class, add "has_subdirectory" class
-    parent_item.insertAdjacentHTML("afterend", args[0]); // insert subdir items
-    if (getCurrentUIPref("show_image_thumbnails") === "true") {
-      uiPrefImgThumbsToggle("true");
+    parent_item.classList.remove('dirlist_subdir_loading');
+    parent_item.classList.add('has_subdirectory'); // remove "loading" class, add "has_subdirectory" class
+    parent_item.insertAdjacentHTML('afterend', args[0]); // insert subdir items
+    if (getCurrentUIPref('show_image_thumbnails') === 'true') {
+      uiPrefImgThumbsToggle('true');
     }
     updateStats(true); // update stats
-    ["has_fonts", "has_images", "has_media", "has_audio"].forEach(
-      (subdir_class) => {
-        if (args[1].split(" ").includes(subdir_class)) {
-          addClass("body", subdir_class);
-        }
-      },
-    ); // add new body classes
+    ['has_fonts', 'has_images', 'has_media', 'has_audio'].forEach((subdir_class) => {
+      if (args[1].split(' ').includes(subdir_class)) {
+        addClass('body', subdir_class);
+      }
+    }); // add new body classes
     initDirListEvents();
     initIframeEvents();
     if (/media/.test(args[1])) {
-      refreshMediaDurations("refresh_media_durations");
+      refreshMediaDurations('refresh_media_durations');
     } // init dir_list event listeners
     if (
-      elExists(".dir.selected:not(.has_subdirectory)") &&
-      parent_item.classList.contains("selected")
+      elExists('.dir.selected:not(.has_subdirectory)') &&
+      parent_item.classList.contains('selected')
     ) {
       // open multiple selected subdirs, but don't open selected if current item is not selected
-      subDirOpenClose(null, getEl(".dir.selected:not(.has_subdirectory)").id); // i.e., allow unselected dirs to be opened by icon click without also opening selected dirs
+      subDirOpenClose(null, getEl('.dir.selected:not(.has_subdirectory)').id); // i.e., allow unselected dirs to be opened by icon click without also opening selected dirs
     }
     if (isTopWindow()) {
       // reselect current content (audio or content_pane) if it was originally in newly-reopened subdirectory:
       if (/media/.test(args[1])) {
         if (!hasContent()) {
-          showThis(
-            getEl('.dirlist_item.media[id^="' + parent_item.id + '"]').id,
-          );
+          showThis(getEl('.dirlist_item.media[id^="' + parent_item.id + '"]').id);
         } // autoload media from new subdirs, if no media or other content currently loaded
-        else if (hasClass("#content_pane", "has_audio")) {
-          addClass("#" + getData("#content_audio", "src_id"), "audio_loaded");
+        else if (hasClass('#content_pane', 'has_audio')) {
+          addClass('#' + getData('#content_audio', 'src_id'), 'audio_loaded');
         } // else reselect loaded audio file
       }
-      if (!hasContent("null")) {
-        source_el = getEl("#" + getData("#content_pane", "loaded_id")); // get content_el by content_source
+      if (!hasContent('null')) {
+        source_el = getEl('#' + getData('#content_pane', 'loaded_id')); // get content_el by content_source
         if (source_el !== null) {
           removeClass(
-            ".dirlist_item.file.non_media.selected,.dirlist_item.file.non_media.content_loaded",
-            "selected content_loaded",
+            '.dirlist_item.file.non_media.selected,.dirlist_item.file.non_media.content_loaded',
+            'selected content_loaded'
           );
-          source_el.classList.add("selected", "content_loaded");
+          source_el.classList.add('selected', 'content_loaded');
         }
       }
     }
@@ -7829,107 +7266,96 @@
   // FOCUS ELS
   function focusEl(sel, e) {
     let content_pane_data = getContentPaneData(),
-      content_el_id = "content" + content_pane_data?.slice(3) || "",
+      content_el_id = 'content' + content_pane_data?.slice(3) || '',
       bool = false,
       incr = 1; // ===> FOCUS CONTENT
-    sel =
-      sel === null || sel === undefined
-        ? "#top_body"
-        : !sel.startsWith("#")
-          ? "#" + sel
-          : sel; // enforce correct sel format
+    sel = sel === null || sel === undefined ? '#top_body' : !sel.startsWith('#') ? '#' + sel : sel; // enforce correct sel format
     menuClose();
     document.activeElement.blur(); // close menus, blur active element
     switch (true) {
-      case sel === "#top_body":
+      case sel === '#top_body':
       case sel === undefined: // focus sidebar
         switch (true) {
           case isTopWindow():
-            removeClass("body", "focus_content");
+            removeClass('body', 'focus_content');
             getEl(sel).focus();
-            scrollThis("#directory_list", ".selected");
+            scrollThis('#directory_list', '.selected');
             break;
           case !isTopWindow():
-            messageSend("top_body", "focus_top");
+            messageSend('top_body', 'focus_top');
             break;
         }
         break;
-      case sel === "#content_iframe":
-        selectThisItem(getData("#content_pane", "loaded_id"));
+      case sel === '#content_iframe':
+        selectThisItem(getData('#content_pane', 'loaded_id'));
         switch (true) {
           case isTopWindow():
-            addClass("body", "focus_content");
-            getEl("#content_iframe").focus();
-            if (e !== undefined && e.key === "Tab") {
+            addClass('body', 'focus_content');
+            getEl('#content_iframe').focus();
+            if (e !== undefined && e.key === 'Tab') {
               if (e.shiftKey) {
                 bool = true;
                 incr = -1;
               }
               switch (true) {
-                case hasContent("dir"):
-                  messageSend("iframe", "iframe_navigation", "", [e.key, bool]);
+                case hasContent('dir'):
+                  messageSend('iframe', 'iframe_navigation', '', [e.key, bool]);
                   break;
-                case hasContent("code,htm,markdown,text,other,link"):
-                  messageSend("iframe", "navigateTabKeyFocus", null, [
-                    "texteditor",
-                    incr,
-                  ]);
+                case hasContent('code,htm,markdown,text,other,link'):
+                  messageSend('iframe', 'navigateTabKeyFocus', null, ['texteditor', incr]);
                   break;
               }
             }
             break;
           case !isTopWindow():
-            quickLookThis("close");
-            messageSend("top_body", "focus_iframe");
+            quickLookThis('close');
+            messageSend('top_body', 'focus_iframe');
             break;
         }
         break;
-      case sel === "#content_pane":
-        selectThisItem(getData("#content_pane", "loaded_id"));
+      case sel === '#content_pane':
+        selectThisItem(getData('#content_pane', 'loaded_id'));
         break; // <-- test and clean this    focusEl\('#content_pane
-      case sel !== "#top_body":
-        selectThisItem(getData("#content_pane", "loaded_id")); // All other sel
-        addClass("#top_body", "focus_content");
-        removeClass("body", "is_blurred");
+      case sel !== '#top_body':
+        selectThisItem(getData('#content_pane', 'loaded_id')); // All other sel
+        addClass('#top_body', 'focus_content');
+        removeClass('body', 'is_blurred');
         switch (
           true // switch according to content_pane_data
         ) {
           case content_pane_data === undefined && isTopWindow():
-            removeClass("body", "focus_content");
+            removeClass('body', 'focus_content');
             document.body.focus();
             break; // don't focus undefined content
-          case hasContent("font"):
+          case hasContent('font'):
             getEl(sel)?.focus();
-            if (
-              !hasContent("font_specimen_glyph") &&
-              !hasContent("font_file_glyph")
-            ) {
-              removeClass("#content_font .selected", "selected");
+            if (!hasContent('font_specimen_glyph') && !hasContent('font_file_glyph')) {
+              removeClass('#content_font .selected', 'selected');
             }
             switch (true) {
-              case sel === "#font_file_glyph_container_0":
-                addClass(sel, "selected");
-                scrollThis("#font_file_grid", ".selected");
+              case sel === '#font_file_glyph_container_0':
+                addClass(sel, 'selected');
+                scrollThis('#font_file_grid', '.selected');
                 getEl(sel)?.focus();
                 break;
-              case sel === "#font_specimen_glyph_container_0":
-                addClass(sel, "selected");
-                scrollThis("#font_specimen_grid", ".selected");
+              case sel === '#font_specimen_glyph_container_0':
+                addClass(sel, 'selected');
+                scrollThis('#font_specimen_grid', '.selected');
                 break;
             }
             switch (true) {
               default:
                 getEl(sel)?.focus();
                 break;
-              case sel === "#font_toolbar":
+              case sel === '#font_toolbar':
                 getEl(sel)?.focus();
                 break;
-              case e?.key === "Tab" || sel === "#font_specimen_1":
-                getEl("#font_specimen_1")?.focus();
+              case e?.key === 'Tab' || sel === '#font_specimen_1':
+                getEl('#font_specimen_1')?.focus();
                 break;
             }
             break;
-          case hasContent("grid,image,video,pdf"):
+          case hasContent('grid,image,video,pdf'):
             document.getElementById(content_el_id).focus();
             break;
           default:
@@ -7941,32 +7367,29 @@
   //============================//
   // SELECT DIR LIST ITEMS
   function selectThisItem(id, args) {
-    let el = getEl("#" + id),
+    let el = getEl('#' + id),
       kind = el?.dataset?.kind ?? null; //, id_arr;					// ===> SELECT THIS on click and set classes for content_pane; args = bool scroll or not
     switch (true) {
-      case id === "close":
-      case getEl("#" + id) || id === "open_sidebar_in_content_pane":
+      case id === 'close':
+      case getEl('#' + id) || id === 'open_sidebar_in_content_pane':
         return;
       //case ( /_/.test(id) && !isTopWindow() ): id_arr === id.split('_');
       //id_arr.forEach( id => { subDirOpenClose(null,id); id_arr.shift(); } );	break;	// we'd like to reopen iframe subdirs when iframe file/dir item from a subdir is closed
       case el === null:
         break;
-      case kind === "audio":
-        removeClass(".audio", "selected");
-        el.classList.add("selected");
+      case kind === 'audio':
+        removeClass('.audio', 'selected');
+        el.classList.add('selected');
         if (!isTopWindow()) {
-          removeClass(".non_media", "selected content_loaded");
+          removeClass('.non_media', 'selected content_loaded');
         }
         break; // audio; iframe dirlists
       default:
-        removeClass("body", "has_directory_source");
-        addRemoveClassSiblings(
-          "#" + id + ":not(.audio)",
-          "selected content_loaded",
-        ); // select dir_list item; remove classes from siblings, leave .audio with .playing
+        removeClass('body', 'has_directory_source');
+        addRemoveClassSiblings('#' + id + ':not(.audio)', 'selected content_loaded'); // select dir_list item; remove classes from siblings, leave .audio with .playing
     }
     if (!/audio/.test(kind) && !/grid|/.test(id)) {
-      addRemoveClassSiblings("#" + id, "content_loaded", "content_loaded");
+      addRemoveClassSiblings('#' + id, 'content_loaded', 'content_loaded');
     } // only remove siblings content_loaded class and change content_pane data-source if not audio
     if (
       /audio|video/.test(kind) &&
@@ -7976,24 +7399,24 @@
       refreshMediaDurations(id);
     } // reset media duration if necessary.
     if (args?.[1] !== false) {
-      scrollThis("#directory_list", ".selected");
+      scrollThis('#directory_list', '.selected');
     } // bool = false from autoloadcover art
   }
   function selectMultipleItems(e, id) {
     e?.preventDefault(); // ===> SELECT MULTIPLE ITEMS (dirs, fonts, images only)
-    if (e?.key !== "a" && id === undefined) {
+    if (e?.key !== 'a' && id === undefined) {
       return;
     } // id === undefined if kind !== dir/font/image
-    let el = getEl("#" + id),
+    let el = getEl('#' + id),
       els,
-      kind = el?.dataset.kind || "dir",
+      kind = el?.dataset.kind || 'dir',
       selected_el,
       selected_el_index,
       el_index;
     switch (true) {
       case e?.shiftKey: // shiftKey: range select
-        selected_el = getEl(".dirlist_item.selected." + kind);
-        els = Array.from(getEls(".dirlist_item." + kind));
+        selected_el = getEl('.dirlist_item.selected.' + kind);
+        els = Array.from(getEls('.dirlist_item.' + kind));
         el_index = els.indexOf(el);
         selected_el_index = els.indexOf(selected_el);
         els =
@@ -8002,38 +7425,35 @@
             : els.slice(el_index, selected_el_index + 1); // select up or down from selected item
         els.forEach((el) => selectMultipleItems(null, el.id));
         break;
-      case e?.key === "a":
+      case e?.key === 'a':
         e.preventDefault();
         if (isTopWindow()) {
           closeContent();
         } // cmd + a: select all
         kind =
           getEls(
-            ".dirlist_item.dir.selected,.dirlist_item.app.selected,.dirlist_item.image.selected,.dirlist_item.font.selected",
-          )[0]?.dataset.kind || "dir";
-        getEls(".dirlist_item.selected,.dirlist_item.content_loaded").forEach(
-          (el) => el.classList.remove("selected", "content_loaded"),
+            '.dirlist_item.dir.selected,.dirlist_item.app.selected,.dirlist_item.image.selected,.dirlist_item.font.selected'
+          )[0]?.dataset.kind || 'dir';
+        getEls('.dirlist_item.selected,.dirlist_item.content_loaded').forEach((el) =>
+          el.classList.remove('selected', 'content_loaded')
         );
-        els = getEls(".dirlist_item." + kind);
-        els?.forEach((el) => el.classList.add("selected"));
+        els = getEls('.dirlist_item.' + kind);
+        els?.forEach((el) => el.classList.add('selected'));
         if (/image|font/.test(kind)) {
-          showGrid("show_" + kind + "_grid");
+          showGrid('show_' + kind + '_grid');
         }
         break; // show grid of all fonts/images
       case /image|font/.test(kind) && isTopWindow(): // select font or image
-        removeClass(
-          ".dirlist_item.selected:not(.font):not(.image)",
-          "selected",
-        );
-        removeClass(".dirlist_item.content_loaded", "content_loaded");
-        el.classList.add("selected");
+        removeClass('.dirlist_item.selected:not(.font):not(.image)', 'selected');
+        removeClass('.dirlist_item.content_loaded', 'content_loaded');
+        el.classList.add('selected');
         showGrid(id, false);
         break; // grids
       case /dir|app/.test(kind):
         closeContent();
-        removeClass(".dirlist_item.file.selected", "selected");
-        removeClass(".dirlist_item.content_loaded", "content_loaded");
-        el.classList.add("selected");
+        removeClass('.dirlist_item.file.selected', 'selected');
+        removeClass('.dirlist_item.content_loaded', 'content_loaded');
+        el.classList.add('selected');
         break; // dirs
     }
   }
@@ -8042,21 +7462,21 @@
   function openFiles(e, id) {
     let funcName = id; // id/funcName === 'open_font' or 'open_playlist'
     switch (e.type) {
-      case "click":
+      case 'click':
         switch (
           true // These cases are only for when a playlist or font file is already open (check for edited content_iframe...)
         ) {
-          case /has_\w+list/.test(getClassNames("body")):
+          case /has_\w+list/.test(getClassNames('body')):
             e.preventDefault();
-            showWarning(funcName, "close_playlist");
+            showWarning(funcName, 'close_playlist');
             break; // showWarning('openFile');
-          case hasContent("font_file"):
+          case hasContent('font_file'):
             e.preventDefault();
-            showWarning(funcName, "close_font");
+            showWarning(funcName, 'close_font');
             break; // showWarning('openFile');
         }
         break;
-      case "change":
+      case 'change':
         openFile([e, id]);
         break;
     }
@@ -8064,40 +7484,38 @@
   // ===> SET CONTENT TITLE
   function setContentTitle(id, kind, file_name, src, bool) {
     // ===> SET CONTENT TITLE
-    let title_text = "",
-      selected_title = getData(".dirlist_item.selected", "title"),
-      selected_item = getEl(".dirlist_item.selected"),
+    let title_text = '',
+      selected_title = getData('.dirlist_item.selected', 'title'),
+      selected_item = getEl('.dirlist_item.selected'),
       selected_link,
       content_link,
       content_link_info = getLinkInfo(src);
     let title_span =
-      kind === "has_audio_error"
-        ? getEl("#content_audio_title span")
-        : getEl("#content_title span");
+      kind === 'has_audio_error'
+        ? getEl('#content_audio_title span')
+        : getEl('#content_title span');
     switch (true) {
-      case id === "close":
-        removeAttr("#content_title span", "data-after");
-        removeAttr("#content_title span", "data-grid_item_count");
+      case id === 'close':
+        removeAttr('#content_title span', 'data-after');
+        removeAttr('#content_title span', 'data-grid_item_count');
         break;
       default:
         selected_link =
           selected_item !== null
-            ? decodeURIComponentSafe(
-                selected_item.querySelector("a").pathname,
-              ).trim()
-            : ""; // get selected item link
+            ? decodeURIComponentSafe(selected_item.querySelector('a').pathname).trim()
+            : ''; // get selected item link
         content_link =
           content_link_info !== undefined
             ? decodeURIComponentSafe(content_link_info[0]).trim()
-            : ""; // get content link
+            : ''; // get content link
         switch (true) {
-          case kind === "has_audio_error":
-            title_text = "Audio file not found";
+          case kind === 'has_audio_error':
+            title_text = 'Audio file not found';
             break; // audio error title
-          case kind === "content_error":
-            title_text = "File not found";
+          case kind === 'content_error':
+            title_text = 'File not found';
             break; // content error title
-          case kind === "grid":
+          case kind === 'grid':
             title_text = current_dir_path;
             break; // grid title
           case selected_link !== content_link && bool !== false: // nav unsynced iframe items and...
@@ -8110,15 +7528,11 @@
           default:
             title_text = file_name || selected_title; // nav synced iframe items
         }
-        if (kind !== "grid") {
-          title_text = title_text
-            ?.split("/")
-            .join("/<wbr>")
-            ?.split("_")
-            .join("_<wbr>");
-          removeAttr("#content_title span", "data-after");
+        if (kind !== 'grid') {
+          title_text = title_text?.split('/').join('/<wbr>')?.split('_').join('_<wbr>');
+          removeAttr('#content_title span', 'data-after');
         } // allow nice line breaks in title
-        if (kind === "image") {
+        if (kind === 'image') {
           imageSetDimensions();
         } // show images; set image dimensions
     }
@@ -8127,59 +7541,51 @@
     } // set title text
   }
   function showContentPaneEl(id) {
-    setAttr("#content_pane", "data-content", "has_" + id);
-    addClass("#content_" + id, "has_content");
-    getEl("#content_title span").innerHTML = getData(
-      "#content_pane",
-      "loaded_id",
-    );
+    setAttr('#content_pane', 'data-content', 'has_' + id);
+    addClass('#content_' + id, 'has_content');
+    getEl('#content_title span').innerHTML = getData('#content_pane', 'loaded_id');
   }
   function setContentPaneAttrs(id, kind, content_el_id) {
     // ===> SET CONTENT PANE ATTRIBUTES
-    let class_str_iframe = id === "content_iframe_file" ? "iframe_" : "",
-      class_str_kind = /app|dir/.test(kind) ? "dir" : "file"; // set strings to insert in content_pane class
+    let class_str_iframe = id === 'content_iframe_file' ? 'iframe_' : '',
+      class_str_kind = /app|dir/.test(kind) ? 'dir' : 'file'; // set strings to insert in content_pane class
     switch (true) {
-      case id === "close":
+      case id === 'close':
         removeClass(
-          "#content_pane",
-          "content_error has_file has_dir has_zoom_image has_scaled_image has_emptycontent",
+          '#content_pane',
+          'content_error has_file has_dir has_zoom_image has_scaled_image has_emptycontent'
         ); // removeclass	various iframe_item_src
-        removeAttr("#content_pane .has_content", "style");
-        removeAttr("#content_pane", "data-loaded_id"); // remove		inline styles and data-loaded_id
-        setAttr("#content_pane", "data-content", "has_null");
-        setAttr("#content_pane", "data-loaded", "loaded"); // set			data-content=has_null, data-loaded=loaded (remove spinner)
+        removeAttr('#content_pane .has_content', 'style');
+        removeAttr('#content_pane', 'data-loaded_id'); // remove		inline styles and data-loaded_id
+        setAttr('#content_pane', 'data-content', 'has_null');
+        setAttr('#content_pane', 'data-loaded', 'loaded'); // set			data-content=has_null, data-loaded=loaded (remove spinner)
         break;
       default:
         switch (true) {
-          case /content_iframe_dir|content_iframe_parent|open_link_file/.test(
-            id,
-          ):
-            removeClass("#content_pane", "has_iframe_file");
-            addClass("#content_pane", "has_iframe_dir");
+          case /content_iframe_dir|content_iframe_parent|open_link_file/.test(id):
+            removeClass('#content_pane', 'has_iframe_file');
+            addClass('#content_pane', 'has_iframe_dir');
             break; // iframe_dirs
           case /content_iframe_file/.test(id):
-            removeClass("#content_pane", "has_dir");
-            addClass("#content_pane", "has_iframe_file");
+            removeClass('#content_pane', 'has_dir');
+            addClass('#content_pane', 'has_iframe_file');
             break; // iframe files
           case /^rowid/.test(id):
           default:
-            removeClass(
-              "#content_pane",
-              "has_dir has_file has_iframe_dir has_iframe_file",
-            );
+            removeClass('#content_pane', 'has_dir has_file has_iframe_dir has_iframe_file');
             break; // all sidebar items
         }
-        removeClass("#content_pane", "content_error has_emptycontent"); // removeclass	#content_pane error
-        addClass("#content_pane", "has_" + class_str_iframe + class_str_kind); // addclass		#content_pane "has_"+ kind
-        setAttr("#content_pane", "data-content", "has_" + kind); // add data.content to content_pane
-        setAttr("#content_pane", "data-loaded_id", id); // hide all iframe content until loaded, show loading spinner:
-        if (kind !== "video") {
-          removeAttr("#content_video", "data-src_id");
+        removeClass('#content_pane', 'content_error has_emptycontent'); // removeclass	#content_pane error
+        addClass('#content_pane', 'has_' + class_str_iframe + class_str_kind); // addclass		#content_pane "has_"+ kind
+        setAttr('#content_pane', 'data-content', 'has_' + kind); // add data.content to content_pane
+        setAttr('#content_pane', 'data-loaded_id', id); // hide all iframe content until loaded, show loading spinner:
+        if (kind !== 'video') {
+          removeAttr('#content_video', 'data-src_id');
         }
         if (/content_iframe/.test(content_el_id) && !/ignored/.test(kind)) {
-          setAttr("#content_pane", "data-loaded", "unloaded");
+          setAttr('#content_pane', 'data-loaded', 'unloaded');
         } else {
-          setAttr("#content_pane", "data-loaded", "loaded");
+          setAttr('#content_pane', 'data-loaded', 'loaded');
         }
     }
   }
@@ -8187,64 +7593,64 @@
     // ===> SET CONTENT EL ATTRIBUTES
     switch (true) {
       case /content_iframe_dir|content_iframe_parent|open_link_file/.test(id): // iframe_dirs
-        setAttr("#content_pane", "data-iframe_item_src", src); // if iframe_dir, set iframe_item_src attr
-        if (!hasAttr("#content_pane", "data-iframe_selected_id")) {
-          setAttr("#content_pane", "data-iframe_selected_id", selected_id);
+        setAttr('#content_pane', 'data-iframe_item_src', src); // if iframe_dir, set iframe_item_src attr
+        if (!hasAttr('#content_pane', 'data-iframe_selected_id')) {
+          setAttr('#content_pane', 'data-iframe_selected_id', selected_id);
         }
         break; // select iframe_dirlist selected if iframe_dir
       case /content_iframe_file/.test(id):
-        setAttr("#content_pane", "data-iframe_selected_id", selected_id);
+        setAttr('#content_pane', 'data-iframe_selected_id', selected_id);
         break; // iframe files
-      case kind === "ignored":
+      case kind === 'ignored':
         return; // ignored
     }
-    removeAttr(".content_el", "src");
-    setAttr(content_el_id, "src", src); // set content el source
-    removeClass(".content_el.has_content", "has_content");
-    addClass(content_el_id, "has_content"); // addclass .has_content to content_el & remove from siblings
-    if (kind === "image") {
+    removeAttr('.content_el', 'src');
+    setAttr(content_el_id, 'src', src); // set content el source
+    removeClass('.content_el.has_content', 'has_content');
+    addClass(content_el_id, 'has_content'); // addclass .has_content to content_el & remove from siblings
+    if (kind === 'image') {
       imageSetDimensions();
     } // set image dimensions if necessary
   }
   function iframeLoadedFunctions(id, kind, file_name, content) {
     let focus_el; // ===> IFRAME LOADED FUNCTIONS
-    setAttr("#content_pane", "data-loaded", "loaded");
+    setAttr('#content_pane', 'data-loaded', 'loaded');
     clearTimeout(setWarningItemNotLoadedID); // set data-loaded (remove loading spinner)
-    if (hasAttr("#content_pane", "data-iframe_selected_id")) {
+    if (hasAttr('#content_pane', 'data-iframe_selected_id')) {
       // select iframe_dirlist selected IFF is iframe_dir
       messageSend(
-        "iframe",
-        "select_iframe_item",
-        "",
-        getData("#content_pane", "iframe_selected_id"),
+        'iframe',
+        'select_iframe_item',
+        '',
+        getData('#content_pane', 'iframe_selected_id')
       ); // tell iframe to reselect original item
-      focus_el = "#content_iframe";
+      focus_el = '#content_iframe';
     }
-    deleteData(".dirlist_item[data-html_content]", "html_content"); // remove existing data-html_content
-    getEl(".dirlist_item.selected")?.classList.add("content_loaded"); // add content_loaded class to dirlist_item
-    setData(".dirlist_item.content_loaded", "html_content", content); // set data-html_content for sidebar items (for processing cue, playlist, link files, htm, &c.)
+    deleteData('.dirlist_item[data-html_content]', 'html_content'); // remove existing data-html_content
+    getEl('.dirlist_item.selected')?.classList.add('content_loaded'); // add content_loaded class to dirlist_item
+    setData('.dirlist_item.content_loaded', 'html_content', content); // set data-html_content for sidebar items (for processing cue, playlist, link files, htm, &c.)
     switch (true) {
-      case file_name.endsWith(".cuetxt"):
+      case file_name.endsWith('.cuetxt'):
         cuesheetProcess(content);
         break; // process cuesheet files; name must end with ".cuetxt"
-      case kind === "link":
-      case kind === "remote_webloc":
+      case kind === 'link':
+      case kind === 'remote_webloc':
         linkFileProcess(kind, content);
         break; // process link files
-      case kind === "htm":
+      case kind === 'htm':
         switch (true) {
-          case getData("#content_pane", "content") !== "has_htm":
-            setData("#content_pane", "content", "has_" + kind);
+          case getData('#content_pane', 'content') !== 'has_htm':
+            setData('#content_pane', 'content', 'has_' + kind);
             break;
-          case content === "":
-            addClass("#content_pane", "has_emptycontent");
+          case content === '':
+            addClass('#content_pane', 'has_emptycontent');
             break; // if htm content === '', set empty content class for proper iframe display
         }
         break;
-      case hasClass("#top_body", "open_sidebar_in_content_pane"):
-        addClass("#top_body", "no_hover");
-        removeClass("#top_body", "open_sidebar_in_content_pane");
-        focus_el = "#content_iframe";
+      case hasClass('#top_body', 'open_sidebar_in_content_pane'):
+        addClass('#top_body', 'no_hover');
+        removeClass('#top_body', 'open_sidebar_in_content_pane');
+        focus_el = '#content_iframe';
         break;
     }
     if (focus_el !== undefined) {
@@ -8254,40 +7660,40 @@
 
   // TESTING
   function fileNotFound(e, id) {
-    if (e.type === "error") {
-      if (id === "content_audio") {
-        addClass("#content_pane", "has_audio_error");
-        setContentTitle("has_audio_error");
+    if (e.type === 'error') {
+      if (id === 'content_audio') {
+        addClass('#content_pane', 'has_audio_error');
+        setContentTitle('has_audio_error');
       } else {
-        addClass("#content_pane", "content_error");
+        addClass('#content_pane', 'content_error');
         closeContent();
-        setContentTitle("error");
+        setContentTitle('error');
       }
     }
   }
   function initContentError(id, content_el_id) {
-    if (id !== "close") {
-      getEl(content_el_id).addEventListener("error", (e) => {
+    if (id !== 'close') {
+      getEl(content_el_id).addEventListener('error', (e) => {
         fileNotFound(e, content_el_id);
       });
     }
   } // ===> INIT CONTENT ERROR
 
   const testFontLoaded = async (src) => {
-    let font = new FontFace("myfont", "url(" + src + ")");
-    let fontFile = new FontFace("FontName", "url(" + src + ")");
+    let font = new FontFace('myfont', 'url(' + src + ')');
+    let fontFile = new FontFace('FontName', 'url(' + src + ')');
     fontFile.load().then(
       () => {
-        console.log("LOADED");
+        console.log('LOADED');
       },
       (err) => {
         console.log(err);
-      },
+      }
     );
   };
   const testItemLoaded = (src, kind) => {
     switch (true) {
-      case kind === "font":
+      case kind === 'font':
         testFontLoaded(src);
         break;
     }
@@ -8297,25 +7703,25 @@
     let src = args?.[0];
     let kind = args?.[1]; // Show warning if item is not found; typically after clicking a bad link in an html file
     let warning_message =
-      "data:text/html;charset=utf-8," +
+      'data:text/html;charset=utf-8,' +
       escape(
-        `<!DOCTYPE html><html><head><style>html,body { background:transparent; }</style></head><body style="text-align: center;" id="content_body" class="is_html">  <h1 style="font-family: Georgia, serif; color: #4a4a4a; margin-top: 4em; line-height: 1.5;">Sorry, this page doesn't exist.<br>Please check the URL or go back a page.</h1>  <h2 style="  font-family: Verdana, sans-serif; color: #7d7d7d; font-weight: 300;">404 Error. Page Not Found.</h2>  <button onclick="window.parent.postMessage( {\'messageContent\':\'go_back\'},\'*\')">Go back</button></body></html>`,
+        `<!DOCTYPE html><html><head><style>html,body { background:transparent; }</style></head><body style="text-align: center;" id="content_body" class="is_html">  <h1 style="font-family: Georgia, serif; color: #4a4a4a; margin-top: 4em; line-height: 1.5;">Sorry, this page doesn't exist.<br>Please check the URL or go back a page.</h1>  <h2 style="  font-family: Verdana, sans-serif; color: #7d7d7d; font-weight: 300;">404 Error. Page Not Found.</h2>  <button onclick="window.parent.postMessage( {\'messageContent\':\'go_back\'},\'*\')">Go back</button></body></html>`
       );
     switch (true) {
       case !/audio|video|font|image|pdf/.test(kind): // Show warning for iframe items not found
         setWarningItemNotLoadedID = setTimeout(() => {
-          if (getEl("#content_pane").dataset.loaded === "unloaded") {
-            removeClass("#content_pane", "has_file");
-            delete getEl("#content_pane").dataset.iframe_selected_id;
-            delete getEl("#content_pane").dataset.iframe_item_src;
-            setData("#content_pane", "loaded", "loaded");
-            setData("#content_pane", "content", "has_htm");
-            addClass("#content_iframe", "has_content");
-            getEl("#content_iframe").src = warning_message;
+          if (getEl('#content_pane').dataset.loaded === 'unloaded') {
+            removeClass('#content_pane', 'has_file');
+            delete getEl('#content_pane').dataset.iframe_selected_id;
+            delete getEl('#content_pane').dataset.iframe_item_src;
+            setData('#content_pane', 'loaded', 'loaded');
+            setData('#content_pane', 'content', 'has_htm');
+            addClass('#content_iframe', 'has_content');
+            getEl('#content_iframe').src = warning_message;
           }
         }, 5000);
         break;
-      case kind === "font":
+      case kind === 'font':
         testItemLoaded(src, kind);
         break;
       default:
@@ -8328,7 +7734,7 @@
   function showThisItem(id, args) {
     // ===> SHOW CONTENT // args = [link,kind,selected_id (for iframe dirs/files)] or "close"; bool === false for proper content title for autoload_coverart
     let link_info = /rowid/.test(id)
-      ? getLinkInfo(getAttr("#" + id + " a", "href"))
+      ? getLinkInfo(getAttr('#' + id + ' a', 'href'))
       : args !== undefined
         ? getLinkInfo(args[0])
         : id;
@@ -8337,62 +7743,62 @@
       kind,
       content_el_id,
       selected_id = args?.[2] || undefined,
-      content = args?.[4] || "",
+      content = args?.[4] || '',
       link_protocol = link_info?.[7];
-    if (typeof link_info !== "string" && link_info !== undefined) {
+    if (typeof link_info !== 'string' && link_info !== undefined) {
       src = link_info[0];
       file_name = link_info[1];
-      kind = link_info[4].includes("ignored")
-        ? "ignored"
-        : args?.[2] === "remote_webloc"
+      kind = link_info[4].includes('ignored')
+        ? 'ignored'
+        : args?.[2] === 'remote_webloc'
           ? args[2]
           : link_info[3];
     } // src, file_name, kind
     let bool = args?.[1] || true; // bool: tell set_content_title to use name for cover art, not file path
     if (!/editor/.test(id)) {
-      removeClass("body", "has_texteditor");
+      removeClass('body', 'has_texteditor');
     }
-    playlistShowItem("close"); // close texteditor and make_playlist item textarea
-    if (!/video/.test(kind) && hasContent("video")) {
-      mediaPlayPause("close");
-      toggleMediaNameInWindowTitle("close");
+    playlistShowItem('close'); // close texteditor and make_playlist item textarea
+    if (!/video/.test(kind) && hasContent('video')) {
+      mediaPlayPause('close');
+      toggleMediaNameInWindowTitle('close');
     } // nobreak; close video when opening any other content
     switch (
       true // MAKE CONTENT SRC STRING
     ) {
-      case id === "close":
-        id = "close";
-        kind = "close";
+      case id === 'close':
+        id = 'close';
+        kind = 'close';
         break; // close
       case /\.php\?/.test(src):
         break; // do nothing for php files
-      case id === "":
+      case id === '':
         src = args[0];
         kind = args[1];
         break; // id = '' typically when grid items remain after closing subdirectory
       case /open_sidebar_in_content_pane/.test(id):
-        src = args[0] + makeSrcSearchParams("dir");
+        src = args[0] + makeSrcSearchParams('dir');
         kind = args[1];
         break; // open in sidebar
       case /iframe_parent|iframe_dir/.test(id):
-        src += makeSrcSearchParams("dir");
+        src += makeSrcSearchParams('dir');
         break; // prep for iframe dirs
       case /rowid/.test(id):
       case /link/.test(kind):
-      case id === "content_iframe_file":
+      case id === 'content_iframe_file':
         src += makeSrcSearchParams(kind);
         break; // dirlist_items, link files, content_iframe_files
     }
-    content_el_id = ["audio", "font", "image", "pdf", "video"].includes(kind)
-      ? "#content_" + kind
-      : id === "close"
-        ? "close"
-        : "#content_iframe";
+    content_el_id = ['audio', 'font', 'image', 'pdf', 'video'].includes(kind)
+      ? '#content_' + kind
+      : id === 'close'
+        ? 'close'
+        : '#content_iframe';
     switch (
       true // SHOW INDIVIDUAL CONTENT TYPES
     ) {
-      case hasContent("font_file") && !/audio/.test(kind):
-        showWarning("closeContent");
+      case hasContent('font_file') && !/audio/.test(kind):
+        showWarning('closeContent');
         break; // prevent accidentally closing font file
       case /audio/.test(kind):
         showMedia(kind, id, src, file_name);
@@ -8408,48 +7814,45 @@
         break; // show grid
       case window.location.protocol !== link_protocol &&
         link_protocol !== undefined &&
-        !["audio", "font", "image", "pdf", "video", "dir", "app"].includes(
-          kind,
-        ): // replace this text with test has non_local class?
+        !['audio', 'font', 'image', 'pdf', 'video', 'dir', 'app'].includes(kind): // replace this text with test has non_local class?
         switch (true) {
-          case link_protocol !== "file:":
-            showWarning("non_local_file", [src]);
+          case link_protocol !== 'file:':
+            showWarning('non_local_file', [src]);
             break; // warning non-local file on local page (for playlist pages)
-          case link_protocol === "file:":
-            showWarning("local_file");
+          case link_protocol === 'file:':
+            showWarning('local_file');
             break; // warning local file on non-local page (for playlist pages)
         }
-        showThis("close");
+        showThis('close');
         break; // close previous content
-      case kind === "ignored" &&
-        getCurrentUIPref("ignore_ignored_items") === "false":
+      case kind === 'ignored' && getCurrentUIPref('ignore_ignored_items') === 'false':
         window.location = src;
         break; // attempt to open ignored files if ignore ignored items enabled
       default:
         switch (true) {
           case /font/.test(kind):
-            showFont(id, false, "", src);
+            showFont(id, false, '', src);
             break; // show font specimen; init font preview event listeners
           case /pdf/.test(kind):
             showPDF();
             break; // show pdf: setup new #content_pdf el
           case /video/.test(kind):
-            if (getData("#content_video", "src_id") !== id) {
-              showMedia("video", id, src, file_name);
+            if (getData('#content_video', 'src_id') !== id) {
+              showMedia('video', id, src, file_name);
               break;
             } else {
               return;
             } // show video
         }
-        if (/font|image/.test(kind) && hasContent("grid")) {
-          closeGrid("hide");
+        if (/font|image/.test(kind) && hasContent('grid')) {
+          closeGrid('hide');
           showContentGridItem(
             id,
-            getEl("#" + id).querySelector("a").href,
-            getEl("#" + id).dataset.kind,
+            getEl('#' + id).querySelector('a').href,
+            getEl('#' + id).dataset.kind
           );
         }
-        if (!hasContent("font_file_glyph")) {
+        if (!hasContent('font_file_glyph')) {
           setContentPaneAttrs(id, kind, content_el_id);
           setContentElAttrs(id, content_el_id, kind, src, selected_id);
           setContentTitle(id, kind, file_name, src, bool);
@@ -8468,28 +7871,28 @@
     }
   } // ===> SHOW THIS (args = [src,kind,selected_id])
   function quickLookThis(id, kind) {
-    getEl("#content_audio")?.blur();
-    getEl("#content_video")?.blur(); // prevent media play on space key if focused
+    getEl('#content_audio')?.blur();
+    getEl('#content_video')?.blur(); // prevent media play on space key if focused
     switch (true) {
       case window.parent !== window.top:
         break; // prevent infinite quicklook regression
-      case id === "close":
+      case id === 'close':
         closeContent();
-        removeClass("body", "has_quicklook");
-        getEl("#content_pane .selected")?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
+        removeClass('body', 'has_quicklook');
+        getEl('#content_pane .selected')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
         });
         break; // close; scroll grid item into view
       default:
-        addClass("body", "has_quicklook");
-        showMedia("close_audio");
-        if (getEl("#" + id).classList.contains("ignored")) {
+        addClass('body', 'has_quicklook');
+        showMedia('close_audio');
+        if (getEl('#' + id).classList.contains('ignored')) {
           closeContent();
         }
         showThis(id);
         if (/audio|video/.test(kind)) {
-          mediaPlayPause("play");
+          mediaPlayPause('play');
         }
     }
   }
@@ -8497,68 +7900,67 @@
   // ===> CLOSE CONTENT
   function closeContent(kind) {
     // Close all .content elements before opening any new .content from sidebar.									// ===> CLOSE CONTENT
-    let content_el_id = getEl(".content_el.has_content")?.id || "";
-    kind = kind || content_el_id.split("_")[1];
+    let content_el_id = getEl('.content_el.has_content')?.id || '';
+    kind = kind || content_el_id.split('_')[1];
     switch (
       true // additional actions for specific cases
     ) {
-      case hasContent("hidden_grid"):
+      case hasContent('hidden_grid'):
         showGrid();
         break; // show hidden grid
-      case kind === "grid":
-      case hasContent("grid"):
+      case kind === 'grid':
+      case hasContent('grid'):
         closeGrid();
         break; // close grid
-      case kind === "font":
-      case hasContent("font_file_glyph"):
-      case hasContent("font_specimen_glyph"):
-      case hasContent("font"):
-        showWarning("close_font", "close_font");
+      case kind === 'font':
+      case hasContent('font_file_glyph'):
+      case hasContent('font_specimen_glyph'):
+      case hasContent('font'):
+        showWarning('close_font', 'close_font');
         break; // close font specimen
       // case kind === 'image':	break;	// case kind === 'audio':	break;	// case kind === 'video':	break;	// case kind === 'pdf':	break;	// case kind === 'iframe':	break;
-      case kind === "playlist":
-        showWarning("closePlaylist");
+      case kind === 'playlist':
+        showWarning('closePlaylist');
         break; // close playlist/filelist
-      case kind === "texteditor":
-      case hasClass("body", "has_texteditor"):
+      case kind === 'texteditor':
+      case hasClass('body', 'has_texteditor'):
         showTextEditor(false);
         break; // hide text editor
-      case hasContent("audio"):
-        showMedia("close_audio");
+      case hasContent('audio'):
+        showMedia('close_audio');
         break; // close audio if content pane empty
-      case hasClass("body", "iframe_edited"):
-        messageSend("iframe", "unloading", "closeContent");
+      case hasClass('body', 'iframe_edited'):
+        messageSend('iframe', 'unloading', 'closeContent');
         break; // close edited iframe file with warning
-      case hasClass("body", "has_directory_source") &&
-        !hasClass("body", "is_error"):
+      case hasClass('body', 'has_directory_source') && !hasClass('body', 'is_error'):
         showDirectorySource();
         break; // close directory source, reopen selected sidebar item
-      case kind === "esc":
+      case kind === 'esc':
         removeClass(
-          ".selected,.content_loaded,.hovered,.is_blurred",
-          "selected content_loaded hovered,is_blurred",
+          '.selected,.content_loaded,.hovered,.is_blurred',
+          'selected content_loaded hovered,is_blurred'
         );
-        removeClass("body", "focus_content");
+        removeClass('body', 'focus_content');
         break;
       default:
-        showThis("close");
-        removeClass("body", "focus_content has_directory_source");
+        showThis('close');
+        removeClass('body', 'focus_content has_directory_source');
         break; //
-      case hasClass("#content_pane", "has_iframe_file") &&
-        !hasClass("#content_pane", "has_iframe_dir"): // if content has iframe file opened from sidebar dir
-      case !hasClass("#content_pane", "has_iframe_file") &&
-        hasClass("#content_pane", "has_iframe_dir"): // or if content has iframe dir...
-        removeClass("#content_pane", "has_iframe_file"); // remove has_iframe_file class
-        showThis(getEl(".dirlist_item.non_media.selected")?.id);
+      case hasClass('#content_pane', 'has_iframe_file') &&
+        !hasClass('#content_pane', 'has_iframe_dir'): // if content has iframe file opened from sidebar dir
+      case !hasClass('#content_pane', 'has_iframe_file') &&
+        hasClass('#content_pane', 'has_iframe_dir'): // or if content has iframe dir...
+        removeClass('#content_pane', 'has_iframe_file'); // remove has_iframe_file class
+        showThis(getEl('.dirlist_item.non_media.selected')?.id);
         break; // show the selected sidebar dir
-      case hasClass("#content_pane", "has_iframe_file") &&
-        hasClass("#content_pane", "has_iframe_dir"): // if content has iframe file from iframe dir...
-        removeClass("#content_pane", "has_iframe_dir"); // remove has_iframe_dir class
-        showThis("content_iframe_dir", false, true, [
-          getAttr("#content_pane", "data-iframe_item_src"),
-          "dir",
+      case hasClass('#content_pane', 'has_iframe_file') &&
+        hasClass('#content_pane', 'has_iframe_dir'): // if content has iframe file from iframe dir...
+        removeClass('#content_pane', 'has_iframe_dir'); // remove has_iframe_dir class
+        showThis('content_iframe_dir', false, true, [
+          getAttr('#content_pane', 'data-iframe_item_src'),
+          'dir',
         ]); // show the iframe dir
-        removeAttr("#content_pane", "data-iframe_item_src");
+        removeAttr('#content_pane', 'data-iframe_item_src');
         break;
     }
   }
@@ -8568,102 +7970,98 @@
     let content_pane_data = getContentPaneData(),
       grid_btn_id; // ===> RELOAD CONTENT
     switch (true) {
-      case !hasContent("audio") && !hasContent():
+      case !hasContent('audio') && !hasContent():
         location.reload();
         break; // reload window if no content visible
-      case hasContent("audio ignore"):
-        getEl("#content_audio").currentTime = 0;
-        getEl("#content_audio").pause(); // nobreak;  pause audio, reset time to 0
-      case hasContent("video"):
-        getEl("#content_video").currentTime = 0;
-        getEl("#content_video").pause();
-        refreshMediaDurations("refresh_media_durations");
+      case hasContent('audio ignore'):
+        getEl('#content_audio').currentTime = 0;
+        getEl('#content_audio').pause(); // nobreak;  pause audio, reset time to 0
+      case hasContent('video'):
+        getEl('#content_video').currentTime = 0;
+        getEl('#content_video').pause();
+        refreshMediaDurations('refresh_media_durations');
         break; // pause video, reset time to 0
     }
     switch (
       true // reset other content
     ) {
-      case hasContent("texteditor"):
-      case /has_\w+list/.test(getClassNames("#top_body")):
+      case hasContent('texteditor'):
+      case /has_\w+list/.test(getClassNames('#top_body')):
         break; // do nothing for audio, video, text editor, playlist content.
-      case hasContent("grid"):
-        grid_btn_id = hasClass("#content_pane", "has_image_grid")
-          ? "#show_image_grid"
-          : hasClass("#content_pane", "has_font_grid")
-            ? "#show_font_grid"
-            : "#show_grid_btn";
-        closeGrid("close");
+      case hasContent('grid'):
+        grid_btn_id = hasClass('#content_pane', 'has_image_grid')
+          ? '#show_image_grid'
+          : hasClass('#content_pane', 'has_font_grid')
+            ? '#show_font_grid'
+            : '#show_grid_btn';
+        closeGrid('close');
         getEl(grid_btn_id).click();
         break; // reset grid
-      case hasContent("font"):
-        fontReset("reset");
+      case hasContent('font'):
+        fontReset('reset');
         break;
-      case hasContent("image"):
+      case hasContent('image'):
         closeContent();
-        if (elExists(".image.selected") || elExists(".image.content_loaded")) {
-          showThis(getEl(".dirlist_item.image.content_loaded").id);
+        if (elExists('.image.selected') || elExists('.image.content_loaded')) {
+          showThis(getEl('.dirlist_item.image.content_loaded').id);
         }
         break;
-      case hasContent("text,markdown,htm,iframe,dir"):
+      case hasContent('text,markdown,htm,iframe,dir'):
         switch (true) {
-          case hasClass("body", "iframe_edited"):
-            messageSend("iframe", "reloading", "resetContent");
+          case hasClass('body', 'iframe_edited'):
+            messageSend('iframe', 'reloading', 'resetContent');
             break;
           default:
-            showThis(getEl(".dirlist_item.content_loaded").id);
+            showThis(getEl('.dirlist_item.content_loaded').id);
         }
-      case hasContent("audio") || hasContent("video"):
+      case hasContent('audio') || hasContent('video'):
         break; // don't do anything else for audio, video, text editor, playlist content.
       case /has_ignored|undefined/.test(content_pane_data):
         window.location = window.location.href;
         break; // reload page
     }
-    deleteData("#content_pane", "loaded"); // remove dataset.loaded in case file can't be read by utility iframe
+    deleteData('#content_pane', 'loaded'); // remove dataset.loaded in case file can't be read by utility iframe
   }
   //**********************// ===> NAVIGATION
   function navigationGetType() {
-    let content_pane_data = elExists("#content_pane")
-        ? getContentPaneData()
-        : "iframe",
+    let content_pane_data = elExists('#content_pane') ? getContentPaneData() : 'iframe',
       nav_type; // ===> GET NAVIGATION TYPE
     switch (true) {
-      case elExists(".cuesheet_track_list_container.has_menu") &&
-        hasClass("body", "focus_content"):
-        nav_type =
-          ".cuesheet_track_list_container.has_menu .cuesheet_track_list";
+      case elExists('.cuesheet_track_list_container.has_menu') && hasClass('body', 'focus_content'):
+        nav_type = '.cuesheet_track_list_container.has_menu .cuesheet_track_list';
         break;
-      case hasClass("body", "has_menu"):
-        nav_type = getEl("#sidebar_menu_main .hovered")
-          ? "#sidebar_menu_main .hovered ul"
-          : "#sidebar_menu_main";
+      case hasClass('body', 'has_menu'):
+        nav_type = getEl('#sidebar_menu_main .hovered')
+          ? '#sidebar_menu_main .hovered ul'
+          : '#sidebar_menu_main';
         break; // submenu or menu
-      case content_pane_data === "iframe" && elExists("#directory_list"):
-        nav_type = "#directory_list";
+      case content_pane_data === 'iframe' && elExists('#directory_list'):
+        nav_type = '#directory_list';
         break; // iframe dir_list
-      case (hasContent("font_file_glyph") || hasContent("font_file")) &&
-        hasClass("body", "focus_content"):
-        nav_type = "#font_file_grid";
+      case (hasContent('font_file_glyph') || hasContent('font_file')) &&
+        hasClass('body', 'focus_content'):
+        nav_type = '#font_file_grid';
         break; // font file glyphs
-      case getEl("#font_specimen_grid").children.length > 0 &&
-        hasClass("body", "focus_content") &&
+      case getEl('#font_specimen_grid').children.length > 0 &&
+        hasClass('body', 'focus_content') &&
         document.activeElement.contentEditable !== true:
-        nav_type = "#font_specimen_grid";
+        nav_type = '#font_specimen_grid';
         break; // font specimen glyphs
-      case hasContent("image,font") &&
-        hasClass("#content_pane", "has_hidden_grid") &&
-        hasClass("body", "focus_content"):
-      case hasContent("grid") && hasClass("body", "focus_content"):
-        nav_type = "#content_grid";
+      case hasContent('image,font') &&
+        hasClass('#content_pane', 'has_hidden_grid') &&
+        hasClass('body', 'focus_content'):
+      case hasContent('grid') && hasClass('body', 'focus_content'):
+        nav_type = '#content_grid';
         break; // grids
       default:
-        nav_type = "#directory_list"; // default: dir_list
+        nav_type = '#directory_list'; // default: dir_list
     }
     return nav_type; // = selector of container of items to be navigated
   }
   function getNavigatedElID(e, sel, bool) {
     // bool === false: don't cycle selection
     let els = Array.from(document.querySelectorAll(sel)),
-      selected_els = els.filter((el) => el.classList.contains("selected")); // get els to navigate and currently selected el(s)
+      selected_els = els.filter((el) => el.classList.contains('selected')); // get els to navigate and currently selected el(s)
     let navigatedElIndex = /ArrowDown|ArrowRight/.test(e.key)
       ? els.indexOf(selected_els[selected_els.length - 1]) + 1
       : /ArrowUp|ArrowLeft/.test(e.key)
@@ -8672,11 +8070,9 @@
     if (bool !== false) {
       // cycle round to first or last item (but not for selectMultiple via arrows)
       navigatedElIndex =
-        /ArrowDown|ArrowRight/.test(e.key) &&
-        els[navigatedElIndex] === undefined
+        /ArrowDown|ArrowRight/.test(e.key) && els[navigatedElIndex] === undefined
           ? 0
-          : /ArrowUp|ArrowLeft/.test(e.key) &&
-              els[navigatedElIndex] === undefined
+          : /ArrowUp|ArrowLeft/.test(e.key) && els[navigatedElIndex] === undefined
             ? els.length - 1
             : navigatedElIndex;
     }
@@ -8698,41 +8094,33 @@
     ) {
       case bool === true:
         selected_el =
-          getEl(".media.selected") ||
-          getEls(
-            ".audio_loaded,.media.content_loaded,.dirlist_item.is_blurred",
-          )[0] ||
-          getEl(".media");
+          getEl('.media.selected') ||
+          getEls('.audio_loaded,.media.content_loaded,.dirlist_item.is_blurred')[0] ||
+          getEl('.media');
         break; // bool === true: autoplay media
       default:
-        selected_el = getEl(nav_type).querySelector(".selected"); // get currently selected item
+        selected_el = getEl(nav_type).querySelector('.selected'); // get currently selected item
     }
     if (selected_el !== null) {
-      selected_el.classList.remove("selected"); // If there is a selected item...remove its selected class unless shuffle
+      selected_el.classList.remove('selected'); // If there is a selected item...remove its selected class unless shuffle
       if (!/warning_buttons/.test(nav_type)) {
         switch (
           true // get both images and fonts from mixed grids for L/R navigation...
         ) {
-          case nav_type === "#content_grid" &&
-            elExists(".image_grid_item") &&
-            elExists(".font_grid_item"):
+          case nav_type === '#content_grid' &&
+            elExists('.image_grid_item') &&
+            elExists('.font_grid_item'):
             selected_el_kind = new RegExp(/image|font/);
             break;
           default:
             selected_el_kind = new RegExp(selected_el.dataset.kind); // or get selected_el kind (for L/R navigation)
         }
       }
-      if (
-        /audio|video/.test(selected_el_kind) &&
-        hasClass("body", "media_play_all")
-      ) {
+      if (/audio|video/.test(selected_el_kind) && hasClass('body', 'media_play_all')) {
         selected_el_kind = /audio|video/;
       } // but if media_play_all, get both media kinds
-      if (
-        selected_el?.classList.contains("hovered") &&
-        /ArrowUp|ArrowDown/.test(key)
-      ) {
-        getEl("#sidebar_menu_main .hovered")?.classList.remove("hovered");
+      if (selected_el?.classList.contains('hovered') && /ArrowUp|ArrowDown/.test(key)) {
+        getEl('#sidebar_menu_main .hovered')?.classList.remove('hovered');
       }
     }
     els = Array.from(getEl(nav_type).children).filter((el) => {
@@ -8744,14 +8132,11 @@
         // only return visible items (or glyphs grid items)
         switch (true) {
           case /cuesheet/.test(nav_type):
-            return !el.classList.contains("header"); // ignore header row in cuesheet menu
+            return !el.classList.contains('header'); // ignore header row in cuesheet menu
           case selected_el !== null &&
             /ArrowLeft|ArrowRight/.test(key) &&
             !/warning_buttons|menu/.test(nav_type): // if L/R arrow and not menu or warning, and selected_el !== null...
-            return (
-              selected_el_kind.test(el.dataset.kind) &&
-              !el.classList.contains("unchecked")
-            ); // ...return all unchecked items of same kind as selected_el
+            return selected_el_kind.test(el.dataset.kind) && !el.classList.contains('unchecked'); // ...return all unchecked items of same kind as selected_el
           default:
             return true; // else return all items
         }
@@ -8762,31 +8147,30 @@
     switch (
       true // GET NEXT NAVIGATED ELEMENT
     ) {
-      case hasClass("body", "has_directory_source"): // if viewing directory source, arrows will reopen selected sidebar item
-        if (elExists(".dirlist_item.content_loaded")) {
-          showThis(getEl(".dirlist_item.content_loaded").id);
+      case hasClass('body', 'has_directory_source'): // if viewing directory source, arrows will reopen selected sidebar item
+        if (elExists('.dirlist_item.content_loaded')) {
+          showThis(getEl('.dirlist_item.content_loaded').id);
         } else {
           showThis(selected_el.id);
         }
         return;
-      case key === "Tab":
+      case key === 'Tab':
         if (selected_el === null) {
           navigated_el = bool !== true ? els[0] : els[els_length - 1];
         } else {
           navigated_el = selected_el;
         }
         break; // navigation from tab into iframe
-      case key === "ArrowUp":
-      case key === "ArrowLeft": // ArrowUp / ArrowDown
+      case key === 'ArrowUp':
+      case key === 'ArrowLeft': // ArrowUp / ArrowDown
         switch (true) {
-          case /audio|video/.test(selected_el_kind) && key === "ArrowLeft":
+          case /audio|video/.test(selected_el_kind) && key === 'ArrowLeft':
             switch (true) {
-              case hasClass("body", "shuffle_media") &&
-                getEl("#content_audio_container").dataset.shufflelist === "":
+              case hasClass('body', 'shuffle_media') &&
+                getEl('#content_audio_container').dataset.shufflelist === '':
                 mediaShuffleListUpdate();
                 break;
-              case hasClass("body", "shuffle_media") &&
-                !/loaded/.test(selected_el.className):
+              case hasClass('body', 'shuffle_media') && !/loaded/.test(selected_el.className):
                 navigated_el = selected_el;
                 mediaShuffleListUpdate(selected_el.id, false);
                 break; // allow selected to be played next
@@ -8795,32 +8179,21 @@
                   els,
                   selected_el,
                   selected_el_index,
-                  key,
+                  key
                 ); // media
             }
             break;
-          case /font_file|grid/.test(nav_type) && !hasClass("body", "has_menu"):
+          case /font_file|grid/.test(nav_type) && !hasClass('body', 'has_menu'):
             navigated_el =
-              els[
-                navigateGetGridItemIndex(
-                  selected_el_index,
-                  els_length,
-                  nav_type,
-                  key,
-                )
-              ];
+              els[navigateGetGridItemIndex(selected_el_index, els_length, nav_type, key)];
             break;
-          case hasClass("body", "has_menu") &&
-            selected_el === null &&
-            key === "ArrowLeft":
-            navigated_el = getEl("#sidebar_menu_parents");
+          case hasClass('body', 'has_menu') && selected_el === null && key === 'ArrowLeft':
+            navigated_el = getEl('#sidebar_menu_parents');
             break; // select parents menu if no main menu item selected
-          case selected_el?.classList.contains("is_submenu_item") &&
-            key === "ArrowLeft":
+          case selected_el?.classList.contains('is_submenu_item') && key === 'ArrowLeft':
             navigated_el = navigateGetSubMenuEl(selected_el, key);
             break; // go to parent menu
-          case selected_el === null ||
-            (selected_el_index === 0 && !key === "ArrowLeft"):
+          case selected_el === null || (selected_el_index === 0 && !key === 'ArrowLeft'):
             navigated_el = els[els_length - 1];
             break; // select last if nothing selected
           case selected_el_index === 0:
@@ -8830,32 +8203,25 @@
             navigated_el = els[selected_el_index - 1]; // default dir_list and menu items
         }
         break;
-      case key === "ArrowDown":
-      case key === "ArrowRight": // ArrowLeft / ArrowRight
+      case key === 'ArrowDown':
+      case key === 'ArrowRight': // ArrowLeft / ArrowRight
         switch (true) {
-          case /audio|video/.test(selected_el_kind) && key === "ArrowRight":
+          case /audio|video/.test(selected_el_kind) && key === 'ArrowRight':
             switch (
               true // if autoplay off, navigated_el = selected_el, else navigated_el = next media item
             ) {
-              case hasClass("body", "shuffle_media") &&
-                getEl("#content_audio_container").dataset.shufflelist === "":
+              case hasClass('body', 'shuffle_media') &&
+                getEl('#content_audio_container').dataset.shufflelist === '':
                 mediaShuffleListUpdate(); // end of shuffle items
-                if (
-                  hasClass("body", "shuffle_media") &&
-                  hasClass("body", "loop_media")
-                ) {
+                if (hasClass('body', 'shuffle_media') && hasClass('body', 'loop_media')) {
                   navigated_el = getEl(
-                    "#" +
-                      getEl(
-                        "#content_audio_container",
-                      ).dataset.shufflelist.split(",")[0],
+                    '#' + getEl('#content_audio_container').dataset.shufflelist.split(',')[0]
                   );
                 } // if shuffle & loop
                 break;
-              case hasClass("body", "shuffle_media") &&
-                !/loaded/.test(selected_el.className):
+              case hasClass('body', 'shuffle_media') && !/loaded/.test(selected_el.className):
                 mediaShuffleListUpdate(selected_el.id, false); // no break: allow selected item to be played next
-              case hasClass("body", "media_autoplay_false") && bool === true:
+              case hasClass('body', 'media_autoplay_false') && bool === true:
                 navigated_el = selected_el;
                 break; // shuffle play
               default:
@@ -8863,26 +8229,18 @@
                   els,
                   selected_el,
                   selected_el_index,
-                  key,
+                  key
                 );
             }
             break;
-          case /font_file|grid/.test(nav_type) && !hasClass("body", "has_menu"):
+          case /font_file|grid/.test(nav_type) && !hasClass('body', 'has_menu'):
             navigated_el =
-              els[
-                navigateGetGridItemIndex(
-                  selected_el_index,
-                  els_length,
-                  nav_type,
-                  key,
-                )
-              ];
+              els[navigateGetGridItemIndex(selected_el_index, els_length, nav_type, key)];
             break;
           case selected_el === null || selected_el_index === els_length - 1:
             navigated_el = els[0];
             break; // select first if nothing selected
-          case selected_el?.classList.contains("has_submenu") &&
-            key === "ArrowRight":
+          case selected_el?.classList.contains('has_submenu') && key === 'ArrowRight':
             navigated_el = navigateGetSubMenuEl(selected_el, key);
             break; // open submenu
           default:
@@ -8905,40 +8263,40 @@
         navigated_el.click();
         break; // if cuesheet track list menu is open
       case /grid|menu/.test(nav_type):
-        removeClass("#sidebar_menu_main li", "selected");
-        navigated_el?.classList.add("selected"); // for grids and menus; ...add selected class to navigated_el
+        removeClass('#sidebar_menu_main li', 'selected');
+        navigated_el?.classList.add('selected'); // for grids and menus; ...add selected class to navigated_el
         switch (true) {
-          case hasClass("body", "has_menu"):
-          case hasClass("body", "has_menu_parents"):
+          case hasClass('body', 'has_menu'):
+          case hasClass('body', 'has_menu_parents'):
             break;
-          case navigated_el.id === "sidebar_menu_parents":
-            menuShow(null, "sidebar_menu_parents");
+          case navigated_el.id === 'sidebar_menu_parents':
+            menuShow(null, 'sidebar_menu_parents');
             break;
-          case hasContent("font_specimen_glyph"):
+          case hasContent('font_specimen_glyph'):
             showFontGlyph(null, navigated_el.id);
             break;
-          case hasContent("font_file_glyph"):
+          case hasContent('font_file_glyph'):
             showFontGlyph(null, navigated_el.id);
             break; // show the navigated font file glyph
-          case hasClass("#content_pane", "has_hidden_grid") &&
+          case hasClass('#content_pane', 'has_hidden_grid') &&
             /image|font/.test(navigated_el.dataset.kind):
-            removeClass(".grid_item.selected", "selected");
-            navigated_el?.classList.add("selected");
+            removeClass('.grid_item.selected', 'selected');
+            navigated_el?.classList.add('selected');
             showThis(navigated_el.dataset.id); // no break
           case /grid/.test(nav_type):
-            getEl("#directory_list .selected")?.scrollIntoView({
-              block: "nearest",
+            getEl('#directory_list .selected')?.scrollIntoView({
+              block: 'nearest',
             }); // scroll dir_list item into view
-            getEl("#content_pane .selected")?.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
+            getEl('#content_pane .selected')?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
             });
             break; // scroll grid item into view
         }
         break;
       case !isTopWindow():
         switch (true) {
-          case hasClass("#content_body", "has_quicklook"):
+          case hasClass('#content_body', 'has_quicklook'):
             quickLookThis(navigated_el.id, navigated_el.dataset.kind);
             break; // either quicklook or select item
           default:
@@ -8946,26 +8304,25 @@
         }
         break;
       case /ArrowUp|ArrowDown/.test(key) &&
-        getData(navigated_el, "kind") === "audio" &&
-        !hasClass("#content_body", "has_quicklook"):
+        getData(navigated_el, 'kind') === 'audio' &&
+        !hasClass('#content_body', 'has_quicklook'):
         showThis(navigated_el.id, true, false);
         break; // only select audio on U/D arrow
-      case /ArrowLeft|ArrowRight/.test(key) &&
-        navigated_el?.classList.contains("media"):
+      case /ArrowLeft|ArrowRight/.test(key) && navigated_el?.classList.contains('media'):
         switch (true) {
-          case hasClass("body", "media_autoplay_false") && bool === "true":
+          case hasClass('body', 'media_autoplay_false') && bool === 'true':
             showThis(selected_el.id, true, false);
             break;
           default:
             showThis(navigated_el.id); // L/R arrow: load and play media
             if (
               selected_el_index === els_length - 1 &&
-              !hasClass("body", "loop_media") &&
+              !hasClass('body', 'loop_media') &&
               bool === true
             ) {
               null;
             } else {
-              mediaPlayPause("play");
+              mediaPlayPause('play');
             } // if last item & !loop, select first item, else play
         }
         break;
@@ -8976,44 +8333,32 @@
   function navigateGetSubMenuEl(selected_el, key) {
     let navigated_el; // ===> SUBMENU NAVIGATION
     switch (true) {
-      case selected_el?.classList.contains("has_submenu") &&
-        key === "ArrowRight":
-        selected_el.classList.add("hovered");
-        selected_el
-          .querySelector("ul li.selected")
-          ?.classList.remove("selected");
-        navigated_el = selected_el.querySelector("ul li");
-        navigated_el.classList.add("selected");
+      case selected_el?.classList.contains('has_submenu') && key === 'ArrowRight':
+        selected_el.classList.add('hovered');
+        selected_el.querySelector('ul li.selected')?.classList.remove('selected');
+        navigated_el = selected_el.querySelector('ul li');
+        navigated_el.classList.add('selected');
         break;
-      case selected_el?.classList.contains("is_submenu_item") &&
-        key === "ArrowLeft":
-        removeClass(
-          "#sidebar_menu_main li.is_submenu_item.selected",
-          "selected",
-        );
-        navigated_el = getEl("#sidebar_menu_main .hovered");
-        navigated_el.classList.add("selected");
-        navigated_el.classList.remove("hovered");
+      case selected_el?.classList.contains('is_submenu_item') && key === 'ArrowLeft':
+        removeClass('#sidebar_menu_main li.is_submenu_item.selected', 'selected');
+        navigated_el = getEl('#sidebar_menu_main .hovered');
+        navigated_el.classList.add('selected');
+        navigated_el.classList.remove('hovered');
         break;
     }
     return navigated_el;
   }
-  function navigateGetGridItemIndex(
-    selected_el_index,
-    els_length,
-    nav_type,
-    key,
-  ) {
+  function navigateGetGridItemIndex(selected_el_index, els_length, nav_type, key) {
     let grid_col_count, grid_row_count, grid_item_index; // ===> GRID NAVIGATION
     if (/ArrowUp|ArrowDown/.test(key)) {
       // calculate number of grid rows and columns
       grid_col_count = Math.round(
-        getEl(nav_type).offsetWidth / getEl(nav_type + " > li").offsetWidth,
+        getEl(nav_type).offsetWidth / getEl(nav_type + ' > li').offsetWidth
       ); // number of grid items per row
       grid_row_count = Math.floor(els_length / grid_col_count); // number of full grid rows
     }
     switch (true) {
-      case key === "ArrowUp": // ArrowUp
+      case key === 'ArrowUp': // ArrowUp
         switch (true) {
           case selected_el_index === -1:
             grid_item_index = els_length - 1;
@@ -9022,42 +8367,37 @@
             switch (
               true // ...and if it is in a column to the right of last item in last row get...
             ) {
-              case grid_col_count * grid_row_count + selected_el_index >=
-                els_length:
-                grid_item_index =
-                  selected_el_index + grid_col_count * (grid_row_count - 1);
+              case grid_col_count * grid_row_count + selected_el_index >= els_length:
+                grid_item_index = selected_el_index + grid_col_count * (grid_row_count - 1);
                 break; // last in penultimate col or...
               default:
-                grid_item_index =
-                  selected_el_index + grid_col_count * grid_row_count; // last in last row
+                grid_item_index = selected_el_index + grid_col_count * grid_row_count; // last in last row
             }
             break;
           default:
             grid_item_index = selected_el_index - grid_col_count; // default: grid_item_index = selected_el_index - length of grid row
         }
         break;
-      case key === "ArrowDown": // ArrowDown
+      case key === 'ArrowDown': // ArrowDown
         switch (true) {
           case selected_el_index === -1:
             grid_item_index = 0;
             break; // if nothing selected, get first item
           case selected_el_index + 1 + grid_col_count > els_length:
             grid_item_index =
-              (selected_el_index - grid_col_count * (grid_row_count - 1)) %
-              grid_col_count;
+              (selected_el_index - grid_col_count * (grid_row_count - 1)) % grid_col_count;
             break; // if selected is last in column
           default:
-            grid_item_index =
-              Number(selected_el_index) + Number(grid_col_count); // default: index = selected_el_index plus the length of the grid row
+            grid_item_index = Number(selected_el_index) + Number(grid_col_count); // default: index = selected_el_index plus the length of the grid row
         }
         break;
-      case key === "ArrowLeft":
+      case key === 'ArrowLeft':
         grid_item_index =
           selected_el_index === -1 || selected_el_index === 0
             ? els_length - 1
             : selected_el_index - 1;
         break; // if first or nothing selected, get last or prev
-      case key === "ArrowRight":
+      case key === 'ArrowRight':
         grid_item_index =
           selected_el_index === -1 || selected_el_index + 1 === els_length
             ? 0
@@ -9065,112 +8405,98 @@
         break; // if last or nothing selected, get first or next
     }
     if (
-      !hasContent("font_file") &&
-      nav_type !== "#font_specimen_grid" &&
-      nav_type !== "#font_file_grid"
+      !hasContent('font_file') &&
+      nav_type !== '#font_specimen_grid' &&
+      nav_type !== '#font_file_grid'
     ) {
       // select corresponding dir_list item for image/font grids, but not font files
-      removeClass(".dirlist_item", "selected hovered");
-      removeClass(".dirlist_item.content_loaded", "content_loaded"); // remove classes from dir_list items
+      removeClass('.dirlist_item', 'selected hovered');
+      removeClass('.dirlist_item.content_loaded', 'content_loaded'); // remove classes from dir_list items
       let selected_id =
-        getEl(nav_type).querySelectorAll(".grid_item")?.[grid_item_index]
-          ?.dataset.id; // get the data-id from the currently selected grid item
+        getEl(nav_type).querySelectorAll('.grid_item')?.[grid_item_index]?.dataset.id; // get the data-id from the currently selected grid item
       if (selected_id) {
-        getEl("#" + selected_id)?.classList.add("selected");
-        getEl(".dirlist_item.selected")?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
+        getEl('#' + selected_id)?.classList.add('selected');
+        getEl('.dirlist_item.selected')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
         });
       } // select & scroll dir_list item into view
     }
     return grid_item_index;
   }
-  function navigateGetMediaLeftRightEl(
-    els,
-    selected_el,
-    selected_el_index,
-    key,
-  ) {
+  function navigateGetMediaLeftRightEl(els, selected_el, selected_el_index, key) {
     let navigated_el, navigated_el_id; // ===> MEDIA LEFT/RIGHT NAVIGATION (Audio)
     const mediaShuffleGetNextItem = () => {
       // ===> GET NEXT SHUFFLED ITEM
-      let shuffle_list = getData(
-          "#content_audio_container",
-          "shufflelist",
-        ).split(","),
+      let shuffle_list = getData('#content_audio_container', 'shufflelist').split(','),
         shuffled_item_id = shuffle_list.pop();
-      setData("#content_audio_container", "shufflelist", shuffle_list);
+      setData('#content_audio_container', 'shufflelist', shuffle_list);
       return shuffled_item_id;
     };
     switch (true) {
-      case hasClass("body", "shuffle_media"):
+      case hasClass('body', 'shuffle_media'):
         navigated_el_id = mediaShuffleGetNextItem(); // if shuffle play enabled...get the next shuffled item id
         switch (
           true // but if all shuffled items have been played (i.e., navigated_el_id === ''): if loop, update shufflelist, get next item; else get first item.
         ) {
-          case navigated_el_id === "":
+          case navigated_el_id === '':
             mediaShuffleListUpdate();
-            navigated_el = hasClass("body", "loop_media")
-              ? (navigated_el = getEl("#" + mediaShuffleGetNextItem()))
+            navigated_el = hasClass('body', 'loop_media')
+              ? (navigated_el = getEl('#' + mediaShuffleGetNextItem()))
               : (navigated_el = els[0]);
             break;
           default:
-            navigated_el = getEl("#" + navigated_el_id); // else get next item in the shufflelist
+            navigated_el = getEl('#' + navigated_el_id); // else get next item in the shufflelist
         }
-        setMediaShuffleListData(
-          getAttr("#content_audio_container", "data-shufflelist"),
-        );
+        setMediaShuffleListData(getAttr('#content_audio_container', 'data-shufflelist'));
         break;
-      case !selected_el.classList.contains("audio_loaded") &&
-        selected_el.classList.contains("audio") &&
+      case !selected_el.classList.contains('audio_loaded') &&
+        selected_el.classList.contains('audio') &&
         isTopWindow():
         navigated_el = selected_el;
         break; // if selected audio item not loaded, select it
-      case key === "ArrowRight":
+      case key === 'ArrowRight':
         navigated_el =
-          selected_el_index + 1 < els.length
-            ? els[selected_el_index + 1]
-            : (navigated_el = els[0]);
+          selected_el_index + 1 < els.length ? els[selected_el_index + 1] : (navigated_el = els[0]);
         break; // if selected not last, select next, else select first
-      case key === "ArrowLeft":
+      case key === 'ArrowLeft':
         navigated_el =
           selected_el_index - 1 !== -1
             ? els[selected_el_index - 1]
             : (navigated_el = els[els.length - 1]);
         break; // if selected not first, select prev item, else last
     }
-    selected_el.classList.remove("audio_loaded", "content_loaded"); // deselect currently selected media item class
+    selected_el.classList.remove('audio_loaded', 'content_loaded'); // deselect currently selected media item class
     return navigated_el;
   }
   function navigateWarningBtns(e) {
     // ===> NAVIGATE WARNING BUTTONS
-    let buttons = getVisibleElsBySelector("#warning_buttons button");
+    let buttons = getVisibleElsBySelector('#warning_buttons button');
     let focused_button = getVisibleElsBySelector(
-        "#warning_buttons :focus,#warning_buttons .focus",
+        '#warning_buttons :focus,#warning_buttons .focus'
       )[0],
       focused_btn_index = buttons.indexOf(focused_button);
-    removeClass("#warning_buttons button", "focus");
+    removeClass('#warning_buttons button', 'focus');
     switch (true) {
       case e.shiftKey:
         switch (true) {
           case focused_button === null || buttons.indexOf(focused_button) === 0:
             buttons[buttons.length - 1].focus();
-            buttons[buttons.length - 1].classList.add("focus");
+            buttons[buttons.length - 1].classList.add('focus');
             break; // focus last button
           default:
-            buttons[focused_btn_index - 1].classList.add("focus");
+            buttons[focused_btn_index - 1].classList.add('focus');
             buttons[focused_btn_index - 1].focus(); // else focus previous button
         }
         break;
       default: // e.Tab
         switch (true) {
-          case focused_button === null ||
-            buttons.indexOf(focused_button) === buttons.length - 1:
+          case focused_button === null || buttons.indexOf(focused_button) === buttons.length - 1:
             buttons[0].focus();
-            buttons[0].classList.add("focus");
+            buttons[0].classList.add('focus');
             break; // focus first button
           default:
-            buttons[focused_btn_index + 1].classList.add("focus");
+            buttons[focused_btn_index + 1].classList.add('focus');
             buttons[focused_btn_index + 1].focus(); // else focus next button
         }
     }
@@ -9179,7 +8505,7 @@
     let args = [e.key],
       selected_el,
       navigated_el_id,
-      selected_kind = getEl(".dirlist_item.selected")?.dataset.kind; // ===> ARROW KEY MODIFIER FUNCTIONS
+      selected_kind = getEl('.dirlist_item.selected')?.dataset.kind; // ===> ARROW KEY MODIFIER FUNCTIONS
     if (cmdAltKey(e) && /ArrowLeft|ArrowRight|ArrowUp|ArrowDown/.test(e.key)) {
       return;
     } else {
@@ -9193,20 +8519,11 @@
         !altKey(e) &&
         !altShiftKey(e): // e.shiftKey => select multiple items
         switch (true) {
-          case getEl("#content_grid").children.length === 0 &&
-            /font|image/.test(selected_kind):
-            showGrid(
-              getEls(
-                ".dirlist_item.font.selected,.dirlist_item.image.selected",
-              )[0]?.id,
-            );
+          case getEl('#content_grid').children.length === 0 && /font|image/.test(selected_kind):
+            showGrid(getEls('.dirlist_item.font.selected,.dirlist_item.image.selected')[0]?.id);
             break; // show first selected font or image in grid;
           default:
-            navigated_el_id = getNavigatedElID(
-              e,
-              ".dirlist_item." + selected_kind,
-              false,
-            );
+            navigated_el_id = getNavigatedElID(e, '.dirlist_item.' + selected_kind, false);
             selectMultipleItems(e, navigated_el_id); // else get next navigated el id and select it
         }
         break;
@@ -9217,116 +8534,87 @@
           args.push(10);
         } // scrub 10s or 30s
         if (!isTopWindow()) {
-          messageSend("top_body", "mediaScrub", "mediaScrub", args);
+          messageSend('top_body', 'mediaScrub', 'mediaScrub', args);
         } else {
           mediaScrub(e);
         }
         break;
-      case cmdKey(e) && e.key === "ArrowUp": // Cmd/Ctrl + Up
+      case cmdKey(e) && e.key === 'ArrowUp': // Cmd/Ctrl + Up
         switch (true) {
-          case hasClass("body", "is_dir"):
+          case hasClass('body', 'is_dir'):
           case !isTopWindow():
-            iframeClick(
-              e,
-              "iframe_parent_link",
-              "link",
-              getEl("#iframe_parent_link").href,
-            );
+            iframeClick(e, 'iframe_parent_link', 'link', getEl('#iframe_parent_link').href);
             break; // go to iframe parent
           case isTopWindow() &&
-            hasClass("body", "focus_content") &&
-            hasClass("#content_iframe", "has_content"):
-            messageSend("iframe", "open_iframe_parent_dir");
+            hasClass('body', 'focus_content') &&
+            hasClass('#content_iframe', 'has_content'):
+            messageSend('iframe', 'open_iframe_parent_dir');
             break; // fallback for go to iframe parent in case top is incorrectly focused
           default:
             e.preventDefault();
-            showWarning("changeLocation", [
-              getEl("#parent_dir_nav a").href,
-              "false",
-            ]);
+            showWarning('changeLocation', [getEl('#parent_dir_nav a').href, 'false']);
             break; // go to parent (with warning for playlists/fonts/edited text)
         }
         break;
-      case cmdKey(e) && e.key === "ArrowDown": // Cmd/Ctrl + Down
+      case cmdKey(e) && e.key === 'ArrowDown': // Cmd/Ctrl + Down
         switch (true) {
-          case !elExists(".selected"):
+          case !elExists('.selected'):
             break; // do nothing if nothing selected
-          case elExists("#content_body #directory_list") && cmdKey(e):
-            iframeClick(
-              e,
-              id,
-              "dblclick",
-              getEl("#" + id).querySelector("a").href,
-            );
+          case elExists('#content_body #directory_list') && cmdKey(e):
+            iframeClick(e, id, 'dblclick', getEl('#' + id).querySelector('a').href);
             break;
-          case hasClass(".dirlist_item.selected", "link"):
-            openLinkFile(e, getEl(".dirlist_item.selected.link").id);
+          case hasClass('.dirlist_item.selected', 'link'):
+            openLinkFile(e, getEl('.dirlist_item.selected.link').id);
             break; // open webloc or url files
-          case hasClass(".dirlist_item.selected", "playlist"):
-            openPlaylist(
-              "",
-              "",
-              getData(".dirlist_item.selected.playlist", "playlist"),
-            );
+          case hasClass('.dirlist_item.selected', 'playlist'):
+            openPlaylist('', '', getData('.dirlist_item.selected.playlist', 'playlist'));
             break; // open playlist or filelist
-          case isTopWindow() && hasClass("body", "focus_content"):
-            focusEl("#content_iframe", e);
+          case isTopWindow() && hasClass('body', 'focus_content'):
+            focusEl('#content_iframe', e);
             break; // select first item if nothing selected in iframe
           case isTopWindow() &&
-            hasClass(".dirlist_item.selected", "file") &&
-            !hasClass(".dirlist_item.selected", "link"):
+            hasClass('.dirlist_item.selected', 'file') &&
+            !hasClass('.dirlist_item.selected', 'link'):
             break; // ? do nothing for link files
           case isTopWindow() &&
-            hasClass(".dirlist_item.selected", "dir") &&
-            hasClass(".dirlist_item.selected", "app") &&
+            hasClass('.dirlist_item.selected', 'dir') &&
+            hasClass('.dirlist_item.selected', 'app') &&
             UI_Prefs_Bool.apps_as_dirs === false:
             break; // break if not viewing apps as dirs
           default:
-            showWarning("dirOpen", [
-              getAttr(".dirlist_item.selected", "id"),
-              getAttr(".dirlist_item.selected a", "href"),
+            showWarning('dirOpen', [
+              getAttr('.dirlist_item.selected', 'id'),
+              getAttr('.dirlist_item.selected a', 'href'),
             ]); // else open dirs & all iframe items with dbl-click
         }
         break;
-      case cmdKey(e) && e.key === "ArrowLeft": // Cmd/Ctrl + Left
+      case cmdKey(e) && e.key === 'ArrowLeft': // Cmd/Ctrl + Left
         switch (true) {
-          case elExists(".dirlist_item.dir.selected.has_subdirectory"):
-            getEls(".dirlist_item.dir.selected.has_subdirectory").forEach(
-              (dir) => subDirClose(dir.id),
+          case elExists('.dirlist_item.dir.selected.has_subdirectory'):
+            getEls('.dirlist_item.dir.selected.has_subdirectory').forEach((dir) =>
+              subDirClose(dir.id)
             );
             break; //  close all selected subdirectories
-          case !hasClass(".dirlist_item.selected", "has_subdirectory") &&
-            elExists(".dirlist_item.has_subdirectory"): // if selected item is in subdirectory...
-            selected_el = getEl(".dirlist_item.selected");
-            if (
-              selected_el === null ||
-              selected_el.previousElementSibling === null
-            ) {
+          case !hasClass('.dirlist_item.selected', 'has_subdirectory') &&
+            elExists('.dirlist_item.has_subdirectory'): // if selected item is in subdirectory...
+            selected_el = getEl('.dirlist_item.selected');
+            if (selected_el === null || selected_el.previousElementSibling === null) {
               break;
             } // do nothing if no selection or prev element
-            while (
-              !selected_el.previousElementSibling.classList.contains(
-                "has_subdirectory",
-              )
-            ) {
+            while (!selected_el.previousElementSibling.classList.contains('has_subdirectory')) {
               selected_el = selected_el.previousElementSibling;
             } // find subdir "parent" === prev .has_subdirectory
-            if (
-              selected_el !== null &&
-              selected_el.previousElementSibling !== null
-            ) {
+            if (selected_el !== null && selected_el.previousElementSibling !== null) {
               showThis(selected_el.previousElementSibling.id);
             }
             break; // select and show parent dir
           default:
-            showThis(getVisibleElsBySelector(".dirlist_item")[0].id); // select first visible item
+            showThis(getVisibleElsBySelector('.dirlist_item')[0].id); // select first visible item
         }
         break;
-      case cmdKey(e) && e.key === "ArrowRight":
+      case cmdKey(e) && e.key === 'ArrowRight':
         try {
-          subDirOpen(
-            getEl(".dirlist_item.dir.selected:not(.has_subdirectory)").id,
-          );
+          subDirOpen(getEl('.dirlist_item.dir.selected:not(.has_subdirectory)').id);
         } catch (e) {
           null;
         }
@@ -9337,14 +8625,14 @@
     navigateGetEl(args);
   } // args[0] = key, args[1] = bool (for autoplay media),bool = shift								// ===> ARROW KEY NAVIGATION
   function arrowKeyFunctions(e, bool, el) {
-    addClass("body", "no_hover"); // 'e' = keyboardEvent or string (e.g. 'ArrowLeft/Right' from clickPrevNextButtons()			// ===> ARROW KEY FUNCTIONS
-    if (hasClass("body", "has_help")) {
-      getEl("#help_container").focus();
+    addClass('body', 'no_hover'); // 'e' = keyboardEvent or string (e.g. 'ArrowLeft/Right' from clickPrevNextButtons()			// ===> ARROW KEY FUNCTIONS
+    if (hasClass('body', 'has_help')) {
+      getEl('#help_container').focus();
       return true;
     }
     let id = /ArrowUp|ArrowLeft/.test(e.key)
-      ? el?.querySelector(".selected")?.id
-      : Array.from(el?.querySelectorAll(".selected"))?.reverse()[0]?.id; // get first or last selected item
+      ? el?.querySelector('.selected')?.id
+      : Array.from(el?.querySelectorAll('.selected'))?.reverse()[0]?.id; // get first or last selected item
     if (
       !/texteditor/.test(document.activeElement.id) &&
       !/textarea/.test(document.activeElement.tagName.toLowerCase())
@@ -9353,21 +8641,18 @@
       document.activeElement.blur();
     } // TEST all situations
     switch (true) {
-      case /a|input|select|textarea/.test(
-        document.activeElement.tagName.toLowerCase(),
-      ) && !cmdKey(e): // nobreak: allow normal arrow key functions
+      case /a|input|select|textarea/.test(document.activeElement.tagName.toLowerCase()) &&
+        !cmdKey(e): // nobreak: allow normal arrow key functions
       case /texteditor/.test(document.activeElement.id) && !cmdKey(e): // nobreak //  "  "
-      case document.activeElement.hasAttribute("contentEditable") && !cmdKey(e): // nobreak //  "  "
-      case !isTopWindow() &&
-        !elExists("#content_body #directory_list") &&
-        !cmdKey(e):
+      case document.activeElement.hasAttribute('contentEditable') && !cmdKey(e): // nobreak //  "  "
+      case !isTopWindow() && !elExists('#content_body #directory_list') && !cmdKey(e):
         return; // iframe is not a dir_list
-      case hasContent("pdf") && hasClass("body", "focus_content"):
-        focusEl("#content_pdf");
+      case hasContent('pdf') && hasClass('body', 'focus_content'):
+        focusEl('#content_pdf');
         break; // focus content_pdf
-      case (hasContent("zoom_image") || hasContent("scaled_image")) &&
-        hasClass("body", "focus_content"):
-        focusEl("#content_image");
+      case (hasContent('zoom_image') || hasContent('scaled_image')) &&
+        hasClass('body', 'focus_content'):
+        focusEl('#content_image');
         return; // scroll imgs
       case e.altKey:
       case e.ctrlKey:
@@ -9375,37 +8660,32 @@
       case e.shiftKey:
         navigateByArrowModKey(e, id);
         break; // arrow keys + modifiers
-      case isTopWindow() && hasClass("body", "iframe_edited"):
+      case isTopWindow() && hasClass('body', 'iframe_edited'):
         e.preventDefault();
-        messageSend("iframe", "unloading", "", ["arrow_key_navigation", e.key]);
+        messageSend('iframe', 'unloading', '', ['arrow_key_navigation', e.key]);
         break;
-      case isTopWindow() &&
-        hasClass("body", "focus_content") &&
-        hasContent("dir"):
+      case isTopWindow() && hasClass('body', 'focus_content') && hasContent('dir'):
         e.preventDefault(); // req. after nav to iframe dir_list parent dir
         switch (true) {
-          case hasClass("body"):
+          case hasClass('body'):
             navigateByArrowKey([e.key, false]);
             break;
           default:
-            messageSend("iframe", "iframe_navigation", "", [e.key, false]);
-            getEl("#content_iframe").focus();
+            messageSend('iframe', 'iframe_navigation', '', [e.key, false]);
+            getEl('#content_iframe').focus();
         }
         break;
-      case hasClass("body", "has_top_menu") && !isTopWindow():
+      case hasClass('body', 'has_top_menu') && !isTopWindow():
         e.preventDefault();
-        messageSend("top_body", "arrow_key_navigation", "navigateByArrowKey", [
-          e.key,
-          false,
-        ]);
+        messageSend('top_body', 'arrow_key_navigation', 'navigateByArrowKey', [e.key, false]);
         break; // menu navigation from focused iframe
-      case hasClass("body", "has_quicklook"):
+      case hasClass('body', 'has_quicklook'):
         e.preventDefault();
         navigateByArrowKey([e.key, bool]);
         break;
       default:
         e.preventDefault();
-        showWarning("navigateByArrowKey", [e.key, bool]); // normal arrow key navigation, with warning
+        showWarning('navigateByArrowKey', [e.key, bool]); // normal arrow key navigation, with warning
     }
   }
   // NAVIGATION Go to Item
@@ -9413,55 +8693,49 @@
     e.stopPropagation();
     e.preventDefault();
     let value,
-      input_el = getEl("#go_to_item input");
+      input_el = getEl('#go_to_item input');
     switch (true) {
-      case e.key === "j" && cmdShiftKey(e):
-        menuShow(e, "sidebar_menu_main_container"); // nobreak; show menu
-      case e?.type === "click" &&
-        document.activeElement.id !== "go_to_item_input":
-        addClass("#go_to_item", "show_input");
-        getEl("#go_to_item input").focus();
+      case e.key === 'j' && cmdShiftKey(e):
+        menuShow(e, 'sidebar_menu_main_container'); // nobreak; show menu
+      case e?.type === 'click' && document.activeElement.id !== 'go_to_item_input':
+        addClass('#go_to_item', 'show_input');
+        getEl('#go_to_item input').focus();
         break; // show input on click
-      case e?.key === "Enter":
+      case e?.key === 'Enter':
       default:
         value = input_el.value - 1;
-        removeClass("#go_to_item", "show_input");
+        removeClass('#go_to_item', 'show_input');
         input_el.value = null;
         menuClose();
-        showThis(getEls("#directory_list .dirlist_item")[value]?.id);
+        showThis(getEls('#directory_list .dirlist_item')[value]?.id);
         break; // get the entered ui font
     }
   }
   // NAVIGATION Tab Key
   function navigateTabKeyFocus(kind, incr) {
     let sel = {
-      font: "#content_font .selected,#content_font *[data-tab_order],#font_toolbar *[data-tab_order]",
-      grid: "#content_grid,#top_body",
-      html: "a,button,input,select,textarea,div[contenteditable]",
-      link: "#texteditor_styled_pane a",
-      texteditor: "#content_texteditor .texteditor_pane",
+      font: '#content_font .selected,#content_font *[data-tab_order],#font_toolbar *[data-tab_order]',
+      grid: '#content_grid,#top_body',
+      html: 'a,button,input,select,textarea,div[contenteditable]',
+      link: '#texteditor_styled_pane a',
+      texteditor: '#content_texteditor .texteditor_pane',
     }; // tab-able elements by nav type
     let els = Array.from(getEls(sel[kind])).filter(
-        (el) => el.offsetWidth > 0 && el.offsetHeight > 0,
+        (el) => el.offsetWidth > 0 && el.offsetHeight > 0
       ),
       el_ids,
       next_item_id,
       font_els = []; // get tab-able elements; other vars
     let active_el =
-      kind === "font"
-        ? getEls(
-            "#content_font .selected,#content_font *:focus,#font_toolbar *:focus",
-          )[0]
+      kind === 'font'
+        ? getEls('#content_font .selected,#content_font *:focus,#font_toolbar *:focus')[0]
         : document.activeElement;
     if (els !== null) {
-      el_ids =
-        kind !== "html"
-          ? els.map((el) => el.id)
-          : els.map((el) => els.indexOf(el));
+      el_ids = kind !== 'html' ? els.map((el) => el.id) : els.map((el) => els.indexOf(el));
     } else {
       return null;
     } // get ids or define ids by index
-    if (kind === "font" && incr === 1) {
+    if (kind === 'font' && incr === 1) {
       // reorder font_specimen items
       font_els = el_ids.filter((id) => /font_specimen/.test(id));
       el_ids = el_ids.filter((id) => !/font_specimen/.test(id));
@@ -9469,51 +8743,47 @@
         el_ids.reverse();
       }
       el_ids = font_els.concat(el_ids);
-      if (getEl("#font_file_grid .selected")) {
+      if (getEl('#font_file_grid .selected')) {
         null;
       }
     }
     switch (
       true // get first or last item...
     ) {
-      case active_el === undefined && kind === "font" && incr === 1:
-      case (active_el?.tagName.toLowerCase() === "body" ||
-        active_el === null) &&
-        incr === 1:
+      case active_el === undefined && kind === 'font' && incr === 1:
+      case (active_el?.tagName.toLowerCase() === 'body' || active_el === null) && incr === 1:
         next_item_id = el_ids[0];
         break;
-      case active_el === undefined && kind === "font" && incr === -1:
-      case (active_el?.tagName.toLowerCase() === "body" ||
-        active_el === null) &&
-        incr === -1:
+      case active_el === undefined && kind === 'font' && incr === -1:
+      case (active_el?.tagName.toLowerCase() === 'body' || active_el === null) && incr === -1:
         next_item_id = el_ids[el_ids.length - 1];
         break;
       default:
         next_item_id =
-          kind !== "html"
+          kind !== 'html'
             ? el_ids[el_ids.indexOf(active_el.id) + incr]
             : el_ids[els.indexOf(active_el) + incr];
         break; // or tab to next item for any other content
     }
     switch (true) {
       case next_item_id === undefined:
-        if (kind === "font" && !hasClass("body", "focus_content")) {
-          addClass("body", "focus_content");
+        if (kind === 'font' && !hasClass('body', 'focus_content')) {
+          addClass('body', 'focus_content');
         } else {
-          focusEl("#top_body");
+          focusEl('#top_body');
         }
         break; //focus top or font
-      case kind === "grid":
-        focusEl("#content_grid");
+      case kind === 'grid':
+        focusEl('#content_grid');
         break;
-      case kind !== "html":
-        focusEl("#" + next_item_id);
+      case kind !== 'html':
+        focusEl('#' + next_item_id);
         break;
-      case kind === "html":
-        if (!getEl("#html_styles")) {
+      case kind === 'html':
+        if (!getEl('#html_styles')) {
           document.head.insertAdjacentHTML(
-            "beforeend",
-            '<style id="html_styles">' + html_style_rules + "</style>",
+            'beforeend',
+            '<style id="html_styles">' + html_style_rules + '</style>'
           );
         }
         els[next_item_id].focus({ focusVisible: true });
@@ -9528,47 +8798,45 @@
       incr = e.shiftKey ? -1 : 1;
     } // e === null if from message navigateTabKeyFocus;
     let content_pane_data = getContentPaneData(),
-      content_el_id = "content" + content_pane_data?.slice(3) || null,
+      content_el_id = 'content' + content_pane_data?.slice(3) || null,
       next_item_id;
     switch (true) {
-      case hasClass("body", "has_warning"):
+      case hasClass('body', 'has_warning'):
         navigateWarningBtns(e);
         break; // nav warning buttons
-      case hasContent("texteditor"):
-        navigateTabKeyFocus("texteditor", incr);
+      case hasContent('texteditor'):
+        navigateTabKeyFocus('texteditor', incr);
         break; // focus font preview, grid, text editor els
-      case hasContent("font,grid"):
+      case hasContent('font,grid'):
         navigateTabKeyFocus(content_pane_data.slice(4), incr);
         break; // focus font preview, grid, text editor els
       case !isTopWindow():
         switch (true) {
-          case hasClass("body", "is_dir"):
-            messageSend("top_body", "focus_top");
+          case hasClass('body', 'is_dir'):
+            messageSend('top_body', 'focus_top');
             break;
-          case hasClass("body", "is_link"):
-            navigateTabKeyFocus("link", incr);
+          case hasClass('body', 'is_link'):
+            navigateTabKeyFocus('link', incr);
             break; // nav link file
-          case hasClass("body", "is_html"):
-            navigateTabKeyFocus("html", incr);
+          case hasClass('body', 'is_html'):
+            navigateTabKeyFocus('html', incr);
             break; // nav html file els (links, etc.)
-          case hasClass("body", "is_text"):
-            navigateTabKeyFocus("texteditor", incr);
+          case hasClass('body', 'is_text'):
+            navigateTabKeyFocus('texteditor', incr);
             break; // nav html file els (links, etc.)
         }
         break;
       default:
         switch (true) {
-          case hasContent("image,pdf,video") &&
-            !hasClass("body", "focus_content"):
+          case hasContent('image,pdf,video') && !hasClass('body', 'focus_content'):
             next_item_id = content_el_id;
             break; // tab into images, pdf, video
-          case hasClass("body", "has_texteditor") &&
-            !hasClass("body", "focus_content"): // tab into text editor
-          case hasContent("dir,htm,markdown,text,code,other,link"):
-            next_item_id = "#content_iframe";
+          case hasClass('body', 'has_texteditor') && !hasClass('body', 'focus_content'): // tab into text editor
+          case hasContent('dir,htm,markdown,text,code,other,link'):
+            next_item_id = '#content_iframe';
             break; // tab into iframe dirs and text files
-          case hasClass("body", "focus_content"):
-            next_item_id = "#top_body";
+          case hasClass('body', 'focus_content'):
+            next_item_id = '#top_body';
             break; // tab into top
         }
         focusEl(next_item_id, e); // focusEl
@@ -9578,39 +8846,36 @@
   function navigateByTypedStr(e) {
     let items, item, timer; // ===> NAVIGATE BY TYPED STRING
     switch (true) {
-      case /textarea|input/.test(
-        document.activeElement.tagName.toLowerCase(),
-      ) || document.activeElement.getAttribute("contentEditable") === true:
+      case /textarea|input/.test(document.activeElement.tagName.toLowerCase()) ||
+        document.activeElement.getAttribute('contentEditable') === true:
         return; // ignore editable textareas
       default:
         timer = timeoutID();
-        if (typeof timer === "number") {
+        if (typeof timer === 'number') {
           window.clearTimeout(timer);
           timer = 0;
         }
         timeoutID(); // set timer for typed string
         str += e.key.toLowerCase(); // define typed string
         switch (true) {
-          case hasClass("#top_body", "has_menu"): // navigate main menu
+          case hasClass('#top_body', 'has_menu'): // navigate main menu
             items =
-              getEls("#sidebar_menu_main > li.has_submenu.hovered").length > 0
-                ? getEls("#sidebar_menu_main > li.has_submenu.hovered li")
-                : getEls("#sidebar_menu_main > li"); // get menu/submenu items
+              getEls('#sidebar_menu_main > li.has_submenu.hovered').length > 0
+                ? getEls('#sidebar_menu_main > li.has_submenu.hovered li')
+                : getEls('#sidebar_menu_main > li'); // get menu/submenu items
             items = Array.from(items).filter((item) =>
-              item.innerText.toLowerCase().startsWith(str),
+              item.innerText.toLowerCase().startsWith(str)
             ); // get menu items and filter items that match typed string
             if (items.length > 0) {
               item = items[0];
-              item?.parentNode
-                .querySelector(".selected")
-                ?.classList.remove("selected");
-              item?.classList.add("selected");
+              item?.parentNode.querySelector('.selected')?.classList.remove('selected');
+              item?.classList.add('selected');
             }
             break; // select if matching menu item found
           default:
             if (elExists('.dirlist_item[data-name^="' + str + '"]')) {
               showThis(getEl('.dirlist_item[data-name^="' + str + '"]').id);
-              scrollThis("#directory_list", ".selected");
+              scrollThis('#directory_list', '.selected');
             } // select dir_list item
         }
     }
@@ -9620,48 +8885,46 @@
   // ===> TEXT EDITING
   function TextEditing() {
     // ===> TEXT EDITING Function: create Markdown Preview
-    let raw_markdown = elExists("#texteditor_raw_pane")
-      ? getEl("#texteditor_raw_pane").value.toString()
-      : "";
-    MDmarkdown(raw_markdown, getEl("#texteditor_html_pane"));
+    let raw_markdown = elExists('#texteditor_raw_pane')
+      ? getEl('#texteditor_raw_pane').value.toString()
+      : '';
+    MDmarkdown(raw_markdown, getEl('#texteditor_html_pane'));
     MDsetChecklistClass(); // set checklist class in case any added
   }
   function textareaSelectContent(id) {
-    let textarea_el = getEl("#" + id);
-    focusEl("#" + id);
+    let textarea_el = getEl('#' + id);
+    focusEl('#' + id);
     textarea_el.select();
     textarea_el.scrollTop = 0;
   } // ===> SELECT TEXTAREA CONTENT
   function texteditorClear() {
     // ===> CLEAR TEXT
     if (!isTopWindow()) {
-      messageSend("top_body", "iframe_edited");
-      addClass("body", "texteditor_edited");
+      messageSend('top_body', 'iframe_edited');
+      addClass('body', 'texteditor_edited');
     } else {
-      removeClass("body", "texteditor_edited");
+      removeClass('body', 'texteditor_edited');
     }
-    getEl("#texteditor_raw_pane").value = "";
-    getEl("#texteditor_styled_pane").innerHTML = "";
-    getEl("#texteditor_html_pane").value = "";
-    getEl("#texteditor_raw_pane").style.width = "";
-    focusEl("#texteditor_raw_pane");
+    getEl('#texteditor_raw_pane').value = '';
+    getEl('#texteditor_styled_pane').innerHTML = '';
+    getEl('#texteditor_html_pane').value = '';
+    getEl('#texteditor_raw_pane').style.width = '';
+    focusEl('#texteditor_raw_pane');
   }
   function texteditorSaveBtn(id) {
     let data,
       file_name,
-      ext = ""; // let Text_Files = Text_Files.map( item => '.'+item );							// ===> SAVE BUTTON
-    file_name = hasContent("texteditor")
-      ? "untitled"
-      : decodeURIComponentSafe(
-          window.location.pathname.split("/").reverse()[0],
-        );
+      ext = ''; // let Text_Files = Text_Files.map( item => '.'+item );							// ===> SAVE BUTTON
+    file_name = hasContent('texteditor')
+      ? 'untitled'
+      : decodeURIComponentSafe(window.location.pathname.split('/').reverse()[0]);
     switch (true) {
-      case id === "save_text":
-        data = getEl("#texteditor_raw_pane").value;
+      case id === 'save_text':
+        data = getEl('#texteditor_raw_pane').value;
         break; // if ( Text_Files.() ) { ext = '.md'; }	break;
-      case id === "save_HTML":
-        data = MDprepHTML(getEl("#texteditor_styled_pane").innerHTML);
-        ext = ".html";
+      case id === 'save_HTML':
+        data = MDprepHTML(getEl('#texteditor_styled_pane').innerHTML);
+        ext = '.html';
         break;
     }
     saveMD(data, file_name + ext);
@@ -9669,21 +8932,18 @@
   function MDprepHTML(data) {
     // ===> MD PREP HTML for saving
     let save_HTML_open = `<!DOCTYPE html><html><head><meta charset="utf-8" /><title></title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"></link>    <style></style><script></script></head><body lang="en" class="markdown_body">`,
-      save_HTML_close = "</body></html>";
-    data = data.replace(/<span\sclass="uplink">.<\/span>/g, "");
+      save_HTML_close = '</body></html>';
+    data = data.replace(/<span\sclass="uplink">.<\/span>/g, '');
     return save_HTML_open + data + save_HTML_close;
   }
   function saveMD(data, file_name) {
     // ===> SAVE MD
     if (!isTopWindow()) {
-      messageSend("top_body", "save_text", "", [data, file_name]);
+      messageSend('top_body', 'save_text', '', [data, file_name]);
     } else {
-      saveFile(data, "text/plain", file_name);
+      saveFile(data, 'text/plain', file_name);
     } // #top_body must save text, else a new window opens containing blob content
-    removeClass(
-      "body,#texteditor_raw_pane,#content_texteditor",
-      "texteditor_edited",
-    );
+    removeClass('body,#texteditor_raw_pane,#content_texteditor', 'texteditor_edited');
   }
   function MDmarkdown(raw_markdown) {
     // ===> MDMARKDOWN: Render markdown from processed source text
@@ -9695,11 +8955,11 @@
       html = html
         .replace(
           /<(p|li|dt|dd)>-*\s*\[\s*x\s*\]\s*(.+?)<\/(p|li|dt|dd)>$/gm,
-          '<$1 class="checklist"><input type="checkbox" checked><label>$2</label></$3>',
+          '<$1 class="checklist"><input type="checkbox" checked><label>$2</label></$3>'
         ) // checkboxes in p,li,dt,dd
         .replace(
           /<(p|li|dt|dd)>-*\s*\[\s{1,}\]\s*(.+?)<\/(p|li|dt|dd)>$/gm,
-          '<$1 class="checklist"><input type="checkbox"><label>$2</label></$3>',
+          '<$1 class="checklist"><input type="checkbox"><label>$2</label></$3>'
         ) // checkboxes
         .replace(/<li><p class="checklist">"/g, '<li class="checklist"><p>');
       return html;
@@ -9714,16 +8974,14 @@
       .use(window.markdownitCentertext)
       .use(window.markdownitDeflist)
       .use(window.markdownitTocDoneRight);
-    let MD_Preview = MDcustomPostProcess(
-      MDit.render(MDcustomPreProcess(raw_markdown)),
-    );
+    let MD_Preview = MDcustomPostProcess(MDit.render(MDcustomPreProcess(raw_markdown)));
     let MD_script = `<style>body{margin:0;padding:0;}</style>`; // inline scripts to permit sync scrolling and focus
-    getEl("#texteditor_styled_pane").innerHTML = MD_script + MD_Preview; // set previewed text
+    getEl('#texteditor_styled_pane').innerHTML = MD_script + MD_Preview; // set previewed text
     let source_HTML = MD_Preview.toString();
-    getEl("#texteditor_html_pane").value = source_HTML; // set raw html view
+    getEl('#texteditor_html_pane').value = source_HTML; // set raw html view
   }
   function MDlivePreview() {
-    MDmarkdown(getEl("#texteditor_raw_pane").value);
+    MDmarkdown(getEl('#texteditor_raw_pane').value);
     MDsetChecklistClass();
   } // ===> MD LIVE PREVIEW
   function MDliveCheckBoxes(checkbox, source_el, preview_el) {
@@ -9731,9 +8989,7 @@
     const MDreplaceNthSubStr = function (str, substr, replacement, index) {
       const MDreplaceAt = function (str, replacement, position) {
         str =
-          str.substring(0, position) +
-          replacement +
-          str.substring(position + replacement.length);
+          str.substring(0, position) + replacement + str.substring(position + replacement.length);
         return str;
       };
       let count = 0,
@@ -9747,71 +9003,53 @@
         }
       }
     };
-    removeClass(".checklist", "clicked");
-    checkbox.closest("p,li,dt,dd").classList.add("clicked");
+    removeClass('.checklist', 'clicked');
+    checkbox.closest('p,li,dt,dd').classList.add('clicked');
     const this_index = preview_el
-      .querySelector(".checklist")
-      .index(preview_el.querySelector(".checklist .clicked"));
+      .querySelector('.checklist')
+      .index(preview_el.querySelector('.checklist .clicked'));
     const src_text = source_el.value;
     const substr = new RegExp(/\[\s*.\s*\]/g);
-    const replacement = checkbox.is(":checked") ? "[x]" : "[ ]";
-    source_el.value = MDreplaceNthSubStr(
-      src_text,
-      substr,
-      replacement,
-      this_index,
-    );
+    const replacement = checkbox.is(':checked') ? '[x]' : '[ ]';
+    source_el.value = MDreplaceNthSubStr(src_text, substr, replacement, this_index);
   }
   function MDsetChecklistClass() {
     getEls('#text_container input[type="checkbox"]').forEach(
-      (el) => (el.closest("ul").style.cssText = "list-style:none;padding:0;"),
+      (el) => (el.closest('ul').style.cssText = 'list-style:none;padding:0;')
     );
   } // ===> MD SET CHECKBOX LIST CLASS
   function texteditor_ResizeSplit() {
     // ===> MD RESIZE SPLIT VIEW
     let page_width = window.innerWidth,
-      editor_width = getEl("#content_texteditor").offsetWidth,
-      editor_offsetLeft =
-        document.body.id === "top_body" ? getEl("#content_pane").offsetLeft : 0;
+      editor_width = getEl('#content_texteditor').offsetWidth,
+      editor_offsetLeft = document.body.id === 'top_body' ? getEl('#content_pane').offsetLeft : 0;
     document.onmousemove = function (e) {
       eStopPrevent(e);
       let pageX = e.pageX;
       if (pageX > editor_offsetLeft + 150 && pageX < page_width - 150) {
         // min split pane widths
+        setStyle('#text_editing_handle', 'left', pageX - editor_offsetLeft - 4 + 'px');
+        setStyle('#texteditor_raw_pane', 'width', pageX - editor_offsetLeft + 'px');
         setStyle(
-          "#text_editing_handle",
-          "left",
-          pageX - editor_offsetLeft - 4 + "px",
+          '#texteditor_styled_pane',
+          'width',
+          editor_width + editor_offsetLeft - pageX + 'px'
         );
-        setStyle(
-          "#texteditor_raw_pane",
-          "width",
-          pageX - editor_offsetLeft + "px",
-        );
-        setStyle(
-          "#texteditor_styled_pane",
-          "width",
-          editor_width + editor_offsetLeft - pageX + "px",
-        );
-        setStyle(
-          "#texteditor_html_pane",
-          "width",
-          editor_width + editor_offsetLeft - pageX + "px",
-        );
+        setStyle('#texteditor_html_pane', 'width', editor_width + editor_offsetLeft - pageX + 'px');
       }
     };
   }
   function texteditor_ResetSplit() {
-    getEls("#text_container .texteditor_pane,#text_editing_handle").forEach(
-      (el) => el.removeAttribute("style"),
+    getEls('#text_container .texteditor_pane,#text_editing_handle').forEach((el) =>
+      el.removeAttribute('style')
     );
   }
   function texteditor_SyncScroll(e) {
     // ===> MD SYNC SCROLL
     if (
       !getEl('input[name="texteditor_sync_scroll"').checked ||
-      hasClass("body", "texteditor_split_view_false") ||
-      hasClass("body", "text_editing_enable_false")
+      hasClass('body', 'texteditor_split_view_false') ||
+      hasClass('body', 'text_editing_enable_false')
     ) {
       return;
     } // ignore if no split or no sync scroll
@@ -9819,36 +9057,31 @@
       scrolled_scrollTop = scrolled.scrollTop,
       scrolled_height = scrolled.scrollHeight,
       scrolled_percentage = (scrolled_scrollTop / scrolled_height).toFixed(4);
-    let synced_id = [
-      "texteditor_raw_pane",
-      "texteditor_styled_pane",
-      "texteditor_html_pane",
-    ]
+    let synced_id = ['texteditor_raw_pane', 'texteditor_styled_pane', 'texteditor_html_pane']
       .filter((el) => el !== scrolled.id)
       .filter((el) => document.getElementById(el).offsetHeight > 0)
       .toString();
     let synced = document.getElementById(synced_id); // the element to be sync scrolled
     synced.scrollTo(0, (scrolled_percentage * synced.scrollHeight).toFixed(0), {
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
   function MDtocClick(id) {
-    let thisId = getEl("#" + id).href;
+    let thisId = getEl('#' + id).href;
     if (thisId !== null) {
-      getEl("#texteditor_styled_pane").scrollTop =
-        getEl("#" + id).offset().top - 48;
+      getEl('#texteditor_styled_pane').scrollTop = getEl('#' + id).offset().top - 48;
     }
   } // ===> MD TOC CLICK anchors
   function MDheaderClick() {
     // ===> MD HEADER CLICK
     switch (true) {
-      case elExists("#texteditor_styled_pane .table-of-contents"):
-        getEl("#texteditor_styled_pane")
-          .getElementsByClassName("table-of-contents")[0]
-          .scrollIntoView({ behavior: "smooth", block: "nearest" });
+      case elExists('#texteditor_styled_pane .table-of-contents'):
+        getEl('#texteditor_styled_pane')
+          .getElementsByClassName('table-of-contents')[0]
+          .scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         break;
       default:
-        getEl("#texteditor_styled_pane").scroll(0, 0);
+        getEl('#texteditor_styled_pane').scroll(0, 0);
     }
   }
   //***********************//
@@ -9861,234 +9094,223 @@
       arguments: args,
     };
     switch (target) {
-      case "iframe":
-        getEl("#content_iframe").contentWindow.postMessage(messageObj, "*");
+      case 'iframe':
+        getEl('#content_iframe').contentWindow.postMessage(messageObj, '*');
         break;
-      case "top_body":
-        window.parent.postMessage(messageObj, "*");
+      case 'top_body':
+        window.parent.postMessage(messageObj, '*');
         break;
     }
   }
   function messageReceive(e) {
     // ===> RECEIVE MESSAGE from iframe or parent, do appropriate action
-    if (e.data.messageContent === "iframe_loaded") {
-      showThis("iframe_loaded", false, true, e.data.arguments);
-    } else if (e.origin === "null" || e.origin === origin) {
+    if (e.data.messageContent === 'iframe_loaded') {
+      showThis('iframe_loaded', false, true, e.data.arguments);
+    } else if (e.origin === 'null' || e.origin === origin) {
       let message = e.data.messageContent,
         args = e.data.arguments;
       switch (message) {
-        case "uiPrefToggle":
+        case 'uiPrefToggle':
           uiPrefToggle(args);
           break;
-        case "searchParamSet":
+        case 'searchParamSet':
           searchParamSet(args[0], args[1]);
           break;
-        case "set_ui_font":
-          if (args !== "") {
+        case 'set_ui_font':
+          if (args !== '') {
             document.body.style.fontFamily = args;
           } else {
             document.body.style.fontFamily = null;
           }
           break; // set iframe ui font
-        case "arrow_key_navigation":
-          removeClass("body", "iframe_edited");
+        case 'arrow_key_navigation':
+          removeClass('body', 'iframe_edited');
           navigateByArrowKey(args);
           break; // class_name, key
-        case "iframe_navigation":
-          addClass("body", "no_hover");
+        case 'iframe_navigation':
+          addClass('body', 'no_hover');
           navigateByArrowKey(args);
           break; // get first or last iframe dirlist item
-        case "show_sidebar":
-          document.body.classList.toggle(getNewUIPref("show_sidebar")[0]);
+        case 'show_sidebar':
+          document.body.classList.toggle(getNewUIPref('show_sidebar')[0]);
           break;
-        case "toggle_menu":
-          menuShow(null, "sidebar_menu_main_container");
-          messageSend("iframe", "has_top_menu");
+        case 'toggle_menu':
+          menuShow(null, 'sidebar_menu_main_container');
+          messageSend('iframe', 'has_top_menu');
           break; // show menu, tell iframe to allow menu arrow navigation
-        case "menu_close":
+        case 'menu_close':
           menuClose();
           break;
-        case "has_top_menu":
-          addClass("#content_body", "has_top_menu is_blurred");
+        case 'has_top_menu':
+          addClass('#content_body', 'has_top_menu is_blurred');
           break; // tell iframe top has menu to allow arrow navigation
-        case "menu_selection":
-        case "menuClick":
+        case 'menu_selection':
+        case 'menuClick':
           menuClick();
           break; // show menu
-        case "menu_navigation":
+        case 'menu_navigation':
           navigateByArrowKey(args);
           break; // menu navigation from iframe
-        case "toggle_invisibles":
-          getEl("#show_invisibles input").click();
-          getEl("#show_invisibles input").blur();
+        case 'toggle_invisibles':
+          getEl('#show_invisibles input').click();
+          getEl('#show_invisibles input').blur();
           break;
-        case "blur_top":
-          addClass("#top_body", "focus_content");
+        case 'blur_top':
+          addClass('#top_body', 'focus_content');
           menuClose();
-          selectThisItem(getData("#content_pane", "loaded_id"));
+          selectThisItem(getData('#content_pane', 'loaded_id'));
           break;
-        case "focus_top": // close menus and refocus content or focus sidebar
+        case 'focus_top': // close menus and refocus content or focus sidebar
           switch (true) {
-            case hasClass("#top_body", "focus_content") &&
-              hasClass("#top_body", "has_menu"):
-              focusEl("#content_pane");
+            case hasClass('#top_body', 'focus_content') && hasClass('#top_body', 'has_menu'):
+              focusEl('#content_pane');
               break;
             default:
-              focusEl("#top_body");
+              focusEl('#top_body');
               break;
           }
           break;
-        case "focus_iframe":
-          addClass("body", "focus_content");
+        case 'focus_iframe':
+          addClass('body', 'focus_content');
           menuClose();
           break; // focusEl('#content_iframe');	break;
-        case "theme_light":
-        case "theme_dark": // toggle iframe UI theme and iframe Text Editor theme
-          getEl("#content_body").classList.remove("theme_dark", "theme_light");
-          getEl("#content_body").classList.add(
-            message,
-            "texteditor_" + message,
-          );
+        case 'theme_light':
+        case 'theme_dark': // toggle iframe UI theme and iframe Text Editor theme
+          getEl('#content_body').classList.remove('theme_dark', 'theme_light');
+          getEl('#content_body').classList.add(message, 'texteditor_' + message);
           break; // change iframe dir theme
-        case "show_iframe_parent":
-          showThis("content_iframe_parent", false, true, args);
+        case 'show_iframe_parent':
+          showThis('content_iframe_parent', false, true, args);
           break; // args[0] === item link, args[1] === item kind
-        case "show_iframe_dir":
-          showThis("content_iframe_dir", false, true, args);
+        case 'show_iframe_dir':
+          showThis('content_iframe_dir', false, true, args);
           break; // args[0] === item link, args[1] === item kind
-        case "show_iframe_file":
-          showThis("content_iframe_file", false, true, args);
+        case 'show_iframe_file':
+          showThis('content_iframe_file', false, true, args);
           break; // args[0] === item link, args[1] === item kind
-        case "select_iframe_item":
-          getEl("#" + args)?.classList.add("selected");
-          scrollThis("#directory_list", ".selected", false);
+        case 'select_iframe_item':
+          getEl('#' + args)?.classList.add('selected');
+          scrollThis('#directory_list', '.selected', false);
           break;
-        case "open_iframe_dir_in_sidebar":
+        case 'open_iframe_dir_in_sidebar':
           window.location = args;
           break; // tell top to open iframe directory in sidebar; args: iframe dir url
-        case "open_iframe_parent_dir":
-          iframeClick(
-            e,
-            "parent",
-            "link",
-            getAttr("#iframe_parent_link", "href"),
-          );
+        case 'open_iframe_parent_dir':
+          iframeClick(e, 'parent', 'link', getAttr('#iframe_parent_link', 'href'));
           break; // getEl('##parent').find('a').click();
-        case "go_back":
-          showThis(getEl(".dirlist_item.selected")?.id);
+        case 'go_back':
+          showThis(getEl('.dirlist_item.selected')?.id);
           break;
-        case "close":
-          clickThis("#close_btn");
+        case 'close':
+          clickThis('#close_btn');
           break; // escape content_iframe and close content
-        case "close_content":
-          showThis("close");
-          removeClass("body", "iframe_edited");
-          focusEl("#top_body");
+        case 'close_content':
+          showThis('close');
+          removeClass('body', 'iframe_edited');
+          focusEl('#top_body');
           break; // close edited_iframe text after clicking "Save/Don't Save" buttons
-        case "reload":
-          showWarning("resetContent");
+        case 'reload':
+          showWarning('resetContent');
           break; // reload content
-        case "reloading":
-          showWarning("resetContent");
+        case 'reloading':
+          showWarning('resetContent');
           break;
-        case "resetContent":
-          showThis(getEl(".dirlist_item.content_loaded").id);
-          removeClass("body", "iframe_edited");
+        case 'resetContent':
+          showThis(getEl('.dirlist_item.content_loaded').id);
+          removeClass('body', 'iframe_edited');
           break; // reload iframe content after "Save/Don't Save" buttons
-        case "showThis":
-          removeClass("body", "iframe_edited");
-          focusEl("#top_body");
+        case 'showThis':
+          removeClass('body', 'iframe_edited');
+          focusEl('#top_body');
           showThis(args);
           break; // show clicked/navigated sidebar item after "Save/Don't Save" buttons
-        case "show_numbers":
-        case "show_invisibles":
-        case "alternate_background":
-        case "show_ignored_items":
-        case "ignore_ignored_items":
-          getEl("#content_body").classList.toggle(message);
+        case 'show_numbers':
+        case 'show_invisibles':
+        case 'alternate_background':
+        case 'show_ignored_items':
+        case 'ignore_ignored_items':
+          getEl('#content_body').classList.toggle(message);
           break; // toggle iframe dir_list UI prefs from main menu:
-        case "show_image_thumbnails":
+        case 'show_image_thumbnails':
           uiPrefImgThumbsToggle();
           break; // toggle image thumbnails in iframe
-        case "iframe_play_pause_media":
+        case 'iframe_play_pause_media':
           mediaPlayPause();
           break; // tell top to play/pause audio from iframe click
-        case "mediaScrub":
+        case 'mediaScrub':
           mediaScrub(undefined, args);
           break; // tell top to mediaScrub from focused iframe
-        case "play_prev_next_iframe_audio":
+        case 'play_prev_next_iframe_audio':
           mediaPlayPrevNextIframeItem(args);
           break; // play next iframe track
-        case "close_iframe_audio":
-          removeClass(".audio_loaded", "audio_loaded");
+        case 'close_iframe_audio':
+          removeClass('.audio_loaded', 'audio_loaded');
           break; // remove iframe audio loaded class
-        case "set_media_duration":
+        case 'set_media_duration':
           setMediaDuration(args[0], args[1], args[2], true);
           break; // set media durations for subdirs [id, item_sort_kind, duration]
-        case "refresh_media_durations":
-          refreshMediaDurations("refresh_media_durations");
+        case 'refresh_media_durations':
+          refreshMediaDurations('refresh_media_durations');
           break;
-        case "navigateTabKeyFocus":
+        case 'navigateTabKeyFocus':
           navigateTabKeyFocus(args[0], args[1]);
           break; // args[0] = kind, args[1] = incr (tab:1,shift+tab:-1)
-        case "texteditor_split_view":
-          uiPrefToggle("texteditor_split_view");
+        case 'texteditor_split_view':
+          uiPrefToggle('texteditor_split_view');
           break;
-        case "iframe_edited":
-          if (!hasClass("#top_body", "iframe_edited")) {
-            addClass("#top_body", "iframe_edited");
+        case 'iframe_edited':
+          if (!hasClass('#top_body', 'iframe_edited')) {
+            addClass('#top_body', 'iframe_edited');
           }
           break; // let top know iframe text has been edited
-        case "texteditor_toolbar_button":
+        case 'texteditor_toolbar_button':
           if (!isTopWindow()) {
             document.body.classList.toggle(args);
           } else {
             uiPrefToggle(args);
           }
           break;
-        case "clear":
-          addClass("#top_body", "iframe_edited");
+        case 'clear':
+          addClass('#top_body', 'iframe_edited');
           break; // add edited class after clearing text from edited iframe file
-        case "save_text":
-          removeClass("body", "iframe_edited");
-          saveFile(args[0], "text/plain", args[1]);
+        case 'save_text':
+          removeClass('body', 'iframe_edited');
+          saveFile(args[0], 'text/plain', args[1]);
           break;
-        case "iframe_text_saved":
-          removeClass("body", "iframe_edited");
+        case 'iframe_text_saved':
+          removeClass('body', 'iframe_edited');
           break;
-        case "toggle_texteditor":
+        case 'toggle_texteditor':
           showTextEditor(true);
           break;
-        case "unloading":
-          showWarning("closeContent", args);
+        case 'unloading':
+          showWarning('closeContent', args);
           break; // show unsaved changes warning in iframe
-        case "iframe_loaded":
-          showThis("iframe_loaded", false, true, args);
+        case 'iframe_loaded':
+          showThis('iframe_loaded', false, true, args);
           break; // args = [iframe_src,file_name,kind,content]
-        case "dirlist_subdir_loaded":
+        case 'dirlist_subdir_loaded':
           subDirInsert(args);
           break; // when subdirs processed, insert subdirs in dirlist
-        case "show_texteditor_preview":
+        case 'show_texteditor_preview':
           showTexteditorPreview(args);
           break; // only show previewed text for certain files (e.g., webloc, url)
-        case "local_link":
-          showWarning("warning_local_file");
+        case 'local_link':
+          showWarning('warning_local_file');
           break; // local link warning
-        case "iframe_playlist":
-          getEls(".dirlist_item.text").forEach((el) =>
-            el.removeAttribute("data-playlist"),
-          ); // iframe_playlist
-          removeClass(".dirlist_item.text", "playlist");
-          addClass(".dirlist_item.text.selected", "playlist");
-          setData(".dirlist_item.text.selected", "playlist", args);
+        case 'iframe_playlist':
+          getEls('.dirlist_item.text').forEach((el) => el.removeAttribute('data-playlist')); // iframe_playlist
+          removeClass('.dirlist_item.text', 'playlist');
+          addClass('.dirlist_item.text.selected', 'playlist');
+          setData('.dirlist_item.text.selected', 'playlist', args);
           break;
-        case "setIframePlayerStatus": // for iframe audio playback
-          if (args === "play") {
-            removeClass("body", "is_paused");
-            addClass("body", "is_playing");
+        case 'setIframePlayerStatus': // for iframe audio playback
+          if (args === 'play') {
+            removeClass('body', 'is_paused');
+            addClass('body', 'is_playing');
           } else {
-            removeClass("body", "is_playing");
-            addClass("body", "is_paused");
+            removeClass('body', 'is_playing');
+            addClass('body', 'is_paused');
           }
           break;
       }
@@ -10122,7 +9344,7 @@
       playlistMake: playlistMake,
       changeLocation: changeLocation,
     }; // list of functions to remember and execute after warning button click
-    return funcName === "null" ? null : funcDictionary[funcName](args); // return the function and call it with args
+    return funcName === 'null' ? null : funcDictionary[funcName](args); // return the function and call it with args
   }
   function showWarning(funcName, args) {
     // ===> SHOW WARNING
@@ -10131,96 +9353,76 @@
         break;
       case /warning_make_playlist/.test(funcName):
         getEls(
-          "#directories_only,#files_only,#audio_files_only,#video_files_only,#media_files_only,#all_non_media_files",
-        ).forEach((el) => el.removeAttribute("disabled")); // setup makeplaylist alert
-        if (getEl(".dirlist_item.dir") === null) {
-          getEl("#directories_only").disabled = "disabled";
+          '#directories_only,#files_only,#audio_files_only,#video_files_only,#media_files_only,#all_non_media_files'
+        ).forEach((el) => el.removeAttribute('disabled')); // setup makeplaylist alert
+        if (getEl('.dirlist_item.dir') === null) {
+          getEl('#directories_only').disabled = 'disabled';
         }
-        if (getEl(".dirlist_item.file") === null) {
-          getEl("#files_only").disabled = "disabled";
+        if (getEl('.dirlist_item.file') === null) {
+          getEl('#files_only').disabled = 'disabled';
         }
-        if (!hasClass("body", "has_audio")) {
-          getEl("#audio_files_only").disabled = "disabled";
+        if (!hasClass('body', 'has_audio')) {
+          getEl('#audio_files_only').disabled = 'disabled';
         }
-        if (!hasClass("body", "has_video")) {
-          getEl("#video_files_only").disabled = "disabled";
+        if (!hasClass('body', 'has_video')) {
+          getEl('#video_files_only').disabled = 'disabled';
         }
-        if (!hasClass("body", "has_media")) {
-          getEl("#media_files_only").disabled = "disabled";
+        if (!hasClass('body', 'has_media')) {
+          getEl('#media_files_only').disabled = 'disabled';
         }
-        if (getEl(".dirlist_item.non_media") === null) {
-          getEl("#all_non_media_files").disabled = "disabled";
+        if (getEl('.dirlist_item.non_media') === null) {
+          getEl('#all_non_media_files').disabled = 'disabled';
         }
         openWarning(
-          "warning_make_playlist",
-          ["warning_btn_ok", "warning_btn_cancel"],
-          "playlistMake",
-          args,
+          'warning_make_playlist',
+          ['warning_btn_ok', 'warning_btn_cancel'],
+          'playlistMake',
+          args
         );
         break; // make playlist/filelist
       case /open_font|open_playlist|close_font|closePlaylist/.test(funcName): // close playlist or font file; args === close_font, close_playlist; if funcName[close_] === args, close item, else open file
         if (
-          !hasContent("font_file_glyph") &&
-          !hasContent("font_specimen") &&
-          !hasContent("font_specimen_glyph") &&
-          !hasClass("body", "has_quicklook")
+          !hasContent('font_file_glyph') &&
+          !hasContent('font_specimen') &&
+          !hasContent('font_specimen_glyph') &&
+          !hasClass('body', 'has_quicklook')
         ) {
-          openWarning(
-            "warning_" + args,
-            ["warning_btn_cancel", "warning_btn_ok"],
-            funcName,
-            args,
-          );
+          openWarning('warning_' + args, ['warning_btn_cancel', 'warning_btn_ok'], funcName, args);
         } else {
           closeFont(); /*i.e., glyphs*/
         }
         break; // close font or font glyphs
       case /texteditorClear/.test(funcName):
         openWarning(
-          "warning_clear_text",
-          ["warning_btn_ok", "warning_btn_save", "warning_btn_cancel"],
-          funcName,
+          'warning_clear_text',
+          ['warning_btn_ok', 'warning_btn_save', 'warning_btn_cancel'],
+          funcName
         );
         break;
       case /non_local_file/.test(funcName):
-        openWarning(
-          "warning_non_local_file",
-          ["warning_btn_ok", "warning_btn_cancel"],
-          null,
-          args,
-        );
+        openWarning('warning_non_local_file', ['warning_btn_ok', 'warning_btn_cancel'], null, args);
         break;
       case /local_file/.test(funcName):
-        openWarning("warning_local_file", ["warning_btn_ok"]);
+        openWarning('warning_local_file', ['warning_btn_ok']);
         break;
-      case /showThis|closeContent|resetContent|changeLocation|setLocation/.test(
-        funcName,
-      ): // warnings for various cases
+      case /showThis|closeContent|resetContent|changeLocation|setLocation/.test(funcName): // warnings for various cases
         switch (true) {
           case !isTopWindow():
             switch (true) {
               case args?.length === 2:
                 openWarning(
-                  "unloading",
-                  [
-                    "warning_btn_save",
-                    "warning_btn_dont_save",
-                    "warning_btn_cancel",
-                  ],
+                  'unloading',
+                  ['warning_btn_save', 'warning_btn_dont_save', 'warning_btn_cancel'],
                   args[0],
-                  args[1],
+                  args[1]
                 );
                 break; // iframe edited warning for dirlist_item click
               default:
                 openWarning(
-                  "unloading",
-                  [
-                    "warning_btn_save",
-                    "warning_btn_dont_save",
-                    "warning_btn_cancel",
-                  ],
+                  'unloading',
+                  ['warning_btn_save', 'warning_btn_dont_save', 'warning_btn_cancel'],
                   funcName,
-                  args,
+                  args
                 ); // iframe unload warning for close/resetContent
             }
             break;
@@ -10231,20 +9433,20 @@
         break;
       default:
         switch (true) {
-          case hasClass("body", "iframe_edited"):
-            messageSend("iframe", "unloading", funcName, args);
+          case hasClass('body', 'iframe_edited'):
+            messageSend('iframe', 'unloading', funcName, args);
             break; // send unloading message for close or resetContent
-          case hasClass("body", "texteditor_edited") &&
+          case hasClass('body', 'texteditor_edited') &&
             !/navigateByArrowKey|uiPrefToggle/.test(funcName):
-          case funcName === "texteditorClear":
+          case funcName === 'texteditorClear':
             if (isTopWindow()) {
-              removeClass("#content_pane", "has_hidden_texteditor");
-              setData("#content_pane", "content", "has_texteditor");
+              removeClass('#content_pane', 'has_hidden_texteditor');
+              setData('#content_pane', 'content', 'has_texteditor');
             }
-            openWarning("texteditorClear", [
-              "warning_btn_save",
-              "warning_btn_dont_save",
-              "warning_btn_cancel",
+            openWarning('texteditorClear', [
+              'warning_btn_save',
+              'warning_btn_dont_save',
+              'warning_btn_cancel',
             ]);
             break;
           default:
@@ -10255,112 +9457,112 @@
   }
   function openWarning(id, buttonids, funcName, args) {
     // ===> OPEN WARNING
-    addClass("body", "has_warning");
-    removeAttr("#warnings_container", "class");
-    addClass("#warnings_container", id);
-    addClass("#" + id, "show");
-    buttonids.forEach((el) => addClass("#" + el, "show")); // show warning buttons and message
-    getEl("#" + buttonids[0]).focus();
-    getEl("#" + buttonids[0]).classList.add("focus"); // focus default warning button
+    addClass('body', 'has_warning');
+    removeAttr('#warnings_container', 'class');
+    addClass('#warnings_container', id);
+    addClass('#' + id, 'show');
+    buttonids.forEach((el) => addClass('#' + el, 'show')); // show warning buttons and message
+    getEl('#' + buttonids[0]).focus();
+    getEl('#' + buttonids[0]).classList.add('focus'); // focus default warning button
     if (funcName !== undefined) {
-      setData("#warnings_container", "funcname", funcName);
+      setData('#warnings_container', 'funcname', funcName);
     } // store funcName and args to complete after clicking warning button
     if (args !== undefined) {
-      setData("#warnings_container", "args", args);
+      setData('#warnings_container', 'args', args);
     }
   }
   function closeWarning() {
     // ===> CLOSE WARNINGS
-    removeClass("body", "has_warning");
-    getEls("#warnings_container .show,#warnings_container .focus").forEach(
-      (el) => el.classList.remove("show", "focus"),
+    removeClass('body', 'has_warning');
+    getEls('#warnings_container .show,#warnings_container .focus').forEach((el) =>
+      el.classList.remove('show', 'focus')
     );
-    removeAttr("#warnings_container", ["class", "data-funcname"]);
+    removeAttr('#warnings_container', ['class', 'data-funcname']);
   }
   function warningButtons(id) {
     // ===> WARNING BUTTONs: what to do after warning button click
-    let funcName = getData("#warnings_container", "funcname") || "",
-      args = getData("#warnings_container", "args") || "";
+    let funcName = getData('#warnings_container', 'funcname') || '',
+      args = getData('#warnings_container', 'args') || '';
     switch (id) {
-      case "warning_btn_save": // Save/Don't Save Buttons
+      case 'warning_btn_save': // Save/Don't Save Buttons
         switch (
           true // After clicking Save/Don't Save Button...
         ) {
           case !isTopWindow():
             messageSend(
-              "top_body",
-              getData("#warnings_container", "funcname"),
-              getData("#warnings_container", "funcname"),
-              [getData("#warnings_container", "args")],
+              'top_body',
+              getData('#warnings_container', 'funcname'),
+              getData('#warnings_container', 'funcname'),
+              [getData('#warnings_container', 'args')]
             );
             break; // funcName to top
           default:
-            removeClass("body", "iframe_edited");
+            removeClass('body', 'iframe_edited');
             doFunction(funcName, args);
-            focusEl("#top_body"); // remove iframe_edited class; do the function, if any; focus sidebar
+            focusEl('#top_body'); // remove iframe_edited class; do the function, if any; focus sidebar
         }
-        deleteData("#warnings_container", "funcname");
-        deleteData("#warnings_container", args); // remove warnings_container data
-        if (id === "warning_btn_save") {
-          getEl("#save_text_link").click();
+        deleteData('#warnings_container', 'funcname');
+        deleteData('#warnings_container', args); // remove warnings_container data
+        if (id === 'warning_btn_save') {
+          getEl('#save_text_link').click();
         }
         break; // if id = save button, click save text link
-      case "warning_btn_dont_save":
+      case 'warning_btn_dont_save':
         if (!isTopWindow()) {
-          messageSend("top_body", "close_content");
+          messageSend('top_body', 'close_content');
         } else {
-          doFunction(funcName, [args, "ok"]);
+          doFunction(funcName, [args, 'ok']);
         }
         break;
-      case "warning_btn_cancel":
+      case 'warning_btn_cancel':
         switch (true) {
           case isTopWindow():
-            if (hasClass("body", "focus_content")) {
-              focusEl("#content_pane");
+            if (hasClass('body', 'focus_content')) {
+              focusEl('#content_pane');
             } else {
-              focusEl("#top_body");
+              focusEl('#top_body');
             }
             break; // Cancel Button
           case !isTopWindow():
             if (
-              getData("#warnings_container", "args") === "warning_btn_save" &&
-              getData("#warnings_container", "funcname") === "closeContent"
+              getData('#warnings_container', 'args') === 'warning_btn_save' &&
+              getData('#warnings_container', 'funcname') === 'closeContent'
             ) {
-              messageSend("top_body", "close_content");
+              messageSend('top_body', 'close_content');
             }
             break;
         }
         break;
-      case "warning_btn_clear":
+      case 'warning_btn_clear':
         texteditorClear();
         break; // Clear text editor
-      case "warning_btn_ok": // OK Button
+      case 'warning_btn_ok': // OK Button
         switch (true) {
-          case hasClass("#warnings_container", "warning_close_font"):
+          case hasClass('#warnings_container', 'warning_close_font'):
             closeWarning();
-            openFontFile("close");
+            openFontFile('close');
             if (funcName !== args && !/close_playlist|close_font/.test(args)) {
-              getEl("#" + funcName).click();
+              getEl('#' + funcName).click();
             } else {
-              getEl(".dirlist_item.selected").click();
+              getEl('.dirlist_item.selected').click();
             }
             return; // close font file, open file by funcName (if funcName !== args)
-          case hasClass("#warnings_container", "warning_close_playlist"):
+          case hasClass('#warnings_container', 'warning_close_playlist'):
             window.stop();
             closeWarning();
             closePlaylist();
             closeContent();
-            showThis(getEl(".dirlist_item.selected").id);
+            showThis(getEl('.dirlist_item.selected').id);
             if (funcName !== args && !/close_playlist|close_font/.test(args)) {
-              getEl("#" + funcName).click();
+              getEl('#' + funcName).click();
             }
             return; // close playlist, open file by
-          case hasClass("#warnings_container", "warning_local_playlist"): // no break; local playlist
-          case hasClass("#warnings_container", "warning_local_file"):
+          case hasClass('#warnings_container', 'warning_local_playlist'): // no break; local playlist
+          case hasClass('#warnings_container', 'warning_local_file'):
             closeWarning();
             return; // local file
-          case hasClass("#warnings_container", "warning_non_local_file"):
-            open(args, "_blank");
+          case hasClass('#warnings_container', 'warning_non_local_file'):
+            open(args, '_blank');
             break; // no break; open non_local file in new window
         }
         doFunction(funcName, args);

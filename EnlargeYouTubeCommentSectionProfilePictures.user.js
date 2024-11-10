@@ -15,7 +15,7 @@
 // ==/UserScript==
 
 (function () {
-  "use strict";
+  'use strict';
 
   let debounceTimeout;
   const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
@@ -23,7 +23,7 @@
 
   // Load cache from Tampermonkey storage
   function loadCache() {
-    const cache = GM_getValue("profilePicCache", {});
+    const cache = GM_getValue('profilePicCache', {});
     const now = Date.now();
     // Clear out expired cache entries
     Object.keys(cache).forEach((key) => {
@@ -31,20 +31,20 @@
         delete cache[key]; // Remove expired entry
       }
     });
-    GM_setValue("profilePicCache", cache); // Update cache after removing expired entries
+    GM_setValue('profilePicCache', cache); // Update cache after removing expired entries
     return cache;
   }
 
   // Save cache to Tampermonkey storage
   function saveCache(cache) {
-    GM_setValue("profilePicCache", cache);
+    GM_setValue('profilePicCache', cache);
   }
 
   let cache = loadCache(); // Load the cache once when the script runs
 
   // Preload HD image
   function preloadHDImage(src) {
-    const hdSrc = src.replace(/=s(88|48)-c/, "=s800-c"); // Adjust as needed for HD
+    const hdSrc = src.replace(/=s(88|48)-c/, '=s800-c'); // Adjust as needed for HD
     if (!preloadedImages.has(hdSrc)) {
       if (cache[hdSrc]) {
         // If in persistent cache, load directly from cache
@@ -70,11 +70,11 @@
     const img = event.target;
 
     // If the image is already enlarged, skip further processing
-    if (img.dataset.enlarged === "true") return;
+    if (img.dataset.enlarged === 'true') return;
 
     debounceTimeout = setTimeout(() => {
       const originalSrc = img.src;
-      const hdSrc = originalSrc.replace(/=s(88|48)-c/, "=s800-c"); // Use HD version
+      const hdSrc = originalSrc.replace(/=s(88|48)-c/, '=s800-c'); // Use HD version
       img.dataset.originalSrc = originalSrc; // Store the original src
       img.src = preloadedImages.get(hdSrc) || hdSrc;
 
@@ -82,15 +82,15 @@
       const rect = img.getBoundingClientRect();
 
       // Set fixed size, position relative to the original image, and make it a circle
-      img.style.width = "260px"; // Adjust width as needed
-      img.style.height = "260px"; // Adjust height as needed
-      img.style.borderRadius = "50%"; // Make the image circular
-      img.style.position = "fixed";
+      img.style.width = '260px'; // Adjust width as needed
+      img.style.height = '260px'; // Adjust height as needed
+      img.style.borderRadius = '50%'; // Make the image circular
+      img.style.position = 'fixed';
       img.style.top = `${rect.top - 20}px`; // Adjust vertical position as needed
       img.style.left = `${rect.left + 70}px`; // Offset to the right
-      img.style.border = "2px solid black";
-      img.style.zIndex = "9999";
-      img.dataset.enlarged = "true"; // Mark as enlarged to prevent re-enlarging
+      img.style.border = '2px solid black';
+      img.style.zIndex = '9999';
+      img.dataset.enlarged = 'true'; // Mark as enlarged to prevent re-enlarging
 
       // Reset after 3 seconds
       setTimeout(() => {
@@ -102,26 +102,26 @@
   // Function to reset profile pictures to original size and source
   function resetProfilePic(img) {
     img.src = img.dataset.originalSrc || img.src; // Restore the original src if it was replaced
-    img.style.width = ""; // Clear custom width
-    img.style.height = ""; // Clear custom height
-    img.style.borderRadius = ""; // Clear circular style
-    img.style.position = ""; // Reset position to default
-    img.style.top = ""; // Clear top position
-    img.style.left = ""; // Clear left position
-    img.style.border = "none"; // Remove any border
-    img.style.zIndex = "auto"; // Reset z-index
-    img.style.transform = ""; // Remove any transform applied
+    img.style.width = ''; // Clear custom width
+    img.style.height = ''; // Clear custom height
+    img.style.borderRadius = ''; // Clear circular style
+    img.style.position = ''; // Reset position to default
+    img.style.top = ''; // Clear top position
+    img.style.left = ''; // Clear left position
+    img.style.border = 'none'; // Remove any border
+    img.style.zIndex = 'auto'; // Reset z-index
+    img.style.transform = ''; // Remove any transform applied
     delete img.dataset.enlarged; // Remove the enlarged flag
   }
 
   // Add event listeners to profile pictures
   function addEventListeners() {
     const profilePics = document.querySelectorAll(
-      ".style-scope yt-img-shadow img:not(#avatar-btn > yt-img-shadow img)",
+      '.style-scope yt-img-shadow img:not(#avatar-btn > yt-img-shadow img)'
     );
     profilePics.forEach((pic) => {
       preloadHDImage(pic.src); // Preload HD image
-      pic.addEventListener("mouseover", enlargeProfilePic);
+      pic.addEventListener('mouseover', enlargeProfilePic);
     });
   }
 

@@ -13,31 +13,29 @@
 // ==/UserScript==
 
 (() => {
-  "use strict";
+  'use strict';
 
-  const VOLUME_KEY = "youtubeTVVolume";
+  const VOLUME_KEY = 'youtubeTVVolume';
   const DEFAULT_VOLUME = 100;
 
   const setVolume = (value) => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
+    const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
     if (slider) {
       console.log(`Setting volume to: ${value}`);
       slider.value = value;
-      slider.setAttribute("value", value);
+      slider.setAttribute('value', value);
       slider.dispatchEvent(
-        new Event("input", {
+        new Event('input', {
           bubbles: true,
-        }),
+        })
       );
       slider.dispatchEvent(
-        new Event("change", {
+        new Event('change', {
           bubbles: true,
-        }),
+        })
       );
     } else {
-      console.error("Volume slider not found");
+      console.error('Volume slider not found');
     }
   };
 
@@ -47,34 +45,30 @@
     if (savedVolume) {
       setVolume(parseFloat(savedVolume));
     } else {
-      console.log("No saved volume found, defaulting to 100");
+      console.log('No saved volume found, defaulting to 100');
       setVolume(DEFAULT_VOLUME);
     }
   };
 
   const tryLoadVolume = () => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
+    const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
     if (slider) {
       loadSavedVolume();
     } else {
-      console.error("Volume slider not found, retrying in 3 seconds");
+      console.error('Volume slider not found, retrying in 3 seconds');
       setTimeout(tryLoadVolume, 3000);
     }
   };
 
   const observeSliderChanges = () => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
+    const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
     if (slider) {
-      console.log("Observing the volume slider for changes");
+      console.log('Observing the volume slider for changes');
       const observer = new MutationObserver(() => {
         const currentValue = slider.value;
         console.log(`Current volume changed to: ${currentValue}`);
         localStorage.setItem(VOLUME_KEY, currentValue);
-        if (currentValue === "100") {
+        if (currentValue === '100') {
           const savedVolume = localStorage.getItem(VOLUME_KEY);
           if (savedVolume) {
             console.log(`Resetting volume to saved value: ${savedVolume}`);
@@ -86,29 +80,25 @@
         attributes: true,
       });
     } else {
-      console.error("Volume slider not found during initialization");
+      console.error('Volume slider not found during initialization');
       setTimeout(observeSliderChanges, 1000);
     }
   };
 
   const monitorVolume = () => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
+    const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
     if (slider) {
       const currentValue = slider.value;
       const savedVolume = localStorage.getItem(VOLUME_KEY);
-      if (currentValue === "100" && savedVolume) {
-        console.log(
-          `Monitoring: Resetting volume to saved value: ${savedVolume}`,
-        );
+      if (currentValue === '100' && savedVolume) {
+        console.log(`Monitoring: Resetting volume to saved value: ${savedVolume}`);
         setVolume(parseFloat(savedVolume));
       }
     }
   };
 
-  globalThis.addEventListener("load", () => {
-    console.log("YouTube TV Volume Rememberer script loaded");
+  globalThis.addEventListener('load', () => {
+    console.log('YouTube TV Volume Rememberer script loaded');
     setTimeout(() => {
       tryLoadVolume();
       observeSliderChanges();
@@ -116,19 +106,17 @@
     }, 1000);
   });
 
-  globalThis.addEventListener("keydown", (event) => {
-    const slider = document.querySelector(
-      'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-    );
+  globalThis.addEventListener('keydown', (event) => {
+    const slider = document.querySelector('tp-yt-paper-slider[role="slider"].ytu-volume-slider');
     if (!slider) return;
 
     // Check if either Shift key is pressed
     const isShiftPressed = event.shiftKey;
 
-    if (isShiftPressed && event.key === "ArrowUp") {
+    if (isShiftPressed && event.key === 'ArrowUp') {
       const newValue = Math.min(parseFloat(slider.value) + 5, 100);
       setVolume(newValue);
-    } else if (isShiftPressed && event.key === "ArrowDown") {
+    } else if (isShiftPressed && event.key === 'ArrowDown') {
       const newValue = Math.max(parseFloat(slider.value) - 5, 0);
       setVolume(newValue);
     }

@@ -1,0 +1,3 @@
+  const CLIENT_ID = '1F2ZExzNFKgVbEsxKiKg4g';
+  const CLIENT_SECRET = 'fJFQNSHUoqZrjA6JHPOnf6C_dgNWbg';
+  const USER_AGENT = 'ProfilePictureInjector/6.2 by Nick2bad4u';
