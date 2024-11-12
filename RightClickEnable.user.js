@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Allow Right-Click with Tampermonkey Menu Option
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      1.4
-// @description  Allows right-clicking on websites that prevent it, with an option in the Tampermonkey menu to activate the feature
+// @version      1.6
+// @description  Allows right-clicking on websites that prevent it by clicking the menu button in the Tampermonkey extension.
 // @author       Nick2bad4u
 // @match        *://*/*
 // @grant        GM_registerMenuCommand
