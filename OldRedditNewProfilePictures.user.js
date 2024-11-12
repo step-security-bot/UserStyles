@@ -15,6 +15,7 @@
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OldRedditNewProfilePictures.user.js
 // @license      Unlicense
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
+// @tag          reddit
 // ==/UserScript==
 
 (function () {

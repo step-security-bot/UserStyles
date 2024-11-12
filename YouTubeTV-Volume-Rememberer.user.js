@@ -10,6 +10,7 @@
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/YouTubeTV-Volume-Rememberer.user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tv.youtube.com
 // @license      UnLicense
+// @tag          youtube
 // ==/UserScript==
 
 (() => {

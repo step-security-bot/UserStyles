@@ -11,6 +11,7 @@
 // @license      UnLicense
 // @downloadURL  https://update.greasyfork.org/scripts/513759/YouTube%20Volume%20Control%20with%20Memory.user.js
 // @updateURL    https://update.greasyfork.org/scripts/513759/YouTube%20Volume%20Control%20with%20Memory.meta.js
+// @tag          youtube
 // ==/UserScript==
 
 (async function () {

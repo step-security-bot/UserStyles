@@ -12,6 +12,7 @@
 // @license      UnLicense
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/blob/main/EnlargeYouTubeCommentSectionProfilePictures.user.js
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/blob/main/EnlargeYouTubeCommentSectionProfilePictures.user.js
+// @tag          youtube
 // ==/UserScript==
 
 (function () {

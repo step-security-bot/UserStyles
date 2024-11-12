@@ -10,6 +10,7 @@
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/EnhanceYouTubeProfilePictures.user.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @license      UnLicense
+// @tag          youtube
 // ==/UserScript==
 
 (function () {
