@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Garmin Connect - Remove all Gear from Activity
 // @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      1.2
+// @version      1.3
 // @description  Adds a button to remove all gear from Garmin Connect activities.
 // @author       Nick2bad4u
 // @match        *://connect.garmin.com/*
@@ -20,7 +20,7 @@
     function clickElements() {
         // Select all elements with the class name ActivityGearStatusView_active__l8MV9
         var elements = document.querySelectorAll('.ActivityGearStatusView_active__l8MV9:not(.clicked)');
-        var delay = 100; // Delay in milliseconds
+        var delay = 250; // Delay in milliseconds
 
         elements.forEach(function(element, index) {
             setTimeout(function() {
