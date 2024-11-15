@@ -1,0 +1,162 @@
+/* Base styles */
+*:not(img, svg, iframe, a, i, span.mr2, span.mh2, p)
+{
+	background-color: #111 !important;
+	color: #ddd !important;
+	border-color: #333 !important;
+}
+
+a
+{
+	color: #1e90ff !important;
+}
+
+/* Media elements */
+img,
+video
+{
+	filter: brightness(1) !important;
+}
+
+/* Buttons and Input Fields */
+button,
+input,
+select,
+textarea,
+div > div.z-2.relative.mt2.w-60 > div > a
+{
+	background-color: #222 !important;
+	color: #ddd !important;
+	border-color: #444 !important;
+}
+
+button:hover,
+input:focus,
+select:focus,
+textarea:focus
+{
+	background-color: #333 !important;
+	border-color: #555 !important;
+}
+
+/* Header, Navbar, and Footer */
+header,
+.header,
+.footer,
+nav,
+.navbar
+{
+	background-color: #111 !important;
+	color: #ddd !important;
+}
+
+header a,
+.header a,
+.footer a,
+nav a,
+.navbar a
+{
+	color: #1e90ff !important;
+}
+
+/* Product Listings */
+.product,
+.product-card,
+.product-list-item
+{
+	background-color: #222 !important;
+	color: #ddd !important;
+	border-color: #333 !important;
+}
+
+.product-card .price,
+.product-list-item .price
+{
+	color: #ffcc00 !important;
+}
+
+/* Category and Sidebar Menus */
+.sidebar,
+.category-menu,
+.filter-menu
+{
+	background-color: #111 !important;
+	color: #ddd !important;
+	border-color: #333 !important;
+}
+
+.sidebar a,
+.category-menu a,
+.filter-menu a
+{
+	color: #1e90ff !important;
+}
+
+/* Shopping Cart and Checkout */
+.cart,
+.checkout,
+.order-summary,
+.cart-item
+{
+	background-color: #222 !important;
+	color: #ddd !important;
+	border-color: #333 !important;
+}
+
+.cart .price,
+.checkout .price,
+.order-summary .price
+{
+	color: #ffcc00 !important;
+}
+
+/* Forms and Popups */
+.modal,
+.popup,
+.form-container
+{
+	background-color: #111 !important;
+	color: #ddd !important;
+	border-color: #333 !important;
+}
+
+.modal button,
+.popup button,
+.form-container button
+{
+	background-color: #222 !important;
+	color: #ddd !important;
+}
+
+/* Specific UI Adjustments */
+.breadcrumb,
+.pagination,
+.page-navigation
+{
+	background-color: #222 !important;
+	color: #ddd !important;
+	border-color: #333 !important;
+}
+
+.breadcrumb a,
+.pagination a,
+.page-navigation a
+{
+	color: #1e90ff !important;
+}
+
+.notification,
+.alert,
+.badge
+{
+	background-color: #444 !important;
+	color: #ffcc00 !important;
+}
+
+/* Tooltip */
+.tooltip
+{
+	background-color: #333 !important;
+	color: #ddd !important;
+	border-color: #555 !important;
+}

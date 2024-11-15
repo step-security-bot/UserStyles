@@ -1,0 +1,95 @@
+.title {
+		/* Steam Status Title */
+		text-align: center;
+		margin: 10px 0;
+		font-size: 2.6em;
+		font-weight: 300;
+		color: #D4B5FF;
+		text-shadow: 2px 2px 8px #4A0072;
+	}
+
+	a {
+		color: #9E86FF;
+		text-decoration: none;
+		text-shadow: 2px 2px 6px #3E045F;
+		font-weight: bold;
+	}
+
+	.pull-right,
+	.service .status {
+		text-align: right;
+		float: right;
+	}
+
+	.good {
+		/* Soft Green */
+		color: #57E39B;
+		text-shadow: 2px 2px 6px #154D47;
+	}
+
+	.minor {
+		/* Soft Teal */
+		color: #63D1FF;
+		text-shadow: 2px 2px 6px #005F72;
+		font-weight: bold;
+	}
+
+	.major {
+		/* Soft Yellow */
+		color: #FFD700;
+		text-shadow: 2px 2px 6px #705C00;
+		font-weight: bold;
+	}
+
+	#js-refresh {
+		/* Refreshing in idk seconds */
+		color: #A569FF;
+		text-shadow: 0 0 8px #A569FF;
+		font-weight: bolder;
+	}
+
+	.services,
+	#psa,
+	noscript {
+		position: relative;
+		background-color: #1F1B2E;
+		border: 1px solid #3A1E5D;
+		border-radius: 6px;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 6px #000;
+	}
+
+	body {
+		margin: 0;
+		color: #C2A3E8;
+		background: #000;
+		font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+		text-shadow: 2px 2px 6px #000;
+		font-weight: lighter;
+	}
+
+	[data-tooltip]:before {
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		font-size: .9em;
+		content: attr(data-tooltip);
+		overflow: hidden;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		width: 97%;
+		background: #221936;
+		color: #E6D5FF;
+		text-align: left;
+		padding: 8px;
+		border-radius: 6px;
+		z-index: 1;
+		text-shadow: 1px 1px 10px #000;
+		font-style: italic;
+		font-weight: lighter;
+	}
