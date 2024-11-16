@@ -1,3 +1,13 @@
+/* ==UserStyle==
+@name         DetroitMi.gov - Dark Mode
+@version      20241116.23.31
+@namespace    typpi.online
+@description  DetroitMi.gov - Dark Mode
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("detroitmi.gov") {
 /* Invert colors except images and videos */
 :is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]):not(a.logo > img):not(a.abclogo > img) {
 	filter: invert(1) hue-rotate(180deg) !important;
@@ -6,4 +16,5 @@
 /* Ensure background images are not inverted */
 :is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]) {
 	background-color: inherit !important;
+}
 }
