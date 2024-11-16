@@ -1,3 +1,13 @@
+/* ==UserStyle==
+@name         Walmart.com - Dark Mode
+@version      20241114.16.22
+@namespace    https://userstyles.world/user/Nick2bad4u
+@description  Dark mode for Walmart.com
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("walmart.com") {
 /* Base styles */
 *:not(img, svg, iframe, a, i, span.mr2, span.mh2, p)
 {
@@ -159,4 +169,5 @@ nav a,
 	background-color: #333 !important;
 	color: #ddd !important;
 	border-color: #555 !important;
+}
 }
