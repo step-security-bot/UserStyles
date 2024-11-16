@@ -1,3 +1,13 @@
+/* ==UserStyle==
+@name         nytimes.com - Dark Mode Simple
+@version      20241106.05.27
+@namespace    typpi.online
+@description  Dark New York Times Simple
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("nytimes.com") {
 /* Invert colors except images and videos */
 :is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]):not(svg):not(a > img) {
 	filter: invert(1) hue-rotate(180deg) !important;
@@ -6,4 +16,5 @@
 /* Ensure background images are not inverted */
 :is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]) {
 	background-color: inherit !important;
+}
 }
