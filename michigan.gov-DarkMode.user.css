@@ -1,3 +1,13 @@
+/* ==UserStyle==
+@name         michigan.gov - Dark Mode
+@version      20241107.04.43
+@namespace    typpi.online
+@description  Michigan.gov Simple Dark Mode
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("michigan.gov") {
 /* Invert colors except images and videos */
 :is(html:not([stylus-iframe]), img, svg, video):not(png) {
 	filter: invert(1) hue-rotate(180deg) !important;
@@ -19,4 +29,5 @@
 
 *[style*="background-image"] {
   filter: invert(1) hue-rotate(180deg)
+}
 }
