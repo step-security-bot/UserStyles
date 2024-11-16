@@ -1,3 +1,13 @@
+/* ==UserStyle==
+@name         Nascar.com - Dark Mode
+@version      20241114.16.44
+@namespace    typpi.online
+@description  Dark mode for Nascar.com
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("nascar.com") {
 /* Invert entire page for dark mode effect */
 html
 {
@@ -57,7 +67,9 @@ a:hover
 /* Example: Re-adjusting specific cards or sections */
 .card,
 .section,
-.news-item
+.news-item,
+
+
 {
 	background-color: #44475a !important;
 	color: #f8f8f2 !important;
@@ -69,4 +81,5 @@ footer,
 {
 	background-color: #282a36 !important;
 	color: #6272a4 !important;
+}
 }
