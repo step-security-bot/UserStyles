@@ -1,3 +1,13 @@
+/* ==UserStyle==
+@name         UPS.com - Dark Mode
+@version      20241114.23.52
+@namespace    typpi.online
+@description  UPS.com - Dark Mode
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("ups.com") {
 /* Base dark mode filter */
 html
 {
@@ -95,4 +105,5 @@ a > span.icon.ups-icon-link_newwindow,
 {
 	background-color: #282a36 !important;
 	color: #f8f8f2 !important;
+}
 }
