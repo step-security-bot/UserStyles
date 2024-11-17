@@ -1,0 +1,260 @@
+/* ==UserStyle==
+@name         SteamStat.us - NASCAR Theme
+@version      20241117.22.05
+@namespace    https://github.com/Nick2bad4u/UserStyles
+@description  SteamStat.us - NASCAR Theme with Advanced CSS
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@author       Nick
+@license      UnLicense
+==/UserStyle== */
+@-moz-document domain("steamstat.us")
+{
+	/* Main title styling with NASCAR colors */
+	.title
+	{
+		text-align: center;
+		margin: 10px 0;
+		font-size: 2.6em;
+		font-weight: 700;
+		color: #00529B;
+		/* NASCAR Blue */
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+		background: linear-gradient(135deg, #D71920 30%, #FFD700 70%);
+		/* Red to Yellow gradient */
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: title-animation 2s ease-in-out infinite alternate;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	h1.title::after
+	{
+		filter: invert(1);
+	}
+
+	/* Animation for the title */
+	@keyframes title-animation
+	{
+		0%
+		{
+			transform: scale(1);
+		}
+
+		100%
+		{
+			transform: scale(1.05);
+		}
+	}
+
+	/* Logo placeholder (replace with your own logo URL if you have rights) */
+	.title::after
+	{
+		content: '';
+		display: inline-block;
+		width: 200px;
+		height: 60px;
+		background: url('https://upload.wikimedia.org/wikipedia/commons/6/67/NASCAR_logo_2017.svg') no-repeat center;
+		background-size: contain;
+		margin-left: 10px;
+		transition: transform 0.3s ease;
+	}
+
+	.title:hover::after
+	{
+		transform: scale(1.2);
+	}
+
+	/* Link styling with hover effect */
+	a
+	{
+		color: #00529B;
+		/* NASCAR Blue */
+		text-decoration: none;
+		font-weight: bold;
+		transition: color 0.3s ease, text-shadow 0.3s ease;
+		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+	}
+
+	a:hover
+	{
+		color: #D71920;
+		/* NASCAR Red */
+		text-decoration: underline;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+	}
+
+	/* Status colors with NASCAR theme */
+	.good
+	{
+		color: #FFD700;
+		/* NASCAR Yellow */
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		transition: color 0.3s ease;
+	}
+
+	.minor
+	{
+		color: #FFFFFF;
+		/* White for minor status */
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: bold;
+		transition: color 0.3s ease;
+	}
+
+	.major
+	{
+		color: #000000;
+		/* Black for major status */
+		text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+		font-weight: bold;
+		transition: color 0.3s ease;
+	}
+
+	/* Refresh button styling with hover effect */
+	#js-refresh
+	{
+		color: #00529B;
+		/* NASCAR Blue */
+		text-shadow: 0 0 2px rgb(0, 0, 0);
+		font-weight: bolder;
+		transition: color 0.3s ease, transform 0.3s ease;
+	}
+
+	#js-refresh:hover
+	{
+		color: #D71920;
+		/* NASCAR Red */
+		transform: scale(1.1);
+	}
+
+	/* Container with dark background and bright accents */
+	.services,
+	#psa,
+	noscript
+	{
+		position: relative;
+		background: rgba(0, 0, 0, .5);
+		/* Black background */
+		border: 1px solid #FFD700;
+		/* Yellow border */
+		border-radius: 3px;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 1px rgb(255, 255, 255);
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+		color: #FFFFFF;
+		/* White text */
+		transition: box-shadow 0.3s ease, background 0.3s ease;
+	}
+
+	.services:hover,
+	#psa:hover,
+	noscript:hover
+	{
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.7);
+		background: rgba(0, 0, 0, .93);
+	}
+
+	/* Body styling with NASCAR-inspired gradient */
+	body
+	{
+		margin: 0;
+		color: #FFFFFF;
+		/* White text */
+		font-family: 'Roboto', Arial, sans-serif;
+		font-size: 16px;
+		font-weight: 300;
+		background: linear-gradient(135deg, #000000 30%, #00529B 70%);
+		/* Black to Blue gradient */
+		text-shadow: 1px 1px 3px rgb(0, 0, 0);
+		transition: background 0.3s ease;
+	}
+
+	body:hover
+	{
+		background: linear-gradient(135deg, #FFD700 30%, #D71920 70%);
+		/* Yellow to Red gradient */
+	}
+
+	/* Tooltip customization with smooth transition */
+	[data-tooltip]:before
+	{
+		visibility: hidden;
+		opacity: 0;
+		font-size: 0.9em;
+		content: attr(data-tooltip);
+		position: absolute;
+		top: 0;
+		left: 2%;
+		width: 96%;
+		background: #000000;
+		/* Black background */
+		color: #FFD700;
+		/* Yellow text */
+		padding: 8px;
+		border-radius: 6px;
+		z-index: 1;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		transition: visibility 0s, opacity 0.3s ease-in-out;
+		font-style: italic;
+		font-weight: 300;
+	}
+
+	[data-tooltip]:hover:before
+	{
+		visibility: visible;
+		opacity: 1;
+	}
+
+	/* Advanced feature: Animated border with NASCAR colors */
+	.gradient-border
+	{
+		position: relative;
+		padding: 10px;
+		border-radius: 5px;
+		background-color: #000000;
+		/* Black background */
+		color: #FFFFFF;
+		/* White text */
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.gradient-border::before
+	{
+		content: '';
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		right: -2px;
+		bottom: -2px;
+		background: linear-gradient(45deg, #D71920, #FFD700, #00529B, #D71920);
+		/* Red, Yellow, Blue */
+		background-size: 600% 600%;
+		border-radius: 7px;
+		z-index: -1;
+		animation: gradient-border 5s linear infinite;
+	}
+
+	/* Animation for gradient border */
+	@keyframes gradient-border
+	{
+		0%
+		{
+			background-position: 0% 50%;
+		}
+
+		50%
+		{
+			background-position: 100% 50%;
+		}
+
+		100%
+		{
+			background-position: 0% 50%;
+		}
+	}
+}
