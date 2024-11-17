@@ -1,9 +1,9 @@
 /* ==UserStyle==
-@name         SteamStat.us - Re-Remastered - Green/Purple Style
-@version      20241115.16.02
+@name         SteamStat.us - Re-Remastered - Lime Green/Purple Style
+@version      20241115.16.03
 @namespace    https://github.com/Nick2bad4u/UserStyles
 @description  SteamStat.us - Re-Remastered - Lime Green/Purple Style
-@homepageURL     https://github.com/Nick2bad4u/UserStyles
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
@@ -84,7 +84,6 @@ noscript {
 body {
     margin: 0;
     color: #32CD32;
-    background: #121212;
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow added */
