@@ -1,0 +1,171 @@
+/* ==UserStyle==
+@name         SteamStat.us - University of Michigan Wolverines
+@version      20241115.16.03
+@namespace    https://github.com/Nick2bad4u/UserStyles
+@description  SteamStat.us - University of Michigan Wolverines Theme
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@author       Nick
+@license      UnLicense
+==/UserStyle== */
+@-moz-document domain("steamstat.us")
+{
+	.title
+	{
+		/* Michigan Wolverines Title */
+		text-align: center;
+		margin: 10px 0;
+		font-size: 2.6em;
+		font-weight: 700;
+		color: #00274C;
+		/* Maize and Blue - Dark Blue */
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+		/* Subtle black shadow */
+		background: linear-gradient(145deg, #00274C, #FFCB05);
+		/* Blue to Maize gradient */
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.title::after
+	{
+		/* Add Michigan Wolverines Logo to the Right */
+		content: '';
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		background: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Michigan_Wolverines_logo.svg') no-repeat center;
+		background-size: contain;
+		margin-left: 10px;
+	}
+
+	a
+	{
+		color: #00274C;
+		/* Dark Blue */
+		text-decoration: none;
+		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+		/* Light shadow */
+		font-weight: bold;
+	}
+
+	a:hover
+	{
+		color: #FFCB05;
+		/* Maize */
+		text-decoration: underline;
+	}
+
+	.pull-right,
+	.service .status
+	{
+		text-align: right;
+		float: right;
+	}
+
+	.good
+	{
+		/* Blue for good statuses */
+		color: #00274C;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/* Black shadow */
+	}
+
+	.minor
+	{
+		/* Maize for minor issues */
+		color: #FFCB05;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/* Black shadow */
+		font-weight: bold;
+	}
+
+	.major
+	{
+		/* White for major issues */
+		color: #FFFFFF;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/* Black shadow */
+		font-weight: bold;
+	}
+
+	#js-refresh
+	{
+		/* Refreshing in seconds */
+		color: #FFCB05;
+		text-shadow: 0 0 2px rgb(0, 0, 0);
+		/* Subtle shadow */
+		font-weight: bolder;
+	}
+
+	.services,
+	#psa,
+	noscript
+	{
+		position: relative;
+		background: linear-gradient(145deg, #00274C, #FFCB05);
+		/* Blue to Maize */
+		border: 1px solid #FFFFFF;
+		/* White border */
+		border-radius: 3px;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 1px rgb(0, 0, 1);
+		/* Subtle shadow */
+		box-shadow: 0px 4px 8px rgb(0, 0, 0);
+		color: #FFFFFF;
+		/* White text */
+	}
+
+	body
+	{
+		margin: 0;
+		color: #00274C;
+		/* Dark Blue text */
+		font-family: 'Roboto', Arial, sans-serif;
+		font-size: 16px;
+		text-shadow: 1px 1px 3px rgb(0, 0, 0);
+		/* Subtle shadow */
+		font-weight: 300;
+		background: linear-gradient(145deg, #00274C, #FFCB05);
+		/* Blue to Maize background */
+	}
+
+	[data-tooltip]:before
+	{
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		font-size: 0.9em;
+		content: attr(data-tooltip);
+		overflow: hidden;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		width: 96%;
+		background: #FFFFFF;
+		/* White box */
+		color: #00274C;
+		/* Dark Blue text */
+		text-align: left;
+		padding: 8px;
+		border-radius: 6px;
+		z-index: 1;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		/* Subtle shadow */
+		font-style: italic;
+		font-weight: 300;
+		transition: visibility 0s, opacity 0.3s ease-in-out;
+	}
+
+	[data-tooltip]:hover:before
+	{
+		visibility: visible;
+		opacity: 1;
+	}
+}
