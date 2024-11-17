@@ -8,15 +8,50 @@
 ==/UserStyle== */
 
 @-moz-document domain("zwift.com") {
-/* Invert colors except images, videos, and footer */
-:is(html:not([stylus-iframe]), img, svg, video, footer, path, div.CardCarousel-module__cardContainer--1vNvU, .Hero-module__backgroundOverlay--3CFsa.lazy, .footer-module__withOutZCurve--2Wu3z, div > footer > div:nth-child(2), footer > div:nth-child(3), footer > div:nth-child(4), .Footer-module__logo--mM_i1, .p1z-card-image, .p1z-content-slice, #znv-footer-link-sv, div.activity__gradient.pos__absolute.w-100.h-100, #navigation-container > div > div > main > div:nth-child(2) > div.MegaNav-module__component--1B_pQ.MegaNav-module__open--MWnWt, .MegaNav-module__component--1B_pQ, ):not(png):not(#shopify-section-60deaf30-e1ac-4fe0-a31a-135fa803c54f > div > a > div > img)
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-}
+  /* Invert colors except images, videos, and footer */
+  :is(
+      html:not([stylus-iframe]),
+      img,
+      svg,
+      video,
+      footer,
+      path,
+      div.CardCarousel-module__cardContainer--1vNvU,
+      .Hero-module__backgroundOverlay--3CFsa.lazy,
+      .footer-module__withOutZCurve--2Wu3z,
+      div > footer > div:nth-child(2),
+      footer > div:nth-child(3),
+      footer > div:nth-child(4),
+      .Footer-module__logo--mM_i1,
+      .p1z-card-image,
+      .p1z-content-slice,
+      #znv-footer-link-sv,
+      div.activity__gradient.pos__absolute.w-100.h-100,
+      #navigation-container
+        > div
+        > div
+        > main
+        > div:nth-child(2)
+        > div.MegaNav-module__component--1B_pQ.MegaNav-module__open--MWnWt,
+      .MegaNav-module__component--1B_pQ,
 
-#__next > div > div > div:nth-child(1) > div:nth-child(2) > header > div > nav > ul:nth-child(2) > li:nth-child(1) > button > span.Locale-module__icon--jjf-9.Locale-module__small--fqr5w,
-#primaryNavHamburger > svg > :not(rect:nth-child(999))
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-}
+    ):not(png):not(#shopify-section-60deaf30-e1ac-4fe0-a31a-135fa803c54f > div > a > div > img) {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
+
+  #__next
+    > div
+    > div
+    > div:nth-child(1)
+    > div:nth-child(2)
+    > header
+    > div
+    > nav
+    > ul:nth-child(2)
+    > li:nth-child(1)
+    > button
+    > span.Locale-module__icon--jjf-9.Locale-module__small--fqr5w,
+  #primaryNavHamburger > svg > :not(rect:nth-child(999)) {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 }

@@ -8,29 +8,26 @@
 ==/UserStyle== */
 
 @-moz-document domain("fedex.com") {
-/* Base dark mode filter */
-html
-{
-	filter: invert(1) hue-rotate(0deg) !important;
-	background: white;
-}
+  /* Base dark mode filter */
+  html {
+    filter: invert(1) hue-rotate(0deg) !important;
+    background: white;
+  }
 
-img,
-video,
-#fx-global-header > div,
-#fx-global-footer > div.fdx-sjson-c-footer__bottom,
-#nuance-fab-container > button,
-trk-shared-icon > svg > use,
-header > nav,
-#container-2387742967 > div > div > div > div:nth-child(n) > div > div.fxg-col,
-.fxg-landing-hero__background-image,
-.layout5.clearfix
-{
-	filter: invert(1) hue-rotate(0deg) !important;
-}
+  img,
+  video,
+  #fx-global-header > div,
+  #fx-global-footer > div.fdx-sjson-c-footer__bottom,
+  #nuance-fab-container > button,
+  trk-shared-icon > svg > use,
+  header > nav,
+  #container-2387742967 > div > div > div > div:nth-child(n) > div > div.fxg-col,
+  .fxg-landing-hero__background-image,
+  .layout5.clearfix {
+    filter: invert(1) hue-rotate(0deg) !important;
+  }
 
-#container-2387742967
-{
-	filter: invert(1) hue-rotate(0deg) !important;
-}
+  #container-2387742967 {
+    filter: invert(1) hue-rotate(0deg) !important;
+  }
 }

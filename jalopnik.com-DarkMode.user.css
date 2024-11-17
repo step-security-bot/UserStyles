@@ -8,9 +8,14 @@
 ==/UserStyle== */
 
 @-moz-document domain("jalopnik.com") {
-/* Invert colors except images and videos */
-:is(html:not([stylus-iframe]), img, svg, video, body > div:nth-child(5) > div.js_footer-container):not(z#z.z[z]):not(svg):not(a > img):not(#site-footer-container)
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-}
+  /* Invert colors except images and videos */
+  :is(
+      html:not([stylus-iframe]),
+      img,
+      svg,
+      video,
+      body > div:nth-child(5) > div.js_footer-container
+    ):not(z#z.z[z]):not(svg):not(a > img):not(#site-footer-container) {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 }

@@ -9,86 +9,86 @@
 ==/UserStyle== */
 
 @-moz-document domain("steamstat.us") {
-.title {
+  .title {
     /* Black/Green Status Title */
     text-align: center;
     margin: 10px 0;
     font-size: 2.6em;
     font-weight: 300;
-    color: #00FF00;
+    color: #00ff00;
     text-shadow: 2px 2px 8px rgba(0, 255, 0, 0.8);
-}
+  }
 
-a {
-    color: #32CD32;
+  a {
+    color: #32cd32;
     text-decoration: none;
     text-shadow: 1px 1px 4px rgba(50, 205, 50, 0.6);
     font-weight: bold;
-}
+  }
 
-a:hover {
-    color: #FFFFFF;
+  a:hover {
+    color: #ffffff;
     text-decoration: underline;
-}
+  }
 
-.pull-right,
-.service .status {
+  .pull-right,
+  .service .status {
     text-align: right;
     float: right;
-}
+  }
 
-.good {
+  .good {
     /* Bright Green */
-    color: #32CD32;
+    color: #32cd32;
     text-shadow: 1px 1px 6px rgba(50, 205, 50, 0.8);
-}
+  }
 
-.minor {
+  .minor {
     /* Light Green */
-    color: #98FB98;
+    color: #98fb98;
     text-shadow: 1px 1px 6px rgba(152, 251, 152, 0.8);
     font-weight: bold;
-}
+  }
 
-.major {
+  .major {
     /* Dark Green */
     color: #006400;
     text-shadow: 1px 1px 6px rgba(0, 100, 0, 0.8);
     font-weight: bold;
-}
+  }
 
-#js-refresh {
+  #js-refresh {
     /* Refreshing in idk seconds */
-    color: #32CD32;
+    color: #32cd32;
     text-shadow: 0 0 8px rgba(50, 205, 50, 0.8);
     font-weight: bolder;
-}
+  }
 
-.services,
-#psa,
-noscript {
+  .services,
+  #psa,
+  noscript {
     position: relative;
-    background: linear-gradient(145deg, #282A36, #191A21);
-    border: 1px solid #32CD32;
+    background: linear-gradient(145deg, #282a36, #191a21);
+    border: 1px solid #32cd32;
     border-radius: 6px;
     font-size: 1em;
     line-height: 1.5;
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    color: #F8F8F2;
-}
+    color: #f8f8f2;
+  }
 
-body {
+  body {
     margin: 0;
-    color: #00FF00;
+    color: #00ff00;
     background: #121212;
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     font-weight: 300;
-}
+  }
 
-[data-tooltip]:before {
+  [data-tooltip]:before {
     /* Time since last status change Box */
     visibility: hidden;
     opacity: 0;
@@ -101,8 +101,8 @@ body {
     top: 0;
     left: 2%;
     width: 96%;
-    background: #21222C;
-    color: #00FF00;
+    background: #21222c;
+    color: #00ff00;
     text-align: left;
     padding: 8px;
     border-radius: 6px;
@@ -110,12 +110,13 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     font-style: italic;
     font-weight: 300;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
-}
+    transition:
+      visibility 0s,
+      opacity 0.3s ease-in-out;
+  }
 
-[data-tooltip]:hover:before {
+  [data-tooltip]:hover:before {
     visibility: visible;
     opacity: 1;
-}
-
+  }
 }

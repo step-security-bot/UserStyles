@@ -7,250 +7,233 @@
 @author       Nick
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us")
-{
-	/* Main title styling with Detroit Tigers colors */
-	.title
-	{
-		text-align: center;
-		margin: 10px 0;
-		font-size: 2.6em;
-		font-weight: 700;
-		color: #0C2340;
-		/* Detroit Tigers Navy Blue */
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-		background: linear-gradient(135deg, #0C2340 30%, #FFFFFF 70%);
-		/* Navy Blue to White gradient */
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		animation: title-animation 2s ease-in-out infinite alternate;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+@-moz-document domain("steamstat.us") {
+  /* Main title styling with Detroit Tigers colors */
+  .title {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 2.6em;
+    font-weight: 700;
+    color: #0c2340;
+    /* Detroit Tigers Navy Blue */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, #0c2340 30%, #ffffff 70%);
+    /* Navy Blue to White gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-animation 2s ease-in-out infinite alternate;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-	/* Animation for the title */
-	@keyframes title-animation
-	{
-		0%
-		{
-			transform: rotate(0deg);
-		}
+  /* Animation for the title */
+  @keyframes title-animation {
+    0% {
+      transform: rotate(0deg);
+    }
 
-		100%
-		{
-			transform: rotate(10deg);
-		}
-	}
+    100% {
+      transform: rotate(10deg);
+    }
+  }
 
-	/* Logo addition with scaling effect */
-	.title::after
-	{
-		content: '';
-		display: inline-block;
-		width: 60px;
-		height: 60px;
-		background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Detroit_Tigers_logo.svg') no-repeat center;
-		background-size: contain;
-		margin-left: 10px;
-		transition: transform 0.3s ease;
-	}
+  /* Logo addition with scaling effect */
+  .title::after {
+    content: '';
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/e/e3/Detroit_Tigers_logo.svg')
+      no-repeat center;
+    background-size: contain;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
 
-	.title:hover::after
-	{
-		transform: scale(1.2);
-	}
+  .title:hover::after {
+    transform: scale(1.2);
+  }
 
-	/* Link styling with hover effect */
-	a
-	{
-		color: #0C2340;
-		/* Detroit Tigers Navy Blue */
-		text-decoration: none;
-		font-weight: bold;
-		transition: color 0.3s ease, text-shadow 0.3s ease;
-		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
-	}
+  /* Link styling with hover effect */
+  a {
+    color: #0c2340;
+    /* Detroit Tigers Navy Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition:
+      color 0.3s ease,
+      text-shadow 0.3s ease;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+  }
 
-	a:hover
-	{
-		color: #FB4F14;
-		/* Detroit Tigers Orange */
-		text-decoration: underline;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-	}
+  a:hover {
+    color: #fb4f14;
+    /* Detroit Tigers Orange */
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
 
-	/* Status colors with Detroit Tigers theme */
-	.good
-	{
-		color: #FB4F14;
-		/* Detroit Tigers Orange */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-		transition: color 0.3s ease;
-	}
+  /* Status colors with Detroit Tigers theme */
+  .good {
+    color: #fb4f14;
+    /* Detroit Tigers Orange */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s ease;
+  }
 
-	.minor
-	{
-		color: #FFFFFF;
-		/* White for minor status */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-		font-weight: bold;
-		transition: color 0.3s ease;
-	}
+  .minor {
+    color: #ffffff;
+    /* White for minor status */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
 
-	.major
-	{
-		color: #0C2340;
-		/* Detroit Tigers Navy Blue */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-		font-weight: bold;
-		transition: color 0.3s ease;
-	}
+  .major {
+    color: #0c2340;
+    /* Detroit Tigers Navy Blue */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
 
-	/* Refresh button styling with hover effect */
-	#js-refresh
-	{
-		color: #0C2340;
-		/* Detroit Tigers Navy Blue */
-		text-shadow: 0 0 2px rgb(0, 0, 0);
-		font-weight: bolder;
-		transition: color 0.3s ease, transform 0.3s ease;
-	}
+  /* Refresh button styling with hover effect */
+  #js-refresh {
+    color: #0c2340;
+    /* Detroit Tigers Navy Blue */
+    text-shadow: 0 0 2px rgb(0, 0, 0);
+    font-weight: bolder;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
 
-	#js-refresh:hover
-	{
-		color: #FB4F14;
-		/* Detroit Tigers Orange */
-		transform: scale(1.1);
-	}
+  #js-refresh:hover {
+    color: #fb4f14;
+    /* Detroit Tigers Orange */
+    transform: scale(1.1);
+  }
 
-	/* Container with navy blue background and orange accents */
-	.services,
-	#psa,
-	noscript
-	{
-		position: relative;
-		background: #0C2340;
-		/* Detroit Tigers Navy Blue */
-		border: 1px solid #FB4F14;
-		/* Detroit Tigers Orange border */
-		border-radius: 3px;
-		font-size: 1em;
-		line-height: 1.5;
-		text-shadow: 0px 0px 1px rgb(0, 0, 1);
-		box-shadow: 0px 4px 8px rgb(0, 0, 0);
-		color: #FFFFFF;
-		/* White text */
-		transition: box-shadow 0.3s ease, background 0.3s ease;
-	}
+  /* Container with navy blue background and orange accents */
+  .services,
+  #psa,
+  noscript {
+    position: relative;
+    background: #0c2340;
+    /* Detroit Tigers Navy Blue */
+    border: 1px solid #fb4f14;
+    /* Detroit Tigers Orange border */
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.5;
+    text-shadow: 0px 0px 1px rgb(0, 0, 1);
+    box-shadow: 0px 4px 8px rgb(0, 0, 0);
+    color: #ffffff;
+    /* White text */
+    transition:
+      box-shadow 0.3s ease,
+      background 0.3s ease;
+  }
 
-	.services:hover,
-	#psa:hover,
-	noscript:hover
-	{
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-		background: rgba(0, 0, 0, .6);
-		/* Navy Blue on hover */
-	}
+  .services:hover,
+  #psa:hover,
+  noscript:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    /* Navy Blue on hover */
+  }
 
-	/* Body styling with navy blue and orange gradient */
-	body
-	{
-		margin: 0;
-		color: #0C2340;
-		/* Detroit Tigers Navy Blue */
-		font-family: 'Roboto', Arial, sans-serif;
-		font-size: 16px;
-		font-weight: 300;
-		background: linear-gradient(135deg, #0C2340 30%, #FB4F14 70%);
-		/* Navy Blue to White gradient */
-		text-shadow: 1px 1px 3px rgb(0, 0, 0);
-		transition: background 0.3s ease;
-	}
+  /* Body styling with navy blue and orange gradient */
+  body {
+    margin: 0;
+    color: #0c2340;
+    /* Detroit Tigers Navy Blue */
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background: linear-gradient(135deg, #0c2340 30%, #fb4f14 70%);
+    /* Navy Blue to White gradient */
+    text-shadow: 1px 1px 3px rgb(0, 0, 0);
+    transition: background 0.3s ease;
+  }
 
-	body:hover
-	{
-		background: linear-gradient(135deg, #FFFFFF 30%, #0C2340 70%);
-		/* White to Navy Blue gradient */
-	}
+  body:hover {
+    background: linear-gradient(135deg, #ffffff 30%, #0c2340 70%);
+    /* White to Navy Blue gradient */
+  }
 
-	/* Tooltip customization with smooth transition */
-	[data-tooltip]:before
-	{
-		visibility: hidden;
-		opacity: 0;
-		font-size: 0.9em;
-		content: attr(data-tooltip);
-		position: absolute;
-		top: 0;
-		left: 2%;
-		width: 96%;
-		background: #0C2340;
-		/* Detroit Tigers Navy Blue background */
-		color: #FB4F14;
-		/* Detroit Tigers Orange text */
-		padding: 8px;
-		border-radius: 6px;
-		z-index: 1;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-		transition: visibility 0s, opacity 0.3s ease-in-out;
-		font-style: italic;
-		font-weight: 300;
-	}
+  /* Tooltip customization with smooth transition */
+  [data-tooltip]:before {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 0.9em;
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 0;
+    left: 2%;
+    width: 96%;
+    background: #0c2340;
+    /* Detroit Tigers Navy Blue background */
+    color: #fb4f14;
+    /* Detroit Tigers Orange text */
+    padding: 8px;
+    border-radius: 6px;
+    z-index: 1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    transition:
+      visibility 0s,
+      opacity 0.3s ease-in-out;
+    font-style: italic;
+    font-weight: 300;
+  }
 
-	[data-tooltip]:hover:before
-	{
-		visibility: visible;
-		opacity: 1;
-	}
+  [data-tooltip]:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
 
-	/* Advanced feature: Gradient border with transition */
-	.gradient-border
-	{
-		position: relative;
-		padding: 10px;
-		border-radius: 5px;
-		background-color: #FB4F14;
-		/* Detroit Tigers Orange */
-		color: #FFFFFF;
-		/* White text */
-		font-weight: bold;
-		text-align: center;
-	}
+  /* Advanced feature: Gradient border with transition */
+  .gradient-border {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fb4f14;
+    /* Detroit Tigers Orange */
+    color: #ffffff;
+    /* White text */
+    font-weight: bold;
+    text-align: center;
+  }
 
-	.gradient-border::before
-	{
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: linear-gradient(45deg, #FB4F14, #0C2340, #FB4F14, #0C2340);
-		/* Orange to Navy Blue */
-		background-size: 400% 400%;
-		border-radius: 5px;
-		z-index: -1;
-		animation: gradient-border 3s linear infinite;
-	}
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #fb4f14, #0c2340, #fb4f14, #0c2340);
+    /* Orange to Navy Blue */
+    background-size: 400% 400%;
+    border-radius: 5px;
+    z-index: -1;
+    animation: gradient-border 3s linear infinite;
+  }
 
-	/* Animation for gradient border */
-	@keyframes gradient-border
-	{
-		0%
-		{
-			background-position: 400% 0%;
-		}
+  /* Animation for gradient border */
+  @keyframes gradient-border {
+    0% {
+      background-position: 400% 0%;
+    }
 
-		50%
-		{
-			background-position: 0% 100%;
-		}
+    50% {
+      background-position: 0% 100%;
+    }
 
-		100%
-		{
-			background-position: 400% 0%;
-		}
-	}
+    100% {
+      background-position: 400% 0%;
+    }
+  }
 }

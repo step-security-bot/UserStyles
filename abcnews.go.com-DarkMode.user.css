@@ -8,13 +8,15 @@
 ==/UserStyle== */
 
 @-moz-document domain("abc12.com") {
-/* Invert colors except images and videos */
-:is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]):not(svg):not(a > img):not(#site-footer-container) {
-	filter: invert(1) hue-rotate(180deg) !important;
-}
+  /* Invert colors except images and videos */
+  :is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]):not(svg):not(a > img):not(
+      #site-footer-container
+    ) {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-/* Ensure background images are not inverted */
-:is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]) {
-	background-color: inherit !important;
-}
+  /* Ensure background images are not inverted */
+  :is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]) {
+    background-color: inherit !important;
+  }
 }

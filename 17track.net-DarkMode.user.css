@@ -8,27 +8,24 @@
 ==/UserStyle== */
 
 @-moz-document domain("17track.net") {
-/* Base dark mode filter */
-html
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-	background: white;
-}
+  /* Base dark mode filter */
+  html {
+    filter: invert(1) hue-rotate(180deg) !important;
+    background: white;
+  }
 
-img,
-video,
-trk-shared-icon > svg > use,
-header > nav
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-}
+  img,
+  video,
+  trk-shared-icon > svg > use,
+  header > nav {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-.up-deals-img,
-.up-deals,
-.tracklist-details > .yqcr-action > .hidden-xs > .up-deals,
-.chart-gpt-text,
-.chart-gpt-icon
-{
-	display: none;
-}
+  .up-deals-img,
+  .up-deals,
+  .tracklist-details > .yqcr-action > .hidden-xs > .up-deals,
+  .chart-gpt-text,
+  .chart-gpt-icon {
+    display: none;
+  }
 }

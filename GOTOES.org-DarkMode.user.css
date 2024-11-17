@@ -8,32 +8,26 @@
 ==/UserStyle== */
 
 @-moz-document domain("gotoes.org") {
-:is(html:not([stylus-iframe]))
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-	background: #FFF;
-}
+  :is(html:not([stylus-iframe])) {
+    filter: invert(1) hue-rotate(180deg) !important;
+    background: #fff;
+  }
 
+  iframe,
+  #top > section > div:nth-child(n) > div > div > div > div.banners > a:nth-child(n) > img,
+  #leftDashboardPair > div:nth-child(n) > img,
+  #content,
+  #myCanvas,
+  #stuck_container > div > div > div > div > nav > ul > li:nth-child(7) > a {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-iframe,
-#top > section > div:nth-child(n) > div > div > div > div.banners > a:nth-child(n) > img,
-#leftDashboardPair > div:nth-child(n) > img,
-#content,
-#myCanvas,
-#stuck_container > div > div > div > div > nav > ul > li:nth-child(7) > a
-{
-	filter: invert(1) hue-rotate(180deg) !important;
-}
+  #progressSection {
+    filter: invert(0);
+  }
 
-#progressSection
-{
-	filter: invert(0);
-}
-
-
-#cboxOverlay
-{
-	filter: invert(1);
-	background: #000;
-}
+  #cboxOverlay {
+    filter: invert(1);
+    background: #000;
+  }
 }

@@ -8,8 +8,7 @@
 ==/UserStyle== */
 
 @-moz-document domain("youtube.com") {
-	#video-title-link > button > img
-	{
-		display: none;
-	}
+  #video-title-link > button > img {
+    display: none;
+  }
 }

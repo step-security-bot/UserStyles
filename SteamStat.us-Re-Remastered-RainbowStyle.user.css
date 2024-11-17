@@ -7,93 +7,88 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document url("https://steamstat.us/") {
-.title
+@-moz-document url("https://steamstat.us/")
 {
-	/* Steam Status Title */
-	text-align: center;
-	margin: 10px 0;
-	font-size: 2.6em;
-	font-weight: 300;
-	background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	text-shadow: 1px 1px 6px #000;
-	-webkit-text-stroke: 0.4px black;
-}
+  .title {
+    /* Steam Status Title */
+    text-align: center;
+    margin: 10px 0;
+    font-size: 2.6em;
+    font-weight: 300;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 6px #000;
+    -webkit-text-stroke: 0.4px black;
+  }
 
-a
-{
-	background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	text-decoration: none;
-	text-shadow: 3px 3px 6px #000;
-	font-weight: bold;
-	-webkit-text-stroke: 0.4px black;
-}
+  a {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    text-shadow: 3px 3px 6px #000;
+    font-weight: bold;
+    -webkit-text-stroke: 0.4px black;
+  }
 
-.good,
-.minor,
-.major,
-#js-refresh
-{
-	/* Status Text */
-	background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke: 0.4px black;
-	font-weight: bold;
-}
+  .good,
+  .minor,
+  .major,
+  #js-refresh {
+    /* Status Text */
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.4px black;
+    font-weight: bold;
+  }
 
-.services,
-#psa,
-noscript
-{
-	position: relative;
-	background: linear-gradient(180deg, red, orange, yellow, green, blue, indigo, violet);
-	color: #FFFFFF;
-	border: 1px solid #191921;
-	border-radius: 6px;
-	font-size: 1em;
-	line-height: 1.5;
-	text-shadow: 0px 0px 6px black;
-}
+  .services,
+  #psa,
+  noscript {
+    position: relative;
+    background: linear-gradient(180deg, red, orange, yellow, green, blue, indigo, violet);
+    color: #ffffff;
+    border: 1px solid #191921;
+    border-radius: 6px;
+    font-size: 1em;
+    line-height: 1.5;
+    text-shadow: 0px 0px 6px black;
+  }
 
-body
-{
-	margin: 0;
-	color: #FFFFFF;
-	background: linear-gradient(180deg, violet, indigo, blue, green, yellow, orange, red);
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	font-size: 16px;
-	text-shadow: 1px 1px 6px #000;
-	font-weight: lighter;
-}
+  body {
+    margin: 0;
+    color: #ffffff;
+    background: linear-gradient(180deg, violet, indigo, blue, green, yellow, orange, red);
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-shadow: 1px 1px 6px #000;
+    font-weight: lighter;
+  }
 
-[data-tooltip]:before
-{
-	/* Time since last status change Box */
-	-webkit-text-stroke: 0.4px black;
-	visibility: hidden;
-	opacity: 0;
-	font-size: .9em;
-	content: attr(data-tooltip);
-	overflow: hidden;
-	white-space: pre;
-	word-wrap: break-word;
-	position: absolute;
-	top: 0;
-	left: 2%;
-	width: 97%;
-	background: rgba(0, 0, 0, 0.8);
-	color: #FFFFFF;
-	text-align: left;
-	padding: 8px;
-	border-radius: 6px;
-	z-index: 1;
-	text-shadow: 1px 1px 10px #000;
-	font-style: italic;
-	font-weight: lighter;
-}
+  [data-tooltip]:before {
+    /* Time since last status change Box */
+    -webkit-text-stroke: 0.4px black;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 0.9em;
+    content: attr(data-tooltip);
+    overflow: hidden;
+    white-space: pre;
+    word-wrap: break-word;
+    position: absolute;
+    top: 0;
+    left: 2%;
+    width: 97%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-align: left;
+    padding: 8px;
+    border-radius: 6px;
+    z-index: 1;
+    text-shadow: 1px 1px 10px #000;
+    font-style: italic;
+    font-weight: lighter;
+  }
 }
