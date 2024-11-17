@@ -7,118 +7,150 @@
 @author       Nick
 @license      UnLicense
 ==/UserStyle== */
+@-moz-document domain("steamstat.us")
+{
+	.title
+	{
+		/* Halloween Orange/Purple/Black Title */
+		text-align: center;
+		margin: 10px 0;
+		font-size: 2.6em;
+		font-weight: 300;
+		color: #FFA500;
+		/* Bright Orange */
+		text-shadow: 1px 1px 1px rgba(75, 0, 130, 0.9);
+		/* Purple shadow */
+		background: linear-gradient(145deg, #FFA500, #4B0082);
+		/* Orange to Purple gradient */
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
 
-@-moz-document domain("steamstat.us") {
-.title {
-    /* Halloween Orange/Purple/Black Title */
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 300;
-    color: #FFA500; /* Bright Orange */
-    text-shadow: 1px 1px 1px rgba(75, 0, 130, 0.9); /* Purple shadow */
-    background: linear-gradient(145deg, #FFA500, #4B0082); /* Orange to Purple gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+	a
+	{
+		color: #4B0082;
+		/* Purple */
+		text-decoration: none;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+		/* Black shadow */
+		font-weight: bold;
+	}
 
-a {
-    color: #4B0082; /* Purple */
-    text-decoration: none;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6); /* Black shadow */
-    font-weight: bold;
-}
+	a:hover
+	{
+		color: #FFA500;
+		/* Orange */
+		text-decoration: underline;
+	}
 
-a:hover {
-    color: #FFA500; /* Orange */
-    text-decoration: underline;
-}
+	.pull-right,
+	.service .status
+	{
+		text-align: right;
+		float: right;
+	}
 
-.pull-right,
-.service .status {
-    text-align: right;
-    float: right;
-}
+	.good
+	{
+		/* Pumpkin Orange */
+		color: #FF7518;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+		/* Black shadow */
+	}
 
-.good {
-    /* Pumpkin Orange */
-    color: #FF7518;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow */
-}
+	.minor
+	{
+		/* Deep Purple */
+		color: #9932CC;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+		/* Black shadow */
+		font-weight: bold;
+	}
 
-.minor {
-    /* Deep Purple */
-    color: #9932CC;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow */
-    font-weight: bold;
-}
+	.major
+	{
+		/* Blood Red */
+		color: #8B0000;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+		/* Black shadow */
+		font-weight: bold;
+	}
 
-.major {
-    /* Blood Red */
-    color: #8B0000;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow */
-    font-weight: bold;
-}
+	#js-refresh
+	{
+		/* Refreshing in idk seconds */
+		color: #4B0082;
+		/* Purple */
+		text-shadow: 0 0 2px rgba(255, 165, 0, 0.8);
+		/* Orange shadow */
+		font-weight: bolder;
+	}
 
-#js-refresh {
-    /* Refreshing in idk seconds */
-    color: #4B0082; /* Purple */
-    text-shadow: 0 0 2px rgba(255, 165, 0, 0.8); /* Orange shadow */
-    font-weight: bolder;
-}
+	.services,
+	#psa,
+	noscript
+	{
+		position: relative;
+		background: linear-gradient(145deg, #FFA500, #4B0082);
+		/* Orange to Purple gradient */
+		border: 1px solid #FF7518;
+		/* Pumpkin Orange border */
+		border-radius: 3px;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+		/* Black shadow */
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+		color: #F8F8F2;
+		/* Ghost White */
+	}
 
-.services,
-#psa,
-noscript {
-    position: relative;
-    background: linear-gradient(145deg, #FFA500, #4B0082); /* Orange to Purple gradient */
-    border: 1px solid #FF7518; /* Pumpkin Orange border */
-    border-radius: 3px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8); /* Black shadow */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    color: #F8F8F2; /* Ghost White */
-}
+	body
+	{
+		margin: 0;
+		color: #FFA500;
+		/* Bright Orange text */
+		font-family: 'Roboto', Arial, sans-serif;
+		font-size: 16px;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+		/* Black shadow */
+		font-weight: 300;
+		background: linear-gradient(145deg, #000000, #4B0082);
+		/* Black to Purple gradient */
+	}
 
-body {
-    margin: 0;
-    color: #FFA500; /* Bright Orange text */
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow */
-    font-weight: 300;
-    background: linear-gradient(145deg, #000000, #4B0082); /* Black to Purple gradient */
-}
+	[data-tooltip]:before
+	{
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		font-size: 0.9em;
+		content: attr(data-tooltip);
+		overflow: hidden;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		width: 96%;
+		background: #2C2C2C;
+		/* Dark Gray */
+		color: #FFA500;
+		/* Orange text */
+		text-align: left;
+		padding: 8px;
+		border-radius: 6px;
+		z-index: 1;
+		text-shadow: 1px 1px 3px rgba(75, 0, 130, 0.8);
+		/* Purple shadow */
+		font-style: italic;
+		font-weight: 300;
+		transition: visibility 0s, opacity 0.3s ease-in-out;
+	}
 
-[data-tooltip]:before {
-    /* Time since last status change Box */
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    overflow: hidden;
-    white-space: pre;
-    word-wrap: break-word;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 96%;
-    background: #2C2C2C; /* Dark Gray */
-    color: #FFA500; /* Orange text */
-    text-align: left;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 1;
-    text-shadow: 1px 1px 3px rgba(75, 0, 130, 0.8); /* Purple shadow */
-    font-style: italic;
-    font-weight: 300;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
-}
-
-[data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-}
-
+	[data-tooltip]:hover:before
+	{
+		visibility: visible;
+		opacity: 1;
+	}
 }
