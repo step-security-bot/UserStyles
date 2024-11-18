@@ -600,12 +600,12 @@ function Get-FileHash {
 
 function editprofile {
   Write-Host "Opening Notepad++ with your profile" -ForegroundColor Yellow
-  C:\Program Files\Notepad++\notepad++.exe "C:\Users\Nick\Dropbox\PC (2)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+  C:\"Program Files"\Notepad++\notepad++.exe "C:\Users\Nick\Dropbox\PC (2)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 }
 
 function notepad++ {
   Write-Host "Opening Notepad++" -ForegroundColor Yellow
-  C:\Program Files\Notepad++\notepad++.exe
+  C:\"Program Files"\Notepad++\notepad++.exe
 }
 
 # Function to quickly open Visual Studio Code in the current directory
