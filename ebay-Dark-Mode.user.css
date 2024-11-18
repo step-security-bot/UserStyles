@@ -7,7 +7,7 @@
 @author         Nick2bad4u
 @license        UnLicense
 ==/UserStyle== */
-@-moz-document domain("ebay.com")
+@-moz-document domain("ebay.com"), regexp(".*ebay.*")
 {
 	/* Invert colors except images and videos */
 	:is(html:not([stylus-iframe]), img, svg, video)
