@@ -1,0 +1,247 @@
+/* ==UserStyle==
+@name         Zwift Cycling Game Theme
+@version      20241119.00.01
+@namespace    https://github.com/Nick2bad4u/UserStyles
+@description  Custom theme inspired by Zwift cycling game
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@author       Nick
+@license      UnLicense
+==/UserStyle== */
+@-moz-document domain("steamstat.us")
+{
+	/* Main title styling with Zwift colors */
+	.title
+	{
+		text-align: center;
+		margin: 10px 0;
+		font-size: 2.6em;
+		font-weight: 700;
+		color: #FF7F00;
+		/* Zwift Orange */
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		background: linear-gradient(135deg, #FFFFFF 30%, #FF7F00 70%);
+		/* White to Orange */
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: #000000;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: title-animation 3s ease-in-out infinite alternate;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	/* Animation for the title */
+	@keyframes title-animation
+	{
+		0%
+		{
+			transform: scale(1);
+		}
+
+		100%
+		{
+			transform: scale(1.08);
+		}
+	}
+
+	/* Logo addition with Zwift emblem */
+	.title::after
+	{
+		content: '';
+		display: inline-block;
+		width: 150px;
+		height: 60px;
+		background: url('https://i.gyazo.com/2a07deee44f8b2da87394d4393fcff0b.jpg') no-repeat center;
+		background-size: contain;
+		margin-left: 10px;
+		transition: transform 0.3s ease;
+		clip-path: circle();
+	}
+
+	.title:hover::after
+	{
+		transform: scale(1.5);
+	}
+
+	/* Link styling with hover effect */
+	a
+	{
+		color: #FF7F00;
+		/* Zwift Orange */
+		text-decoration: none;
+		font-weight: bold;
+		transition: color 0.3s ease,
+		text-shadow 0.3s ease;
+		text-shadow: 1px 1px 2px rgba(0,
+		0,
+		0,
+		0.4);
+	}
+
+	a:hover
+	{
+		color: #FFFFFF;
+		/* White */
+		text-decoration: underline;
+		text-shadow: 2px 2px 6px rgba(0,
+		0,
+		0,
+		0.7);
+	}
+
+	/* Status colors with Zwift theme */
+	.good
+	{
+		color: #FFFFFF;
+		/* White */
+		text-shadow: 1px 1px 2px rgba(0,
+		0,
+		0,
+		0.6);
+		transition: color 0.3s ease;
+	}
+
+	.minor
+	{
+		color: #FF7F00;
+		/* Orange */
+		text-shadow: 1px 1px 2px rgba(0,
+		0,
+		0,
+		0.6);
+		font-weight: bold;
+		transition: color 0.3s ease;
+	}
+
+	.major
+	{
+		color: #0073E6;
+		/* Bright Blue */
+		text-shadow: 1px 1px 2px rgba(0,
+		0,
+		0,
+		0.6);
+		font-weight: bold;
+		transition: color 0.3s ease;
+	}
+
+	/* Refresh button styling */
+	#js-refresh
+	{
+		color: #FF7F00;
+		/* Orange */
+		text-shadow: 0 0 3px rgba(0,
+		0,
+		0,
+		0.8);
+		font-weight: bolder;
+		transition: color 0.3s ease,
+		transform 0.3s ease;
+	}
+
+	#js-refresh:hover
+	{
+		color: #FFFFFF;
+		/* White */
+		transform: scale(1.1);
+	}
+
+	/* Container with Zwift-inspired accents */
+	.services,
+	#psa,
+	noscript,
+	footer
+	{
+		position: relative;
+		background: linear-gradient(135deg,
+		rgba(255, 127, 0, 0.8) 30%,
+		rgba(255, 255, 255, 0.8) 70%);
+		border: 1px solid #FF7F00;
+		border-radius: 4px;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 4px rgba(0,
+		0,
+		0,
+		0.9);
+		box-shadow: 0px 4px 12px rgba(0,
+		0,
+		0,
+		0.8);
+		color: #000000;
+		transition: box-shadow 0.3s ease,
+		background 0.3s ease;
+	}
+
+	.services:hover,
+	#psa:hover,
+	noscript:hover,
+	footer:hover
+	{
+		box-shadow: 0px 6px 15px rgba(0,
+		0,
+		0,
+		0.9);
+		background: rgba(0,
+		0,
+		0,
+		0.95);
+		color: #FFFFFF;
+	}
+
+	/* Body styling with Zwift cycling backdrop */
+	body
+	{
+		margin: 0;
+		color: #FF7F00;
+		/* Orange */
+		font-family: 'Lato',
+		sans-serif;
+		font-size: 16px;
+		font-weight: 300;
+		background: url('https://i.gyazo.com/8eb3d105728604bc85421637d6605692.jpg') no-repeat center center fixed;
+		/* Zwift background URL */
+		background-size: cover;
+		text-shadow: 2px 2px 4px rgba(0,
+		0,
+		0,
+		0.7);
+		transition: background 0.3s ease;
+	}
+
+	/* Tooltip customization */
+	[data-tooltip]:before
+	{
+		visibility: hidden;
+		opacity: 0;
+		font-size: 0.9em;
+		content: attr(data-tooltip);
+		position: absolute;
+		top: 0;
+		left: 2%;
+		width: 96%;
+		background: rgba(255,
+		127,
+		0,
+		0.9);
+		/* Orange */
+		color: #000000;
+		padding: 8px;
+		border-radius: 8px;
+		z-index: 1;
+		text-shadow: 2px 2px 4px rgba(0,
+		0,
+		0,
+		0.5);
+		transition: visibility 0s,
+		opacity 0.3s ease-in-out;
+	}
+
+	[data-tooltip]:hover:before
+	{
+		visibility: visible;
+		opacity: 1;
+	}
+}

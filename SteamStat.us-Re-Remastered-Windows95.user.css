@@ -1,0 +1,158 @@
+/* ==UserStyle==
+@name         SteamStat.us - Windows 95 Theme
+@version      20241119.00.11
+@namespace    https://github.com/Nick2bad4u/UserStyles
+@description  SteamStat.us - Windows 95 Theme
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@author       Nick
+@license      UnLicense
+==/UserStyle== */
+@-moz-document domain("steamstat.us") {
+  /* Main title styling with Windows 95 look */
+  .title {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 2em;
+    font-weight: bold;
+    color: black;
+    background-color: #C0C0C0; /* Light gray background */
+    padding: 5px;
+    border: 2px solid #FFFFFF;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Logo addition with Windows 95 logo */
+  .title::after {
+    content: '';
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    background: url('https://i.gyazo.com/e96376514655b9307ce82826b1ae2691.png') no-repeat center;
+    background-size: contain;
+    margin-left: 10px;
+  }
+
+  /* Link styling */
+  a {
+    color: #0000EE; /* Standard link color */
+    text-decoration: underline;
+    font-weight: normal;
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+  }
+
+  a:hover {
+    color: #551A8B; /* Visited link color */
+  }
+
+  /* Status colors */
+  .good {
+    color: black;
+  }
+  .minor {
+    color: #808080; /* Dark gray */
+  }
+  .major {
+    color: #FF0000; /* Red */
+  }
+
+  /* Refresh button styling */
+  #js-refresh {
+    color: black;
+    font-weight: bold;
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+    background-color: #C0C0C0;
+    border: 2px solid #FFFFFF;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    padding: 2px 5px;
+    cursor: pointer;
+  }
+
+  #js-refresh:active {
+    border-top-color: #808080;
+    border-left-color: #808080;
+    border-bottom-color: #FFFFFF;
+    border-right-color: #FFFFFF;
+  }
+
+  /* Container styling */
+  .services, #psa, noscript, footer, div.regions-title.sep {
+    background-color: #C0C0C0; /* Light gray */
+    border: 2px solid #FFFFFF;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    padding: 10px;
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+    color: black;
+    margin: 10px;
+  }
+
+  /* Body styling */
+  body {
+    margin: 0;
+    background-color: #008080; /* Teal background */
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+  }
+
+  /* Tooltip customization */
+  [data-tooltip]:before {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 0.8em;
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 200px;
+    background-color: #FFFFE0; /* Light yellow */
+    color: black;
+    padding: 5px;
+    border: 1px solid #000000;
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+    z-index: 1000;
+  }
+  [data-tooltip]:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Buttons */
+  button {
+    font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
+    background-color: #C0C0C0;
+    color: black;
+    border: 2px solid #FFFFFF;
+    border-bottom-color: #808080;
+    border-right-color: #808080;
+    padding: 2px 5px;
+    cursor: pointer;
+  }
+  button:active {
+    border-top-color: #808080;
+    border-left-color: #808080;
+    border-bottom-color: #FFFFFF;
+    border-right-color: #FFFFFF;
+  }
+
+  /* Remove modern scrollbars */
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #C0C0C0;
+    border-left: 2px solid #FFFFFF;
+    border-top: 2px solid #FFFFFF;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #E0E0E0;
+    border: 1px solid #808080;
+  }
+}
