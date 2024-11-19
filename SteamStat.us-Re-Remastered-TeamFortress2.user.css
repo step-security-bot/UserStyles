@@ -14,9 +14,9 @@
     margin: 10px 0;
     font-size: 2.6em;
     font-weight: 700;
-    color: #B8383B; /* TF2 Red Team color */
+    color: #b8383b; /* TF2 Red Team color */
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(135deg, #B8383B 30%, #5E76A8 70%); /* Red to Blue gradient */
+    background: linear-gradient(135deg, #b8383b 30%, #5e76a8 70%); /* Red to Blue gradient */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #000000;
     -webkit-background-clip: text;
@@ -45,7 +45,7 @@
     width: 250px;
     height: 60px;
     background: url('https://i.gyazo.com/5981acdc7b93ea0caca2462c8a01dc7b.png') no-repeat center; /* TF2 logo */
-	background-size: auto 200%;
+    background-size: auto 200%;
     margin-left: 10px;
     transition: transform 0.3s ease;
   }
@@ -55,32 +55,34 @@
 
   /* Link styling with hover effect */
   a {
-    color: #B8383B; /* TF2 Red */
+    color: #b8383b; /* TF2 Red */
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transition:
+      color 0.3s ease,
+      text-shadow 0.3s ease;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   }
   a:hover {
-    color: #5E76A8; /* TF2 Blue */
+    color: #5e76a8; /* TF2 Blue */
     text-decoration: underline;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
   }
 
   /* Status colors with TF2 theme */
   .good {
-    color: #5E76A8; /* TF2 Blue */
+    color: #5e76a8; /* TF2 Blue */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     transition: color 0.3s ease;
   }
   .minor {
-    color: #FFFFFF; /* White for minor status */
+    color: #ffffff; /* White for minor status */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     font-weight: bold;
     transition: color 0.3s ease;
   }
   .major {
-    color: #B8383B; /* TF2 Red */
+    color: #b8383b; /* TF2 Red */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     font-weight: bold;
     transition: color 0.3s ease;
@@ -88,30 +90,44 @@
 
   /* Refresh button styling with hover effect */
   #js-refresh {
-    color: #B8383B; /* TF2 Red */
+    color: #b8383b; /* TF2 Red */
     text-shadow: 0 0 3px rgb(0, 0, 0);
     font-weight: bolder;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
   }
   #js-refresh:hover {
-    color: #5E76A8; /* TF2 Blue */
+    color: #5e76a8; /* TF2 Blue */
     transform: scale(1.1);
   }
 
   /* Container with team colors */
-  .services, #psa, noscript, footer {
+  .services,
+  #psa,
+  noscript,
+  footer {
     position: relative;
-    background: linear-gradient(135deg, rgba(184, 56, 59, 0.8) 30%, rgba(94, 118, 168, 0.8) 70%); /* Red to Blue gradient */
-    border: 1px solid #B8383B; /* Red border */
+    background: linear-gradient(
+      135deg,
+      rgba(184, 56, 59, 0.8) 30%,
+      rgba(94, 118, 168, 0.8) 70%
+    ); /* Red to Blue gradient */
+    border: 1px solid #b8383b; /* Red border */
     border-radius: 4px;
     font-size: 1em;
     line-height: 1.5;
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
-    color: #FFFFFF;
-    transition: box-shadow 0.3s ease, background 0.3s ease;
+    color: #ffffff;
+    transition:
+      box-shadow 0.3s ease,
+      background 0.3s ease;
   }
-  .services:hover, #psa:hover, noscript:hover, footer:hover {
+  .services:hover,
+  #psa:hover,
+  noscript:hover,
+  footer:hover {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.9);
     background: rgba(0, 0, 0, 0.95);
   }
@@ -119,11 +135,12 @@
   /* Body styling with Team Fortress 2 background */
   body {
     margin: 0;
-    color: #B8383B; /* TF2 Red */
+    color: #b8383b; /* TF2 Red */
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
     font-weight: 300;
-    background: url('https://i.gyazo.com/38db4c4bdeca3e407043a778ee558475.jpg') no-repeat center center fixed; /* TF2 background image */
+    background: url('https://i.gyazo.com/38db4c4bdeca3e407043a778ee558475.jpg') no-repeat center
+      center fixed; /* TF2 background image */
     background-size: cover;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     transition: background 0.3s ease;
@@ -140,12 +157,14 @@
     left: 2%;
     width: 96%;
     background: rgba(184, 56, 59, 0.9); /* Red background */
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 8px;
     border-radius: 8px;
     z-index: 1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    transition: visibility 0s, opacity 0.3s ease-in-out;
+    transition:
+      visibility 0s,
+      opacity 0.3s ease-in-out;
   }
   [data-tooltip]:hover:before {
     visibility: visible;
@@ -158,7 +177,7 @@
     padding: 12px;
     border-radius: 6px;
     background-color: rgba(0, 0, 0, 0.9);
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: bold;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(184, 56, 59, 0.8);
@@ -170,7 +189,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, #B8383B, #5E76A8, #B8383B); /* Red to Blue */
+    background: linear-gradient(45deg, #b8383b, #5e76a8, #b8383b); /* Red to Blue */
     background-size: 300% 300%;
     border-radius: 6px;
     z-index: -1;

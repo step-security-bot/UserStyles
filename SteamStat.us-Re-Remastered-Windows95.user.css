@@ -15,9 +15,9 @@
     font-size: 2em;
     font-weight: bold;
     color: black;
-    background-color: #C0C0C0; /* Light gray background */
+    background-color: #c0c0c0; /* Light gray background */
     padding: 5px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     border-bottom-color: #808080;
     border-right-color: #808080;
     font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
@@ -40,14 +40,14 @@
 
   /* Link styling */
   a {
-    color: #0000EE; /* Standard link color */
+    color: #0000ee; /* Standard link color */
     text-decoration: underline;
     font-weight: normal;
     font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
   }
 
   a:hover {
-    color: #551A8B; /* Visited link color */
+    color: #551a8b; /* Visited link color */
   }
 
   /* Status colors */
@@ -58,7 +58,7 @@
     color: #808080; /* Dark gray */
   }
   .major {
-    color: #FF0000; /* Red */
+    color: #ff0000; /* Red */
   }
 
   /* Refresh button styling */
@@ -66,8 +66,8 @@
     color: black;
     font-weight: bold;
     font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
-    background-color: #C0C0C0;
-    border: 2px solid #FFFFFF;
+    background-color: #c0c0c0;
+    border: 2px solid #ffffff;
     border-bottom-color: #808080;
     border-right-color: #808080;
     padding: 2px 5px;
@@ -77,14 +77,18 @@
   #js-refresh:active {
     border-top-color: #808080;
     border-left-color: #808080;
-    border-bottom-color: #FFFFFF;
-    border-right-color: #FFFFFF;
+    border-bottom-color: #ffffff;
+    border-right-color: #ffffff;
   }
 
   /* Container styling */
-  .services, #psa, noscript, footer, div.regions-title.sep {
-    background-color: #C0C0C0; /* Light gray */
-    border: 2px solid #FFFFFF;
+  .services,
+  #psa,
+  noscript,
+  footer,
+  div.regions-title.sep {
+    background-color: #c0c0c0; /* Light gray */
+    border: 2px solid #ffffff;
     border-bottom-color: #808080;
     border-right-color: #808080;
     padding: 10px;
@@ -110,7 +114,7 @@
     top: -30px;
     left: 0;
     width: 200px;
-    background-color: #FFFFE0; /* Light yellow */
+    background-color: #ffffe0; /* Light yellow */
     color: black;
     padding: 5px;
     border: 1px solid #000000;
@@ -125,9 +129,9 @@
   /* Buttons */
   button {
     font-family: 'MS Sans Serif', Tahoma, Verdana, Arial, sans-serif;
-    background-color: #C0C0C0;
+    background-color: #c0c0c0;
     color: black;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     border-bottom-color: #808080;
     border-right-color: #808080;
     padding: 2px 5px;
@@ -136,8 +140,8 @@
   button:active {
     border-top-color: #808080;
     border-left-color: #808080;
-    border-bottom-color: #FFFFFF;
-    border-right-color: #FFFFFF;
+    border-bottom-color: #ffffff;
+    border-right-color: #ffffff;
   }
 
   /* Remove modern scrollbars */
@@ -145,14 +149,14 @@
     width: 16px;
   }
   ::-webkit-scrollbar-track {
-    background: #C0C0C0;
-    border-left: 2px solid #FFFFFF;
-    border-top: 2px solid #FFFFFF;
+    background: #c0c0c0;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
     border-right: 2px solid #808080;
     border-bottom: 2px solid #808080;
   }
   ::-webkit-scrollbar-thumb {
-    background: #E0E0E0;
+    background: #e0e0e0;
     border: 1px solid #808080;
   }
 }

@@ -6,17 +6,14 @@
 @author         Nick2bad4u
 @license        UnLicense
 ==/UserStyle== */
-@-moz-document domain("techpowerup.com")
-{
-	/* Invert colors except images and videos */
-	:is(html:not([stylus-iframe]), img, svg, video)
-	{
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
+@-moz-document domain("techpowerup.com") {
+  /* Invert colors except images and videos */
+  :is(html:not([stylus-iframe]), img, svg, video) {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-	/* Ensure background images are not inverted */
-	:is(html:not([stylus-iframe]), img, svg, video)
-	{
-		background-color: inherit !important;
-	}
+  /* Ensure background images are not inverted */
+  :is(html:not([stylus-iframe]), img, svg, video) {
+    background-color: inherit !important;
+  }
 }

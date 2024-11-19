@@ -7,254 +7,238 @@
 @author       Nick
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us")
-{
-	/* Main title styling with Brawlhalla colors */
-	.title
-	{
-		text-align: center;
-		margin: 10px 0;
-		font-size: 2.6em;
-		font-weight: 700;
-		color: #0078FF;
-		/* Brawlhalla Blue */
-		text-shadow: 2px 2px 0px rgba(0, 0, 0, .21);
-		background: linear-gradient(135deg, #0078FF 30%, #FFD700 70%);
-		-webkit-text-stroke-width: 2px;
-		-webkit-text-stroke-color: black;
-		/* Blue to Gold gradient */
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		animation: title-animation 2s ease-in-out infinite alternate;
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+@-moz-document domain("steamstat.us") {
+  /* Main title styling with Brawlhalla colors */
+  .title {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 2.6em;
+    font-weight: 700;
+    color: #0078ff;
+    /* Brawlhalla Blue */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.21);
+    background: linear-gradient(135deg, #0078ff 30%, #ffd700 70%);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    /* Blue to Gold gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-animation 2s ease-in-out infinite alternate;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-	/* Animation for the title */
-	@keyframes title-animation
-	{
-		0%
-		{
-			transform: scale(1);
-		}
+  /* Animation for the title */
+  @keyframes title-animation {
+    0% {
+      transform: scale(1);
+    }
 
-		100%
-		{
-			transform: scale(1.05);
-		}
-	}
+    100% {
+      transform: scale(1.05);
+    }
+  }
 
-	/* Logo addition with scaling effect */
-	.title::after
-	{
-		content: '';
-		display: inline-block;
-		width: 200px;
-		height: 60px;
-		background: url('https://static.wikia.nocookie.net/brawlhalla_gamepedia/images/1/14/Brawlhalla_Logo_100M_Full.png') no-repeat center;
-		background-size: contain;
-		margin-left: 10px;
-		transition: transform 0.3s ease;
-	}
+  /* Logo addition with scaling effect */
+  .title::after {
+    content: '';
+    display: inline-block;
+    width: 200px;
+    height: 60px;
+    background: url('https://static.wikia.nocookie.net/brawlhalla_gamepedia/images/1/14/Brawlhalla_Logo_100M_Full.png')
+      no-repeat center;
+    background-size: contain;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
 
-	.title:hover::after
-	{
-		transform: scale(1.2);
-	}
+  .title:hover::after {
+    transform: scale(1.2);
+  }
 
-	/* Link styling with hover effect */
-	a
-	{
-		color: #0078FF;
-		/* Brawlhalla Blue */
-		text-decoration: none;
-		font-weight: bold;
-		transition: color 0.3s ease, text-shadow 0.3s ease;
-		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
-	}
+  /* Link styling with hover effect */
+  a {
+    color: #0078ff;
+    /* Brawlhalla Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition:
+      color 0.3s ease,
+      text-shadow 0.3s ease;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+  }
 
-	a:hover
-	{
-		color: #FFD700;
-		/* Brawlhalla Gold */
-		text-decoration: underline;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-	}
+  a:hover {
+    color: #ffd700;
+    /* Brawlhalla Gold */
+    text-decoration: underline;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
 
-	/* Status colors with Brawlhalla theme */
-	.good
-	{
-		color: #FFD700;
-		/* Brawlhalla Gold */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-		transition: color 0.3s ease;
-	}
+  /* Status colors with Brawlhalla theme */
+  .good {
+    color: #ffd700;
+    /* Brawlhalla Gold */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    transition: color 0.3s ease;
+  }
 
-	.minor
-	{
-		color: #FFFFFF;
-		/* White for minor status */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-		font-weight: bold;
-		transition: color 0.3s ease;
-	}
+  .minor {
+    color: #ffffff;
+    /* White for minor status */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
 
-	.major
-	{
-		color: #0078FF;
-		/* Brawlhalla Blue */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-		font-weight: bold;
-		transition: color 0.3s ease;
-	}
+  .major {
+    color: #0078ff;
+    /* Brawlhalla Blue */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
 
-	/* Refresh button styling with hover effect */
-	#js-refresh
-	{
-		color: #0078FF;
-		/* Brawlhalla Blue */
-		text-shadow: 0 0 2px rgb(0, 0, 0);
-		font-weight: bolder;
-		transition: color 0.3s ease, transform 0.3s ease;
-	}
+  /* Refresh button styling with hover effect */
+  #js-refresh {
+    color: #0078ff;
+    /* Brawlhalla Blue */
+    text-shadow: 0 0 2px rgb(0, 0, 0);
+    font-weight: bolder;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
 
-	#js-refresh:hover
-	{
-		color: #FFD700;
-		/* Brawlhalla Gold */
-		transform: scale(1.1);
-	}
+  #js-refresh:hover {
+    color: #ffd700;
+    /* Brawlhalla Gold */
+    transform: scale(1.1);
+  }
 
-	/* Container with blue background and gold accents */
-	.services,
-	#psa,
-	noscript
-	{
-		position: relative;
-		background: linear-gradient(135deg, #0078FF 30%, #FFD700 70%);
-		/* Brawlhalla Blue */
-		border: 1px solid #FFD700;
-		/* Brawlhalla Gold border */
-		border-radius: 3px;
-		font-size: 1em;
-		line-height: 1.5;
-		text-shadow: 0px 0px 2px rgb(0, 0, 1);
-		box-shadow: 0px 4px 8px rgb(0, 0, 0);
-		color: #FFFFFF;
-		/* White text */
-		transition: box-shadow 0.3s ease, background 0.3s ease;
-	}
+  /* Container with blue background and gold accents */
+  .services,
+  #psa,
+  noscript {
+    position: relative;
+    background: linear-gradient(135deg, #0078ff 30%, #ffd700 70%);
+    /* Brawlhalla Blue */
+    border: 1px solid #ffd700;
+    /* Brawlhalla Gold border */
+    border-radius: 3px;
+    font-size: 1em;
+    line-height: 1.5;
+    text-shadow: 0px 0px 2px rgb(0, 0, 1);
+    box-shadow: 0px 4px 8px rgb(0, 0, 0);
+    color: #ffffff;
+    /* White text */
+    transition:
+      box-shadow 0.3s ease,
+      background 0.3s ease;
+  }
 
-	.services:hover,
-	#psa:hover,
-	noscript:hover
-	{
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-		background: rgba(0, 0, 0, .94);
+  .services:hover,
+  #psa:hover,
+  noscript:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.94);
 
+    /* Blue on hover */
+  }
 
-		/* Blue on hover */
-	}
+  /* Body styling with blue and gold gradient */
+  body {
+    margin: 0;
+    color: #0078ff;
+    /* Brawlhalla Blue */
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background: url('https://cms.brawlhalla.com/c/uploads/2023/05/AllUnlocked_1920x1080.jpg')
+      repeat-y;
+    /* Blue to Gold gradient */
+    text-shadow: 1px 1px 3px rgb(0, 0, 0);
+    transition: background 0.3s ease;
+  }
 
-	/* Body styling with blue and gold gradient */
-	body
-	{
-		margin: 0;
-		color: #0078FF;
-		/* Brawlhalla Blue */
-		font-family: 'Roboto', Arial, sans-serif;
-		font-size: 16px;
-		font-weight: 300;
-		background: url('https://cms.brawlhalla.com/c/uploads/2023/05/AllUnlocked_1920x1080.jpg') repeat-y;
-		/* Blue to Gold gradient */
-		text-shadow: 1px 1px 3px rgb(0, 0, 0);
-		transition: background 0.3s ease;
-	}
+  body:hover {
+    background: url('https://cms.brawlhalla.com/c/uploads/2023/05/AllUnlocked_1920x1080.jpg')
+      repeat-y;
+    /* White to Blue gradient */
+  }
 
-	body:hover
-	{
-		background: url('https://cms.brawlhalla.com/c/uploads/2023/05/AllUnlocked_1920x1080.jpg') repeat-y;
-		/* White to Blue gradient */
-	}
+  /* Tooltip customization with smooth transition */
+  [data-tooltip]:before {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 0.9em;
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 0;
+    left: 2%;
+    width: 96%;
+    background: #0078ff;
+    /* Brawlhalla Blue background */
+    color: #ffd700;
+    /* Brawlhalla Gold text */
+    padding: 8px;
+    border-radius: 6px;
+    z-index: 1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    transition:
+      visibility 0s,
+      opacity 0.3s ease-in-out;
+    font-style: italic;
+    font-weight: 300;
+  }
 
-	/* Tooltip customization with smooth transition */
-	[data-tooltip]:before
-	{
-		visibility: hidden;
-		opacity: 0;
-		font-size: 0.9em;
-		content: attr(data-tooltip);
-		position: absolute;
-		top: 0;
-		left: 2%;
-		width: 96%;
-		background: #0078FF;
-		/* Brawlhalla Blue background */
-		color: #FFD700;
-		/* Brawlhalla Gold text */
-		padding: 8px;
-		border-radius: 6px;
-		z-index: 1;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-		transition: visibility 0s, opacity 0.3s ease-in-out;
-		font-style: italic;
-		font-weight: 300;
-	}
+  [data-tooltip]:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
 
-	[data-tooltip]:hover:before
-	{
-		visibility: visible;
-		opacity: 1;
-	}
+  /* Advanced feature: Gradient border with transition */
+  .gradient-border {
+    position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ffd700;
+    /* Brawlhalla Gold */
+    color: #ffffff;
+    /* White text */
+    font-weight: bold;
+    text-align: center;
+  }
 
-	/* Advanced feature: Gradient border with transition */
-	.gradient-border
-	{
-		position: relative;
-		padding: 10px;
-		border-radius: 5px;
-		background-color: #FFD700;
-		/* Brawlhalla Gold */
-		color: #FFFFFF;
-		/* White text */
-		font-weight: bold;
-		text-align: center;
-	}
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #ffd700, #0078ff, #ffd700, #0078ff);
+    /* Gold to Blue */
+    background-size: 400% 400%;
+    border-radius: 5px;
+    z-index: -1;
+    animation: gradient-border 3s linear infinite;
+  }
 
-	.gradient-border::before
-	{
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: linear-gradient(45deg, #FFD700, #0078FF, #FFD700, #0078FF);
-		/* Gold to Blue */
-		background-size: 400% 400%;
-		border-radius: 5px;
-		z-index: -1;
-		animation: gradient-border 3s linear infinite;
-	}
+  /* Animation for gradient border */
+  @keyframes gradient-border {
+    0% {
+      background-position: 400% 0%;
+    }
 
-	/* Animation for gradient border */
-	@keyframes gradient-border
-	{
-		0%
-		{
-			background-position: 400% 0%;
-		}
+    50% {
+      background-position: 0% 100%;
+    }
 
-		50%
-		{
-			background-position: 0% 100%;
-		}
-
-		100%
-		{
-			background-position: 400% 0%;
-		}
-	}
+    100% {
+      background-position: 400% 0%;
+    }
+  }
 }
