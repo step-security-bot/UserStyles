@@ -7,28 +7,26 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("greasyfork.org")
-{
+@-moz-document domain("greasyfork.org") {
+  /* Invert colors except images and videos */
+  :is(html:not([stylus-iframe]), img, svg, video),
+  header,
+  h2,
+  #script-description,
+  body > aside > ul {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-	/* Invert colors except images and videos */
-	:is(html:not([stylus-iframe]), img, svg, video), header, h2, #script-description, body > aside > ul
-	{
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
+  /* Ensure background images are not inverted */
+  :is(html:not([stylus-iframe]), img, svg, video) {
+    background-color: inherit !important;
+  }
 
-	/* Ensure background images are not inverted */
-	:is(html:not([stylus-iframe]), img, svg, video)
-	{
-		background-color: inherit !important;
-	}
+  #site-name > a {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-	#site-name > a
-	{
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
-
-	#greasyfork-plus-options > ul
-	{
-		color: #670000;
-	}
+  #greasyfork-plus-options > ul {
+    color: #670000;
+  }
 }
