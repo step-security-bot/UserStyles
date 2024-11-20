@@ -1,0 +1,38 @@
+/* ==UserStyle==
+@name         Fandom.com - Dark Mode
+@version      20241116.15.40
+@namespace    typpi.online
+@description  Fandom.com - Dark Mode
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+
+@-moz-document domain("fandom.com") {
+  *:not(body > div.main-container > div.resizable-container > div.page > main) {
+    background: black;
+  }
+
+  img,
+  video,
+  trk-shared-icon > svg > use,
+  header > nav {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
+
+  /* Exclude Dark Mode Elements */
+  *:not([style*='background-color: #121212']):not([style*='background-color: black']) {
+    filter: none !important;
+    /* Reset filter for dark backgrounds */
+  }
+
+  /* Specific Exclusions */
+  body,
+  #primaryNav,
+  #primaryNav > div > div.primary-links > ul,
+  #content {
+    background-color: #000 !important;
+    --theme-page-background-color: #000000 !important;
+    /* Ensure body stays dark */
+  }
+}
