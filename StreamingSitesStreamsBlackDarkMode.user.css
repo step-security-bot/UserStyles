@@ -10,34 +10,30 @@
 @-moz-document domain("streameast.gd"), domain("1stream.eu"), domain("methstreamer.com"), domain("chatango.com"), domain("methstreams.com") {
   /* General Inversion for Light Backgrounds */
   *,
-  a
-  {
-  	filter: invert(1) hue-rotate(180deg) !important;
-  	/* Invert and adjust hue */
+  a {
+    filter: invert(1) hue-rotate(180deg) !important;
+    /* Invert and adjust hue */
   }
 
   /* Exclude Dark Mode Elements */
-  *:not([style *= "background-color: #121212"]):not([style *= "background-color: black"])
-  {
-  	filter: none !important;
-  	/* Reset filter for dark backgrounds */
+  *:not([style*='background-color: #121212']):not([style*='background-color: black']) {
+    filter: none !important;
+    /* Reset filter for dark backgrounds */
   }
 
   /* Specific Exclusions */
   body,
   #primaryNav,
-  #primaryNav > div > div.primary-links > ul
-  {
-  	background-color: #000 !important;
-  	/* Ensure body stays dark */
+  #primaryNav > div > div.primary-links > ul {
+    background-color: #000 !important;
+    /* Ensure body stays dark */
   }
 
   .dark-mode,
-  [class *= "dark"],
-  [style *= "background-color: #121212"],
-  [style *= "background-color: black"]
-  {
-  	filter: none !important;
-  	/* Preserve dark mode elements */
+  [class*='dark'],
+  [style*='background-color: #121212'],
+  [style*='background-color: black'] {
+    filter: none !important;
+    /* Preserve dark mode elements */
   }
 }
