@@ -1,0 +1,185 @@
+/* ==UserStyle==
+@name         SteamStat.us - Tour de France
+@version      20241115.16.04
+@namespace    https://github.com/Nick2bad4u/UserStyles
+@description  SteamStat.us - Tour de France Theme with Advanced CSS
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@author       Nick2bad4u
+@license      UnLicense
+==/UserStyle== */
+@-moz-document domain("steamstat.us") {
+  /* Main title styling with Tour de France theme */
+  .title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 3em;
+    font-weight: 700;
+    color: #FFD700; /* Yellow Jersey */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, #FFD700 40%, #008000 70%);
+    /* Yellow to Green */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulse-title 3s ease-in-out infinite;
+    font-family: 'Merriweather', serif;
+  }
+
+  /* Animation for title pulsing effect */
+  @keyframes pulse-title {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  /* Tour de France bicycle logo effect */
+  .title::after {
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: url('https://upload.wikimedia.org/wikipedia/en/e/e7/Tour_de_France_logo.svg') no-repeat center;
+    background-size: contain;
+    margin-left: 15px;
+    animation: rotate-bike 6s linear infinite;
+  }
+
+  /* Rotate animation for logo */
+  @keyframes rotate-bike {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Link styling with cycling-theme hover effects */
+  a {
+    color: #FFD700; /* Yellow Jersey */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  a:hover {
+    color: #008000; /* Green Jersey */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Container with bright accents and animation */
+  .services,
+  #psa,
+  footer,
+  div.regions-title.sep {
+    position: relative;
+    background: linear-gradient(135deg, #FFD700 30%, #008000 70%);
+    /* Yellow to Green */
+    border: 2px solid #FFD700;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1em;
+    color: #FFFFFF;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .services:hover,
+  #psa:hover,
+  footer:hover,
+  div.regions-title.sep:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Gradient border for status panels */
+  .gradient-border {
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #FFD700; /* Yellow Jersey */
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #FFD700, #008000, #FFD700, #008000);
+    background-size: 200% 200%;
+    border-radius: 10px;
+    z-index: -1;
+    animation: gradient-flow 5s linear infinite;
+  }
+
+  @keyframes gradient-flow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Status colors with vibrant cycling palette */
+  .good {
+    color: #008000; /* Green Jersey */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+  }
+
+  .minor {
+    color: #FFA500; /* Orange - minor alerts */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .major {
+    color: #FF0000; /* Red - major issues */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+  }
+
+  /* Background with cycling road theme */
+  body {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    font-size: 16px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/a/a6/Tour_de_France_route.jpg') no-repeat center;
+    background-size: cover;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Tooltip with cycling theme */
+  [data-tooltip]:before {
+    content: attr(data-tooltip);
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFD700;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: visibility 0s, opacity 0.3s ease;
+    white-space: nowrap;
+  }
+
+  [data-tooltip]:hover:before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
