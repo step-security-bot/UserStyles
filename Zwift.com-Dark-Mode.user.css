@@ -1,10 +1,11 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      20241114.05.16
+@version      20241114.05.17
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
 @license      UnLicense
+@homepageURL  https://userstyles.world/user/Nick2bad4u
 ==/UserStyle== */
 @-moz-document domain("zwift.com") {
   /* Invert colors except images, videos, and footer */
