@@ -33,6 +33,17 @@
 		border-width: 3px;
 	}
 
+	#main > div.container.container-products
+	{
+		border-radius: 20px;
+	}
+
+	#main > div > div.header-wrapper > div,
+	#main > div > div.container
+	{
+		border-radius: 10px;
+	}
+
 	.navbar,
 	.footer,
 	.navbar-inverse
@@ -261,7 +272,8 @@
 
 	#main > div > div.header-wrapper > div > div.row.app-row > div.span8 > table > tbody > tr:nth-child(5) > td.os-icons > span > svg.octicon.octicon-steamdeck > path
 	{
-		color: #B5721B text-shadow: 1px 1px #000;
+		color: #B5721B;
+		text-shadow: 1px 1px #000;
 	}
 
 	button,
