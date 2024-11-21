@@ -1,13 +1,11 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      20241114.05.15
+@version      20241114.05.16
 @namespace    https://userstyles.world/user/Nick2bad4u
-@description  Zwift.com Dark Mode!
-@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@description  Zwift.com Dark Mode
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-
 @-moz-document domain("zwift.com") {
   /* Invert colors except images, videos, and footer */
   :is(
@@ -35,7 +33,7 @@
         > div:nth-child(2)
         > div.MegaNav-module__component--1B_pQ.MegaNav-module__open--MWnWt,
       .MegaNav-module__component--1B_pQ,
-
+      #template > div > div:nth-child(1) > main > div.p1z-hero
     ):not(png):not(#shopify-section-60deaf30-e1ac-4fe0-a31a-135fa803c54f > div > a > div > img) {
     filter: invert(1) hue-rotate(180deg) !important;
   }
