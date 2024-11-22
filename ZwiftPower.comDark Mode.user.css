@@ -17,7 +17,8 @@
 	rect,
 	span.text-gray,
 	#team_riders > tbody > tr:nth-child(n) > td.text-left.text-nowrap.athlete_col.sorting_1 > div > span,
-	#user-menu > ul.nav.navbar-nav.navbar-right.hidden-xs.fix-right-nav > li > ul
+	#user-menu > ul.nav.navbar-nav.navbar-right.hidden-xs.fix-right-nav > li > ul,
+	#team_list > tbody > tr:nth-child(n) > td:nth-child(n) > div > span
 	{
 		filter: invert(1) hue-rotate(180deg);
 	}
