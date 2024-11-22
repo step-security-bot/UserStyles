@@ -1,0 +1,54 @@
+/* ==UserStyle==
+@name           ZwiftPower.com - Dark Mode
+@namespace      https://github.com/Nick2bad4u/UserStyles
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+@version        1.0.2
+@description    ZwiftPower Dark Mode
+@author         Nick2bad4u
+@license        UnLicense
+==/UserStyle== */
+@-moz-document domain("zwiftpower.com")
+{
+	html,
+	svg,
+	iframe,
+	nav,
+	img.img-circle,
+	rect,
+	span.text-gray,
+	#team_riders > tbody > tr:nth-child(n) > td.text-left.text-nowrap.athlete_col.sorting_1 > div > span,
+	#user-menu > ul.nav.navbar-nav.navbar-right.hidden-xs.fix-right-nav > li > ul
+	{
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	button:nth-child(n)
+	{
+		color: #000 !important;
+	}
+
+	#zp_submenu > ul,
+	#zp_submenu > ul > li:nth-child(n) > a
+	{
+		background: white;
+		color: #000 !important;
+		text-shadow: 1px 1px 1px white !important;
+	}
+
+	#page-footer
+	{
+		background-color: #FFF;
+		border-radius: 50px;
+	}
+
+	button:nth-child(n):hover
+	{
+		background-color: #337ab7 !important;
+	}
+
+	#friends_results > thead > tr > th:nth-child(n)::after
+	{
+		color: #000 !important;
+		opacity: 0.3;
+	}
+}
