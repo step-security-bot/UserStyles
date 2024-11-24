@@ -1,13 +1,12 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      20241117.00.57
-@namespace    gyazo.com
-@description  Gyazo Dark Mode (WIP)
-@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@version      20241124.00.57
+@namespace    typpi.online
+@description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
 @license      UnLicense
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-
 @-moz-document domain("gyazo.com") {
   /* Additional elements */
   .header-block,
@@ -23,7 +22,16 @@
   .image-infos,
   .captured-info-value,
   .edit-box-component,
-  .image-desc-display.placeholder {
+  .image-desc-display.placeholder,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div
+    > div.related-images-grid-view.related-info {
     background-color: #121212 !important;
     color: #e0e0e0 !important;
   }
@@ -37,6 +45,199 @@
   .header-block.explorer-header-block {
     color: #bb86fc !important;
     background-color: #121212 !important;
+  }
+
+  a > span.toplevel-item-kamon > svg > path,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.new-collection-field
+    > span
+    > span
+    > svg
+    > path {
+    filter: invert(1);
+  }
+
+  [id^='headlessui-menu-item-'] > svg,
+  [id^='headlessui-menu-button-'] > svg > path,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > button
+    > svg,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.image-ocrinfo-component
+    > div
+    > div.ocr-desc-buttons
+    > div
+    > div
+    > button
+    > svg,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > button.edit-options-button.btn.explorer-action-btn.explorer-action-btn-dark
+    > svg,
+  #global-dropdown-menu
+    > div.popover-content
+    > ul
+    > li:nth-child(1)
+    > a
+    > span.account-item-check
+    > svg {
+    fill: #bb86fc;
+  }
+
+  [id^='headlessui-menu-item-'] > svg:hover,
+  [id^='headlessui-menu-button-'] > svg > path:hover,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > button
+    > svg:hover,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.image-ocrinfo-component
+    > div
+    > div.ocr-desc-buttons
+    > div
+    > div
+    > button
+    > svg:hover,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > button.edit-options-button.btn.explorer-action-btn.explorer-action-btn-dark
+    > svg:hover,
+  #global-dropdown-menu
+    > div.popover-content
+    > ul
+    > li:nth-child(1)
+    > a
+    > span.account-item-check
+    > svg:hover {
+    fill: white;
+  }
+
+  #global-dropdown-menu > div.popover-content > ul > li:nth-child(13) > button > svg > path,
+  #global-dropdown-menu > div.popover-content > ul > li:nth-child(n) > a > svg > path,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.toplevel-item.collection-list
+    > ul
+    > li:nth-child(n)
+    > div
+    > button
+    > svg {
+    fill: white;
+  }
+
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.toplevel-item.captures.toplevel-item-active
+    > a
+    > span.toplevel-item-kamon
+    > svg,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.toplevel-item.tags
+    > a
+    > span.toplevel-item-kamon
+    > svg,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.toplevel-item.visits
+    > a
+    > span.toplevel-item-kamon
+    > svg,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.new-collection-field
+    > span
+    > span
+    > svg {
+    fill: Black;
+  }
+
+  #react-root > div.header-block.explorer-header-block > div.explorer-action-btn-toolbar > a {
+    background-color: #1212126b !important;
+  }
+
+  #global-dropdown-menu > div.popover-content > ul > li:nth-child(n) > a > span:hover,
+  #global-dropdown-menu > div.popover-content > ul > li:nth-child(n) > a:hover,
+  #global-dropdown-menu > div.popover-content > ul > li:nth-child(13) > button > span:hover {
+    color: white !important;
+  }
+
+  .images-show .bottom.interactive-popover > .arrow:after,
+  .popover.bottom > .arrow:after {
+    border-bottom-color: #bb86fc;
+  }
+
+  .explorer-action-btn.dropdown-toggle::after {
+    content: '';
+    margin-right: -8px;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Y2FyZXQtZG93bjwvdGl0bGU+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTEuNzc3Mzk1MywxNC43MzAzOTUzIEMxMS41MjMzOTUzLDE0LjczMDM5NTMgMTEuMjY5Mzk1MywxNC42MzQzOTUzIDExLjA3NDM5NTMsMTQuNDQxMzk1MyBMNy4yOTczOTUyOSwxMC43MTEzOTUzIEM2LjkwNDM5NTI5LDEwLjMyMzM5NTMgNi45MDAzOTUyOSw5LjY5MDM5NTI5IDcuMjg4Mzk1MjksOS4yOTczOTUyOSBDNy42NzYzOTUyOSw4LjkwNDM5NTI5IDguMzEwMzk1MjksOC45MDAzOTUyOSA4LjcwMjM5NTI5LDkuMjg4Mzk1MjkgTDExLjc3NzM5NTMsMTIuMzI1Mzk1MyBMMTQuODUxMzk1Myw5LjI4ODM5NTI5IEMxNS4yNDUzOTUzLDguOTAwMzk1MjkgMTUuODc4Mzk1Myw4LjkwNDM5NTI5IDE2LjI2NjM5NTMsOS4yOTczOTUyOSBDMTYuNjU0Mzk1Myw5LjY5MDM5NTI5IDE2LjY1MDM5NTMsMTAuMzIzMzk1MyAxNi4yNTczOTUzLDEwLjcxMTM5NTMgTDEyLjQ4MDM5NTMsMTQuNDQxMzk1MyBDMTIuMjg1Mzk1MywxNC42MzQzOTUzIDEyLjAzMTM5NTMsMTQuNzMwMzk1MyAxMS43NzczOTUzLDE0LjczMDM5NTMiIGlkPSJwYXRoLTEiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJjYXJldC1kb3duIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBmaWxsPSIjQkI4NkZDIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHVzZSBpZD0iTWFzayIgZmlsbD0iI0JCOThGQyIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICA8L2c+Cjwvc3ZnPg==);
   }
 
   /* Form controls, grid cells */
@@ -77,8 +278,91 @@
     color: #bb86fc !important;
   }
 
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.metadata-description {
+    padding: 10px;
+  }
+
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.captured-info,
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.image-ocrinfo-component
+    > div
+    > div.ocr-icon-block
+    > div,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div
+    > div.container-close-date-images.related-info
+    > div.section-headline
+    > a
+    > span
+    > span:nth-child(1),
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div
+    > div.related-images-grid-view.related-info
+    > div
+    > div
+    > span
+    > span:nth-child(1) {
+    margin-left: 10px;
+  }
+
   /* Additional elements */
-  div,
+  div:not(
+      #react-root
+        > div:nth-child(n)
+        > div
+        > div
+        > main
+        > div
+        > div
+        > div
+        > div
+        > div:nth-child(2)
+        > section
+        > div:nth-child(n)
+        > a
+        > div
+    ):not(.caBpUIyLTfNBwvxfTyDa):not(div.k3nzGrC3hEubDzXyOg_r),
   p,
   h1,
   h2,
@@ -98,8 +382,28 @@
   header,
   footer,
   main {
-    background-color: #121212 !important;
-    color: #e0e0e0 !important;
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > main
+    > div
+    > div
+    > div
+    > div
+    > div:nth-child(n)
+    > section
+    > div:nth-child(n)
+    > div {
+    background: #0000 !important;
+  }
+
+  .k3nzGrC3hEubDzXyOg_r {
+    overflow: unset;
   }
 
   .modal,
@@ -212,6 +516,20 @@
   }
 
   #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div {
+    box-shadow:
+      0px 0px 1px 1px #bb86fc,
+      0 0 1px #bb86fc;
+    opacity: 1;
+  }
+
+  #react-root
     > div:nth-child(n)
     > div
     > div
@@ -243,5 +561,78 @@
     background-color: black !important;
     border: none;
     color: #bb86fc;
+  }
+
+  #search-box-input:hover {
+    border-bottom: 1px solid #000;
+  }
+
+  #search-box-input::placeholder,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.search-box
+    > div
+    > div.search-box-panel
+    > div.search-history-list
+    > div
+    > div:nth-child(n)
+    > a
+    > div {
+    color: #bb86fc;
+    /* Change this to the desired color */
+  }
+
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.search-box
+    > div
+    > div.search-box-panel
+    > div.search-history-list
+    > div
+    > div:nth-child(n)
+    > button.switch-save
+    > svg:hover {
+    fill: #bb86fc;
+  }
+
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.search-box
+    > div
+    > div.search-box-panel
+    > div.search-history-list
+    > div
+    > div.saved-search-header {
+    color: #bb86fc;
+    font-size: 16px;
+    text-decoration: underline;
+  }
+
+  /* For WebKit-based browsers (e.g., Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 12px;
+    /* Width of the scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #bb86fc;
+    /* Background of the scrollbar track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #121212;
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Rounded corners of the scrollbar thumb */
+    border: 3px solid #121212;
+    /* Additional space around the thumb */
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    /* Thin scrollbar */
+    scrollbar-color: #bb86fc #000;
+    /* Color of the thumb and track */
   }
 }
