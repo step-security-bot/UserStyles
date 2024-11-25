@@ -1,6 +1,6 @@
-remote_theme: pages-themes/cayman@v0.2.0
-title: Wigle.net UserStyle
-description: DarkMode Wigle.Net UserStyle
+remote_theme: pages-themes/midnight@v0.2.0
+title: Nick2bad4u / Typpi.online Userstyles
+description: UserStyle collection made by Typpi / Nick2bad4u
 url: 'https://userstyles.github.typpi.online' # the base hostname & protocol for your site
 plugins:
   - jekyll-sitemap
