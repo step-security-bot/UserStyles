@@ -11,6 +11,64 @@
 
 # Typpi's UserStyles
 
-Collection of UserStyles made by Typpi.
+A curated collection of UserStyles and scripts made by Typpi, designed to improve web experiences with sleek dark modes, enhanced functionality, and unique themes.
 
-Styles also hosted here: https://userstyles.world/user/Nick2bad4u and Userscripts here: https://greasyfork.org/en/users/872842-nick2bad4u
+## Featured Styles
+
+- **<span style="color: #ff79c6;">17track.net Dark Mode</span>**  
+  A sleek dark mode for 17track.net, making package tracking easier on the eyes.
+
+- **<span style="color: #bd93f9;">Archive.org Night Theme (Updated)</span>**  
+  Browse Archive.org with a soothing night theme.
+
+- **<span style="color: #ffb86c;">Dearrow - Remove Dearrow Button</span>**  
+  Simplify your interface by removing the Dearrow button.
+
+- **<span style="color: #50fa7b;">ESPN Dark Mode</span>**  
+  A dark mode theme for ESPN, perfect for sports enthusiasts.
+
+- **<span style="color: #8be9fd;">Fandom Dark</span>**  
+  A comprehensive dark mode for Fandom, enhancing your wiki browsing experience.
+
+- **<span style="color: #ff5555;">Fedex.com Dark Mode</span>**  
+  Track your packages with a stylish dark mode for Fedex.com.
+
+- **<span style="color: #f1fa8c;">Garmin Connect Dark</span>**  
+  A dark theme for Garmin Connect, ideal for fitness enthusiasts.
+
+- **<span style="color: #ff79c6;">GreasyFork Dark</span>**  
+  Browse GreasyFork with a modern dark mode.
+
+- **<span style="color: #bd93f9;">Gyazo Dark Mode</span>**  
+  Capture and share screenshots with Gyazo's dark mode.
+
+- **<span style="color: #50fa7b;">MyBikeTraffic Dark Mode</span>**  
+  Navigate MyBikeTraffic with a dark theme.
+
+- **<span style="color: #ff5555;">Nascar.com Dark Mode</span>**  
+  Follow NASCAR with a dark mode for Nascar.com.
+
+- **<span style="color: #ff79c6;">SteamDB Dark Mode</span>**  
+  Explore SteamDB with a dark mode.
+
+- **<span style="color: #50fa7b;">SteamStat.us Re-Remastered Themes</span>**  
+  A variety of themes for SteamStat.us, including seasonal, sports, and gaming-inspired designs.
+
+- **<span style="color: #8be9fd;">TechPowerUp Dark Mode</span>**  
+  Browse TechPowerUp with a dark theme.
+
+- **<span style="color: #ff79c6;">YouTube TV Volume Rememberer</span>**  
+  Remember your YouTube TV volume settings seamlessly.
+
+- **<span style="color: #f1fa8c;">ZwiftPower.com Dark Mode</span>**  
+  Compete on ZwiftPower with a dark mode.
+
+## Additional Themes
+
+Enjoy a variety of designs for popular websites like Walmart, Strava, Unroll.me, Wigle, TrainingPeaks, and more! 
+
+## Hosted Styles & Scripts
+
+- **UserStyles**: [https://userstyles.world/user/Nick2bad4u](https://userstyles.world/user/Nick2bad4u)  
+- **Userscripts**: [https://greasyfork.org/en/users/872842-nick2bad4u](https://greasyfork.org/en/users/872842-nick2bad4u)
+
