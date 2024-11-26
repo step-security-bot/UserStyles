@@ -5,67 +5,59 @@
 @description  Garmin Connect Dark Dashboard
 @author       Nick2bad4u
 @license      UnLicense
+@homepage URL https://userstyles.github.typpi.online
 ==/UserStyle== */
-@-moz-document domain("connect.garmin.com") {
-  :is(.connect-container) {
-    filter: invert(1) hue-rotate(180deg);
-  }
+@-moz-document domain("connect.garmin.com")
+{
+	:is(.connect-container)
+	{
+		filter: invert(1) hue-rotate(180deg);
+	}
 
-  .main-nav,
-  .leaflet-zoom-animated,
-  html img,
-  .modal-backdrop,
-  .modal {
-    filter: invert(1) hue-rotate(180deg);
-  }
+	.main-nav,
+	.leaflet-zoom-animated,
+	html img,
+	.modal-backdrop,
+	.modal, 
+	div > iframe
+	{
+		filter: invert(1) hue-rotate(180deg);
+	}
 
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
-    font-weight: 600;
-  }
+	h1,
+	.h1,
+	h2,
+	.h2,
+	h3,
+	.h3,
+	h4,
+	.h4,
+	h5,
+	.h5,
+	h6,
+	.h6
+	{
+		font-weight: 600;
+	}
 
-  th.weekly-totals.weekly-totals-header,
-  td.weekly-totals.weekly-totals-data {
-    filter: invert(1) hue-rotate(180deg);
-    color: #fff !important;
-    background-color: black !important;
-  }
+	th.weekly-totals.weekly-totals-header,
+	td.weekly-totals.weekly-totals-data
+	{
+		filter: invert(1) hue-rotate(180deg);
+		color: #FFF !important;
+		background-color: black !important;
+	}
 
-  .in.fade.modal-backdrop {
-    display: table !important;
-  }
+	.in.fade.modal-backdrop
+	{
+		display: table !important;
+	}
 
-  [class*='modal']:not(
-      #pageContainer
-        > div
-        > div.modal.hide.fade.modal-wide.metrics-edit-modal.in
-        > div.modal-header
-        > h3,
-      #pageContainer
-        > div
-        > div
-        > div.row-fluid.list-items.flexItemAutoHeight
-        > ul
-        > li:nth-child(n)
-        > div
-        > div.pull-left.activity-name-type.title-col
-        > div.activity-name-edit.inline-edit.inline-edit-text-field
-        > button,
-      #activityIntroViewPlaceholder > div.page-header-content > h3 > div > div > button
-    ) {
-    filter: invert(1) hue-rotate(180deg);
-    color: #000 !important;
-    background-color: #fff !important;
-    border-color: #5971c6f0;
-  }
+	[class *= "modal"]:not(#pageContainer > div > div.modal.hide.fade.modal-wide.metrics-edit-modal.in > div.modal-header > h3, #pageContainer > div > div > div.row-fluid.list-items.flexItemAutoHeight > ul > li:nth-child(n) > div > div.pull-left.activity-name-type.title-col > div.activity-name-edit.inline-edit.inline-edit-text-field > button, #activityIntroViewPlaceholder > div.page-header-content > h3 > div > div > button)
+	{
+		filter: invert(1) hue-rotate(180deg);
+		color: #000 !important;
+		background-color: #FFF !important;
+		border-color: #5971C6F0;
+	}
 }
