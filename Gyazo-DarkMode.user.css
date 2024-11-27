@@ -577,9 +577,25 @@
     > div
     > div:nth-child(n)
     > a
-    > div {
+    > div,
+  #features-clean-share,
+  #features-ai,
+  #features-video-message,
+  body > div.content > section.testimonials > div > div > h2,
+  body > div.content > section.testimonials > div > div > div > div:nth-child(n) > blockquote > p,
+  body > div.content > section.testimonials > div > div > div > div:nth-child(n) > div > h5,
+  body > div.content > section.pricing > div > h2,
+  #features-unlimited,
+  #features-edit,
+  #conclusion > div > div > h2 {
     color: #bb86fc;
     /* Change this to the desired color */
+  }
+
+  body > div.content > section.testimonials > div > div > div > div:nth-child(n) > div > div,
+  .testimonials .card-footer::before {
+    color: #bb86fc !important;
+    background-color: #bb86fc;
   }
 
   #react-root
@@ -591,8 +607,37 @@
     > div
     > div:nth-child(n)
     > button.switch-save
-    > svg:hover {
+    > svg:hover,
+  body.pro .features h2,
+  body
+    > div.content
+    > section.features-table
+    > div
+    > table:nth-child(n)
+    > tbody:nth-child(3)
+    > tr:nth-child(n)
+    > td:nth-child(n)
+    > div
+    > kamon-lp {
     fill: #bb86fc;
+  }
+  #global-dropdown-menu > div.popover-content > ul > li:nth-child(n) > a > svg > path:nth-child(n) {
+    fill: #bb86fc;
+  }
+
+  body > div.content > section.pricing > div > div > div.pricing-box.pricing-box-default,
+  #conclusion > div > button {
+    border: 1px solid #bb86fc;
+  }
+
+  #global-dropdown-menu
+    > div.popover-content
+    > ul
+    > li:nth-child(13)
+    > button
+    > svg
+    > path:nth-child(n) {
+    fill: #f00;
   }
 
   #react-root
@@ -634,5 +679,38 @@
     /* Thin scrollbar */
     scrollbar-color: #bb86fc #000;
     /* Color of the thumb and track */
+  }
+  .global-dropdown-menu-divider {
+    background-color: #000; /* Change to your desired color */
+  }
+  body > div.content > div.static-page-nav-container.light > nav {
+    background-color: #121212;
+  }
+
+  body > div.content > div.static-page-nav-container.light > nav > div > div > a > div {
+    color: red !important;
+  }
+
+  body > div.content > div.static-page-nav-container.light > nav > div > div > a > div {
+    background-image: url('https://i.gyazo.com/3b48aa49e16ccde7bf0f4903269a9bc0.png');
+    width: 48px;
+    height: 48px;
+  }
+  body > div.content > section.hero.hidden-xs,
+  body > div.content > section.testimonials,
+  #conclusion,
+  #faq,
+  #faq > div > div.faq.static-page-faq > ul > li:nth-child(n):hover {
+    background-image: linear-gradient(80deg, #000 2%, #bb86fc 30%, #121212);
+  }
+  body > div.content > section.hero.hidden-xs > div.container,
+  body > div.content > div.static-page-nav-container.dark > nav > div,
+  body > div.content > div.static-page-nav-container.dark > nav > div > div {
+    border-radius: 20px;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+  }
+  #conclusion > div {
+    border-radius: 20px;
   }
 }

@@ -66,10 +66,9 @@ A curated collection of UserStyles and scripts made by Typpi, designed to improv
 
 ## Additional Themes
 
-Enjoy a variety of designs for popular websites like Walmart, Strava, Unroll.me, Wigle, TrainingPeaks, and more! 
+Enjoy a variety of designs for popular websites like Walmart, Strava, Unroll.me, Wigle, TrainingPeaks, and more!
 
 ## Hosted Styles & Scripts
 
-- **UserStyles**: [https://userstyles.world/user/Nick2bad4u](https://userstyles.world/user/Nick2bad4u)  
+- **UserStyles**: [https://userstyles.world/user/Nick2bad4u](https://userstyles.world/user/Nick2bad4u)
 - **Userscripts**: [https://greasyfork.org/en/users/872842-nick2bad4u](https://greasyfork.org/en/users/872842-nick2bad4u)
-
