@@ -1,11 +1,10 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      1.3
+@version      1.4
 @namespace    typpi.online
 @description  Garmin Connect Dark Dashboard
 @author       Nick2bad4u
 @license      UnLicense
-@homepage URL https://userstyles.github.typpi.online
 ==/UserStyle== */
 @-moz-document domain("connect.garmin.com") {
   :is(.connect-container) {
@@ -17,7 +16,7 @@
   html img,
   .modal-backdrop,
   .modal,
-  div > iframe {
+  .video-container {
     filter: invert(1) hue-rotate(180deg);
   }
 
