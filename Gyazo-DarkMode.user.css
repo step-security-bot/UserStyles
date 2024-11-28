@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      20241128.00.57
+@version      20241128.1.5
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -35,31 +35,16 @@
     color: #e0e0e0 !important;
   }
 
+  #popover > h3,
   .header-block.explorer-header-block,
   a,
   button,
+  html,
   img,
   input,
   span {
     color: #bb86fc !important;
     background-color: #121212 !important;
-  }
-
-  #react-root
-    > div:nth-child(2)
-    > div
-    > div
-    > aside
-    > div
-    > div
-    > ul
-    > li.new-collection-field
-    > span
-    > span
-    > svg
-    > path,
-  a > span.toplevel-item-kamon > svg > path {
-    filter: invert(1);
   }
 
   #global-dropdown-menu
@@ -72,6 +57,7 @@
   #global-dropdown-menu > div.popover-content > ul > li:nth-child(n) > a > svg > path:nth-child(n),
   #like > svg,
   #like > svg > path,
+  #popover > div.popover-content > div > div > div > svg,
   #posts
     > div
     > *
@@ -94,6 +80,13 @@
     > div.header-block.explorer-header-block
     > div.explorer-action-btn-toolbar
     > div.explorer-action-btn-group
+    > button
+    > svg,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > div.upload-modal.captures-upload-modal.show
     > button
     > svg,
   #react-root
@@ -123,6 +116,43 @@
     > div
     > button
     > svg,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > *
+    > a
+    > span.toplevel-item-kamon
+    > svg
+    > path,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.new-collection-field
+    > span
+    > span
+    > svg
+    > path,
+  #react-root > div > div > div > div.transform-page-header > div > button > svg,
+  #react-root
+    > div
+    > div
+    > div
+    > div.transform-page-header
+    > div
+    > div
+    > button:nth-child(n)
+    > svg
+    > path,
   [id^='headlessui-menu-button-'] > svg > path,
   [id^='headlessui-menu-item-'] > svg,
   body.pro .features h2,
@@ -161,6 +191,13 @@
     > button
     > svg:hover,
   #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > div.upload-modal.captures-upload-modal.show
+    > button:hover
+    > svg,
+  #react-root
     > div:nth-child(2)
     > div
     > div
@@ -191,6 +228,43 @@
     > div
     > button
     > svg:hover,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > :hover
+    > a
+    > span.toplevel-item-kamon
+    > svg
+    > path,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.new-collection-field
+    > span:hover
+    > span
+    > svg
+    > path,
+  #react-root > div > div > div > div.transform-page-header > div > button:hover > svg,
+  #react-root
+    > div
+    > div
+    > div
+    > div.transform-page-header
+    > div
+    > div
+    > button:hover:nth-child(n)
+    > svg
+    > path,
   [id^='headlessui-menu-button-'] > svg > path:hover,
   [id^='headlessui-menu-item-'] > svg:hover {
     fill: white;
@@ -288,11 +362,27 @@
   #faq > div > div.faq.static-page-faq > ul > li.bottom > div.question:hover,
   #faq > div > div.faq.static-page-faq > ul > li:nth-child(n) > div.question:hover,
   #posts > div > * > div > section.post > div > div > h2:nth-child(n),
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.metadata-description
+    > div
+    > div.TOTVG659Y6UvGA4WzVD1
+    > form
+    > input,
   .card.medium-card,
   .container-close-date-images.related-info,
   .images-after-origin,
   .metadata,
   .related-info-box-component,
+  .side-block .side-block-items .sub,
   .testing-swap-image-container .metadata-baseinfo,
   body > div.content > div:nth-child(2) > h1,
   body > div.content > div:nth-child(n) > h2,
@@ -599,6 +689,10 @@
     border-bottom: 1px solid #000;
   }
 
+  #popover > h3 {
+    border-bottom: 3px solid #000;
+  }
+
   #conclusion > div > div > h2,
   #faq > div > div.faq.static-page-faq > ul > li:nth-child(n) > div.expand > i,
   #features-ai,
@@ -638,6 +732,9 @@
   }
 
   #conclusion > div > button,
+  #react-root > div > div > div > div.transform-page-header > div > button,
+  #react-root > div > div > div > div.transform-page-header > div > div > button:nth-child(n),
+  .Xpov4pPcafwfUVkzW7Gw,
   body > div.content > section.pricing > div > div > div.pricing-box.pricing-box-default,
   body > div.content > section.teams-pricing > div > div.box-container > div.box.small-team {
     border: 1px solid #bb86fc;
@@ -735,6 +832,19 @@
   }
 
   #faq > div > div.faq.static-page-faq > ul > li:nth-child(n),
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div
+    > div.related-images-grid-view.related-info
+    > div
+    > section
+    > div:nth-child(n)
+    > a,
   body > div.content > section.faq > div > div > ul > li:nth-child(n) {
     border-top: 1px solid #bb86fc;
   }
@@ -773,6 +883,7 @@
     position: relative;
   }
 
+  .search-box .search-box-input-wrap input:focus,
   .static-page-faq .bottom {
     border-bottom: 1px solid #bb86fc;
   }
@@ -827,5 +938,248 @@
   .side-block .side-block-items .toplevel-item-active {
     pointer-events: none;
     background: #121212;
+  }
+
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > aside
+    > div
+    > div
+    > ul
+    > li.toplevel-item.collection-list
+    > ul:hover
+    > li:nth-child(n)
+    > div
+    > button
+    > svg
+    > path,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-box-component.zoomable
+    > div.navigation.next-navigation
+    > svg
+    > path,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-box-component.zoomable
+    > div.navigation.prev-navigation
+    > svg
+    > path,
+  .search-history-list .histories .history-row button.switch-save .kamon {
+    fill: #bb86fc;
+  }
+
+  .search-history-list .histories .history-row button.switch-save:hover .kamon,
+  .search-history-list .histories .history-row:hover button.switch-save .kamon {
+    fill: #fff;
+  }
+
+  .side-block-items .collection-item .file-thumb,
+  .side-block-items .collection-item .thumb {
+    border: 1px solid #bb86fc;
+    box-shadow: 0 0 0 1px #bb86fc;
+  }
+
+  .side-block-items .collection-item > a {
+    border-radius: 5px;
+  }
+
+  .side-block-items .collection-item:focus-within,
+  .side-block-items .collection-item:hover {
+    background: #bb86fc;
+  }
+
+  #react-root > div.header-block.explorer-header-block > a {
+    border-bottom: 10px;
+    background-color: #12121200 !important;
+  }
+
+  #popover > div.popover-content > ul > li:nth-child(n):hover,
+  .global-logo-icon:hover {
+    opacity: 0.5;
+  }
+
+  .form-control:focus,
+  .global-header-search.global-header-search input:focus {
+    border-color: #bb86fc !important;
+    outline: 0;
+    box-shadow: 0 0 0 3px #3c2a51;
+  }
+
+  [data-hover-visible] .btn-primary:hover {
+    color: #fff;
+    border-color: #bb86fc;
+  }
+
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > div.upload-modal.captures-upload-modal.show
+    > div
+    > h1:nth-child(2) {
+    color: #d7d7d7;
+  }
+
+  .related-images .related-info {
+    padding-top: 3px;
+    padding-bottom: 33px;
+  }
+
+  .B9QQGIFrwoa05qnyZvI5 {
+    row-gap: 1px !important;
+    column-gap: 0 !important;
+    background-color: #bb86fc !important;
+  }
+
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div,
+  .image-page .related-info:last-of-type {
+    padding-bottom: 1px;
+  }
+
+  .image-page hr {
+    border-top: 0 solid rgba(255, 255, 255, 0.15);
+  }
+
+  #react-root
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.related-info-box-component
+    > div
+    > div.related-images-grid-view.related-info {
+    border-top: 5px solid #bb86fc !important;
+    padding-top: 15px !important;
+  }
+
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.image-ocrinfo-component
+    > div
+    > div.ocr-desc-buttons
+    > div
+    > button,
+  #react-root
+    > div:nth-child(n)
+    > div
+    > div
+    > div
+    > div.image-infos
+    > div.edit-box-component
+    > div
+    > div
+    > div
+    > div.image-ocrinfo-component
+    > div
+    > div.ocr-desc-buttons
+    > div
+    > div
+    > button,
+  .pjZHyYN8MthPpYWZDS0d,
+  .vtVH6utAExSlC9aN2qwE {
+    border: 1px dashed #bb86fc !important;
+  }
+
+  input[name='new-tag']::placeholder {
+    color: #bb86fc;
+  }
+
+  #headlessui-dialog-overlay-5,
+  #react-root
+    > div.header-block.explorer-header-block
+    > div.explorer-action-btn-toolbar
+    > div.explorer-action-btn-group
+    > a,
+  .W9K8hRc2gk7SniSQJYi1,
+  .kuJ39tkCjATBXUZiuSKB {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.09) !important;
+  }
+
+  #react-root
+    > div
+    > div
+    > div
+    > div.transform-page-header
+    > div
+    > div
+    > button:nth-child(n)
+    > span {
+    border-top: 1px solid #bb86fc !important;
+    border-bottom: 1px solid #bb86fc !important;
+    line-height: 30px !important;
+  }
+
+  .add-to-collection-popover .collection-operation-wrap .collection-operation-add,
+  .add-to-collection-popover .new-collection-form .form-box input::placeholder {
+    color: #bb86fc !important;
+  }
+}
+
+@-moz-document regexp("^https://(www\\.)?gyazo\\.com/.*/draw$")
+{
+  article,
+  aside,
+  div:not(
+      #react-root
+        > div:th-child(n)
+        > div
+        > div
+        > main
+        > div
+        > div
+        > div
+        > div
+        > div:nth-child(2)
+        > section
+        > div:nth-child(n)
+        > a
+        > div
+    ):not(.caBpUIyLTfNBwvxfTyDa):not(div.k3nzGrC3hEubDzXyOg_r),
+  footer,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header,
+  li,
+  main,
+  nav,
+  p,
+  section,
+  table,
+  td,
+  th,
+  ul {
+    background-color: #00000014 !important;
+    /* Example style */
   }
 }
