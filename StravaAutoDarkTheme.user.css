@@ -1,9 +1,9 @@
 /* ==UserStyle==
-@name         	Strava Darkest Fusion [Updated for Sauce Users]
+@name         	Strava Darkest Fusion [Updated for Sauce/Elevate Users]
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
-@description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	1.6
+@description  	Updated Dark Mode for Strava for users who use Sauce for Strava or Elevate.
+@version      	1.7
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 @preprocessor 	stylus
@@ -337,7 +337,7 @@
 	.infobox,
 	:not(.photo-nav):not(.media-body) > .btn,
 	.button,
-	:not([class *= "KudosAndComments--"]):not([class *= "GroupActivity"]):not(.photo-nav):not(.drop-down-menu) > button:not([class ^= "src-Notifications__nav-bar-button"]):not([class *= "-components-KudosAndComments-KudosAndComments__count-button"]):not([class *= "Activity__headline-text-btn"]):not([class *= "-ActivityEntryBody__achievements-trophy"]),
+	:not([class *= "KudosAndComments--"]):not([class *= "GroupActivity"]):not(.photo-nav):not(.drop-down-menu) > button:not([class ^= "src-Notifications__nav-bar-button"]):not([class *= "-components-KudosAndComments-KudosAndComments__count-button"]):not([class *= "Activity__headline-text-btn"]):not([class *= "-ActivityEntryBody__achievements-trophy"]):not(.ui-dialog.sauce-dialog .ui-dialog-buttonpane .ui-dialog-buttonset button, .ui-dialog.sauce-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .btn),
 	input[type = "submit"],
 	input[type = "button"],
 	input[type = "reset"],
@@ -403,7 +403,7 @@
 	[class *= "RecentActivities_card__"],
 	[class *= "-ModalWithTabs-module__tabList"],
 	[class *= "styles_navItem"] > a[class *= "Button_default_"]:hover,
-	.react-select__option--is-selected
+	.react-select__option--is-selected,
 	{
 		background-color: #3C3C3C !important;
 	}
@@ -473,7 +473,8 @@
 	.upload-tags label .hole::after,
 	.year-calendar .interval-graph .bar .fill,
 	#strava-map-controls > #create-route,
-	[class *= 'WeekInsightStats-WeekChart-WeekChart-module__bar'] > span
+	[class *= 'WeekInsightStats-WeekChart-WeekChart-module__bar'] > span,
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog .sync-logs .logs
 	{
 		background-color: #ccc !important;
 	}
@@ -903,7 +904,8 @@
 	[class *= '-CommentsThread-module__commentText'] > .mention:not(:hover),
 	[class *= 'LeaderboardsTable--leaderboard-entry'] div > a:not(:hover),
 	[class *= 'CollapsibleSection--dark'],
-	[class *= 'Post--author-name--']:hover
+	[class *= 'Post--author-name--']:hover,
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog header.title
 	{
 		color: #fafafa !important;
 	}
@@ -1089,9 +1091,44 @@
 	[class *= 'DropdownSelect'] > .react-select__control div,
 	.react-select__option,
 	[class *= 'CollapsibleSection--light'],
-	[class *= 'Post--author-name--']
+	[class *= 'Post--author-name--'],
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog .sync-logs header .btn [data-icon][data-prefix = far]
 	{
 		color: #ccc !important;
+	}
+
+	.ui-dialog.sauce-dialog .btn:not(.btn-unstyled):not(.btn-primary):not(.btn-secondary)
+	{
+		background-color: #962F03B0 !important;
+	}
+
+	.ui-dialog.sauce-dialog .btn:not(.btn-unstyled):not(.btn-primary):not(.btn-secondary):hover,
+	{
+		background-color: #999 !important;
+		border: 1px solid #FFF !important;
+		outline: 1px solid #FFF !important;
+	}
+
+	.ui-dialog.sauce-dialog input:not([type = range]),
+	#ui-id-1 > div > div.entry.block.history.ftp.history-view.mutable-data-view > div.mutable-data-entries > div:nth-child(n) > div,
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog .ui-dialog-content .entry .btn
+	{
+		background-color: rgba(150, 47, 3, .69) !important;
+		border: 1px solid #FFF !important;
+		outline: 1px solid #FFF !important;
+		color: #FFF !important;
+	}
+
+	.ui-dialog.sauce-dialog .btn:not(.btn-unstyled):not(.btn-primary):not(.btn-secondary)
+	{
+		color: #FFF !important;
+		border: 1px solid #FFF !important;
+	}
+
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog .ui-dialog-content .performance-mgmt .entry.block.hr-zones-panel table tr.lt
+	{
+		background-color: #962F03B0 !important;
+		color: #FFF !important;
 	}
 
 	label,
@@ -1130,12 +1167,21 @@
 	#strava-map-controls > #create-route,
 	.distribution-chart td,
 	.uploads li.type-tag a,
-	.flagged.error .marginless
+	.flagged.error .marginless,
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog .sync-logs .logs
 	{
 		color: #1a1a1a !important;
 	}
 
-	#global-header .nav-item:hover > a:not(.btn-default)
+	.ui-dialog.sauce-dialog .btn:not(.btn-unstyled):not(.btn-primary):not(.btn-secondary)
+	{
+		background-color: rgba(150, 47, 3, 0.69) !important;
+	}
+
+	#global-header .nav-item:hover > a:not(.btn-default),
+	footer.achievements .footer-achievements-title .segment-achievement,
+	footer.achievements .footer-achievements-list .segment-achievement:hover,
+	#segments > section > table > tbody > tr:nth-child(n) > td.name-col > div.name:hover
 	{
 		color: #fc5200 !important;
 	}
@@ -1315,7 +1361,9 @@
 	.location > .app-icon.icon-location,
 	[class *= 'styles_navItem'] > a[class *= 'Button_default_'] > img,
 	.nav-item > .experiment > img[alt],
-	[class *= 'ActionsDropdown--more-icon'][role = 'button']
+	[class *= 'ActionsDropdown--more-icon'][role = 'button'],
+	#sauce-infopanel table td .sauce-peak-rank .place,
+	#sauce-infopanel table td .sauce-peak-rank .category
 	{
 		filter: invert(100%) !important;
 	}
@@ -1340,6 +1388,18 @@
 		font-weight: 300 !important;
 	}
 
+	.sauce-segment-score
+	{
+		font-weight: 600 !important;
+		font-size: 10px;
+	}
+
+	#sauce-infopanel table td .sauce-peak-rank .place,
+	#sauce-infopanel table td .sauce-peak-rank .category
+	{
+		font-size: 8px;
+	}
+
 	.btn-link:hover,
 	#search-results > tbody > tr:nth-child(n) > td.view-col.col-actions > ul > li:nth-child(n) > div > button:hover,
 	#search-results > tbody > tr:nth-child(n) > td.view-col.col-actions > ul > li:nth-child(n) > div > ul > li:nth-child(n) > button:hover,
@@ -1347,7 +1407,9 @@
 	#search-results > tbody > tr:nth-child(n) > td.view-col.col-title > a:hover,
 	body > div.fancybox-overlay.fancybox-overlay-fixed > div > div > div > div > div > div:nth-child(1) > div:nth-child(2),
 	.elevateExtendedData .gridDataContainer:hover,
-	.elevateExtendedData td:hover
+	.elevateExtendedData td:hover,
+	#sauce-performance > nav section row.full > header,
+	#sauce-performance > main section.sauce-panels .sauce-panel > header
 	{
 		color: #FC5200 !important;
 	}
@@ -1398,7 +1460,8 @@
 	}
 
 	body > div.fancybox-overlay.fancybox-overlay-fixed > div > div > div > div > div > h2:nth-child(10),
-	.src-components-BeesAdpTable-BeesAdpTable-module__adpTable--m7oGI .src-components-BeesAdpTable-BeesAdpTable-module__highlightedRow--y7wRu
+	.src-components-BeesAdpTable-BeesAdpTable-module__adpTable--m7oGI .src-components-BeesAdpTable-BeesAdpTable-module__highlightedRow--y7wRu,
+	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog header.title
 	{
 		background-color: #962F03 !important;
 	}
@@ -1428,9 +1491,22 @@
 		background-color: #2C2C2C;
 	}
 
-	#relative-effort > div > * > div:nth-child(n) > * > div > div.recharts-wrapper > svg > g.recharts-layer.recharts-area > g > path.recharts-curve.recharts-area-area
+	#sauce-performance > nav section row.full > header,
+	#sauce-performance > main section.sauce-panels .sauce-panel > header
+	{
+		background-color: #FFF0 !important;
+	}
+
+	#relative-effort > div > * > div:nth-child(n) > * > div > div.recharts-wrapper > svg > g.recharts-layer.recharts-area > g > path.recharts-curve.recharts-area-area,
+	#sauce-performance > main section.sauce-panels .sauce-panel > header
 	{
 		fill: #962F03B0 !important;
+		background-image: unset !important;
+	}
+
+	#sauce-performance > nav section row.full .backdrop-icon
+	{
+		opacity: 1;
 	}
 
 
