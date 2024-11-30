@@ -2,52 +2,76 @@
 @name           ZwiftPower.com - Dark Mode
 @namespace      https://github.com/Nick2bad4u/UserStyles
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
-@version        1.0.2
+@version        1.1.0
 @description    ZwiftPower Dark Mode
 @author         Nick2bad4u
 @license        UnLicense
 ==/UserStyle== */
-@-moz-document domain("zwiftpower.com") {
-  html,
-  svg,
-  iframe,
-  nav,
-  img.img-circle,
-  rect,
-  span.text-gray,
-  #team_riders
-    > tbody
-    > tr:nth-child(n)
-    > td.text-left.text-nowrap.athlete_col.sorting_1
-    > div
-    > span,
-  #user-menu > ul.nav.navbar-nav.navbar-right.hidden-xs.fix-right-nav > li > ul,
-  #team_list > tbody > tr:nth-child(n) > td:nth-child(n) > div > span {
-    filter: invert(1) hue-rotate(180deg);
-  }
+@-moz-document domain("zwiftpower.com")
+{
+	html,
+	svg,
+	iframe,
+	nav,
+	img.img-circle,
+	rect,
+	span.text-gray,
+	#team_riders > tbody > tr:nth-child(n) > td.text-left.text-nowrap.athlete_col.sorting_1 > div > span,
+	#user-menu > ul.nav.navbar-nav.navbar-right.hidden-xs.fix-right-nav > li > ul,
+	#team_list > tbody > tr:nth-child(n) > td:nth-child(n) > div > span,
+	#highcharts-ptc6m8e-28 > svg > g.highcharts-label.highcharts-tooltip.highcharts-color-0 > path
+	{
+		filter: invert(1) hue-rotate(180deg);
+	}
 
-  button:nth-child(n) {
-    color: #000 !important;
-  }
+	button:nth-child(n)
+	{
+		color: #000 !important;
+	}
 
-  #zp_submenu > ul,
-  #zp_submenu > ul > li:nth-child(n) > a {
-    background: white;
-    color: #000 !important;
-    text-shadow: 1px 1px 1px white !important;
-  }
+	#zp_submenu > ul,
+	#zp_submenu > ul > li:nth-child(n) > a
+	{
+		background: white;
+		color: #000 !important;
+		text-shadow: 1px 1px 1px white !important;
+	}
 
-  #page-footer {
-    background-color: #fff;
-    border-radius: 50px;
-  }
+	#highcharts-ptc6m8e-28 > div > span
+	{
+		background: #FFF;
+		border-color: black;
+	}
 
-  button:nth-child(n):hover {
-    background-color: #337ab7 !important;
-  }
+	#page-footer
+	{
+		background-color: #fff;
+		border-radius: 50px;
+	}
 
-  #friends_results > thead > tr > th:nth-child(n)::after {
-    color: #000 !important;
-    opacity: 0.3;
-  }
+	button:nth-child(n):hover
+	{
+		background-color: #337ab7 !important;
+	}
+
+	#tab_main > div > div > div.panel.panel-grey > div.panel-heading
+	{
+		filter: invert(1) hue-rotate(180deg);
+		background-color: #337AB7;
+		border-bottom: 1px solid #337AB7;
+		color: black;
+		font-weight: 500;
+		font-size: 20px;
+	}
+
+	* > svg > g.highcharts-label.highcharts-tooltip.highcharts-color-undefined
+	{
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	#friends_results > thead > tr > th:nth-child(n)::after
+	{
+		color: #000 !important;
+		opacity: 0.3;
+	}
 }
