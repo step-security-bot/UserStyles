@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      1.4
+@version      1.5
 @namespace    typpi.online
 @description  Garmin Connect Dark Dashboard
 @author       Nick2bad4u
@@ -36,7 +36,16 @@
   }
 
   th.weekly-totals.weekly-totals-header,
-  td.weekly-totals.weekly-totals-data {
+  td.weekly-totals.weekly-totals-data,
+  #defaultActivityOptionsGroup
+    > div.row-fluid.page-top
+    > div.span8.page-intro
+    > div
+    > h3
+    > div
+    > div
+    > button
+    > i {
     filter: invert(1) hue-rotate(180deg);
     color: #fff !important;
     background-color: black !important;
@@ -46,7 +55,7 @@
     display: table !important;
   }
 
-  [class*='modal']:not(
+  [class*="modal"]:not(
       #pageContainer
         > div
         > div.modal.hide.fade.modal-wide.metrics-edit-modal.in
@@ -62,7 +71,13 @@
         > div.pull-left.activity-name-type.title-col
         > div.activity-name-edit.inline-edit.inline-edit-text-field
         > button,
-      #activityIntroViewPlaceholder > div.page-header-content > h3 > div > div > button
+      #activityIntroViewPlaceholder
+        > div.page-header-content
+        > h3
+        > div
+        > div
+        > button,
+      .inline-edit-trigger
     ) {
     filter: invert(1) hue-rotate(180deg);
     color: #000 !important;
