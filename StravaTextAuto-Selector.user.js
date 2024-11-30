@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name         Strava Text Auto-Selector
 // @namespace    https://github.com/Nick2bad4u/UserScripts
-// @version      1.0.0
+// @version      1.0.1
 // @description  Automatically selects text in specific Strava elements and displays a notification near the cursor
 // @author       Nick2bad4u
 // @license      UnLicense
 // @homepageURL  https://github.com/Nick2bad4u/UserScripts
 // @grant        none
-// @include      *://*.strava.com/*
+// @include      *://*.strava.com/activities/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/StravaTextAuto-Selector.user.js
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/StravaTextAuto-Selector.user.js
+// @downloadURL
+// @updateURL
 // ==/UserScript==
 
 (function() {
