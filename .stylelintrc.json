@@ -1,5 +1,9 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-scss",
+    "stylelint-stylus"
+  ],
   "rules": {
     "at-rule-no-unknown": [
       true,
@@ -114,7 +118,7 @@
     "keyframes-name-pattern": null,
     "length-zero-no-unit": null,
     "lightness-notation": null,
-    "max-nesting-depth": null,
+    "max-nesting-depth": 5,
     "media-feature-name-allowed-list": null,
     "media-feature-name-disallowed-list": null,
     "media-feature-name-no-vendor-prefix": null,
