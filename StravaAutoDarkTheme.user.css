@@ -3,11 +3,10 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	2.1
+@version      	2.2
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 @preprocessor 	stylus
-@updateURL		https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/StravaAutoDarkTheme.user.css
 
 @var checkbox old_font_type 'Force switch to older font type' 0
 ==/UserStyle== */
@@ -1371,7 +1370,8 @@
 	[class *= "ActionsDropdown--more-icon"][role = "button"],
 	#sauce-infopanel table td .sauce-peak-rank .place,
 	#sauce-infopanel table td .sauce-peak-rank .category,
-	#main > div > div > div:nth-child(3) > div > ul > li:nth-child(n)
+	#main > div > div > div:nth-child(3) > div > ul > li:nth-child(n),
+	#container-nav > ul.global-nav.nav-group > li:nth-child(n) > ul > li:nth-child(n) > a > img
 	{
 		filter: invert(100%) !important;
 	}
