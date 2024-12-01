@@ -1,78 +1,99 @@
 // ==UserScript==
 // @name         Strava Text Auto-Selector
 // @namespace    https://github.com/Nick2bad4u/UserScripts
-// @version      1.0.1
-// @description  Automatically selects text in specific Strava elements and displays a notification near the cursor
+// @version      1.0.3
+// @description  Automatically selects text in specific Strava elements and displays a notification near the cursor. Also allows right-click to copy text.
 // @author       Nick2bad4u
 // @license      UnLicense
 // @homepageURL  https://github.com/Nick2bad4u/UserScripts
 // @grant        none
 // @include      *://*.strava.com/activities/*
+// @include      *://*.strava.com/athlete/training
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
-// @downloadURL
-// @updateURL
+// @downloadURL https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.user.js
+// @updateURL https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.meta.js
 // ==/UserScript==
 
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  // Wait for the page to fully load
-  window.addEventListener('load', function () {
-    // Define the elements to target
-    const selectors = [
-      '.content',
-      '#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-summary.mt-md.mb-md > div.details-container > div > h1',
-    ];
+    // Wait for the page to fully load
+    window.addEventListener('load', function() {
+        // Define the elements to target
+        const selectors = [
+            '#search-results > tbody > tr:nth-child(n) > td.view-col.col-title > a',
+            '.content',
+            '#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-summary.mt-md.mb-md > div.details-container > div > h1'
+        ];
 
-    selectors.forEach((selector) => {
-      const targetElement = document.querySelector(selector);
-      if (targetElement) {
-        // Add a click event listener to the target element
-        targetElement.addEventListener('click', function (event) {
-          // Select all text inside the element
-          const range = document.createRange();
-          range.selectNodeContents(targetElement);
+        selectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(targetElement => {
+                // Add a click event listener to the target element
+                targetElement.addEventListener('click', function(event) {
+                    // Select all text inside the element
+                    const range = document.createRange();
+                    range.selectNodeContents(targetElement);
 
-          const selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(range);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
 
-          // Copy the selected text to the clipboard
-          const copiedText = selection.toString();
-          navigator.clipboard
-            .writeText(copiedText)
-            .then(() => {
-              // Display a notification near the cursor
-              showNotification(event.clientX, event.clientY, 'Text Copied!');
-            })
-            .catch(() => {
-              showNotification(event.clientX, event.clientY, 'Failed to Copy!');
+                    // Copy the selected text to the clipboard
+                    const copiedText = selection.toString();
+                    navigator.clipboard.writeText(copiedText).then(() => {
+                        // Display a notification near the cursor
+                        showNotification(event.clientX, event.clientY, 'Text Copied!');
+                    }).catch(() => {
+                        showNotification(event.clientX, event.clientY, 'Failed to Copy!');
+                    });
+                });
+
+                // Add right-click event listener to copy text
+                targetElement.addEventListener('contextmenu', function(event) {
+                    event.preventDefault(); // Prevent the default right-click menu
+
+                    // Select all text inside the element
+                    const range = document.createRange();
+                    range.selectNodeContents(targetElement);
+
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+
+                    // Copy the selected text to the clipboard
+                    const copiedText = selection.toString();
+                    navigator.clipboard.writeText(copiedText).then(() => {
+                        // Display a notification near the cursor
+                        showNotification(event.clientX, event.clientY, 'Text Copied!');
+                    }).catch(() => {
+                        showNotification(event.clientX, event.clientY, 'Failed to Copy!');
+                    });
+                });
             });
         });
-      }
+
+        // Function to display a notification near the cursor
+        function showNotification(x, y, message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.position = 'absolute';
+            notification.style.left = `${x + 10}px`;
+            notification.style.top = `${y + 10}px`;
+            notification.style.background = 'rgba(0, 0, 0, 0.8)';
+            notification.style.color = 'white';
+            notification.style.padding = '5px 10px';
+            notification.style.borderRadius = '5px';
+            notification.style.fontSize = '12px';
+            notification.style.zIndex = '1000';
+            notification.style.pointerEvents = 'none';
+
+            document.body.appendChild(notification);
+
+            // Remove the notification after 2 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
     });
-
-    // Function to display a notification near the cursor
-    function showNotification(x, y, message) {
-      const notification = document.createElement('div');
-      notification.textContent = message;
-      notification.style.position = 'absolute';
-      notification.style.left = `${x + 10}px`;
-      notification.style.top = `${y + 10}px`;
-      notification.style.background = 'rgba(0, 0, 0, 0.8)';
-      notification.style.color = 'white';
-      notification.style.padding = '5px 10px';
-      notification.style.borderRadius = '5px';
-      notification.style.fontSize = '12px';
-      notification.style.zIndex = '1000';
-      notification.style.pointerEvents = 'none';
-
-      document.body.appendChild(notification);
-
-      // Remove the notification after 2 seconds
-      setTimeout(() => {
-        notification.remove();
-      }, 2000);
-    }
-  });
 })();
