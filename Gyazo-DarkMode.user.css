@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      20241128.1.5
+@version      2.0
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -1148,7 +1148,7 @@
   aside,
   div:not(
       #react-root
-        > div:th-child(n)
+        > div:nth-child(n)
         > div
         > div
         > main
