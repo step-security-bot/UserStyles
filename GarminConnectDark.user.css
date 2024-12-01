@@ -1,13 +1,13 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      1.6
+@version      1.7
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@document domain("connect.garmin.com") {
+@-moz-document domain("connect.garmin.com") {
   :is(.connect-container) {
     filter: invert(1) hue-rotate(180deg);
   }
@@ -17,7 +17,8 @@
   html img,
   .modal-backdrop,
   .modal,
-  .video-container {
+  .video-container,
+	.edit-carousel-content .edit-image-div {
     filter: invert(1) hue-rotate(180deg);
   }
 
@@ -46,7 +47,8 @@
     > div
     > div
     > button
-    > i {
+    > i,
+	.photo-carousel-modal .icon-arrow-left, .photo-carousel-modal .icon-arrow-right {
     filter: invert(1) hue-rotate(180deg);
     color: #fff !important;
     background-color: black !important;
@@ -78,11 +80,21 @@
         > div
         > div
         > button,
-      .inline-edit-trigger
+      .inline-edit-trigger,
+	  .modal.fade.in,
+	  .modal-header h3,
+	  .fade
     ) {
     filter: invert(1) hue-rotate(180deg);
     color: #000 !important;
     background-color: #fff !important;
     border-color: #5971c6f0;
   }
+	.photo-carousel {
+	background-color: #FFF !important;
+}
+	.photo-carousel-modal .close
+	{
+		color: black !important;
+	}
 }
