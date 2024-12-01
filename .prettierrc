@@ -1,17 +1,24 @@
 {
   "arrowParens": "always",
+  "bracketSameLine": false,
   "bracketSpacing": true,
   "embeddedLanguageFormatting": "auto",
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "jsxSingleQuote": false,
-  "printWidth": 100,
+    "plugins": [
+    "prettier-plugin-css-order",
+    "prettier-plugin-tailwindcss",
+    "eslint-plugin-prettier",
+    "prettier-plugin-stylus",
+  ],
+  "printWidth": 50,
   "proseWrap": "preserve",
   "quoteProps": "as-needed",
   "semi": true,
+  "singleAttributePerLine": true,
   "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "es5",
-  "useTabs": false,
-  "singleAttributePerLine": true
+  "trailingComma": "all",
+  "useTabs": true,
 }
