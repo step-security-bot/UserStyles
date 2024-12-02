@@ -3,7 +3,7 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	2.2
+@version      	2.3
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 @preprocessor 	stylus
@@ -804,8 +804,7 @@
 	a.text-subhead:focus,
 	[class *= "ActivityEntryBody--activity"],
 	[class *= "Activity--card--"] a:not([class *= ".Activity--btn--"]):link,
-	.page a:not(.btn):link:not(#athlete-profile > div.row.no-margins > div.spans5.offset1.sidebar > div.section.comparison.borderless > div.hidden.sport-0.active-tab > table > tbody:nth-child(n) > tr:nth-child(n) > td:nth-child(n) > a),
-	.page a:not(.btn):visited,
+	.page a:not(.btn):link:not(#athlete-profile > div.row.no-margins > div.spans5.offset1.sidebar > div.section.comparison.borderless > div.hidden.sport-0.active-tab > table > tbody:nth-child(n) > tr:nth-child(n) > td:nth-child(n) > a, a.minimal:link),
 	.page .btn.btn-link:link,
 	.page .btn.btn-link:visited,
 	.selection.nav-link,
@@ -834,8 +833,6 @@
 	.button.title:hover,
 	#kudos .count-hover,
 	.button:hover,
-	.ride .segment-effort-detail .segment-leaderboard th,
-	.swim .segment-effort-detail .segment-leaderboard th,
 	a.cancel:hover,
 	a.cancel:active,
 	._3NT_0X1dhVQp4ZAiKyNdPC,
@@ -1124,6 +1121,13 @@
 		color: #fff !important;
 		border: 1px solid #fff !important;
 	}
+	
+	table.unstyled td, table.unstyled th,
+	#segments > section > table > tbody > tr.full-columns.track-props.sauce-score-mark.sauce-badge-mark.selected > td.name-col > div.segment-effort-detail > div > div > div > div.spans7 > div > div > div > table > tbody > tr:nth-child(n) > td:nth-child(n)
+	{
+		color: #000 !important;
+	}
+
 
 	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog .ui-dialog-content .performance-mgmt .entry.block.hr-zones-panel table tr.lt
 	{
@@ -1551,6 +1555,10 @@
 	{
 		padding: 10px;
 		border-radius: 25px;
+	}
+	.page a:not(.btn):visited
+	{
+		color: #725F87;
 	}
 
 	@font-face
