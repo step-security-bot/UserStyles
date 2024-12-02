@@ -807,6 +807,7 @@
 	.page a:not(.btn):link:not(#athlete-profile > div.row.no-margins > div.spans5.offset1.sidebar > div.section.comparison.borderless > div.hidden.sport-0.active-tab > table > tbody:nth-child(n) > tr:nth-child(n) > td:nth-child(n) > a, a.minimal:link),
 	.page .btn.btn-link:link,
 	.page .btn.btn-link:visited,
+	.page a:not(.btn):visited,
 	.selection.nav-link,
 	.year-calendar strong,
 	.inline-stats.nav-style a:not(:hover),
@@ -1555,10 +1556,6 @@
 	{
 		padding: 10px;
 		border-radius: 25px;
-	}
-	.page a:not(.btn):visited
-	{
-		color: #725F87;
 	}
 
 	@font-face
