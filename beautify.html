@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautify CSS - Code Editor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #181818;
+      color: #ccc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      color: #f5f5f5;
+      margin-bottom: 20px;
+    }
+
+    .editor-container {
+      margin: 20px 0;
+    }
+
+    textarea {
+      width: 100%;
+      height: 400px;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #555;
+      background-color: #222;
+      color: #ccc;
+      resize: both;  /* Allow the textarea to be resizable */
+    }
+
+    .beautify-button {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 10px 0;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .beautify-button:hover {
+      background-color: #45a049;
+    }
+    
+    .CodeMirror {
+    font-family: monospace;
+    height: 800px;
+    color: #000;
+    direction: ltr;
+    resize: both;  /* Allow the textarea to be resizable */
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CSS Beautifier</h1>
+    <div class="editor-container">
+      <textarea id="editor" name="editor"></textarea>
+      <button class="beautify-button" id="beautifyButton">Beautify</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
+  <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify.js"></script>
+  <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify-css-mod.js"></script>
+  <script>
+    // Initialize CodeMirror
+    const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+      mode: 'css',
+      lineNumbers: true,
+      tabSize: 2,
+      lineWrapping: true
+    });
+
+    // Simulate preferences
+    const prefs = {
+      defaults: {
+        'editor.beautify': {
+          selector_separator_newline: true,
+          newline_before_open_brace: true,
+          newline_after_open_brace: true,
+          newline_between_properties: true,
+          newline_before_close_brace: true,
+          newline_between_rules: true,
+        },
+      },
+      get: (key) => prefs.defaults[key],
+      set: (key, value) => { prefs.defaults[key] = value; },
+      subscribe: (key, callback, immediate = false) => {
+        if (immediate) callback(key, prefs.get(key));
+      },
+    };
+
+    // Beautify Button
+    document.getElementById('beautifyButton').addEventListener('click', () => {
+      beautify([editor], true);
+    });
+  </script>
+</body>
+</html>
