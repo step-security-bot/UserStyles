@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beautify CSS - Code Editor</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautify CSS - Code Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <style>
     body
     {
         font-family: Arial, sans-serif;
@@ -162,34 +163,43 @@
         scrollbar-width: thin !important;
         scrollbar-color: #bb86fc #000 !important;
     }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1><img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS Logo">CSS Beautifier<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="CSS Logo"></h1>
-    <div class="editor-container">
-      <textarea id="editor" name="editor"></textarea>
-      <button class="beautify-button" id="beautifyButton">Beautify</button>
-    </div>
-  </div>
 
-  <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\codemirror.js"></script>
-  <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\css.js"></script>
-  <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify.js"></script>
-  <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify-css-mod.js"></script>
-  <script>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS Logo">CSS Beautifier<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="CSS Logo"></h1>
+        <div class="editor-container">
+            <textarea id="editor" name="editor"></textarea>
+            <button class="beautify-button" id="beautifyButton">Beautify</button>
+        </div>
+    </div>
+    <!-- Update script from here:  https://cdnjs.com/libraries/codemirror -->
+    <!-- When updating, search for codemirror.js to find the right file -->
+    <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\codemirror.js"></script>
+    <!-- Update script from here: https://cdnjs.com/libraries/codemirror -->
+    <!-- When updating, click show all non-essential files, and search for mode/css/css.js to find the right file -->
+    <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\css.js"></script>
+    <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify.js"></script>
+    <script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify-css-mod.js"></script>
+    <script>
     // Initialize CodeMirror
-    const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-      mode: 'css',
-      lineNumbers: true,
-      tabSize: 2,
-      lineWrapping: true
+    const editor = CodeMirror.fromTextArea(document.getElementById('editor'),
+    {
+        mode: 'css',
+        lineNumbers: true,
+        tabSize: 2,
+        lineWrapping: true
     });
 
     // Beautify Button
-    document.getElementById('beautifyButton').addEventListener('click', () => {
-      beautify([editor], true);
+    document.getElementById('beautifyButton').addEventListener('click', () =>
+    {
+        beautify([editor], true);
     });
-  </script>
+
+    </script>
 </body>
+
 </html>
