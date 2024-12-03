@@ -3,7 +3,7 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	2.4
+@version      	2.5
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 @preprocessor 	stylus
@@ -848,7 +848,7 @@
 	a.text-subhead:focus,
 	[class *= "ActivityEntryBody--activity"],
 	[class *= "Activity--card--"] a:not([class *= ".Activity--btn--"]):link,
-	.page a:not(.btn):link:not(#athlete-profile > div.row.no-margins > div.spans5.offset1.sidebar > div.section.comparison.borderless > div.hidden.sport-0.active-tab > table > tbody:nth-child(n) > tr:nth-child(n) > td:nth-child(n) > a, a.minimal:link),
+	.page a:not(.btn):link:not(#athlete-profile > div.row.no-margins > div.spans5.offset1.sidebar > div.section.comparison.borderless > div.hidden.sport-0.active-tab > table > tbody:nth-child(n) > tr:nth-child(n) > td:nth-child(n) > a, a.minimal:link):not(#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-stats.mt-md.mb-md > ul:nth-child(1) > li.suffer-score > strong > a),
 	.page .btn.btn-link:link,
 	.page .btn.btn-link:visited,
 	.page a:not(.btn):visited,
