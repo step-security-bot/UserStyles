@@ -3,7 +3,7 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	2.3
+@version      	2.4
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 @preprocessor 	stylus
@@ -445,6 +445,50 @@
 	.react-select__option--is-focused
 	{
 		background-color: #4c4c4c !important;
+	}
+
+	#strava-map-controls > #create-route:hover,
+	#toggle-fullscreen:hover
+	{
+		background-color: #b3b3b3 !important;
+	}
+
+	#toggle-fullscreen
+	{
+		background-color: #d3d3d3 !important;
+	}
+
+
+
+	#map-control-container #gpx-download
+	{
+		position: relative;
+		/*! Make the parent the reference for the pseudo-element */
+		background-color: transparent;
+		/*! Ensure background doesn't obscure ::before */
+		&::before
+		{
+			content: '';
+			position: absolute;
+			top: 50%;
+			/*! Center vertically */
+			left: 5px;
+			/*! Align horizontally with the text */
+			transform: translateY(-50%);
+			/*! Center adjustment */
+			width: 16px;
+			/*! Match the image size */
+			height: 16px;
+			/*! Match the image size */
+			background-image: url(https://d3nn82uaxijpm6.cloudfront.net/assets/svg/2024/actions_download_normal_small-99d901d5f3767d8e2464a13987c976fdc10c89656f3c89e7a5a472f5f325e3d3.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			/*! Precise positioning */
+			background-size: contain;
+			filter: invert(1);
+			z-index: 1;
+			/*! Ensure visibility over the parent */
+		}
 	}
 
 	[class *= "packages-feed-ui-src-Feed__feed-pagination"],
@@ -1122,8 +1166,9 @@
 		color: #fff !important;
 		border: 1px solid #fff !important;
 	}
-	
-	table.unstyled td, table.unstyled th,
+
+	table.unstyled td,
+	table.unstyled th,
 	#segments > section > table > tbody > tr.full-columns.track-props.sauce-score-mark.sauce-badge-mark.selected > td.name-col > div.segment-effort-detail > div > div > div > div.spans7 > div > div > div > table > tbody > tr:nth-child(n) > td:nth-child(n)
 	{
 		color: #000 !important;
@@ -1425,19 +1470,27 @@
 	#sauce-performance > main section.sauce-panels .sauce-panel > header,
 	.\------packages-ui-Tabs-Tabs-module__tab--gFjuZ svg:hover,
 	#relative-effort > div > div.WeeklySummary--base--YQgHZ > div.WeeklySummary--week-details--7Fo3D > div.WeeklySummary--week-insight--7Xvc7 > div > div.text-callout.WeekInsight--title--CitJN,
-	#relative-effort > div > div.WeeklySummary--base--YQgHZ > div:nth-child(n) > table > tbody > tr:nth-child(n) > td.Activities--name--YwPVu > a:hover
+	#relative-effort > div > div.WeeklySummary--base--YQgHZ > div:nth-child(n) > table > tbody > tr:nth-child(n) > td.Activities--name--YwPVu > a:hover,
+	#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-stats.mt-md.mb-md > div.section.more-stats > table > tbody:nth-child(n) > tr > td:nth-child(n)
 	{
 		color: #fc5200 !important;
 	}
 
-	.summaryGrid .summaryGridDataContainer
+	.summaryGrid .summaryGridDataContainer,
+	.inline-stats strong,
+	.inline-stats b
 	{
 		color: #d84e0b;
+		font-weight: 700
 	}
 
 	.summaryGrid .summarySubGridTitle,
 	.elevateExtendedData .gridUnits,
-	#sauce-performance
+	#sauce-performance,
+	#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-stats.mt-md.mb-md > div.section.more-stats > table > tbody:nth-child(n) > tr > td:nth-child(n) > abbr,
+	abbr[title],
+	abbr[data-original-title],
+	.summaryGridUnits
 	{
 		color: #3c66ac;
 	}
@@ -1447,6 +1500,12 @@
 	#relative-effort > div > div.WeeklySummary--base--YQgHZ > div.WeeklySummary--week-details--7Fo3D > div.WeeklySummary--week-insight--7Xvc7 > div > div.text-caption1.WeekInsight--description--V1GNG
 	{
 		color: #b8b8b8;
+	}
+
+	#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-stats.mt-md.mb-md > div.section.more-stats > table > tbody:nth-child(n) > tr > th,
+	#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-stats.mt-md.mb-md > div.section.more-stats > table > thead > tr > th:nth-child(n)
+	{
+		color: #b8b8b8 !important;
 	}
 
 	.elevateExtendedData .gridTitle
@@ -1545,6 +1604,11 @@
 	#view > section > div > table > tfoot > tr > td > p > a
 	{
 		color: red !important;
+	}
+
+	.summarySubGridTitle
+	{
+		color: rgba(255, 241, 131, .69) !important;
 	}
 
 	#view > section > div > table > tfoot > tr > td
