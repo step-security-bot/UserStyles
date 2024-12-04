@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beautify CSS - Code Editor</title>
+    <link rel="icon" href="https://i.gyazo.com/9aece9fdcbd8a161421822d504d0752c.png" type="image/png">
     <!-- Update script from here:  https://cdnjs.com/libraries/codemirror -->
     <!-- When updating, search for codemirror.css to find the right file -->
     <link rel="stylesheet" href="https://userstyles.github.typpi.online/codemirror.css">
@@ -190,35 +191,62 @@
     const editor = CodeMirror.fromTextArea(document.getElementById('editor'),
     {
         mode: 'css',
-        lineNumbers: true,
-        tabSize: 2,
-        lineWrapping: true
+        lineNumbers: false,
+        tabSize: 4,
+        lineWrapping: false,
+        smartIndent: true,
+        lineSeparator: null,
+        spellcheck: false,
+        autocapitalize: false,
+        autocorrect: false,
+        readOnly: false,
+        indentUnit: 2,
+        indentWithTabs: true,
+        specialChars: /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b\u200e\u200f\u2028\u2029\ufeff\ufff9-\ufffc]/g,
+        electricChars: true,
+        wholeLineUpdateBefore: true,
+        theme: "default",
+        keyMap: "default",
+        extraKeys: null,
+        configureMouse: function (cm, repeat, event)
+        {
+            return {
+                addNew: event.altKey
+            }; 
+            <!-- Use the Alt key to add new selections. -->
+        },
+        fixedGutter: true,
+        coverGutterNextToScrollbar: false,
+        scrollbarStyle: "native",
+        firstLineNumber: 1,
+        showCursorWhenSelecting: false,
+        resetSelectionOnContextMenu: true,
+        lineWiseCopyCut: true,
+        pasteLinesPerSelection: true,
+        selectionsMayTouch: false,
+        screenReaderLabel: null,
+        disableInput: false,
+        dragDrop: true,
+        allowDropFileTypes: null,
+        cursorBlinkRate: 530,
+        cursorScrollMargin: 0,
+        cursorHeight: 1,
+        singleCursorHeightPerLine: true,
+        workTime: 100,
+        workDelay: 100,
+        flattenSpans: true,
+        addModeClass: true,
+        pollInterval: 100,
+        undoDepth: 200,
+        historyEventDelay: 1250,
+        viewportMargin: 10,
+        maxHighlightLength: 10000,
+        moveInputWithCursor: true,
+        tabindex: null,
+        autofocus: null,
+        direction: "ltr",
+        phrases: null
     });
-
-    // Simulate preferences
-    const prefs = {
-        defaults:
-        {
-            'editor.beautify':
-            {
-                selector_separator_newline: true,
-                newline_before_open_brace: true,
-                newline_after_open_brace: true,
-                newline_between_properties: true,
-                newline_before_close_brace: true,
-                newline_between_rules: true,
-            },
-        },
-        get: (key) => prefs.defaults[key],
-        set: (key, value) =>
-        {
-            prefs.defaults[key] = value;
-        },
-        subscribe: (key, callback, immediate = false) =>
-        {
-            if(immediate) callback(key, prefs.get(key));
-        },
-    };
 
     // Beautify Button
     document.getElementById('beautifyButton').addEventListener('click', () =>
