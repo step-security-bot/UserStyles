@@ -25,7 +25,6 @@
         margin: 50px auto;
         padding: 20px;
         background-color: #333;
-        border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         border-radius: 20px;
         border-style: dashed;
@@ -73,7 +72,8 @@
         resize: both;
     }
 
-    .beautify-button
+    .beautify-button,
+    .beautify-button2
     {
         display: block;
         width: 200px;
@@ -92,7 +92,8 @@
         border-width: 3px;
     }
 
-    .beautify-button:hover
+    .beautify-button:hover,
+    .beautify-button2:hover
     {
         background-image: linear-gradient(to right, #9b59b6, black);
     }
@@ -106,7 +107,7 @@
         resize: vertical;
         background: black;
         color: white;
-        border-radius: 20px;
+        border-radius: 8px;
         padding-top: 5px;
     }
 
@@ -165,15 +166,18 @@
     {
         scrollbar-width: thin !important;
         scrollbar-color: #bb86fc #000 !important;
+        caret-color: red;
     }
 
     </style>
 </head>
 
 <body>
+
     <div class="container">
         <h1><img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS Logo">CSS Beautifier<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="CSS Logo"></h1>
         <div class="editor-container">
+            <button class="beautify-button2" id="beautifyButton2">Beautify</button>
             <textarea id="editor" name="editor"></textarea>
             <button class="beautify-button" id="beautifyButton">Beautify</button>
         </div>
@@ -191,16 +195,15 @@
     const editor = CodeMirror.fromTextArea(document.getElementById('editor'),
     {
         mode: 'css',
-        lineNumbers: false,
+        lineNumbers: true,
         tabSize: 4,
-        lineWrapping: false,
+        lineWrapping: true,
         smartIndent: true,
         lineSeparator: null,
-        spellcheck: false,
-        autocapitalize: false,
-        autocorrect: false,
+        spellcheck: true,
+        autocapitalize: true,
+        autocorrect: true,
         readOnly: false,
-        indentUnit: 2,
         indentWithTabs: true,
         specialChars: /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b\u200e\u200f\u2028\u2029\ufeff\ufff9-\ufffc]/g,
         electricChars: true,
@@ -219,7 +222,7 @@
         coverGutterNextToScrollbar: false,
         scrollbarStyle: "native",
         firstLineNumber: 1,
-        showCursorWhenSelecting: false,
+        showCursorWhenSelecting: true,
         resetSelectionOnContextMenu: true,
         lineWiseCopyCut: true,
         pasteLinesPerSelection: true,
@@ -228,16 +231,16 @@
         disableInput: false,
         dragDrop: true,
         allowDropFileTypes: null,
-        cursorBlinkRate: 530,
+        cursorBlinkRate: 250,
         cursorScrollMargin: 0,
         cursorHeight: 1,
         singleCursorHeightPerLine: true,
         workTime: 100,
         workDelay: 100,
-        flattenSpans: true,
+        flattenSpans: false,
         addModeClass: true,
         pollInterval: 100,
-        undoDepth: 200,
+        undoDepth: 1000,
         historyEventDelay: 1250,
         viewportMargin: 10,
         maxHighlightLength: 10000,
@@ -250,6 +253,11 @@
 
     // Beautify Button
     document.getElementById('beautifyButton').addEventListener('click', () =>
+    {
+        beautify([editor], true);
+    });
+    // Beautify Button
+    document.getElementById('beautifyButton2').addEventListener('click', () =>
     {
         beautify([editor], true);
     });
