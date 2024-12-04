@@ -6,16 +6,17 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
+@-moz-document domain("newyorker.com")
+{
+	/* Invert colors except images and videos */
+	:is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z])
+	{
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
 
-@-moz-document domain("newyorker.com") {
-/* Invert colors except images and videos */
-:is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]) {
-    filter: invert(1) hue-rotate(180deg) !important;
-}
-
-/* Ensure background images are not inverted */
-:is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z]) {
-    background-color: inherit !important;
-}
-
+	/* Ensure background images are not inverted */
+	:is(html:not([stylus-iframe]), img, svg, video):not(z#z.z[z])
+	{
+		background-color: inherit !important;
+	}
 }

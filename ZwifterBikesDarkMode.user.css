@@ -5,33 +5,31 @@
 @description    Dark mode for Zwifterbikes.web.app
 @author         Nick2bad4u
 @license        UnLicense
-@homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("zwifterbikes.web.app") {
+@-moz-document domain("zwifterbikes.web.app")
+{
 	/* Invert colors except images and videos */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video,
-			mat-toolbar
-		):not(z#z.z[z]):not(svg):not(img.tron) {
+	:is(html:not([stylus-iframe]), img, svg, video, mat-toolbar):not(z#z.z[z]):not(svg):not(img.tron), .fit[_ngcontent-ng-c3440179631]
+	{
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
-	.mdc-tab__text-label {
-		color: #872a78 !important;
+	.mdc-tab__text-label
+	{
+		color: #872A78 !important;
 	}
 
-	*:hover > span.mdc-tab__content > span {
-		color: #00d400 !important;
+	*:hover > span.mdc-tab__content > span
+	{
+		color: #00D400 !important;
 		text-decoration: underline;
-		--mdc-tab-indicator-active-indicator-color: #00d400 !important;
-		--mat-tab-header-active-hover-indicator-color: #00d400 !important;
+		--mdc-tab-indicator-active-indicator-color: #00D400 !important;
+		--mat-tab-header-active-hover-indicator-color: #00D400!important;
 	}
 
-	* {
-		--mdc-tab-indicator-active-indicator-color: #00d400 !important;
-		--mat-tab-header-active-hover-indicator-color: #00d400 !important;
+	*
+	{
+		--mdc-tab-indicator-active-indicator-color: #00D400 !important;
+		--mat-tab-header-active-hover-indicator-color: #00D400!important;
 	}
 }
