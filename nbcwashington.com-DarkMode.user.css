@@ -9,12 +9,17 @@
 ==/UserStyle== */
 
 @-moz-document domain("nbcwashington.com") {
-  /* Invert colors except images and videos */
-  :is(html:not([stylus-iframe]), img, svg, video):not(png) {
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
+	/* Invert colors except images and videos */
+	:is(
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video
+		):not(png) {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
 
-  [style*='text-decoration'] {
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
+	[style*='text-decoration'] {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
 }

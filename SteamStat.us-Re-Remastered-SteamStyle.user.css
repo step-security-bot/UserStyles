@@ -10,114 +10,118 @@
 
 @-moz-document url("https://steamstat.us/")
 {
-  .title {
-    /* Steam Status Title */
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 300;
-    color: #b4d2ff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-  }
+	.title {
+		margin: 10px 0;
+		color: #b4d2ff;
+		font-weight: 300;
+		font-size: 2.6em;
+		/* Steam Status Title */
+		text-align: center;
+		text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+	}
 
-  a {
-    color: #66c0f4;
-    text-decoration: none;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-  }
+	a {
+		color: #66c0f4;
+		font-weight: bold;
+		text-decoration: none;
+		text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+	}
 
-  a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-  }
+	a:hover {
+		color: #ffffff;
+		text-decoration: underline;
+	}
 
-  .pull-right,
-  .service .status {
-    text-align: right;
-    float: right;
-  }
+	.pull-right,
+	.service .status {
+		float: right;
+		text-align: right;
+	}
 
-  .good {
-    /* Soft Green */
-    color: #8bc34a;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
-  }
+	.good {
+		/* Soft Green */
+		color: #8bc34a;
+		text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+	}
 
-  .minor {
-    /* Soft Teal */
-    color: #03a9f4;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
-    font-weight: bold;
-  }
+	.minor {
+		/* Soft Teal */
+		color: #03a9f4;
+		font-weight: bold;
+		text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+	}
 
-  .major {
-    /* Soft Yellow */
-    color: #ffeb3b;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
-    font-weight: bold;
-  }
+	.major {
+		/* Soft Yellow */
+		color: #ffeb3b;
+		font-weight: bold;
+		text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+	}
 
-  #js-refresh {
-    /* Refreshing in idk seconds */
-    color: #82cffd;
-    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-    font-weight: bolder;
-  }
+	#js-refresh {
+		/* Refreshing in idk seconds */
+		color: #82cffd;
+		font-weight: bolder;
+		text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+	}
 
-  .services,
-  #psa,
-  noscript {
-    position: relative;
-    background: linear-gradient(145deg, #2a2a2a, #1c1c1c);
-    border: 1px solid #4b4b4b;
-    border-radius: 6px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    color: #eaeaea;
-  }
+	.services,
+	#psa,
+	noscript {
+		position: relative;
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+		border: 1px solid #4b4b4b;
+		border-radius: 6px;
+		background: linear-gradient(
+			145deg,
+			#2a2a2a,
+			#1c1c1c
+		);
+		color: #eaeaea;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+	}
 
-  body {
-    margin: 0;
-    color: #b8c6dc;
-    background: #171a21;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    font-weight: 300;
-  }
+	body {
+		margin: 0;
+		background: #171a21;
+		color: #b8c6dc;
+		font-weight: 300;
+		font-size: 16px;
+		font-family: 'Roboto', Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+	}
 
-  [data-tooltip]:before {
-    /* Time since last status change Box */
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    overflow: hidden;
-    white-space: pre;
-    word-wrap: break-word;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 96%;
-    background: #1b2838;
-    color: #c7d5e0;
-    text-align: left;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 1;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    font-style: italic;
-    font-weight: 300;
-    transition:
-      visibility 0s,
-      opacity 0.3s ease-in-out;
-  }
+	[data-tooltip]:before {
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		overflow: hidden;
+		content: attr(data-tooltip);
+		font-size: 0.9em;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		z-index: 1;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease-in-out;
+		border-radius: 6px;
+		background: #1b2838;
+		padding: 8px;
+		width: 96%;
+		color: #c7d5e0;
+		font-style: italic;
+		font-weight: 300;
+		text-align: left;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+	}
 
-  [data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-  }
+	[data-tooltip]:hover:before {
+		visibility: visible;
+		opacity: 1;
+	}
 }

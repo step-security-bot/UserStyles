@@ -9,64 +9,64 @@
 ==/UserStyle== */
 
 @-moz-document domain("klimat.app") {
-  /* Dark Mode Theme for Klimat Weather Page */
-  body {
-    background-color: #121212;
-    color: #e0e0e0;
-  }
+	/* Dark Mode Theme for Klimat Weather Page */
+	body {
+		background-color: #121212;
+		color: #e0e0e0;
+	}
 
-  header,
-  footer,
-  .sidebar,
-  .content {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-  }
+	header,
+	footer,
+	.sidebar,
+	.content {
+		background-color: #1e1e1e;
+		color: #e0e0e0;
+	}
 
-  a {
-    color: #bb86fc;
-  }
+	a {
+		color: #bb86fc;
+	}
 
-  a:hover {
-    color: #3700b3;
-  }
+	a:hover {
+		color: #3700b3;
+	}
 
-  table {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-  }
+	table {
+		background-color: #1e1e1e;
+		color: #e0e0e0;
+	}
 
-  table th,
-  table td {
-    border: 1px solid #333;
-  }
+	table th,
+	table td {
+		border: 1px solid #333;
+	}
 
-  button,
-  input,
-  select,
-  textarea {
-    background-color: #333;
-    color: #e0e0e0;
-    border: 1px solid #444;
-  }
+	button,
+	input,
+	select,
+	textarea {
+		border: 1px solid #444;
+		background-color: #333;
+		color: #e0e0e0;
+	}
 
-  button:hover,
-  input:hover,
-  select:hover,
-  textarea:hover {
-    background-color: #444;
-  }
+	button:hover,
+	input:hover,
+	select:hover,
+	textarea:hover {
+		background-color: #444;
+	}
 
-  ::selection {
-    background-color: #bb86fc;
-    color: #121212;
-  }
+	::selection {
+		background-color: #bb86fc;
+		color: #121212;
+	}
 
-  span {
-    color: #bb86fc;
-  }
+	span {
+		color: #bb86fc;
+	}
 
-  #content_wrapper {
-    filter: invert(1);
-  }
+	#content_wrapper {
+		filter: invert(1);
+	}
 }

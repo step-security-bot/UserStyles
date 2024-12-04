@@ -17,5 +17,7 @@
 // ==/UserScript==
 
 setTimeout(function () {
-  document.getElementsByClassName('btn')[0].click();
+	document
+		.getElementsByClassName('btn')[0]
+		.click();
 }, 1000);

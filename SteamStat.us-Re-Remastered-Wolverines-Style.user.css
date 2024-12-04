@@ -8,153 +8,165 @@
 @license      UnLicense
 ==/UserStyle== */
 @-moz-document domain("steamstat.us") {
-  .title {
-    /* Michigan Wolverines Title */
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 700;
-    color: #00274c;
-    /* Maize and Blue - Dark Blue */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-    /* Subtle black shadow */
-    background: linear-gradient(145deg, #00274c, #ffcb05);
-    /* Blue to Maize gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	.title {
+		margin: 10px 0;
+		/* Subtle black shadow */
+		background: linear-gradient(
+			145deg,
+			#00274c,
+			#ffcb05
+		);
+		/* Blue to Maize gradient */
+		-webkit-background-clip: text;
+		color: #00274c;
+		font-weight: 700;
+		font-size: 2.6em;
+		/* Michigan Wolverines Title */
+		text-align: center;
+		/* Maize and Blue - Dark Blue */
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+		-webkit-text-fill-color: transparent;
+		display: flex;
+		position: relative;
+		justify-content: center;
+		align-items: center;
+	}
 
-  .title::after {
-    /* Add Michigan Wolverines Logo to the Right */
-    content: '';
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Michigan_Wolverines_logo.svg')
-      no-repeat center;
-    background-size: contain;
-    margin-left: 10px;
-  }
+	.title::after {
+		display: inline-block;
+		margin-left: 10px;
+		background: url('https://upload.wikimedia.org/wikipedia/commons/f/fb/Michigan_Wolverines_logo.svg')
+			no-repeat center;
+		background-size: contain;
+		width: 60px;
+		height: 60px;
+		/* Add Michigan Wolverines Logo to the Right */
+		content: '';
+	}
 
-  a {
-    color: #00274c;
-    /* Dark Blue */
-    text-decoration: none;
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
-    /* Light shadow */
-    font-weight: bold;
-  }
+	a {
+		color: #00274c;
+		/* Light shadow */
+		font-weight: bold;
+		/* Dark Blue */
+		text-decoration: none;
+		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+	}
 
-  a:hover {
-    color: #ffcb05;
-    /* Maize */
-    text-decoration: underline;
-  }
+	a:hover {
+		color: #ffcb05;
+		/* Maize */
+		text-decoration: underline;
+	}
 
-  .pull-right,
-  .service .status {
-    text-align: right;
-    float: right;
-  }
+	.pull-right,
+	.service .status {
+		float: right;
+		text-align: right;
+	}
 
-  .good {
-    /* Blue for good statuses */
-    color: #00274c;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    /* Black shadow */
-  }
+	.good {
+		/* Blue for good statuses */
+		color: #00274c;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/* Black shadow */
+	}
 
-  .minor {
-    /* Maize for minor issues */
-    color: #ffcb05;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    /* Black shadow */
-    font-weight: bold;
-  }
+	.minor {
+		/* Maize for minor issues */
+		color: #ffcb05;
+		/* Black shadow */
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+	}
 
-  .major {
-    /* White for major issues */
-    color: #ffffff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    /* Black shadow */
-    font-weight: bold;
-  }
+	.major {
+		/* White for major issues */
+		color: #ffffff;
+		/* Black shadow */
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+	}
 
-  #js-refresh {
-    /* Refreshing in seconds */
-    color: #ffcb05;
-    text-shadow: 0 0 2px rgb(0, 0, 0);
-    /* Subtle shadow */
-    font-weight: bolder;
-  }
+	#js-refresh {
+		/* Refreshing in seconds */
+		color: #ffcb05;
+		/* Subtle shadow */
+		font-weight: bolder;
+		text-shadow: 0 0 2px rgb(0, 0, 0);
+	}
 
-  .services,
-  #psa,
-  noscript {
-    position: relative;
-    background: linear-gradient(145deg, #00274c, #ffcb05);
-    /* Blue to Maize */
-    border: 1px solid #ffffff;
-    /* White border */
-    border-radius: 3px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 0px 0px 1px rgb(0, 0, 1);
-    /* Subtle shadow */
-    box-shadow: 0px 4px 8px rgb(0, 0, 0);
-    color: #ffffff;
-    /* White text */
-  }
+	.services,
+	#psa,
+	noscript {
+		position: relative;
+		/* Subtle shadow */
+		box-shadow: 0px 4px 8px rgb(0, 0, 0);
+		/* Blue to Maize */
+		border: 1px solid #ffffff;
+		/* White border */
+		border-radius: 3px;
+		background: linear-gradient(
+			145deg,
+			#00274c,
+			#ffcb05
+		);
+		color: #ffffff;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 1px rgb(0, 0, 1);
+		/* White text */
+	}
 
-  body {
-    margin: 0;
-    color: #00274c;
-    /* Dark Blue text */
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
-    text-shadow: 1px 1px 3px rgb(0, 0, 0);
-    /* Subtle shadow */
-    font-weight: 300;
-    background: linear-gradient(145deg, #00274c, #ffcb05);
-    /* Blue to Maize background */
-  }
+	body {
+		margin: 0;
+		background: linear-gradient(
+			145deg,
+			#00274c,
+			#ffcb05
+		);
+		color: #00274c;
+		/* Subtle shadow */
+		font-weight: 300;
+		font-size: 16px;
+		/* Dark Blue text */
+		font-family: 'Roboto', Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgb(0, 0, 0);
+		/* Blue to Maize background */
+	}
 
-  [data-tooltip]:before {
-    /* Time since last status change Box */
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    overflow: hidden;
-    white-space: pre;
-    word-wrap: break-word;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 96%;
-    background: #ffffff;
-    /* White box */
-    color: #00274c;
-    /* Dark Blue text */
-    text-align: left;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 1;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-    /* Subtle shadow */
-    font-style: italic;
-    font-weight: 300;
-    transition:
-      visibility 0s,
-      opacity 0.3s ease-in-out;
-  }
+	[data-tooltip]:before {
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		overflow: hidden;
+		content: attr(data-tooltip);
+		font-size: 0.9em;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		z-index: 1;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease-in-out;
+		border-radius: 6px;
+		background: #ffffff;
+		padding: 8px;
+		width: 96%;
+		/* White box */
+		color: #00274c;
+		/* Subtle shadow */
+		font-style: italic;
+		font-weight: 300;
+		/* Dark Blue text */
+		text-align: left;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+	}
 
-  [data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-  }
+	[data-tooltip]:hover:before {
+		visibility: visible;
+		opacity: 1;
+	}
 }

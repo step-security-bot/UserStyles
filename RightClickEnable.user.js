@@ -14,41 +14,44 @@
 // ==/UserScript==
 
 (function () {
-  'use strict';
+	'use strict';
 
-  // Function to enable right-click
-  function enableRightClick() {
-    document.addEventListener(
-      'contextmenu',
-      function (event) {
-        event.stopPropagation();
-      },
-      true
-    );
+	// Function to enable right-click
+	function enableRightClick() {
+		document.addEventListener(
+			'contextmenu',
+			function (event) {
+				event.stopPropagation();
+			},
+			true,
+		);
 
-    document.addEventListener(
-      'mousedown',
-      function (event) {
-        if (event.button === 2) {
-          event.stopPropagation();
-        }
-      },
-      true
-    );
+		document.addEventListener(
+			'mousedown',
+			function (event) {
+				if (event.button === 2) {
+					event.stopPropagation();
+				}
+			},
+			true,
+		);
 
-    document.addEventListener(
-      'mouseup',
-      function (event) {
-        if (event.button === 2) {
-          event.stopPropagation();
-        }
-      },
-      true
-    );
+		document.addEventListener(
+			'mouseup',
+			function (event) {
+				if (event.button === 2) {
+					event.stopPropagation();
+				}
+			},
+			true,
+		);
 
-    alert('Right-click has been enabled!');
-  }
+		alert('Right-click has been enabled!');
+	}
 
-  // Register the option in the Tampermonkey menu
-  GM_registerMenuCommand('Enable Right-Click', enableRightClick);
+	// Register the option in the Tampermonkey menu
+	GM_registerMenuCommand(
+		'Enable Right-Click',
+		enableRightClick,
+	);
 })();

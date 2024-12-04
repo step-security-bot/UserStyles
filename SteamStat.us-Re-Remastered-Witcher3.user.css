@@ -8,189 +8,209 @@
 @license      UnLicense
 ==/UserStyle== */
 @-moz-document domain("steamstat.us") {
-  /* Main title styling with Witcher-inspired colors */
-  .title {
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 700;
-    color: #b22222; /* Witcher Red */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-    background: linear-gradient(135deg, #8b0000 30%, #ffd700 70%); /* Dark Red to Gold */
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #ffffff96;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: title-animation 3s ease-in-out infinite alternate;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  /* Animation for the title */
-  @keyframes title-animation {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(1.08);
-    }
-  }
-  /* Logo addition with Witcher medallion effect */
-  .title::after {
-    content: '';
-    display: inline-block;
-    width: 200px;
-    height: 60px;
-    background: url('https://i.gyazo.com/f2d821c47cc5df51c893d7333c1c93b1.png') no-repeat center; /* Witcher medallion */
-    background-size: auto 100%;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
-  }
-  .title:hover::after {
-    transform: scale(1.5);
-  }
-  /* Link styling with hover effect */
-  a {
-    color: #ffd700; /* Gold */
-    text-decoration: none;
-    font-weight: bold;
-    transition:
-      color 0.3s ease,
-      text-shadow 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  }
-  a:hover {
-    color: #b22222; /* Witcher Red */
-    text-decoration: underline;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-  }
-  /* Status colors with Witcher theme */
-  .good {
-    color: #6b8e23; /* Olive Green */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    transition: color 0.3s ease;
-  }
-  .minor {
-    color: #ffffff; /* White */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  .major {
-    color: #b22222; /* Witcher Red */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  /* Refresh button styling */
-  #js-refresh {
-    color: #ffd700; /* Gold */
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-    font-weight: bolder;
-    transition:
-      color 0.3s ease,
-      transform 0.3s ease;
-  }
-  #js-refresh:hover {
-    color: #8b0000; /* Dark Red */
-    transform: scale(1.1);
-  }
-  /* Container with Witcher-inspired accents */
-  .services,
-  #psa,
-  noscript,
-  footer {
-    position: relative;
-    background: linear-gradient(135deg, rgba(139, 0, 0, 0.8) 30%, rgba(218, 165, 32, 0.8) 70%);
-    border: 1px solid #b22222;
-    border-radius: 4px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    transition:
-      box-shadow 0.3s ease,
-      background 0.3s ease;
-  }
-  .services:hover,
-  #psa:hover,
-  noscript:hover,
-  footer:hover {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.9);
-    background: rgba(0, 0, 0, 0.95);
-  }
-  /* Body styling with Witcher backdrop */
-  body {
-    margin: 0;
-    color: #ffd700; /* Gold */
-    font-family: 'Georgia', serif;
-    font-size: 16px;
-    font-weight: 300;
-    background: url('https://i.gyazo.com/1ebf57cc6e04b6d589057fdc5b637365.jpg') no-repeat center
-      center fixed; /* Witcher backdrop */
-    background-size: cover;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    transition: background 0.3s ease;
-  }
-  /* Tooltip customization */
-  [data-tooltip]:before {
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 96%;
-    background: rgba(139, 0, 0, 0.9); /* Dark Red */
-    color: #ffffff;
-    padding: 8px;
-    border-radius: 8px;
-    z-index: 1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    transition:
-      visibility 0s,
-      opacity 0.3s ease-in-out;
-  }
-  [data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-  }
-  /* Advanced feature: Animated border */
-  .gradient-border {
-    position: relative;
-    padding: 12px;
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(139, 0, 0, 0.8);
-  }
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, #8b0000, #ffd700, #8b0000);
-    background-size: 300% 300%;
-    border-radius: 6px;
-    z-index: -1;
-    animation: gradient-border 4s linear infinite;
-  }
-  @keyframes gradient-border {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+	/* Main title styling with Witcher-inspired colors */
+	.title {
+		margin: 10px 0;
+		background: linear-gradient(
+			135deg,
+			#8b0000 30%,
+			#ffd700 70%
+		); /* Dark Red to Gold */
+		color: #b22222; /* Witcher Red */
+		font-weight: 700;
+		font-size: 2.6em;
+		text-align: center;
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: #ffffff96;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		display: flex;
+		position: relative;
+		justify-content: center;
+		align-items: center;
+		animation: title-animation 3s ease-in-out
+			infinite alternate;
+	}
+	/* Animation for the title */
+	@keyframes title-animation {
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(1.08);
+		}
+	}
+	/* Logo addition with Witcher medallion effect */
+	.title::after {
+		display: inline-block;
+		transition: transform 0.3s ease;
+		margin-left: 10px;
+		background: url('https://i.gyazo.com/f2d821c47cc5df51c893d7333c1c93b1.png')
+			no-repeat center; /* Witcher medallion */
+		background-size: auto 100%;
+		width: 200px;
+		height: 60px;
+		content: '';
+	}
+	.title:hover::after {
+		transform: scale(1.5);
+	}
+	/* Link styling with hover effect */
+	a {
+		transition:
+			color 0.3s ease,
+			text-shadow 0.3s ease;
+		color: #ffd700; /* Gold */
+		font-weight: bold;
+		text-decoration: none;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	}
+	a:hover {
+		color: #b22222; /* Witcher Red */
+		text-decoration: underline;
+		text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+	}
+	/* Status colors with Witcher theme */
+	.good {
+		transition: color 0.3s ease;
+		color: #6b8e23; /* Olive Green */
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+	}
+	.minor {
+		transition: color 0.3s ease;
+		color: #ffffff; /* White */
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+	}
+	.major {
+		transition: color 0.3s ease;
+		color: #b22222; /* Witcher Red */
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+	}
+	/* Refresh button styling */
+	#js-refresh {
+		transition:
+			color 0.3s ease,
+			transform 0.3s ease;
+		color: #ffd700; /* Gold */
+		font-weight: bolder;
+		text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+	}
+	#js-refresh:hover {
+		transform: scale(1.1);
+		color: #8b0000; /* Dark Red */
+	}
+	/* Container with Witcher-inspired accents */
+	.services,
+	#psa,
+	noscript,
+	footer {
+		position: relative;
+		transition:
+			box-shadow 0.3s ease,
+			background 0.3s ease;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+		border: 1px solid #b22222;
+		border-radius: 4px;
+		background: linear-gradient(
+			135deg,
+			rgba(139, 0, 0, 0.8) 30%,
+			rgba(218, 165, 32, 0.8) 70%
+		);
+		color: #ffffff;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+	}
+	.services:hover,
+	#psa:hover,
+	noscript:hover,
+	footer:hover {
+		box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.9);
+		background: rgba(0, 0, 0, 0.95);
+	}
+	/* Body styling with Witcher backdrop */
+	body {
+		transition: background 0.3s ease;
+		margin: 0;
+		background: url('https://i.gyazo.com/1ebf57cc6e04b6d589057fdc5b637365.jpg')
+			no-repeat center center fixed; /* Witcher backdrop */
+		background-size: cover;
+		color: #ffd700; /* Gold */
+		font-weight: 300;
+		font-size: 16px;
+		font-family: 'Georgia', serif;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+	}
+	/* Tooltip customization */
+	[data-tooltip]:before {
+		position: absolute;
+		top: 0;
+		left: 2%;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 1;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease-in-out;
+		border-radius: 8px;
+		background: rgba(
+			139,
+			0,
+			0,
+			0.9
+		); /* Dark Red */
+		padding: 8px;
+		width: 96%;
+		content: attr(data-tooltip);
+		color: #ffffff;
+		font-size: 0.9em;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	}
+	[data-tooltip]:hover:before {
+		visibility: visible;
+		opacity: 1;
+	}
+	/* Advanced feature: Animated border */
+	.gradient-border {
+		position: relative;
+		box-shadow: 0px 0px 10px rgba(139, 0, 0, 0.8);
+		border-radius: 6px;
+		background-color: rgba(0, 0, 0, 0.9);
+		padding: 12px;
+		color: #ffffff;
+		font-weight: bold;
+		text-align: center;
+	}
+	.gradient-border::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		animation: gradient-border 4s linear infinite;
+		border-radius: 6px;
+		background: linear-gradient(
+			45deg,
+			#8b0000,
+			#ffd700,
+			#8b0000
+		);
+		background-size: 300% 300%;
+		content: '';
+	}
+	@keyframes gradient-border {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 }

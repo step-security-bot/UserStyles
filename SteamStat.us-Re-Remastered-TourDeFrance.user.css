@@ -8,222 +8,239 @@
 @license      UnLicense
 ==/UserStyle== */
 @-moz-document domain("steamstat.us") {
-  /* Main title styling with Tour de France theme */
-  .title {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 3em;
-    font-weight: 700;
-    color: #ffd700;
-    /* Yellow Jersey */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-    background: linear-gradient(135deg, #ffd700 40%, #008000 70%);
-    /* Yellow to Green */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: pulse-title 3s ease-in-out infinite;
-    font-family: 'Merriweather', serif;
-  }
+	/* Main title styling with Tour de France theme */
+	.title {
+		margin: 20px 0;
+		background: linear-gradient(
+			135deg,
+			#ffd700 40%,
+			#008000 70%
+		);
+		/* Yellow to Green */
+		-webkit-background-clip: text;
+		color: #ffd700;
+		font-weight: 700;
+		font-size: 3em;
+		text-align: center;
+		/* Yellow Jersey */
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		-webkit-text-fill-color: transparent;
+		animation: pulse-title 3s ease-in-out infinite;
+		font-family: 'Merriweather', serif;
+	}
 
-  /* Animation for title pulsing effect */
-  @keyframes pulse-title {
-    0%,
-    100% {
-      transform: scale(1);
-    }
+	/* Animation for title pulsing effect */
+	@keyframes pulse-title {
+		0%,
+		100% {
+			transform: scale(1);
+		}
 
-    50% {
-      transform: scale(1.1);
-    }
-  }
+		50% {
+			transform: scale(1.1);
+		}
+	}
 
-  /* Tour de France bicycle logo effect */
-  .title::after {
-    content: '';
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background: url('https://i.gyazo.com/9823ea6d0dccc361361cfacc1a6df950.png') no-repeat center;
-    background-size: contain;
-    margin-left: 15px;
-    animation: rotate-bike 6s linear infinite;
-  }
+	/* Tour de France bicycle logo effect */
+	.title::after {
+		display: inline-block;
+		animation: rotate-bike 6s linear infinite;
+		margin-left: 15px;
+		background: url('https://i.gyazo.com/9823ea6d0dccc361361cfacc1a6df950.png')
+			no-repeat center;
+		background-size: contain;
+		width: 100px;
+		height: 100px;
+		content: '';
+	}
 
-  /* Rotate animation for logo */
-  @keyframes rotate-bike {
-    0% {
-      transform: rotate(0deg);
-    }
+	/* Rotate animation for logo */
+	@keyframes rotate-bike {
+		0% {
+			transform: rotate(0deg);
+		}
 
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+		100% {
+			transform: rotate(360deg);
+		}
+	}
 
-  /* Link styling with cycling-theme hover effects */
-  a {
-    color: #ffd700;
-    /* Yellow Jersey */
-    text-decoration: none;
-    font-weight: bold;
-    transition:
-      color 0.3s ease,
-      text-shadow 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  }
+	/* Link styling with cycling-theme hover effects */
+	a {
+		transition:
+			color 0.3s ease,
+			text-shadow 0.3s ease;
+		color: #ffd700;
+		font-weight: bold;
+		/* Yellow Jersey */
+		text-decoration: none;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+	}
 
-  a:hover {
-    color: #008000;
-    /* Green Jersey */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-  }
+	a:hover {
+		color: #008000;
+		/* Green Jersey */
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+	}
 
-  /* Container with bright accents and animation */
-  .services,
-  #psa,
-  footer,
-  div.regions-title.sep {
-    position: relative;
-    background: linear-gradient(135deg, #ffd700 30%, #008000 70%);
-    /* Yellow to Green */
-    border: 2px solid #ffd700;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    font-size: 1em;
-    color: #ffffff;
-    transition:
-      box-shadow 0.3s ease,
-      transform 0.3s ease;
-  }
+	/* Container with bright accents and animation */
+	.services,
+	#psa,
+	footer,
+	div.regions-title.sep {
+		position: relative;
+		transition:
+			box-shadow 0.3s ease,
+			transform 0.3s ease;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+		/* Yellow to Green */
+		border: 2px solid #ffd700;
+		border-radius: 10px;
+		background: linear-gradient(
+			135deg,
+			#ffd700 30%,
+			#008000 70%
+		);
+		padding: 10px;
+		color: #ffffff;
+		font-size: 1em;
+	}
 
-  .services:hover,
-  #psa:hover,
-  footer:hover,
-  div.regions-title.sep:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
-  }
+	.services:hover,
+	#psa:hover,
+	footer:hover,
+	div.regions-title.sep:hover {
+		transform: scale(1.05);
+		box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+	}
 
-  /* Gradient border for status panels */
-  .gradient-border {
-    position: relative;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #ffd700;
-    /* Yellow Jersey */
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.2em;
-  }
+	/* Gradient border for status panels */
+	.gradient-border {
+		position: relative;
+		border-radius: 10px;
+		background-color: #ffd700;
+		padding: 10px;
+		/* Yellow Jersey */
+		color: #ffffff;
+		font-weight: bold;
+		font-size: 1.2em;
+		text-align: center;
+	}
 
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, #ffd700, #008000, #ffd700, #008000);
-    background-size: 200% 200%;
-    border-radius: 10px;
-    z-index: -1;
-    animation: gradient-flow 5s linear infinite;
-  }
+	.gradient-border::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -1;
+		animation: gradient-flow 5s linear infinite;
+		border-radius: 10px;
+		background: linear-gradient(
+			45deg,
+			#ffd700,
+			#008000,
+			#ffd700,
+			#008000
+		);
+		background-size: 200% 200%;
+		content: '';
+	}
 
-  @keyframes gradient-flow {
-    0% {
-      background-position: 0% 50%;
-    }
+	@keyframes gradient-flow {
+		0% {
+			background-position: 0% 50%;
+		}
 
-    100% {
-      background-position: 100% 50%;
-    }
-  }
+		100% {
+			background-position: 100% 50%;
+		}
+	}
 
-  /* Status colors with vibrant cycling palette */
-  .good {
-    color: #008000;
-    /* Green Jersey */
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-  }
+	/* Status colors with vibrant cycling palette */
+	.good {
+		color: #008000;
+		font-weight: bold;
+		/* Green Jersey */
+		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+	}
 
-  .minor {
-    color: #ffa500;
-    /* Orange - minor alerts */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  }
+	.minor {
+		color: #ffa500;
+		/* Orange - minor alerts */
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+	}
 
-  .major {
-    color: #ff0000;
-    /* Red - major issues */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-  }
+	.major {
+		color: #ff0000;
+		font-weight: bold;
+		/* Red - major issues */
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+	}
 
-  /* Background with cycling road theme */
-  body {
-    margin: 0;
-    font-family: 'Merriweather', serif;
-    font-size: 16px;
-    background: url('https://i.gyazo.com/ebf59cbe7c55a3df90ae7d8c62c9584c.jpg') no-repeat center;
-    background-size: cover;
-    color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-  }
+	/* Background with cycling road theme */
+	body {
+		margin: 0;
+		background: url('https://i.gyazo.com/ebf59cbe7c55a3df90ae7d8c62c9584c.jpg')
+			no-repeat center;
+		background-size: cover;
+		color: #ffffff;
+		font-size: 16px;
+		font-family: 'Merriweather', serif;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+	}
 
-  /* Tooltip with cycling theme */
-  [data-tooltip]:before {
-    content: attr(data-tooltip);
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffd700;
-    color: #000;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    font-weight: bold;
-    transition:
-      visibility 0s,
-      opacity 0.3s ease;
-    white-space: nowrap;
-  }
+	/* Tooltip with cycling theme */
+	[data-tooltip]:before {
+		position: absolute;
+		top: -40px;
+		left: 50%;
+		transform: translateX(-50%);
+		visibility: hidden;
+		opacity: 0;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease;
+		border-radius: 5px;
+		background: #ffd700;
+		padding: 5px 10px;
+		content: attr(data-tooltip);
+		color: #000;
+		font-weight: bold;
+		font-size: 0.9em;
+		white-space: nowrap;
+	}
 
-  [data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-  }
+	[data-tooltip]:hover:before {
+		visibility: visible;
+		opacity: 1;
+	}
 
-  @keyframes ride-bike {
-    0% {
-      transform: translateX(0);
-    }
+	@keyframes ride-bike {
+		0% {
+			transform: translateX(0);
+		}
 
-    50% {
-      transform: translateX(calc(100vw - 100px));
-      /* Moves to the far right */
-    }
+		50% {
+			transform: translateX(calc(100vw - 100px));
+			/* Moves to the far right */
+		}
 
-    100% {
-      transform: translateX(0);
-      /* Returns to the starting point */
-    }
-  }
+		100% {
+			transform: translateX(0);
+			/* Returns to the starting point */
+		}
+	}
 
-  .bike-container {
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    background: url('https://i.gyazo.com/9823ea6d0dccc361361cfacc1a6df950.png') no-repeat center;
-    background-size: contain;
-    animation: ride-bike 5s infinite ease-in-out;
-  }
+	.bike-container {
+		position: fixed;
+		bottom: 20px;
+		left: 0;
+		animation: ride-bike 5s infinite ease-in-out;
+		background: url('https://i.gyazo.com/9823ea6d0dccc361361cfacc1a6df950.png')
+			no-repeat center;
+		background-size: contain;
+		width: 100px;
+		height: 100px;
+	}
 }

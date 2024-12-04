@@ -9,121 +9,135 @@
 ==/UserStyle== */
 
 @-moz-document domain("steamstat.us") {
-  .title {
-    /* Christmas-Themed Title */
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 300;
-    color: #ffffff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    background: linear-gradient(180deg, #ff0000, #ffffff, #008000); /* Red, White, Green */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+	.title {
+		margin: 10px 0;
+		background: linear-gradient(
+			180deg,
+			#ff0000,
+			#ffffff,
+			#008000
+		); /* Red, White, Green */
+		-webkit-background-clip: text;
+		color: #ffffff;
+		font-weight: 300;
+		font-size: 2.6em;
+		/* Christmas-Themed Title */
+		text-align: center;
+		text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+		-webkit-text-fill-color: transparent;
+	}
 
-  a {
-    /* Christmas Links */
-    color: #ff4500; /* Festive Orange-Red */
-    text-decoration: none;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-    font-weight: bold;
-  }
+	a {
+		/* Christmas Links */
+		color: #ff4500; /* Festive Orange-Red */
+		font-weight: bold;
+		text-decoration: none;
+		text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+	}
 
-  a:hover {
-    color: #008000; /* Green for Hover */
-    text-decoration: underline;
-  }
+	a:hover {
+		color: #008000; /* Green for Hover */
+		text-decoration: underline;
+	}
 
-  .pull-right,
-  .service .status {
-    text-align: right;
-    float: right;
-  }
+	.pull-right,
+	.service .status {
+		float: right;
+		text-align: right;
+	}
 
-  .good {
-    /* Holly Green */
-    color: #008000;
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-  }
+	.good {
+		/* Holly Green */
+		color: #008000;
+		text-shadow: 1px 1px 1px rgb(0, 0, 0);
+	}
 
-  .minor {
-    /* Festive Gold */
-    color: #ffd700;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
-    font-weight: bold;
-  }
+	.minor {
+		/* Festive Gold */
+		color: #ffd700;
+		font-weight: bold;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+	}
 
-  .major {
-    /* Bright Christmas Red */
-    color: #ff0000;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
-    font-weight: bold;
-  }
+	.major {
+		/* Bright Christmas Red */
+		color: #ff0000;
+		font-weight: bold;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+	}
 
-  #js-refresh {
-    /* Refresh Indicator */
-    color: #ffd700;
-    text-shadow: 0 0 1px rgba(255, 215, 0, 0.8);
-    font-weight: bolder;
-  }
+	#js-refresh {
+		/* Refresh Indicator */
+		color: #ffd700;
+		font-weight: bolder;
+		text-shadow: 0 0 1px rgba(255, 215, 0, 0.8);
+	}
 
-  .services,
-  #psa,
-  noscript {
-    position: relative;
-    background: linear-gradient(180deg, #ff0000, #ffffff, #008000); /* Candy Cane Stripe Effect */
-    border: 2px solid #ffd700; /* Gold Border */
-    border-radius: 6px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 1px 0px 3px rgb(0, 0, 1, 1);
-    text-decoration-color: black;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
-    outline: black;
-    outline-style: auto;
-    color: #ffffff;
-  }
+	.services,
+	#psa,
+	noscript {
+		position: relative;
+		outline: black;
+		outline-style: auto;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+		border: 2px solid #ffd700; /* Gold Border */
+		border-radius: 6px;
+		background: linear-gradient(
+			180deg,
+			#ff0000,
+			#ffffff,
+			#008000
+		); /* Candy Cane Stripe Effect */
+		color: #ffffff;
+		font-size: 1em;
+		line-height: 1.5;
+		text-decoration-color: black;
+		text-shadow: 1px 0px 3px rgb(0, 0, 1, 1);
+	}
 
-  body {
-    margin: 0;
-    color: #ffffff;
-    background: linear-gradient(0deg, #ff0000, #008000); /* Christmas Red and Green */
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-    font-weight: 300;
-  }
+	body {
+		margin: 0;
+		background: linear-gradient(
+			0deg,
+			#ff0000,
+			#008000
+		); /* Christmas Red and Green */
+		color: #ffffff;
+		font-weight: 300;
+		font-size: 16px;
+		font-family: 'Roboto', Arial, sans-serif;
+		text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+	}
 
-  [data-tooltip]:before {
-    /* Tooltip Box */
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    overflow: hidden;
-    white-space: pre;
-    word-wrap: break-word;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 96%;
-    background: #008000; /* Green Background for Tooltip */
-    color: #ffd700; /* Gold Text */
-    text-align: left;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 1;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-    font-style: italic;
-    font-weight: 300;
-    transition:
-      visibility 0s,
-      opacity 0.3s ease-in-out;
-  }
+	[data-tooltip]:before {
+		/* Tooltip Box */
+		visibility: hidden;
+		opacity: 0;
+		overflow: hidden;
+		content: attr(data-tooltip);
+		font-size: 0.9em;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		z-index: 1;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease-in-out;
+		border-radius: 6px;
+		background: #008000; /* Green Background for Tooltip */
+		padding: 8px;
+		width: 96%;
+		color: #ffd700; /* Gold Text */
+		font-style: italic;
+		font-weight: 300;
+		text-align: left;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+	}
 
-  [data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-  }
+	[data-tooltip]:hover:before {
+		visibility: visible;
+		opacity: 1;
+	}
 }

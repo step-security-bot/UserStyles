@@ -9,71 +9,75 @@
 ==/UserStyle== */
 
 @-moz-document domain("nascar.com") {
-  /* Invert entire page for dark mode effect */
-  html {
-    filter: invert(1) hue-rotate(180deg) !important;
-    background-color: #282a36 !important;
-  }
+	/* Invert entire page for dark mode effect */
+	html {
+		filter: invert(1) hue-rotate(180deg) !important;
+		background-color: #282a36 !important;
+	}
 
-  /* Revert inversion on images and videos */
-  img:not(
-      li:nth-child(2) > a > img,
-      #top-nav-rewards-profile-logo > img,
-      div > a > div > picture > img
-    ),
-  video,
-  svg:not(li.top-nav-button.user-profile-button > a > svg),
-  .video-container,
-  picture,
-  #footerSection,
-  iframe {
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
+	/* Revert inversion on images and videos */
+	img:not(
+			li:nth-child(2) > a > img,
+			#top-nav-rewards-profile-logo > img,
+			div > a > div > picture > img
+		),
+	video,
+	svg:not(
+			li.top-nav-button.user-profile-button
+				> a
+				> svg
+		),
+	.video-container,
+	picture,
+	#footerSection,
+	iframe {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
 
-  /* Revert inversion on specific elements (logos, ads, etc.) */
-  .logo,
-  .sponsor-logo,
-  .ad-container,
-  .social-icons,
-  .team-logo,
-  .icon {
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
+	/* Revert inversion on specific elements (logos, ads, etc.) */
+	.logo,
+	.sponsor-logo,
+	.ad-container,
+	.social-icons,
+	.team-logo,
+	.icon {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
 
-  /* Revert inversion on elements that should keep their original color */
-  .btn,
-  button,
-  .button,
-  .navbar,
-  .header,
-  .footer {
-    filter: invert(1) hue-rotate(180deg) !important;
-  }
+	/* Revert inversion on elements that should keep their original color */
+	.btn,
+	button,
+	.button,
+	.navbar,
+	.header,
+	.footer {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
 
-  /* Adjust links and header/footer colors for better readability */
-  a > svg > path,
-  .nav-link {
-    color: #000 !important;
-  }
+	/* Adjust links and header/footer colors for better readability */
+	a > svg > path,
+	.nav-link {
+		color: #000 !important;
+	}
 
-  a:hover {
-    color: #ff79c6 !important;
-    /* Pink on Hover */
-  }
+	a:hover {
+		color: #ff79c6 !important;
+		/* Pink on Hover */
+	}
 
-  /* Further tweaks as needed */
-  /* Example: Re-adjusting specific cards or sections */
-  .card,
-  .section,
-  .news-item {
-    background-color: #44475a !important;
-    color: #f8f8f2 !important;
-  }
+	/* Further tweaks as needed */
+	/* Example: Re-adjusting specific cards or sections */
+	.card,
+	.section,
+	.news-item {
+		background-color: #44475a !important;
+		color: #f8f8f2 !important;
+	}
 
-  /* Footer styling */
-  footer,
-  .footer {
-    background-color: #282a36 !important;
-    color: #6272a4 !important;
-  }
+	/* Footer styling */
+	footer,
+	.footer {
+		background-color: #282a36 !important;
+		color: #6272a4 !important;
+	}
 }

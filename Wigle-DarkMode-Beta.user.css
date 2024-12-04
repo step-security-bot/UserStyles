@@ -9,143 +9,165 @@
 ==/UserStyle== */
 
 @-moz-document domain("wigle.net") {
-  body,
-  .panel-body,
-  .toolsSection,
-  td,
-  #resultColumn,
-  ul,
-  div#newsBar,
-  .newsItem,
-  .contentall.contentwithheader.row,
-  .dd-selected,
-  ol.breadcrumb,
-  .searchControl,
-  #wigleMain > ul > li.active > a,
-  div.preformatted,
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(2) > div {
-    background-color: #121212;
-    color: #ffffff;
-  }
+	body,
+	.panel-body,
+	.toolsSection,
+	td,
+	#resultColumn,
+	ul,
+	div#newsBar,
+	.newsItem,
+	.contentall.contentwithheader.row,
+	.dd-selected,
+	ol.breadcrumb,
+	.searchControl,
+	#wigleMain > ul > li.active > a,
+	div.preformatted,
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(2)
+		> div {
+		background-color: #121212;
+		color: #ffffff;
+	}
 
-  .navbar,
-  .footer,
-  .dropdown-menu,
-  .modal-content {
-    background-color: #1e1e1e;
-    border-color: #444;
-  }
+	.navbar,
+	.footer,
+	.dropdown-menu,
+	.modal-content {
+		border-color: #444;
+		background-color: #1e1e1e;
+	}
 
-  .navbar-brand img,
-  .navbar-toggle .icon-bar,
-  .navbar-nav > li > a,
-  .dropdown-menu > li > a,
-  #map_ext_wrapper,
-  input.mapfilter,
-  input#savelinkhereID,
-  #text,
-  .altStatsLink {
-    filter: invert(1) hue-rotate(180);
-  }
+	.navbar-brand img,
+	.navbar-toggle .icon-bar,
+	.navbar-nav > li > a,
+	.dropdown-menu > li > a,
+	#map_ext_wrapper,
+	input.mapfilter,
+	input#savelinkhereID,
+	#text,
+	.altStatsLink {
+		filter: invert(1) hue-rotate(180);
+	}
 
-  input,
-  select,
-  textarea,
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(1),
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(2),
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(3),
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(4),
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(5),
-  #userDiscovered > div > div.dygraph-legend > span:nth-child(6) {
-    background-color: #333;
-    color: #ffffff;
-    border: 1px solid #666;
-  }
+	input,
+	select,
+	textarea,
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(1),
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(2),
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(3),
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(4),
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(5),
+	#userDiscovered
+		> div
+		> div.dygraph-legend
+		> span:nth-child(6) {
+		border: 1px solid #666;
+		background-color: #333;
+		color: #ffffff;
+	}
 
-  a {
-    color: #bb86fc;
-  }
+	a {
+		color: #bb86fc;
+	}
 
-  .btn,
-  .btn-default,
-  .btn-block {
-    background-color: #333;
-    color: #ffffff;
-    border: 1px solid #666;
-  }
+	.btn,
+	.btn-default,
+	.btn-block {
+		border: 1px solid #666;
+		background-color: #333;
+		color: #ffffff;
+	}
 
-  .form-control {
-    background-color: #333;
-    color: #ffffff;
-  }
+	.form-control {
+		background-color: #333;
+		color: #ffffff;
+	}
 
-  .mapBarItem,
-  .mapForm,
-  .mapFilter,
-  .mapBarSlider,
-  .mapBarStatus,
-  .mapBarShowHide,
-  .mapBarItem table,
-  .mapBarItem input,
-  .mapBarItem select,
-  .mapBarItem label,
-  div.panel {
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
+	.mapBarItem,
+	.mapForm,
+	.mapFilter,
+	.mapBarSlider,
+	.mapBarStatus,
+	.mapBarShowHide,
+	.mapBarItem table,
+	.mapBarItem input,
+	.mapBarItem select,
+	.mapBarItem label,
+	div.panel {
+		background-color: #1e1e1e;
+		color: #ffffff;
+	}
 
-  .statsGraphInner,
-  .statsgraphcontainer,
-  .graphContextLinks,
-  .graphCaption {
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
+	.statsGraphInner,
+	.statsgraphcontainer,
+	.graphContextLinks,
+	.graphCaption {
+		background-color: #1e1e1e;
+		color: #ffffff;
+	}
 
-  .hilite-stats {
-    color: #bb86fc;
-  }
+	.hilite-stats {
+		color: #bb86fc;
+	}
 
-  .modal-header,
-  .modal-footer,
-  .jumbotron {
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
+	.modal-header,
+	.modal-footer,
+	.jumbotron {
+		background-color: #1e1e1e;
+		color: #ffffff;
+	}
 
-  .modal-header .close {
-    color: #ffffff;
-  }
+	.modal-header .close {
+		color: #ffffff;
+	}
 
-  .modal-body,
-  ##userDiscovered > div > div.dygraph-legend {
-    background-color: #1e1e1e;
-    color: #ffffff;
-  }
+	.modal-body,
+	##userDiscovered > div > div.dygraph-legend {
+		background-color: #1e1e1e;
+		color: #ffffff;
+	}
 
-  .container,
-  .row,
-  .col-sm-12,
-  .col-sm-9,
-  .col-sm-3,
-  .col-sm-2,
-  .col-sm-1 {
-    background-color: #1e1e1e;
-    color: #fff;
-  }
+	.container,
+	.row,
+	.col-sm-12,
+	.col-sm-9,
+	.col-sm-3,
+	.col-sm-2,
+	.col-sm-1 {
+		background-color: #1e1e1e;
+		color: #fff;
+	}
 
-  #newsBar,
-  .graphCaption,
-  .pageControls,
-  input.button1,
-  input.button2 {
-    color: #000000;
-  }
+	#newsBar,
+	.graphCaption,
+	.pageControls,
+	input.button1,
+	input.button2 {
+		color: #000000;
+	}
 
-  #uploadsTable,
-  #mapBar,
-  table,
-  a {
-    filter: invert(1) hue-rotate(180);
-  }
+	#uploadsTable,
+	#mapBar,
+	table,
+	a {
+		filter: invert(1) hue-rotate(180);
+	}
 }

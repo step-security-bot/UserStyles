@@ -10,99 +10,100 @@
 
 @-moz-document url("https://steamstat.us/")
 {
-  .title {
-    /* Steam Status Title */
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 300;
-    color: #d4b5ff;
-    text-shadow: 2px 2px 8px #4a0072;
-  }
+	.title {
+		margin: 10px 0;
+		color: #d4b5ff;
+		font-weight: 300;
+		font-size: 2.6em;
+		/* Steam Status Title */
+		text-align: center;
+		text-shadow: 2px 2px 8px #4a0072;
+	}
 
-  a {
-    color: #9e86ff;
-    text-decoration: none;
-    text-shadow: 2px 2px 6px #3e045f;
-    font-weight: bold;
-  }
+	a {
+		color: #9e86ff;
+		font-weight: bold;
+		text-decoration: none;
+		text-shadow: 2px 2px 6px #3e045f;
+	}
 
-  .pull-right,
-  .service .status {
-    text-align: right;
-    float: right;
-  }
+	.pull-right,
+	.service .status {
+		float: right;
+		text-align: right;
+	}
 
-  .good {
-    /* Soft Green */
-    color: #57e39b;
-    text-shadow: 2px 2px 6px #154d47;
-  }
+	.good {
+		/* Soft Green */
+		color: #57e39b;
+		text-shadow: 2px 2px 6px #154d47;
+	}
 
-  .minor {
-    /* Soft Teal */
-    color: #63d1ff;
-    text-shadow: 2px 2px 6px #005f72;
-    font-weight: bold;
-  }
+	.minor {
+		/* Soft Teal */
+		color: #63d1ff;
+		font-weight: bold;
+		text-shadow: 2px 2px 6px #005f72;
+	}
 
-  .major {
-    /* Soft Yellow */
-    color: #ffd700;
-    text-shadow: 2px 2px 6px #705c00;
-    font-weight: bold;
-  }
+	.major {
+		/* Soft Yellow */
+		color: #ffd700;
+		font-weight: bold;
+		text-shadow: 2px 2px 6px #705c00;
+	}
 
-  #js-refresh {
-    /* Refreshing in idk seconds */
-    color: #a569ff;
-    text-shadow: 0 0 8px #a569ff;
-    font-weight: bolder;
-  }
+	#js-refresh {
+		/* Refreshing in idk seconds */
+		color: #a569ff;
+		font-weight: bolder;
+		text-shadow: 0 0 8px #a569ff;
+	}
 
-  .services,
-  #psa,
-  noscript {
-    position: relative;
-    background-color: #1f1b2e;
-    border: 1px solid #3a1e5d;
-    border-radius: 6px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 0px 0px 6px #000;
-  }
+	.services,
+	#psa,
+	noscript {
+		position: relative;
+		border: 1px solid #3a1e5d;
+		border-radius: 6px;
+		background-color: #1f1b2e;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 6px #000;
+	}
 
-  body {
-    margin: 0;
-    color: #c2a3e8;
-    background: #000;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    text-shadow: 2px 2px 6px #000;
-    font-weight: lighter;
-  }
+	body {
+		margin: 0;
+		background: #000;
+		color: #c2a3e8;
+		font-weight: lighter;
+		font-size: 16px;
+		font-family: 'Open Sans', Helvetica, Arial,
+			sans-serif;
+		text-shadow: 2px 2px 6px #000;
+	}
 
-  [data-tooltip]:before {
-    /* Time since last status change Box */
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    overflow: hidden;
-    white-space: pre;
-    word-wrap: break-word;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 97%;
-    background: #221936;
-    color: #e6d5ff;
-    text-align: left;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 1;
-    text-shadow: 1px 1px 10px #000;
-    font-style: italic;
-    font-weight: lighter;
-  }
+	[data-tooltip]:before {
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		overflow: hidden;
+		content: attr(data-tooltip);
+		font-size: 0.9em;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		z-index: 1;
+		border-radius: 6px;
+		background: #221936;
+		padding: 8px;
+		width: 97%;
+		color: #e6d5ff;
+		font-style: italic;
+		font-weight: lighter;
+		text-align: left;
+		text-shadow: 1px 1px 10px #000;
+	}
 }

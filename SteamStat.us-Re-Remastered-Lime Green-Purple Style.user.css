@@ -9,117 +9,129 @@
 ==/UserStyle== */
 
 @-moz-document domain("steamstat.us") {
-  .title {
-    /* Lime Green/Purple Status Title */
-    text-align: center;
-    margin: 10px 0;
-    font-size: 2.6em;
-    font-weight: 300;
-    color: #32cd32;
-    text-shadow: 1px 1px 1px rgba(55, 10, 63, 0.9); /* Black shadow added */
-    background: linear-gradient(145deg, #32cd32, #8a2be2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+	.title {
+		margin: 10px 0;
+		background: linear-gradient(
+			145deg,
+			#32cd32,
+			#8a2be2
+		);
+		-webkit-background-clip: text;
+		color: #32cd32;
+		font-weight: 300;
+		font-size: 2.6em;
+		/* Lime Green/Purple Status Title */
+		text-align: center;
+		text-shadow: 1px 1px 1px rgba(55, 10, 63, 0.9); /* Black shadow added */
+		-webkit-text-fill-color: transparent;
+	}
 
-  a {
-    color: #8a2be2;
-    text-decoration: none;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6); /* Black shadow added */
-    font-weight: bold;
-  }
+	a {
+		color: #8a2be2;
+		font-weight: bold;
+		text-decoration: none;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6); /* Black shadow added */
+	}
 
-  a:hover {
-    color: #32cd32;
-    text-decoration: underline;
-  }
+	a:hover {
+		color: #32cd32;
+		text-decoration: underline;
+	}
 
-  .pull-right,
-  .service .status {
-    text-align: right;
-    float: right;
-  }
+	.pull-right,
+	.service .status {
+		float: right;
+		text-align: right;
+	}
 
-  .good {
-    /* Lime Green */
-    color: #32cd32;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
-  }
+	.good {
+		/* Lime Green */
+		color: #32cd32;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  .minor {
-    /* Light Purple */
-    color: #9370db;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
-    font-weight: bold;
-  }
+	.minor {
+		/* Light Purple */
+		color: #9370db;
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  .major {
-    /* Bright Lime */
-    color: #adff2f;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
-    font-weight: bold;
-  }
+	.major {
+		/* Bright Lime */
+		color: #adff2f;
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  #js-refresh {
-    /* Refreshing in idk seconds */
-    color: #8a2be2;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
-    font-weight: bolder;
-  }
+	#js-refresh {
+		/* Refreshing in idk seconds */
+		color: #8a2be2;
+		font-weight: bolder;
+		text-shadow: 0 0 2px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  .services,
-  #psa,
-  noscript {
-    position: relative;
-    background: linear-gradient(145deg, #1c8e1c, #7016c3);
-    border: 1px solid #8a2be2;
-    border-radius: 3px;
-    font-size: 1em;
-    line-height: 1.5;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8); /* Black shadow added */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    color: #f8f8f2;
-  }
+	.services,
+	#psa,
+	noscript {
+		position: relative;
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+		border: 1px solid #8a2be2;
+		border-radius: 3px;
+		background: linear-gradient(
+			145deg,
+			#1c8e1c,
+			#7016c3
+		);
+		color: #f8f8f2;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  body {
-    margin: 0;
-    color: #32cd32;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 16px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow added */
-    font-weight: 300;
-    background: linear-gradient(145deg, #32cd32, #8a2be2);
-  }
+	body {
+		margin: 0;
+		background: linear-gradient(
+			145deg,
+			#32cd32,
+			#8a2be2
+		);
+		color: #32cd32;
+		font-weight: 300;
+		font-size: 16px;
+		font-family: 'Roboto', Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  [data-tooltip]:before {
-    /* Time since last status change Box */
-    visibility: hidden;
-    opacity: 0;
-    font-size: 0.9em;
-    content: attr(data-tooltip);
-    overflow: hidden;
-    white-space: pre;
-    word-wrap: break-word;
-    position: absolute;
-    top: 0;
-    left: 2%;
-    width: 96%;
-    background: #21222c;
-    color: #32cd32;
-    text-align: left;
-    padding: 8px;
-    border-radius: 6px;
-    z-index: 1;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow added */
-    font-style: italic;
-    font-weight: 300;
-    transition:
-      visibility 0s,
-      opacity 0.3s ease-in-out;
-  }
+	[data-tooltip]:before {
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0;
+		overflow: hidden;
+		content: attr(data-tooltip);
+		font-size: 0.9em;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		z-index: 1;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease-in-out;
+		border-radius: 6px;
+		background: #21222c;
+		padding: 8px;
+		width: 96%;
+		color: #32cd32;
+		font-style: italic;
+		font-weight: 300;
+		text-align: left;
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow added */
+	}
 
-  [data-tooltip]:hover:before {
-    visibility: visible;
-    opacity: 1;
-  }
+	[data-tooltip]:hover:before {
+		visibility: visible;
+		opacity: 1;
+	}
 }
