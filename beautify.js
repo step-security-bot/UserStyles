@@ -100,7 +100,7 @@ async function beautify(scope, ui = true)
         unindent_chained_methods: false,
 
         // Whether to break chained method calls into separate lines (e.g., 'object.method().call()' becomes separate lines)
-        break_chained_methods: false,
+        break_chained_methods: true,
 
         // Whether to keep array indentation consistent across all lines (e.g., 'let arr = [1, 2, 3]' will not change its indentation style)
         keep_array_indentation: false,
