@@ -6,11 +6,9 @@
 @author       Nick2bad4u@hotmail.com
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("klimat.app")
-{
+@-moz-document domain("klimat.app") {
 	/* Dark Mode Theme for Klimat Weather Page */
-	body
-	{
+	body {
 		background-color: #121212;
 		color: #e0e0e0;
 	}
@@ -18,73 +16,62 @@
 	header,
 	footer,
 	.sidebar,
-	.content
-	{
+	.content {
 		background-color: #1e1e1e;
 		color: #e0e0e0;
 	}
 
 	a,
-	.mbn
-	{
+	.mbn {
 		color: #bb86fc;
 	}
 
-	a:hover
-	{
+	a:hover {
 		color: #3700b3;
 	}
 
-	table
-	{
+	table {
 		background-color: #1e1e1e;
 		color: #e0e0e0;
 	}
 
 	table th,
-	table td
-	{
+	table td {
 		border: 1px solid #333;
 	}
 
 	button,
 	input,
 	select,
-	textarea
-	{
+	textarea {
+		border: 1px solid #444;
 		background-color: #333;
 		color: #e0e0e0;
-		border: 1px solid #444;
 	}
 
 	button:hover,
 	input:hover,
 	select:hover,
-	textarea:hover
-	{
-		background-color: #BB86FC;
+	textarea:hover {
 		border-radius: 5px;
+		background-color: #bb86fc;
 	}
 
-	::selection
-	{
+	::selection {
 		background-color: #bb86fc;
 		color: #121212;
 	}
 
-	span
-	{
-		color: #BB86FC;
+	span {
+		color: #bb86fc;
 	}
-	.information__left__blk
-	{
-		border-color: #BB86FC;
+	.information__left__blk {
+		border-color: #bb86fc;
 	}
 
 	#content_wrapper,
 	.form-actions,
-	#fieldDetails > tbody
-	{
+	#fieldDetails > tbody {
 		filter: invert(1) hue-rotate(180deg);
 	}
 }
