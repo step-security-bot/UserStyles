@@ -13,7 +13,7 @@
 
 # Typpi's UserStyles
 
-A curated collection of **UserStyles** and scripts made by **Typpi**, designed to improve web experiences with sleek dark modes, enhanced functionality, and unique themes.
+A curated collection of **UserStyles** and scripts made by **Typpi** (@nick2bad4u), designed to improve web experiences with sleek dark modes, enhanced functionality, and unique themes.
 
 ## Featured Styles
 
