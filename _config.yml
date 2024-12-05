@@ -4,3 +4,6 @@ description: UserStyle collection made by Typpi / Nick2bad4u
 url: 'https://userstyles.github.typpi.online' # the base hostname & protocol for your site
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-feed
