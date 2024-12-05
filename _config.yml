@@ -7,3 +7,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-feed
+  - jekyll-archives
+  - jekyll-language-plugin
+  - jekyll-algolia
