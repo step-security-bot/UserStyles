@@ -3,7 +3,7 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	2.5
+@version      	3.0
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 @preprocessor 	stylus
@@ -491,6 +491,8 @@
 				> button
 		):not(#cpra-compliance-cta):not(
 			#__next > div > header > div > button
+		):not(
+			.------packages-ui-Button-Button-module__btn--mQaJJ
 		),
 	input[type='submit'],
 	input[type='button'],
@@ -580,7 +582,11 @@
 	[class*='-ModalWithTabs-module__tabList'],
 	[class*='styles_navItem']
 		> a[class*='Button_default_']:hover,
-	.react-select__option--is-selected {
+	.react-select__option--is-selected,
+	#main
+		> div.src-components-FilterSearch-FilterSearch-module__root--RO9F0
+		> div.src-components-FilterSearch-Search-Search-module__root--_2QZD
+		> svg {
 		background-color: #3c3c3c !important;
 	}
 
@@ -629,7 +635,17 @@
 		> .react-select__control
 		div
 		span[class*='indicatorSeparator'],
-	.react-select__option--is-focused {
+	.react-select__option--is-focused,
+	#bikes
+		> table
+		> tbody
+		> tr:nth-child(n):hover
+		> td:nth-child(n),
+	#shoes
+		> table
+		> tbody
+		> tr:nth-child(n):hover
+		> td:nth-child(n) {
 		background-color: #4c4c4c !important;
 	}
 
@@ -1112,7 +1128,7 @@
 				> li.suffer-score
 				> strong
 				> a
-		),
+		):not(#about-container > p:nth-child(4) > a),
 	.page .btn.btn-link:link,
 	.page .btn.btn-link:visited,
 	.page a:not(.btn):visited,
@@ -1572,9 +1588,25 @@
 	.ui-dialog.sauce-dialog
 		.btn:not(.btn-unstyled):not(.btn-primary):not(
 			.btn-secondary
-		) {
+		),
+	#my-privacy
+		> div.section.setting-group
+		> div:nth-child(1)
+		> div
+		> div {
 		border: 1px solid #fff !important;
 		color: #fff !important;
+	}
+
+	.MapVisibilityControls--hide-all-detail--4IbKf,
+	.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibility--cXx_M
+		.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibilityHeader--uDFDI,
+	.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibility--cXx_M
+		.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibilityBody--nI3eQ,
+	.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibility--cXx_M
+		.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibilityForm--QY3EC
+		.\------packages-settings-ui-src-features-StatsVisibility-StatsVisibility-module__statsVisibilityFormLabel--s4_5m {
+		color: white;
 	}
 
 	table.unstyled td,
@@ -1596,8 +1628,31 @@
 		> table
 		> tbody
 		> tr:nth-child(n)
-		> td:nth-child(n) {
+		> td:nth-child(n),
+	#about-container,
+	#ftue-modal > div > div,
+	.drop-down-menu.drop-down-sm .selection,
+	.src-components-TableRow-styles__right-cell--k_pNN,
+	.src-index__title-text--N9ZcF,
+	.src-index__body--i82wC {
 		color: #000 !important;
+	}
+
+	body
+		> div.container.page
+		> div.description
+		> button {
+		padding-right: 4px;
+		padding-left: 4px;
+	}
+
+	#open-global-search-button {
+		padding-top: 5px;
+		padding-right: 5px;
+	}
+
+	#notifications > div > div > div {
+		padding: 8px;
 	}
 
 	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog
@@ -1951,6 +2006,80 @@
 		> ul
 		> li:nth-child(n)
 		> a
+		> img,
+	body > reach-portal > div,
+	body
+		> reach-portal
+		> div
+		> div.styles_contents__yGSMR
+		> div.ActivityPopup_activityTitle__qfjnf
+		> a,
+	#ftue-modal > div > div,
+	.drop-down-menu.drop-down-sm .selection,
+	.css-j5qre9-control,
+	#route-type-select > div,
+	#main
+		> div.src-index-module__routeList--ob8Kz
+		#main
+		> div.src-index-module__routeList--ob8Kz
+		> div
+		> a:nth-child(n)
+		> div
+		> img,
+	li.nav-item.drop-down-menu.upload-menu.enabled
+		> ul
+		> li:nth-child(n)
+		> a
+		> span,
+	#garmin-connection,
+	#garmin-connection > *,
+	body
+		> div.view
+		> div.page.container
+		> div.row
+		> div.sidebar.spans4
+		> div:nth-child(2)
+		> ul
+		> li:nth-child(n),
+	body
+		> div.view
+		> div.page.container
+		> div.row
+		> div.sidebar.spans4
+		> div:nth-child(2)
+		> ul
+		> li:nth-child(n)
+		> *,
+	#my-privacy
+		> div.section.setting-group
+		> div:nth-child(1)
+		> div
+		> div.MapVisibilityControls--hide-address--F6uR5
+		> svg
+		> g
+		> path:nth-child(n),
+	#my-privacy
+		> div.section.setting-group
+		> div:nth-child(1)
+		> div
+		> div.MapVisibilityControls--hide-anywhere--uEcVj
+		> svg
+		> path,
+	#my-privacy
+		> div.section.setting-group
+		> div:nth-child(1)
+		> div
+		> div.MapVisibilityControls--hide-all--WwxFV
+		> svg
+		> g
+		> path:nth-child(n),
+	a.\------packages-ui-Button-Button-module__btn--mQaJJ,
+	#main
+		> div
+		> div
+		> div.src-components-ApplicationPhotoHeader-styles__header-container--CXSV_
+		> div.------packages-ui-Avatar-Avatar-module__avatar--q5o7N.------packages-ui-Avatar-Avatar-module__club--kgE5R.------packages-ui-Avatar-Avatar-module__xlarge--ZrdQ5
+		> div
 		> img {
 		filter: invert(100%) !important;
 	}
@@ -1975,6 +2104,34 @@
 	.sauce-segment-score {
 		font-weight: 600 !important;
 		font-size: 10px;
+	}
+
+	.Activity_activityName__PvWFx {
+		/* Set a max width for the element */
+		transition: max-width 0.5s;
+		/* Display ellipsis (...) for overflow text */
+		max-width: 200px;
+		/* Prevent text from wrapping */
+		overflow: hidden;
+		/* Hide overflow text */
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		/* Smooth transition for width */
+	}
+
+	.Activity_activityRow__ZZ9AZ:hover
+		.Activity_activityName__PvWFx {
+		/* Show overflow text */
+		max-width: none;
+		/* Allow text to wrap */
+		overflow: visible;
+		white-space: normal;
+		/* Remove the max width */
+	}
+
+	.Activity_activityRow__ZZ9AZ {
+		position: relative;
+		/* Required for positioning */
 	}
 
 	#sauce-infopanel
@@ -2077,8 +2234,14 @@
 
 	.summaryGrid .summaryGridDataContainer,
 	.inline-stats strong,
-	.inline-stats b {
+	.inline-stats b,
+	.\------packages-feed-ui-src-features-Post-Post-module__postBody--st353:hover {
 		color: #d84e0b;
+		font-weight: 700;
+	}
+
+	.\------packages-feed-ui-src-features-Post-Post-module__entryTitle--qi9Ab:hover {
+		color: #d84e0b !important;
 		font-weight: 700;
 	}
 
@@ -2097,8 +2260,14 @@
 		> abbr,
 	abbr[title],
 	abbr[data-original-title],
-	.summaryGridUnits {
+	.summaryGridUnits,
+	.\------packages-feed-ui-src-features-Post-Post-module__postBody--st353 {
 		color: #3c66ac;
+	}
+
+	.\------packages-feed-ui-src-features-Post-Post-module__entryTitle--qi9Ab,
+	.------packages-ui-Button-Button-module__btn--mQaJJ {
+		color: #3c66ac !important;
 	}
 
 	.summaryGrid .summaryGridTitle,
@@ -2134,7 +2303,8 @@
 		color: #b8b8b8 !important;
 	}
 
-	.elevateExtendedData .gridTitle {
+	.elevateExtendedData .gridTitle,
+	.src-components-Facepile-Facepile-module__message--cUaZ_ {
 		color: #962f03b0;
 	}
 
@@ -2163,7 +2333,9 @@
 		> div.row.no-margins.activity-summary-container
 		> div.spans8.activity-stats.mt-md.mb-md
 		> div.section.more-stats
-		> table {
+		> table,
+	#about-container,
+	#main {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
@@ -2176,6 +2348,10 @@
 		> div
 		> div:nth-child(1)
 		> div:nth-child(3)
+		> a,
+	#container-nav
+		> ul.user-nav.nav-group
+		> li.nav-item.upgrade
 		> a {
 		display: none;
 	}
@@ -2187,7 +2363,9 @@
 		> div
 		> div
 		> div
-		> h2:nth-child(8) {
+		> h2:nth-child(8),
+	#bikes > table > thead > tr,
+	#shoes > table > thead > tr {
 		background-color: #fc5200 !important;
 	}
 
@@ -2265,7 +2443,8 @@
 		> div.section.device-section
 		> div
 		> div.gear.spans8,
-	#cpcurve-options > div {
+	#cpcurve-options > div,
+	#bikes > table > tbody > tr:nth-child(n) {
 		background-color: #2c2c2c !important;
 	}
 
@@ -2358,6 +2537,10 @@
 		> div.section.stats.gear.bikes.hidden {
 		border-radius: 25px;
 		padding: 10px;
+	}
+
+	.src-components-ChallengeCard-ChallengeCard-module__challengeCard--SiObK {
+		border-radius: 15px !important;
 	}
 
 	@font-face {
