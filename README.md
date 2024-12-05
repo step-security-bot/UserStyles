@@ -10,7 +10,6 @@
 
 ![RepoBeats Analytics](https://repobeats.axiom.co/api/embed/9831c07785869d711723400c1b0acbae9d78dc50.svg 'Repobeats analytics image')
 
-
 # Typpi's UserStyles
 
 A curated collection of **UserStyles** and scripts made by **Typpi** (@nick2bad4u), designed to improve web experiences with sleek dark modes, enhanced functionality, and unique themes.
