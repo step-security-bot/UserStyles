@@ -9,12 +9,10 @@
 ==/UserStyle== */
 @-moz-document domain("ebay.com"), regexp(".*www.ebay.*") {
 	/* Invert colors except images and videos */
-	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video
-	) {
+	:is( html: not([stylus-iframe]),
+    img,
+    svg,
+    video) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
