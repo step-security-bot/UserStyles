@@ -1,16 +1,16 @@
 /* ==UserStyle==
 @name         klimat.app - Dark Mode
-@version      20241018.02.50
+@version      2.0
 @namespace    klimat.app
 @description  Klimat.app Dark Mode
-@homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u@hotmail.com
 @license      UnLicense
 ==/UserStyle== */
-
-@-moz-document domain("klimat.app") {
+@-moz-document domain("klimat.app")
+{
 	/* Dark Mode Theme for Klimat Weather Page */
-	body {
+	body
+	{
 		background-color: #121212;
 		color: #e0e0e0;
 	}
@@ -18,55 +18,73 @@
 	header,
 	footer,
 	.sidebar,
-	.content {
+	.content
+	{
 		background-color: #1e1e1e;
 		color: #e0e0e0;
 	}
 
-	a {
+	a,
+	.mbn
+	{
 		color: #bb86fc;
 	}
 
-	a:hover {
+	a:hover
+	{
 		color: #3700b3;
 	}
 
-	table {
+	table
+	{
 		background-color: #1e1e1e;
 		color: #e0e0e0;
 	}
 
 	table th,
-	table td {
+	table td
+	{
 		border: 1px solid #333;
 	}
 
 	button,
 	input,
 	select,
-	textarea {
-		border: 1px solid #444;
+	textarea
+	{
 		background-color: #333;
 		color: #e0e0e0;
+		border: 1px solid #444;
 	}
 
 	button:hover,
 	input:hover,
 	select:hover,
-	textarea:hover {
-		background-color: #444;
+	textarea:hover
+	{
+		background-color: #BB86FC;
+		border-radius: 5px;
 	}
 
-	::selection {
+	::selection
+	{
 		background-color: #bb86fc;
 		color: #121212;
 	}
 
-	span {
-		color: #bb86fc;
+	span
+	{
+		color: #BB86FC;
+	}
+	.information__left__blk
+	{
+		border-color: #BB86FC;
 	}
 
-	#content_wrapper {
-		filter: invert(1);
+	#content_wrapper,
+	.form-actions,
+	#fieldDetails > tbody
+	{
+		filter: invert(1) hue-rotate(180deg);
 	}
 }
