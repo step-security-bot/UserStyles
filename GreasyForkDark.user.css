@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         greasyfork.org - Dark Mode
-@version      20241115.16.04
+@version      20241115.16.05
 @namespace    https://github.com/Nick2bad4u/UserStyles
 @description  Dark Mode for Greasyfork.org
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
@@ -17,8 +17,7 @@
 		h3
 	),
 	header,
-	#script-description,
-	body > aside > ul {
+	#script-description {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
