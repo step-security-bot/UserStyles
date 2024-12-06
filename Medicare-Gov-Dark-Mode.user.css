@@ -1,0 +1,20 @@
+/* ==UserStyle==
+@name           Medicare.Gov - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark mode for Medicare.gov
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("medicare.gov") {
+	/* Invert colors except images and videos */
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video
+	) {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+}
