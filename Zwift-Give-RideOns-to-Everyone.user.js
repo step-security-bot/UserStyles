@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Give 'Ride-ons' to everyone on Zwift Feed
 // @namespace    userstyles.github.typpi.online
-// @version      1.2
+// @version      2.0
 // @description  Click all buttons with a 750ms delay between each click
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -10,6 +10,8 @@
 // @run-at       document-idle
 // @include      *://*.zwift.com/feed
 // @icon         https://www.google.com/s2/favicons?sz=256&domain=zwift.com
+// @downloadURL https://update.greasyfork.org/scripts/519908/Give%20%27Ride-ons%27%20to%20everyone%20on%20Zwift%20Feed.user.js
+// @updateURL   https://update.greasyfork.org/scripts/519908/Give%20%27Ride-ons%27%20to%20everyone%20on%20Zwift%20Feed.meta.js
 // ==/UserScript==
 
 (function () {
