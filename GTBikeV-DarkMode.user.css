@@ -7,19 +7,23 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("gtbikev.com")
-{
+@-moz-document domain("gtbikev.com") {
 	/* Invert colors except images and videos */
-	:is(html:not([stylus-iframe]),
-	img,
-	svg,
-	video, #footer, #socket, .av-masonry-image-container), iframe, #header_main > div > div > span > a
-	{
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		#footer,
+		#socket,
+		.av-masonry-image-container
+	),
+	iframe,
+	#header_main > div > div > span > a {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
-	.header_color span
-	{
+	.header_color span {
 		color: #000;
 	}
 }
