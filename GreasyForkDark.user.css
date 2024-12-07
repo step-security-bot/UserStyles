@@ -37,7 +37,8 @@
 	}
 
 	#greasyfork-plus-options > ul,
-	#script-content h3 {
+	h3,
+	h2 {
 		color: #670000;
 	}
 }
