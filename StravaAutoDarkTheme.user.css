@@ -3,7 +3,7 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	3.4
+@version      	3.5
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -2286,8 +2286,7 @@
 	}
 
 	#sauce-kudo-all button:hover,
-	#sauce-kudo-all
-		> button.btn.btn-icon.sauce-invoke:hover,
+	.btn-icon.sauce-invoke:hover,
 	#athlete-profile
 		> div.row.no-margins
 		> div.spans5.offset1.sidebar
@@ -2333,5 +2332,9 @@
 		> div.section.stats.gear.bikes.hidden {
 		border-radius: 25px;
 		padding: 10px;
+	}
+
+	.btn-icon-right .app-icon-wrapper {
+		margin: 0 0 0 0px;
 	}
 }
