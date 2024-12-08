@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.0
+@version      2.1
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -26,6 +26,14 @@
 			.p1z-card-image,
 			.p1z-content-slice,
 			#znv-footer-link-sv,
+			.tile-callout-wrapper.py-6.bg-white
+				> div
+				> div
+				> div
+				> ul
+				> li:nth-child(n),
+			.hero-banner-inner,
+			.game-web .modal-title,
 			div.activity__gradient.pos__absolute.w-100.h-100,
 			#navigation-container
 				> div
@@ -49,23 +57,26 @@
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
-	#__next
-		> div
-		> div
-		> div:nth-child(1)
-		> div:nth-child(2)
-		> header
-		> div
-		> nav
-		> ul:nth-child(2)
-		> li:nth-child(1)
-		> button
-		> span.Locale-module__icon--jjf-9.Locale-module__small--fqr5w,
+	.Locale-module__icon--jjf-9.Locale-module__small--fqr5w,
 	#primaryNavHamburger
 		> svg
 		> :not(rect:nth-child(999)),
 	.game-web .text-shadow,
 	.game-web .button {
 		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.modal-open .fade {
+		background-color: rgba(255, 255, 255, 90%);
+	}
+
+	.game-web .modal--screenshot .modal-content {
+		background-color: rgba(255, 255, 255, 0.9);
+	}
+
+	.game-web .border__color,
+	.game-web .button.border__color {
+		border-style: solid;
+		border-color: #ff7830;
 	}
 }
