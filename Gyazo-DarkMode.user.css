@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      2.0
+@version      2.1
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -69,18 +69,7 @@
 		> div
 		> div
 		> svg,
-	#posts
-		> div
-		> *
-		> div
-		> section.panel
-		> footer
-		> section.post-controls
-		> div
-		> div.control.reblog-control
-		> a
-		> svg
-		> path:nth-child(n),
+	.reblog-control > a > svg > path:nth-child(n),
 	#react-root
 		> div.header-block.explorer-header-block
 		> div.explorer-action-btn-toolbar
@@ -173,7 +162,7 @@
 		> path,
 	[id^='headlessui-menu-button-'] > svg > path,
 	[id^='headlessui-menu-item-'] > svg,
-	body.pro .features h2,
+	.pro .features h2,
 	body
 		> div.content
 		> section.features-table
@@ -309,51 +298,10 @@
 		fill: white;
 	}
 
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> aside
-		> div
-		> div
-		> ul
-		> li.new-collection-field
-		> span
-		> span
-		> svg,
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> aside
-		> div
-		> div
-		> ul
-		> li.toplevel-item.tags
-		> a
-		> span.toplevel-item-kamon
-		> svg,
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> aside
-		> div
-		> div
-		> ul
-		> li.toplevel-item.visits
-		> a
-		> span.toplevel-item-kamon
-		> svg,
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> aside
-		> div
-		> div
-		> ul
-		> li.toplevel-item.captures.toplevel-item-active
+	.new-collection-field > span > span > svg,
+	.tags > a > span.toplevel-item-kamon > svg,
+	.visits > a > span.toplevel-item-kamon > svg,
+	.captures.toplevel-item-active
 		> a
 		> span.toplevel-item-kamon
 		> svg {
@@ -417,41 +365,16 @@
 		color: #e0e0e0 !important;
 	}
 
-	#faq
-		> div
-		> div.faq.static-page-faq
+	.faq.static-page-faq
 		> ul
 		> li.bottom
 		> div.question:hover,
-	#faq
-		> div
-		> div.faq.static-page-faq
+	.faq.static-page-faq
 		> ul
 		> li:nth-child(n)
 		> div.question:hover,
-	#posts
-		> div
-		> *
-		> div
-		> section.post
-		> div
-		> div
-		> h2:nth-child(n),
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.metadata-description
-		> div
-		> div.TOTVG659Y6UvGA4WzVD1
-		> form
-		> input,
+	.post > div > div > h2:nth-child(n),
+	.TOTVG659Y6UvGA4WzVD1 > form > input,
 	.card.medium-card,
 	.container-close-date-images.related-info,
 	.images-after-origin,
@@ -472,23 +395,30 @@
 		> tr
 		> th
 		> div,
-	body
-		> div.content
-		> section.teams-pricing
-		> div
-		> div.box-container
-		> div.box.enterprise-plan
-		> div
-		> p.title,
-	body
-		> div.content
-		> section.usecases
-		> div
-		> div:nth-child(n)
-		> div.row
-		> div:nth-child(n)
-		> div {
+	.title,
+	.row > div:nth-child(n) > div {
 		color: #bb86fc !important;
+	}
+
+	.header {
+		background: #121212;
+	}
+
+	:root {
+		--body-background: #121212;
+	}
+
+	.query-input {
+		border: 1px #bb86fc dashed;
+		border-radius: 5px;
+	}
+
+	.speech-button {
+		border: 1px #bb86fc dashed;
+	}
+
+	.speech-button:hover {
+		border: 1px #f00 dashed;
 	}
 
 	.footer-block,
@@ -505,68 +435,18 @@
 		background-color: #1e1e1e !important;
 	}
 
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.metadata-description {
+	.metadata-description {
 		padding: 10px;
 	}
 
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.captured-info,
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.image-ocrinfo-component
-		> div
-		> div.ocr-icon-block
-		> div,
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.related-info-box-component
-		> div
-		> div.related-images-grid-view.related-info
+	.captured-info,
+	.ocr-icon-block > div,
+	.related-info
 		> div
 		> div
 		> span
 		> span:first-child,
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.related-info-box-component
-		> div
-		> div.container-close-date-images.related-info
-		> div.section-headline
+	.section-headline
 		> a
 		> span
 		> span:first-child {
@@ -799,6 +679,15 @@
 		border-bottom: 3px solid #000;
 	}
 
+	.faq-list .faq-list-title {
+		background: linear-gradient(
+			to bottom,
+			#121212 calc(100% - 3px),
+			rgba(255, 255, 255, 0) 100%
+		);
+		color: #bb86fc !important;
+	}
+
 	#conclusion > div > div > h2,
 	#faq
 		> div
@@ -830,57 +719,33 @@
 		> div
 		> i,
 	#section-features > div > h2,
-	body > div.content > section.closing > div > h2,
-	body
-		> div.content
-		> section.faq
+	.closing > div > h2,
+	.faq
 		> div
 		> div
 		> ul
 		> li:nth-child(n)
 		> div.expand
 		> i,
-	body > div.content > section.pricing > div > h2,
-	body
-		> div.content
-		> section.testimonials
+	.pricing > div > h2,
+	.testimonials
 		> div
 		> div
 		> div
 		> div:nth-child(n)
 		> blockquote
 		> p,
-	body
-		> div.content
-		> section.testimonials
+	.testimonials
 		> div
 		> div
 		> div
 		> div:nth-child(n)
 		> div
 		> h5,
-	body
-		> div.content
-		> section.testimonials
-		> div
-		> div
-		> h2,
-	body
-		> div.content
-		> section.tutorial
-		> div
-		> h3,
-	body
-		> div.content
-		> section.usecases
-		> div
-		> div:nth-child(n)
-		> h3,
-	body
-		> div.content
-		> section.usecases
-		> div
-		> h2 {
+	.testimonials > div > div > h2,
+	.tutorial > div > h3,
+	.usecases > div > div:nth-child(n) > h3,
+	.usecases > div > h2 {
 		color: #bb86fc;
 	}
 
@@ -899,34 +764,14 @@
 	}
 
 	#conclusion > div > button,
-	#react-root
-		> div
-		> div
-		> div
-		> div.transform-page-header
-		> div
-		> button,
-	#react-root
-		> div
-		> div
-		> div
-		> div.transform-page-header
+	.transform-page-header > div > button,
+	.transform-page-header
 		> div
 		> div
 		> button:nth-child(n),
 	.Xpov4pPcafwfUVkzW7Gw,
-	body
-		> div.content
-		> section.pricing
-		> div
-		> div
-		> div.pricing-box.pricing-box-default,
-	body
-		> div.content
-		> section.teams-pricing
-		> div
-		> div.box-container
-		> div.box.small-team {
+	.pricing-box-default,
+	.box.small-team {
 		border: 1px solid #bb86fc;
 	}
 
@@ -940,14 +785,7 @@
 		fill: #f00;
 	}
 
-	#react-root
-		> div.header-block.explorer-header-block
-		> div.search-box
-		> div
-		> div.search-box-panel
-		> div.search-history-list
-		> div
-		> div.saved-search-header {
+	.saved-search-header {
 		color: #bb86fc;
 		font-size: 16px;
 		text-decoration: underline;
@@ -987,8 +825,14 @@
 		> div.content
 		> div.static-page-nav-container.light
 		> nav,
-	body > div.content > section.testimonials {
+	body > div.content > section.testimonials,
+	body.pricing .users,
+	body {
 		background-color: #121212;
+	}
+
+	.images-after-origin > section {
+		background-color: #121212 !important;
 	}
 
 	body
@@ -1019,40 +863,21 @@
 		);
 	}
 
-	body
-		> div.content
-		> div.static-page-nav-container.dark
-		> nav
-		> div,
-	body
-		> div.content
-		> div.static-page-nav-container.dark
-		> nav
-		> div
-		> div,
-	body
-		> div.content
-		> section.hero.hidden-xs
-		> div.container {
+	.dark > nav > div,
+	.dark > nav > div > div,
+	.container {
 		border-radius: 20px;
 		border-bottom-right-radius: 0 !important;
 		border-bottom-left-radius: 0 !important;
 	}
 
 	#conclusion > div,
-	body > div.content > section.faq > div,
-	body
-		> div.content
-		> section.hero-header.hidden-xs
-		> div,
-	body
-		> div.content
-		> section.hero-header.hidden-xs
-		> div
-		> div,
-	body > div.content > section.testimonials > div,
-	body > div.content > section.usecase > div {
-		border-radius: 20px;
+	.faq > div,
+	.hero-header.hidden-xs > div,
+	.hero-header.hidden-xs > div > div,
+	.testimonials > div,
+	.usecase > div {
+		border-radius: 20px !important;
 	}
 
 	#faq
@@ -1104,32 +929,10 @@
 	.btn-default:hover,
 	.btn-primary:hover,
 	.btn-secondary:hover,
-	body
-		> div.content
-		> section.hero-header.hidden-xs
-		> div
-		> div
-		> div.hero-header-text
-		> p:nth-child(n)
-		> a:hover,
-	body
-		> div.content
-		> section.teams-pricing
-		> div
-		> div.box-container
-		> div.box.enterprise-plan,
-	body
-		> div.content
-		> section.teams-pricing
-		> div
-		> div.box-container
-		> div.box.small-team,
-	body
-		> div.content
-		> section.teams-pricing
-		> div
-		> div:nth-child(2)
-		> div {
+	.hero-header-text > p:nth-child(n) > a:hover,
+	.enterprise-plan,
+	.small-team,
+	.teams-pricing > div > div:nth-child(2) > div {
 		border-color: #bb86fc;
 	}
 
@@ -1166,15 +969,7 @@
 		background-color: #bb86fc;
 	}
 
-	body
-		> div.content
-		> div.static-page-nav-container.dark
-		> nav
-		> div
-		> ul.navbar-items
-		> li.dropdown.hidden-sm.hidden-xs.open
-		> ul
-		> li.dropdown-header {
+	.dropdown-header {
 		color: #fff;
 	}
 
@@ -1440,7 +1235,7 @@
 	}
 }
 
-@-moz-document regexp("^https://(www\\.)?gyazo\\.com/.*/draw$")
+@-moz-document regexp("^https://(www\\.)?gyazo\\.com/.*/draw.*")
 {
 	article,
 	aside,
@@ -1481,5 +1276,23 @@
 	ul {
 		background-color: #00000014 !important;
 		/* Example style */
+	}
+
+	.explorer-action-btn-default {
+		--bg-color: #fff;
+		--font-color: #4d4d4d;
+		--hover-bg-color: #f2f2f2;
+		--active-bg-color: #e6e6e6;
+		--border-color: #bb86fc;
+		--hover-border-color: #d9d9d9;
+		--divider-color: #bb86fc;
+	}
+
+	svg:not(:root) {
+		fill: #bb86fc !important;
+	}
+
+	*:hover > svg:not(:root) {
+		fill: #d7d7d7 !important;
 	}
 }
