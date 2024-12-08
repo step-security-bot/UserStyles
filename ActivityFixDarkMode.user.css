@@ -7,19 +7,21 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("activityfix.com")
-{
+@-moz-document domain("activityfix.com") {
 	/* Invert colors except images and videos */
-	:is(html:not([stylus-iframe]),
-	img,
-	svg,
-	video,
-	.w3-dark-gray,
-	.w3-dark-grey,
-	.w3-hover-dark-gray:hover,
-	.w3-hover-dark-grey:hover,
-	.w3-center, iframe, .af-disconnect-button)
-	{
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		.w3-dark-gray,
+		.w3-dark-grey,
+		.w3-hover-dark-gray:hover,
+		.w3-hover-dark-grey:hover,
+		.w3-center,
+		iframe,
+		.af-disconnect-button
+	) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
@@ -27,75 +29,69 @@
 	.w3-dark-grey,
 	.w3-hover-dark-gray:hover,
 	.w3-hover-dark-grey:hover,
-	.w3-padding-16
-	{
-		color: #FFF!important;
-		background-color: #000!important;
+	.w3-padding-16 {
+		background-color: #000 !important;
+		color: #fff !important;
 		font-weight: 800;
 	}
 
 	.af-update-header,
-	.af-version
-	{
-		color: #2196F3;
+	.af-version {
+		color: #2196f3;
 		text-decoration: underline;
 	}
 
-	.af-update-header span
-	{
+	.af-update-header span {
 		cursor: default;
-		text-decoration: underline #333;
 		font-size: 13px;
+		text-decoration: underline #333;
 	}
 
-	.w3-padding-16
-	{
+	.w3-padding-16 {
 		padding-top: 0px !important;
 		padding-bottom: 16px !important;
 	}
 
-	.w3-bar.w3-top.af-blue.w3-large
-	{
-		background-color: #2196F3 !important;
+	.w3-bar.w3-top.af-blue.w3-large {
+		background-color: #2196f3 !important;
 	}
 
-	.w3-main
-	{
-		background-color: #FFF;
+	.w3-main {
+		background-color: #fff;
 	}
 
-	.w3-container.w3-black.w3-display-container
-	{
-		color: black !important;
-		background-color: white !important;
+	.w3-container.w3-black.w3-display-container {
 		margin: 0px 0px !important;
+		background-color: white !important;
+		color: black !important;
 	}
 
-	#save_success > div
-	{
-		border: 4px #2196F3 dashed;
+	#save_success > div {
+		border: 4px #2196f3 dashed;
 	}
 
-	.w3-bar-item.w3-left
-	{
-		font-weight: 550;
+	.w3-bar-item.w3-left {
 		font-style: italic;
+		font-weight: 550;
 	}
 
 	.af-help-contents > div:nth-child(n) > img,
-	.w3-center > table > tbody > tr:nth-child(1) > td:nth-child(1) > a > img
-	{
+	.w3-center
+		> table
+		> tbody
+		> tr:nth-child(1)
+		> td:nth-child(1)
+		> a
+		> img {
 		filter: invert(0) hue-rotate(0deg) !important;
 	}
 
 	body > br,
-	body > hr
-	{
+	body > hr {
 		display: none !important;
 	}
 
-	html
-	{
-		background: #FFF;
+	html {
+		background: #fff;
 	}
 }
