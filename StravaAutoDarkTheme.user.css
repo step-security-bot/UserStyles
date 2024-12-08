@@ -3,15 +3,12 @@
 @namespace   	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	3.2
+@version      	3.3
 @author         ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
-
 ==/UserStyle== */
 @-moz-document regexp("https:\\/\\/(?:www\\.)?strava\\.com.*")
 {
-
-
 	#__next > header,
 	#view > .header,
 	#global-header,
@@ -1397,12 +1394,13 @@
 	.app-icon.icon-hike-v3,
 	.location > .app-icon.icon-location,
 	[class *= "styles_navItem"] > a[class *= "Button_default_"] > img,
-	.nav-item > .experiment > img[alt],
+	.nav-item > .experiment > img[alt]:not(#global-header .user-nav .upgrade img),
 	[class *= "ActionsDropdown--more-icon"][role = "button"],
 	#sauce-infopanel table td .sauce-peak-rank .place,
 	#sauce-infopanel table td .sauce-peak-rank .category,
 	#main > div > div > div:nth-child(3) > div > ul > li:nth-child(n),
-	#container-nav > ul.global-nav.nav-group > li:nth-child(n) > ul > li:nth-child(n) > a > img
+	#container-nav > ul.global-nav.nav-group > li:nth-child(n) > ul > li:nth-child(n) > a > img,
+	#global-header .upload-menu .options .app-icon
 	{
 		filter: invert(100%) !important;
 	}
