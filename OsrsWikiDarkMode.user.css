@@ -7,17 +7,13 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("runescape.wiki")
-{
+@-moz-document domain("runescape.wiki") {
 	#mw-panel,
-	html
-	{
+	html {
 		background: black;
 	}
 
-	*
-	{
-
+	* {
 		color-scheme: dark;
 		--body-background-image: url(/images/Old_School_RuneScape_Wiki_background_darkmode.jpg?f3b60);
 		--body-background-color: #000000;
@@ -66,7 +62,12 @@
 		--ooui-text: #e6e6e6;
 		--ooui-interface: #2c2c2c;
 		--ooui-interface-border: #3f3f3f;
-		--ooui-window-background: rgba(25, 25, 25, 0.6);
+		--ooui-window-background: rgba(
+			25,
+			25,
+			25,
+			0.6
+		);
 		--ooui-input: #2d2d2d;
 		--ooui-input-border: #3e3e3e;
 		--ooui-input-border--hover: #555555;
@@ -79,7 +80,13 @@
 		--ooui-disabled: #444444;
 		--ooui-disabled-border: #444444;
 		--ooui-disabled-text: var(--ooui-text);
-		--ooui-pending-background-image: repeating-linear-gradient(-45deg, var(--search-box), var(--search-box) 20px, var(--body-main) 20px, var(--body-main) 30px);
+		--ooui-pending-background-image: repeating-linear-gradient(
+			-45deg,
+			var(--search-box),
+			var(--search-box) 20px,
+			var(--body-main) 20px,
+			var(--body-main) 30px
+		);
 		--tile-border-color: var(--body-border);
 		--tile-background-color: var(--body-light);
 		--tile-link-button-color: var(--body-mid);
@@ -87,18 +94,29 @@
 		--tile-dark-color: #fff;
 		--tile-dark-bg: #5d6773;
 		--tile-dark-link-color: #ccc;
-		--tile-dark-byline-color: rgba(255, 255, 255, 0.7);
+		--tile-dark-byline-color: rgba(
+			255,
+			255,
+			255,
+			0.7
+		);
 		--tile-dark-header-color: #fff;
 		--documentation-background: var(--body-light);
 		--documentation-border: var(--sidebar);
 		--documentation-link-color: var(--link-color);
-		--documentation-headers-color: var(--text-color);
-		--documentation-header-background: var(--body-dark);
+		--documentation-headers-color: var(
+			--text-color
+		);
+		--documentation-header-background: var(
+			--body-dark
+		);
 		--documentation-subheader-background: #1f293e;
 		--base-text-color: var(--text-color);
 		--base-heading-color: var(--text-color);
 		--base-heading-border: var(--sidebar);
-		--mainpage-recent-updates-description-color: var(--text-color);
+		--mainpage-recent-updates-description-color: var(
+			--text-color
+		);
 		--thumb-bg: var(--body-mid);
 		--thumb-caption-bg: var(--body-light);
 		--diff-context-border-color: var(--body-mid);
@@ -120,10 +138,18 @@
 		--messagebox-obsolete-border: #333;
 		--messagebox-obsolete-color: #ddd;
 		--messagebox-obsolete-link-color: #bbb;
-		--messagebox-info-background: var(--messagebox-obsolete-background);
-		--messagebox-info-border: var(--messagebox-obsolete-border);
-		--messagebox-info-color: var(--messagebox-obsolete-color);
-		--messagebox-info-link-color: var(--messagebox-obsolete-link-color);
+		--messagebox-info-background: var(
+			--messagebox-obsolete-background
+		);
+		--messagebox-info-border: var(
+			--messagebox-obsolete-border
+		);
+		--messagebox-info-color: var(
+			--messagebox-obsolete-color
+		);
+		--messagebox-info-link-color: var(
+			--messagebox-obsolete-link-color
+		);
 		--messagebox-action-background: #45697d;
 		--messagebox-action-border: #2d5266;
 		--messagebox-action-color: var(--text-color);
@@ -136,24 +162,48 @@
 		--messagebox-safe-border: #126802;
 		--messagebox-safe-color: #e9f6e7;
 		--messagebox-safe-link-color: #c1e0bb;
-		--messagebox-disambig-background: var(--messagebox-obsolete-background);
-		--messagebox-disambig-border: var(--messagebox-obsolete-border);
-		--messagebox-disambig-color: var(--messagebox-obsolete-color);
-		--messagebox-disambig-link-color: var(--messagebox-obsolete-link-color);
+		--messagebox-disambig-background: var(
+			--messagebox-obsolete-background
+		);
+		--messagebox-disambig-border: var(
+			--messagebox-obsolete-border
+		);
+		--messagebox-disambig-color: var(
+			--messagebox-obsolete-color
+		);
+		--messagebox-disambig-link-color: var(
+			--messagebox-obsolete-link-color
+		);
 		--mw-code-background-color: #2c2c2c;
 		--tabber-tab-bg: var(--body-light);
 		--tabber-tab-border-color: var(--body-border);
 		--tabber-active-tab-bg: var(--body-light);
 		--tabber-active-tab-color: var(--text-color);
-		--tabber-active-tab-hover-bg: var(--body-light);
-		--tabber-active-tab-hover-border-color: var(--body-border);
-		--tabber-active-tab-hover-color: var(--text-color);
-		--tabber-active-tab-border-hider-color: var(--body-light);
+		--tabber-active-tab-hover-bg: var(
+			--body-light
+		);
+		--tabber-active-tab-hover-border-color: var(
+			--body-border
+		);
+		--tabber-active-tab-hover-color: var(
+			--text-color
+		);
+		--tabber-active-tab-border-hider-color: var(
+			--body-light
+		);
 		--tabber-inactive-tab-bg: var(--body-mid);
-		--tabber-inactive-tab-border-color: var(--body-border);
-		--tabber-inactive-tab-color: var(--text-color);
-		--tabber-inactive-tab-hover-bg: var(--body-light);
-		--tabber-inactive-tab-hover-border-color: var(--body-border);
+		--tabber-inactive-tab-border-color: var(
+			--body-border
+		);
+		--tabber-inactive-tab-color: var(
+			--text-color
+		);
+		--tabber-inactive-tab-hover-bg: var(
+			--body-light
+		);
+		--tabber-inactive-tab-hover-border-color: var(
+			--body-border
+		);
 		--scribuntoconsole-input: #3ea6e6;
 		--scibuntoconsole-print: #f9d000;
 		--scribuntoconsole-error: #ee4231;
@@ -164,8 +214,12 @@
 		--coins-color: #6bc71f;
 		--coins-pos-color: #3ea6e6;
 		--coins-neg-color: #ee4231;
-		--questdetails-header-background: var(--body-dark);
-		--questdetails-header-background-alt: var(--body-dark);
+		--questdetails-header-background: var(
+			--body-dark
+		);
+		--questdetails-header-background-alt: var(
+			--body-dark
+		);
 		--fact-text-color: #3ea6e6;
 		--production-selected-background: #3c780a;
 		--production-selected-color: #fff;
@@ -176,42 +230,64 @@
 		--keypress-color: var(--text-color);
 		--ajaxpoll-background: var(--body-light);
 		--ajaxpoll-text-color: var(--base-text-color);
-		--ajaxpoll-answerbar-background: var(--body-mid);
-		--ajaxpoll-answerbar-border: var(--body-border);
+		--ajaxpoll-answerbar-background: var(
+			--body-mid
+		);
+		--ajaxpoll-answerbar-border: var(
+			--body-border
+		);
 		--rc-negative-color: #ee4231;
 		--rc-positive-color: #6bc71f;
-		--filter-black-to-link: invert(63%) sepia(67%) saturate(242%) hue-rotate(182deg) brightness(93%) contrast(94%);
+		--filter-black-to-link: invert(63%) sepia(67%)
+			saturate(242%) hue-rotate(182deg)
+			brightness(93%) contrast(94%);
 		--transcript-border-color: #596e96;
 		--transcript-border-hover-color: #8596b7;
 		--transcript-strikethrough-color: #fff;
 		--navbox-background: var(--body-light);
 		--navbox-border: var(--body-main);
 		--navbox-title-background: var(--body-dark);
-		--navbox-footer-background: var(--navbox-title-background);
-		--navbox-group-title-background: var(--navbox-title-background);
+		--navbox-footer-background: var(
+			--navbox-title-background
+		);
+		--navbox-group-title-background: var(
+			--navbox-title-background
+		);
 		--infobox-bg: var(--body-light);
 		--infobox-border: var(--body-border);
 		--infobox-header: var(--body-dark);
 		--infobox-subheader: var(--body-mid);
 		--infobox-text-color: var(--text-color);
 		--infobox-room-poh-color: #444e5a;
-		--sourceeditor-input-background: var(--body-mid);
+		--sourceeditor-input-background: var(
+			--body-mid
+		);
 		--sourceeditor-background: var(--body-light);
-		--sourceeditor-background-secondary: var(--body-mid);
+		--sourceeditor-background-secondary: var(
+			--body-mid
+		);
 		--sourceeditor-border: var(--body-main);
-		--codemirror-gutter-background: var(--body-light);
+		--codemirror-gutter-background: var(
+			--body-light
+		);
 		--toc-bg: var(--body-light);
 		--toc-title-bg: var(--body-dark);
 		--toc-border-color: var(--body-border);
 		--toc-list-border-color: var(--body-border);
 		--vector-tab-background: #222e45;
 		--vector-tab-background--hover: #293753;
-		--vector-tab-link-color: var(--background-link-color);
+		--vector-tab-link-color: var(
+			--background-link-color
+		);
 		--lighttable-bg-hover: #3c780a;
 		--lighttable-bg-active: #2e5e05;
 		--lighttable-link-color: #c3e8a3;
 		--personal-links-bg: rgba(7, 16, 34, 0.75);
-		--tbz-unlocked-background: repeating-linear-gradient(-45deg, #315d30 0 20px, #13421e 20px 30px);
+		--tbz-unlocked-background: repeating-linear-gradient(
+			-45deg,
+			#315d30 0 20px,
+			#13421e 20px 30px
+		);
 		--tbz-unlocked-border-color: #00e417;
 		--tbz-locked-background-color: #8a2525;
 		--tbz-locked-border-color: #b32828;
