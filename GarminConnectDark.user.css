@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      1.9
+@version      2.0
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
@@ -18,7 +18,8 @@
 	.modal-backdrop,
 	.modal,
 	.edit-carousel-content .edit-image-div,
-	iframe {
+	iframe,
+	.Notification_notification__189UW {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
@@ -99,5 +100,9 @@
 
 	.photo-carousel-modal .close {
 		color: black !important;
+	}
+
+	.btn-small {
+		z-index: 9999;
 	}
 }
