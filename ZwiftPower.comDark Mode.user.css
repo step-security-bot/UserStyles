@@ -2,91 +2,91 @@
 @name           ZwiftPower.com - Dark Mode
 @namespace      https://github.com/Nick2bad4u/UserStyles
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
-@version        1.1.0
+@version        1.3.0
 @description    ZwiftPower Dark Mode
 @author         Nick2bad4u
 @license        UnLicense
 ==/UserStyle== */
-@-moz-document domain("zwiftpower.com") {
+@-moz-document domain("zwiftpower.com")
+{
 	html,
 	svg,
 	iframe,
 	nav,
-	img.img-circle,
+	.img-circle,
 	rect,
-	span.text-gray,
-	#team_riders
-		> tbody
-		> tr:nth-child(n)
-		> td.text-left.text-nowrap.athlete_col.sorting_1
-		> div
-		> span,
-	#user-menu
-		> ul.nav.navbar-nav.navbar-right.hidden-xs.fix-right-nav
-		> li
-		> ul,
-	#team_list
-		> tbody
-		> tr:nth-child(n)
-		> td:nth-child(n)
-		> div
-		> span,
-	#highcharts-ptc6m8e-28
-		> svg
-		> g.highcharts-label.highcharts-tooltip.highcharts-color-0
-		> path {
+	.text-gray,
+	.text-left.text-nowrap.athlete_col.sorting_1 > div > span,
+	.fix-right-nav > li > ul,
+	#team_list > tbody > tr:nth-child(n) > td:nth-child(n) > div > span,
+	.highcharts-label.highcharts-tooltip.highcharts-color-0 > path,
+	.navbar-nav > li > .dropdown-menu,
+	.label
+	{
 		filter: invert(1) hue-rotate(180deg);
 	}
 
-	button:nth-child(n) {
+	.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle),
+	.btn-group > .btn:last-child:not(:first-child)
+	{
+		filter: invert(0) hue-rotate(0deg) !important;
+	}
+
+
+	button:nth-child(n)
+	{
 		color: #000 !important;
 	}
 
 	#zp_submenu > ul,
-	#zp_submenu > ul > li:nth-child(n) > a {
+	#zp_submenu > ul > li:nth-child(n) > a
+	{
 		background: white;
 		color: #000 !important;
 		text-shadow: 1px 1px 1px white !important;
 	}
 
-	#highcharts-ptc6m8e-28 > div > span {
+	#highcharts-ptc6m8e-28 > div > span
+	{
+		background: #FFF;
 		border-color: black;
-		background: #fff;
 	}
 
-	#page-footer {
-		border-radius: 50px;
+	#page-footer
+	{
 		background-color: #fff;
+		border-radius: 50px;
 	}
 
-	button:nth-child(n):hover {
+	button:nth-child(n):hover,
+	.grey_bg
+	{
 		background-color: #337ab7 !important;
 	}
 
-	#tab_main
-		> div
-		> div
-		> div.panel.panel-grey
-		> div.panel-heading {
+	.panel.panel-grey > div.panel-heading
+	{
 		filter: invert(1) hue-rotate(180deg);
-		border-bottom: 1px solid #337ab7;
-		background-color: #337ab7;
+		background-color: #337AB7;
+		border-bottom: 1px solid #337AB7;
 		color: black;
 		font-weight: 500;
 		font-size: 20px;
 	}
 
-	*
-		> svg
-		> g.highcharts-label.highcharts-tooltip.highcharts-color-undefined {
+	.highcharts-color-undefined
+	{
 		filter: invert(1) hue-rotate(180deg);
 	}
 
-	#friends_results
-		> thead
-		> tr
-		> th:nth-child(n)::after {
-		opacity: 0.3;
+	#friends_results > thead > tr > th:nth-child(n)::after
+	{
 		color: #000 !important;
+		opacity: 0.3;
+	}
+
+	#rdetails_body > div.panel-body > a:nth-child(8)
+	{
+		word-wrap: break-word;
 	}
 }
