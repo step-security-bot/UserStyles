@@ -1,0 +1,47 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "@-moz-document"
+        ]
+      }
+    ],
+    "css-prefix-order": "error",
+    "disallowed-headers": ["error", {
+      "disallowedHeaders": ["X-Powered-By"]
+    }],
+    "html-checker": "error",
+    "no-friendly-error-pages": "error",
+    "no-http-redirects": "warning",
+    "no-inline-css": "warning",
+    "no-javascript-protocol": "error",
+    "no-protocol-relative-urls": "error",
+    "performance-budget": ["warning", {
+      "budget": {
+        "speedIndex": 3000,
+        "totalBlockingTime": 300,
+        "largestContentfulPaint": 3000,
+        "cumulativeLayoutShift": 0.1,
+        "resourceSizes": {
+          "image": 2048,
+          "total": 4096
+        },
+        "resourceCounts": {
+          "image": 20,
+          "total": 100
+        }
+      }
+    }],
+    "responsive-images": ["error", {
+      "viewportWidths": [320, 480, 768, 1024, 1366, 1440, 1920]
+    }],
+    "script-inject": "error",
+    "script-nonce": "error",
+    "ssllabs": ["warning", { "threshold": "B" }]
+  }
+}

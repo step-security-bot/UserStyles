@@ -99,6 +99,7 @@
 		"eslint": "^9.16.0",
 		"eslint-plugin-prettier": "^5.2.1",
 		"globals": "^15.13.0",
+		"hint": "^7.1.13",
 		"prettier": "3.4.1",
 		"prettier-plugin-css-order": "^2.1.2",
 		"prettier-plugin-stylus": "^0.1.0",
