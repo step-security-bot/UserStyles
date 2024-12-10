@@ -1,10 +1,10 @@
 /* ==UserStyle==
 @name         	Strava Darkest Fusion [Updated for Sauce + Elevate Users]
-@namespace   	https://github.com/Nick2bad4u/UserStyles
+@namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	4.0
-@author         ATX (Updated by Nick2bad4u)
+@version      	4.2
+@author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
 @-moz-document regexp("https:\\/\\/(?:www\\.)?strava\\.com.*") {
@@ -1709,7 +1709,13 @@
 		> tr:nth-child(n)
 		> td:nth-child(2),
 	.sidebar .comparison table th,
-	.drop-down-menu.drop-down-xs .selection {
+	.drop-down-menu.drop-down-xs .selection,
+	.sport-0.active-tab
+		> table
+		> tbody:nth-child(5)
+		> tr:nth-child(n)
+		> td:nth-child(2)
+		> a:hover {
 		color: #fc5200 !important;
 	}
 
@@ -1936,7 +1942,8 @@
 		> li:nth-child(n)
 		> a
 		> img,
-	#global-header .upload-menu .options .app-icon {
+	#global-header .upload-menu .options .app-icon,
+	.css-1o7vvpb-menu {
 		filter: invert(100%) !important;
 	}
 
