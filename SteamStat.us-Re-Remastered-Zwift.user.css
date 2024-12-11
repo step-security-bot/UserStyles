@@ -25,6 +25,7 @@
 		/* White to Orange */
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: #000000;
+		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		display: flex;
