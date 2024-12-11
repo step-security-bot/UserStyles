@@ -635,6 +635,7 @@
 		position: relative;
 		/*! Make the parent the reference for the pseudo-element */
 		background-color: transparent;
+
 		/*! Ensure background doesn't obscure ::before */
 		&::before {
 			position: absolute;
