@@ -1,0 +1,28 @@
+/* ==UserStyle==
+@name           copilot.microsoft.com - Black Mode
+@namespace      typpi.online
+@version        1.0.0
+@description    Black mode theme for Microsoft Copilot
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("copilot.microsoft.com")
+{
+	/* Invert colors except images and videos */
+	:is([data-theme = dark] *)
+	{
+		background-color: black !important;
+	}
+
+	.backdrop-saturate-200
+	{
+		border-radius: 5px !important;
+		border: outset;
+	}
+
+	.rounded-full
+	{
+		border-radius: 0px;
+	}
+}
