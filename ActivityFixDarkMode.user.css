@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           activityfix.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.2
 @description    Dark mode theme for ActivityFix
 @author         Nick2bad4u
 @license        UnLicense
@@ -22,59 +22,62 @@
 		iframe,
 		.af-disconnect-button
 	) {
+		/*Manipulations stuff*/
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
-
 	.w3-dark-gray,
 	.w3-dark-grey,
 	.w3-hover-dark-gray:hover,
 	.w3-hover-dark-grey:hover,
 	.w3-padding-16 {
+		/*Box model stuff*/
 		background-color: #000 !important;
 		color: #fff !important;
+		/*Typography stuff*/
 		font-weight: 800;
 	}
-
 	.af-update-header,
 	.af-version {
 		color: #2196f3;
+		/*Typography stuff*/
 		text-decoration: underline;
 	}
-
 	.af-update-header span {
+		/*Miscellaneous*/
 		cursor: default;
+		/*Typography stuff*/
 		font-size: 13px;
 		text-decoration: underline #333;
 	}
-
 	.w3-padding-16 {
 		padding-top: 0px !important;
+		/*Box model stuff*/
 		padding-bottom: 16px !important;
 	}
-
 	.w3-bar.w3-top.af-blue.w3-large {
+		/*Box model stuff*/
 		background-color: #2196f3 !important;
 	}
-
 	.w3-main {
+		/*Box model stuff*/
 		background-color: #fff;
 	}
-
 	.w3-container.w3-black.w3-display-container {
+		/*Box model stuff*/
 		margin: 0px 0px !important;
 		background-color: white !important;
+		/*Typography stuff*/
 		color: black !important;
 	}
-
 	#save_success > div {
+		/*Box model stuff*/
 		border: 4px #2196f3 dashed;
 	}
-
 	.w3-bar-item.w3-left {
+		/*Typography stuff*/
 		font-style: italic;
 		font-weight: 550;
 	}
-
 	.af-help-contents > div:nth-child(n) > img,
 	.w3-center
 		> table
@@ -83,15 +86,16 @@
 		> td:nth-child(1)
 		> a
 		> img {
+		/*Manipulations stuff*/
 		filter: invert(0) hue-rotate(0deg) !important;
 	}
-
 	body > br,
 	body > hr {
+		/*Display stuff*/
 		display: none !important;
 	}
-
 	html {
+		/*Box model stuff*/
 		background: #fff;
 	}
 }
