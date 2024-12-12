@@ -11,5 +11,16 @@
         ]
       }
     ]
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_chr <= 131",
+    "not chrome <= 131",
+    "not edge <= 131",
+    "not ios_saf <= 18.1",
+    "not opera <= 114",
+    "not safari <= 18.1",
+    "not samsung <= 27"
+  ]
 }
