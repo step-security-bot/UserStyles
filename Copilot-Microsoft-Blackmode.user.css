@@ -7,22 +7,27 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("copilot.microsoft.com")
-{
+@-moz-document domain("copilot.microsoft.com") {
 	/* Invert colors except images and videos */
-	:is([data-theme = dark] *)
-	{
+	:is([data-theme='dark'] *) {
+		/*Box model stuff*/
 		background-color: black !important;
 	}
-
-	.backdrop-saturate-200
-	{
-		border-radius: 5px !important;
+	.backdrop-saturate-200 {
+		/*Box model stuff*/
 		border: outset;
+		border-radius: 5px !important;
 	}
-
-	.rounded-full
-	{
+	.inset-0 {
+		top: 0;
+		right: 0;
+		/*Positioning stuff*/
+		left: 0;
+		/*Miscellaneous*/
+		/* bottom: 0; */
+	}
+	.rounded-full {
+		/*Box model stuff*/
 		border-radius: 0px;
 	}
 }
