@@ -10,7 +10,18 @@
 @-moz-document domain("steamstat.us") {
 	/* Main title styling with Zwift colors */
 	.title {
+		/*Display stuff*/
+		display: flex;
+		/*Positioning stuff*/
+		position: relative;
+		justify-content: center;
+		align-items: center;
+		/*Manipulations stuff*/
+		animation: title-animation 3s ease-in-out
+			infinite alternate;
+		/*Box model stuff*/
 		margin: 10px 0;
+		background-clip: text;
 		background: linear-gradient(
 			135deg,
 			#ffffff 30%,
@@ -18,22 +29,17 @@
 		);
 		color: #ff7f00;
 		font-weight: 700;
+		/*Typography stuff*/
 		font-size: 2.6em;
 		text-align: center;
-		/* Zwift Orange */
 		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		/*Miscellaneous*/
+		/* Zwift Orange */
 		/* White to Orange */
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: #000000;
 		-webkit-background-clip: text;
-		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		animation: title-animation 3s ease-in-out
-			infinite alternate;
 	}
 
 	/* Animation for the title */
@@ -50,79 +56,104 @@
 	/* Logo addition with Zwift emblem */
 	.title::after {
 		display: inline-block;
+		/*Miscellaneous*/
 		clip-path: circle();
+		/*Manipulations stuff*/
 		transition: transform 0.3s ease;
 		margin-left: 10px;
+		background-size: contain;
 		background: url('https://i.gyazo.com/2a07deee44f8b2da87394d4393fcff0b.jpg')
 			no-repeat center;
-		background-size: contain;
+		/*Box model stuff*/
 		width: 150px;
 		height: 60px;
+		/*Display stuff*/
 		content: '';
 	}
 
 	.title:hover::after {
+		/*Manipulations stuff*/
 		transform: scale(1.5);
 	}
 
 	/* Link styling with hover effect */
 	a {
+		/*Manipulations stuff*/
 		transition:
 			color 0.3s ease,
 			text-shadow 0.3s ease;
 		color: #ff7f00;
+		/*Typography stuff*/
 		font-weight: bold;
-		/* Zwift Orange */
 		text-decoration: none;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+		/*Miscellaneous*/
+		/* Zwift Orange */
 	}
 
 	a:hover {
 		color: #ffffff;
-		/* White */
+		/*Typography stuff*/
 		text-decoration: underline;
 		text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+		/*Miscellaneous*/
+		/* White */
 	}
 
 	/* Status colors with Zwift theme */
 	.good {
+		/*Manipulations stuff*/
 		transition: color 0.3s ease;
 		color: #ffffff;
-		/* White */
+		/*Typography stuff*/
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/*Miscellaneous*/
+		/* White */
 	}
 
 	.minor {
+		/*Manipulations stuff*/
 		transition: color 0.3s ease;
 		color: #ff7f00;
+		/*Typography stuff*/
 		font-weight: bold;
-		/* Orange */
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/*Miscellaneous*/
+		/* Orange */
 	}
 
 	.major {
+		/*Manipulations stuff*/
 		transition: color 0.3s ease;
 		color: #0073e6;
+		/*Typography stuff*/
 		font-weight: bold;
-		/* Bright Blue */
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		/*Miscellaneous*/
+		/* Bright Blue */
 	}
 
 	/* Refresh button styling */
 	#js-refresh {
+		/*Manipulations stuff*/
 		transition:
 			color 0.3s ease,
 			transform 0.3s ease;
 		color: #ff7f00;
+		/*Typography stuff*/
 		font-weight: bolder;
-		/* Orange */
 		text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+		/*Miscellaneous*/
+		/* Orange */
 	}
 
 	#js-refresh:hover {
-		/* White */
+		/*Manipulations stuff*/
 		transform: scale(1.1);
+		/*Typography stuff*/
 		color: #ffffff;
+		/*Miscellaneous*/
+		/* White */
 	}
 
 	/* Container with Zwift-inspired accents */
@@ -130,11 +161,15 @@
 	#psa,
 	noscript,
 	footer {
+		/*Positioning stuff*/
 		position: relative;
+		/*Manipulations stuff*/
 		transition:
 			box-shadow 0.3s ease,
 			background 0.3s ease;
+		/*Miscellaneous*/
 		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+		/*Box model stuff*/
 		border: 1px solid #ff7f00;
 		border-radius: 4px;
 		background: linear-gradient(
@@ -143,6 +178,7 @@
 			rgba(255, 255, 255, 0.8) 70%
 		);
 		color: #000000;
+		/*Typography stuff*/
 		font-size: 1em;
 		line-height: 1.5;
 		text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
@@ -152,51 +188,66 @@
 	#psa:hover,
 	noscript:hover,
 	footer:hover {
+		/*Miscellaneous*/
 		box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.9);
+		/*Box model stuff*/
 		background: rgba(0, 0, 0, 0.95);
+		/*Typography stuff*/
 		color: #ffffff;
 	}
 
 	/* Body styling with Zwift cycling backdrop */
 	body {
+		/*Manipulations stuff*/
 		transition: background 0.3s ease;
+		/*Box model stuff*/
 		margin: 0;
+		background-size: cover;
 		background: url('https://i.gyazo.com/8eb3d105728604bc85421637d6605692.jpg')
 			no-repeat center center fixed;
-		/* Zwift background URL */
-		background-size: cover;
 		color: #ff7f00;
 		font-weight: 300;
 		font-size: 16px;
-		/* Orange */
+		/*Typography stuff*/
 		font-family: 'Lato', sans-serif;
 		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		/*Miscellaneous*/
+		/* Zwift background URL */
+		/* Orange */
 	}
 
 	/* Tooltip customization */
 	[data-tooltip]:before {
+		/*Positioning stuff*/
 		position: absolute;
 		top: 0;
 		left: 2%;
+		/*Miscellaneous*/
 		visibility: hidden;
 		opacity: 0;
 		z-index: 1;
+		/*Manipulations stuff*/
 		transition:
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 8px;
 		background: rgba(255, 127, 0, 0.9);
 		padding: 8px;
+		/*Box model stuff*/
 		width: 96%;
+		/*Display stuff*/
 		content: attr(data-tooltip);
-		/* Orange */
 		color: #000000;
+		/*Typography stuff*/
 		font-size: 0.9em;
 		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		/* Orange */
 	}
 
 	[data-tooltip]:hover:before {
+		/*Miscellaneous*/
 		visibility: visible;
+		/*Manipulations stuff*/
 		opacity: 1;
 	}
 }
