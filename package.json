@@ -102,6 +102,7 @@
 		"globals": "^15.13.0",
 		"hint": "^7.1.13",
 		"prettier": "3.4.2",
+		"prettier-eslint": "^16.3.0",
 		"prettier-plugin-css-order": "^2.1.2",
 		"prettier-plugin-stylus": "^0.1.0",
 		"prettier-plugin-tailwindcss": "^0.6.9",
