@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	/* Main title styling with Brawlhalla colors */
 	.title {
 		margin: 10px 0;
@@ -21,11 +21,11 @@
 		font-size: 2.6em;
 		text-align: center;
 		/* Brawlhalla Blue */
-		text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.21);
+		text-shadow: 2px 2px 0 rgba(0, 0, 0, 21%);
 		-webkit-text-stroke-width: 2px;
 		-webkit-text-stroke-color: black;
 		/* Blue to Gold gradient */
-		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		display: flex;
 		position: relative;
@@ -69,17 +69,17 @@
 			color 0.3s ease,
 			text-shadow 0.3s ease;
 		color: #0078ff;
-		font-weight: bold;
+		font-weight: 700;
 		/* Brawlhalla Blue */
 		text-decoration: none;
-		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 0 rgba(0, 0, 0, 40%);
 	}
 
 	a:hover {
 		color: #ffd700;
 		/* Brawlhalla Gold */
 		text-decoration: underline;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 60%);
 	}
 
 	/* Status colors with Brawlhalla theme */
@@ -87,23 +87,23 @@
 		transition: color 0.3s ease;
 		color: #ffd700;
 		/* Brawlhalla Gold */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 60%);
 	}
 
 	.minor {
 		transition: color 0.3s ease;
 		color: #ffffff;
-		font-weight: bold;
+		font-weight: 700;
 		/* White for minor status */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 60%);
 	}
 
 	.major {
 		transition: color 0.3s ease;
 		color: #0078ff;
-		font-weight: bold;
+		font-weight: 700;
 		/* Brawlhalla Blue */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 60%);
 	}
 
 	/* Refresh button styling with hover effect */
@@ -132,7 +132,7 @@
 		transition:
 			box-shadow 0.3s ease,
 			background 0.3s ease;
-		box-shadow: 0px 4px 8px rgb(0, 0, 0);
+		box-shadow: 0 4px 8px rgb(0, 0, 0);
 		/* Brawlhalla Blue */
 		border: 1px solid #ffd700;
 		/* Brawlhalla Gold border */
@@ -145,14 +145,14 @@
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 2px rgb(0, 0, 1);
+		text-shadow: 0 0 2px rgb(0, 0, 1);
 	}
 
 	.services:hover,
 	#psa:hover,
 	noscript:hover {
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-		background: rgba(0, 0, 0, 0.94);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 50%);
+		background: rgba(0, 0, 0, 94%);
 
 		/* Blue on hover */
 	}
@@ -167,7 +167,7 @@
 		font-weight: 300;
 		font-size: 16px;
 		/* Brawlhalla Blue */
-		font-family: 'Roboto', Arial, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		/* Blue to Gold gradient */
 		text-shadow: 1px 1px 3px rgb(0, 0, 0);
 	}
@@ -179,12 +179,12 @@
 	}
 
 	/* Tooltip customization with smooth transition */
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		position: absolute;
 		top: 0;
 		left: 2%;
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		z-index: 1;
 		transition:
 			visibility 0s,
@@ -200,12 +200,12 @@
 		font-style: italic;
 		font-weight: 300;
 		font-size: 0.9em;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 3px rgba(0, 0, 0, 40%);
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 
 	/* Advanced feature: Gradient border with transition */
@@ -217,16 +217,13 @@
 		/* Brawlhalla Gold */
 		color: #ffffff;
 		/* White text */
-		font-weight: bold;
+		font-weight: 700;
 		text-align: center;
 	}
 
 	.gradient-border::before {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 		z-index: -1;
 		animation: gradient-border 3s linear infinite;
 		border-radius: 5px;
