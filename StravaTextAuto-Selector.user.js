@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava Text Auto-Selector
 // @namespace    https://github.com/Nick2bad4u/UserScripts
-// @version      1.0.5
+// @version      1.0.6
 // @description  Automatically selects text in specific Strava elements and displays a notification near the cursor. Also allows right-click to copy text.
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -10,156 +10,129 @@
 // @include      *://*.strava.com/activities/*
 // @include      *://*.strava.com/athlete/training
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
-// @downloadURL https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.user.js
-// @updateURL https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.meta.js
+// @downloadURL  https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.user.js
+// @updateURL    https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.meta.js
 // ==/UserScript==
 
-(function () {
-	'use strict';
+(function() {
+    'use strict';
 
-	// Log when the script starts
-	console.log(
-		'Strava Text Auto-Selector script loaded.',
-	);
+    // Log when the script starts
+    console.log('Strava Text Auto-Selector script loaded.');
 
-	// Wait for the page to fully load
-	window.addEventListener('load', function () {
-		console.log(
-			'Page fully loaded, initializing script.',
-		);
+    // Wait for the page to fully load
+    window.addEventListener('load', function() {
+        console.log('Page fully loaded, initializing script.');
 
-		// Define the elements to target
-		const selectors = [
-			'#search-results > tbody > tr:nth-child(n) > td.view-col.col-title > a',
-			'.content',
-			'#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-summary.mt-md.mb-md > div.details-container > div > h1',
-		];
-		console.log('Selectors defined:', selectors);
+        // Delay script execution for 500 ms
+        setTimeout(initializeScript, 500);
+    });
 
-		// Iterate through each selector
-		selectors.forEach((selector) => {
-			console.log(
-				`Processing selector: ${selector}`,
-			);
+    function initializeScript() {
+        console.log('Initializing script after delay.');
 
-			// Query elements matching the selector
-			const elements =
-				document.querySelectorAll(selector);
-			console.log(
-				`Found ${elements.length} elements for selector: ${selector}`,
-			);
+        const selectors = [
+            '#search-results > tbody > tr:nth-child(n) > td.view-col.col-title > a',
+            '.content',
+            '#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-summary.mt-md.mb-md > div.details-container > div > h1'
+        ];
+        const summarySelector = '.summaryGridDataContainer';
 
-			// Iterate through the elements
-			elements.forEach((targetElement) => {
-				console.log(
-					'Adding right-click event listener to element:',
-					targetElement,
-				);
+        // Function to add the event listener to target elements
+        function addContextMenuListener(element) {
+            console.log('Adding right-click event listener to element:', element);
 
-				// Add right-click (contextmenu) event listener
-				targetElement.addEventListener(
-					'contextmenu',
-					function (event) {
-						console.log(
-							'Right-click detected on element:',
-							targetElement,
-						);
+            element.addEventListener('contextmenu', function(event) {
+                console.log('Right-click detected on element:', element);
 
-						// Prevent the default right-click menu
-						event.preventDefault();
-						console.log(
-							'Default right-click menu prevented.',
-						);
+                event.preventDefault();
+                console.log('Default right-click menu prevented.');
 
-						// Select all text inside the element
-						const range = document.createRange();
-						range.selectNodeContents(
-							targetElement,
-						);
-						console.log(
-							'Text range selected:',
-							targetElement.textContent,
-						);
+                const range = document.createRange();
+                if (element.classList.contains('summaryGridDataContainer')) {
+                    const textNode = element.childNodes[0];
+                    range.selectNodeContents(textNode);
+                    console.log('Text range selected:', textNode.textContent);
+                } else {
+                    range.selectNodeContents(element);
+                    console.log('Text range selected:', element.textContent);
+                }
 
-						// Get the window selection
-						const selection =
-							window.getSelection();
-						selection.removeAllRanges();
-						selection.addRange(range);
-						console.log(
-							'Text added to selection.',
-						);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                console.log('Text added to selection.');
 
-						// Copy the selected text to the clipboard
-						const copiedText =
-							selection.toString();
-						console.log(
-							'Text copied to clipboard:',
-							copiedText,
-						);
+                const copiedText = selection.toString();
+                console.log('Text copied to clipboard:', copiedText);
 
-						navigator.clipboard
-							.writeText(copiedText)
-							.then(() => {
-								console.log(
-									'Clipboard write successful.',
-								);
-								// Display a notification near the cursor
-								showNotification(
-									event.clientX,
-									event.clientY,
-									'Text Copied!',
-								);
-							})
-							.catch(() => {
-								console.log(
-									'Clipboard write failed.',
-								);
-								showNotification(
-									event.clientX,
-									event.clientY,
-									'Failed to Copy!',
-								);
-							});
-					},
-				);
-			});
-		});
+                navigator.clipboard.writeText(copiedText).then(() => {
+                    console.log('Clipboard write successful.');
+                    showNotification(event.clientX, event.clientY, 'Text Copied!');
+                }).catch(() => {
+                    console.log('Clipboard write failed.');
+                    showNotification(event.clientX, event.clientY, 'Failed to Copy!');
+                });
+            });
+        }
 
-		// Function to display a notification near the cursor
-		function showNotification(x, y, message) {
-			console.log(
-				'Displaying notification:',
-				message,
-			);
+        // Query elements and add event listeners initially for the first three selectors
+        selectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            console.log(`Found ${elements.length} elements for selector: ${selector}`);
+            elements.forEach(addContextMenuListener);
+        });
 
-			// Create the notification element
-			const notification =
-				document.createElement('div');
-			notification.textContent = message;
-			notification.style.position = 'absolute';
-			notification.style.left = `${x + 10}px`;
-			notification.style.top = `${y + 10}px`;
-			notification.style.background =
-				'rgba(0, 0, 0, 0.8)';
-			notification.style.color = 'white';
-			notification.style.padding = '5px 10px';
-			notification.style.borderRadius = '5px';
-			notification.style.fontSize = '12px';
-			notification.style.zIndex = '1000';
-			notification.style.pointerEvents = 'none';
+        // Function to handle the summaryGridDataContainer elements separately
+        function handleSummaryGridDataContainer() {
+            const elements = document.querySelectorAll(summarySelector);
+            console.log(`Found ${elements.length} elements for selector: ${summarySelector}`);
+            elements.forEach(addContextMenuListener);
+        }
 
-			// Append the notification to the document body
-			document.body.appendChild(notification);
-			console.log('Notification added to DOM.');
+        // MutationObserver to detect changes in the DOM and add event listeners to new summaryGridDataContainer elements
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        if (node.matches(summarySelector)) {
+                            addContextMenuListener(node);
+                        }
+                        node.querySelectorAll(summarySelector).forEach(addContextMenuListener);
+                    }
+                });
+            });
+        });
 
-			// Remove the notification after 2 seconds
-			setTimeout(() => {
-				notification.remove();
-				console.log(
-					'Notification removed from DOM.',
-				);
-			}, 2000);
-		}
-	});
+        observer.observe(document.body, { childList: true, subtree: true });
+        console.log('MutationObserver set up to monitor the DOM for summaryGridDataContainer.');
+
+        // Handle existing summaryGridDataContainer elements initially
+        handleSummaryGridDataContainer();
+    }
+
+    function showNotification(x, y, message) {
+        console.log('Displaying notification:', message);
+
+        const notification = document.createElement('div');
+        notification.textContent = message;
+        notification.style.position = 'absolute';
+        notification.style.left = `${x + 10}px`;
+        notification.style.top = `${y + 10}px`;
+        notification.style.background = 'rgba(0, 0, 0, 0.8)';
+        notification.style.color = 'white';
+        notification.style.padding = '5px 10px';
+        notification.style.borderRadius = '5px';
+        notification.style.fontSize = '12px';
+        notification.style.zIndex = '1000';
+        notification.style.pointerEvents = 'none';
+
+        document.body.appendChild(notification);
+        console.log('Notification added to DOM.');
+
+        setTimeout(() => {
+            notification.remove();
+            console.log('Notification removed from DOM.');
+        }, 2000);
+    }
 })();
