@@ -9,6 +9,8 @@
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=strava.com
 // @grant       none
 // @run-at      document-end
+// @downloadURL https://update.greasyfork.org/scripts/520655/Convert%20Ascent%20and%20Descent%20to%20Feet.user.js
+// @updateURL https://update.greasyfork.org/scripts/520655/Convert%20Ascent%20and%20Descent%20to%20Feet.meta.js
 // ==/UserScript==
 
 (function() {
