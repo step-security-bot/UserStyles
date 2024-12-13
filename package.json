@@ -1,6 +1,7 @@
 {
 	"name": "userstyles-userscripts-nick2bad4u",
 	"version": "1.0.1",
+	"type": "module",
 	"description": "Userscripts and Userstyles created by Nick2bad4u.",
 	"main": "YouTubeTVVolumeControl.user.js",
 	"dependencies": {
