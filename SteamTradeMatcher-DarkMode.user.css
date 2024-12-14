@@ -1,0 +1,174 @@
+/* ==UserStyle==
+@name           steamtradematcher.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Darker mode for Steam Trade Matcher
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("steamtradematcher.com")
+{
+	html,
+	.m-3,
+	.inside,
+	.bg-white,
+	body,
+	.bg-dark,
+	:root
+	{
+		color: white !important;
+		background: black !important;
+		background-color: black !important;
+	}
+	{
+		margin: 0 !important;
+	}
+
+	*,
+	:root
+	{
+		--bs-blue: #375a7f !important;
+		--bs-indigo: #6610f2 !important;
+		--bs-purple: #6f42c1 !important;
+		--bs-pink: #e83e8c !important;
+		--bs-red: #e74c3c !important;
+		--bs-orange: #fd7e14 !important;
+		--bs-yellow: #ffc107 !important;
+		--bs-green: #029976 !important;
+		--bs-teal: #20c997 !important;
+		--bs-cyan: #3498db !important;
+		--bs-black: #000 !important;
+		--bs-white: #fff !important;
+		--bs-gray: #888 !important;
+		--bs-gray-dark: #303030 !important;
+		--bs-gray-100: #f8f9fa !important;
+		--bs-gray-200: #ebebeb !important;
+		--bs-gray-300: #dee2e6 !important;
+		--bs-gray-400: #ced4da !important;
+		--bs-gray-500: #adb5bd !important;
+		--bs-gray-600: #888 !important;
+		--bs-gray-700: #444 !important;
+		--bs-gray-800: #303030 !important;
+		--bs-gray-900: #222 !important;
+		--bs-primary: #375a7f !important;
+		--bs-secondary: #444 !important;
+		--bs-success: #029976 !important;
+		--bs-info: #3498db !important;
+		--bs-warning: #ffc107 !important;
+		--bs-danger: #e74c3c !important;
+		--bs-light: #adb5bd !important;
+		--bs-dark: #303030 !important;
+		--bs-gold: #e19d3c !important;
+		--bs-primary-rgb: 55, 90, 127 !important;
+		--bs-secondary-rgb: 68, 68, 68 !important;
+		--bs-success-rgb: 2, 153, 118 !important;
+		--bs-info-rgb: 52, 152, 219 !important;
+		--bs-warning-rgb: 255, 193, 7 !important;
+		--bs-danger-rgb: 231, 76, 60 !important;
+		--bs-light-rgb: 173, 181, 189 !important;
+		--bs-dark-rgb: 48, 48, 48 !important;
+		--bs-gold-rgb: 225, 157, 60 !important;
+		--bs-white-rgb: 255, 255, 255 !important;
+		--bs-black-rgb: 0, 0, 0 !important;
+		--bs-body-color-rgb: 255, 255, 255 !important;
+		--bs-body-bg-rgb: 34, 34, 34 !important;
+		--bs-font-sans-serif: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+		--bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+		--bs-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, .15), hsla(0, 0%, 100%, 0)) !important;
+		--bs-body-font-family: var(--bs-font-sans-serif) !important;
+		--bs-body-font-size: 1rem !important;
+		--bs-body-font-weight: 400 !important;
+		--bs-body-line-height: 1.5 !important;
+		--bs-body-color: #fff !important;
+		--bs-body-bg: #000 !important;
+		--bs-border-width: 1px !important;
+		--bs-border-style: solid !important;
+		--bs-border-color: #dee2e6 !important;
+		--bs-border-color-translucent: rgba(0, 0, 0, .175) !important;
+		--bs-border-radius: 0.375rem !important;
+		--bs-border-radius-sm: 0.25rem !important;
+		--bs-border-radius-lg: 0.5rem !important;
+		--bs-border-radius-xl: 1rem !important;
+		--bs-border-radius-2xl: 2rem !important;
+		--bs-border-radius-pill: 50rem !important;
+		--bs-link-color: #adb5bd !important;
+		--bs-link-hover-color: #8a9197 !important;
+		--bs-code-color: #e83e8c !important;
+		--bs-card-bg: #060606 !important;
+		--bs-highlight-bg: #fff3cd !important;
+		--gpSystemLightestGrey: #39708C !important;
+		--gpSystemLighterGrey: #B8BCBF !important;
+		--gpSystemLightGrey: #8B929A !important;
+		--gpSystemGrey: #67707B !important;
+		--gpSystemDarkGrey: #3D4450 !important;
+		--gpSystemDarkerGrey: #23262E !important;
+		--gpSystemDarkestGrey: #0E141B !important;
+		--gpStoreLightestGrey: #CCD8E3 !important;
+		--gpStoreLighterGrey: #A7BACC !important;
+		--gpStoreLightGrey: #7C8EA3 !important;
+		--gpStoreGrey: #4e697d !important;
+		--gpStoreDarkGrey: #2A475E !important;
+		--gpStoreDarkerGrey: #1B2838 !important;
+		--gpStoreDarkestGrey: #000F18 !important;
+		--gpGradient-StoreBackground: linear-gradient(180deg, var(--gpStoreDarkGrey) 0%, var(--gpStoreDarkerGrey) 80%) !important;
+		--gpGradient-LibraryBackground: radial-gradient(farthest-corner at 40px 40px, #3D4450 0%, #23262E 80%) !important;
+		--gpColor-Blue: #1A9FFF !important;
+		--gpColor-BlueHi: #00BBFF !important;
+		--gpColor-Green: #5ba32b !important;
+		--gpColor-GreenHi: #59BF40 !important;
+		--gpColor-Orange: #E35E1C !important;
+		--gpColor-Red: #D94126 !important;
+		--gpColor-RedHi: #EE563B !important;
+		--gpColor-DustyBlue: #417a9b !important;
+		--gpColor-LightBlue: #B3DFFF !important;
+		--gpColor-Yellow: #FFC82C !important;
+		--gpColor-ChalkyBlue: #66C0F4 !important;
+		--gpBackground-LightSofter: #6998bb24 !important;
+		--gpBackground-LightSoft: #3b5a7280 !important;
+		--gpBackground-LightMedium: #678BA670 !important;
+		--gpBackground-LightHard: #93B8D480 !important;
+		--gpBackground-LightHarder: #aacce6a6 !important;
+		--gpBackground-DarkSofter: #1E549333 !important;
+		--gpBackground-DarkSoft: #0e141b66 !important;
+		--gpBackground-DarkMedium: #0e141b99 !important;
+		--gpBackground-DarkHard: #0e141bcc !important;
+		--gpBackground-Neutral-LightSofter: rgba(235, 246, 255, 0.10) !important;
+		--gpBackground-Neutral-LightSoft: rgba(235, 246, 255, 0.20) !important;
+		--gpBackground-Neutral-LightMedium: rgba(235, 246, 255, 0.30) !important;
+		--gpBackground-Neutral-LightHard: rgba(235, 246, 255, 0.40) !important;
+		--gpBackground-Neutral-LightHarder: rgba(235, 246, 255, 0.50) !important;
+		--gpCorner-Small: 1px !important;
+		--gpCorner-Medium: 2px !important;
+		--gpCorner-Large: 3px !important;
+		--gpSpace-Gutter: 24px !important;
+		--gpSpace-Gap: 12px !important;
+		--gpNavWidth: 240px !important;
+		--gpPaymentsNavWidth: 340px !important;
+		--gpDselectWidth: 340px !important;
+		--gpSidePanelWidth: 340px !important;
+		--gpGiftingPanelWidth: 280px !important;
+		--gpCommunityRightPanelWidth: 320px !important;
+		--gpVerticalResponsivePadding-Small: calc( (100vw - 854px) / 60) !important;
+		--gpVerticalResponsivePadding-Medium: calc( (100vw - 854px) / 20) !important;
+		--gpVerticalResponsivePadding-Large: calc( (100vw - 854px) / 12) !important;
+		--screen-width: 100vw !important;
+		--gpWidth-6colcap: calc((var(--screen-width) - (5 * var(--gpSpace-Gap)) - (2 * var(--gpSpace-Gutter))) / 6) !important;
+		--gpWidth-5colcap: calc((var(--screen-width) - (4 * var(--gpSpace-Gap)) - (2 * var(--gpSpace-Gutter))) / 5) !important;
+		--gpWidth-4colcap: calc((var(--screen-width) - (3 * var(--gpSpace-Gap)) - (2 * var(--gpSpace-Gutter))) / 4) !important;
+		--gpWidth-3colcap: calc((var(--screen-width) - (2 * var(--gpSpace-Gap)) - (2 * var(--gpSpace-Gutter))) / 3) !important;
+		--gpWidth-2colcap: calc((var(--screen-width) - (1 * var(--gpSpace-Gap)) - (2 * var(--gpSpace-Gutter))) / 2) !important;
+		--gpWidth-1colcap: calc((var(--screen-width) - (2 * var(--gpSpace-Gutter)))) !important;
+		--gpStoreMenuHeight: 58px !important;
+		--gpShadow-Small: 0px 2px 2px 0px #0000003D !important;
+		--gpShadow-Medium: 0px 3px 6px 0px #0000003D !important;
+		--gpShadow-Large: 0px 12px 16px 0px #0000003D !important;
+		--gpShadow-XLarge: 0px 24px 32px 0px #0000003D !important;
+		--gpText-HeadingLarge: normal 700 26px/1.4 "Motiva Sans", Arial, Sans-serif !important;
+		--gpText-HeadingMedium: normal 700 22px/1.4 "Motiva Sans", Arial, Sans-serif !important;
+		--gpText-HeadingSmall: normal 700 18px/1.4 "Motiva Sans", Arial, Sans-serif !important;
+		--gpText-BodyLarge: normal 400 16px/1.4 "Motiva Sans", Arial, Sans-serif !important;
+		--gpText-BodyMedium: normal 400 14px/1.4 "Motiva Sans", Arial, Sans-serif !important;
+		--gpText-BodySmall: normal 400 12px/1.4 "Motiva Sans", Arial, Sans-serif !important;
+	}
+}
