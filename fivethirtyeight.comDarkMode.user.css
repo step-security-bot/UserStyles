@@ -8,14 +8,16 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("projects.fivethirtyeight.com") {
+@document domain("projects.fivethirtyeight.com") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),
 			img,
 			svg,
 			video
-		):not(z#z.z[z]):not(a.logo > img):not(
+		):not(
+			z#z.z[z],
+			a.logo > img,
 			a.abclogo > img
 		) {
 		filter: invert(1) hue-rotate(180deg) !important;

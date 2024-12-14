@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("visualstudio.com") {
+@document domain("visualstudio.com") {
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),
@@ -50,7 +50,7 @@
 		.itemdetails-section-header {
 		padding-bottom: 16px;
 		color: #555;
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 16px;
 	}
 
@@ -58,7 +58,7 @@
 		.ux-section-details
 		.itemdetails-section-header.right {
 		margin: 0;
-		padding: 0 0 5px 0;
+		padding: 0 0 5px;
 	}
 
 	.item-details-control-root
@@ -82,18 +82,18 @@
 		width: 34.45%;
 	}
 
-	@media all and (max-width: 768px) {
+	@media all and (width <= 768px) {
 		.item-details-control-root
 			.ux-itemdetails-left {
 			float: left;
-			padding-right: 0px;
+			padding-right: 0;
 			width: 100%;
 		}
 
 		.item-details-control-root
 			.ux-itemdetails-right {
 			float: left;
-			padding-left: 0px !important;
+			padding-left: 0 !important;
 			width: 100%;
 		}
 	}
@@ -116,8 +116,7 @@
 	.download-dropbutton-arrow {
 		display: inline-block;
 		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-		margin: 0px 0px 2px 5px;
+		margin: 0 0 2px 5px;
 		border: solid white;
 		border-width: 0 2px 2px 0;
 		padding: 3px;
@@ -127,9 +126,8 @@
 		display: none;
 		position: absolute;
 		z-index: 1;
-		margin: 5px 0px 0px 16px;
-		box-shadow: 0px 8px 16px 0px
-			rgba(0, 0, 0, 0.2);
+		margin: 5px 0 0 16px;
+		box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 		padding: 0;
 		min-width: 202px;
 		text-align: left;
@@ -192,7 +190,7 @@
 	.ux-section-details-tabs .ms-Pivot {
 		margin-bottom: 25px;
 		border-bottom: 1px solid;
-		border-bottom-color: rgba(200, 200, 200, 1);
+		border-bottom-color: rgb(200 200 200 / 100%);
 		border-bottom-color: rgba(
 			var(--palette-neutral-20, 200, 200, 200),
 			1
@@ -264,18 +262,18 @@
 	.meta-data-list-container .ux-section-header {
 		padding-bottom: 16px;
 		color: #555;
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 16px;
 	}
 
 	.meta-data-list-container
 		.ux-section-header.right {
 		margin: 0;
-		padding: 0 0 5px 0;
+		padding: 0 0 5px;
 	}
 
 	.item-details-control-root .ux-table-metadata {
-		margin-top: 0px;
+		margin-top: 0;
 		border-collapse: collapse;
 		padding: 0;
 		color: #666;
@@ -336,7 +334,7 @@
 		ul
 		li
 		.api-github-response.bowtie-icon {
-		color: rgba(0, 0, 0, 1);
+		color: rgb(0 0 0 / 100%);
 		color: rgba(
 			var(--palette-neutral-100, 0, 0, 0),
 			1
@@ -426,7 +424,7 @@
 	}
 
 	.report-abuse-callout .ms-Callout-beak {
-		background-color: rgba(43, 136, 216, 1);
+		background-color: rgb(43 136 216 / 100%);
 		background-color: rgba(
 			var(
 				--palette-primary-tint-10,
@@ -439,7 +437,7 @@
 	}
 
 	.report-abuse-callout .callout-container {
-		background-color: rgba(43, 136, 216, 1);
+		background-color: rgb(43 136 216 / 100%);
 		background-color: rgba(
 			var(
 				--palette-primary-tint-10,
@@ -480,7 +478,7 @@
 	}
 
 	.calculator-container .calculator-header {
-		margin-top: 0px;
+		margin-top: 0;
 		margin-bottom: 10px;
 	}
 
@@ -569,18 +567,15 @@
 		.ux-section-resources
 		ul
 		.download-specific-version {
-		border: 2px solid rgba(0, 0, 0, 0.9);
+		border: 2px solid rgb(0 0 0 / 90%);
 		border: 2px solid
-			var(
-				--text-primary-color,
-				rgba(0, 0, 0, 0.9)
-			);
+			var(--text-primary-color, rgb(0 0 0 / 90%));
 		background-color: transparent;
 		width: 50%;
-		color: rgba(0, 0, 0, 0.9);
+		color: rgb(0 0 0 / 90%);
 		color: var(
 			--text-primary-color,
-			rgba(0, 0, 0, 0.9)
+			rgb(0 0 0 / 90%)
 		);
 	}
 
@@ -622,7 +617,7 @@
 
 	.item-details-download-dropbutton {
 		cursor: pointer;
-		padding: 0px;
+		padding: 0;
 		color: #0078d4;
 		font-weight: 400;
 		font-size: 14px;
@@ -632,9 +627,8 @@
 		display: none;
 		position: absolute;
 		z-index: 1;
-		margin: 5px 0px 0px 16px;
-		box-shadow: 0px 8px 16px 0px
-			rgba(0, 0, 0, 0.2);
+		margin: 5px 0 0 16px;
+		box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 		background-color: white;
 		padding: 0;
 		min-width: 160px;
@@ -652,8 +646,7 @@
 	.item-details-download-dropbutton-arrow {
 		display: inline-block;
 		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-		margin: 0px 0px 2px 5px;
+		margin: 0 0 2px 5px;
 		border: solid #0078d4;
 		border-width: 0 1px 1px 0;
 		padding: 3px;
@@ -719,7 +712,7 @@
 
 	.item-details-screenshot-popup .img-screenshot {
 		max-width: 80vw;
-		min-height: 0px;
+		min-height: 0;
 		max-height: 80vh;
 	}
 
@@ -740,7 +733,7 @@
 
 	.version-history-top-container
 		.version-history-header-container {
-		padding-left: 0px;
+		padding-left: 0;
 	}
 
 	.version-history-top-container
@@ -748,7 +741,7 @@
 		margin-bottom: 22px;
 		border-bottom: 1px solid;
 		border-width: 1px 0;
-		border-bottom-color: rgba(234, 234, 234, 1);
+		border-bottom-color: rgb(234 234 234 / 100%);
 		border-bottom-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -805,7 +798,7 @@
 	.version-history-top-container
 		.vh-redirection-message-bar-container {
 		margin-bottom: 14px;
-		background-color: rgba(244, 244, 244, 1);
+		background-color: rgb(244 244 244 / 100%);
 		background-color: rgba(
 			var(--palette-neutral-4, 244, 244, 244),
 			1
@@ -813,10 +806,10 @@
 		padding-top: 15px;
 		padding-bottom: 15px;
 		width: 60%;
-		color: rgba(0, 0, 0, 0.9);
+		color: rgb(0 0 0 / 90%);
 		color: var(
 			--text-primary-color,
-			rgba(0, 0, 0, 0.9)
+			rgb(0 0 0 / 90%)
 		);
 	}
 
@@ -832,10 +825,10 @@
 		.vh-redirection-info-icon {
 		padding-right: 8px;
 		padding-left: 8px;
-		color: rgba(0, 0, 0, 0.9);
+		color: rgb(0 0 0 / 90%);
 		color: var(
 			--text-primary-color,
-			rgba(0, 0, 0, 0.9)
+			rgb(0 0 0 / 90%)
 		);
 	}
 
@@ -870,9 +863,8 @@
 		display: none;
 		position: absolute;
 		z-index: 1;
-		margin: 5px 0px 0px 16px;
-		box-shadow: 0px 8px 16px 0px
-			rgba(0, 0, 0, 0.2);
+		margin: 5px 0 0 16px;
+		box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
 		padding: 0;
 		min-width: 160px;
 	}
@@ -889,8 +881,7 @@
 	.version-history-download-dropbutton-arrow {
 		display: inline-block;
 		transform: rotate(45deg);
-		-webkit-transform: rotate(45deg);
-		margin: 0px 0px 2px 5px;
+		margin: 0 0 2px 5px;
 		border: solid black;
 		border-width: 0 2px 2px 0;
 		padding: 3px;
@@ -1407,7 +1398,7 @@
 		.ms-TextField-fieldGroup
 		input {
 		flex-grow: 1;
-		width: 0px;
+		width: 0;
 	}
 
 	.vss-PickList .vss-PickList--items {
@@ -1475,7 +1466,7 @@
 			.vss-PickList
 			.vss-PickList--action:focus
 			.ms-Button-label {
-			font-weight: bold;
+			font-weight: 700;
 		}
 	}
 
@@ -1486,10 +1477,7 @@
 		.vss-PickList
 		.vss-PickList--action:focus::after {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 		border: 1px solid #212121;
 		pointer-events: none;
 		content: '';
@@ -2070,7 +2058,7 @@
 		.vss-PickList--multiSelectableElement
 		.vss-PickList--checkbox {
 		flex-shrink: 0;
-		margin: 0px 8px 0px 5px;
+		margin: 0 8px 0 5px;
 		min-height: 34px;
 	}
 
@@ -2126,7 +2114,7 @@
 	.vss-PickList.item-picker-list
 		.vss-PickList--items
 		.vss-PickList--groupHeader {
-		padding: 30px 0 10px 0;
+		padding: 30px 0 10px;
 		color: #767676;
 		font-size: inherit;
 	}
@@ -2151,7 +2139,7 @@
 
 	.vss-PickList.item-picker-list
 		.vss-PickList--searchTextField {
-		margin: 0 0 20px 0;
+		margin: 0 0 20px;
 		max-width: 400px;
 	}
 
@@ -2220,13 +2208,13 @@
 
 	.vss-PickListDropdown--title
 		.vss-PickListDropdown--title-caretIcon {
-		margin: 0px 5px;
+		margin: 0 5px;
 		font-size: 14px;
 	}
 
 	.vss-PickListDropdown--title
 		.vss-PickListDropdown--title-checkIcon {
-		margin: 0px 5px;
+		margin: 0 5px;
 		color: #0078d4;
 	}
 
@@ -2234,7 +2222,7 @@
 		.vss-PickListDropdown--title-textContainer {
 		left: 12px;
 		flex-grow: 1;
-		margin: 0px 5px;
+		margin: 0 5px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
@@ -2251,7 +2239,6 @@
 	}
 
 	body .vss-PickListDropdown--callout {
-		-webkit-animation: none;
 		animation: none;
 	}
 
@@ -2364,7 +2351,7 @@
 	}
 
 	.vss-Icon.vss-Icon--bowtie {
-		font-family: 'bowtie';
+		font-family: bowtie;
 	}
 
 	.vss-HubHeader {
@@ -2426,7 +2413,7 @@
 	.vss-Splitter--container
 		.vss-Splitter--pane-flexible {
 		flex: 1 1 0%;
-		width: 0px;
+		width: 0;
 		min-width: 0;
 		min-height: 0;
 	}
@@ -2435,21 +2422,19 @@
 		.vss-Splitter--divider {
 		position: relative;
 		flex: 0 0 4px;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
+		user-select: none;
+		user-select: none;
 		user-select: none;
 	}
 
 	.vss-Splitter--container
-		.vss-Splitter--divider:after {
+		.vss-Splitter--divider::after {
 		position: absolute;
 		background-color: #a6a6a6;
 		pointer-events: none;
 		content: '';
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
+		user-select: none;
+		user-select: none;
 		user-select: none;
 	}
 
@@ -2463,8 +2448,7 @@
 	.vss-Splitter--container.vss-Splitter--container-row {
 		display: -webkit-box;
 		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-flow: row nowrap;
 	}
 
 	.vss-Splitter--container.vss-Splitter--container-row
@@ -2473,7 +2457,7 @@
 	}
 
 	.vss-Splitter--container.vss-Splitter--container-row
-		.vss-Splitter--divider:after {
+		.vss-Splitter--divider::after {
 		top: 0;
 		bottom: 0;
 		left: 50%;
@@ -2486,9 +2470,9 @@
 	.vss-Splitter--container.vss-Splitter--container-row
 		.vss-Splitter--divider:not(
 			.vss-Splitter--divider-dragging
-		):hover:after,
+		):hover::after,
 	.vss-Splitter--container.vss-Splitter--container-row
-		.vss-Splitter--divider:focus:after {
+		.vss-Splitter--divider:focus::after {
 		left: calc(50% - 2px);
 		width: 4px;
 	}
@@ -2502,8 +2486,7 @@
 	.vss-Splitter--container.vss-Splitter--container-column {
 		display: -webkit-box;
 		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
+		flex-flow: column nowrap;
 	}
 
 	.vss-Splitter--container.vss-Splitter--container-column
@@ -2512,7 +2495,7 @@
 	}
 
 	.vss-Splitter--container.vss-Splitter--container-column
-		.vss-Splitter--divider:after {
+		.vss-Splitter--divider::after {
 		top: 50%;
 		right: 0;
 		left: 0;
@@ -2525,9 +2508,9 @@
 	.vss-Splitter--container.vss-Splitter--container-column
 		.vss-Splitter--divider:not(
 			.vss-Splitter--divider-dragging
-		):hover:after,
+		):hover::after,
 	.vss-Splitter--container.vss-Splitter--container-column
-		.vss-Splitter--divider:focus:after {
+		.vss-Splitter--divider:focus::after {
 		top: calc(50% - 2px);
 		height: 4px;
 	}
@@ -2612,7 +2595,7 @@
 		.ms-Nav-groupContent {
 		display: block;
 		visibility: hidden;
-		margin-bottom: 0px;
+		margin-bottom: 0;
 		height: 0;
 		overflow: hidden;
 	}
@@ -2834,7 +2817,7 @@
 		.vss-PivotBar--separator {
 		flex: 0 1 auto;
 		align-self: center;
-		margin: 0 8px 0 8px;
+		margin: 0 8px;
 		background-color: #c8c8c8;
 		width: 1px;
 		min-width: 1px;
@@ -3155,7 +3138,7 @@
 		.ms-ContextualMenu-header
 		.ms-ContextualMenu-itemText {
 		color: #666;
-		font-weight: normal;
+		font-weight: 400;
 	}
 
 	.vss-PivotBar--commandBar-item
@@ -3184,15 +3167,12 @@
 		.vss-PivotBarSlider:focus::after,
 	.ms-Fabric.is-focusVisible
 		.vss-PivotBar
-		.vss-PivotBar--dropdown:focus:after,
+		.vss-PivotBar--dropdown:focus::after,
 	.ms-Fabric.is-focusVisible
 		.vss-PivotBar
-		.vss-PivotBar--commandBar-toggle:focus:after {
+		.vss-PivotBar--commandBar-toggle:focus::after {
 		position: absolute;
-		top: 2px;
-		right: 2px;
-		bottom: 2px;
-		left: 2px;
+		inset: 2px;
 		outline: 0;
 		border: 1px solid #212121;
 		pointer-events: none;
@@ -3220,12 +3200,20 @@
 
 	.vss-Hub.ms-Fabric {
 		font-size: 14px;
-		font-family: 'Segoe UI VSS (Regular)',
-			'-apple-system', BlinkMacSystemFont,
-			'Segoe UI', Roboto, 'Helvetica Neue',
-			Helvetica, Ubuntu, Arial, sans-serif,
-			'Apple Color Emoji', 'Segoe UI Emoji',
-			'Segoe UI Symbol';
+		font-family:
+			'Segoe UI VSS (Regular)',
+			-apple-system,
+			BlinkMacSystemFont,
+			Segoe UI,
+			Roboto,
+			Helvetica Neue,
+			Helvetica,
+			Ubuntu,
+			Arial,
+			sans-serif,
+			Apple Color Emoji,
+			Segoe UI Emoji,
+			Segoe UI Symbol;
 	}
 
 	.vss-Hub .vss-HubPivotBar {
@@ -3289,8 +3277,8 @@
 		.vss-HubPivotBar.shadowStyle
 		> .vss-PivotBar--bar-two-line {
 		box-shadow:
-			0 3px 9px 0 rgba(0, 0, 0, 0.1),
-			0 0 0 1px rgba(0, 0, 0, 0.04);
+			0 3px 9px 0 rgb(0 0 0 / 10%),
+			0 0 0 1px rgb(0 0 0 / 4%);
 		border-bottom: none;
 		background-color: #fff;
 	}
@@ -3326,7 +3314,7 @@
 	}
 
 	.vss-IconToggleButton {
-		font-weight: normal;
+		font-weight: 400;
 	}
 
 	.icon-toggle-button.ms-Button.ms-Button--default {
@@ -3341,7 +3329,7 @@
 	.icon-toggle-button.ms-Button.ms-Button--default:hover,
 	.icon-toggle-button.ms-Button.ms-Button--default:active,
 	.icon-toggle-button.ms-Button.ms-Button--default:focus {
-		box-shadow: 0 0 0 rgba(160, 160, 160, 0.2);
+		box-shadow: 0 0 0 rgb(160 160 160 / 20%);
 		background: none;
 	}
 
@@ -3382,7 +3370,7 @@
 	.vss-DetailsList.ms-DetailsList
 		.ms-List-cell
 		.ms-DetailsRow {
-		margin: 0px;
+		margin: 0;
 		border: none;
 		min-height: 36px;
 	}
@@ -3992,7 +3980,7 @@
 		flex-direction: row;
 		align-items: center;
 		margin-left: 10px;
-		padding: 6px 0px;
+		padding: 6px 0;
 		overflow: hidden;
 		line-height: 20px;
 	}
@@ -4002,7 +3990,7 @@
 		.ms-DetailsRow
 		.ms-DetailsRow-cell
 		.vss-DetailsList--titleCellTwoLine.noIcon {
-		margin-left: 0px;
+		margin-left: 0;
 	}
 
 	.vss-DetailsList.ms-DetailsList.vss-DetailsList--twoLine
@@ -4024,7 +4012,7 @@
 		.vss-DetailsList--titleCellTwoLine
 		.vss-DetailsList--titleCellIcon.disabled
 		img {
-		opacity: 0.5;
+		opacity: 50%;
 	}
 
 	.vss-DetailsList.ms-DetailsList.vss-DetailsList--twoLine
@@ -4534,7 +4522,7 @@
 	}
 
 	.price-control .quantity-field {
-		margin-bottom: 0px;
+		margin-bottom: 0;
 	}
 
 	.price-control .quantity-field div {
@@ -4542,19 +4530,19 @@
 	}
 
 	.price-control .inner-textfield {
-		padding: 0px;
+		padding: 0;
 		width: 50px;
 		text-align: center;
 	}
 
 	.price-control .button-class {
 		border: 1px solid;
-		border-color: rgba(200, 200, 200, 1);
+		border-color: rgb(200 200 200 / 100%);
 		border-color: rgba(
 			var(--palette-neutral-20, 200, 200, 200),
 			1
 		);
-		background: rgba(234, 234, 234, 1);
+		background: rgb(234 234 234 / 100%);
 		background: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -4574,7 +4562,7 @@
 	}
 
 	.price-control .button-class:hover {
-		background: rgba(218, 218, 218, 1);
+		background: rgb(218 218 218 / 100%);
 		background: rgba(
 			var(--palette-neutral-10, 218, 218, 218),
 			1
@@ -4582,12 +4570,12 @@
 	}
 
 	.price-control .button-class.is-disabled {
-		border-color: rgba(244, 244, 244, 1);
+		border-color: rgb(244 244 244 / 100%);
 		border-color: rgba(
 			var(--palette-neutral-4, 244, 244, 244),
 			1
 		);
-		background-color: rgba(244, 244, 244, 1);
+		background-color: rgb(244 244 244 / 100%);
 		background-color: rgba(
 			var(--palette-neutral-4, 244, 244, 244),
 			1
@@ -4595,7 +4583,7 @@
 	}
 
 	.price-control .button-class.is-disabled i {
-		color: rgba(200, 200, 200, 1);
+		color: rgb(200 200 200 / 100%);
 		color: rgba(
 			var(--palette-neutral-20, 200, 200, 200),
 			1
@@ -4604,7 +4592,7 @@
 
 	.qna-top-container .user-reply-top-container {
 		border-top: 1px solid;
-		border-top-color: rgba(234, 234, 234, 1);
+		border-top-color: rgb(234 234 234 / 100%);
 		border-top-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -4626,7 +4614,7 @@
 
 	.qna-top-container .user-reply-container {
 		border-collapse: collapse;
-		padding: 10px 5px 0px 10px;
+		padding: 10px 5px 0 10px;
 	}
 
 	.qna-top-container .action-link-container {
@@ -4637,7 +4625,7 @@
 		margin-right: 10px;
 	}
 
-	@media (min-width: 520px) {
+	@media (width >= 520px) {
 		.ms-Dialog-main.QnAAskQuestionDialog {
 			max-width: 500px;
 		}
@@ -4650,10 +4638,10 @@
 
 	.ms-Dialog-main.QnAAskQuestionDialog
 		.qna-write-review-privacy {
-		color: rgba(0, 0, 0, 0.55);
+		color: rgb(0 0 0 / 55%);
 		color: var(
 			--text-secondary-color,
-			rgba(0, 0, 0, 0.55)
+			rgb(0 0 0 / 55%)
 		);
 		font-size: 12px;
 	}
@@ -4699,7 +4687,7 @@
 	}
 
 	.qna-top-container .qna-header-container {
-		padding-left: 0px;
+		padding-left: 0;
 	}
 
 	.qna-top-container button.ask-question-button {
@@ -4708,11 +4696,11 @@
 
 	.qna-top-container
 		.ask-question-button-container {
-		padding-right: 0px;
+		padding-right: 0;
 	}
 
 	.qna-top-container .see-more-qna-section {
-		padding-right: 0px;
+		padding-right: 0;
 	}
 
 	.qna-top-container
@@ -4738,7 +4726,7 @@
 	.qna-top-container .qna-container-row {
 		border-bottom: 1px solid;
 		border-width: 1px 0;
-		border-bottom-color: rgba(234, 234, 234, 1);
+		border-bottom-color: rgb(234 234 234 / 100%);
 		border-bottom-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -4749,8 +4737,8 @@
 
 	.qna-top-container h2 {
 		display: block;
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 		font-size: 20px;
 	}
 
@@ -4764,24 +4752,24 @@
 
 	.qna-top-container
 		.qna-noitems-or-error-message {
-		margin: 14px -8px 0 -8px;
+		margin: 14px -8px 0;
 		min-width: 700px;
 	}
 
 	.qna-top-container
 		.qna-redirection-message-bar-container {
 		margin-top: 14px;
-		background-color: rgba(244, 244, 244, 1);
+		background-color: rgb(244 244 244 / 100%);
 		background-color: rgba(
 			var(--palette-neutral-4, 244, 244, 244),
 			1
 		);
 		padding-top: 15px;
 		padding-bottom: 15px;
-		color: rgba(0, 0, 0, 0.9);
+		color: rgb(0 0 0 / 90%);
 		color: var(
 			--text-primary-color,
-			rgba(0, 0, 0, 0.9)
+			rgb(0 0 0 / 90%)
 		);
 	}
 
@@ -4797,17 +4785,17 @@
 		.qna-redirection-info-icon {
 		padding-right: 8px;
 		padding-left: 8px;
-		color: rgba(0, 0, 0, 0.9);
+		color: rgb(0 0 0 / 90%);
 		color: var(
 			--text-primary-color,
-			rgba(0, 0, 0, 0.9)
+			rgb(0 0 0 / 90%)
 		);
 	}
 
 	.qna-top-container .qna-question-row {
 		border-bottom: 1px solid;
 		border-width: 1px 0;
-		border-bottom-color: rgba(234, 234, 234, 1);
+		border-bottom-color: rgb(234 234 234 / 100%);
 		border-bottom-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -4854,15 +4842,15 @@
 
 	.user-name-div {
 		display: inline-block;
-		color: rgba(0, 0, 0, 0.55);
+		color: rgb(0 0 0 / 55%);
 		color: var(
 			--text-secondary-color,
-			rgba(0, 0, 0, 0.55)
+			rgb(0 0 0 / 55%)
 		);
 		font-size: 12px;
 	}
 
-	@media (min-width: 520px) {
+	@media (width >= 520px) {
 		.ms-Dialog-main.ReviewDialog {
 			max-width: 500px;
 		}
@@ -4873,7 +4861,7 @@
 		}
 
 		.ms-Dialog-main.ReviewDialog .reviews-row {
-			padding-top: 0px;
+			padding-top: 0;
 			min-width: 444px;
 		}
 	}
@@ -4885,10 +4873,10 @@
 
 	.ms-Dialog-main.ReviewDialog
 		.write-review-privacy {
-		color: rgba(0, 0, 0, 0.55);
+		color: rgb(0 0 0 / 55%);
 		color: var(
 			--text-secondary-color,
-			rgba(0, 0, 0, 0.55)
+			rgb(0 0 0 / 55%)
 		);
 		font-size: 12px;
 	}
@@ -4911,8 +4899,8 @@
 		.rating-control
 		.review-container
 		.ms-Rating-star {
-		margin-top: 0px;
-		padding-bottom: 0px;
+		margin-top: 0;
+		padding-bottom: 0;
 	}
 
 	.gallery-dialog
@@ -4927,7 +4915,7 @@
 		.rating-control
 		.ms-Rating-star
 		button.ms-Rating-button:focus {
-		outline: 1px solid rgba(102, 102, 102, 1);
+		outline: 1px solid rgb(102 102 102 / 100%);
 		outline: 1px solid
 			rgba(
 				var(--palette-neutral-60, 102, 102, 102),
@@ -4984,8 +4972,8 @@
 		.review-container
 		.rating-control
 		.ms-Rating {
-		margin-top: 0px;
-		padding-bottom: 0px;
+		margin-top: 0;
+		padding-bottom: 0;
 	}
 
 	.invisibleButton {
@@ -4995,7 +4983,7 @@
 	.rnr-top-container .reviews-row .reply-row {
 		margin-top: 10px;
 		border-top: 1px solid;
-		border-top-color: rgba(234, 234, 234, 1);
+		border-top-color: rgb(234 234 234 / 100%);
 		border-top-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -5026,7 +5014,7 @@
 		.reviews-row
 		.reply-row
 		.ux-publisher-name {
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 14px;
 	}
 
@@ -5076,15 +5064,15 @@
 		display: block;
 		margin-top: 0.83em;
 		margin-bottom: 0.5em;
-		margin: 0px;
-		padding-left: 0px;
+		margin: 0;
+		padding-left: 0;
 		font-size: 20px;
 	}
 
 	.rnr-top-container .rnr-container-row {
 		border-bottom: 1px solid;
 		border-width: 1px 0;
-		border-bottom-color: rgba(234, 234, 234, 1);
+		border-bottom-color: rgb(234 234 234 / 100%);
 		border-bottom-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -5103,21 +5091,21 @@
 		.rnr-container-row
 		.rating-count {
 		padding-top: 10px;
-		padding-left: 0px;
+		padding-left: 0;
 	}
 
 	.rnr-top-container
 		.rnr-container-row
 		.write-review-button-container {
 		float: right;
-		padding-right: 0px;
+		padding-right: 0;
 	}
 
 	.rnr-top-container
 		.rnr-container-row
 		.report-review-button-container {
 		float: right;
-		padding-right: 0px;
+		padding-right: 0;
 	}
 
 	.rnr-top-container
@@ -5198,7 +5186,7 @@
 	.reviews-row {
 		border-bottom: 1px solid;
 		border-width: 1px 0;
-		border-bottom-color: rgba(234, 234, 234, 1);
+		border-bottom-color: rgb(234 234 234 / 100%);
 		border-bottom-color: rgba(
 			var(--palette-neutral-8, 234, 234, 234),
 			1
@@ -5209,7 +5197,7 @@
 	}
 
 	.reviews-row .review-container {
-		padding-right: 0px;
+		padding-right: 0;
 		padding-left: 4px;
 	}
 
@@ -5228,7 +5216,7 @@
 	}
 
 	.reviews-row .ux-user-name {
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 14px;
 	}
 
@@ -5246,9 +5234,9 @@
 		.review-container
 		.rating-control
 		.ms-Rating-star {
-		margin-top: 0px;
-		outline: 0px;
-		padding-bottom: 0px;
+		margin-top: 0;
+		outline: 0;
+		padding-bottom: 0;
 	}
 
 	.reviews-row
@@ -5258,7 +5246,7 @@
 		.ms-Rating-button {
 		outline: 0 !important;
 		border: 0 !important;
-		padding: 0px;
+		padding: 0;
 		height: 100%;
 		font-size: 12px;
 		line-height: 12px;
@@ -5267,8 +5255,8 @@
 	.reviews-row .striked::after {
 		position: absolute;
 		top: 50%;
-		right: 0px;
-		left: 0px;
+		right: 0;
+		left: 0;
 		border-top: 1px solid;
 		content: '';
 	}
@@ -5346,7 +5334,7 @@
 
 	.carousel .carousel-item:nth-last-child(1) {
 		/*this is the first one so shift it to the left*/
-		margin-right: 0px;
+		margin-right: 0;
 	}
 
 	.item-carousel.images .carousel .carousel-item {
@@ -5374,11 +5362,11 @@
 		top: 50%;
 		z-index: 10;
 		margin-top: -20px;
-		padding: 2px 0 0 0;
-		color: rgba(0, 90, 158, 1);
+		padding: 2px 0 0;
+		color: rgb(0 90 158 / 100%);
 		color: var(
 			--communication-foreground,
-			rgba(0, 90, 158, 1)
+			rgb(0 90 158 / 100%)
 		);
 		font-weight: 100;
 		font-size: 40px;
@@ -5388,7 +5376,7 @@
 	}
 
 	.carousel-nav a:hover {
-		opacity: 1;
+		opacity: 100%;
 		background-color: #e2e1e1;
 		width: 38px;
 		height: auto;
@@ -5433,27 +5421,27 @@
 		margin-right: 12px;
 		border: 1px solid;
 		border-radius: 50%;
-		background: rgba(0, 0, 0, 0.3);
+		background: rgb(0 0 0 / 30%);
 		width: 12px;
 		height: 12px;
 	}
 
 	.carousel-indicators .indicator.active,
 	.carousel-indicators .indicator:hover {
-		background: rgba(0, 0, 0, 0.8);
+		background: rgb(0 0 0 / 80%);
 	}
 
 	.flag-control {
-		color: rgba(0, 0, 0, 0.55);
+		color: rgb(0 0 0 / 55%);
 		color: var(
 			--text-secondary-color,
-			rgba(0, 0, 0, 0.55)
+			rgb(0 0 0 / 55%)
 		);
 		font-size: 14px;
 	}
 
 	.flag-control:focus {
-		color: rgba(0, 69, 120, 1);
+		color: rgb(0 69 120 / 100%);
 		color: rgba(
 			var(--palette-primary-shade-30, 0, 69, 120),
 			1
@@ -5462,7 +5450,7 @@
 
 	.flag-control:hover {
 		cursor: pointer;
-		color: rgba(0, 69, 120, 1);
+		color: rgb(0 69 120 / 100%);
 		color: rgba(
 			var(--palette-primary-shade-30, 0, 69, 120),
 			1
@@ -5502,13 +5490,13 @@
 		margin-left: 3px;
 		border-width: 1px;
 		border-style: solid;
-		border-color: rgba(200, 200, 200, 1);
+		border-color: rgb(200 200 200 / 100%);
 		border-color: rgba(
 			var(--palette-neutral-20, 200, 200, 200),
 			1
 		);
 		border-radius: 13px;
-		padding: 0px 9px 0px 16px;
+		padding: 0 9px 0 16px;
 		height: 18px;
 		color: inherit !important;
 		font-weight: 600;
@@ -5516,7 +5504,7 @@
 	}
 
 	.optIn-bar {
-		padding: 8px 0px !important;
+		padding: 8px 0 !important;
 	}
 
 	.optIn-bar .optIn-action-button {

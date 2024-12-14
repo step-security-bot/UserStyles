@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	/* Main title styling with /r/pcmasterrace colors */
 	.title {
 		margin: 10px 0;
@@ -20,10 +20,10 @@
 		font-weight: 700;
 		font-size: 2.6em;
 		text-align: center;
-		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		text-shadow: 2px 2px 5px rgb(0 0 0 / 60%);
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: #000000;
-		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		display: flex;
 		position: relative;
@@ -62,32 +62,32 @@
 			color 0.3s ease,
 			text-shadow 0.3s ease;
 		color: #ffd700; /* Gold */
-		font-weight: bold;
+		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 40%);
 	}
 	a:hover {
 		color: #ffffff; /* White */
 		text-decoration: underline;
-		text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+		text-shadow: 2px 2px 6px rgb(0 0 0 / 70%);
 	}
 	/* Status colors with /r/pcmasterrace theme */
 	.good {
 		transition: color 0.3s ease;
 		color: #ffffff; /* White */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 	.minor {
 		transition: color 0.3s ease;
 		color: #ffd700; /* Gold */
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 	.major {
 		transition: color 0.3s ease;
 		color: #ff4500; /* Bright Red */
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 	/* Refresh button styling */
 	#js-refresh {
@@ -96,7 +96,7 @@
 			transform 0.3s ease;
 		color: #ffd700; /* Gold */
 		font-weight: bolder;
-		text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+		text-shadow: 0 0 3px rgb(0 0 0 / 80%);
 	}
 	#js-refresh:hover {
 		transform: scale(1.1);
@@ -111,25 +111,25 @@
 		transition:
 			box-shadow 0.3s ease,
 			background 0.3s ease;
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+		box-shadow: 0 4px 12px rgb(0 0 0 / 80%);
 		border: 1px solid #ffd700;
 		border-radius: 4px;
 		background: linear-gradient(
 			135deg,
-			rgba(255, 215, 0, 0.8) 30%,
-			rgba(255, 255, 255, 0.8) 70%
+			rgb(255 215 0 / 80%) 30%,
+			rgb(255 255 255 / 80%) 70%
 		);
 		color: #000000;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+		text-shadow: 0 0 4px rgb(0 0 0 / 90%);
 	}
 	.services:hover,
 	#psa:hover,
 	noscript:hover,
 	footer:hover {
-		box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.9);
-		background: rgba(0, 0, 0, 0.95);
+		box-shadow: 0 6px 15px rgb(0 0 0 / 90%);
+		background: rgb(0 0 0 / 95%);
 		color: #ffffff;
 	}
 	/* Body styling with /r/pcmasterrace backdrop */
@@ -142,54 +142,54 @@
 		color: #ffd700; /* Gold */
 		font-weight: 300;
 		font-size: 16px;
-		font-family: 'Segoe UI', Tahoma, Geneva,
-			Verdana, sans-serif;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		font-family:
+			Segoe UI,
+			Tahoma,
+			Geneva,
+			Verdana,
+			sans-serif;
+		text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
 	}
 	/* Tooltip customization */
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		position: absolute;
 		top: 0;
 		left: 2%;
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		z-index: 1;
 		transition:
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 8px;
-		background: rgba(255, 215, 0, 0.9); /* Gold */
+		background: rgb(255 215 0 / 90%); /* Gold */
 		padding: 8px;
 		width: 96%;
 		content: attr(data-tooltip);
 		color: #000000;
 		font-size: 0.9em;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
 	}
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 	/* Advanced feature: Animated gold border */
 	.gradient-border {
 		position: relative;
-		box-shadow: 0px 0px 10px
-			rgba(255, 215, 0, 0.8);
+		box-shadow: 0 0 10px rgb(255 215 0 / 80%);
 		border-radius: 6px;
-		background-color: rgba(0, 0, 0, 0.9);
+		background-color: rgb(0 0 0 / 90%);
 		padding: 12px;
 		color: #ffffff;
-		font-weight: bold;
+		font-weight: 700;
 		text-align: center;
 	}
 	.gradient-border::before {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
 		z-index: -1;
 		animation: gradient-border 4s linear infinite;
+		inset: 0;
 		border-radius: 6px;
 		background: linear-gradient(
 			45deg,

@@ -7,7 +7,7 @@
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
-@-moz-document regexp("https:\\/\\/(?:www\\.)?strava\\.com.*") {
+@document regexp("https:\\/\\/(?:www\\.)?strava\\.com.*") {
 	#__next > header,
 	#view > .header,
 	#global-header,
@@ -129,9 +129,11 @@
 	#notifications-drop-down,
 	.card:not(#js-dashboard-athlete-goals),
 	#map-control-container
-		.button:not(#toggle-fullscreen):not(
-			#create-route
-		):not(:hover),
+		.button:not(
+			#toggle-fullscreen,
+			#create-route,
+			:hover
+		),
 	#map-control-container
 		.drop-down-menu
 		.selection,
@@ -275,16 +277,14 @@
 		.description-container::after {
 		/*Box model stuff*/
 		background-image: linear-gradient(
-			rgba(0, 0, 0, 0),
+			rgb(0 0 0 / 0%),
 			#1c1c1c
 		) !important;
 	}
 	.btn-accept-cookie-banner,
 	.table-sortable > thead button:hover,
 	.panel-footer,
-	input:not([type='range']):not(
-			[role='combobox']
-		),
+	input:not([type='range'], [role='combobox']),
 	textarea,
 	.textarea-clone,
 	[class*='ModalWithTabs--tab-list'],
@@ -364,20 +364,19 @@
 	ul.tabs > li:hover .tab,
 	.s-chart-tooltip,
 	.infobox,
-	:not(.photo-nav):not(.media-body) > .btn,
+	:not(.photo-nav, .media-body) > .btn,
 	.button,
-	:not([class*='KudosAndComments--']):not(
-			[class*='GroupActivity']
-		):not(.photo-nav):not(.drop-down-menu)
+	:not(
+			[class*='KudosAndComments--'],
+			[class*='GroupActivity'],
+			.photo-nav,
+			.drop-down-menu
+		)
 		> button:not(
-			[class^='src-Notifications__nav-bar-button']
-		):not(
-			[class*='-components-KudosAndComments-KudosAndComments__count-button']
-		):not(
-			[class*='Activity__headline-text-btn']
-		):not(
-			[class*='-ActivityEntryBody__achievements-trophy']
-		):not(
+			[class^='src-Notifications__nav-bar-button'],
+			[class*='-components-KudosAndComments-KudosAndComments__count-button'],
+			[class*='Activity__headline-text-btn'],
+			[class*='-ActivityEntryBody__achievements-trophy'],
 			.ui-dialog.sauce-dialog
 				.ui-dialog-buttonpane
 				.ui-dialog-buttonset
@@ -385,8 +384,7 @@
 			.ui-dialog.sauce-dialog
 				.ui-dialog-buttonpane
 				.ui-dialog-buttonset
-				.btn
-		):not(
+				.btn,
 			[id^='feed-entry-']
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryBody-EntryBody__entryBody--RDiit
@@ -396,23 +394,20 @@
 				> div
 				> div.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__stat--SvAS3.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__textRight--A4rwD
 				> div.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__statText--zlBKv
-				> button
-		):not(
+				> button,
 			[id^='feed-entry-']
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryFooter-EntryFooter-module__entryFooter--X26JH
 				> div
 				> div.------packages-feed-ui-src-components-media-MediaBody-MediaBody__mediaBody--VKChn.------packages-feed-ui-src-components-KudosAndComments-KudosAndComments-module__mediaBody--E8jna
 				> div.------packages-feed-ui-src-components-KudosAndComments-KudosAndComments-module__countWrapper--mPWEM
-				> button
-		):not(
+				> button,
 			[id^='feed-entry-']
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryFooter-EntryFooter-module__entryFooter--X26JH
 				> div:nth-child(n)
 				> div
-				> button
-		):not(
+				> button,
 			[id^='feed-entry-']
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryFooter-EntryFooter-module__entryFooter--X26JH
@@ -423,8 +418,7 @@
 				> div
 				> div.------packages-feed-ui-src-components-media-MediaBody-MediaBody__mediaBody--VKChn.------packages-feed-ui-src-components-KudosAndComments-CommentsThread-CommentsThread-module__comment--Qf1Yv
 				> div.------packages-feed-ui-src-shared-KudosCommentsAndAchievements-CommentReaction-CommentReaction-module__commentReactionContainer--nixAS
-				> button
-		):not(
+				> button,
 			[id^='feed-entry-']
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryFooter-EntryFooter-module__entryFooter--X26JH
@@ -436,56 +430,47 @@
 				> div.------packages-feed-ui-src-components-media-MediaBody-MediaBody__mediaBody--VKChn.------packages-feed-ui-src-components-KudosAndComments-CommentsThread-CommentsThread-module__comment--Qf1Yv
 				> div.------packages-feed-ui-src-shared-KudosCommentsAndAchievements-CommentReaction-CommentReaction-module__commentReactionContainer--nixAS
 				> span
-				> button
-		):not(
+				> button,
 			#tabs--1--panel--0
 				> div
 				> div
 				> div.------packages-dashboard-ui-src-components-AthleteProgressGoals-RelativeEffort-RelativeEffort-module__head--nI6Px
 				> div:nth-child(n)
 				> div
-				> button
-		):not(
-			#sauce-kudo-all button.sauce-invoke
-		):not(
+				> button,
+			#sauce-kudo-all button.sauce-invoke,
 			#search-results
 				> tbody
 				> tr:nth-child(n)
 				> td.view-col.col-actions
 				> ul
 				> li:nth-child(n)
-				> button
-		):not(
+				> button,
 			#view
 				> section
 				> div
 				> table
 				> tfoot
 				> tr
-				> td
-		):not(
+				> td,
 			#feed-entry-null
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryHeader-EntryHeader-module__entryHeader--m1apc
 				> div
 				> div.------packages-feed-ui-src-components-media-MediaBody-MediaBody__mediaBody--VKChn
-				> button
-		):not(#cpra-compliance-cta):not(
-			#__next > div > header > div > button
-		):not(
-			.------packages-ui-Button-Button-module__btn--mQaJJ
-		):not(
+				> button,
+			#cpra-compliance-cta,
+			#__next > div > header > div > button,
+			.------packages-ui-Button-Button-module__btn--mQaJJ,
 			#global-search-button,
 			#global-search-cancel,
-			#open-global-search-button
-		):not(
+			#open-global-search-button,
 			.src-Notifications-module__navBarButton--jeAZg
 		),
 	input[type='submit'],
 	input[type='button'],
 	input[type='reset'],
-	:not(.subactions):not(.drop-down-menu)
-		> .selection,
+	:not(.subactions, .drop-down-menu) > .selection,
 	.pagination a,
 	.pagination em,
 	table.unstyled tr,
@@ -600,7 +585,7 @@
 		.footer-nav-submenu,
 	:not(.photo-nav) > .btn:hover,
 	.button:hover,
-	:not(.photo-nav):not(.drop-down-menu)
+	:not(.photo-nav, .drop-down-menu)
 		> button:hover,
 	input[type='submit']:hover,
 	input[type='button']:hover,
@@ -648,7 +633,7 @@
 		z-index: 1;
 		/*Manipulations stuff*/
 		filter: invert(1);
-		background-image: url(https://d3nn82uaxijpm6.cloudfront.net/assets/svg/2024/actions_download_normal_small-99d901d5f3767d8e2464a13987c976fdc10c89656f3c89e7a5a472f5f325e3d3.svg);
+		background-image: url('https://d3nn82uaxijpm6.cloudfront.net/assets/svg/2024/actions_download_normal_small-99d901d5f3767d8e2464a13987c976fdc10c89656f3c89e7a5a472f5f325e3d3.svg');
 		background-position: center;
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -671,7 +656,7 @@
 		/*Box model stuff*/
 		background-image: linear-gradient(
 			#2c2c2c,
-			rgba(255, 255, 255, 0)
+			rgb(255 255 255 / 0%)
 		);
 	}
 	.pagination > .active > span,
@@ -733,7 +718,8 @@
 		.drop-down-menu
 		.selection,
 	.sidebar
-		.section:first-child:not(.limited):not(
+		.section:first-child:not(
+			.limited,
 			.your-challenges
 		),
 	.search > .panel-default,
@@ -805,7 +791,7 @@
 	section.with-border,
 	.section.with-border,
 	[class*='KudosCommentsAndAchievementsModal--entry-'],
-	input:not([type='range']):not(:focus),
+	input:not([type='range'], :focus),
 	textarea:not(:focus),
 	.textarea-clone:not(:focus),
 	#notifications-drop-down li,
@@ -1115,7 +1101,7 @@
 		),
 	.page .btn.btn-link:link,
 	.page .btn.btn-link:visited,
-	.page a:not(.btn):not(a.minimal):visited,
+	.page a:not(.btn, a.minimal):visited,
 	.selection.nav-link,
 	.year-calendar strong,
 	.inline-stats.nav-style a:not(:hover),
@@ -1532,14 +1518,18 @@
 		color: #ccc !important;
 	}
 	.ui-dialog.sauce-dialog
-		.btn:not(.btn-unstyled):not(.btn-primary):not(
+		.btn:not(
+			.btn-unstyled,
+			.btn-primary,
 			.btn-secondary
 		) {
 		/*Box model stuff*/
 		background-color: #962f03b0 !important;
 	}
 	.ui-dialog.sauce-dialog
-		.btn:not(.btn-unstyled):not(.btn-primary):not(
+		.btn:not(
+			.btn-unstyled,
+			.btn-primary,
 			.btn-secondary
 		):hover {
 		outline: 1px solid #fff !important;
@@ -1560,17 +1550,16 @@
 		outline: 1px solid #fff !important;
 		/*Box model stuff*/
 		border: 1px solid #fff !important;
-		background-color: rgba(
-			150,
-			47,
-			3,
-			0.69
+		background-color: rgb(
+			150 47 3 / 69%
 		) !important;
 		/*Typography stuff*/
 		color: #fff !important;
 	}
 	.ui-dialog.sauce-dialog
-		.btn:not(.btn-unstyled):not(.btn-primary):not(
+		.btn:not(
+			.btn-unstyled,
+			.btn-primary,
 			.btn-secondary
 		) {
 		/*Box model stuff*/
@@ -1693,15 +1682,14 @@
 		color: #1a1a1a !important;
 	}
 	.ui-dialog.sauce-dialog
-		.btn:not(.btn-unstyled):not(.btn-primary):not(
+		.btn:not(
+			.btn-unstyled,
+			.btn-primary,
 			.btn-secondary
 		) {
 		/*Box model stuff*/
-		background-color: rgba(
-			150,
-			47,
-			3,
-			0.69
+		background-color: rgb(
+			150 47 3 / 69%
 		) !important;
 	}
 	#global-header
@@ -1849,7 +1837,7 @@
 	table.hidden-segments tr.selected > td,
 	table.laps-list tr.selected > td {
 		/*Miscellaneous*/
-		box-shadow: inset 1px 0px 1px 1px #d84e0b !important;
+		box-shadow: inset 1px 0 1px 1px #d84e0b !important;
 	}
 	.icon-elliptical,
 	.icon-run,
@@ -1889,7 +1877,8 @@
 	.sharing .icon-share,
 	#kudos .icon-kudo,
 	#comments .icon-comment,
-	.sprite:not(.connections-list .sprite):not(
+	.sprite:not(
+			.connections-list .sprite,
 			.photo-upload .avatar .add
 		),
 	.with-sprite::after,
@@ -2302,7 +2291,7 @@
 		row.full
 		.backdrop-icon {
 		/*Manipulations stuff*/
-		opacity: 1;
+		opacity: 100%;
 	}
 	#sauce-kudo-all button:hover,
 	.btn-icon.sauce-invoke:hover,
@@ -2326,7 +2315,7 @@
 	}
 	.summarySubGridTitle {
 		/*Typography stuff*/
-		color: rgba(255, 241, 131, 0.69) !important;
+		color: rgb(255 241 131 / 69%) !important;
 	}
 	#view
 		> section
@@ -2348,7 +2337,7 @@
 	}
 	.btn-icon-right .app-icon-wrapper {
 		/*Box model stuff*/
-		margin: 0 0 0 0px;
+		margin: 0;
 	}
 	a.minimal:visited {
 		/*Typography stuff*/

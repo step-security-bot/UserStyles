@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("fandom.com") {
+@document domain("fandom.com") {
 	*:not(
 			body
 				> div.main-container
@@ -27,7 +27,8 @@
 	}
 
 	/* Exclude Dark Mode Elements */
-	*:not([style*='background-color: #121212']):not(
+	*:not(
+			[style*='background-color: #121212'],
 			[style*='background-color: black']
 		) {
 		filter: none !important;

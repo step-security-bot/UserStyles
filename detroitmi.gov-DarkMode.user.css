@@ -8,14 +8,16 @@
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
 
-@-moz-document domain("detroitmi.gov") {
+@document domain("detroitmi.gov") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),
 			img,
 			svg,
 			video
-		):not(z#z.z[z]):not(a.logo > img):not(
+		):not(
+			z#z.z[z],
+			a.logo > img,
 			a.abclogo > img
 		) {
 		filter: invert(1) hue-rotate(180deg) !important;

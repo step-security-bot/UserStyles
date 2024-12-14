@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("gotoes.org") {
+@document domain("gotoes.org") {
 	:is(html:not([stylus-iframe])) {
 		filter: invert(1) hue-rotate(180deg) !important;
 		background: #fff;

@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("activityfix.com") {
+@document domain("activityfix.com") {
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),
@@ -50,7 +50,7 @@
 		text-decoration: underline #333;
 	}
 	.w3-padding-16 {
-		padding-top: 0px !important;
+		padding-top: 0 !important;
 		/*Box model stuff*/
 		padding-bottom: 16px !important;
 	}
@@ -64,7 +64,7 @@
 	}
 	.w3-container.w3-black.w3-display-container {
 		/*Box model stuff*/
-		margin: 0px 0px !important;
+		margin: 0 !important;
 		background-color: white !important;
 		/*Typography stuff*/
 		color: black !important;

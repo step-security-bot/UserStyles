@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	.title {
 		margin: 10px 0;
 		/* Subtle black shadow */
@@ -17,14 +17,14 @@
 			#ffcb05
 		);
 		/* Blue to Maize gradient */
-		-webkit-background-clip: text;
+		background-clip: text;
 		color: #00274c;
 		font-weight: 700;
 		font-size: 2.6em;
 		/* Michigan Wolverines Title */
 		text-align: center;
 		/* Maize and Blue - Dark Blue */
-		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 1px rgb(0 0 0 / 60%);
 		-webkit-text-fill-color: transparent;
 		display: flex;
 		position: relative;
@@ -47,10 +47,10 @@
 	a {
 		color: #00274c;
 		/* Light shadow */
-		font-weight: bold;
+		font-weight: 700;
 		/* Dark Blue */
 		text-decoration: none;
-		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 0 rgb(0 0 0 / 40%);
 	}
 
 	a:hover {
@@ -68,7 +68,7 @@
 	.good {
 		/* Blue for good statuses */
 		color: #00274c;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 		/* Black shadow */
 	}
 
@@ -76,16 +76,16 @@
 		/* Maize for minor issues */
 		color: #ffcb05;
 		/* Black shadow */
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	.major {
 		/* White for major issues */
 		color: #ffffff;
 		/* Black shadow */
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	#js-refresh {
@@ -93,7 +93,7 @@
 		color: #ffcb05;
 		/* Subtle shadow */
 		font-weight: bolder;
-		text-shadow: 0 0 2px rgb(0, 0, 0);
+		text-shadow: 0 0 2px rgb(0 0 0);
 	}
 
 	.services,
@@ -101,7 +101,7 @@
 	noscript {
 		position: relative;
 		/* Subtle shadow */
-		box-shadow: 0px 4px 8px rgb(0, 0, 0);
+		box-shadow: 0 4px 8px rgb(0 0 0);
 		/* Blue to Maize */
 		border: 1px solid #ffffff;
 		/* White border */
@@ -114,7 +114,7 @@
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 1px rgb(0, 0, 1);
+		text-shadow: 0 0 1px rgb(0 0 1);
 		/* White text */
 	}
 
@@ -130,15 +130,15 @@
 		font-weight: 300;
 		font-size: 16px;
 		/* Dark Blue text */
-		font-family: 'Roboto', Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgb(0, 0, 0);
+		font-family: Roboto, Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgb(0 0 0);
 		/* Blue to Maize background */
 	}
 
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		/* Time since last status change Box */
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		overflow: hidden;
 		content: attr(data-tooltip);
 		font-size: 0.9em;
@@ -162,11 +162,11 @@
 		font-weight: 300;
 		/* Dark Blue text */
 		text-align: left;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 }

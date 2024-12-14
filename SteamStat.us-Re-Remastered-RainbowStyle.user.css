@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document url("https://steamstat.us/")
+@document url("https://steamstat.us/")
 {
 	.title {
 		margin: 10px 0;
@@ -22,7 +22,7 @@
 			indigo,
 			violet
 		);
-		-webkit-background-clip: text;
+		background-clip: text;
 		font-weight: 300;
 		font-size: 2.6em;
 		/* Steam Status Title */
@@ -43,9 +43,9 @@
 			indigo,
 			violet
 		);
-		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		font-weight: bold;
+		font-weight: 700;
 		text-decoration: none;
 		text-shadow: 3px 3px 6px #000;
 		-webkit-text-stroke: 0.4px black;
@@ -66,10 +66,10 @@
 			indigo,
 			violet
 		);
-		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		-webkit-text-stroke: 0.4px black;
-		font-weight: bold;
+		font-weight: 700;
 	}
 
 	.services,
@@ -91,7 +91,7 @@
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 6px black;
+		text-shadow: 0 0 6px black;
 	}
 
 	body {
@@ -109,16 +109,19 @@
 		color: #ffffff;
 		font-weight: lighter;
 		font-size: 16px;
-		font-family: 'Open Sans', Helvetica, Arial,
+		font-family:
+			Open Sans,
+			Helvetica,
+			Arial,
 			sans-serif;
 		text-shadow: 1px 1px 6px #000;
 	}
 
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		/* Time since last status change Box */
 		-webkit-text-stroke: 0.4px black;
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		overflow: hidden;
 		content: attr(data-tooltip);
 		font-size: 0.9em;
@@ -129,7 +132,7 @@
 		left: 2%;
 		z-index: 1;
 		border-radius: 6px;
-		background: rgba(0, 0, 0, 0.8);
+		background: rgb(0 0 0 / 80%);
 		padding: 8px;
 		width: 97%;
 		color: #ffffff;

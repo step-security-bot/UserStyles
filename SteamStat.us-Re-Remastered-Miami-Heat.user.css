@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	/* Main title styling with red and black */
 	.title {
 		margin: 10px 0;
@@ -17,13 +17,13 @@
 			#fff 70%
 		);
 		/* Red to Black gradient */
-		-webkit-background-clip: text;
+		background-clip: text;
 		color: #98002e;
 		font-weight: 700;
 		font-size: 2.6em;
 		text-align: center;
 		/* Miami Heat Red */
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+		text-shadow: 2px 2px 4px rgb(0 0 0 / 60%);
 		-webkit-text-fill-color: transparent;
 		display: flex;
 		position: relative;
@@ -67,17 +67,17 @@
 			color 0.3s ease,
 			text-shadow 0.3s ease;
 		color: #98002e;
-		font-weight: bold;
+		font-weight: 700;
 		/* Miami Heat Red */
 		text-decoration: none;
-		text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 0 rgb(0 0 0 / 40%);
 	}
 
 	a:hover {
 		color: #ffffff;
 		/* White on hover for contrast */
 		text-decoration: underline;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 60%);
 	}
 
 	/* Status colors with red and black theme */
@@ -85,23 +85,23 @@
 		transition: color 0.3s ease;
 		color: #98002e;
 		/* Miami Heat Red */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	.minor {
 		transition: color 0.3s ease;
 		color: #ffffff;
-		font-weight: bold;
+		font-weight: 700;
 		/* White for minor status */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	.major {
 		transition: color 0.3s ease;
 		color: #000000;
-		font-weight: bold;
+		font-weight: 700;
 		/* Black for major status */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	/* Refresh button styling with hover effect */
@@ -112,7 +112,7 @@
 		color: #98002e;
 		font-weight: bolder;
 		/* Miami Heat Red */
-		text-shadow: 0 0 2px rgb(0, 0, 0);
+		text-shadow: 0 0 2px rgb(0 0 0);
 	}
 
 	#js-refresh:hover {
@@ -130,7 +130,7 @@
 		transition:
 			box-shadow 0.3s ease,
 			background 0.3s ease;
-		box-shadow: 0px 4px 8px rgb(0, 0, 0);
+		box-shadow: 0 4px 8px rgb(0 0 0);
 		/* Black background */
 		border: 1px solid #98002e;
 		/* Miami Heat Red border */
@@ -139,14 +139,14 @@
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 1px rgb(0, 0, 1);
+		text-shadow: 0 0 1px rgb(0 0 1);
 	}
 
 	.services:hover,
 	#psa:hover,
 	noscript:hover {
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-		background: rgba(0, 0, 0, 0.6);
+		box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
+		background: rgb(0 0 0 / 60%);
 		/* Miami Heat Red on hover */
 	}
 
@@ -163,9 +163,9 @@
 		font-weight: 300;
 		font-size: 16px;
 		/* Miami Heat Red */
-		font-family: 'Roboto', Arial, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		/* Red to Black gradient */
-		text-shadow: 1px 1px 3px rgb(0, 0, 0);
+		text-shadow: 1px 1px 3px rgb(0 0 0);
 	}
 
 	body:hover {
@@ -178,12 +178,12 @@
 	}
 
 	/* Tooltip customization with smooth transition */
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		position: absolute;
 		top: 0;
 		left: 2%;
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		z-index: 1;
 		transition:
 			visibility 0s,
@@ -199,12 +199,12 @@
 		font-style: italic;
 		font-weight: 300;
 		font-size: 0.9em;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 
 	/* Advanced feature: Gradient border with transition */
@@ -216,18 +216,15 @@
 		/* Miami Heat Red */
 		color: #ffffff;
 		/* White text */
-		font-weight: bold;
+		font-weight: 700;
 		text-align: center;
 	}
 
 	.gradient-border::before {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
 		z-index: -1;
 		animation: gradient-border 3s linear infinite;
+		inset: 0;
 		border-radius: 5px;
 		background: linear-gradient(
 			45deg,

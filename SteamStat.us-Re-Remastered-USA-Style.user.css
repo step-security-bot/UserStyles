@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	.title {
 		margin: 10px 0;
 		background: linear-gradient(
@@ -16,22 +16,22 @@
 			#ff0000,
 			#0000ff
 		); /* Red to Blue gradient */
-		-webkit-background-clip: text;
+		background-clip: text;
 		color: #ff0000; /* Red */
 		font-weight: 300;
 		font-size: 2.6em;
 		/* USA Red/White/Blue Status Title */
 		text-align: center;
-		text-shadow: 1px 1px 1px rgba(0, 0, 128, 0.9); /* Navy blue shadow */
+		text-shadow: 1px 1px 1px rgb(0 0 128 / 90%); /* Navy blue shadow */
 		-webkit-text-fill-color: transparent;
 	}
 
 	a {
 		color: #0000ff; /* Blue */
-		font-weight: bold;
+		font-weight: 700;
 		text-decoration: none;
 		text-shadow: 1px 1px 1px
-			rgba(255, 255, 255, 0.6); /* White shadow */
+			rgb(255 255 255 / 60%); /* White shadow */
 	}
 
 	a:hover {
@@ -48,35 +48,35 @@
 	.good {
 		/* White */
 		color: #ffffff;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow */
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%); /* Black shadow */
 	}
 
 	.minor {
 		/* Sky Blue */
 		color: #87ceeb;
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow */
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%); /* Black shadow */
 	}
 
 	.major {
 		/* Bright Red */
 		color: #ff4500;
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Black shadow */
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%); /* Black shadow */
 	}
 
 	#js-refresh {
 		/* Refreshing in idk seconds */
 		color: #0000ff; /* Blue */
 		font-weight: bolder;
-		text-shadow: 0 0 2px rgba(255, 255, 255, 0.8); /* White shadow */
+		text-shadow: 0 0 2px rgb(255 255 255 / 80%); /* White shadow */
 	}
 
 	.services,
 	#psa,
 	noscript {
 		position: relative;
-		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 4px 8px rgb(0 0 0 / 40%);
 		border: 1px solid #ffffff; /* White border */
 		border-radius: 3px;
 		background: linear-gradient(
@@ -87,7 +87,7 @@
 		color: #ffffff; /* White text */
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8); /* Black shadow */
+		text-shadow: 0 0 5px rgb(0 0 0 / 80%); /* Black shadow */
 	}
 
 	body {
@@ -100,14 +100,14 @@
 		color: #ffffff; /* White text */
 		font-weight: 300;
 		font-size: 16px;
-		font-family: 'Roboto', Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Black shadow */
+		font-family: Roboto, Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%); /* Black shadow */
 	}
 
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		/* Time since last status change Box */
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		overflow: hidden;
 		content: attr(data-tooltip);
 		font-size: 0.9em;
@@ -128,11 +128,11 @@
 		font-style: italic;
 		font-weight: 300;
 		text-align: left;
-		text-shadow: 1px 1px 3px rgba(255, 0, 0, 0.8); /* Red shadow */
+		text-shadow: 1px 1px 3px rgb(255 0 0 / 80%); /* Red shadow */
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 }

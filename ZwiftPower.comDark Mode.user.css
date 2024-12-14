@@ -7,7 +7,7 @@
 @author         Nick2bad4u
 @license        UnLicense
 ==/UserStyle== */
-@-moz-document domain("zwiftpower.com") {
+@document domain("zwiftpower.com") {
 	html,
 	svg,
 	iframe,
@@ -33,7 +33,9 @@
 	}
 
 	.btn-group
-		> .btn:not(:first-child):not(:last-child):not(
+		> .btn:not(
+			:first-child,
+			:last-child,
 			.dropdown-toggle
 		),
 	.btn-group > .btn:last-child:not(:first-child) {
@@ -83,7 +85,7 @@
 		> thead
 		> tr
 		> th:nth-child(n)::after {
-		opacity: 0.3;
+		opacity: 30%;
 		color: #000 !important;
 	}
 

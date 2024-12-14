@@ -7,14 +7,16 @@
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @license      The UnLicense
 ==/UserStyle== */
-@-moz-document domain("unroll.me") {
+@document domain("unroll.me") {
 	:root {
 		filter: invert(1);
 		/*            background-color: black; */
 	}
-	img:not(.mwe-math-fallback-image-display):not(
-			.mwe-math-fallback-image-inline
-		):not(img[alt='GPS']) {
+	img:not(
+			.mwe-math-fallback-image-display,
+			.mwe-math-fallback-image-inline,
+			img[alt='GPS']
+		) {
 		filter: invert(1);
 	}
 	.mw-logo {

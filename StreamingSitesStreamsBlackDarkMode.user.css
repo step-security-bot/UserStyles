@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("streameast.gd"), domain("1stream.eu"), domain("methstreamer.com"), domain("chatango.com"), domain("methstreams.com") {
+@document domain("streameast.gd"), domain("1stream.eu"), domain("methstreamer.com"), domain("chatango.com"), domain("methstreams.com") {
 	/* General Inversion for Light Backgrounds */
 	*,
 	a {
@@ -17,7 +17,8 @@
 	}
 
 	/* Exclude Dark Mode Elements */
-	*:not([style*='background-color: #121212']):not(
+	*:not(
+			[style*='background-color: #121212'],
 			[style*='background-color: black']
 		) {
 		filter: none !important;

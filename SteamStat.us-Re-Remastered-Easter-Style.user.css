@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	.title {
 		margin: 10px 0;
 		/* Subtle black shadow for visibility */
@@ -18,24 +18,24 @@
 			#87ceeb
 		);
 		/* Bright Yellow, Hot Pink, Sky Blue */
-		-webkit-background-clip: text;
+		background-clip: text;
 		color: #ff69b4;
 		font-weight: 300;
 		font-size: 2.6em;
 		/* Easter Pastel Title - Improved Readability */
 		text-align: center;
 		/* Hot Pink for better contrast */
-		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+		text-shadow: 2px 2px 3px rgb(0 0 0 / 50%);
 		-webkit-text-fill-color: transparent;
 	}
 
 	a {
 		color: #6a5acd;
 		/* Light shadow */
-		font-weight: bold;
+		font-weight: 700;
 		/* Medium Slate Blue */
 		text-decoration: none;
-		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
 	}
 
 	a:hover {
@@ -53,7 +53,7 @@
 	.good {
 		/* Pastel Green */
 		color: #98fb98;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 		/* Black shadow */
 	}
 
@@ -61,16 +61,16 @@
 		/* Lavender */
 		color: #e6e6fa;
 		/* Black shadow */
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	.major {
 		/* Bright Yellow */
 		color: #ffd700;
 		/* Black shadow */
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	#js-refresh {
@@ -79,7 +79,7 @@
 		/* Pink shadow */
 		font-weight: bolder;
 		/* Hot Pink */
-		text-shadow: 0 0 2px rgba(255, 182, 193, 0.8);
+		text-shadow: 0 0 2px rgb(255 182 193 / 80%);
 	}
 
 	.services,
@@ -87,7 +87,7 @@
 	noscript {
 		position: relative;
 		/* Light shadow */
-		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
 		/* Peach, Lemon Chiffon, Sky Blue gradient */
 		border: 1px solid #ffd700;
 		/* Bright Yellow border */
@@ -101,7 +101,7 @@
 		color: #4b0082;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+		text-shadow: 0 0 5px rgb(0 0 0 / 40%);
 		/* Indigo */
 	}
 
@@ -118,15 +118,15 @@
 		font-weight: 300;
 		font-size: 16px;
 		/* Medium Slate Blue text */
-		font-family: 'Roboto', Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		font-family: Roboto, Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
 		/* Pink, Peach, Sky Blue gradient */
 	}
 
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		/* Time since last status change Box */
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		overflow: hidden;
 		content: attr(data-tooltip);
 		font-size: 0.9em;
@@ -150,11 +150,11 @@
 		font-weight: 300;
 		/* Light Green */
 		text-align: left;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 }

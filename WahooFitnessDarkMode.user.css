@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("wahoofitness.com") {
+@document domain("wahoofitness.com") {
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),
@@ -367,7 +367,6 @@
 	html {
 		font-size: 16px;
 		text-size-adjust: 100%;
-		text-size-adjust: 100%;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		-webkit-tap-highlight-color: rgb(0 0 0 / 0%);
@@ -719,22 +718,16 @@
 
 	input::-webkit-file-upload-button {
 		appearance: button;
-		appearance: button;
-		appearance: button;
 		font: inherit;
 	}
 
 	input[type='search'] {
-		appearance: none;
-		appearance: none;
 		appearance: none;
 		box-sizing: border-box;
 	}
 
 	input[type='search']::-webkit-search-cancel-button,
 	input[type='search']::-webkit-search-decoration {
-		appearance: none;
-		appearance: none;
 		appearance: none;
 	}
 
@@ -753,8 +746,6 @@
 	[type='time'],
 	[type='datetime-local'],
 	[type='month'] {
-		appearance: listbox;
-		appearance: listbox;
 		appearance: listbox;
 	}
 
@@ -1031,8 +1022,6 @@
 	}
 
 	.not-a-button {
-		appearance: none;
-		appearance: none;
 		appearance: none;
 		box-shadow: none;
 		border: 0;
@@ -2283,8 +2272,6 @@
 	.form-field .nesty-input,
 	.form-field .hc-multiselect-toggle {
 		appearance: none;
-		appearance: none;
-		appearance: none;
 		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' width='10' height='6'%3E%3Cpath fill='%232D3748' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E")
 			no-repeat #ffffff;
 		background-position: right 0.75em center;
@@ -2356,7 +2343,6 @@
 
 	.search [type='search'] {
 		appearance: none;
-		appearance: none;
 		border: none;
 		background-color: transparent;
 		padding-left: 2.5em;
@@ -2419,8 +2405,6 @@
 	}
 
 	.boolean input {
-		appearance: none;
-		appearance: none;
 		appearance: none;
 		margin-right: 0.5em;
 		padding: 0.5rem;
@@ -7358,7 +7342,6 @@
 
 	.sticky-top {
 		position: sticky;
-		position: sticky;
 		top: 0;
 		z-index: 98;
 	}
@@ -7421,7 +7404,6 @@
 		}
 
 		.sm\:sticky-top {
-			position: sticky;
 			position: sticky;
 			top: 0;
 			z-index: 98;
@@ -7487,7 +7469,6 @@
 
 		.md\:sticky-top {
 			position: sticky;
-			position: sticky;
 			top: 0;
 			z-index: 98;
 		}
@@ -7552,7 +7533,6 @@
 
 		.lg\:sticky-top {
 			position: sticky;
-			position: sticky;
 			top: 0;
 			z-index: 98;
 		}
@@ -7616,7 +7596,6 @@
 		}
 
 		.xl\:sticky-top {
-			position: sticky;
 			position: sticky;
 			top: 0;
 			z-index: 98;
@@ -19880,8 +19859,6 @@
 
 	.actions-comment button {
 		appearance: none;
-		appearance: none;
-		appearance: none;
 		margin-right: -0.5rem;
 		box-shadow: none;
 		border: 0;
@@ -20714,8 +20691,6 @@
 	}
 
 	.goog-te-combo {
-		appearance: none;
-		appearance: none;
 		appearance: none;
 		margin: 2px 0 !important;
 		border: 0;

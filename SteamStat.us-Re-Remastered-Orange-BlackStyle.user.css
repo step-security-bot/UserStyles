@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	.title {
 		margin: 10px 0;
 		color: #ffa500;
@@ -16,16 +16,14 @@
 		font-size: 2.6em;
 		/* Black/Orange Status Title */
 		text-align: center;
-		text-shadow: 2px 2px 8px
-			rgba(255, 165, 0, 0.8);
+		text-shadow: 2px 2px 8px rgb(255 165 0 / 80%);
 	}
 
 	a {
 		color: #ff8c00;
-		font-weight: bold;
+		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 1px 1px 4px
-			rgba(255, 140, 0, 0.6);
+		text-shadow: 1px 1px 4px rgb(255 140 0 / 60%);
 	}
 
 	a:hover {
@@ -42,37 +40,36 @@
 	.good {
 		/* Neon Orange */
 		color: #ff8c00;
-		text-shadow: 1px 1px 6px
-			rgba(255, 140, 0, 0.8);
+		text-shadow: 1px 1px 6px rgb(255 140 0 / 80%);
 	}
 
 	.minor {
 		/* Light Orange */
 		color: #ffa07a;
-		font-weight: bold;
+		font-weight: 700;
 		text-shadow: 1px 1px 6px
-			rgba(255, 160, 122, 0.8);
+			rgb(255 160 122 / 80%);
 	}
 
 	.major {
 		/* Dark Orange */
 		color: #ff4500;
-		font-weight: bold;
-		text-shadow: 1px 1px 6px rgba(255, 69, 0, 0.8);
+		font-weight: 700;
+		text-shadow: 1px 1px 6px rgb(255 69 0 / 80%);
 	}
 
 	#js-refresh {
 		/* Refreshing in idk seconds */
 		color: #ff8c00;
 		font-weight: bolder;
-		text-shadow: 0 0 8px rgba(255, 140, 0, 0.8);
+		text-shadow: 0 0 8px rgb(255 140 0 / 80%);
 	}
 
 	.services,
 	#psa,
 	noscript {
 		position: relative;
-		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+		box-shadow: 0 4px 8px rgb(0 0 0 / 40%);
 		border: 1px solid #ff8c00;
 		border-radius: 6px;
 		background: linear-gradient(
@@ -83,7 +80,7 @@
 		color: #f8f8f2;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+		text-shadow: 0 0 6px rgb(0 0 0 / 60%);
 	}
 
 	body {
@@ -92,14 +89,14 @@
 		color: #ffa500;
 		font-weight: 300;
 		font-size: 16px;
-		font-family: 'Roboto', Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+		font-family: Roboto, Arial, sans-serif;
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%);
 	}
 
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		/* Time since last status change Box */
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		overflow: hidden;
 		content: attr(data-tooltip);
 		font-size: 0.9em;
@@ -120,11 +117,11 @@
 		font-style: italic;
 		font-weight: 300;
 		text-align: left;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%);
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 }

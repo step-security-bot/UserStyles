@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("nbcwashington.com") {
+@document domain("nbcwashington.com") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),

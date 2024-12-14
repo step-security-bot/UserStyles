@@ -8,7 +8,7 @@
 @license      UnLicense
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Site Settings */
 	* {
 		transition: none !important;
@@ -167,7 +167,7 @@
 		color: #0000;
 	}
 
-	[title='Minimum Plate Appearances']:after {
+	[title='Minimum Plate Appearances']::after {
 		margin-left: -3.5rem !important;
 		content: 'Minimum Plate Appearances';
 	}
@@ -201,7 +201,7 @@
 		white-space: pre-line;
 	}
 
-	.news-feed-item .timestamp + .author:before {
+	.news-feed-item .timestamp + .author::before {
 		padding: 0;
 		content: '';
 	}
@@ -430,8 +430,9 @@
 		> .contentItem
 		.cscore_score--record,
 	.contentItem__content--story.has-image:not(
-			.miniCard
-		):not(.contentItem__content--enhanced)
+			.miniCard,
+			.contentItem__content--enhanced
+		)
 		.contentItem__subhead,
 	.contentItem__contentMeta--bottom span,
 	.cscore_date-time,
@@ -595,7 +596,7 @@
 		.game-details
 		.venue,
 	.standings-prp.withBracketInformationTooltip
-		#bracketInformationTooltip:before,
+		#bracketInformationTooltip::before,
 	p {
 		line-height: 22px !important;
 	}
@@ -962,8 +963,9 @@
 	}
 
 	.contentItem__content--story.has-image:not(
-			.miniCard
-		):not(.contentItem__content--enhanced)
+			.miniCard,
+			.contentItem__content--enhanced
+		)
 		.contentItem__subhead {
 		max-height: calc((45px * 2) + 2px);
 	}
@@ -1699,9 +1701,9 @@
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Media Query */
-	@media (min-width: 1921px) and (max-width: 2560px) {
+	@media (width >= 1921px) and (width <= 2560px) {
 		/* Bracket */
 		.bracketWrapper .bracket .mW .matchup {
 			width: 15rem !important;
@@ -2168,11 +2170,11 @@
 		}
 	}
 
-	@media (min-width: 1080px) and (max-width: 1920px) {
+	@media (width >= 1080px) and (width <= 1920px) {
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Font Settings */
 	.long-name,
 	a[href],
@@ -2436,7 +2438,7 @@
 		.entry-details-gamemode
 		.gamemode-name,
 	.watchProvider__list-items > li > a,
-	a.external:after,
+	a.external::after,
 	body,
 	body.context_nationalBracket
 		.bracket.locked
@@ -2691,7 +2693,7 @@
 		.standings-prp
 		.standings-prp-item
 		.header,
-	[title='Minimum Plate Appearances']:after,
+	[title='Minimum Plate Appearances']::after,
 	h5,
 	h6,
 	label,
@@ -2850,18 +2852,18 @@
 		color: #ff8484 !important;
 	}
 
-	.datepicker.icon:after,
-	.datepicker.icon:before,
+	.datepicker.icon::after,
+	.datepicker.icon::before,
 	.helperUI-wrapper button.icon.helperUI-icon,
 	.icon.edit.edit-display-name,
 	.user-banner
 		.user-settings
-		.settings-link:after {
+		.settings-link::after {
 		color: #eef3ff !important;
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Background Settings */
 	body,
 	html {
@@ -2880,7 +2882,9 @@
 	}
 
 	.techc_linehl {
-		background-color: #dddddd38 !important;
+		background-color: rgb(
+			221 221 221 / 22%
+		) !important;
 	}
 
 	#global-scoreboard .scoreLabel_content,
@@ -2913,7 +2917,7 @@
 		background-image: none !important;
 	}
 
-	/* Background 
+	/* Background
 _____________________________________________________________________________________________________*/
 	#global-nav,
 	#global-nav-secondary,
@@ -2965,7 +2969,7 @@ ________________________________________________________________________________
 		background-color: #0f0c0c !important;
 	}
 
-	/* Background Transparent 
+	/* Background Transparent
 _____________________________________________________________________________________________________*/
 	#bracketcast > .header,
 	#content-wrapper,
@@ -2990,42 +2994,42 @@ ________________________________________________________________________________
 		.global-nav-container
 		> ul
 		> li.active
-		> a:before,
+		> a::before,
 	#global-nav-secondary
 		.global-nav-container
 		> ul
-		> li.hover:not(.insider):not(.espnplus)
-		> a:before,
+		> li.hover:not(.insider, .espnplus)
+		> a::before,
 	#global-nav-secondary
 		.tertiary-nav-container
 		> ul
 		> li.active
-		> a:before,
+		> a::before,
 	#global-nav-secondary
 		.tertiary-nav-container
 		> ul
-		> li.hover:not(.insider):not(.espnplus)
-		> a:before,
+		> li.hover:not(.insider, .espnplus)
+		> a::before,
 	#global-nav-tertiary
 		.global-nav-container
 		> ul
 		> li.active
-		> a:before,
+		> a::before,
 	#global-nav-tertiary
 		.global-nav-container
 		> ul
-		> li.hover:not(.insider):not(.espnplus)
-		> a:before,
+		> li.hover:not(.insider, .espnplus)
+		> a::before,
 	#global-nav-tertiary
 		.tertiary-nav-container
 		> ul
 		> li.active
-		> a:before,
+		> a::before,
 	#global-nav-tertiary
 		.tertiary-nav-container
 		> ul
-		> li.hover:not(.insider):not(.espnplus)
-		> a:before,
+		> li.hover:not(.insider, .espnplus)
+		> a::before,
 	#main-container
 		.onboard-get-started
 		.background,
@@ -3069,7 +3073,7 @@ ________________________________________________________________________________
 		.optIn
 		.contentWrapper
 		input[type='checkbox']
-		+ label:before,
+		+ label::before,
 	.bracketRounds,
 	.btn--filter:not(.btn--dark),
 	.button-filter-alt,
@@ -3112,7 +3116,7 @@ ________________________________________________________________________________
 	.mod-tabs ul.ui-tabs-nav li,
 	.mod-open-list .mod-content ul li,
 	.mpTable > table tr td,
-	.news-feed-item:before,
+	.news-feed-item::before,
 	.oddrow,
 	.onboard-invite .invite-friends-share-game,
 	.paywall-content .cta,
@@ -3247,24 +3251,24 @@ ________________________________________________________________________________
 		background-color: #0000 !important;
 	}
 
-	/* Buttons 
+	/* Buttons
 _____________________________________________________________________________________________________*/
-	/* Blue 
+	/* Blue
 _____________________________________________________________________________________________________*/
 	.button:not(.dismiss),
 	.view-more-posts {
 		position: relative !important;
-		opacity: 1 !important;
+		opacity: 100% !important;
 		z-index: 1 !important;
 		box-shadow:
 			1px 1px 1px black,
-			inset 2px 3px 5px #0000004d,
-			inset -2px -3px 5px #ffffff80 !important;
+			inset 2px 3px 5px rgb(0 0 0 / 30%),
+			inset -2px -3px 5px rgb(255 255 255 / 50%) !important;
 		border: none !important;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
-			#0f79afa8 0%,
+			rgb(15 121 175 / 66%) 0%,
 			#000 100%
 		) !important;
 		color: #fff !important;
@@ -3273,13 +3277,10 @@ ________________________________________________________________________________
 	.button:not(.dismiss)::before,
 	.view-more-posts::before {
 		position: absolute !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0 !important;
+		opacity: 0% !important;
 		z-index: -1 !important;
 		transition: opacity 0.8s linear !important;
+		inset: 0;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
@@ -3292,24 +3293,24 @@ ________________________________________________________________________________
 
 	.button:not(.dismiss):hover::before,
 	.view-more-posts:hover::before {
-		opacity: 1 !important;
+		opacity: 100% !important;
 	}
 
-	/* Red 
+	/* Red
 _____________________________________________________________________________________________________*/
 	selector {
 		position: relative !important;
-		opacity: 1 !important;
+		opacity: 100% !important;
 		z-index: 1 !important;
 		box-shadow:
 			1px 1px 1px black,
-			inset 2px 3px 5px #0000004d,
-			inset -2px -3px 5px #ffffff80 !important;
+			inset 2px 3px 5px rgb(0 0 0 / 30%),
+			inset -2px -3px 5px rgb(255 255 255 / 50%) !important;
 		border: none !important;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
-			#870101a8 0%,
+			rgb(135 1 1 / 66%) 0%,
 			#000 100%
 		) !important;
 		color: #fff !important;
@@ -3317,13 +3318,10 @@ ________________________________________________________________________________
 
 	selector::before {
 		position: absolute !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0 !important;
+		opacity: 0% !important;
 		z-index: -1 !important;
 		transition: opacity 0.8s linear !important;
+		inset: 0;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
@@ -3335,24 +3333,24 @@ ________________________________________________________________________________
 	}
 
 	selector:hover::before {
-		opacity: 1 !important;
+		opacity: 100% !important;
 	}
 
-	/* Yellow 
+	/* Yellow
 _____________________________________________________________________________________________________*/
 	.Button--eplus.Button--default {
 		position: relative !important;
-		opacity: 1 !important;
+		opacity: 100% !important;
 		z-index: 1 !important;
 		box-shadow:
 			1px 1px 1px black,
-			inset 2px 3px 5px #0000004d,
-			inset -2px -3px 5px #ffffff80 !important;
+			inset 2px 3px 5px rgb(0 0 0 / 30%),
+			inset -2px -3px 5px rgb(255 255 255 / 50%) !important;
 		border: none !important;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
-			#ffad00a8 0%,
+			rgb(255 173 0 / 66%) 0%,
 			#000 100%
 		) !important;
 		color: #fff !important;
@@ -3360,13 +3358,10 @@ ________________________________________________________________________________
 
 	.Button--eplus.Button--default::before {
 		position: absolute !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0 !important;
+		opacity: 0% !important;
 		z-index: -1 !important;
 		transition: opacity 0.8s linear !important;
+		inset: 0;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
@@ -3378,26 +3373,26 @@ ________________________________________________________________________________
 	}
 
 	.Button--eplus.Button--default:hover::before {
-		opacity: 1 !important;
+		opacity: 100% !important;
 	}
 
-	/* Green 
+	/* Green
 _____________________________________________________________________________________________________*/
 	.btn-social.email,
 	.button-alt,
 	.send-email .btn-social {
 		position: relative !important;
-		opacity: 1 !important;
+		opacity: 100% !important;
 		z-index: 1 !important;
 		box-shadow:
 			1px 1px 1px black,
-			inset 2px 3px 5px #0000004d,
-			inset -2px -3px 5px #ffffff80 !important;
+			inset 2px 3px 5px rgb(0 0 0 / 30%),
+			inset -2px -3px 5px rgb(255 255 255 / 50%) !important;
 		border: none !important;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
-			#3de10ba8 0%,
+			rgb(61 225 11 / 66%) 0%,
 			#000 100%
 		) !important;
 		color: #fff !important;
@@ -3407,13 +3402,10 @@ ________________________________________________________________________________
 	.button-alt::before,
 	.send-email .btn-social::before {
 		position: absolute !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0 !important;
+		opacity: 0% !important;
 		z-index: -1 !important;
 		transition: opacity 0.8s linear !important;
+		inset: 0;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
@@ -3427,19 +3419,19 @@ ________________________________________________________________________________
 	.btn-social.email:hover::before,
 	.button-alt:hover::before,
 	.send-email .btn-social:hover::before {
-		opacity: 1 !important;
+		opacity: 100% !important;
 	}
 
-	/* Facebook 
+	/* Facebook
 _____________________________________________________________________________________________________*/
 	.btn-social.icon-facebook-solid-before {
 		position: relative !important;
-		opacity: 1 !important;
+		opacity: 100% !important;
 		z-index: 1 !important;
 		box-shadow:
 			1px 1px 1px black,
-			inset 2px 3px 5px #0000004d,
-			inset -2px -3px 5px #ffffff80 !important;
+			inset 2px 3px 5px rgb(0 0 0 / 30%),
+			inset -2px -3px 5px rgb(255 255 255 / 50%) !important;
 		border: none !important;
 		border-radius: 22px !important;
 		background: radial-gradient(
@@ -3452,13 +3444,10 @@ ________________________________________________________________________________
 
 	.btn-social.icon-facebook-solid-before::before {
 		position: absolute !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0 !important;
+		opacity: 0% !important;
 		z-index: -1 !important;
 		transition: opacity 0.8s linear !important;
+		inset: 0;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
@@ -3470,21 +3459,21 @@ ________________________________________________________________________________
 	}
 
 	.btn-social.icon-facebook-solid-before:hover::before {
-		opacity: 1 !important;
+		opacity: 100% !important;
 	}
 
-	/* Email 
+	/* Email
 _____________________________________________________________________________________________________*/
 	.bracket .submission .button.disabled,
 	.bracket .submission .button[disabled],
 	.group-invite-module .icon-email-solid-before {
 		position: relative !important;
-		opacity: 1 !important;
+		opacity: 100% !important;
 		z-index: 1 !important;
 		box-shadow:
 			1px 1px 1px black,
-			inset 2px 3px 5px #0000004d,
-			inset -2px -3px 5px #ffffff80 !important;
+			inset 2px 3px 5px rgb(0 0 0 / 30%),
+			inset -2px -3px 5px rgb(255 255 255 / 50%) !important;
 		border: none !important;
 		border-radius: 22px !important;
 		background: radial-gradient(
@@ -3500,13 +3489,10 @@ ________________________________________________________________________________
 	.group-invite-module
 		.icon-email-solid-before::before {
 		position: absolute !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		opacity: 0 !important;
+		opacity: 0% !important;
 		z-index: -1 !important;
 		transition: opacity 0.8s linear !important;
+		inset: 0;
 		border-radius: 22px !important;
 		background: radial-gradient(
 			circle,
@@ -3525,16 +3511,16 @@ ________________________________________________________________________________
 		.button[disabled]:hover::before,
 	.group-invite-module
 		.icon-email-solid-before:hover::before {
-		opacity: 1 !important;
+		opacity: 100% !important;
 	}
 
-	/* Plain Black 
+	/* Plain Black
 _____________________________________________________________________________________________________*/
 	#article-feed .article,
 	#global-nav
 		ul
 		> li.teams
-		div:not(.link-text):not(.nav-logo-wrap),
+		div:not(.link-text, .nav-logo-wrap),
 	#global-nav-secondary
 		ul
 		li.teams
@@ -3573,13 +3559,13 @@ ________________________________________________________________________________
 			#373737 0 1px 0,
 			10px 10px 5px #0006,
 			#9b9b9b 0 1px 0 !important;
-		border: 1px solid rgba(0, 0, 0, 0.25) !important;
+		border: 1px solid rgb(0 0 0 / 25%) !important;
 		border-radius: 22px !important;
 		background-color: #000 !important;
 		padding: 0.5rem !important;
 	}
 
-	/* Plain 
+	/* Plain
 _____________________________________________________________________________________________________*/
 	#favfeed-footer,
 	#favfeed-mx-date,
@@ -3680,7 +3666,7 @@ ________________________________________________________________________________
 			#373737 0 1px 0,
 			10px 10px 5px #0006,
 			#9b9b9b 0 1px 0 !important;
-		border: 1px solid rgba(0, 0, 0, 0.25) !important;
+		border: 1px solid rgb(0 0 0 / 25%) !important;
 		border-radius: 22px !important;
 		background-color: #111 !important;
 		padding: 0.5rem !important;
@@ -3702,7 +3688,7 @@ ________________________________________________________________________________
 	#global-nav
 		ul
 		> li.teams
-		div:not(.link-text):not(.nav-logo-wrap):hover,
+		div:not(.link-text, .nav-logo-wrap):hover,
 	#global-nav-secondary
 		ul
 		li.teams
@@ -3819,11 +3805,11 @@ ________________________________________________________________________________
 		box-shadow:
 			inset 0 0 5px #0006,
 			#9b9b9b 0 1px 0,
-			10px 10px 5px #0a0a0a66,
+			10px 10px 5px rgb(10 10 10 / 40%),
 			#9b9b9b 0 1px 0 !important;
 	}
 
-	/* Red Gradient 
+	/* Red Gradient
 _____________________________________________________________________________________________________*/
 	#bracketcast,
 	#my-players-table .tablehead tr:hover,
@@ -3876,7 +3862,7 @@ ________________________________________________________________________________
 		text-shadow: 1px 1px #555 !important;
 	}
 
-	/* Blue Gradient 
+	/* Blue Gradient
 _____________________________________________________________________________________________________*/
 	#article-feed
 		.article
@@ -3899,7 +3885,7 @@ ________________________________________________________________________________
 		) !important;
 	}
 
-	/* Green Gradient 
+	/* Green Gradient
 _____________________________________________________________________________________________________*/
 	.btn--group .btn--active:not(.btn--dark),
 	.games-status.games-green,
@@ -3921,7 +3907,7 @@ ________________________________________________________________________________
 		) !important;
 	}
 
-	/* Yellow Gradient 
+	/* Yellow Gradient
 _____________________________________________________________________________________________________*/
 	.pickem-pick.selected {
 		background: linear-gradient(
@@ -3931,7 +3917,7 @@ ________________________________________________________________________________
 		) !important;
 	}
 
-	/* Orange Gradient 
+	/* Orange Gradient
 _____________________________________________________________________________________________________*/
 	.mpTable
 		> table.pickemTable
@@ -3946,7 +3932,7 @@ ________________________________________________________________________________
 		) !important;
 	}
 
-	/* Gray Gradient 
+	/* Gray Gradient
 _____________________________________________________________________________________________________*/
 	.MAJP,
 	.brdr-clr-heavy-metal,
@@ -3958,22 +3944,22 @@ ________________________________________________________________________________
 		) !important;
 	}
 
-	/* Gradient Border 
+	/* Gradient Border
 _____________________________________________________________________________________________________*/
 	selector {
 		border-bottom: 1px solid #000 !important;
 		border-radius: 22px !important;
 	}
 
-	/* Code 
+	/* Code
 _____________________________________________________________________________________________________*/
 	pre {
-		background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png)
+		background: url('https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png')
 			#111 !important;
 		background-size: 100% !important;
 	}
 
-	/* Highlight Background 
+	/* Highlight Background
 _____________________________________________________________________________________________________*/
 	#global-header
 		.tools
@@ -4020,18 +4006,18 @@ ________________________________________________________________________________
 		border-left-color: #434343 !important;
 		background: linear-gradient(
 			to bottom,
-			#00000009,
+			rgb(0 0 0 / 4%),
 			#121212
 		) !important;
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Image Settings */
 	#global-nav
 		ul
 		> li.teams
-		div:not(.link-text):not(.nav-logo-wrap)
+		div:not(.link-text, .nav-logo-wrap)
 		> ul
 		> li,
 	#global-nav
@@ -4104,7 +4090,7 @@ ________________________________________________________________________________
 	#global-nav
 		ul
 		> li.teams
-		div:not(.link-text):not(.nav-logo-wrap)
+		div:not(.link-text, .nav-logo-wrap)
 		> ul
 		> li:hover,
 	#global-nav
@@ -4208,12 +4194,12 @@ ________________________________________________________________________________
 				left bottom,
 				from(transparent),
 				color-stop(70%, transparent),
-				to(rgba(250, 250, 250, 0.1))
+				to(rgb(250 250 250 / 10%))
 			);
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* New Icons */
 	input[type='checkbox'],
 	input[type='radio'] {
@@ -4221,7 +4207,7 @@ ________________________________________________________________________________
 	}
 
 	/* Avatar _____________*/
-	#global-user-trigger:after {
+	#global-user-trigger::after {
 		content: '';
 	}
 
@@ -4229,16 +4215,16 @@ ________________________________________________________________________________
 		.container
 		.tools
 		> li
-		> a:after {
+		> a::after {
 		top: 6px;
 	}
 
-	#global-user-trigger:after,
+	#global-user-trigger::after,
 	.Nav__Primary__Menu__Item--User
 		.Nav__Primary__Menu__Link
 		svg {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/f2wDXnH/Avatar.png)
+		background: url('https://i.ibb.co/f2wDXnH/Avatar.png')
 			no-repeat !important;
 	}
 
@@ -4251,13 +4237,13 @@ ________________________________________________________________________________
 		height: 29px !important;
 	}
 
-	#global-user-trigger:after {
+	#global-user-trigger::after {
 		background-size: 27px !important;
 		height: 29px !important;
 	}
 
 	/* Close (x) _______________________________________________________________*/
-	#promoModule .button.dismiss:before {
+	#promoModule .button.dismiss::before {
 		content: '';
 	}
 
@@ -4266,12 +4252,12 @@ ________________________________________________________________________________
 		right: 16px;
 	}
 
-	#promoModule .button.dismiss:before {
-		background: url(https://i.ibb.co/d6yjp2j/x-mark-red.png)
+	#promoModule .button.dismiss::before {
+		background: url('https://i.ibb.co/d6yjp2j/x-mark-red.png')
 			no-repeat !important;
 	}
 
-	#promoModule .button.dismiss:before {
+	#promoModule .button.dismiss::before {
 		background-size: 20px !important;
 		padding-left: 21px !important;
 		width: 1px !important;
@@ -4279,25 +4265,25 @@ ________________________________________________________________________________
 	}
 
 	/* Edit _______________________________________________________________*/
-	.icon.edit:before {
+	.icon.edit::before {
 		content: '';
 	}
 
 	/* Edit ____________________________*/
-	.icon.edit:before {
+	.icon.edit::before {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/GtTykGg/pencil.png)
+		background: url('https://i.ibb.co/GtTykGg/pencil.png')
 			no-repeat !important;
 	}
 
 	/* No Edit ____________________________*/
-	Selector {
+	selector {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/0FWtkSY/pencil-no-edit.png)
+		background: url('https://i.ibb.co/0FWtkSY/pencil-no-edit.png')
 			no-repeat !important;
 	}
 
-	.icon.edit:before {
+	.icon.edit::before {
 		background-size: 25px !important;
 		padding-left: 26px !important;
 		width: 10px !important;
@@ -4306,19 +4292,19 @@ ________________________________________________________________________________
 
 	/* Info ______________________________________________________________________________________________*/
 	.standings-prp.withBracketInformationTooltip
-		#bracketInformationTooltip:before {
+		#bracketInformationTooltip::before {
 		content: '';
 	}
 
 	.standings-prp.withBracketInformationTooltip
-		#bracketInformationTooltip:before {
+		#bracketInformationTooltip::before {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/Lhfjqf4/information-sign-1024x1024.png)
+		background: url('https://i.ibb.co/Lhfjqf4/information-sign-1024x1024.png')
 			no-repeat !important;
 	}
 
 	.standings-prp.withBracketInformationTooltip
-		#bracketInformationTooltip:before {
+		#bracketInformationTooltip::before {
 		background-size: 25px !important;
 		padding-left: 25px !important;
 		width: 1px !important;
@@ -4332,15 +4318,15 @@ ________________________________________________________________________________
 		.matchup
 		.slots
 		.slot
-		.actual.selectedToAdvance:after,
+		.actual.selectedToAdvance::after,
 	.bracket
 		.mW
 		.matchup
 		.slots
 		.slot
-		.picked.selectedToAdvance:after {
+		.picked.selectedToAdvance::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/njmsz2z/green-light-on.png)
+		background: url('https://i.ibb.co/njmsz2z/green-light-on.png')
 			no-repeat !important;
 	}
 
@@ -4350,15 +4336,15 @@ ________________________________________________________________________________
 		.matchup
 		.slots
 		a.slot
-		.picked:after,
+		.picked::after,
 	.bracket
 		.mW
 		.matchup
 		.slots
 		.slot
-		.actual:after {
+		.actual::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/z5C1bGj/red-light-on.png)
+		background: url('https://i.ibb.co/z5C1bGj/red-light-on.png')
 			no-repeat !important;
 	}
 
@@ -4367,48 +4353,48 @@ ________________________________________________________________________________
 		.matchup
 		.slots
 		a.slot
-		.picked:after,
+		.picked::after,
 	.bracket
 		.mW
 		.matchup
 		.slots
 		.slot
-		.actual:after,
+		.actual::after,
 	.bracket
 		.mW
 		.matchup
 		.slots
 		.slot
-		.actual.selectedToAdvance:after,
+		.actual.selectedToAdvance::after,
 	.bracket
 		.mW
 		.matchup
 		.slots
 		.slot
-		.picked.selectedToAdvance:after {
+		.picked.selectedToAdvance::after {
 		background-size: 25px !important;
 		padding-left: 26px !important;
 		width: 1px !important;
 		height: 26px !important;
 	}
 	/* Print _______________________________________________________________________________*/
-	.icon.printer:before,
-	.icon-print-solid-before:before,
-	.icon-print-solid-after:after {
+	.icon.printer::before,
+	.icon-print-solid-before::before,
+	.icon-print-solid-after::after {
 		content: '';
 	}
 
-	.icon.printer:before,
-	.icon-print-solid-before:before,
-	.icon-print-solid-after:after {
+	.icon.printer::before,
+	.icon-print-solid-before::before,
+	.icon-print-solid-after::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/gST2svf/print.png)
+		background: url('https://i.ibb.co/gST2svf/print.png')
 			no-repeat !important;
 	}
 
-	.icon.printer:before,
-	.icon-print-solid-before:before,
-	.icon-print-solid-after:after {
+	.icon.printer::before,
+	.icon-print-solid-before::before,
+	.icon-print-solid-after::after {
 		background-size: 35px !important;
 		padding-left: 36px !important;
 		width: 1px !important;
@@ -4416,24 +4402,24 @@ ________________________________________________________________________________
 	}
 
 	/* Search _______________________________________________________________*/
-	.icon-search-solid-before:before,
-	.icon-search-solid-after:after {
+	.icon-search-solid-before::before,
+	.icon-search-solid-after::after {
 		content: '';
 	}
 
 	.Nav__Primary__Menu__Item.Nav__Search
 		> .icon__svg,
-	.icon-search-solid-before:before,
-	.icon-search-solid-after:after {
+	.icon-search-solid-before::before,
+	.icon-search-solid-after::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/cJFxJM6/search3.png)
+		background: url('https://i.ibb.co/cJFxJM6/search3.png')
 			no-repeat !important;
 	}
 
 	.Nav__Primary__Menu__Item.Nav__Search
 		> .icon__svg,
-	.icon-search-solid-before:before,
-	.icon-search-solid-after:after {
+	.icon-search-solid-before::before,
+	.icon-search-solid-after::after {
 		background-size: 30px !important;
 		padding-left: 31px !important;
 		width: 10px !important;
@@ -4443,21 +4429,21 @@ ________________________________________________________________________________
 	/* Settings ___________________________________________________________________________________*/
 	.user-entries-entry-details
 		.entry-details-header
-		.settings-link:after {
+		.settings-link::after {
 		content: '';
 	}
 
 	.user-entries-entry-details
 		.entry-details-header
-		.settings-link:after {
+		.settings-link::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/2dVYhWK/Setting-icon.png)
+		background: url('https://i.ibb.co/2dVYhWK/Setting-icon.png')
 			no-repeat !important;
 	}
 
 	.user-entries-entry-details
 		.entry-details-header
-		.settings-link:after {
+		.settings-link::after {
 		background-size: 35px !important;
 		padding-left: 36px !important;
 		width: 1px !important;
@@ -4465,8 +4451,8 @@ ________________________________________________________________________________
 	}
 
 	/* Share _______________________________________________________________*/
-	.icon-share-solid-before:before,
-	.icon-share-solid-after:after {
+	.icon-share-solid-before::before,
+	.icon-share-solid-after::after {
 		content: '';
 	}
 
@@ -4475,14 +4461,14 @@ ________________________________________________________________________________
 	}
 
 	.Nav__Secondary__Menu__Link .icon-external,
-	.shareMenu__toggle:after {
+	.shareMenu__toggle::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/27rmYdq/share-36x36.png)
+		background: url('https://i.ibb.co/27rmYdq/share-36x36.png')
 			no-repeat !important;
 	}
 
 	.Nav__Secondary__Menu__Link .icon-external,
-	.shareMenu__toggle:after {
+	.shareMenu__toggle::after {
 		background-size: 15px !important;
 		padding-left: 22px !important;
 		width: 10px !important;
@@ -4490,7 +4476,7 @@ ________________________________________________________________________________
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Logos */
 	.cscore_rank {
 		padding-right: 8px;
@@ -4982,21 +4968,21 @@ ________________________________________________________________________________
 	#global-nav
 		ul
 		> li.teams
-		div:not(.link-text):not(.nav-logo-wrap),
+		div:not(.link-text, .nav-logo-wrap),
 	#global-nav
 		ul
 		> li.leagues-teams
-		div:not(.link-text):not(.nav-logo-wrap),
+		div:not(.link-text, .nav-logo-wrap),
 	#global-nav-secondary
 		ul
 		li.teams
-		div:not(.link-text):not(.nav-logo-wrap) {
+		div:not(.link-text, .nav-logo-wrap) {
 		overflow: scroll;
 	}
 
 	[src = "http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/251.png&w=100&h=100&scale=scale"]
 	{
-		background: url(https://i.ibb.co/WtTKLDk/alabama.jpg)
+		background: url('https://i.ibb.co/WtTKLDk/alabama.jpg')
 			no-repeat !important;
 		padding-left: 100px !important;
 		width: 100px !important;
@@ -5005,7 +4991,7 @@ ________________________________________________________________________________
 
 	[src = "https://a.espncdn.com/i/mlb/infographics/greyline.png"]
 	{
-		background: url(https://i.ibb.co/gyj2RLB/greyline.png)
+		background: url('https://i.ibb.co/gyj2RLB/greyline.png')
 			no-repeat !important;
 		padding-left: 1296px !important;
 		width: 1296px !important;
@@ -5013,14 +4999,14 @@ ________________________________________________________________________________
 	}
 
 	.icon.tvNetwork.abc {
-		background-image: url(https://i.ibb.co/K05rKjk/espn-abc.png) !important;
+		background-image: url('https://i.ibb.co/K05rKjk/espn-abc.png') !important;
 		background-size: 60px 35px !important;
 		width: 69px !important;
 		height: 37px !important;
 	}
 
 	.icon.tvNetwork.cbssn {
-		background: url(https://i.ibb.co/D4j9RMQ/cbs-sports-network.png) !important;
+		background: url('https://i.ibb.co/D4j9RMQ/cbs-sports-network.png') !important;
 		background-size: 60px 35px !important;
 		width: 69px !important;
 		height: 37px !important;
@@ -5028,7 +5014,7 @@ ________________________________________________________________________________
 	}
 
 	.icon.tvNetwork.fox {
-		background: url(https://i.ibb.co/zbCVtwQ/Fox-Sports.png) !important;
+		background: url('https://i.ibb.co/zbCVtwQ/Fox-Sports.png') !important;
 		background-size: 60px 35px !important;
 		width: 60px !important;
 		height: 35px !important;
@@ -5036,7 +5022,7 @@ ________________________________________________________________________________
 	}
 
 	.icon.tvNetwork.fs1 {
-		background: url(https://i.ibb.co/sQgrLh0/FS1-logo.png) !important;
+		background: url('https://i.ibb.co/sQgrLh0/FS1-logo.png') !important;
 		background-size: 60px 35px !important;
 		width: 60px !important;
 		height: 35px !important;
@@ -5044,7 +5030,7 @@ ________________________________________________________________________________
 	}
 
 	.icon.tvNetwork.cbs {
-		background: url(https://i.ibb.co/d7BCw2z/CBS-logo-old-1.png) !important;
+		background: url('https://i.ibb.co/d7BCw2z/CBS-logo-old-1.png') !important;
 		background-size: 60px 35px !important;
 		width: 60px !important;
 		height: 35px !important;
@@ -5062,7 +5048,7 @@ ________________________________________________________________________________
 	[src = "https://a.espncdn.com/redesign/assets/img/logos/espnplus/espnplus-editorial_v2@2x.png"]
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/RjRspPd/Espn.png)
+		background: url('https://i.ibb.co/RjRspPd/Espn.png')
 			no-repeat !important;
 	}
 
@@ -5086,7 +5072,7 @@ ________________________________________________________________________________
 	/* Team Icons _________________________________________________________________________*/
 	[alt='Miami'] {
 		box-sizing: border-box !important;
-		background: url(https://i.ibb.co/VmC0y8y/postit.png)
+		background: url('https://i.ibb.co/VmC0y8y/postit.png')
 			no-repeat !important;
 		background-size: 20px !important;
 		width: 25px !important;
@@ -5097,7 +5083,7 @@ ________________________________________________________________________________
 	[src = "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/333.png&w=72&h=72&transparent=true"]
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/QQ5LLQg/Alabama-Crimson-Tide.png)
+		background: url('https://i.ibb.co/QQ5LLQg/Alabama-Crimson-Tide.png')
 			no-repeat !important;
 	}
 
@@ -5119,7 +5105,7 @@ ________________________________________________________________________________
 	/* Arizona Diamondbacks ____________________________________________*/
 	[src*='teamlogos/mlb/500/ARI'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/SBxP9mX/Arizona-Diamondbacks.png)
+		background: url('https://i.ibb.co/SBxP9mX/Arizona-Diamondbacks.png')
 			no-repeat !important;
 	}
 
@@ -5150,7 +5136,7 @@ ________________________________________________________________________________
 	[src*='teamlogos/mlb/500/ATL'],
 	[src*='teamlogos/mlb/500/atl'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/3mnqNKY/Braves-A.png)
+		background: url('https://i.ibb.co/3mnqNKY/Braves-A.png')
 			no-repeat !important;
 	}
 
@@ -5182,7 +5168,7 @@ ________________________________________________________________________________
 	/* Baltimore _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/BAL'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/pKj2bWf/Baltimore-Orioles.png)
+		background: url('https://i.ibb.co/pKj2bWf/Baltimore-Orioles.png')
 			no-repeat !important;
 	}
 
@@ -5212,7 +5198,7 @@ ________________________________________________________________________________
 	/* Boston _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/BOS'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/M76xQBW/Boston-Red-Sox-2png.png)
+		background: url('https://i.ibb.co/M76xQBW/Boston-Red-Sox-2png.png')
 			no-repeat !important;
 	}
 
@@ -5242,7 +5228,7 @@ ________________________________________________________________________________
 	/* Chicago Cubs _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/CHC'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/JpWt5r6/Chicago-Cubs.png)
+		background: url('https://i.ibb.co/JpWt5r6/Chicago-Cubs.png')
 			no-repeat !important;
 	}
 
@@ -5272,7 +5258,7 @@ ________________________________________________________________________________
 	/* Chicago White Sox _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/CHW'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/64Hb4JB/chw.png)
+		background: url('https://i.ibb.co/64Hb4JB/chw.png')
 			no-repeat !important;
 	}
 
@@ -5302,7 +5288,7 @@ ________________________________________________________________________________
 	/* Cincinnati Reds _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/CIN'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/847R824/Cincinnati-Reds.png)
+		background: url('https://i.ibb.co/847R824/Cincinnati-Reds.png')
 			no-repeat !important;
 	}
 
@@ -5332,7 +5318,7 @@ ________________________________________________________________________________
 	/* Cleveland Indians _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/CLE'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/4f1v630/Cleveland-Indians.png)
+		background: url('https://i.ibb.co/4f1v630/Cleveland-Indians.png')
 			no-repeat !important;
 	}
 
@@ -5362,7 +5348,7 @@ ________________________________________________________________________________
 	/* Colorado Rockies ____________________________________________*/
 	[src*='teamlogos/mlb/500/COL'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/sjGJMXY/Colorado-Rockies.png)
+		background: url('https://i.ibb.co/sjGJMXY/Colorado-Rockies.png')
 			no-repeat !important;
 	}
 
@@ -5392,7 +5378,7 @@ ________________________________________________________________________________
 	/* Detroit Tigers _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/DET'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/fxWdNKg/Detroit-Tigers.png)
+		background: url('https://i.ibb.co/fxWdNKg/Detroit-Tigers.png')
 			no-repeat !important;
 	}
 
@@ -5424,7 +5410,7 @@ ________________________________________________________________________________
 	[src *= "https://a1.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/scoreboard/lad"],
 	[title = "Los Angeles"] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/KW0tFHJ/lad.png)
+		background: url('https://i.ibb.co/KW0tFHJ/lad.png')
 			no-repeat !important;
 	}
 
@@ -5456,7 +5442,7 @@ ________________________________________________________________________________
 	/* Houston Astros _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/HOU'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/gztGYJ9/Houston-Astros.png)
+		background: url('https://i.ibb.co/gztGYJ9/Houston-Astros.png')
 			no-repeat !important;
 	}
 
@@ -5486,7 +5472,7 @@ ________________________________________________________________________________
 	/* Kansas City Royals _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/KC'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/6nvNn7P/Kansas-City-Royals.png)
+		background: url('https://i.ibb.co/6nvNn7P/Kansas-City-Royals.png')
 			no-repeat !important;
 	}
 
@@ -5516,7 +5502,7 @@ ________________________________________________________________________________
 	/* Los Angeles Angels _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/LAA'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/vvdKLR1/Los-Angeles-Angels.png)
+		background: url('https://i.ibb.co/vvdKLR1/Los-Angeles-Angels.png')
 			no-repeat !important;
 	}
 
@@ -5546,7 +5532,7 @@ ________________________________________________________________________________
 	/* Los Angeles Dodgers ____________________________________________*/
 	[src*='teamlogos/mlb/500/LAD'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/Vq724Mr/Los-Angeles-Dodgers.png)
+		background: url('https://i.ibb.co/Vq724Mr/Los-Angeles-Dodgers.png')
 			no-repeat !important;
 	}
 
@@ -5577,7 +5563,7 @@ ________________________________________________________________________________
 	[src = "https://a1.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/99.png&h=30&w=30"]
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/R0ZkWqV/LSU-Tigers.png)
+		background: url('https://i.ibb.co/R0ZkWqV/LSU-Tigers.png')
 			no-repeat !important;
 	}
 
@@ -5600,7 +5586,7 @@ ________________________________________________________________________________
 	[src*='teamlogos/mlb/500/MIA'],
 	[alt='Miami'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/dPSRWMX/Marlins-team-2.png)
+		background: url('https://i.ibb.co/dPSRWMX/Marlins-team-2.png')
 			no-repeat !important;
 	}
 
@@ -5624,7 +5610,7 @@ ________________________________________________________________________________
 	/* Milwaukee Brewers _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/MIL'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/VDg7gG5/Milwaukee-Brewers.png)
+		background: url('https://i.ibb.co/VDg7gG5/Milwaukee-Brewers.png')
 			no-repeat !important;
 	}
 
@@ -5654,7 +5640,7 @@ ________________________________________________________________________________
 	/* Minnesota Twins _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/MIN'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/Lh53hw3/Minnesota-Twins.png)
+		background: url('https://i.ibb.co/Lh53hw3/Minnesota-Twins.png')
 			no-repeat !important;
 	}
 
@@ -5684,7 +5670,7 @@ ________________________________________________________________________________
 	/* New York Mets _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/NYM'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/t41CsSh/New-York-Mets.png)
+		background: url('https://i.ibb.co/t41CsSh/New-York-Mets.png')
 			no-repeat !important;
 	}
 
@@ -5714,7 +5700,7 @@ ________________________________________________________________________________
 	/* Oakland Athletics _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/OAK'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/RhT2bZt/Oakland-Athletics.png)
+		background: url('https://i.ibb.co/RhT2bZt/Oakland-Athletics.png')
 			no-repeat !important;
 	}
 
@@ -5744,7 +5730,7 @@ ________________________________________________________________________________
 	/* Philadelphia Phillies _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/PHI'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/FBykk91/Philadelphia-Phillies.png)
+		background: url('https://i.ibb.co/FBykk91/Philadelphia-Phillies.png')
 			no-repeat !important;
 	}
 
@@ -5774,7 +5760,7 @@ ________________________________________________________________________________
 	/* Pittsburgh Pirates _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/PIT'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/x6pFWGw/Pittsburgh-Pirates.png)
+		background: url('https://i.ibb.co/x6pFWGw/Pittsburgh-Pirates.png')
 			no-repeat !important;
 	}
 
@@ -5807,7 +5793,7 @@ ________________________________________________________________________________
 	[src = "https://a1.espncdn.com/combiner/i?img=/i/teamlogos/mlb/500/scoreboard/sd.png&h=104&w=104"]
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/gMLLvnz/SDPadres.png)
+		background: url('https://i.ibb.co/gMLLvnz/SDPadres.png')
 			no-repeat !important;
 	}
 
@@ -5839,7 +5825,7 @@ ________________________________________________________________________________
 	/* Seattle Mariners _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/SEA'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/r0jqhPb/Seattle-Mariners.png)
+		background: url('https://i.ibb.co/r0jqhPb/Seattle-Mariners.png')
 			no-repeat !important;
 	}
 
@@ -5869,7 +5855,7 @@ ________________________________________________________________________________
 	/* San Diego Padres ____________________________________________*/
 	[src*='teamlogos/mlb/500/SD'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/fFJMMQH/San-Diego-Padres.png)
+		background: url('https://i.ibb.co/fFJMMQH/San-Diego-Padres.png')
 			no-repeat !important;
 	}
 
@@ -5899,7 +5885,7 @@ ________________________________________________________________________________
 	/* San Francisco Giant ____________________________________________*/
 	[src*='teamlogos/mlb/500/SF'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/D5DcpMK/San-Francisco-Giant.png)
+		background: url('https://i.ibb.co/D5DcpMK/San-Francisco-Giant.png')
 			no-repeat !important;
 	}
 
@@ -5929,7 +5915,7 @@ ________________________________________________________________________________
 	/* St. Louis Cardinals _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/STL'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/KyqVdzf/St-Louis-Cardinals.png)
+		background: url('https://i.ibb.co/KyqVdzf/St-Louis-Cardinals.png')
 			no-repeat !important;
 	}
 
@@ -5959,7 +5945,7 @@ ________________________________________________________________________________
 	/* Tampa Bey Rays _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/TB'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/6P041Fs/Tampa-Bay-Rays.png)
+		background: url('https://i.ibb.co/6P041Fs/Tampa-Bay-Rays.png')
 			no-repeat !important;
 	}
 
@@ -5989,7 +5975,7 @@ ________________________________________________________________________________
 	/* Texas Rangers _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/TEX'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/B6vrX55/Texas-Rangers.png)
+		background: url('https://i.ibb.co/B6vrX55/Texas-Rangers.png')
 			no-repeat !important;
 	}
 
@@ -6019,7 +6005,7 @@ ________________________________________________________________________________
 	/* Toronto Blue Jays _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/TOR'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/RB2Tz1r/Toronto-Blue-Jays.png)
+		background: url('https://i.ibb.co/RB2Tz1r/Toronto-Blue-Jays.png')
 			no-repeat !important;
 	}
 
@@ -6049,7 +6035,7 @@ ________________________________________________________________________________
 	/* Washington Nationals _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/WSH'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/F6gPkC7/Washington-Nationals.png)
+		background: url('https://i.ibb.co/F6gPkC7/Washington-Nationals.png')
 			no-repeat !important;
 	}
 
@@ -6079,7 +6065,7 @@ ________________________________________________________________________________
 	/* Yankees _______________________________________________________________*/
 	[src*='teamlogos/mlb/500/NYY'] {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/dQwwFwV/New-York-Yankees-2.png)
+		background: url('https://i.ibb.co/dQwwFwV/New-York-Yankees-2.png')
 			no-repeat !important;
 	}
 
@@ -6107,16 +6093,16 @@ ________________________________________________________________________________
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* New Media Icons */
 	/* Play ______________________________________________________________________________*/
 	.MediaPlaceholder__Icon--video {
-		background: url(https://i.ibb.co/7VB6KK3/red-play.png)
+		background: url('https://i.ibb.co/7VB6KK3/red-play.png')
 			no-repeat !important;
 	}
 
 	.MediaPlaceholder__Icon--video:hover {
-		background: url(https://i.ibb.co/qdS3kwB/red-play-hover.png)
+		background: url('https://i.ibb.co/qdS3kwB/red-play-hover.png')
 			no-repeat !important;
 	}
 
@@ -6129,11 +6115,11 @@ ________________________________________________________________________________
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Social Media */
 	/* Facebook _____________*/
-	.icon-facebook-messenger-solid-before:before,
-	.icon-facebook-messenger-solid-after:after {
+	.icon-facebook-messenger-solid-before::before,
+	.icon-facebook-messenger-solid-after::after {
 		content: '';
 	}
 
@@ -6143,7 +6129,7 @@ ________________________________________________________________________________
 	[href = "https://www.facebook.com/ESPN"] img
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/pJ0bMFC/Facebook-Messenger.png)
+		background: url('https://i.ibb.co/pJ0bMFC/Facebook-Messenger.png')
 			no-repeat !important;
 	}
 
@@ -6162,7 +6148,7 @@ ________________________________________________________________________________
 	[href = "https://www.instagram.com/espn/"] img
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/YQ5F02g/Instagram.png)
+		background: url('https://i.ibb.co/YQ5F02g/Instagram.png')
 			no-repeat !important;
 	}
 
@@ -6175,20 +6161,20 @@ ________________________________________________________________________________
 	}
 
 	/* Pinterest _____________*/
-	.icon-pinterest-solid-before:before,
-	.icon-pinterest-solid-after:after {
+	.icon-pinterest-solid-before::before,
+	.icon-pinterest-solid-after::after {
 		content: '';
 	}
 
-	.icon-pinterest-solid-before:before,
-	.icon-pinterest-solid-after:after {
+	.icon-pinterest-solid-before::before,
+	.icon-pinterest-solid-after::after {
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/bbYn4KN/pinterest-48x48.png)
+		background: url('https://i.ibb.co/bbYn4KN/pinterest-48x48.png')
 			no-repeat !important;
 	}
 
-	.icon-pinterest-solid-before:before,
-	.icon-pinterest-solid-after:after {
+	.icon-pinterest-solid-before::before,
+	.icon-pinterest-solid-after::after {
 		background-size: 35px !important;
 		padding-left: 36px !important;
 		width: 1px !important;
@@ -6196,8 +6182,8 @@ ________________________________________________________________________________
 	}
 
 	/* Twitter _____________*/
-	.icon-twitter-solid-before:before,
-	.icon-twitter-solid-after:after {
+	.icon-twitter-solid-before::before,
+	.icon-twitter-solid-after::after {
 		content: '';
 	}
 
@@ -6207,7 +6193,7 @@ ________________________________________________________________________________
 	[href = "https://twitter.com/espn"] img
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/SQGCm92/twitter-48x39.png)
+		background: url('https://i.ibb.co/SQGCm92/twitter-48x39.png')
 			no-repeat !important;
 	}
 
@@ -6226,7 +6212,7 @@ ________________________________________________________________________________
 	[href *= "https://www.youtube.com/"] img
 	{
 		box-sizing: border-box;
-		background: url(https://i.ibb.co/8cHpnPV/You-Tube-logo-play-icon-30x23.png)
+		background: url('https://i.ibb.co/8cHpnPV/You-Tube-logo-play-icon-30x23.png')
 			no-repeat !important;
 	}
 
@@ -6239,65 +6225,65 @@ ________________________________________________________________________________
 	}
 }
 
-@-moz-document domain("espn.com") {
+@document domain("espn.com") {
 	/* Scrollbar Settings */
-	/* Width 
+	/* Width
 _____________________________________________________________________________________________________*/
 	::-webkit-scrollbar {
 		width: 1.2em !important;
 	}
 
-	@media (min-width: 1080px) and (max-width: 1920px) {
+	@media (width >= 1080px) and (width <= 1920px) {
 		::-webkit-scrollbar {
 			width: 0.52em !important;
 		}
 	}
-	/* Color of handle 
+	/* Color of handle
 __________________________________________________________________________________________________________________________________*/
 	::-webkit-scrollbar-thumb {
 		box-shadow:
-			inset 0 0 5px rgba(0, 0, 0, 0.4),
-			rgba(55, 55, 55, 1) 0 1px 0 !important;
-		border: 1px solid rgba(0, 0, 0, 0.25) !important;
+			inset 0 0 5px rgb(0 0 0 / 40%),
+			rgb(55 55 55 / 100%) 0 1px 0 !important;
+		border: 1px solid rgb(0 0 0 / 25%) !important;
 		border-radius: 22px !important;
-		background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png)
+		background: url('https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png')
 			#111 !important;
 		background-size: 100% !important;
 	}
 
 	::-webkit-scrollbar-thumb:hover {
 		box-shadow:
-			inset 0 0 5px rgba(0, 0, 0, 0.4),
-			rgba(155, 155, 155, 1) 0 1px 0 !important;
+			inset 0 0 5px rgb(0 0 0 / 40%),
+			rgb(155 155 155 / 100%) 0 1px 0 !important;
 		border-radius: 22px !important;
-		background: url(https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png)
+		background: url('https://image.ibb.co/e8fWZk/red_carbon_pattern_by_mystica_264_d4ceu9m.png')
 			#111 !important;
 		background-size: 100% !important;
 	}
 
-	/* Color of Track 
+	/* Color of Track
 _____________________________________________________________________________________________________*/
 	::-webkit-scrollbar-track {
 		box-shadow:
-			inset 8px 0 13px rgba(0, 0, 0, 0.4),
-			rgba(55, 55, 55, 1) 0 1px 0 !important;
-		border: 1px solid rgba(0, 0, 0, 0.25) !important;
+			inset 8px 0 13px rgb(0 0 0 / 40%),
+			rgb(55 55 55 / 100%) 0 1px 0 !important;
+		border: 1px solid rgb(0 0 0 / 25%) !important;
 		background: #170000 !important;
 	}
 
-	/* Color of handles at top and bottom 
+	/* Color of handles at top and bottom
 _____________________________________________________________________________________________________*/
 	::-webkit-scrollbar-button {
 		box-shadow:
-			inset 0 12px 13px rgba(0, 0, 0, 0.6),
-			rgba(55, 55, 55, 1) 0 1px 0 !important;
+			inset 0 12px 13px rgb(0 0 0 / 60%),
+			rgb(55 55 55 / 100%) 0 1px 0 !important;
 		background: #ef1212 !important;
 	}
 
 	::-webkit-scrollbar-button:hover {
 		box-shadow:
-			inset 0 0 5px rgba(0, 0, 0, 0.4),
-			rgba(155, 155, 155, 1) 0 1px 0 !important;
+			inset 0 0 5px rgb(0 0 0 / 40%),
+			rgb(155 155 155 / 100%) 0 1px 0 !important;
 		border-radius: 22px !important;
 	}
 }

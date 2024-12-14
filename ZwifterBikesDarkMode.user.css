@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("zwifterbikes.web.app") {
+@document domain("zwifterbikes.web.app") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),
@@ -15,7 +15,7 @@
 			svg,
 			video,
 			mat-toolbar
-		):not(z#z.z[z]):not(svg):not(img.tron),
+		):not(z#z.z[z], svg, img.tron),
 	.fit[_ngcontent-ng-c3440179631] {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}

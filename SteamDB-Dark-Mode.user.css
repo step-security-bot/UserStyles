@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("steamdb.info") {
+@document domain("steamdb.info") {
 	/* Dark Mode for SteamDB Free Packages */
 	body,
 	.container,
@@ -39,7 +39,7 @@
 
 	.muted,
 	.muted > a {
-		margin-bottom: 0px;
+		margin-bottom: 0;
 		border: 1px solid hsl(204deg 100% 21%);
 		border-radius: 6px;
 		padding: 8px;

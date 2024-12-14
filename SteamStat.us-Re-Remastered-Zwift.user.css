@@ -21,7 +21,6 @@
 			infinite alternate;
 		/*Box model stuff*/
 		margin: 10px 0;
-		background-clip: text;
 		background: linear-gradient(
 			135deg,
 			#ffffff 30%,

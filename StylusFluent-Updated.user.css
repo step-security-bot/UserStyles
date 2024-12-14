@@ -7,27 +7,35 @@
 @author       thejenja (Updated by Nick2bad4u)
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document url-prefix("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne")
+@document url-prefix("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne")
 {
 	body {
-		font-family: 'Segoe UI Variable Text',
-			'Segoe UI', 'Helvetica Neue', Helvetica,
-			Arial, sans-serif;
+		font-family:
+			Segoe UI Variable Text,
+			Segoe UI,
+			Helvetica Neue,
+			Helvetica,
+			Arial,
+			sans-serif;
 	}
 	:root {
 		/*Miscellaneous*/
-		--c97: hsl(0, 0%, 8%);
-		--c98: hsl(0, 0%, 10%);
-		--c99: hsl(0, 0%, 15%);
-		--c100: hsl(0, 0%, 10%);
+		--c97: hsl(0deg 0% 8%);
+		--c98: hsl(0deg 0% 10%);
+		--c99: hsl(0deg 0% 15%);
+		--c100: hsl(0deg 0% 10%);
 		--name-padding-left: 0;
 	}
 	#header h1,
 	#header #filters summary h2 {
 		font-weight: 600;
-		font-family: 'Segoe UI Variable Display',
-			'Segoe UI', 'Helvetica Neue', Helvetica,
-			Verdana, sans-serif !important;
+		font-family:
+			Segoe UI Variable Display,
+			Segoe UI,
+			Helvetica Neue,
+			Helvetica,
+			Verdana,
+			sans-serif !important;
 	}
 	button {
 		/*Manipulations stuff*/
@@ -35,11 +43,10 @@
 			background-color 0.25s,
 			border-color 0.25s;
 		border: 1px solid var(--c70);
-		border-color: rgba(255, 255, 255, 0.09)
-			rgba(255, 255, 255, 0.07)
-			rgba(255, 255, 255, 0.07);
+		border-color: rgb(255 255 255 / 9%)
+			rgb(255 255 255 / 7%) rgb(255 255 255 / 7%);
 		border-radius: 4px;
-		background-color: rgba(255, 255, 255, 0.0605);
+		background-color: rgb(255 255 255 / 6.05%);
 		/*Box model stuff*/
 		padding: 6px 25px !important;
 		color: var(--fg);
@@ -69,32 +76,33 @@
 		outline: 0;
 		border: 1px solid;
 		border-bottom-width: 2px;
-		border-color: rgba(
-			255,
-			255,
-			255,
-			0.0698
+		border-color: rgb(
+			255 255 255 / 6.98%
 		) !important;
 		border-radius: 4px;
-		background-color: rgba(
-			255,
-			255,
-			255,
-			0.0605
+		background-color: rgb(
+			255 255 255 / 6.05%
 		) !important;
 		padding-left: 10px;
 		/*Box model stuff*/
 		width: 100%;
 		height: 32px;
-		color: rgba(255, 255, 255, 0.786);
+		color: rgb(255 255 255 / 78.6%);
 		font-style: normal;
 		font-weight: 400;
 		font-size: 12px;
 		line-height: 32px;
 		/*Typography stuff*/
-		font-family: 'Segoe UI Variable Text',
-			'Segoe UI', 'Helvetica Neue', Helvetica,
-			Verdana, Tahoma, Geneva, Arial, sans-serif;
+		font-family:
+			Segoe UI Variable Text,
+			Segoe UI,
+			Helvetica Neue,
+			Helvetica,
+			Verdana,
+			Tahoma,
+			Geneva,
+			Arial,
+			sans-serif;
 	}
 	input:not([type]):focus,
 	input[type='text']:focus,
@@ -108,9 +116,9 @@
 		/*Miscellaneous*/
 		box-shadow: none !important;
 		/*Box model stuff*/
-		border-color: rgba(255, 255, 255, 0.0698);
+		border-color: rgb(255 255 255 / 6.98%);
 		border-bottom: 2px solid #0076d6 !important;
-		background-color: rgba(30, 30, 30, 0.7);
+		background-color: rgb(30 30 30 / 70%);
 		/*Typography stuff*/
 		color: #fff;
 	}
@@ -120,11 +128,8 @@
 		outline: 0;
 		border: 1px solid;
 		border-bottom-width: 2px;
-		border-color: rgba(
-			255,
-			255,
-			255,
-			0.0698
+		border-color: rgb(
+			255 255 255 / 6.98%
 		) !important;
 		border-radius: 4px;
 		background-color: #363636 !important;
@@ -132,15 +137,22 @@
 		/*Box model stuff*/
 		width: 100%;
 		height: 32px;
-		color: rgba(255, 255, 255, 0.786);
+		color: rgb(255 255 255 / 78.6%);
 		font-style: normal;
 		font-weight: 400;
 		font-size: 12px;
 		line-height: 32px;
 		/*Typography stuff*/
-		font-family: 'Segoe UI Variable Text',
-			'Segoe UI', 'Helvetica Neue', Helvetica,
-			Verdana, Tahoma, Geneva, Arial, sans-serif;
+		font-family:
+			Segoe UI Variable Text,
+			Segoe UI,
+			Helvetica Neue,
+			Helvetica,
+			Verdana,
+			Tahoma,
+			Geneva,
+			Arial,
+			sans-serif;
 	}
 	input[type='checkbox']:not(.slider),
 	input[type='radio'] {
@@ -148,12 +160,11 @@
 		flex: 0 0 20px !important;
 		/*Miscellaneous*/
 		vertical-align: middle;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		-ms-appearance: none;
+		appearance: none;
+		appearance: none;
 		appearance: none;
 		cursor: pointer;
-		margin: 0px 5px 3px;
+		margin: 0 5px 3px;
 		outline: 0;
 		border: 0;
 		background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8.5' y='8.5' width='15' height='15' rx='1.5' stroke='%23ADADAD'/%3E%3C/svg%3E%0A");
@@ -253,9 +264,13 @@
 		font-weight: 600;
 		font-size: 18px;
 		/*Typography stuff*/
-		font-family: 'Segoe UI Variable Display',
-			'Segoe UI', 'Helvetica Neue', Helvetica,
-			Verdana, sans-serif !important;
+		font-family:
+			Segoe UI Variable Display,
+			Segoe UI,
+			Helvetica Neue,
+			Helvetica,
+			Verdana,
+			sans-serif !important;
 	}
 	#message-box-title::before {
 		/*Display stuff*/
@@ -298,7 +313,7 @@
 		/*Display stuff*/
 		content: '';
 	}
-	@media (max-width: 850px) {
+	@media (width <= 850px) {
 		#header .settings h2 {
 			max-width: 10vw;
 		}

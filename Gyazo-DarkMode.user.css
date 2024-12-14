@@ -7,7 +7,7 @@
 @license      UnLicense
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("gyazo.com") {
+@document domain("gyazo.com") {
 	#react-root
 		> div:nth-child(2)
 		> div
@@ -305,7 +305,7 @@
 		> a
 		> span.toplevel-item-kamon
 		> svg {
-		fill: Black;
+		fill: black;
 	}
 
 	#react-root
@@ -337,15 +337,15 @@
 
 	.images-show
 		.bottom.interactive-popover
-		> .arrow:after,
-	.popover.bottom > .arrow:after {
+		> .arrow::after,
+	.popover.bottom > .arrow::after {
 		border-bottom-color: #bb86fc;
 	}
 
 	.explorer-action-btn.dropdown-toggle::after {
 		display: inline-block;
 		margin-right: -8px;
-		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Y2FyZXQtZG93bjwvdGl0bGU+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTEuNzc3Mzk1MywxNC43MzAzOTUzIEMxMS41MjMzOTUzLDE0LjczMDM5NTMgMTEuMjY5Mzk1MywxNC42MzQzOTUzIDExLjA3NDM5NTMsMTQuNDQxMzk1MyBMNy4yOTczOTUyOSwxMC43MTEzOTUzIEM2LjkwNDM5NTI5LDEwLjMyMzM5NTMgNi45MDAzOTUyOSw5LjY5MDM5NTI5IDcuMjg4Mzk1MjksOS4yOTczOTUyOSBDNy42NzYzOTUyOSw4LjkwNDM5NTI5IDguMzEwMzk1MjksOC45MDAzOTUyOSA4LjcwMjM5NTI5LDkuMjg4Mzk1MjkgTDExLjc3NzM5NTMsMTIuMzI1Mzk1MyBMMTQuODUxMzk1Myw5LjI4ODM5NTI5IEMxNS4yNDUzOTUzLDguOTAwMzk1MjkgMTUuODc4Mzk1Myw4LjkwNDM5NTI5IDE2LjI2NjM5NTMsOS4yOTczOTUyOSBDMTYuNjU0Mzk1Myw5LjY5MDM5NTI5IDE2LjY1MDM5NTMsMTAuMzIzMzk1MyAxNi4yNTczOTUzLDEwLjcxMTM5NTMgTDEyLjQ4MDM5NTMsMTQuNDQxMzk1MyBDMTIuMjg1Mzk1MywxNC42MzQzOTUzIDEyLjAzMTM5NTMsMTQuNzMwMzk1MyAxMS43NzczOTUzLDE0LjczMDM5NTMiIGlkPSJwYXRoLTEiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJjYXJldC1kb3duIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBmaWxsPSIjQkI4NkZDIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHVzZSBpZD0iTWFzayIgZmlsbD0iI0JCOThGQyIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICA8L2c+Cjwvc3ZnPg==);
+		background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Y2FyZXQtZG93bjwvdGl0bGU+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTEuNzc3Mzk1MywxNC43MzAzOTUzIEMxMS41MjMzOTUzLDE0LjczMDM5NTMgMTEuMjY5Mzk1MywxNC42MzQzOTUzIDExLjA3NDM5NTMsMTQuNDQxMzk1MyBMNy4yOTczOTUyOSwxMC43MTEzOTUzIEM2LjkwNDM5NTI5LDEwLjMyMzM5NTMgNi45MDAzOTUyOSw5LjY5MDM5NTI5IDcuMjg4Mzk1MjksOS4yOTczOTUyOSBDNy42NzYzOTUyOSw4LjkwNDM5NTI5IDguMzEwMzk1MjksOC45MDAzOTUyOSA4LjcwMjM5NTI5LDkuMjg4Mzk1MjkgTDExLjc3NzM5NTMsMTIuMzI1Mzk1MyBMMTQuODUxMzk1Myw5LjI4ODM5NTI5IEMxNS4yNDUzOTUzLDguOTAwMzk1MjkgMTUuODc4Mzk1Myw4LjkwNDM5NTI5IDE2LjI2NjM5NTMsOS4yOTczOTUyOSBDMTYuNjU0Mzk1Myw5LjY5MDM5NTI5IDE2LjY1MDM5NTMsMTAuMzIzMzk1MyAxNi4yNTczOTUzLDEwLjcxMTM5NTMgTDEyLjQ4MDM5NTMsMTQuNDQxMzk1MyBDMTIuMjg1Mzk1MywxNC42MzQzOTUzIDEyLjAzMTM5NTMsMTQuNzMwMzk1MyAxMS43NzczOTUzLDE0LjczMDM5NTMiIGlkPSJwYXRoLTEiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJjYXJldC1kb3duIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBmaWxsPSIjQkI4NkZDIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHVzZSBpZD0iTWFzayIgZmlsbD0iI0JCOThGQyIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICA8L2c+Cjwvc3ZnPg==');
 		width: 24px;
 		height: 24px;
 		content: '';
@@ -469,8 +469,8 @@
 				> section
 				> div:nth-child(n)
 				> a
-				> div
-		):not(.caBpUIyLTfNBwvxfTyDa):not(
+				> div,
+			.caBpUIyLTfNBwvxfTyDa,
 			div.k3nzGrC3hEubDzXyOg_r
 		),
 	footer,
@@ -629,7 +629,7 @@
 		> div:nth-child(n)
 		> div
 		> .card.medium-card.checkable:hover {
-		opacity: 1;
+		opacity: 100%;
 		box-shadow:
 			0 0 1px 1px #bb86fc,
 			0 0 1px #bb86fc;
@@ -654,13 +654,13 @@
 		.card.medium-card
 		.hover-layer:hover {
 		position: absolute;
-		opacity: 0;
+		opacity: 0%;
 		mix-blend-mode: multiply;
 		transition: opacity 0.15s;
 		inset: 0;
 		border: 5px solid #fff;
 		border-bottom: 32px solid #fff;
-		background: rgba(58, 66, 79, 0.4);
+		background: rgb(58 66 79 / 40%);
 	}
 
 	#metadata-is-public-dropdown,
@@ -683,7 +683,7 @@
 		background: linear-gradient(
 			to bottom,
 			#121212 calc(100% - 3px),
-			rgba(255, 255, 255, 0) 100%
+			rgb(255 255 255 / 0%) 100%
 		);
 		color: #bb86fc !important;
 	}
@@ -1086,7 +1086,7 @@
 		> ul
 		> li:nth-child(n):hover,
 	.global-logo-icon:hover {
-		opacity: 0.5;
+		opacity: 50%;
 	}
 
 	.form-control:focus,
@@ -1118,8 +1118,7 @@
 	}
 
 	.B9QQGIFrwoa05qnyZvI5 {
-		column-gap: 0 !important;
-		row-gap: 1px !important;
+		gap: 1px 0 !important;
 		background-color: #bb86fc !important;
 	}
 
@@ -1136,7 +1135,7 @@
 	}
 
 	.image-page hr {
-		border-top: 0 solid rgba(255, 255, 255, 0.15);
+		border-top: 0 solid rgb(255 255 255 / 15%);
 	}
 
 	#react-root
@@ -1202,11 +1201,8 @@
 	.kuJ39tkCjATBXUZiuSKB {
 		position: fixed;
 		inset: 0;
-		background-color: rgba(
-			255,
-			255,
-			255,
-			0.09
+		background-color: rgb(
+			255 255 255 / 9%
 		) !important;
 	}
 
@@ -1235,7 +1231,7 @@
 	}
 }
 
-@-moz-document regexp("^https://(www\\.)?gyazo\\.com/.*/draw.*")
+@document regexp("^https://(www\\.)?gyazo\\.com/.*/draw.*")
 {
 	article,
 	aside,
@@ -1253,8 +1249,8 @@
 				> section
 				> div:nth-child(n)
 				> a
-				> div
-		):not(.caBpUIyLTfNBwvxfTyDa):not(
+				> div,
+			.caBpUIyLTfNBwvxfTyDa,
 			div.k3nzGrC3hEubDzXyOg_r
 		),
 	footer,

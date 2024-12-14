@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("gtbikev.com") {
+@document domain("gtbikev.com") {
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),

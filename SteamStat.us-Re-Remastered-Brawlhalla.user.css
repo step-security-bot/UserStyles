@@ -21,7 +21,7 @@
 		font-size: 2.6em;
 		text-align: center;
 		/* Brawlhalla Blue */
-		text-shadow: 2px 2px 0 rgba(0, 0, 0, 21%);
+		text-shadow: 2px 2px 0 rgb(0 0 0 / 21%);
 		-webkit-text-stroke-width: 2px;
 		-webkit-text-stroke-color: black;
 		/* Blue to Gold gradient */
@@ -72,14 +72,14 @@
 		font-weight: 700;
 		/* Brawlhalla Blue */
 		text-decoration: none;
-		text-shadow: 1px 1px 0 rgba(0, 0, 0, 40%);
+		text-shadow: 1px 1px 0 rgb(0 0 0 / 40%);
 	}
 
 	a:hover {
 		color: #ffd700;
 		/* Brawlhalla Gold */
 		text-decoration: underline;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 60%);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 60%);
 	}
 
 	/* Status colors with Brawlhalla theme */
@@ -87,7 +87,7 @@
 		transition: color 0.3s ease;
 		color: #ffd700;
 		/* Brawlhalla Gold */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 60%);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	.minor {
@@ -95,7 +95,7 @@
 		color: #ffffff;
 		font-weight: 700;
 		/* White for minor status */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 60%);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	.major {
@@ -103,7 +103,7 @@
 		color: #0078ff;
 		font-weight: 700;
 		/* Brawlhalla Blue */
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 60%);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 
 	/* Refresh button styling with hover effect */
@@ -114,7 +114,7 @@
 		color: #0078ff;
 		font-weight: bolder;
 		/* Brawlhalla Blue */
-		text-shadow: 0 0 2px rgb(0, 0, 0);
+		text-shadow: 0 0 2px rgb(0 0 0);
 	}
 
 	#js-refresh:hover {
@@ -132,7 +132,7 @@
 		transition:
 			box-shadow 0.3s ease,
 			background 0.3s ease;
-		box-shadow: 0 4px 8px rgb(0, 0, 0);
+		box-shadow: 0 4px 8px rgb(0 0 0);
 		/* Brawlhalla Blue */
 		border: 1px solid #ffd700;
 		/* Brawlhalla Gold border */
@@ -145,14 +145,14 @@
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0 0 2px rgb(0, 0, 1);
+		text-shadow: 0 0 2px rgb(0 0 1);
 	}
 
 	.services:hover,
 	#psa:hover,
 	noscript:hover {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 50%);
-		background: rgba(0, 0, 0, 94%);
+		box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
+		background: rgb(0 0 0 / 94%);
 
 		/* Blue on hover */
 	}
@@ -169,7 +169,7 @@
 		/* Brawlhalla Blue */
 		font-family: Roboto, Arial, sans-serif;
 		/* Blue to Gold gradient */
-		text-shadow: 1px 1px 3px rgb(0, 0, 0);
+		text-shadow: 1px 1px 3px rgb(0 0 0);
 	}
 
 	body:hover {
@@ -200,7 +200,7 @@
 		font-style: italic;
 		font-weight: 300;
 		font-size: 0.9em;
-		text-shadow: 1px 1px 3px rgba(0, 0, 0, 40%);
+		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
 	}
 
 	[data-tooltip]:hover::before {

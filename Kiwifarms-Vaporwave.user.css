@@ -8,7 +8,7 @@
 @license      CC0-1.0
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document domain("kiwifarms.st") {
+@document domain("kiwifarms.st") {
 	.navTabs .navTab.selected .navLink,
 	.PageNav a:focus,
 	.nodeIcon.hasGlyph,
@@ -60,7 +60,7 @@
 	.subHeading,
 	a.secondaryContent,
 	a.primaryContent,
-	ABBR.DateTime.muted.lastThreadDate,
+	abbr.DateTime.muted.lastThreadDate,
 	.discussionListItem .lastPostInfo .username,
 	.discussionListItem .titleText,
 	body .muted a,
@@ -76,7 +76,7 @@
 		color: #33ccff !important;
 	}
 	.sidebar .avatarList .userTitle,
-	SPAN.nodeIcon.hasGlyph,
+	span.nodeIcon.hasGlyph,
 	.messageText,
 	blockquote,
 	.message .editDate,
@@ -127,7 +127,7 @@
 	.node .nodeLastPost .lastThreadTitle,
 	.sidebar .avatarList .userTitle,
 	.button,
-	H3.primaryContent,
+	h3.primaryContent,
 	#forumrules,
 	.ctaFtDate,
 	.alertText,
@@ -181,7 +181,7 @@
 	}
 	a:link,
 	.node .unread .nodeText .nodeTitle,
-	SPAN.DateTime.muted.lastThreadDate,
+	span.DateTime.muted.lastThreadDate,
 	span.DateTime,
 	#copyrightCompliance,
 	.secondaryContent a {
@@ -217,10 +217,7 @@
 	}
 	.navTabs,
 	.navTabs .navTab.selected .navLink {
-		border-top-color: #ffccff;
-		border-right-color: #ffccff;
-		border-bottom-color: #ffccff;
-		border-left-color: #ffccff;
+		border-color: #ffccff;
 		background-color: #333333 !important;
 	}
 	.PageNav a.currentPage,
@@ -230,10 +227,7 @@
 	.xenOverlay .formOverlay .textCtrl.Focus,
 	.profilePage .mast .section.infoBlock,
 	.messageSimple {
-		border-top-color: #ffccff;
-		border-right-color: #ffccff;
-		border-bottom-color: #ffccff;
-		border-left-color: #ffccff;
+		border-color: #ffccff;
 	}
 	.discussionList .discussionListItem.sticky {
 		border-top-color: #ffccff;
@@ -292,10 +286,10 @@
 	}
 	.ugc a:hover,
 	.ugc a:focus {
-		box-shadow: 0px 1px 0px #ffccff !important;
+		box-shadow: 0 1px 0 #ffccff !important;
 	}
 	#logo img {
-		background: url(http://i.cubeupload.com/Cw1wYQ.png)
+		background: url('http://i.cubeupload.com/Cw1wYQ.png')
 			no-repeat !important;
 		padding-top: 75px !important;
 		padding-left: 200px !important;

@@ -8,13 +8,14 @@
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document regexp("https://..*wikipedia.org/wiki/Special:Preferences")
+@document regexp("https://..*wikipedia.org/wiki/Special:Preferences")
 {
 	:root {
 		filter: invert(1);
 		/*            background-color: black; */
 	}
-	img:not(.mwe-math-fallback-image-display):not(
+	img:not(
+			.mwe-math-fallback-image-display,
 			.mwe-math-fallback-image-inline
 		) {
 		filter: invert(1);

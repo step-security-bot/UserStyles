@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	/* Main title styling with Windows 95 look */
 	.title {
 		display: flex;
@@ -21,10 +21,14 @@
 		background-color: #c0c0c0; /* Light gray background */
 		padding: 5px;
 		color: black;
-		font-weight: bold;
+		font-weight: 700;
 		font-size: 2em;
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 		text-align: center;
 	}
 
@@ -43,9 +47,13 @@
 	/* Link styling */
 	a {
 		color: #0000ee; /* Standard link color */
-		font-weight: normal;
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-weight: 400;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 		text-decoration: underline;
 	}
 
@@ -73,16 +81,17 @@
 		background-color: #c0c0c0;
 		padding: 2px 5px;
 		color: black;
-		font-weight: bold;
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-weight: 700;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 	}
 
 	#js-refresh:active {
-		border-top-color: #808080;
-		border-right-color: #ffffff;
-		border-bottom-color: #ffffff;
-		border-left-color: #808080;
+		border-color: #808080 #ffffff #ffffff #808080;
 	}
 
 	/* Container styling */
@@ -98,25 +107,33 @@
 		background-color: #c0c0c0; /* Light gray */
 		padding: 10px;
 		color: black;
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 	}
 
 	/* Body styling */
 	body {
 		margin: 0;
 		background-color: #008080; /* Teal background */
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 	}
 
 	/* Tooltip customization */
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		position: absolute;
 		top: -30px;
 		left: 0;
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		z-index: 1000;
 		border: 1px solid #000000;
 		background-color: #ffffe0; /* Light yellow */
@@ -125,12 +142,16 @@
 		content: attr(data-tooltip);
 		color: black;
 		font-size: 0.8em;
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 	}
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		visibility: visible;
-		opacity: 1;
+		opacity: 100%;
 	}
 
 	/* Buttons */
@@ -142,14 +163,15 @@
 		background-color: #c0c0c0;
 		padding: 2px 5px;
 		color: black;
-		font-family: 'MS Sans Serif', Tahoma, Verdana,
-			Arial, sans-serif;
+		font-family:
+			MS Sans serif,
+			Tahoma,
+			Verdana,
+			Arial,
+			sans-serif;
 	}
 	button:active {
-		border-top-color: #808080;
-		border-right-color: #ffffff;
-		border-bottom-color: #ffffff;
-		border-left-color: #808080;
+		border-color: #808080 #ffffff #ffffff #808080;
 	}
 
 	/* Remove modern scrollbars */

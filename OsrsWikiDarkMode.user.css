@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("runescape.wiki") {
+@document domain("runescape.wiki") {
 	#mw-panel,
 	html {
 		background: black;
@@ -15,7 +15,7 @@
 
 	* {
 		color-scheme: dark;
-		--body-background-image: url(/images/Old_School_RuneScape_Wiki_background_darkmode.jpg?f3b60);
+		--body-background-image: url('/images/Old_School_RuneScape_Wiki_background_darkmode.jpg?f3b60');
 		--body-background-color: #000000;
 		--body-main: #121212;
 		--body-light: #1d1d1d;
@@ -44,7 +44,7 @@
 		--wikitable-bg-lighter: #2d2d2d;
 		--wikitable-color: var(--text-color);
 		--wikitable-alternating-bg: #2c2c2c;
-		--table-na-background: rgba(0, 0, 0, 0.2);
+		--table-na-background: rgb(0 0 0 / 20%);
 		--table-na-color: var(--subtle-color);
 		--table-yes-background: #2e5e05;
 		--table-yes-color: #c3e8a3;
@@ -62,12 +62,7 @@
 		--ooui-text: #e6e6e6;
 		--ooui-interface: #2c2c2c;
 		--ooui-interface-border: #3f3f3f;
-		--ooui-window-background: rgba(
-			25,
-			25,
-			25,
-			0.6
-		);
+		--ooui-window-background: rgb(25 25 25 / 60%);
 		--ooui-input: #2d2d2d;
 		--ooui-input-border: #3e3e3e;
 		--ooui-input-border--hover: #555555;
@@ -94,11 +89,8 @@
 		--tile-dark-color: #fff;
 		--tile-dark-bg: #5d6773;
 		--tile-dark-link-color: #ccc;
-		--tile-dark-byline-color: rgba(
-			255,
-			255,
-			255,
-			0.7
+		--tile-dark-byline-color: rgb(
+			255 255 255 / 70%
 		);
 		--tile-dark-header-color: #fff;
 		--documentation-background: var(--body-light);
@@ -282,7 +274,7 @@
 		--lighttable-bg-hover: #3c780a;
 		--lighttable-bg-active: #2e5e05;
 		--lighttable-link-color: #c3e8a3;
-		--personal-links-bg: rgba(7, 16, 34, 0.75);
+		--personal-links-bg: rgb(7 16 34 / 75%);
 		--tbz-unlocked-background: repeating-linear-gradient(
 			-45deg,
 			#315d30 0 20px,
@@ -309,11 +301,11 @@
 	}
 }
 
-@-moz-document domain("classic.runescape.wiki") {
+@document domain("classic.runescape.wiki") {
 	.mw-body {
 		margin-top: 0;
 		box-shadow: 0 0.25em 0.6em -0.15em
-			rgba(0, 0, 0, 0.15);
+			rgb(0 0 0 / 15%);
 		border-color: transparent;
 	}
 }

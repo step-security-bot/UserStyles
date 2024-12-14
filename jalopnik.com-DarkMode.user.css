@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("jalopnik.com") {
+@document domain("jalopnik.com") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),
@@ -18,7 +18,10 @@
 			body
 				> div:nth-child(5)
 				> div.js_footer-container
-		):not(z#z.z[z]):not(svg):not(a > img):not(
+		):not(
+			z#z.z[z],
+			svg,
+			a > img,
 			#site-footer-container
 		) {
 		filter: invert(1) hue-rotate(180deg) !important;
