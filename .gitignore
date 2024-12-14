@@ -2,3 +2,4 @@
 /node_modules
 *.ffs_db
 sync.ffs_db
+/.github/styles

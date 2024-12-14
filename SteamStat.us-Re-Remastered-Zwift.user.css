@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@-moz-document domain("steamstat.us") {
+@document domain("steamstat.us") {
 	/* Main title styling with Zwift colors */
 	.title {
 		/*Display stuff*/
@@ -32,13 +32,13 @@
 		/*Typography stuff*/
 		font-size: 2.6em;
 		text-align: center;
-		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+		text-shadow: 2px 2px 5px rgb(0 0 0 / 60%);
 		/*Miscellaneous*/
 		/* Zwift Orange */
 		/* White to Orange */
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: #000000;
-		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
 
@@ -84,9 +84,9 @@
 			text-shadow 0.3s ease;
 		color: #ff7f00;
 		/*Typography stuff*/
-		font-weight: bold;
+		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 40%);
 		/*Miscellaneous*/
 		/* Zwift Orange */
 	}
@@ -95,7 +95,7 @@
 		color: #ffffff;
 		/*Typography stuff*/
 		text-decoration: underline;
-		text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+		text-shadow: 2px 2px 6px rgb(0 0 0 / 70%);
 		/*Miscellaneous*/
 		/* White */
 	}
@@ -106,7 +106,7 @@
 		transition: color 0.3s ease;
 		color: #ffffff;
 		/*Typography stuff*/
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 		/*Miscellaneous*/
 		/* White */
 	}
@@ -116,8 +116,8 @@
 		transition: color 0.3s ease;
 		color: #ff7f00;
 		/*Typography stuff*/
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 		/*Miscellaneous*/
 		/* Orange */
 	}
@@ -127,8 +127,8 @@
 		transition: color 0.3s ease;
 		color: #0073e6;
 		/*Typography stuff*/
-		font-weight: bold;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+		font-weight: 700;
+		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 		/*Miscellaneous*/
 		/* Bright Blue */
 	}
@@ -142,7 +142,7 @@
 		color: #ff7f00;
 		/*Typography stuff*/
 		font-weight: bolder;
-		text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+		text-shadow: 0 0 3px rgb(0 0 0 / 80%);
 		/*Miscellaneous*/
 		/* Orange */
 	}
@@ -168,20 +168,20 @@
 			box-shadow 0.3s ease,
 			background 0.3s ease;
 		/*Miscellaneous*/
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.8);
+		box-shadow: 0 4px 12px rgb(0 0 0 / 80%);
 		/*Box model stuff*/
 		border: 1px solid #ff7f00;
 		border-radius: 4px;
 		background: linear-gradient(
 			135deg,
-			rgba(255, 127, 0, 0.8) 30%,
-			rgba(255, 255, 255, 0.8) 70%
+			rgb(255 127 0 / 80%) 30%,
+			rgb(255 255 255 / 80%) 70%
 		);
 		color: #000000;
 		/*Typography stuff*/
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+		text-shadow: 0 0 4px rgb(0 0 0 / 90%);
 	}
 
 	.services:hover,
@@ -189,9 +189,9 @@
 	noscript:hover,
 	footer:hover {
 		/*Miscellaneous*/
-		box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.9);
+		box-shadow: 0 6px 15px rgb(0 0 0 / 90%);
 		/*Box model stuff*/
-		background: rgba(0, 0, 0, 0.95);
+		background: rgb(0 0 0 / 95%);
 		/*Typography stuff*/
 		color: #ffffff;
 	}
@@ -209,29 +209,29 @@
 		font-weight: 300;
 		font-size: 16px;
 		/*Typography stuff*/
-		font-family: 'Lato', sans-serif;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		font-family: Lato, sans-serif;
+		text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
 		/*Miscellaneous*/
 		/* Zwift background URL */
 		/* Orange */
 	}
 
 	/* Tooltip customization */
-	[data-tooltip]:before {
+	[data-tooltip]::before {
 		/*Positioning stuff*/
 		position: absolute;
 		top: 0;
 		left: 2%;
 		/*Miscellaneous*/
 		visibility: hidden;
-		opacity: 0;
+		opacity: 0%;
 		z-index: 1;
 		/*Manipulations stuff*/
 		transition:
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 8px;
-		background: rgba(255, 127, 0, 0.9);
+		background: rgb(255 127 0 / 90%);
 		padding: 8px;
 		/*Box model stuff*/
 		width: 96%;
@@ -240,14 +240,14 @@
 		color: #000000;
 		/*Typography stuff*/
 		font-size: 0.9em;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
 		/* Orange */
 	}
 
-	[data-tooltip]:hover:before {
+	[data-tooltip]:hover::before {
 		/*Miscellaneous*/
 		visibility: visible;
 		/*Manipulations stuff*/
-		opacity: 1;
+		opacity: 100%;
 	}
 }

@@ -581,8 +581,13 @@
 	code,
 	samp {
 		font-size: 0.875em;
-		font-family: SFMono-Regular, Menlo, Monaco,
-			Consolas, Liberation Mono, Courier New,
+		font-family:
+			SFMono-Regular,
+			Menlo,
+			Monaco,
+			Consolas,
+			Liberation Mono,
+			Courier New,
 			monospace;
 	}
 
@@ -616,8 +621,13 @@
 		padding: 0 0.25em;
 		color: #333333;
 		font-size: 0.875rem;
-		font-family: SFMono-Regular, Menlo, Monaco,
-			Consolas, Liberation Mono, Courier New,
+		font-family:
+			SFMono-Regular,
+			Menlo,
+			Monaco,
+			Consolas,
+			Liberation Mono,
+			Courier New,
 			monospace;
 		user-select: none;
 		text-align: center;
@@ -1090,49 +1100,96 @@
 		color: #ffffff;
 	}
 
-	.button-primary:not(:disabled, .is-disabled):active,
+	.button-primary:not(
+			:disabled,
+			.is-disabled
+		):active,
 	.actions-user
 		button:not(:disabled, .is-disabled):active,
 	.subscribe-user
 		button:not(:disabled, .is-disabled):active,
 	.form
-		input[type='submit']:not(:disabled, .is-disabled):active,
+		input[type='submit']:not(
+			:disabled,
+			.is-disabled
+		):active,
 	.search.has-button
-		[type='submit']:not(:disabled, .is-disabled):active,
-	.button-primary:not(:disabled, .is-disabled).is-active,
+		[type='submit']:not(
+			:disabled,
+			.is-disabled
+		):active,
+	.button-primary:not(
+			:disabled,
+			.is-disabled
+		).is-active,
 	.actions-user
 		button:not(:disabled, .is-disabled).is-active,
 	.subscribe-user
 		button:not(:disabled, .is-disabled).is-active,
 	.form
-		input:not(:disabled, .is-disabled).is-active[type='submit'],
+		input:not(
+			:disabled,
+			.is-disabled
+		).is-active[type='submit'],
 	.search.has-button
-		:not(:disabled, .is-disabled).is-active[type='submit'] {
-		box-shadow: inset 0 3px 5px
-			rgb(0 0 0 / 12.5%);
+		:not(
+			:disabled,
+			.is-disabled
+		).is-active[type='submit'] {
+		box-shadow: inset 0 3px 5px rgb(0 0 0 / 12.5%);
 		border-color: #001839;
 		background-color: #001d43;
 		color: #ffffff;
 	}
 
-	.button-primary:not(:disabled, .is-disabled):active:focus,
+	.button-primary:not(
+			:disabled,
+			.is-disabled
+		):active:focus,
 	.actions-user
-		button:not(:disabled, .is-disabled):active:focus,
+		button:not(
+			:disabled,
+			.is-disabled
+		):active:focus,
 	.subscribe-user
-		button:not(:disabled, .is-disabled):active:focus,
+		button:not(
+			:disabled,
+			.is-disabled
+		):active:focus,
 	.form
-		input[type='submit']:not(:disabled, .is-disabled):active:focus,
+		input[type='submit']:not(
+			:disabled,
+			.is-disabled
+		):active:focus,
 	.search.has-button
-		[type='submit']:not(:disabled, .is-disabled):active:focus,
-	.button-primary:not(:disabled, .is-disabled).is-active:focus,
+		[type='submit']:not(
+			:disabled,
+			.is-disabled
+		):active:focus,
+	.button-primary:not(
+			:disabled,
+			.is-disabled
+		).is-active:focus,
 	.actions-user
-		button:not(:disabled, .is-disabled).is-active:focus,
+		button:not(
+			:disabled,
+			.is-disabled
+		).is-active:focus,
 	.subscribe-user
-		button:not(:disabled, .is-disabled).is-active:focus,
+		button:not(
+			:disabled,
+			.is-disabled
+		).is-active:focus,
 	.form
-		input:not(:disabled, .is-disabled).is-active[type='submit']:focus,
+		input:not(
+			:disabled,
+			.is-disabled
+		).is-active[type='submit']:focus,
 	.search.has-button
-		:not(:disabled, .is-disabled).is-active[type='submit']:focus {
+		:not(
+			:disabled,
+			.is-disabled
+		).is-active[type='submit']:focus {
 		box-shadow:
 			inset 0 3px 5px rgb(0 0 0 / 12.5%),
 			0 0 0 0.2rem rgb(0 46 108 / 25%);
@@ -1161,17 +1218,28 @@
 			0 0 0 0.2rem rgb(0 46 108 / 25%);
 	}
 
-	.button-translucent:not(:disabled, .is-disabled):active,
-	.button-translucent:not(:disabled, .is-disabled).is-active {
-		box-shadow: inset 0 3px 5px
-			rgb(0 0 0 / 12.5%);
+	.button-translucent:not(
+			:disabled,
+			.is-disabled
+		):active,
+	.button-translucent:not(
+			:disabled,
+			.is-disabled
+		).is-active {
+		box-shadow: inset 0 3px 5px rgb(0 0 0 / 12.5%);
 		border-color: rgb(255 255 255 / 15%);
 		background-color: rgb(255 255 255 / 15%);
 		color: #ffffff;
 	}
 
-	.button-translucent:not(:disabled, .is-disabled):active:focus,
-	.button-translucent:not(:disabled, .is-disabled).is-active:focus {
+	.button-translucent:not(
+			:disabled,
+			.is-disabled
+		):active:focus,
+	.button-translucent:not(
+			:disabled,
+			.is-disabled
+		).is-active:focus {
 		box-shadow:
 			inset 0 3px 5px rgb(0 0 0 / 12.5%),
 			0 0 0 0.2rem rgb(0 46 108 / 25%);
@@ -1237,11 +1305,26 @@
 		color: #333333;
 	}
 
-	.button-outline-primary:not(:disabled, .is-disabled):active,
-	.pagination-next-link:not(:disabled, .is-disabled):active,
-	.pagination-prev-link:not(:disabled, .is-disabled):active,
-	.pagination-first-link:not(:disabled, .is-disabled):active,
-	.pagination-last-link:not(:disabled, .is-disabled):active,
+	.button-outline-primary:not(
+			:disabled,
+			.is-disabled
+		):active,
+	.pagination-next-link:not(
+			:disabled,
+			.is-disabled
+		):active,
+	.pagination-prev-link:not(
+			:disabled,
+			.is-disabled
+		):active,
+	.pagination-first-link:not(
+			:disabled,
+			.is-disabled
+		):active,
+	.pagination-last-link:not(
+			:disabled,
+			.is-disabled
+		):active,
 	.subscribe-article
 		button:not(:disabled, .is-disabled):active,
 	.subscribe-section
@@ -1250,11 +1333,26 @@
 		button:not(:disabled, .is-disabled):active,
 	.subscribe-organization
 		button:not(:disabled, .is-disabled):active,
-	.button-outline-primary:not(:disabled, .is-disabled).is-active,
-	:not(:disabled, .is-disabled).is-active.pagination-next-link,
-	:not(:disabled, .is-disabled).is-active.pagination-prev-link,
-	:not(:disabled, .is-disabled).is-active.pagination-first-link,
-	:not(:disabled, .is-disabled).is-active.pagination-last-link,
+	.button-outline-primary:not(
+			:disabled,
+			.is-disabled
+		).is-active,
+	:not(
+			:disabled,
+			.is-disabled
+		).is-active.pagination-next-link,
+	:not(
+			:disabled,
+			.is-disabled
+		).is-active.pagination-prev-link,
+	:not(
+			:disabled,
+			.is-disabled
+		).is-active.pagination-first-link,
+	:not(
+			:disabled,
+			.is-disabled
+		).is-active.pagination-last-link,
 	.subscribe-article
 		button:not(:disabled, .is-disabled).is-active,
 	.subscribe-section
@@ -1262,7 +1360,10 @@
 	.subscribe-topic
 		button:not(:disabled, .is-disabled).is-active,
 	.subscribe-organization
-		button:not(:disabled, .is-disabled).is-active {
+		button:not(
+			:disabled,
+			.is-disabled
+		).is-active {
 		border-color: #002558;
 		color: #002558;
 	}
@@ -2159,8 +2260,7 @@
 	.form-field > input:focus,
 	.form-field > textarea:focus {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(0 46 108 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(0 46 108 / 25%);
 		border-color: #002e6c;
 	}
 
@@ -2192,8 +2292,7 @@
 	}
 
 	.form-field > input::input-placeholder,
-	.form-field
-		> textarea::input-placeholder {
+	.form-field > textarea::input-placeholder {
 		color: #777779;
 	}
 
@@ -2247,8 +2346,7 @@
 	}
 
 	.search .form-field.is-focused {
-		box-shadow: 0 0 0 0.2rem
-			rgb(0 46 108 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(0 46 108 / 25%);
 		border-color: #002e6c;
 	}
 
@@ -2402,8 +2500,7 @@
 
 	.upload-dropzone[data-hc-focus='true'] {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(0 46 108 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(0 46 108 / 25%);
 		border-color: #002e6c;
 	}
 
@@ -2444,8 +2541,8 @@
 
 	.link-stretched::after {
 		position: absolute;
-		inset: 0;
 		z-index: 1;
+		inset: 0;
 		background-color: rgb(0 0 0 / 0%);
 		pointer-events: auto;
 		content: '';
@@ -5481,8 +5578,13 @@
 	}
 
 	.font-code {
-		font-family: SFMono-Regular, Menlo, Monaco,
-			Consolas, Liberation Mono, Courier New,
+		font-family:
+			SFMono-Regular,
+			Menlo,
+			Monaco,
+			Consolas,
+			Liberation Mono,
+			Courier New,
 			monospace;
 	}
 
@@ -10223,21 +10325,11 @@
 		}
 
 		.sm\:border-right-translucent {
-			border-right-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-right-color: rgb(255 255 255 / 10%);
 		}
 
 		.sm\:border-bottom-translucent {
-			border-bottom-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-bottom-color: rgb(255 255 255 / 10%);
 		}
 
 		.sm\:border-left-translucent {
@@ -10823,21 +10915,11 @@
 		}
 
 		.md\:border-right-translucent {
-			border-right-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-right-color: rgb(255 255 255 / 10%);
 		}
 
 		.md\:border-bottom-translucent {
-			border-bottom-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-bottom-color: rgb(255 255 255 / 10%);
 		}
 
 		.md\:border-left-translucent {
@@ -11423,21 +11505,11 @@
 		}
 
 		.lg\:border-right-translucent {
-			border-right-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-right-color: rgb(255 255 255 / 10%);
 		}
 
 		.lg\:border-bottom-translucent {
-			border-bottom-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-bottom-color: rgb(255 255 255 / 10%);
 		}
 
 		.lg\:border-left-translucent {
@@ -12023,21 +12095,11 @@
 		}
 
 		.xl\:border-right-translucent {
-			border-right-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-right-color: rgb(255 255 255 / 10%);
 		}
 
 		.xl\:border-bottom-translucent {
-			border-bottom-color: rgb(
-				255
-				255
-				255 /
-				10%
-			);
+			border-bottom-color: rgb(255 255 255 / 10%);
 		}
 
 		.xl\:border-left-translucent {
@@ -18672,13 +18734,11 @@
 	}
 
 	.shadow-xl {
-		box-shadow: 0 25px 50px -12px
-			rgb(0 0 0 / 25%);
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
 	}
 
 	.shadow-inner {
-		box-shadow: inset 0 2px 4px 0
-			rgb(0 0 0 / 6%);
+		box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 6%);
 	}
 
 	.shadow-outline {
@@ -18725,13 +18785,11 @@
 	}
 
 	.hover\:shadow-xl:hover {
-		box-shadow: 0 25px 50px -12px
-			rgb(0 0 0 / 25%);
+		box-shadow: 0 25px 50px -12px rgb(0 0 0 / 25%);
 	}
 
 	.hover\:shadow-inner:hover {
-		box-shadow: inset 0 2px 4px 0
-			rgb(0 0 0 / 6%);
+		box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 6%);
 	}
 
 	.hover\:shadow-outline:hover {
@@ -19256,8 +19314,7 @@
 	a.badge-new:focus,
 	a.badge-new.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(214 158 46 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(214 158 46 / 25%);
 	}
 
 	.badge-open {
@@ -19274,8 +19331,7 @@
 	a.badge-open:focus,
 	a.badge-open.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(229 62 62 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(229 62 62 / 25%);
 	}
 
 	.badge-answered {
@@ -19292,8 +19348,7 @@
 	a.badge-answered:focus,
 	a.badge-answered.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(52 144 220 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(52 144 220 / 25%);
 	}
 
 	.badge-hold {
@@ -19310,8 +19365,7 @@
 	a.badge-hold:focus,
 	a.badge-hold.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(26 32 44 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(26 32 44 / 25%);
 	}
 
 	.badge-solved {
@@ -19346,8 +19400,7 @@
 	a.badge-answered:focus,
 	a.badge-answered.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(52 144 220 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(52 144 220 / 25%);
 	}
 
 	.badge-completed {
@@ -19364,8 +19417,7 @@
 	a.badge-completed:focus,
 	a.badge-completed.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(52 144 220 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(52 144 220 / 25%);
 	}
 
 	.badge-planned {
@@ -19382,8 +19434,7 @@
 	a.badge-planned:focus,
 	a.badge-planned.is-focused {
 		outline: 0;
-		box-shadow: 0 0 0 0.2rem
-			rgb(52 144 220 / 25%);
+		box-shadow: 0 0 0 0.2rem rgb(52 144 220 / 25%);
 	}
 
 	.subscribe-article,
@@ -20269,11 +20320,11 @@
 	}
 
 	.bg-community {
-		background-image: url("/hc/theming_assets/01HZKQ0KZB6NZZQ917DEA66QV4");
+		background-image: url('/hc/theming_assets/01HZKQ0KZB6NZZQ917DEA66QV4');
 	}
 
 	.bg-home {
-		background-image: url("/hc/theming_assets/01HZKQ0KRKSACFQRKPE7VBDKCB");
+		background-image: url('/hc/theming_assets/01HZKQ0KRKSACFQRKPE7VBDKCB');
 	}
 
 	.bg-hero {

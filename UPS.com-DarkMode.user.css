@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@-moz-document domain("ups.com") {
+@document domain("ups.com") {
 	/* Base dark mode filter */
 	html {
 		filter: invert(1) hue-rotate(180deg) !important;

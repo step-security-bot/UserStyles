@@ -21,24 +21,24 @@
 	"tabWidth": 2,
 	"trailingComma": "all",
 	"useTabs": true,
-  "overrides": [
-    {
-      "files": "*.css",
-      "options": {
-        "parser": "css"
-      }
-    },
-    {
-      "files": "*.user.css",
-      "options": {
-        "parser": "css"
-      }
-    },
-    {
-      "files": "*.styl",
-      "options": {
-        "parser": "stylus"
-      }
-    }
-  ]
+	"overrides": [
+		{
+			"files": "*.css",
+			"options": {
+				"parser": "css"
+			}
+		},
+		{
+			"files": "*.user.css",
+			"options": {
+				"parser": "css"
+			}
+		},
+		{
+			"files": "*.styl",
+			"options": {
+				"parser": "stylus"
+			}
+		}
+	]
 }

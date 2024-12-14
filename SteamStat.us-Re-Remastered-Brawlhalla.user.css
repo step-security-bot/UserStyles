@@ -223,9 +223,9 @@
 
 	.gradient-border::before {
 		position: absolute;
-		inset: 0;
 		z-index: -1;
 		animation: gradient-border 3s linear infinite;
+		inset: 0;
 		border-radius: 5px;
 		background: linear-gradient(
 			45deg,

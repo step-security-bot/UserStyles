@@ -88,8 +88,7 @@
 		],
 		"color-function-notation": "modern",
 		"color-hex-alpha": "never",
-		"color-hex-length": "long",
-		"color-named": "always-where-possible",
+		"color-named": "never",
 		"comment-no-empty": [
 			true,
 			{ "severity": "warning" }
