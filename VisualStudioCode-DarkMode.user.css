@@ -2423,8 +2423,6 @@
 		position: relative;
 		flex: 0 0 4px;
 		user-select: none;
-		user-select: none;
-		user-select: none;
 	}
 
 	.vss-Splitter--container
@@ -2433,8 +2431,6 @@
 		background-color: #a6a6a6;
 		pointer-events: none;
 		content: '';
-		user-select: none;
-		user-select: none;
 		user-select: none;
 	}
 
