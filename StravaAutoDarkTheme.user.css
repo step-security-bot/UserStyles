@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	4.7
+@version      	4.8
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -43,7 +43,6 @@
 	.swim.segments-list tr.selected,
 	.ride .segment-effort-detail .pr-comparison,
 	.swim .segment-effort-detail .pr-comparison,
-	.lightbox-window header,
 	.edit-personal-records tr.editable-row > td,
 	ul.routes-list li.route-card .actions,
 	.footer-global,
@@ -947,7 +946,6 @@
 	.grabber,
 	#sauce-infopanel td,
 	[class*='-EmptyState-EmptyState-module__iconCircleContainer'],
-	[class*='NotificationsList'],
 	[class*='NotificationsList'],
 	[class*='NotificationsList'] li,
 	[class^='styles_menu_']:active

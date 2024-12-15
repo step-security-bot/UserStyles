@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         New Yorker Simple Dark Mode
-@version      20241106.04.29
+@version      20241106.04.30
 @namespace    typpi.online
 @description  Dark theme for New Yorker
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
@@ -17,15 +17,6 @@
 			video
 		):not(z#z.z[z]) {
 		filter: invert(1) hue-rotate(180deg) !important;
-	}
-
-	/* Ensure background images are not inverted */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-		):not(z#z.z[z]) {
 		background-color: inherit !important;
 	}
 }

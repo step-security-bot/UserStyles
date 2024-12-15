@@ -112,7 +112,6 @@
 			null,
 			{ "severity": "error" }
 		],
-		"font-weight-notation": "numeric",
 		"function-name-case": "lower",
 		"function-no-unknown": [
 			true,
@@ -177,7 +176,7 @@
 			true,
 			{ "severity": "warning" }
 		],
-		"number-max-precision": 2,
+		"number-max-precision": 4,
 		"property-no-vendor-prefix": [
 			true,
 			{ "severity": "warning" }
@@ -188,12 +187,12 @@
 		],
 		"selector-attribute-quotes": "always",
 		"selector-max-attribute": 3,
-		"selector-max-class": 20,
-		"selector-max-combinators": 20,
-		"selector-max-compound-selectors": 20,
+		"selector-max-class": 30,
+		"selector-max-combinators": 30,
+		"selector-max-compound-selectors": 30,
 		"selector-max-id": 3,
-		"selector-max-pseudo-class": 3,
-		"selector-max-type": 20,
+		"selector-max-pseudo-class": 5,
+		"selector-max-type": 30,
 		"selector-max-universal": 3,
 		"selector-no-qualifying-type": [
 			null,
@@ -207,7 +206,7 @@
 		"selector-pseudo-element-colon-notation": "double",
 		"selector-type-case": "lower",
 		"selector-type-no-unknown": [
-			true,
+			null,
 			{ "severity": "error" }
 		],
 		"shorthand-property-no-redundant-values": [

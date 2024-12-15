@@ -4,7 +4,7 @@
 @author       Lucifuga / Nick2bad4u
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
-@version      20240102.22.40
+@version      20240102.22.41
 @license      CC0-1.0
 @preprocessor uso
 ==/UserStyle== */
@@ -30,7 +30,6 @@
 	.xenOverlay.memberCard .userInfo h3 a,
 	.xenOverlay.memberCard .userLinks,
 	.messageContent .username.poster,
-	.message .messageMeta .control:hover,
 	.messageMeta
 		.publicControls
 		.LikeLink.item.control.like,
@@ -125,7 +124,6 @@
 	.statusEditorCounter,
 	.heading,
 	.node .nodeLastPost .lastThreadTitle,
-	.sidebar .avatarList .userTitle,
 	.button,
 	h3.primaryContent,
 	#forumrules,
@@ -260,7 +258,7 @@
 		border-color: #464646 !important;
 		color: #ffccff !important;
 	}
-	.navTabs .navTab.selected.PopupOpen .navLink,
+
 	.navTabs .navTab.selected.PopupOpen .navLink {
 		background-color: #ffccff !important;
 		color: #fff !important;
