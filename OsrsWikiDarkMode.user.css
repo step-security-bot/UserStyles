@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@document domain("runescape.wiki") {
+@-moz-document domain("runescape.wiki") {
 	#mw-panel,
 	html {
 		background: black;
@@ -301,7 +301,7 @@
 	}
 }
 
-@document domain("classic.runescape.wiki") {
+@-moz-document domain("classic.runescape.wiki") {
 	.mw-body {
 		margin-top: 0;
 		box-shadow: 0 0.25em 0.6em -0.15em

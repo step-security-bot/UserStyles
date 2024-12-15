@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      The UnLicense
 ==/UserStyle== */
-@document domain("wigle.net") {
+@-moz-document domain("wigle.net") {
 	:root {
 		filter: invert(1);
 		/*            background-color: black; */

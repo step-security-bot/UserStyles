@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("abc12.com") {
+@-moz-document domain("abc12.com") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),

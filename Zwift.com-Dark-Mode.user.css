@@ -7,7 +7,7 @@
 @license      UnLicense
 @homepageURL  https://userstyles.world/user/Nick2bad4u
 ==/UserStyle== */
-@document domain("zwift.com") {
+@-moz-document domain("zwift.com") {
 	/* Invert colors except images, videos, and footer */
 	:is(
 			html:not([stylus-iframe]),

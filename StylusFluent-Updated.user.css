@@ -7,7 +7,7 @@
 @author       thejenja (Updated by Nick2bad4u)
 @license      UnLicense
 ==/UserStyle== */
-@document url-prefix("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne")
+@-moz-document url-prefix("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne")
 {
 	body {
 		font-family:

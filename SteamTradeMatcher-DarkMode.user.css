@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@document domain("steamtradematcher.com") {
+@-moz-document domain("steamtradematcher.com") {
 	html,
 	.m-3,
 	.inside,

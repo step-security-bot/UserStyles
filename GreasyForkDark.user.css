@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@document domain("greasyfork.org") {
+@-moz-document domain("greasyfork.org") {
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),

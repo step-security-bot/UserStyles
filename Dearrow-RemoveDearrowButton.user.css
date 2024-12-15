@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("youtube.com") {
+@-moz-document domain("youtube.com") {
 	#video-title-link > button > img {
 		display: none;
 	}

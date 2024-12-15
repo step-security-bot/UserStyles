@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("walmart.com") {
+@-moz-document domain("walmart.com") {
 	/* Base styles */
 	*:not(
 			img,

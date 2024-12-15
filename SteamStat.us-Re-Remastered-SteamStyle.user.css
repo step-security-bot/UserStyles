@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document url("https://steamstat.us/")
+@-moz-document url("https://steamstat.us/")
 {
 	.title {
 		margin: 10px 0;

@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@document domain("copilot.microsoft.com") {
+@-moz-document domain("copilot.microsoft.com") {
 	/* Invert colors except images and videos */
 	:is([data-theme='dark'] *) {
 		/*Box model stuff*/

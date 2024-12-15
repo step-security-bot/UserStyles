@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("fandom.com") {
+@-moz-document domain("fandom.com") {
 	*:not(
 			body
 				> div.main-container

@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("streameast.gd"), domain("1stream.eu"), domain("methstreamer.com"), domain("chatango.com"), domain("methstreams.com") {
+@-moz-document domain("streameast.gd"), domain("1stream.eu"), domain("methstreamer.com"), domain("chatango.com"), domain("methstreams.com") {
 	/* General Inversion for Light Backgrounds */
 	*,
 	a {

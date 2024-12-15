@@ -8,7 +8,7 @@
 @license      UnLicense
 @preprocessor uso
 ==/UserStyle== */
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Site Settings */
 	* {
 		transition: none !important;
@@ -1701,7 +1701,7 @@
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Media Query */
 	@media (width >= 1921px) and (width <= 2560px) {
 		/* Bracket */
@@ -2174,7 +2174,7 @@
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Font Settings */
 	.long-name,
 	a[href],
@@ -2863,7 +2863,7 @@
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Background Settings */
 	body,
 	html {
@@ -4012,7 +4012,7 @@ ________________________________________________________________________________
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Image Settings */
 	#global-nav
 		ul
@@ -4199,7 +4199,7 @@ ________________________________________________________________________________
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* New Icons */
 	input[type='checkbox'],
 	input[type='radio'] {
@@ -4476,7 +4476,7 @@ ________________________________________________________________________________
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Logos */
 	.cscore_rank {
 		padding-right: 8px;
@@ -6093,7 +6093,7 @@ ________________________________________________________________________________
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* New Media Icons */
 	/* Play ______________________________________________________________________________*/
 	.MediaPlaceholder__Icon--video {
@@ -6115,7 +6115,7 @@ ________________________________________________________________________________
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Social Media */
 	/* Facebook _____________*/
 	.icon-facebook-messenger-solid-before::before,
@@ -6225,7 +6225,7 @@ ________________________________________________________________________________
 	}
 }
 
-@document domain("espn.com") {
+@-moz-document domain("espn.com") {
 	/* Scrollbar Settings */
 	/* Width
 _____________________________________________________________________________________________________*/

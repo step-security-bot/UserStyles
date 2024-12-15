@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@document domain("visualstudio.com") {
+@-moz-document domain("visualstudio.com") {
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),

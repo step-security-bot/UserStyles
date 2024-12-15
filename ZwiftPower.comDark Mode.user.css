@@ -7,7 +7,7 @@
 @author         Nick2bad4u
 @license        UnLicense
 ==/UserStyle== */
-@document domain("zwiftpower.com") {
+@-moz-document domain("zwiftpower.com") {
 	html,
 	svg,
 	iframe,

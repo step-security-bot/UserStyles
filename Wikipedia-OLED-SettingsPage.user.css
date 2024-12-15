@@ -8,7 +8,7 @@
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @preprocessor uso
 ==/UserStyle== */
-@document regexp("https://..*wikipedia.org/wiki/Special:Preferences")
+@-moz-document regexp("https://..*wikipedia.org/wiki/Special:Preferences")
 {
 	:root {
 		filter: invert(1);

@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("nytimes.com") {
+@-moz-document domain("nytimes.com") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),

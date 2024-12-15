@@ -7,7 +7,7 @@
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @license      The UnLicense
 ==/UserStyle== */
-@document domain("unroll.me") {
+@-moz-document domain("unroll.me") {
 	:root {
 		filter: invert(1);
 		/*            background-color: black; */

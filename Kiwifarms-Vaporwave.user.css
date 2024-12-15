@@ -8,7 +8,7 @@
 @license      CC0-1.0
 @preprocessor uso
 ==/UserStyle== */
-@document domain("kiwifarms.st") {
+@-moz-document domain("kiwifarms.st") {
 	.navTabs .navTab.selected .navLink,
 	.PageNav a:focus,
 	.nodeIcon.hasGlyph,

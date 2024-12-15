@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("michigan.gov") {
+@-moz-document domain("michigan.gov") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),

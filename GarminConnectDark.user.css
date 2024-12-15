@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@document domain("connect.garmin.com") {
+@-moz-document domain("connect.garmin.com") {
 	:is(.connect-container) {
 		filter: invert(1) hue-rotate(180deg);
 	}

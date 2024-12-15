@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("steamstat.us") {
+@-moz-document domain("steamstat.us") {
 	.title {
 		margin: 10px 0;
 		color: #ffa500;

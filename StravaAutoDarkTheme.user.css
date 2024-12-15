@@ -7,7 +7,7 @@
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
-@document regexp("https:\\/\\/(?:www\\.)?strava\\.com.*") {
+@-moz-document regexp("https:\\/\\/(?:www\\.)?strava\\.com.*") {
 	#__next > header,
 	#view > .header,
 	#global-header,

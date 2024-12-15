@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("17track.net") {
+@-moz-document domain("17track.net") {
 	/* Base dark mode filter */
 	html {
 		filter: invert(1) hue-rotate(180deg) !important;

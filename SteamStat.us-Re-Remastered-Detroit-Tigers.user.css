@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@document domain("steamstat.us") {
+@-moz-document domain("steamstat.us") {
 	/* Main title styling with Detroit Tigers colors */
 	.title {
 		margin: 10px 0;

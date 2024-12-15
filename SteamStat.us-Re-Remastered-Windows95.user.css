@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@document domain("steamstat.us") {
+@-moz-document domain("steamstat.us") {
 	/* Main title styling with Windows 95 look */
 	.title {
 		display: flex;

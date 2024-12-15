@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("mybiketraffic.com") {
+@-moz-document domain("mybiketraffic.com") {
 	body,
 	.navbar,
 	.container,

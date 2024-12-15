@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("nascar.com") {
+@-moz-document domain("nascar.com") {
 	/* Invert entire page for dark mode effect */
 	html {
 		filter: invert(1) hue-rotate(180deg) !important;

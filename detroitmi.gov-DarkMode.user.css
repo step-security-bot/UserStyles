@@ -8,7 +8,7 @@
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
 
-@document domain("detroitmi.gov") {
+@-moz-document domain("detroitmi.gov") {
 	/* Invert colors except images and videos */
 	:is(
 			html:not([stylus-iframe]),

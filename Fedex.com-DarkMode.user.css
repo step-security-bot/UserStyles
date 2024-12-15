@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("fedex.com") {
+@-moz-document domain("fedex.com") {
 	/* Base dark mode filter */
 	html {
 		filter: invert(1) hue-rotate(0deg) !important;

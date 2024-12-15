@@ -7,7 +7,7 @@
 @author       Nick2bad4u
 @license      UnLicense
 ==/UserStyle== */
-@document domain("steamstat.us") {
+@-moz-document domain("steamstat.us") {
 	.title {
 		margin: 10px 0;
 		/* Purple shadow */

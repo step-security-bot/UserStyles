@@ -8,7 +8,7 @@
 @license      UnLicense
 ==/UserStyle== */
 
-@document domain("wigle.net") {
+@-moz-document domain("wigle.net") {
 	body,
 	.panel-body,
 	.toolsSection,
