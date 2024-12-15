@@ -83,7 +83,7 @@
 			{ "severity": "warning" }
 		],
 		"at-rule-no-vendor-prefix": [
-			true,
+			null,
 			{ "severity": "warning" }
 		],
 		"color-function-notation": "modern",

@@ -1,0 +1,28 @@
+/* ==UserStyle==
+@name           mywindsock.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.0
+@description    Dark mode for MyWindSock
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("mywindsock.com") {
+	/* Invert colors except images and videos */
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		#app_btns,
+		.hide_show
+	) {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+	#options-underlay,
+	#login-underlay,
+	#notice-underlay,
+	.underlay {
+		opacity: 50%;
+	}
+}

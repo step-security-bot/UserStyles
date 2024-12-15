@@ -1,0 +1,69 @@
+/* ==UserStyle==
+@name           veloviewer.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.0
+@description    Dark theme for VeloViewer
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("veloviewer.com") {
+	/* Invert colors except images and videos */
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		.navbar-fixed-top,
+		.open > .dropdown-menu,
+		.table-bordered
+			caption
+			+ thead
+			tr:first-child
+			th,
+		.table-bordered
+			caption
+			+ tbody
+			tr:first-child
+			th,
+		.table-bordered
+			caption
+			+ tbody
+			tr:first-child
+			td,
+		.table-bordered
+			colgroup
+			+ thead
+			tr:first-child
+			th,
+		.table-bordered
+			colgroup
+			+ tbody
+			tr:first-child
+			th,
+		.table-bordered
+			colgroup
+			+ tbody
+			tr:first-child
+			td,
+		.table-bordered
+			thead:first-child
+			tr:first-child
+			th,
+		.table-bordered
+			tbody:first-child
+			tr:first-child
+			th,
+		.table-bordered
+			tbody:first-child
+			tr:first-child
+			td,
+		header#masthead
+	) {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.nav > li > a > img {
+		filter: unset !important;
+	}
+}
