@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      2.0
+@version      2.1
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
@@ -20,6 +20,7 @@
 	.edit-carousel-content .edit-image-div,
 	iframe,
 	.Notification_notification__189UW {
+		-webkit-filter: invert(1) hue-rotate(180deg) !important;
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
@@ -88,9 +89,12 @@
 			.fade,
 			:not(.help-icon)
 		) {
+		/*Manipulations stuff*/
 		filter: invert(1) hue-rotate(180deg);
+		/*Box model stuff*/
 		border-color: #5971c6f0;
 		background-color: #fff !important;
+		/*Typography stuff*/
 		color: #000 !important;
 	}
 
@@ -104,5 +108,42 @@
 
 	.btn-small {
 		z-index: 9999;
+	}
+}
+
+@-moz-document domain("forums.garmin.com"),
+regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$") {
+	:is(
+		html:not([stylus-iframe]),
+		#app,
+		.ugc-gallery-image__figure__img,
+		.app__headline--dark,
+		img:not(.avatar > a > img),
+		svg,
+		video
+	),
+	.content-author .avatar img,
+	.gf__footer,
+	.g__email-signup,
+	.g__tile .g__tile__content-text > .g__heading p,
+	.css-karl3g div,
+	.app__color__picker__item,
+	.app__tabs__content__wrap img,
+	.app__tabs__content__main,
+	.app__product__card,
+	.app__related__card__inner {
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.g__email-signup,
+	.g__email-signup__copy__disclaimer,
+	.g__email-signup__copy__disclaimer a,
+	.app__sidebar__full {
+		background-color: black;
+		color: white;
+	}
+
+	.app__feature__card__image {
+		filter: unset !important;
 	}
 }
