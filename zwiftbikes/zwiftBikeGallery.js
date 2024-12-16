@@ -1,32 +1,40 @@
 // Fetch data from JSON files
 async function fetchData(file) {
-    const response = await fetch(file);
-    const data = await response.json();
-    return data;
+	const response = await fetch(file);
+	const data = await response.json();
+	return data;
 }
 
 // Fetch wheels, frames, and bikes data
 async function getZwiftData() {
-    const wheels = await fetchData('wheels.json');
-    const frames = await fetchData('frames.json');
-    const bikes = await fetchData('bikes.json');
-    return { wheels, frames, bikes };
+	const wheels = await fetchData('wheels.json');
+	const frames = await fetchData('frames.json');
+	const bikes = await fetchData('bikes.json');
+	return { wheels, frames, bikes };
 }
 
 // Generate bike gallery
 async function generateGallery() {
-    const { wheels, frames, bikes } = await getZwiftData();
-    const gallery = document.getElementById('bikeGallery');
-    gallery.innerHTML = '';
+	const { wheels, frames, bikes } =
+		await getZwiftData();
+	const gallery = document.getElementById(
+		'bikeGallery',
+	);
+	gallery.innerHTML = '';
 
-    for (const bike of bikes) {
-        const frame = frames.find(f => f.frameid === bike.frameid);
-        const wheel = wheels.find(w => w.wheelid === bike.wheelid);
+	for (const bike of bikes) {
+		const frame = frames.find(
+			(f) => f.frameid === bike.frameid,
+		);
+		const wheel = wheels.find(
+			(w) => w.wheelid === bike.wheelid,
+		);
 
-        if (frame && wheel) {
-            const bikeCard = document.createElement('div');
-            bikeCard.className = 'bike-card';
-            bikeCard.innerHTML = `
+		if (frame && wheel) {
+			const bikeCard =
+				document.createElement('div');
+			bikeCard.className = 'bike-card';
+			bikeCard.innerHTML = `
                 <img src="${frame.frameimg}" alt="${frame.framemake} ${frame.framemodel}">
                 <div class="bike-details">
                     <h3>${frame.framemake} ${frame.framemodel}</h3>
@@ -61,10 +69,13 @@ async function generateGallery() {
                     <p><strong>Wheel Article:</strong> ${wheel.wheelarticle}</p>
                 </div>
             `;
-            gallery.appendChild(bikeCard);
-        }
-    }
+			gallery.appendChild(bikeCard);
+		}
+	}
 }
 
 // Generate the gallery on page load
-document.addEventListener('DOMContentLoaded', generateGallery);
+document.addEventListener(
+	'DOMContentLoaded',
+	generateGallery,
+);
