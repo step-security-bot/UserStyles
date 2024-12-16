@@ -13,58 +13,67 @@ async function getZwiftData() {
     return { wheels, frames, bikes };
 }
 
-// Generate bike gallery
+// Generate bike gallery with sorting
 async function generateGallery() {
     const { wheels, frames, bikes } = await getZwiftData();
     const gallery = document.getElementById('bikeGallery');
-    gallery.innerHTML = '';
+    const sortCriteria = document.getElementById('sortCriteria').value;
 
-    for (const bike of bikes) {
+    // Calculate performance for each bike
+    const bikePerformances = bikes.map(bike => {
         const frame = frames.find(f => f.frameid === bike.frameid);
         const wheel = wheels.find(w => w.wheelid === bike.wheelid);
 
         if (frame && wheel) {
-            const bikeCard = document.createElement('div');
-            bikeCard.className = 'bike-card';
-            bikeCard.innerHTML = `
-                <img src="${frame.frameimg}" alt="${frame.framemake} ${frame.framemodel}">
-                <div class="bike-details">
-                    <h3>${frame.framemake} ${frame.framemodel}</h3>
-                    <p><strong>Frame Make:</strong> ${frame.framemake}</p>
-                    <p><strong>Frame Model:</strong> ${frame.framemodel}</p>
-                    <p><strong>Frame Price:</strong> ${frame.frameprice}</p>
-                    <p><strong>Frame Level:</strong> ${frame.framelevel}</p>
-                    <p><strong>Frame Aero:</strong> ${frame.frameaero}</p>
-                    <p><strong>Frame Weight:</strong> ${frame.frameweight}</p>
-                    <p><strong>Frame Type:</strong> ${frame.frametype}</p>
-                    <p><strong>Frame Wheel Type:</strong> ${frame.framewheeltype}</p>
-                    <p><strong>Frame Flat Number:</strong> ${frame.frameflatnumber}</p>
-                    <p><strong>Frame Climb Number:</strong> ${frame.frameclimbnumber}</p>
-                    <p><strong>Frame Flat Rank:</strong> ${frame.frameflatrank}</p>
-                    <p><strong>Frame Climb Rank:</strong> ${frame.frameclimbrank}</p>
-                    <p><strong>Frame Article:</strong> ${frame.framearticle}</p>
-                    <p><strong>Frame Legacy:</strong> ${frame.framelegacy}</p>
+            const flatNumber = (parseFloat(frame.frameflatnumber) + parseFloat(wheel.wheelflatnumber)) / 2;
+            const climbNumber = (parseFloat(frame.frameclimbnumber) + parseFloat(wheel.wheelclimbnumber)) / 2;
 
-                    <img src="${wheel.wheelimg}" alt="${wheel.wheelmake} ${wheel.wheelmodel}">
-                    <h3>${wheel.wheelmake} ${wheel.wheelmodel}</h3>
-                    <p><strong>Wheel Make:</strong> ${wheel.wheelmake}</p>
-                    <p><strong>Wheel Model:</strong> ${wheel.wheelmodel}</p>
-                    <p><strong>Wheel Price:</strong> ${wheel.wheelprice}</p>
-                    <p><strong>Wheel Level:</strong> ${wheel.wheellevel}</p>
-                    <p><strong>Wheel Aero:</strong> ${wheel.wheelaero}</p>
-                    <p><strong>Wheel Weight:</strong> ${wheel.wheelweight}</p>
-                    <p><strong>Wheel Fits Frame:</strong> ${wheel.wheelfitsframe}</p>
-                    <p><strong>Wheel Flat Number:</strong> ${wheel.wheelflatnumber}</p>
-                    <p><strong>Wheel Climb Number:</strong> ${wheel.wheelclimbnumber}</p>
-                    <p><strong>Wheel Flat Rank:</strong> ${wheel.wheelflatrank}</p>
-                    <p><strong>Wheel Climb Rank:</strong> ${wheel.wheelclimbrank}</p>
-                    <p><strong>Wheel Article:</strong> ${wheel.wheelarticle}</p>
-                </div>
-            `;
-            gallery.appendChild(bikeCard);
+            return {
+                bike: bike,
+                frame: frame,
+                wheel: wheel,
+                flatNumber: flatNumber,
+                climbNumber: climbNumber
+            };
         }
-    }
-}
+        return null;
+    }).filter(bikePerformance => bikePerformance !== null);
 
-// Generate the gallery on page load
-document.addEventListener('DOMContentLoaded', generateGallery);
+    // Sort the bikes based on the selected criteria
+    if (sortCriteria === 'flatBest') {
+        bikePerformances.sort((a, b) => b.flatNumber - a.flatNumber);
+    } else if (sortCriteria === 'flatWorst') {
+        bikePerformances.sort((a, b) => a.flatNumber - b.flatNumber);
+    } else if (sortCriteria === 'climbBest') {
+        bikePerformances.sort((a, b) => b.climbNumber - a.climbNumber);
+    } else if (sortCriteria === 'climbWorst') {
+        bikePerformances.sort((a, b) => a.climbNumber - b.climbNumber);
+    }
+
+    // Generate the gallery
+    gallery.innerHTML = '';
+    for (const bikePerformance of bikePerformances) {
+        const { frame, wheel, flatNumber, climbNumber } = bikePerformance;
+        const bikeCard = document.createElement('div');
+        bikeCard.className = 'bike-card';
+        bikeCard.innerHTML = `
+            <img src="${frame.frameimg}" alt="${frame.framemake} ${frame.framemodel}">
+            <div class="bike-details">
+                <h3>${frame.framemake} ${frame.framemodel}</h3>
+                <p><strong>Frame Make:</strong> ${frame.framemake}</p>
+                <p><strong>Frame Model:</strong> ${frame.framemodel}</p>
+                <p><strong>Frame Price:</strong> ${frame.frameprice}</p>
+                <p><strong>Frame Level:</strong> ${frame.framelevel}</p>
+                <p><strong>Frame Aero:</strong> ${frame.frameaero}</p>
+                <p><strong>Frame Weight:</strong> ${frame.frameweight}</p>
+                <p><strong>Frame Type:</strong> ${frame.frametype}</p>
+                <p><strong>Frame Wheel Type:</strong> ${frame.framewheeltype}</p>
+                <p><strong>Frame Flat Number:</strong> ${frame.frameflatnumber}</p>
+                <p><strong>Frame Climb Number:</strong> ${frame.frameclimbnumber}</p>
+                <p><strong>Frame Flat Rank:</strong> ${frame.frameflatrank}</p>
+                <p><strong>Frame Climb Rank:</strong> ${frame.frameclimbrank}</p>
+                <p><strong>Frame Article:</strong> ${frame.framearticle}</p>
+                <p><strong>Frame Legacy:</strong> ${frame.framelegacy}</p>
+
+                <img src="${wheel.wheelimg}" alt="${wheel.wheelmake} ${wheel.wheelmodel}">
+                <h3>${wheel.wheelmake} ${wheel.wheelmodel}</h3>
