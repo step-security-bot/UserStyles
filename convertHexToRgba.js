@@ -3,30 +3,41 @@ document
 	.addEventListener('click', () => {
 		const fileInput =
 			document.getElementById('fileInput');
-		const file = fileInput.files[0];
+		const manualInput = document.getElementById(
+			'manualInput',
+		).value;
 		const opacityFormat = document.querySelector(
 			'input[name="opacityFormat"]:checked',
 		).value;
 
-		if (file) {
+		if (fileInput.files.length > 0) {
+			const file = fileInput.files[0];
 			const reader = new FileReader();
 
 			reader.onload = (e) => {
 				const data = e.target.result;
-				const convertedData = data.replace(
-					/#([0-9A-Fa-f]{8})/g,
-					(match) =>
-						hexToRgba(match, opacityFormat),
+				const convertedData = convertHexToRgba(
+					data,
+					opacityFormat,
 				);
-
 				document.getElementById(
 					'output',
 				).textContent = convertedData;
 			};
 
 			reader.readAsText(file);
+		} else if (manualInput) {
+			const convertedData = convertHexToRgba(
+				manualInput,
+				opacityFormat,
+			);
+			document.getElementById(
+				'output',
+			).textContent = convertedData;
 		} else {
-			alert('Please select a file first.');
+			alert(
+				'Please select a file or paste CSS code.',
+			);
 		}
 	});
 
@@ -53,6 +64,13 @@ document
 
 		window.getSelection().removeAllRanges();
 	});
+
+function convertHexToRgba(data, format) {
+	return data.replace(
+		/#([0-9A-Fa-f]{8})/g,
+		(match) => hexToRgba(match, format),
+	);
+}
 
 function hexToRgba(hex, format) {
 	let r = parseInt(hex.slice(1, 3), 16);
