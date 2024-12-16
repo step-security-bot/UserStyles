@@ -46,7 +46,7 @@ async function calculateBestBike() {
     }
 
     document.getElementById('bestBikeResult').innerHTML = `
-        Best Bike: ${bestBike}
+        <p>Best Bike: ${bestBike}</p>
         <div>
             <img src="${bestBikeImageFrame}" alt="Frame Image">
             <img src="${bestBikeImageWheel}" alt="Wheel Image">
