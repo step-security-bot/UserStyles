@@ -13,33 +13,62 @@ async function getZwiftData() {
     return { wheels, frames, bikes };
 }
 
-// Generate bike gallery
+// Generate bike gallery with sorting
 async function generateGallery() {
     const { wheels, frames, bikes } = await getZwiftData();
     const gallery = document.getElementById('bikeGallery');
-    gallery.innerHTML = '';
+    const sortCriteria = document.getElementById('sortCriteria').value;
 
-    for (const bike of bikes) {
+    // Calculate performance for each bike
+    const bikePerformances = bikes.map(bike => {
         const frame = frames.find(f => f.frameid === bike.frameid);
         const wheel = wheels.find(w => w.wheelid === bike.wheelid);
 
         if (frame && wheel) {
-            const bikeCard = document.createElement('div');
-            bikeCard.className = 'bike-card';
-            bikeCard.innerHTML = `
-                <img src="${frame.frameimg}" alt="${frame.framemake} ${frame.framemodel}">
-                <div class="bike-details">
-                    <h3>${frame.framemake} ${frame.framemodel}</h3>
-                    <p><strong>Wheel:</strong> ${wheel.wheelmake} ${wheel.wheelmodel}</p>
-                    <img src="${wheel.wheelimg}" alt="${wheel.wheelmake} ${wheel.wheelmodel}">
-                    <p><strong>Price:</strong> ${frame.frameprice} + ${wheel.wheelprice}</p>
-                    <p><strong>Level:</strong> ${frame.framelevel} | ${wheel.wheellevel}</p>
-                    <p><strong>Flat Performance:</strong> ${frame.frameflatnumber} | ${wheel.wheelflatnumber}</p>
-                    <p><strong>Climb Performance:</strong> ${frame.frameclimbnumber} | ${wheel.wheelclimbnumber}</p>
-                </div>
-            `;
-            gallery.appendChild(bikeCard);
+            const flatNumber = (parseFloat(frame.frameflatnumber) + parseFloat(wheel.wheelflatnumber)) / 2;
+            const climbNumber = (parseFloat(frame.frameclimbnumber) + parseFloat(wheel.wheelclimbnumber)) / 2;
+
+            return {
+                bike: bike,
+                frame: frame,
+                wheel: wheel,
+                flatNumber: flatNumber,
+                climbNumber: climbNumber
+            };
         }
+        return null;
+    }).filter(bikePerformance => bikePerformance !== null);
+
+    // Sort the bikes based on the selected criteria
+    if (sortCriteria === 'flatBest') {
+        bikePerformances.sort((a, b) => b.flatNumber - a.flatNumber);
+    } else if (sortCriteria === 'flatWorst') {
+        bikePerformances.sort((a, b) => a.flatNumber - b.flatNumber);
+    } else if (sortCriteria === 'climbBest') {
+        bikePerformances.sort((a, b) => b.climbNumber - a.climbNumber);
+    } else if (sortCriteria === 'climbWorst') {
+        bikePerformances.sort((a, b) => a.climbNumber - b.climbNumber);
+    }
+
+    // Generate the gallery
+    gallery.innerHTML = '';
+    for (const bikePerformance of bikePerformances) {
+        const { frame, wheel, flatNumber, climbNumber } = bikePerformance;
+        const bikeCard = document.createElement('div');
+        bikeCard.className = 'bike-card';
+        bikeCard.innerHTML = `
+            <img src="${frame.frameimg}" alt="${frame.framemake} ${frame.framemodel}">
+            <div class="bike-details">
+                <h3>${frame.framemake} ${frame.framemodel}</h3>
+                <p><strong>Wheel:</strong> ${wheel.wheelmake} ${wheel.wheelmodel}</p>
+                <img src="${wheel.wheelimg}" alt="${wheel.wheelmake} ${wheel.wheelmodel}">
+                <p><strong>Price:</strong> ${frame.frameprice} + ${wheel.wheelprice}</p>
+                <p><strong>Level:</strong> ${frame.framelevel} | ${wheel.wheellevel}</p>
+                <p><strong>Flat Performance:</strong> ${flatNumber.toFixed(2)}</p>
+                <p><strong>Climb Performance:</strong> ${climbNumber.toFixed(2)}</p>
+            </div>
+        `;
+        gallery.appendChild(bikeCard);
     }
 }
 
