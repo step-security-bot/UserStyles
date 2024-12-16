@@ -1,7 +1,13 @@
-// Fetch data from JSON files
+// Fetch data from JSON files with caching
 async function fetchData(file) {
+    const cachedData = localStorage.getItem(file);
+    if (cachedData) {
+        return JSON.parse(cachedData);
+    }
+
     const response = await fetch(file);
     const data = await response.json();
+    localStorage.setItem(file, JSON.stringify(data));
     return data;
 }
 
