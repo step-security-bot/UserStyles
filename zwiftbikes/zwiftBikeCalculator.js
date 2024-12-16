@@ -7,9 +7,9 @@ async function fetchData(file) {
 
 // Fetch wheels, frames, and bikes data
 async function getZwiftData() {
-    const wheels = await fetchData('https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/zwiftbikes/wheels.json');
-    const frames = await fetchData('https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/zwiftbikes/frames.json');
-    const bikes = await fetchData('https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/zwiftbikes/bikes.json');
+    const wheels = await fetchData('https://userstyles.github.typpi.online/zwiftbikes/wheels.json');
+    const frames = await fetchData('https://userstyles.github.typpi.online/zwiftbikes/frames.json');
+    const bikes = await fetchData('https://userstyles.github.typpi.online/zwiftbikes/bikes.json');
     return { wheels, frames, bikes };
 }
 
