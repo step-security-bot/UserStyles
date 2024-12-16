@@ -178,7 +178,7 @@
 		],
 		"number-max-precision": 4,
 		"property-no-vendor-prefix": [
-			true,
+			null,
 			{ "severity": "warning" }
 		],
 		"selector-anb-no-unmatchable": [
