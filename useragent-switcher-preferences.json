@@ -1,8 +1,10 @@
 {
   "blacklist": [],
-  "custom": {},
+  "custom": {
+    "youtube.com, ytimg.com, googlevideo.com, google.com, whatismybrowser.com, webbrowsertools.com": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.61 Chrome/126.0.6478.61 Not/A)Brand/8 Safari/537.36"
+  },
   "last-update": 1734319888779,
-  "mode": "whitelist",
+  "mode": "custom",
   "parser": {},
   "popup-sort": "descending",
   "protected": [
@@ -14,7 +16,7 @@
     "challenges.cloudflare.com"
   ],
   "remote-address": "",
-  "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.61 Chrome/126.0.6478.61 Not/A)Brand/8  Safari/537.36",
+  "ua": "",
   "userAgentData": true,
   "whitelist": [
     "youtube.com",
@@ -24,6 +26,6 @@
     "whatismybrowser.com",
     "webbrowsertools.com"
   ],
-  "json-guid": "36fdc12f-3b09-4a69-86b4-9bbcb3d7192e",
+  "json-guid": "299e3469-0695-4cfa-862b-66bfddb38b3b",
   "json-forced": false
 }
