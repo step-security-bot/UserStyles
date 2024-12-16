@@ -7,9 +7,9 @@ async function fetchData(file) {
 
 // Fetch wheels, frames, and bikes data
 async function getZwiftData() {
-    const wheels = await fetchData('wheels.json');
-    const frames = await fetchData('frames.json');
-    const bikes = await fetchData('bikes.json');
+    const wheels = await fetchData('https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/zwiftbikes/wheels.json');
+    const frames = await fetchData('https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/zwiftbikes/frames.json');
+    const bikes = await fetchData('https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/zwiftbikes/bikes.json');
     return { wheels, frames, bikes };
 }
 
@@ -22,6 +22,8 @@ async function calculateBestBike() {
     let bestBike = '';
     let bestBikeSpeed = 0;
     let bestBikeClimb = 0;
+    let bestBikeImageFrame = '';
+    let bestBikeImageWheel = '';
 
     for (const bike of bikes) {
         const frame = frames.find(f => f.frameid === bike.frameid);
@@ -36,12 +38,20 @@ async function calculateBestBike() {
                     bestBike = `Frame: ${frame.framemake} ${frame.framemodel} | Wheel: ${wheel.wheelmake} ${wheel.wheelmodel}`;
                     bestBikeSpeed = flatNumber;
                     bestBikeClimb = climbNumber;
+                    bestBikeImageFrame = frame.frameimg;
+                    bestBikeImageWheel = wheel.wheelimg;
                 }
             }
         }
     }
 
-    document.getElementById('bestBikeResult').innerText = `Best Bike: ${bestBike}`;
+    document.getElementById('bestBikeResult').innerHTML = `
+        Best Bike: ${bestBike}
+        <div>
+            <img src="${bestBikeImageFrame}" alt="Frame Image">
+            <img src="${bestBikeImageWheel}" alt="Wheel Image">
+        </div>
+    `;
 }
 
 // Fetch and display the best bike on button click
