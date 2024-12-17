@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	4.8
+@version      	5.0
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -27,6 +27,7 @@
 		/*Box model stuff*/
 		background-color: #161616 !important;
 	}
+
 	.\------packages-dashboard-ui-src-components-YourChallenges-ChallengeList-ChallengeList-module__challengeList--DgbGk
 		.\------packages-dashboard-ui-src-components-YourChallenges-ChallengeList-ChallengeList-module__challenge--jsQPr
 		.\------packages-dashboard-ui-src-components-YourChallenges-ChallengeList-ChallengeList-module__challengeTitle--Qigmq
@@ -35,6 +36,7 @@
 		/*Typography stuff*/
 		text-decoration: none;
 	}
+
 	.onboarding-flow-wrap,
 	body,
 	.lightbox-window header,
@@ -73,10 +75,12 @@
 		/*Box model stuff*/
 		background-color: #1c1c1c !important;
 	}
+
 	.leaderboard .filters .option {
 		/*Box model stuff*/
 		background: #1c1c1c;
 	}
+
 	.flow-premium > .content-footer,
 	.flow-container,
 	#deny-or-accept-buttons,
@@ -265,6 +269,7 @@
 		/*Box model stuff*/
 		background-color: #2c2c2c !important;
 	}
+
 	.feed-pagination.pagination {
 		/*Box model stuff*/
 		background-image: linear-gradient(
@@ -272,6 +277,7 @@
 			#0000
 		) !important;
 	}
+
 	.description-overflow:not(.expand-description)
 		.description-container::after {
 		/*Box model stuff*/
@@ -280,6 +286,7 @@
 			#1c1c1c
 		) !important;
 	}
+
 	.btn-accept-cookie-banner,
 	.table-sortable > thead button:hover,
 	.panel-footer,
@@ -556,10 +563,12 @@
 		/*Box model stuff*/
 		background-color: #3c3c3c !important;
 	}
+
 	[class*='-LoadingState-Placeholder-Placeholder-module__placeholder'] {
 		/*Box model stuff*/
 		background: #3c3c3c !important;
 	}
+
 	.btn-accept-cookie-banner:hover,
 	.upload-tags label:hover,
 	section header .button:not(.disabled):hover,
@@ -605,24 +614,28 @@
 		/*Box model stuff*/
 		background-color: #4c4c4c !important;
 	}
+
 	#strava-map-controls > #create-route:hover,
 	#toggle-fullscreen:hover {
 		/*Box model stuff*/
 		background-color: #b3b3b3 !important;
 	}
+
 	#toggle-fullscreen {
 		/*Box model stuff*/
 		background-color: #d3d3d3 !important;
 	}
+
 	#map-control-container #gpx-download {
 		/*Positioning stuff*/
 		position: relative;
 		/*Box model stuff*/
 		background-color: transparent;
 		/*Miscellaneous*/
-		/*! Make the parent the reference for the pseudo-element */
 		/*! Ensure background doesn't obscure ::before */
+		/*! Make the parent the reference for the pseudo-element */
 	}
+
 	#map-control-container #gpx-download::before {
 		/*Positioning stuff*/
 		position: absolute;
@@ -642,14 +655,15 @@
 		/*Display stuff*/
 		content: '';
 		/*Miscellaneous*/
-		/*! Center vertically */
 		/*! Align horizontally with the text */
+		/*! Center adjustment */
+		/*! Center vertically */
+		/*! Ensure visibility over the parent */
+		/*! Match the image size */
 		/*! Match the image size */
 		/*! Precise positioning */
-		/*! Center adjustment */
-		/*! Match the image size */
-		/*! Ensure visibility over the parent */
 	}
+
 	[class*='packages-feed-ui-src-Feed__feed-pagination'],
 	[class*='src-Feed-module__feedPaginatio'] {
 		/*Box model stuff*/
@@ -658,6 +672,7 @@
 			rgb(255 255 255 / 0%)
 		);
 	}
+
 	.pagination > .active > span,
 	.pagination > .active > span:hover,
 	.pagination > .active > span:focus,
@@ -666,10 +681,12 @@
 		/*Box model stuff*/
 		background-color: #fc5200 !important;
 	}
+
 	.leaderboard tr.highlighted > td {
 		/*Box model stuff*/
 		background-color: #962f03 !important;
 	}
+
 	.upload-tags label .hole::after,
 	.year-calendar .interval-graph .bar .fill,
 	#strava-map-controls > #create-route,
@@ -681,6 +698,7 @@
 		/*Box model stuff*/
 		background-color: #ccc !important;
 	}
+
 	[class*='FriendList-FriendList__scroll-shadow'],
 	.view-col.col-actions
 		> ul
@@ -695,6 +713,7 @@
 		/*Box model stuff*/
 		background: transparent !important;
 	}
+
 	.view-col.col-actions
 		> ul
 		> li:nth-child(n)
@@ -709,6 +728,7 @@
 		/*Box model stuff*/
 		padding: 3px;
 	}
+
 	.link-learn-more-cookie-banner,
 	.btn-accept-cookie-banner,
 	.feed-entry .entry-body .media-body,
@@ -787,7 +807,6 @@
 		[class*='AthleteProfileApp--section-'],
 	.drop-down-menu > ul,
 	.pinned .pinnable,
-	section.with-border,
 	.section.with-border,
 	[class*='KudosCommentsAndAchievementsModal--entry-'],
 	input:not([type='range'], :focus),
@@ -987,6 +1006,7 @@
 		/*Box model stuff*/
 		border-color: #4c4c4c !important;
 	}
+
 	.activity-tags label::before,
 	.activity-tags label::after,
 	.upload-tags label:hover::after,
@@ -997,6 +1017,7 @@
 		/*Box model stuff*/
 		border-right-color: #4c4c4c !important;
 	}
+
 	#global-footer
 		.footer-nav-menu
 		.footer-nav-submenu::after,
@@ -1024,6 +1045,7 @@
 		/*Box model stuff*/
 		border-top-color: #4c4c4c !important;
 	}
+
 	.drop-down-menu.drop-down-sm.enabled.active
 		> .selection::after,
 	#gpx-export .selection::after,
@@ -1052,6 +1074,7 @@
 		/*Box model stuff*/
 		border-top-color: #ccc !important;
 	}
+
 	[class*='Spinner_spinner']
 		> [class*='Spinner_graphic'],
 	.PopupContents--popup-button-list--OU7Sn
@@ -1059,6 +1082,7 @@
 		/*Box model stuff*/
 		border-color: #ccc #6c6c6c #6c6c6c !important;
 	}
+
 	h1,
 	#legal-body > section h2,
 	#legal-body > section h3,
@@ -1273,6 +1297,7 @@
 		/*Typography stuff*/
 		color: #fafafa !important;
 	}
+
 	body,
 	.content-body p,
 	.content-body h2,
@@ -1361,7 +1386,6 @@
 	#kudos .count,
 	.button,
 	.btn,
-	.button,
 	button,
 	input[type='submit'],
 	input[type='button'],
@@ -1515,6 +1539,7 @@
 		/*Typography stuff*/
 		color: #ccc !important;
 	}
+
 	.ui-dialog.sauce-dialog
 		.btn:not(
 			.btn-unstyled,
@@ -1522,8 +1547,12 @@
 			.btn-secondary
 		) {
 		/*Box model stuff*/
+		border: 1px solid #fff !important;
 		background-color: #962f03b0 !important;
+		/*Typography stuff*/
+		color: #fff !important;
 	}
+
 	.ui-dialog.sauce-dialog
 		.btn:not(
 			.btn-unstyled,
@@ -1535,6 +1564,7 @@
 		border: 1px solid #fff !important;
 		background-color: #999 !important;
 	}
+
 	.ui-dialog.sauce-dialog
 		input:not([type='range']),
 	.entry.block.history.ftp.history-view.mutable-data-view
@@ -1554,17 +1584,7 @@
 		/*Typography stuff*/
 		color: #fff !important;
 	}
-	.ui-dialog.sauce-dialog
-		.btn:not(
-			.btn-unstyled,
-			.btn-primary,
-			.btn-secondary
-		) {
-		/*Box model stuff*/
-		border: 1px solid #fff !important;
-		/*Typography stuff*/
-		color: #fff !important;
-	}
+
 	.------packages-feed-ui-src-shared-KudosCommentsAndAchievements-CommentReaction-CommentReaction-module__commentReactionContainer--nixAS
 		> button {
 		/*Box model stuff*/
@@ -1572,6 +1592,7 @@
 		border: unset;
 		padding: 6px 10px !important;
 	}
+
 	.------packages-feed-ui-src-components-media-EntryHeader-EntryHeader-module__entryHeader--m1apc
 		> div,
 	.------packages-feed-ui-src-components-media-EntryHeader-EntryHeader-module__entryHeader--m1apc
@@ -1591,6 +1612,7 @@
 		/*Typography stuff*/
 		color: #fff !important;
 	}
+
 	.------packages-feed-ui-src-components-media-EntryHeader-EntryHeader-module__entryHeader--m1apc
 		> div
 		> a:hover,
@@ -1606,6 +1628,7 @@
 		/*Typography stuff*/
 		color: #fc5200 !important;
 	}
+
 	table.unstyled td,
 	table.unstyled th,
 	.segment-effort-detail
@@ -1623,12 +1646,14 @@
 		/*Typography stuff*/
 		color: #000 !important;
 	}
+
 	.hr-zones-panel table tr.lt {
 		/*Box model stuff*/
 		background-color: #962f03b0 !important;
 		/*Typography stuff*/
 		color: #fff !important;
 	}
+
 	label,
 	#performance-goals .timestamp,
 	#performance-goals .label,
@@ -1654,6 +1679,7 @@
 		/*Typography stuff*/
 		color: #999 !important;
 	}
+
 	[class*='src-components-media-EntryBody-EntryBody__entry-inset']
 		> a:hover,
 	[class*='-ChallengeCard-styles__card-title']
@@ -1669,6 +1695,7 @@
 		/*Typography stuff*/
 		color: #4285f4 !important;
 	}
+
 	#strava-map-controls > #create-route,
 	.distribution-chart td,
 	.uploads li.type-tag a,
@@ -1679,17 +1706,7 @@
 		/*Typography stuff*/
 		color: #1a1a1a !important;
 	}
-	.ui-dialog.sauce-dialog
-		.btn:not(
-			.btn-unstyled,
-			.btn-primary,
-			.btn-secondary
-		) {
-		/*Box model stuff*/
-		background-color: rgb(
-			150 47 3 / 69%
-		) !important;
-	}
+
 	#global-header
 		.nav-item:hover
 		> a:not(.btn-default),
@@ -1716,6 +1733,7 @@
 		/*Typography stuff*/
 		color: #fc5200 !important;
 	}
+
 	[class*='Modal--close-button'] > svg,
 	[class*='ActivityEntryBody--icon-wrapper--'],
 	.chart-tooltip text,
@@ -1734,6 +1752,7 @@
 		/*Miscellaneous*/
 		fill: #fafafa !important;
 	}
+
 	#progress-goals .bg-circle,
 	.area-chart-curr-fill,
 	.base-chart .crossbar-text,
@@ -1747,7 +1766,6 @@
 	._1i2y2pE00YIFH7lflo5-0w:not(:hover),
 	#athlete-history-chart .axis-tick-text,
 	#basic-analysis text.static-label-box.detail,
-	#basic-analysis text.static-label-box.label,
 	#basic-analysis text.laps-label,
 	#basic-analysis text.segments-label,
 	#basic-analysis #effort-detail,
@@ -1764,6 +1782,7 @@
 		/*Miscellaneous*/
 		fill: #ccc !important;
 	}
+
 	.s-chart-tooltip-svg,
 	#infoBox rect,
 	.chart-tooltip,
@@ -1772,6 +1791,7 @@
 		/*Miscellaneous*/
 		fill: #1c1c1c !important;
 	}
+
 	#basic-analysis rect.static-info-box,
 	#basic-analysis .xaxis-container .background,
 	#basic-analysis rect.static-label-box,
@@ -1779,16 +1799,19 @@
 		/*Miscellaneous*/
 		fill: #2c2c2c !important;
 	}
+
 	#basic-analysis
 		#elevation-chart
 		rect.static-info-box {
 		/*Miscellaneous*/
 		fill: #3c3c3c !important;
 	}
+
 	.elevation-chart .fill {
 		/*Miscellaneous*/
 		fill: #6c6c6c6c !important;
 	}
+
 	#progress-goals .volume-bar-container,
 	#progress-goals .bg-circle,
 	#progress-goals .progress-bar-container,
@@ -1796,6 +1819,7 @@
 		/*Miscellaneous*/
 		fill: #6c6c6c !important;
 	}
+
 	#effort-lines > .vert-line,
 	.horiz-line,
 	.base-chart .grid-line,
@@ -1815,6 +1839,7 @@
 		/*Miscellaneous*/
 		stroke: #4c4c4c !important;
 	}
+
 	[class*='-ui-Carousel-Carousel-module__indicatorButton']:not(
 			:hover
 		)
@@ -1823,6 +1848,7 @@
 		/*Miscellaneous*/
 		stroke: #ccc !important;
 	}
+
 	.content > form.search[action],
 	footer.achievements.row,
 	.show-hide-segments,
@@ -1831,12 +1857,14 @@
 		/*Miscellaneous*/
 		box-shadow: inset 0 1px 0 0 #4c4c4c !important;
 	}
+
 	table.segments tr.selected > td,
 	table.hidden-segments tr.selected > td,
 	table.laps-list tr.selected > td {
 		/*Miscellaneous*/
 		box-shadow: inset 1px 0 1px 1px #d84e0b !important;
 	}
+
 	.icon-elliptical,
 	.icon-run,
 	.icon-run-v2,
@@ -1945,6 +1973,7 @@
 		/*Manipulations stuff*/
 		filter: invert(100%) !important;
 	}
+
 	.slide-menu .selection::after,
 	img[class*='SimplePromo--logo--'],
 	[class*='--activity-icon--'],
@@ -1953,20 +1982,24 @@
 		/*Manipulations stuff*/
 		filter: invert(75%) !important;
 	}
+
 	.sprite.wrench {
 		/*Manipulations stuff*/
 		filter: invert(25%) !important;
 	}
+
 	table.segments tr.selected div.name,
 	.button {
 		/*Typography stuff*/
 		font-weight: 300 !important;
 	}
+
 	.sauce-segment-score {
 		font-weight: 600 !important;
 		/*Typography stuff*/
 		font-size: 10px;
 	}
+
 	#sauce-infopanel
 		table
 		td
@@ -1980,6 +2013,7 @@
 		/*Typography stuff*/
 		font-size: 8px;
 	}
+
 	.btn-link:hover,
 	#search-results
 		> tbody
@@ -2065,6 +2099,7 @@
 		/*Typography stuff*/
 		color: #fc5200 !important;
 	}
+
 	.summaryGrid .summaryGridDataContainer,
 	.inline-stats strong,
 	.inline-stats b {
@@ -2072,6 +2107,7 @@
 		/*Typography stuff*/
 		font-weight: 700;
 	}
+
 	.summaryGrid .summarySubGridTitle,
 	.elevateExtendedData .gridUnits,
 	#sauce-performance,
@@ -2091,6 +2127,7 @@
 		/*Typography stuff*/
 		color: #3c66ac;
 	}
+
 	.summaryGrid .summaryGridTitle,
 	.ActivitySummary--impact--QUNSY,
 	#relative-effort
@@ -2103,6 +2140,7 @@
 		/*Typography stuff*/
 		color: #b8b8b8;
 	}
+
 	#heading
 		> div
 		> div.row.no-margins.activity-summary-container
@@ -2124,10 +2162,12 @@
 		/*Typography stuff*/
 		color: #b8b8b8 !important;
 	}
+
 	.elevateExtendedData .gridTitle {
 		/*Typography stuff*/
 		color: #962f03b0;
 	}
+
 	body
 		> div.fancybox-overlay.fancybox-overlay-fixed
 		> div
@@ -2157,6 +2197,7 @@
 		/*Manipulations stuff*/
 		filter: invert(1) hue-rotate(180deg);
 	}
+
 	body
 		> div.fancybox-overlay.fancybox-overlay-fixed
 		> div
@@ -2174,6 +2215,7 @@
 		/*Display stuff*/
 		display: none;
 	}
+
 	body
 		> div.fancybox-overlay.fancybox-overlay-fixed
 		> div
@@ -2185,6 +2227,7 @@
 		/*Box model stuff*/
 		background-color: #fc5200 !important;
 	}
+
 	body
 		> div.fancybox-overlay.fancybox-overlay-fixed
 		> div
@@ -2200,6 +2243,7 @@
 		/*Box model stuff*/
 		background-color: #962f03 !important;
 	}
+
 	.ride table.segments th,
 	.ride table.segments td,
 	.ride table.hidden-segments th,
@@ -2215,6 +2259,7 @@
 		/*Box model stuff*/
 		padding-right: 0;
 	}
+
 	.Activities--table--ysu9S tr:nth-child(2n) > td,
 	.src-components-BeesAdpTable-BeesAdpTable-module__adpTable--m7oGI
 		tr:nth-child(even),
@@ -2234,6 +2279,7 @@
 		/*Box model stuff*/
 		background-color: #2c2c2c;
 	}
+
 	#best-efforts-adp
 		> div
 		> div
@@ -2246,6 +2292,7 @@
 		/*Box model stuff*/
 		background-color: #962f03;
 	}
+
 	.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__stat--SvAS3.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__textRight--A4rwD
 		> div.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__statText--zlBKv
 		> button,
@@ -2263,6 +2310,7 @@
 		/*Box model stuff*/
 		background-color: #2c2c2c !important;
 	}
+
 	#sauce-performance
 		> nav
 		section
@@ -2276,6 +2324,7 @@
 		/*Box model stuff*/
 		background-color: #fff0 !important;
 	}
+
 	.recharts-area-area,
 	.sauce-panel > header {
 		/*Box model stuff*/
@@ -2283,6 +2332,7 @@
 		/*Miscellaneous*/
 		fill: #962f03b0 !important;
 	}
+
 	#sauce-performance
 		> nav
 		section
@@ -2291,6 +2341,7 @@
 		/*Manipulations stuff*/
 		opacity: 100%;
 	}
+
 	#sauce-kudo-all button:hover,
 	.btn-icon.sauce-invoke:hover,
 	.half > a:hover {
@@ -2299,6 +2350,7 @@
 		/*Typography stuff*/
 		color: #fff !important;
 	}
+
 	#view
 		> section
 		> div
@@ -2311,10 +2363,12 @@
 		/*Typography stuff*/
 		color: red !important;
 	}
+
 	.summarySubGridTitle {
 		/*Typography stuff*/
 		color: rgb(255 241 131 / 69%) !important;
 	}
+
 	#view
 		> section
 		> div
@@ -2325,24 +2379,53 @@
 		/*Box model stuff*/
 		background: #e3e3e3;
 	}
-	#athlete-profile
-		> div.row.no-margins
-		> div.spans5.offset1.sidebar
-		> div.section.stats.gear.bikes.hidden {
+
+	.gear.bikes.hidden {
+		border: medium dashed #fc5200;
+		border-top-color: #fc5200 !important;
 		border-radius: 25px;
 		/*Box model stuff*/
 		padding: 10px;
 	}
+
+	.gear.bikes.hidden > h3 {
+		color: #fc5200;
+		font-weight: 800;
+		/*Typography stuff*/
+		font-size: 26px;
+		text-align: center;
+		text-decoration: underline;
+	}
+
+	.sidebar .gear td:first-child {
+		/*Miscellaneous*/
+		white-space: normal;
+	}
+
+	.sidebar .gear td:last-child {
+		/*Typography stuff*/
+		color: #fc5200;
+	}
+
 	.btn-icon-right .app-icon-wrapper {
 		/*Box model stuff*/
 		margin: 0;
 	}
+
 	a.minimal:visited {
 		/*Typography stuff*/
 		color: #3c66ad;
 	}
+
 	a.minimal:visited:hover {
 		/*Typography stuff*/
 		color: #fc5200;
+	}
+
+	.------packages-feed-ui-src-components-ActivityEntryBody-ActivityEntryBody-module__appIconWrapper--DEx9Z
+		> svg
+		> path {
+		/*Typography stuff*/
+		color: #fff77a;
 	}
 }
