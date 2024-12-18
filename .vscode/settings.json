@@ -1,3 +1,4 @@
 {
-	"vs-code-prettier-eslint.prettierLast": false
+	"vs-code-prettier-eslint.prettierLast": false,
+	"codeQL.createQuery.qlPackLocation": "c:\\Users\\Nick\\Dropbox\\PC (2)\\Documents\\GitHub\\UserStyles\\.github"
 }
