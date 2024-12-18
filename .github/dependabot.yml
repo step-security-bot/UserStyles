@@ -17,8 +17,24 @@ updates:
     directory: /
     schedule:
       interval: daily
+    allow:
+      # Allow both direct and indirect updates for all packages
+      - dependency-type: 'all'
+    groups:
+      bundler:
+        applies-to: version-updates
+        patterns:
+          - '*'
 
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: daily
+    allow:
+      # Allow both direct and indirect updates for all packages
+      - dependency-type: 'all'
+    groups:
+      npm:
+        applies-to: version-updates
+        patterns:
+          - '*'
