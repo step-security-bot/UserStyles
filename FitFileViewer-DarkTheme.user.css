@@ -1,0 +1,43 @@
+/* ==UserStyle==
+@name           fitfileviewer.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark theme for FitFileViewer.com
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("fitfileviewer.com") {
+	.px-4,
+	.tracking-tight,
+	.whitespace-pre-wrap {
+		color: #000;
+	}
+
+	.text-red-500 {
+		color: #008b84;
+	}
+
+	.border-slate-700 {
+		--tw-border-opacity: 1;
+		border-color: #008b84;
+	}
+
+	#y1 > option,
+	#y2 > option {
+		background: #454545;
+		color: #fff;
+	}
+
+	/* Invert colors except images and videos */
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		.w-11\/12
+	) {
+		/*Manipulations stuff*/
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+}
