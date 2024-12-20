@@ -1,0 +1,101 @@
+/* ==UserStyle==
+@name           OldSchool Runescape HiScores - Black Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Minimal Black mode for OSRS HIScores
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document url-prefix("https://secure.runescape.com/m=hiscore")
+{
+	#contentHiscores,
+	#footerHiscores,
+	#headerHiscores,
+	#contentCategory,
+	#headerCategory,
+	.personal-hiscores__scroll-arrow,
+	#footerCategory,
+	.smallBox,
+	.largeBox,
+	html,
+	.centerDiv {
+		background: #000;
+	}
+
+	#contentHiscores a,
+	.personal-hiscores__table td,
+	#contentHiscores caption,
+	#contentHiscores
+		> table
+		> thead
+		> tr
+		> th:nth-child(n),
+	b,
+	th,
+	td {
+		color: #c7b675;
+	}
+
+	#col2,
+	.smallBox,
+	.largeBox,
+	#contentCategory {
+		border: dashed #65ae1f;
+	}
+
+	.personal-hiscores__side-input,
+	#col1 {
+		margin-top: 25px;
+	}
+
+	#contentCategory {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		max-height: 600px;
+	}
+
+	#headerCategory,
+	.hiscoretitlebground,
+	.titleBackground,
+	#headerHiscores {
+		display: none;
+	}
+
+	input:not(
+			[type='image'i],
+			[type='range'i],
+			[type='checkbox'i],
+			[type='radio'i]
+		) {
+		filter: invert(1);
+	}
+
+	td,
+	b,
+	th {
+		text-align: -webkit-center !important;
+	}
+
+	#contentHiscores > table > tbody > tr > td {
+		border-top: 1px #65ae1f3d dashed;
+	}
+
+	#contentHiscores
+		> table
+		> tbody
+		> tr:nth-child(3)
+		> td:nth-child(n),
+	#contentHiscores
+		> table
+		> tbody
+		> tr:nth-child(2)
+		> td:nth-child(n),
+	#contentHiscores
+		> table
+		> tbody
+		> tr:nth-child(1)
+		> td:nth-child(n) {
+		border-top: unset !important;
+	}
+}
