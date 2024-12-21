@@ -1,0 +1,486 @@
+/* ==UserStyle==
+@name           SteamDB - Black Mode
+@namespace      https://github.com/Nick2bad4u/UserStyles
+@version        1.3
+@description    Dark mode for SteamDB
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("steamdb.info") {
+	/* Dark Mode for SteamDB Free Packages */
+	body,
+	.container,
+	#js-hover {
+		/*Box model stuff*/
+		background-color: #000 !important;
+		/*Typography stuff*/
+		color: #e0e0e0 !important;
+	}
+
+	.container-hello.container,
+	#main
+		> div.container.container-products
+		> div:nth-child(1)
+		> div:nth-child(n),
+	#main
+		> div.container.container-products
+		> div:nth-child(2)
+		> div:nth-child(n),
+	#events,
+	#news-popups,
+	#main > div:nth-child(8),
+	.container-stats,
+	#freepackages {
+		border-width: 3px;
+		border-style: dashed;
+		border-color: #bb86fc;
+		border-radius: 20px;
+	}
+
+	.muted,
+	.muted > a {
+		margin-bottom: 0;
+		border: 1px solid hsl(204deg 100% 21%);
+		border-radius: 6px;
+		padding: 8px;
+	}
+
+	#main > div.container.container-products {
+		border-radius: 20px !important;
+	}
+
+	#main > div > div.header-wrapper > div,
+	#main > div > div.container {
+		border-radius: 10px;
+	}
+
+	.navbar,
+	.footer,
+	.navbar-inverse {
+		background-color: #000 !important;
+		color: #e0e0e0 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	.table,
+	.dropdown-menu,
+	.modal-content,
+	.card,
+	.panel {
+		background-color: #000 !important;
+		color: #e0e0e0 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	.table th,
+	.table td,
+	.dropdown-item,
+	.modal-header,
+	.modal-body,
+	.modal-footer,
+	.card-header,
+	.card-body,
+	.panel-heading,
+	.panel-body {
+		border-color: #333 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	a,
+	span > ins,
+	#main
+		> div
+		> div.header-wrapper
+		> div
+		> div.row.app-row
+		> div.span8
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(1)
+		> span
+		> svg,
+	.octicon-steamdeck_playable > path,
+	.row-app-charts
+		> div:nth-child(n)
+		> ul
+		> li:nth-child(odd),
+	#chart-month-table > thead > tr > th,
+	#chart-month-table
+		> tbody
+		> tr:nth-child(even)
+		> td:nth-child(n),
+	#js-header-hamburger {
+		color: #bb86fc !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	#charts
+		> div.row.row-app-charts
+		> div:nth-child(n)
+		> ul
+		> li:nth-child(even) {
+		color: #eb92e5 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	a:hover,
+	span > ins:hover,
+	.span8
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(1)
+		> span
+		> svg:hover,
+	.octicon-steamdeck_playable > path:hover,
+	.row-app-charts
+		> div:nth-child(n)
+		> ul
+		> li:nth-child(odd):hover,
+	.row-app-charts
+		> div:nth-child(n)
+		> ul
+		> li:nth-child(even):hover,
+	.row-app-charts
+		> div:nth-child(n)
+		> ul
+		> li:nth-child(odd),
+	#chart-month-table > thead > tr > th:hover {
+		color: #8251f2 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	.text-center.tabular-nums.green,
+	.text-center.green,
+	.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(n) {
+		color: #08c9b9 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	.text-center.tabular-nums.green:hover,
+	.text-center.green:hover,
+	.text-center.green,
+	.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(n):hover,
+	.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(even)
+		> td:nth-child(n):hover {
+		color: #f29fee !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(even)
+		> td:nth-child(n) {
+		color: #58a5dc !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	h2,
+	.navigation-heading,
+	.container-products
+		> div:nth-child(n)
+		> div:nth-child(n)
+		> table
+		> thead
+		> tr
+		> .text-center {
+		color: #5ed443 !important;
+		text-decoration: underline;
+		text-decoration-style: solid;
+		text-decoration-color: #3bd8264a;
+		text-shadow: 1px 1px #000;
+	}
+
+	h2:hover,
+	li.navigation-heading:hover,
+	#main
+		> div.container.container-products
+		> div:nth-child(n)
+		> div:nth-child(n)
+		> table
+		> thead
+		> tr
+		> .text-center:hover,
+	#chart-month-table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(n):hover {
+		color: #8251f2 !important;
+		text-decoration: underline;
+		text-decoration-style: solid;
+		text-decoration-color: #ffffff4a;
+		text-shadow: 1px 1px #000;
+	}
+
+	span.app-history-action > del {
+		color: #830751;
+		text-decoration: underline;
+		text-decoration-style: dotted;
+		text-decoration-color: red;
+		text-shadow: 1px 1px #000;
+	}
+
+	span.app-history-action > del:hover {
+		color: #f00;
+		text-decoration: underline;
+		text-decoration-style: dotted;
+		text-decoration-color: #9dff00;
+		text-shadow: 1px 1px #000;
+	}
+
+	.app-chart > svg > path {
+		filter: invert(1) hue-rotate(0);
+	}
+
+	#main
+		> div.container.container-products
+		> div:nth-child(1)
+		> div:nth-child(n)
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(n) {
+		color: #e37575;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div.container.container-products
+		> div:nth-child(1)
+		> div:nth-child(n)
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(n):hover {
+		color: #f00;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div.container.container-products
+		> div:nth-child(2)
+		> div:nth-child(2)
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(n) {
+		color: #e8ca84;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div.container.container-products
+		> div:nth-child(2)
+		> div:nth-child(2)
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(n):hover {
+		color: #7491f2;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div
+		> div.header-wrapper
+		> div
+		> div.row.app-row
+		> div.span8
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(1),
+	#charts
+		> div.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(1) {
+		background: #000;
+		text-align: right;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div
+		> div.header-wrapper
+		> div
+		> div.row.app-row
+		> div.span8
+		> table
+		> tbody
+		> tr:nth-child(even)
+		> td:nth-child(1),
+	#charts
+		> div.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(even)
+		> td:nth-child(1) {
+		text-align: right;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div
+		> div.header-wrapper
+		> div
+		> div.row.app-row
+		> div.span8
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(2),
+	#charts
+		> div.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(2),
+	#charts
+		> div.table-responsive
+		> table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(3) {
+		background: #000;
+		text-align: left;
+		text-shadow: 1px 1px #000;
+	}
+
+	#chart-month-table
+		> tbody
+		> tr:nth-child(odd)
+		> td:nth-child(n) {
+		background: #000;
+		color: #ffa2ec;
+		text-shadow: 1px 1px #000;
+	}
+
+	#main
+		> div
+		> div.header-wrapper
+		> div
+		> div.row.app-row
+		> div.span8
+		> table
+		> tbody
+		> tr:nth-child(even)
+		> td:nth-child(12) {
+		text-align: left;
+		text-shadow: 1px 1px #000;
+	}
+
+	.octicon-windows > path {
+		color: #5bc6fb;
+		text-shadow: 1px 1px #000;
+	}
+
+	.octicon-linux > path {
+		color: #00ffae;
+		text-shadow: 1px 1px #000;
+	}
+
+	.octicon-steamdeck > path {
+		color: #b5721b;
+		text-shadow: 1px 1px #000;
+	}
+
+	button,
+	.btn,
+	.btn-primary,
+	.btn-secondary,
+	.btn-success,
+	.btn-danger,
+	.btn-warning,
+	.btn-info,
+	.btn-light,
+	.btn-dark,
+	#js-hover > div > div.hover_buttons > *,
+	#js-hover
+		> div
+		> div.hover_body.hover_tag_row
+		> * {
+		border-color: #444 !important;
+		background-color: #000 !important;
+		color: #e0e0e0 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	button:hover,
+	.btn:hover,
+	.btn-primary:hover,
+	.btn-secondary:hover,
+	.btn-success:hover,
+	.btn-danger:hover,
+	.btn-warning:hover,
+	.btn-info:hover,
+	.btn-light:hover,
+	.btn-dark:hover,
+	#js-hover > div > div.hover_buttons > *:hover,
+	#js-hover
+		> div
+		> div.hover_body.hover_tag_row
+		> *:hover {
+		border-color: #555 !important;
+		background-color: #000 !important;
+		color: #ffffff !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	input,
+	textarea,
+	select {
+		border-color: #333 !important;
+		background-color: #000 !important;
+		color: #e0e0e0 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	input::placeholder,
+	textarea::placeholder {
+		color: #888 !important;
+		text-shadow: 1px 1px #000;
+	}
+
+	::-webkit-scrollbar {
+		width: 12px !important;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #bb86fc !important;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border: 3px solid #121212 !important;
+		border-radius: 10px !important;
+		background-color: #000 !important;
+	}
+
+	* {
+		scrollbar-color: #bb86fc #000 !important;
+		scrollbar-width: thin !important;
+	}
+
+	body,
+	.container-products *,
+	#loading,
+	#freepackages {
+		background: #000 !important;
+		background-color: #000 !important;
+	}
+}
