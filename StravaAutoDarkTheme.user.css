@@ -1608,8 +1608,7 @@
 		> div.------packages-feed-ui-src-components-media-MediaBody-MediaBody__mediaBody--VKChn
 		> button,
 	.src-components-BeesAdpTable-BeesAdpTable-module__adpTable--m7oGI
-		th,
-	.FeatureEdInfoIcon--content--lQmOl {
+		th {
 		/*Typography stuff*/
 		color: #fff !important;
 	}
@@ -2189,14 +2188,16 @@
 	table.unstyled th,
 	body
 		> div.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.sauce-dialog.sauce-sync-athlete-dialog.ui-dialog-buttons.ui-draggable.ui-resizable,
-	#heading
-		> div
-		> div.row.no-margins.activity-summary-container
-		> div.spans8.activity-stats.mt-md.mb-md
-		> div.section.more-stats
-		> table {
+	.more-stats > table {
 		/*Manipulations stuff*/
 		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.show-more-js,
+	.show-more-js.hidden {
+		position: inherit;
+
+		z-index: 999;
 	}
 
 	body
