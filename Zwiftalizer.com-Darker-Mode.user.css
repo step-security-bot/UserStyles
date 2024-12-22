@@ -26,6 +26,7 @@
 	.form-group .form-control,
 	.input-group .form-control,
 	.container {
+		/*Manipulations stuff*/
 		filter: invert(1);
 	}
 
@@ -40,12 +41,15 @@
 	}
 
 	.tooltip-inner {
+		/*Box model stuff*/
 		border: 1px solid var(--dark);
 		background: var(--darker) !important;
+		/*Typography stuff*/
 		color: #fff;
 	}
 
 	.tooltip.show {
+		/*Manipulations stuff*/
 		opacity: 100%;
 	}
 
@@ -63,12 +67,14 @@
 		> div
 		> ul
 		> li:nth-child(8) {
+		/*Display stuff*/
 		display: none;
 	}
 
 	.fixed-plugin,
 	.off-canvas-sidebar .sidebar-wrapper,
 	.sidebar .sidebar-wrapper {
+		/*Box model stuff*/
 		background: var(--blue);
 	}
 
@@ -101,8 +107,10 @@
 	}
 
 	table th {
+		/*Box model stuff*/
 		background-color: var(--blue);
 		color: var(--white);
+		/*Typography stuff*/
 		font-weight: 700;
 	}
 
