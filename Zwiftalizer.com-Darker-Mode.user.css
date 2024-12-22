@@ -1,0 +1,215 @@
+/* ==UserStyle==
+@name           zwiftalizer.com - Darker Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Darker mode for Zwiftalizer - Set theme on site to dark
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("zwiftalizer.com")
+{
+	/* Invert colors except images and videos */
+	html,
+	.content,
+	.main-panel
+	{
+		background: var(--darker);
+	}
+
+	.bootstrap-select.show .dropdown-menu:not(.inner),
+	.dropdown-menu.bootstrap-datetimepicker-widget.bottom.open,
+	.dropdown-menu.bootstrap-datetimepicker-widget.top.open,
+	.dropdown.show .dropdown-menu,
+	.dropup.show:not(.bootstrap-select) .dropdown-menu,
+	.navbar .dropdown.show .dropdown-menu,
+	.form-group .form-control,
+	.input-group .form-control,
+	.container
+	{
+		filter: invert(1);
+	}
+
+	.card .card-body,
+	.card
+	{
+		background: var(--darker);
+	}
+
+	.user-activity-heading,
+	h5.user-activity-heading-right
+	{
+		text-align: center;
+	}
+
+	.tooltip-inner
+	{
+		background: var(--darker) !important;
+		color: #FFF;
+		border: 1px solid var(--dark);
+	}
+
+	.tooltip.show
+	{
+		opacity: 1;
+	}
+
+
+	.main-panel > div > div:nth-child(1),
+	.main-panel > div > div:nth-child(2),
+	#root > div.wrapper > div.main-panel > div > div:nth-child(3) > div:nth-child(3),
+	#root > div.wrapper > div.sidebar > div > ul > li:nth-child(8)
+	{
+		display: none;
+	}
+
+	.fixed-plugin,
+	.off-canvas-sidebar .sidebar-wrapper,
+	.sidebar .sidebar-wrapper
+	{
+		background: var(--blue);
+	}
+
+	.dropbox .heading
+	{
+		color: var(--blue);
+	}
+
+	.fixed-plugin
+	{
+		opacity: 20%;
+	}
+
+	.fixed-plugin:hover
+	{
+		opacity: 100%;
+	}
+
+	/* Additional Table Styles */
+	table
+	{
+		width: 100%;
+		border-collapse: collapse;
+		background-color: var(--lighter);
+		margin: 20px 0;
+		font-family: var(--font-family-sans-serif);
+	}
+
+	table th,
+	table td
+	{
+		padding: 10px 15px;
+		border: 1px solid var(--gray);
+		text-align: left;
+	}
+
+	table th
+	{
+		background-color: var(--blue);
+		color: var(--white);
+		font-weight: 700;
+	}
+
+	table tr:nth-child(even)
+	{
+		background-color: var(--darker);
+	}
+
+	table tr:hover
+	{
+		background-color: var(--blue);
+		color: var(--white);
+	}
+
+	a:hover
+	{
+		color: var(--pink) !important;
+	}
+
+	/* Responsive Design */
+	@media (max-width: var(--breakpoint-sm))
+	{
+		table
+		{
+			display: block;
+			overflow-x: auto;
+			white-space: nowrap;
+		}
+
+		table thead,
+		table tbody,
+		table th,
+		table td,
+		table tr
+		{
+			display: block;
+		}
+
+		table th
+		{
+			text-align: left;
+		}
+
+		table th::before
+		{
+			content: attr(data-label);
+			float: left;
+			font-weight: bold;
+		}
+
+		table td
+		{
+			text-align: right;
+		}
+
+		table td::before
+		{
+			content: attr(data-label);
+			float: left;
+			font-weight: bold;
+		}
+	}
+
+	#root > div.wrapper > div.main-panel > footer
+	{
+		display: none;
+	}
+
+	:root
+	{
+		--blue: #08354F;
+		--indigo: #5603ad;
+		--purple: #8965e0;
+		--pink: #f3a4b5;
+		--red: #f5365c;
+		--orange: #fc6719;
+		--yellow: #ffd12c;
+		--green: #2dce89;
+		--teal: #11cdef;
+		--cyan: #2bffc6;
+		--gray: #6c757d;
+		--gray-dark: #4a4a63;
+		--light: #ced4da;
+		--lighter: #e9ecef;
+		--primary: #f96332;
+		--secondary: #f4f5f7;
+		--success: #5cb85c;
+		--info: #178acc;
+		--warning: #f0ad4e;
+		--danger: #fd5d93;
+		--light: #adb5bd;
+		--dark: #212529;
+		--dark2: #0D0D0D;
+		--default: #4f4f4f;
+		--white: #fff;
+		--neutral: #fff;
+		--darker: #000;
+		--breakpoint-xs: 0;
+		--breakpoint-sm: 576px;
+		--breakpoint-md: 768px;
+		--breakpoint-lg: 992px;
+		--breakpoint-xl: 1200px;
+		--font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	}
+}
