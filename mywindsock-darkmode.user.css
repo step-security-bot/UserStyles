@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           mywindsock.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark mode for MyWindSock
 @author         Nick2bad4u
 @license        UnLicense
@@ -15,14 +15,24 @@
 		svg,
 		video,
 		#app_btns,
-		.hide_show
+		.hide_show,
+		#splash-overlay,
+		#splash,
+		#chartarea
 	) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 	#options-underlay,
 	#login-underlay,
 	#notice-underlay,
-	.underlay {
-		opacity: 50%;
+	.underlay,
+	#chartarea_premium {
+		opacity: 0%;
+	}
+	#premium-chart-cta,
+	#chartarea_premium,
+	#popup-modal,
+	#popup_modal_underlay {
+		display: none !important;
 	}
 }
