@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           zwiftalizer.com - Darker Mode
 @namespace      typpi.online
-@version        1.0.3
+@version        1.0.4
 @description    Darker mode for Zwiftalizer - Set theme on site to dark
 @author         Nick2bad4u
 @license        UnLicense
@@ -36,8 +36,30 @@
 	}
 
 	.user-activity-heading,
-	h5.user-activity-heading-right {
-		text-align: center;
+	.user-activity-heading-right,
+	.table > tbody > tr > td,
+	.table > tbody > tr > th,
+	.table > tfoot > tr > td,
+	.table > tfoot > tr > th,
+	.table > thead > tr > td,
+	.table > thead > tr > th {
+		text-align: center !important;
+	}
+
+	.user-activity a:visited,
+	.user-activity-heading a:visited,
+	.user-activity-heading-right a:visited,
+	.user-activity-right a:visited,
+	.form-check .form-check-label {
+		color: var(--green) !important;
+	}
+
+	.table.details > tbody > tr > td,
+	.session:not(.session.good),
+	.fa,
+	.far,
+	.fas {
+		color: var(--purple) !important;
 	}
 
 	.tooltip-inner {
