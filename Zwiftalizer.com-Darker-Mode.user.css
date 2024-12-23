@@ -11,7 +11,8 @@
 	/* Invert colors except images and videos */
 	html,
 	.content,
-	.main-panel {
+	.main-panel,
+	.modal-content {
 		background: var(--darker);
 	}
 
@@ -25,7 +26,8 @@
 	.navbar .dropdown.show .dropdown-menu,
 	.form-group .form-control,
 	.input-group .form-control,
-	.container {
+	.container,
+	.alert-dismissible.animated {
 		/*Manipulations stuff*/
 		filter: invert(1);
 	}
@@ -56,7 +58,6 @@
 
 	.table.details > tbody > tr > td,
 	.session:not(.session.good),
-	.fa,
 	.far,
 	.fas {
 		color: var(--purple) !important;
