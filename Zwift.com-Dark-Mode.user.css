@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.1
+@version      2.2
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -53,7 +53,8 @@
 				> div
 				> a
 				> div
-				> img
+				> img,
+			.border__radius__responsive--small > img
 		) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
@@ -63,7 +64,8 @@
 		> svg
 		> :not(rect:nth-child(999)),
 	.game-web .text-shadow,
-	.game-web .button {
+	.game-web .button,
+	.truste-consent-content-wrapper {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
