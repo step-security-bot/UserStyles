@@ -1,37 +1,46 @@
 /* ==UserStyle==
-@name           power-meter.cc
+@name           power-meter.cc - Dark Mode
 @namespace      typpi.online
-@version        1.0.0
-@description    Description
+@version        1.1.0
+@description    Dark theme for Power-Meter.cc
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("power-meter.cc")
-{
+@-moz-document domain("power-meter.cc") {
 	/* Invert colors except images and videos */
-	:is( html:not([stylus-iframe]),
-	img:not(#profileDropdown img, #unreadDropdown img),
-	svg,
-	video, .navbar, .navbar-nav .dropdown-menu, #footer, .dropdown-menu, .carousel, #header h1, .lead, #faq)
-	{
+	:is(
+		html:not([stylus-iframe]),
+		img:not(
+				#profileDropdown img,
+				#unreadDropdown img
+			),
+		svg,
+		video,
+		.navbar,
+		.navbar-nav .dropdown-menu,
+		#footer,
+		.dropdown-menu,
+		.carousel,
+		#header h1,
+		.lead,
+		#faq
+	) {
+		-webkit-filter: invert(1) hue-rotate(180deg) !important;
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
-	.dropdown-item:hover
-	{
-		background: #C3C3C3;
+	.dropdown-item:hover {
+		background: #c3c3c3;
 	}
 
-	#strava-footer
-	{
+	#strava-footer {
 		background: #000 !important;
 	}
 
 	#header h1,
 	.lead,
-	#faq
-	{
+	#faq {
 		color: white !important;
 		text-shadow: 2px 1px #000;
 	}
