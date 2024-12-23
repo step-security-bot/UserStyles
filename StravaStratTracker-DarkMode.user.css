@@ -1,49 +1,62 @@
 /* ==UserStyle==
 @name           stattracker.x10host.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.0
+@version        1.1.0
 @description    Dark Theme for Strava Stat Tracker
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("stattracker.x10host.com")
-{
+@-moz-document domain("stattracker.x10host.com") {
 	/* Invert colors except images and videos */
-	:is( html:not([stylus-iframe]),
-	img,
-	svg:not(.leaflet-container .leaflet-overlay-pane svg, .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile),
-	video),
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg:not(
+				.leaflet-container
+					.leaflet-overlay-pane
+					svg,
+				.leaflet-container
+					.leaflet-marker-pane
+					img,
+				.leaflet-container
+					.leaflet-shadow-pane
+					img,
+				.leaflet-container .leaflet-tile-pane img,
+				.leaflet-container
+					img.leaflet-image-layer,
+				.leaflet-container .leaflet-tile
+			),
+		video
+	),
 	.filter-section-select td,
 	.check-options-table td,
 	.column-Quick-filters,
-	.dataTable td, .dataTable th,
+	.dataTable td,
+	.dataTable th,
 	.quick-filters,
 	#scatterGraphGrid td,
 	#progressGraphAxis td,
-	#progressGraphAxis td:nth-child(1)
-	{
+	#progressGraphAxis td:nth-child(1) {
 		background: black;
 		color: white;
 	}
 
-	.dashboardTable tr:nth-child(odd)
-	{
+	.dashboardTable tr:nth-child(odd) {
 		background: #262626;
 	}
 
-	.dashboardTable th
-	{
+	.dashboardTable th {
 		background: #003000;
 	}
 
-	body > header > div > div:nth-child(2) > img
-	{
+	body > header > div > div:nth-child(2) > img {
 		filter: invert(1) hue-rotate(180deg);
 		background: unset !important;
 	}
-	.progressSummaryTable tr:nth-child(odd), .logBook-dataDiv
-	{
+
+	.progressSummaryTable tr:nth-child(odd),
+	.logBook-dataDiv {
 		background: unset !important;
 	}
 
@@ -51,8 +64,7 @@
 	.leaflet-container.leaflet-touch-drag,
 	.leaflet-container,
 	#heatmap,
-	#mapHead
-	{
-		background: #FFF0 !important;
+	#mapHead {
+		background: #fff0 !important;
 	}
 }
