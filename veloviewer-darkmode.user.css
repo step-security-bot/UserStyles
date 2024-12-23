@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           veloviewer.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.1.0
 @description    Dark theme for VeloViewer
 @author         Nick2bad4u
 @license        UnLicense
@@ -59,11 +59,169 @@
 			tr:first-child
 			td,
 		header#masthead
-	) {
-		filter: invert(1) hue-rotate(180deg) !important;
+	),
+	.tab-content,
+	#dataContainer,
+	.accordion-group#mapChartContainer2,
+	#filterAcc,
+	#chartsTab > div > div.span10,
+	select,
+	.tableWrapper.st,
+	textarea:focus,
+	input[type='text']:focus,
+	input[type='password']:focus,
+	input[type='datetime']:focus,
+	input[type='datetime-local']:focus,
+	input[type='date']:focus,
+	input[type='month']:focus,
+	input[type='time']:focus,
+	input[type='week']:focus,
+	input[type='number']:focus,
+	input[type='email']:focus,
+	input[type='url']:focus,
+	input[type='search']:focus,
+	input[type='tel']:focus,
+	input[type='color']:focus,
+	.uneditable-input:focus,
+	.row-fluid [class*='span']:first-child,
+	#addSplitValue,
+	#summaryTab > div:nth-child(n),
+	.day,
+	#mainContent > div:nth-child(n),
+	#mainContent
+		> div:nth-child(n)
+		> div
+		> div
+		> div
+		> table,
+	#gearSummary > div > div,
+	#charts,
+	#mainContent
+		> div.row-fluid.awards
+		> div:nth-child(1)
+		> div,
+	#wheel,
+	#graphic
+		> div:nth-child(2)
+		> div:nth-child(2)
+		> div:nth-child(2),
+	#optionsAcc,
+	.form-search input,
+	.form-inline input,
+	.form-horizontal input,
+	.form-search textarea,
+	.form-inline textarea,
+	.form-horizontal textarea,
+	.form-search select,
+	.form-inline select,
+	.form-horizontal select,
+	.form-search .help-inline,
+	.form-inline .help-inline,
+	.form-horizontal .help-inline,
+	.form-search .uneditable-input,
+	.form-inline .uneditable-input,
+	.form-horizontal .uneditable-input,
+	.form-search .input-prepend,
+	.form-inline .input-prepend,
+	.form-horizontal .input-prepend,
+	.form-search .input-append,
+	.form-inline .input-append,
+	.form-horizontal .input-append,
+	#imageUrl,
+	#linkPageText,
+	#htmlCode,
+	#bbCode,
+	.leaflet-map-pane,
+	#mapContainer2,
+	#activitiesTab
+		> div
+		> div:nth-child(1)
+		> table
+		> thead,
+	#activitiesTab
+		> div
+		> div:nth-child(1)
+		> table
+		> tbody,
+	.table-bordered {
+		filter: invert(1) hue-rotate(180deg);
 	}
 
-	.nav > li > a > img {
+	.nav-tabs .active a,
+	.nav-tabs .active a:hover {
+		color: #0099c6 !important;
+	}
+
+	.nvd3 .nv-axis .nv-axisMaxMin text {
+		fill: #ff8bc1 !important;
+	}
+
+	.nav > li > a > img,
+	#addFilterSelect,
+	#configSelect,
+	.chartSelect,
+	#typeFlipper,
+	#datum,
+	#calDisplayValue,
+	#actSummaryYBG,
+	#timeDisplayValue,
+	#segStats,
+	#scores,
+	#tableContainer,
+	#monthYear select,
+	#rowCount,
+	#splitsTab
+		> div.tableWrapper.st
+		> div.st-body.splitsDiv
+		> table,
+	#splitsTab
+		> div.tableWrapper.st
+		> div.st-head
+		> table {
 		filter: unset !important;
+	}
+
+	#mainContent > div.tab-content,
+	.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom,
+	.tab-content > .active,
+	.pill-content > .active,
+	body > div.container-fluid > div.tab-content,
+	#completedChallenges > div:nth-child(n),
+	#partChallenges > div:nth-child(n),
+	#otherChallenges > div:nth-child(n) {
+		background: black !important;
+	}
+
+	html,
+	#tableContainer,
+	.table td {
+		background: #fff;
+	}
+
+	.axis text {
+		fill: #ff8bc1;
+	}
+
+	.activityDetails circle {
+		fill: rgb(0 0 0);
+		stroke: #ffffff;
+		stroke-opacity: 20%;
+		stroke-width: 0.75;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	#list > p:nth-child(n),
+	.form-horizontal .control-label {
+		margin: 10px 0;
+		color: #ff8bc1;
+		font-weight: 600;
+		line-height: 16px;
+		font-family: inherit;
+		text-rendering: optimizelegibility;
 	}
 }
