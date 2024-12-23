@@ -1,0 +1,38 @@
+/* ==UserStyle==
+@name           power-meter.cc
+@namespace      typpi.online
+@version        1.0.0
+@description    Description
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("power-meter.cc")
+{
+	/* Invert colors except images and videos */
+	:is( html:not([stylus-iframe]),
+	img:not(#profileDropdown img, #unreadDropdown img),
+	svg,
+	video, .navbar, .navbar-nav .dropdown-menu, #footer, .dropdown-menu, .carousel, #header h1, .lead, #faq)
+	{
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.dropdown-item:hover
+	{
+		background: #C3C3C3;
+	}
+
+	#strava-footer
+	{
+		background: #000 !important;
+	}
+
+	#header h1,
+	.lead,
+	#faq
+	{
+		color: white !important;
+		text-shadow: 2px 1px #000;
+	}
+}
