@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      2.2
+@version      2.3
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -31,8 +31,8 @@
 	.main-block-stage,
 	.side-block-items,
 	.sidebar-block {
-		background-color: #121212 !important;
 		color: #e0e0e0 !important;
+		background-color: #121212 !important;
 	}
 
 	#popover > h3,
@@ -43,8 +43,8 @@
 	img,
 	input,
 	span {
-		background-color: #121212 !important;
 		color: #bb86fc !important;
+		background-color: #121212 !important;
 	}
 
 	#global-dropdown-menu
@@ -305,7 +305,7 @@
 		> a
 		> span.toplevel-item-kamon
 		> svg {
-		fill: Black;
+		fill: black;
 	}
 
 	#react-root
@@ -337,17 +337,17 @@
 
 	.images-show
 		.bottom.interactive-popover
-		> .arrow:after,
-	.popover.bottom > .arrow:after {
+		> .arrow::after,
+	.popover.bottom > .arrow::after {
 		border-bottom-color: #bb86fc;
 	}
 
 	.explorer-action-btn.dropdown-toggle::after {
 		display: inline-block;
-		margin-right: -8px;
-		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Y2FyZXQtZG93bjwvdGl0bGU+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTEuNzc3Mzk1MywxNC43MzAzOTUzIEMxMS41MjMzOTUzLDE0LjczMDM5NTMgMTEuMjY5Mzk1MywxNC42MzQzOTUzIDExLjA3NDM5NTMsMTQuNDQxMzk1MyBMNy4yOTczOTUyOSwxMC43MTEzOTUzIEM2LjkwNDM5NTI5LDEwLjMyMzM5NTMgNi45MDAzOTUyOSw5LjY5MDM5NTI5IDcuMjg4Mzk1MjksOS4yOTczOTUyOSBDNy42NzYzOTUyOSw4LjkwNDM5NTI5IDguMzEwMzk1MjksOC45MDAzOTUyOSA4LjcwMjM5NTI5LDkuMjg4Mzk1MjkgTDExLjc3NzM5NTMsMTIuMzI1Mzk1MyBMMTQuODUxMzk1Myw5LjI4ODM5NTI5IEMxNS4yNDUzOTUzLDguOTAwMzk1MjkgMTUuODc4Mzk1Myw4LjkwNDM5NTI5IDE2LjI2NjM5NTMsOS4yOTczOTUyOSBDMTYuNjU0Mzk1Myw5LjY5MDM5NTI5IDE2LjY1MDM5NTMsMTAuMzIzMzk1MyAxNi4yNTczOTUzLDEwLjcxMTM5NTMgTDEyLjQ4MDM5NTMsMTQuNDQxMzk1MyBDMTIuMjg1Mzk1MywxNC42MzQzOTUzIDEyLjAzMTM5NTMsMTQuNzMwMzk1MyAxMS43NzczOTUzLDE0LjczMDM5NTMiIGlkPSJwYXRoLTEiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJjYXJldC1kb3duIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBmaWxsPSIjQkI4NkZDIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHVzZSBpZD0iTWFzayIgZmlsbD0iI0JCOThGQyIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICA8L2c+Cjwvc3ZnPg==);
 		width: 24px;
 		height: 24px;
+		margin-right: -8px;
+		background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Y2FyZXQtZG93bjwvdGl0bGU+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTEuNzc3Mzk1MywxNC43MzAzOTUzIEMxMS41MjMzOTUzLDE0LjczMDM5NTMgMTEuMjY5Mzk1MywxNC42MzQzOTUzIDExLjA3NDM5NTMsMTQuNDQxMzk1MyBMNy4yOTczOTUyOSwxMC43MTEzOTUzIEM2LjkwNDM5NTI5LDEwLjMyMzM5NTMgNi45MDAzOTUyOSw5LjY5MDM5NTI5IDcuMjg4Mzk1MjksOS4yOTczOTUyOSBDNy42NzYzOTUyOSw4LjkwNDM5NTI5IDguMzEwMzk1MjksOC45MDAzOTUyOSA4LjcwMjM5NTI5LDkuMjg4Mzk1MjkgTDExLjc3NzM5NTMsMTIuMzI1Mzk1MyBMMTQuODUxMzk1Myw5LjI4ODM5NTI5IEMxNS4yNDUzOTUzLDguOTAwMzk1MjkgMTUuODc4Mzk1Myw4LjkwNDM5NTI5IDE2LjI2NjM5NTMsOS4yOTczOTUyOSBDMTYuNjU0Mzk1Myw5LjY5MDM5NTI5IDE2LjY1MDM5NTMsMTAuMzIzMzk1MyAxNi4yNTczOTUzLDEwLjcxMTM5NTMgTDEyLjQ4MDM5NTMsMTQuNDQxMzk1MyBDMTIuMjg1Mzk1MywxNC42MzQzOTUzIDEyLjAzMTM5NTMsMTQuNzMwMzk1MyAxMS43NzczOTUzLDE0LjczMDM5NTMiIGlkPSJwYXRoLTEiPjwvcGF0aD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJjYXJldC1kb3duIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBmaWxsPSIjQkI4NkZDIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC0xIj48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHVzZSBpZD0iTWFzayIgZmlsbD0iI0JCOThGQyIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICA8L2c+Cjwvc3ZnPg==');
 		content: '';
 	}
 
@@ -361,8 +361,8 @@
 	.related-images-grid-view.related-info,
 	.tooltip {
 		border: 1px solid #333 !important;
-		background-color: #1e1e1e !important;
 		color: #e0e0e0 !important;
+		background-color: #1e1e1e !important;
 	}
 
 	.faq.static-page-faq
@@ -469,8 +469,8 @@
 				> section
 				> div:nth-child(n)
 				> a
-				> div
-		):not(.caBpUIyLTfNBwvxfTyDa):not(
+				> div,
+			.caBpUIyLTfNBwvxfTyDa,
 			div.k3nzGrC3hEubDzXyOg_r
 		),
 	footer,
@@ -490,8 +490,8 @@
 	td,
 	th,
 	ul {
-		background-color: #121212;
 		color: #e0e0e0;
+		background-color: #121212;
 	}
 
 	#react-root
@@ -516,8 +516,8 @@
 
 	option,
 	select {
-		background-color: #1e1e1e !important;
 		color: #e0e0e0 !important;
+		background-color: #1e1e1e !important;
 	}
 
 	#react-root
@@ -547,8 +547,8 @@
 	[role*='tooltip'],
 	div.image-infos {
 		border: 4px solid #000 !important;
-		background-color: #000 !important;
 		color: #bb86fc !important;
+		background-color: #000 !important;
 	}
 
 	#react-root
@@ -629,7 +629,7 @@
 		> div:nth-child(n)
 		> div
 		> .card.medium-card.checkable:hover {
-		opacity: 1;
+		opacity: 100%;
 		box-shadow:
 			0 0 1px 1px #bb86fc,
 			0 0 1px #bb86fc;
@@ -654,21 +654,21 @@
 		.card.medium-card
 		.hover-layer:hover {
 		position: absolute;
-		opacity: 0;
-		mix-blend-mode: multiply;
-		transition: opacity 0.15s;
-		inset: 0;
 		border: 5px solid #fff;
 		border-bottom: 32px solid #fff;
-		background: rgba(58, 66, 79, 0.4);
+		opacity: 0%;
+		background: rgb(58 66 79 / 40%);
+		transition: opacity 0.15s;
+		mix-blend-mode: multiply;
+		inset: 0;
 	}
 
 	#metadata-is-public-dropdown,
 	#metadata-is-public-dropdown > span,
 	textarea {
 		border: none;
-		background-color: #000 !important;
 		color: #bb86fc;
+		background-color: #000 !important;
 	}
 
 	#search-box-input:hover {
@@ -680,12 +680,12 @@
 	}
 
 	.faq-list .faq-list-title {
+		color: #bb86fc !important;
 		background: linear-gradient(
 			to bottom,
 			#121212 calc(100% - 3px),
-			rgba(255, 255, 255, 0) 100%
+			rgb(255 255 255 / 0%) 100%
 		);
-		color: #bb86fc !important;
 	}
 
 	#conclusion > div > div > h2,
@@ -759,8 +759,8 @@
 		> div:nth-child(n)
 		> div
 		> div {
-		background-color: #bb86fc;
 		color: #bb86fc !important;
+		background-color: #bb86fc;
 	}
 
 	#conclusion > div > button,
@@ -843,10 +843,10 @@
 		> div
 		> a
 		> div {
-		background-image: url('https://i.gyazo.com/3b48aa49e16ccde7bf0f4903269a9bc0.png');
 		width: 48px;
 		height: 48px;
 		color: red !important;
+		background-image: url('https://i.gyazo.com/3b48aa49e16ccde7bf0f4903269a9bc0.png');
 	}
 
 	body > div.content > section.faq,
@@ -943,14 +943,14 @@
 
 	.teams-pricing
 		.pricing-toggle-switch-container {
-		display: inline-block;
 		position: relative;
-		cursor: pointer;
+		display: inline-block;
+		width: 300px;
+		height: 60px;
 		margin-top: 38px;
 		border: 1px solid #d7d7d7;
 		border-radius: 10px;
-		width: 300px;
-		height: 60px;
+		cursor: pointer;
 		text-align: center;
 	}
 
@@ -960,8 +960,8 @@
 	}
 
 	.static-page-faq li:hover {
-		cursor: pointer;
 		background: #3c2a51;
+		cursor: pointer;
 	}
 
 	.dropdown-menu,
@@ -983,10 +983,10 @@
 	.table > tfoot > tr > th,
 	.table > thead > tr > td,
 	.table > thead > tr > th {
-		vertical-align: top;
-		border-top: 1px solid #bb86fc;
-		padding: 8px;
 		line-height: 1.75;
+		padding: 8px;
+		border-top: 1px solid #bb86fc;
+		vertical-align: top;
 	}
 
 	.table > tbody + tbody {
@@ -994,8 +994,8 @@
 	}
 
 	.table > thead > tr > th {
-		vertical-align: bottom;
 		border-bottom: 2px solid #bb86fc;
+		vertical-align: bottom;
 	}
 
 	.side-block
@@ -1061,8 +1061,8 @@
 
 	.side-block-items .collection-item .file-thumb,
 	.side-block-items .collection-item .thumb {
-		box-shadow: 0 0 0 1px #bb86fc;
 		border: 1px solid #bb86fc;
+		box-shadow: 0 0 0 1px #bb86fc;
 	}
 
 	.side-block-items .collection-item > a {
@@ -1086,15 +1086,15 @@
 		> ul
 		> li:nth-child(n):hover,
 	.global-logo-icon:hover {
-		opacity: 0.5;
+		opacity: 50%;
 	}
 
 	.form-control:focus,
 	.global-header-search.global-header-search
 		input:focus {
+		border-color: #bb86fc !important;
 		outline: 0;
 		box-shadow: 0 0 0 3px #3c2a51;
-		border-color: #bb86fc !important;
 	}
 
 	[data-hover-visible] .btn-primary:hover {
@@ -1118,9 +1118,8 @@
 	}
 
 	.B9QQGIFrwoa05qnyZvI5 {
-		column-gap: 0 !important;
-		row-gap: 1px !important;
 		background-color: #bb86fc !important;
+		gap: 1px 0 !important;
 	}
 
 	#react-root
@@ -1136,7 +1135,7 @@
 	}
 
 	.image-page hr {
-		border-top: 0 solid rgba(255, 255, 255, 0.15);
+		border-top: 0 solid rgb(255 255 255 / 15%);
 	}
 
 	#react-root
@@ -1148,8 +1147,8 @@
 		> div.related-info-box-component
 		> div
 		> div.related-images-grid-view.related-info {
-		border-top: 5px solid #bb86fc !important;
 		padding-top: 15px !important;
+		border-top: 5px solid #bb86fc !important;
 	}
 
 	#react-root
@@ -1201,13 +1200,10 @@
 	.W9K8hRc2gk7SniSQJYi1,
 	.kuJ39tkCjATBXUZiuSKB {
 		position: fixed;
-		inset: 0;
-		background-color: rgba(
-			255,
-			255,
-			255,
-			0.09
+		background-color: rgb(
+			255 255 255 / 9%
 		) !important;
+		inset: 0;
 	}
 
 	#react-root
@@ -1219,9 +1215,9 @@
 		> div
 		> button:nth-child(n)
 		> span {
+		line-height: 30px !important;
 		border-top: 1px solid #bb86fc !important;
 		border-bottom: 1px solid #bb86fc !important;
-		line-height: 30px !important;
 	}
 
 	.add-to-collection-popover
@@ -1243,9 +1239,9 @@
 	.JqijY3DG4HT1E5WfPcsL:hover,
 	.JqijY3DG4HT1E5WfPcsL,
 	.a5h6q3HOqElFBixS3dB_ {
-		opacity: 1 !important;
+		opacity: 100% !important;
+		background: rgb(0 0 0 / 0%) !important;
 		transition: opacity ease-in-out 0.2s !important;
-		background: rgba(0, 0, 0, 0%) !important;
 	}
 }
 
@@ -1253,7 +1249,24 @@
 {
 	article,
 	aside,
-	div:not( #react-root > div: nth-child(n) > div > div > main > div > div > div > div > div:nth-child(2) > section > div:nth-child(n) > a > div):not(.caBpUIyLTfNBwvxfTyDa):not( div.k3nzGrC3hEubDzXyOg_r),
+	div:not(
+			#react-root
+				> div:nth-child(n)
+				> div
+				> div
+				> main
+				> div
+				> div
+				> div
+				> div
+				> div:nth-child(2)
+				> section
+				> div:nth-child(n)
+				> a
+				> div,
+			.caBpUIyLTfNBwvxfTyDa,
+			div.k3nzGrC3hEubDzXyOg_r
+		),
 	footer,
 	h1,
 	h2,
