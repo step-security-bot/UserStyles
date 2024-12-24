@@ -2225,7 +2225,8 @@
 		> div
 		> div
 		> div
-		> h2:nth-child(8) {
+		> h2:nth-child(8),
+	#dated-ftp-contents > div > table > thead > tr {
 		/*Box model stuff*/
 		background-color: #fc5200 !important;
 	}
