@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.2
+@version      2.3
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -81,5 +81,10 @@
 	.game-web .button.border__color {
 		border-style: solid;
 		border-color: #ff7830;
+	}
+
+	.onscreen-post .row {
+		padding-left: 10px;
+		width: auto;
 	}
 }
