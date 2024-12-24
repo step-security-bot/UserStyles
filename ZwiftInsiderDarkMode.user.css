@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           zwiftinsider.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.0
+@version        1.1.1
 @description    Dark Theme for ZwiftInsider
 @author         Nick2bad4u
 @license        UnLicense
@@ -11,42 +11,75 @@
 	/* Invert colors except images and videos */
 	:is(
 		html:not([stylus-iframe]),
+		iframe,
 		img,
 		svg,
 		video,
 		.tdb_single_bg_featured_image,
 		body.td-animation-stack-type0
-			.td-animation-stack
-			.entry-thumb,
-		body.td-animation-stack-type0
 			.post
-			img:not(
-				.woocommerce-product-gallery img
-			):not(.rs-pzimg),
+			img:not(.woocommerce-product-gallery img
+			, .rs-pzimg),
 		body.td-animation-stack-type0
 			.td-animation-stack
-			.td-lazy-img
-	),
-	.tdi_59,
-	.wp-block-toolset-blocks-container.tb-container,
-	#tdi_82,
-	.tdi_56 {
+			.td-lazy-img,
+		.tdi_59,
+		.wp-block-toolset-blocks-container.tb-container,
+		#tdi_82,
+		.tdi_56,
+		.td-image-wrap,
+		.tdi_98,
+		.tdm-title,
+		.tds-title,
+		.tdi_23 .tdb-menu > li > a .tdb-sub-menu-icon,
+		.tdi_23
+			.td-subcat-more
+			.tdb-menu-more-subicon,
+		.tdb_loop .td-load-more-wrap,
+		.tdb_loop .td-next-prev-wrap,
+		.tdb-featured-image-bg,
+		.ql-snow,
+		#wpdcom .wpd-form-row .wpd-field
+	) {
 		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.tdb_single_bg_featured_image::after {
+		background: linear-gradient(
+			180deg,
+			rgb(255 255 255 / 0%),
+			rgb(255 255 255 / 0%) 0%,
+			rgb(255 255 255 / 69%) 100%,
+			rgb(0 0 0 / 80%)
+		);
 	}
 
 	body {
 		background: #fff !important;
 		color: #000 !important;
 	}
+
 	.td_module_flex_1 .td-thumb-css,
 	.td_module_flex_3 .td-thumb-css,
 	.td_module_flex_4 .td-thumb-css,
-	.td_module_flex_5 .td-thumb-css {
+	.td_module_flex_5 .td-thumb-css,
+	.tdi_110 .td-image-wrap,
+	.td_block_template_1 {
 		filter: unset !important;
 	}
 
 	.tdi_43 .tdb-title-text,
-	.tdi_59 .tdm-descr {
+	.tdi_59 .tdm-descr,
+	.tdb_header_menu
+		.tdb-menu
+		> li
+		> a
+		.tdb-menu-item-text,
+	.tdb_header_menu .tdb-menu > li > a span {
 		color: #000;
+	}
+
+	.td-big-grid-flex .td-module-title a {
+		color: #000 !important;
 	}
 }
