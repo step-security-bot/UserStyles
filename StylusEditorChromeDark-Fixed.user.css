@@ -1,10 +1,9 @@
 /* ==UserStyle==
-@name         Style Editor [Chrome] - Dark Theme [Fixed 11-24-25]
+@name         Stylus Dark Theme [Fixed 11-24-25]
 @namespace    typpi.online
-@homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Paul Stevenson [Fixed by Nick2bad4u]
-@description  A dark theme for the Stylish style editor chrome extension.  It also includes a code section for recoloring the default syntax highlighting theme. [Fixed 11-24-25]
-@version      20241224.6.20
+@description  A dark theme for Stylish. It also includes a code section for recoloring the default syntax highlighting theme. [Fixed 11-24-25]
+@version      20241224.6.21
 @license      CC-BY-SA-4.0
 @preprocessor uso
 ==/UserStyle== */
@@ -135,6 +134,7 @@
 
 @-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*")
 {
+
 	@-moz-keyframes blink {
 		50% {
 			background-color: transparent;
