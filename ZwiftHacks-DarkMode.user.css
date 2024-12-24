@@ -1,0 +1,81 @@
+/* ==UserStyle==
+@name           zwifthacks.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.0
+@description    Dark mode for ZwiftHacks.com
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("zwifthacks.com")
+{
+	/* Invert colors except images and videos */
+	:is( html:not([stylus-iframe]),
+	img,
+	svg,
+	video,
+	.footer-wrap,
+	.comments-header,
+	.comment-reply-title,
+	.widget-header,
+	.page-header), .main-navigation-menu > .menu-item-has-children > a::after,
+	.main-navigation-menu ul .menu-item-has-children > a::after
+	{
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.site-branding .custom-logo,
+	#title > a > img
+	{
+		filter: unset !important;
+	}
+
+	.primary-navigation,
+	.main-navigation-menu a:link,
+	.main-navigation-menu a:visited
+	{
+		color: #000 !important;
+		background: #D5D5D5;
+	}
+
+	.main-navigation-menu a:link:hover,
+	.main-navigation-menu a:visited:hover
+	{
+		color: #000 !important;
+		background: #EB732F;
+	}
+
+	.main-navigation-menu ul
+	{
+		border-top: 1px solid #EB732F;
+	}
+
+	input[type = "search" i],
+	input[type = "search" i]:focus
+	{
+		color: #EB732F;
+	}
+
+	input[type = "text"]:focus,
+	input[type = "email"]:focus,
+	input[type = "url"]:focus,
+	input[type = "password"]:focus,
+	input[type = "search"]:focus,
+	textarea:focus
+	{
+		border: 1px solid #EB732F;
+		color: #EB732F;
+	}
+
+	:focus-visible
+	{
+		outline: #EB732F auto 1px;
+	}
+
+	.main-navigation-menu li.menu-item-has-children:hover > ul,
+	.main-navigation-menu li.page_item_has_children:hover > ul,
+	.main-navigation-menu li.menu-item-has-children[aria-expanded = "true"] > ul
+	{
+		display: block;
+	}
+}
