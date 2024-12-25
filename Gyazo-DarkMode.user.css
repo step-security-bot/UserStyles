@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      2.5
+@version      2.6
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -46,6 +46,12 @@
 
 	.content {
 		background: black !important;
+	}
+
+	.image-page.image-page-renewal
+		.metadata
+		.togglable-area.private {
+		display: none;
 	}
 
 	#popover > h3,
