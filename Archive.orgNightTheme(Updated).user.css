@@ -1,21 +1,21 @@
 /* ==UserStyle==
 @name         Archive.org - Night Theme (Updated)
-@namespace    USO Archive
+@namespace    https://github.com/Nick2bad4u/UserStyles
 @author       stylish.c0d3d.net / Nick2bad4u (Updated)
 @description  Dark background colors and orange font color.
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
-@version      20240428.22.20
+@version      1.0.1
 @license      CC-BY-NC-4.0
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document domain("archive.org") {
+@-moz-document regexp("^(https?:\\/\\/web\\.archive\\.org)(?!\\/web\\/).*") {
 	body.navia.bgEEE {
 		background-color: #222 !important;
 	}
 
 	body.navia #nav-tophat {
-		background-color: #222;
 		color: #ccc;
+		background-color: #222;
 	}
 
 	body {
@@ -32,8 +32,8 @@
 	#wrap,
 	#wrapper {
 		border-color: #333;
-		background: #111;
 		color: #999;
+		background: #111;
 		text-shadow: none !important;
 	}
 
@@ -41,16 +41,16 @@
 	.preamble,
 	.preamble div {
 		border-color: #333;
-		background: #222 !important;
 		color: white !important;
+		background: #222 !important;
 		text-shadow: none !important;
 	}
 
 	.welcome,
 	#wrap .width-max {
 		border: none !important;
-		background: #333 !important;
 		color: white !important;
+		background: #333 !important;
 		text-shadow: none !important;
 	}
 
@@ -66,8 +66,8 @@
 		border-width: 2px !important;
 		border-style: solid !important;
 		border-color: #444 !important;
-		background: #111 !important;
 		color: white !important;
+		background: #111 !important;
 		text-shadow: none !important;
 	}
 
@@ -89,14 +89,14 @@
 	}
 
 	.small-label {
-		margin-top: 0 !important;
 		padding-top: 0 !important;
+		margin-top: 0 !important;
 	}
 
 	p .show-all {
 		border-color: #333 !important;
-		background: #f60 !important;
 		color: white !important;
+		background: #f60 !important;
 		text-shadow: none !important;
 	}
 
@@ -123,15 +123,15 @@
 	.well,
 	.white-box {
 		border-color: #333 !important;
-		background: #111 !important;
 		color: #999 !important;
+		background: #111 !important;
 		text-shadow: none !important;
 	}
 
 	p {
 		border: none !important;
-		background: #111 !important;
 		color: #999 !important;
+		background: #111 !important;
 		text-shadow: none !important;
 	}
 }
