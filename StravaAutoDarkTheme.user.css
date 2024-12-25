@@ -622,18 +622,18 @@ domain("labs.strava.com") {
 
 	#map-control-container #gpx-download::before {
 		position: absolute;
-		z-index: 1;
 		top: 50%;
 		left: 5px;
-		width: 16px;
-		height: 16px;
+		transform: translateY(-50%);
+		z-index: 1;
+		filter: invert(1);
 		background-image: url('https://d3nn82uaxijpm6.cloudfront.net/assets/svg/2024/actions_download_normal_small-99d901d5f3767d8e2464a13987c976fdc10c89656f3c89e7a5a472f5f325e3d3.svg');
-		background-repeat: no-repeat;
 		background-position: center;
 		background-size: contain;
+		background-repeat: no-repeat;
+		width: 16px;
+		height: 16px;
 		content: '';
-		transform: translateY(-50%);
-		filter: invert(1);
 	}
 
 	[class*='packages-feed-ui-src-Feed__feed-pagination'],
@@ -1506,8 +1506,8 @@ domain("labs.strava.com") {
 			.btn-secondary
 		) {
 		border: 1px solid #fff !important;
-		color: #fff !important;
 		background-color: #962f03b0 !important;
+		color: #fff !important;
 	}
 
 	.ui-dialog.sauce-dialog
@@ -1516,8 +1516,8 @@ domain("labs.strava.com") {
 			.btn-primary,
 			.btn-secondary
 		):hover {
-		border: 1px solid #fff !important;
 		outline: 1px solid #fff !important;
+		border: 1px solid #fff !important;
 		background-color: #999 !important;
 	}
 
@@ -1531,19 +1531,19 @@ domain("labs.strava.com") {
 		.ui-dialog-content
 		.entry
 		.btn {
-		border: 1px solid #fff !important;
 		outline: 1px solid #fff !important;
-		color: #fff !important;
+		border: 1px solid #fff !important;
 		background-color: rgb(
 			150 47 3 / 69%
 		) !important;
+		color: #fff !important;
 	}
 
 	.------packages-feed-ui-src-shared-KudosCommentsAndAchievements-CommentReaction-CommentReaction-module__commentReactionContainer--nixAS
 		> button {
-		padding: 6px 10px !important;
 		margin-left: -9px;
 		border: unset;
+		padding: 6px 10px !important;
 	}
 
 	.------packages-feed-ui-src-components-media-EntryHeader-EntryHeader-module__entryHeader--m1apc
@@ -1598,8 +1598,8 @@ domain("labs.strava.com") {
 	}
 
 	.hr-zones-panel table tr.lt {
-		color: #fff !important;
 		background-color: #962f03b0 !important;
+		color: #fff !important;
 	}
 
 	label,
@@ -1924,8 +1924,8 @@ domain("labs.strava.com") {
 	}
 
 	.sauce-segment-score {
-		font-size: 10px;
 		font-weight: 600 !important;
+		font-size: 10px;
 	}
 
 	#sauce-infopanel
@@ -2257,8 +2257,8 @@ domain("labs.strava.com") {
 	.btn-icon.sauce-invoke:hover,
 	.half > a:hover,
 	.spans6 > select {
-		color: #fff !important;
 		background-color: #fc5200 !important;
+		color: #fff !important;
 	}
 
 	#view
@@ -2288,17 +2288,17 @@ domain("labs.strava.com") {
 	}
 
 	.gear.bikes.hidden {
-		padding: 10px;
 		border: medium dashed #fc5200;
 		border-top-color: #fc5200 !important;
 		border-radius: 25px;
+		padding: 10px;
 	}
 
 	.gear.bikes.hidden > h3 {
 		color: #fc5200;
-		text-align: center;
-		font-size: 26px;
 		font-weight: 800;
+		font-size: 26px;
+		text-align: center;
 		text-decoration: underline;
 	}
 
