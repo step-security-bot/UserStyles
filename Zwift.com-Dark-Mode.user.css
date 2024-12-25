@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.3
+@version      2.5
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -9,54 +9,42 @@
 ==/UserStyle== */
 @-moz-document domain("zwift.com") {
 	/* Invert colors except images, videos, and footer */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video,
-			footer,
-			path,
-			div.CardCarousel-module__cardContainer--1vNvU,
-			.Hero-module__backgroundOverlay--3CFsa.lazy,
-			.footer-module__withOutZCurve--2Wu3z,
-			div > footer > div:nth-child(2),
-			footer > div:nth-child(3),
-			footer > div:nth-child(4),
-			.Footer-module__logo--mM_i1,
-			.p1z-card-image,
-			.p1z-content-slice,
-			#znv-footer-link-sv,
-			.tile-callout-wrapper.py-6.bg-white
-				> div
-				> div
-				> div
-				> ul
-				> li:nth-child(n),
-			.hero-banner-inner,
-			.game-web .modal-title,
-			div.activity__gradient.pos__absolute.w-100.h-100,
-			#navigation-container
-				> div
-				> div
-				> main
-				> div:nth-child(2)
-				> div.MegaNav-module__component--1B_pQ.MegaNav-module__open--MWnWt,
-			.MegaNav-module__component--1B_pQ,
-			#template
-				> div
-				> div:nth-child(1)
-				> main
-				> div.p1z-hero
-		):not(
-			png,
-			#shopify-section-60deaf30-e1ac-4fe0-a31a-135fa803c54f
-				> div
-				> a
-				> div
-				> img,
-			.border__radius__responsive--small > img
-		) {
-		filter: invert(1) hue-rotate(180deg) !important;
+	html:not([stylus-iframe]),
+	img,
+	svg,
+	video,
+	footer,
+	path,
+	div.CardCarousel-module__cardContainer--1vNvU,
+	.Hero-module__backgroundOverlay--3CFsa.lazy,
+	.footer-module__withOutZCurve--2Wu3z,
+	.Footer-module__logo--mM_i1,
+	.p1z-card-image,
+	.p1z-content-slice,
+	#znv-footer-link-sv,
+	.tile-callout-wrapper.py-6.bg-white
+		> div
+		> div
+		> div
+		> ul
+		> li,
+	.hero-banner-inner,
+	.game-web .modal-title,
+	div.activity__gradient.pos__absolute.w-100.h-100,
+	.MegaNav-module__component--1B_pQ,
+	.bg-retina {
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.bg-alabaster,
+	.bg-alabaster .footer__nav-link {
+		background-color: #fff !important;
+		color: #000;
+	}
+
+	.footer__nav-item .seperator {
+		opacity: 25%;
+		background-color: #000;
 	}
 
 	.Locale-module__icon--jjf-9.Locale-module__small--fqr5w,
