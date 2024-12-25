@@ -8,14 +8,14 @@
 @license      CC-BY-NC-4.0
 @preprocessor uso
 ==/UserStyle== */
-@-moz-document regexp("^(https?:\\/\\/web\\.archive\\.org)(?!\\/web\\/).*") {
+@-moz-document regexp("^(?!.*archive\\.org\\/web\\/\\d+\\/https?\\:\\/\\/).*archive\\.org.*$") {
 	body.navia.bgEEE {
 		background-color: #222 !important;
 	}
 
 	body.navia #nav-tophat {
-		color: #ccc;
 		background-color: #222;
+		color: #ccc;
 	}
 
 	body {
@@ -32,8 +32,8 @@
 	#wrap,
 	#wrapper {
 		border-color: #333;
-		color: #999;
 		background: #111;
+		color: #999;
 		text-shadow: none !important;
 	}
 
@@ -41,16 +41,16 @@
 	.preamble,
 	.preamble div {
 		border-color: #333;
-		color: white !important;
 		background: #222 !important;
+		color: white !important;
 		text-shadow: none !important;
 	}
 
 	.welcome,
 	#wrap .width-max {
 		border: none !important;
-		color: white !important;
 		background: #333 !important;
+		color: white !important;
 		text-shadow: none !important;
 	}
 
@@ -66,8 +66,8 @@
 		border-width: 2px !important;
 		border-style: solid !important;
 		border-color: #444 !important;
-		color: white !important;
 		background: #111 !important;
+		color: white !important;
 		text-shadow: none !important;
 	}
 
@@ -89,14 +89,14 @@
 	}
 
 	.small-label {
-		padding-top: 0 !important;
 		margin-top: 0 !important;
+		padding-top: 0 !important;
 	}
 
 	p .show-all {
 		border-color: #333 !important;
-		color: white !important;
 		background: #f60 !important;
+		color: white !important;
 		text-shadow: none !important;
 	}
 
@@ -123,15 +123,110 @@
 	.well,
 	.white-box {
 		border-color: #333 !important;
-		color: #999 !important;
 		background: #111 !important;
+		color: #999 !important;
 		text-shadow: none !important;
 	}
 
 	p {
 		border: none !important;
-		color: #999 !important;
 		background: #111 !important;
+		color: #999 !important;
+		text-shadow: none !important;
+	}
+}
+
+@-moz-document regexp(".*archive\\.org\\/web\\/\\d+\\/https?\\:\\/\\/.*$") {
+	#wm-ipp-base {
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.navia {
+		background-color: #222 !important;
+	}
+
+	.navia #nav-tophat {
+		background-color: #222;
+		color: #ccc;
+	}
+
+	#wrap,
+	#wrapper {
+		border-color: #333;
+		background: #111;
+		color: #999;
+		text-shadow: none !important;
+	}
+
+	.col-xs-12,
+	.preamble,
+	.preamble div {
+		border-color: #333;
+		background: #222 !important;
+		color: white !important;
+		text-shadow: none !important;
+	}
+
+	.welcome,
+	#wrap .width-max {
+		border: none !important;
+		background: #333 !important;
+		color: white !important;
+		text-shadow: none !important;
+	}
+
+	#theatre-controls,
+	.iconochive-fullscreen,
+	.iconochive-flash,
+	.iconochive-unmute {
+		background: #333 !important;
+	}
+
+	.boxy,
+	.item-ia {
+		border-width: 2px !important;
+		border-style: solid !important;
+		border-color: #444 !important;
+		background: #111 !important;
+		color: white !important;
+		text-shadow: none !important;
+	}
+
+	body.ia-module.tiles .item-ia .item-ttl .ttl {
+		color: white !important;
+	}
+
+	#favorite-button,
+	#share-button,
+	#flag-button,
+	.sortbar {
+		border: black !important;
+		background: #111 !important;
+	}
+
+	.boxy-ttl {
+		color: white !important;
+		text-shadow: none !important;
+	}
+
+	.small-label {
+		margin-top: 0 !important;
+		padding-top: 0 !important;
+	}
+
+	p .show-all {
+		border-color: #333 !important;
+		background: #f60 !important;
+		color: white !important;
+		text-shadow: none !important;
+	}
+
+	.about-box,
+	.well,
+	.white-box {
+		border-color: #333 !important;
+		background: #111 !important;
+		color: #999 !important;
 		text-shadow: none !important;
 	}
 }
