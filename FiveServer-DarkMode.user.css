@@ -16,33 +16,28 @@ url-prefix("http://localhost:5500/")
 	img,
 	svg,
 	video,
-	iframe
-	{
+	iframe {
 		filter: invert(1) hue-rotate(180deg);
-		background: #FFF;
+		background: #fff;
 	}
 
-	.container
-	{
+	.container {
 		filter: invert(1) hue-rotate(180deg);
 	}
 }
 
-@-moz-document regexp(".*\.html$")
-{
+@-moz-document regexp(".*\.html$") {
 	/* Invert colors except images and videos */
 	html,
 	img,
 	svg,
 	video,
-	iframe
-	{
+	iframe {
 		filter: none !important;
 		background: unset !important;
 	}
 
-	.container
-	{
+	.container {
 		filter: none !important;
 	}
 }
