@@ -9,59 +9,99 @@
 @preprocessor uso
 ==/UserStyle== */
 @-moz-document domain("youtube.com") {
-.html5-progress-bar, .ytp-progress-bar {
-	background: linear-gradient(90deg, rgba(248,13,27,1) 0%, rgba(255,160,0,1) 20%, rgba(255,227,2,1) 40%, rgba(0,250,34,1) 60%, rgba(0,169,238,1) 80%, rgba(159,0,255,1) 100%) !important;
-	height: 12px !important;
-	border: none !important;
-}
+	.html5-progress-bar,
+	.ytp-progress-bar {
+		border: none !important;
+		background: linear-gradient(
+			90deg,
+			rgb(248 13 27 / 100%) 0%,
+			rgb(255 160 0 / 100%) 20%,
+			rgb(255 227 2 / 100%) 40%,
+			rgb(0 250 34 / 100%) 60%,
+			rgb(0 169 238 / 100%) 80%,
+			rgb(159 0 255 / 100%) 100%
+		) !important;
+		height: 12px !important;
+	}
 
-.html5-progress-bar-container, .ytp-progress-bar-container {
-	height: 12px !important;
-}
+	.html5-progress-bar-container,
+	.ytp-progress-bar-container {
+		height: 12px !important;
+	}
 
-.html5-progress-bar, .ytp-progress-bar {
-	margin-top: 12px !important;
-}
+	.html5-progress-bar,
+	.ytp-progress-bar {
+		margin-top: 12px !important;
+	}
 
-.html5-progress-list, .ytp-progress-list, .video-ads .html5-progress-list.html5-ad-progress-list, .video-ads .ytp-progress-list.ytp-ad-progress-list {
-	height: 12px !important;
-}
+	.html5-progress-list,
+	.ytp-progress-list,
+	.video-ads
+		.html5-progress-list.html5-ad-progress-list,
+	.video-ads
+		.ytp-progress-list.ytp-ad-progress-list {
+		height: 12px !important;
+	}
 
-.ytp-scrubber-button {
-	background-color: rgba(159,0,255,1) !important;
-	border: 1px solid black !important;
-	height:32px !important;
-	width: 8px !important;
-	margin-top: -6px !important;
-	margin-left: 0px !important;
-}
+	.ytp-scrubber-button {
+		margin-top: -6px !important;
+		margin-left: 0 !important;
+		border: 1px solid black !important;
+		background-color: rgb(
+			159 0 255 / 100%
+		) !important;
+		width: 8px !important;
+		height: 32px !important;
+	}
 
-.ytp-heat-map-svg {
-	margin-top: 3px !important;
-}
+	.ytp-heat-map-svg {
+		margin-top: 3px !important;
+	}
 
-.ytp-heat-map-container {
-	height: 50px !important;
-}
+	.ytp-heat-map-container {
+		height: 50px !important;
+	}
 
-.ytp-heat-map-graph {
-	fill-opacity: 0.5 !important;
-	-webkit-animation: mymove 5s linear infinite;
-    -moz-animation: mymove 5s linear infinite;
-    animation: mymove 5s linear infinite;
-}
+	.ytp-heat-map-graph {
+		fill-opacity: 50% !important;
+		-webkit-animation: mymove 5s linear infinite;
+		-moz-animation: mymove 5s linear infinite;
+		animation: mymove 5s linear infinite;
+	}
 
-@keyframes mymove {
-	0% { fill: rgba(248,13,27,1) }
-	10% { fill: rgba(255,160,0,1) }
-	20% { fill: rgba(255,227,2,1) }
-	30% { fill: rgba(0,250,34,1) }
-	40% { fill: rgba(0,169,238,1) }
-	50% { fill: rgba(159,0,255,1) }
-	60% { fill: rgba(0,169,238,1) }
-	70% { fill: rgba(0,250,34,1) }
-	80% { fill: rgba(255,227,2,1) }
-	90% { fill: rgba(255,160,0,1) }
-	100% { fill: rgba(248,13,27,1) }
-}
+	@keyframes mymove {
+		0% {
+			fill: rgb(248 13 27 / 100%);
+		}
+		10% {
+			fill: rgb(255 160 0 / 100%);
+		}
+		20% {
+			fill: rgb(255 227 2 / 100%);
+		}
+		30% {
+			fill: rgb(0 250 34 / 100%);
+		}
+		40% {
+			fill: rgb(0 169 238 / 100%);
+		}
+		50% {
+			fill: rgb(159 0 255 / 100%);
+		}
+		60% {
+			fill: rgb(0 169 238 / 100%);
+		}
+		70% {
+			fill: rgb(0 250 34 / 100%);
+		}
+		80% {
+			fill: rgb(255 227 2 / 100%);
+		}
+		90% {
+			fill: rgb(255 160 0 / 100%);
+		}
+		100% {
+			fill: rgb(248 13 27 / 100%);
+		}
+	}
 }
