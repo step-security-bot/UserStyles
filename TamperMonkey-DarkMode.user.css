@@ -1,0 +1,20 @@
+/* ==UserStyle==
+@name           tampermonkey.net - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark mode theme for Tampermonkey
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("tampermonkey.net") {
+	/* Invert colors except images and videos */
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video
+	) {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+}
