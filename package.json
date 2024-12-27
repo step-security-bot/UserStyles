@@ -36,7 +36,7 @@
 		"fast-json-stable-stringify": "^2.1.0",
 		"fast-levenshtein": "^3.0.0",
 		"fastq": "^1.18.0",
-		"file-entry-cache": "^10.0.4",
+		"file-entry-cache": "^10.0.5",
 		"fill-range": "^7.1.1",
 		"find-up": "^7.0.0",
 		"flat-cache": "^6.1.4",
