@@ -1,0 +1,65 @@
+/* ==UserStyle==
+@name           crystalmathlabs.com - Black Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    CrystalMathLabs Black mode theme
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("crystalmathlabs.com")
+{
+	/* Invert colors except images and videos */
+	html,
+	body,
+	#wrap,
+	#contentwrap,
+	.news,
+	.menubar ul li ul.dropdown
+	{
+		background: black !important;
+		background-color: black !important;
+	}
+
+	.menubar,
+	.hint,
+	.xp-table > div:first-child,
+	#footer
+	{
+		background: #252323 !important;
+		background-color: #252323 !important;
+		border-radius: 20px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	#menu > ul > li:nth-child(n) > ul > li:nth-child(n) > a:hover
+	{
+		background: #252323 !important;
+		background-color: #252323 !important;
+		border-radius: 20px;
+		padding-left: 20px;
+		color: limegreen;
+	}
+
+	#global-banner
+	{
+		background: darkgreen;
+		color: white;
+	}
+
+	#global-banner a
+	{
+		color: hotpink;
+	}
+
+	input:nth-child(1),
+	input:nth-child(2),
+	input[type = "text" i],
+	#xp-calc-form button
+	{
+		background: black !important;
+		background-color: black !important;
+		color: white;
+	}
+}
