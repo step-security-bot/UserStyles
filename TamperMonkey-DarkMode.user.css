@@ -1,42 +1,39 @@
 /* ==UserStyle==
 @name           tampermonkey.net - Dark Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark mode theme for Tampermonkey
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("tampermonkey.net")
-{
+@-moz-document domain("tampermonkey.net") {
 	/* Invert colors except images and videos */
-	:is( html:not(iframe),
-	img,
-	svg,
-	video,
-	.header,
-	.mainnav,
-	.col-full .row h1,
-	.row.md iframe,
-	.toc a)
-	{
+	:is(
+		html:not(iframe),
+		img,
+		svg,
+		video,
+		.header,
+		.mainnav,
+		.col-full .row h1,
+		.row.md iframe,
+		.toc a
+	) {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
 	.header .icon .svg,
 	.tab-label > svg,
-	.changelog .changeset .header .browsers img
-	{
+	.changelog .changeset .header .browsers img {
 		filter: unset !important;
 	}
 
-	.subnav .tab-label span
-	{
+	.subnav .tab-label span {
 		color: #000 !important;
 	}
 
-	.toc a
-	{
-		color: #1182A7;
+	.toc a {
+		color: #1182a7;
 	}
 }
