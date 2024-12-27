@@ -1,5 +1,5 @@
 /* ==UserStyle==
-@name         YouTube - Custom Video Progress Bar Colors [Updated]
+@name         YouTube - Custom Video Progress Bar Colors
 @namespace    https://github.com/Nick2bad4u/UserStyles
 @author       nick2bad4u
 @description  SteamStat.us - Bright and Vibrant Style
@@ -44,7 +44,7 @@
 .yt-uix-checkbox-on-off input/*[[extras2]]*\/[type="checkbox"]:checked + label {
    background-color: /*[[colour]]*\/ !important;
 }
-.video-extras-sparkbar-likes/*[[extras2]]*\/ {
+#ryd-bar/*[[extras2]]*\/ {
    background-color: /*[[colour]]*\/ !important;
 } EOT;
     Glow_gradient "Glow/gradient" <<<EOT .html5-play-progress, .ytp-progress-bar {
@@ -110,7 +110,7 @@
 .yt-uix-checkbox-on-off input/*[[extras2]]*\/[type="checkbox"]:checked + label {
    background-color: /*[[colour]]*\/ !important;
 }
-.video-extras-sparkbar-likes/*[[extras2]]*\/ {
+#ryd-bar/*[[extras2]]*\/ {
    background-color: /*[[colour]]*\/ !important;
 } EOT;
 
