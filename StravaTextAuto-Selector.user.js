@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava Text Auto-Selector
 // @namespace    https://github.com/Nick2bad4u/UserScripts
-// @version      1.0.6
+// @version      1.0.7
 // @description  Automatically selects text in specific Strava elements and displays a notification near the cursor. Also allows right-click to copy text.
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -10,8 +10,8 @@
 // @include      *://*.strava.com/activities/*
 // @include      *://*.strava.com/athlete/training
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
-// @downloadURL  https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.user.js
-// @updateURL    https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.meta.js
+// @downloadURL https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.user.js
+// @updateURL https://update.greasyfork.org/scripts/519370/Strava%20Text%20Auto-Selector.meta.js
 // ==/UserScript==
 
 (function () {
@@ -39,8 +39,10 @@
 
 		const selectors = [
 			'#search-results > tbody > tr:nth-child(n) > td.view-col.col-title > a',
-			'.content',
+			'.summaryGrid .summaryGridDataContainer, .inline-stats strong, .inline-stats b',
 			'#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-summary.mt-md.mb-md > div.details-container > div > h1',
+			'.ride .segment-effort-detail .effort-details table, .swim .segment-effort-detail .effort-details table',
+			'.activity-description p:only-child',
 		];
 		const summarySelector =
 			'.summaryGridDataContainer';
