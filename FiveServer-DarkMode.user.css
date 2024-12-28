@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Five Server - Preview Dark Theme
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for Five Server preview that excludes .html files
 @author         Nick2bad4u
 @license        UnLicense
@@ -9,7 +9,9 @@
 ==/UserStyle== */
 @-moz-document url-prefix("http://192.168.1.223:5500/"),
 url-prefix("https://192.168.1.223:5500/"),
-url-prefix("http://localhost:5500/")
+url-prefix("http://localhost:5500/"),
+url-prefix("http://127.0.0.1:5500/"),
+url-prefix("https://127.0.0.1:5500/")
 {
 	/* Invert colors except images and videos */
 	html,
