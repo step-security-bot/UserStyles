@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	5.4
+@version      	5.5
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -2033,6 +2033,16 @@ domain("labs.strava.com") {
 		font-weight: 700;
 	}
 
+	.ui-dialog.sauce-dialog
+		.sauce-key-value.sauce-vertical
+		input::placeholder,
+	.ui-dialog.sauce-dialog
+		.sauce-key-value.sauce-vertical
+		input {
+		color: #000 !important;
+		font-weight: 750 !important;
+	}
+
 	.summaryGrid .summarySubGridTitle,
 	.elevateExtendedData .gridUnits,
 	#sauce-performance,
@@ -2109,7 +2119,32 @@ domain("labs.strava.com") {
 	table.unstyled th,
 	body
 		> div.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.sauce-dialog.sauce-sync-athlete-dialog.ui-dialog-buttons.ui-draggable.ui-resizable,
-	.more-stats > table {
+	.more-stats > table,
+	.ui-dialog.sauce-dialog,
+	#sauce-performance > aside.details,
+	#sauce-performance a.view-control svg,
+	#sauce-performance
+		> main
+		> header.filters
+		.window-controls,
+	.fa-secondary,
+	.sauce-enabled dialog.sauce-attr.anchored {
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	#sauce-performance
+		.filters
+		.range-selector
+		select:nth-child(n)
+		> option,
+	.loading-mask > select > option:nth-child(n) {
+		background: #000;
+	}
+
+	#sauce-performance
+		> main
+		section.sauce-panels
+		.sauce-panel-content {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
