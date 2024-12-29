@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.5
+@version      2.6
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -32,7 +32,8 @@
 	.game-web .modal-title,
 	div.activity__gradient.pos__absolute.w-100.h-100,
 	.MegaNav-module__component--1B_pQ,
-	.bg-retina {
+	.bg-retina,
+	.Footer-module__flex--iWjc8 {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
@@ -74,5 +75,10 @@
 	.onscreen-post .row {
 		padding-left: 10px;
 		width: auto;
+	}
+
+	.Footer-module__platformLinks--1axF9 {
+		filter: invert(0) hue-rotate(0deg) !important;
+		background: #141518;
 	}
 }
