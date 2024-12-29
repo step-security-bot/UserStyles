@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.6
+@version      2.7
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -35,6 +35,10 @@
 	.bg-retina,
 	.Footer-module__flex--iWjc8 {
 		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.game-web .border__radius__responsive--small {
+		filter: unset !important;
 	}
 
 	.bg-alabaster,
