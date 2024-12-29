@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	5.5
+@version      	5.6
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -2128,7 +2128,12 @@ domain("labs.strava.com") {
 		> header.filters
 		.window-controls,
 	.fa-secondary,
-	.sauce-enabled dialog.sauce-attr.anchored {
+	.sauce-enabled dialog.sauce-attr.anchored,
+	#sauce-performance
+		> main
+		section.sauce-panels
+		.sauce-panel-content,
+	#sauce-performance .btn {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
@@ -2144,8 +2149,11 @@ domain("labs.strava.com") {
 	#sauce-performance
 		> main
 		section.sauce-panels
-		.sauce-panel-content {
-		filter: invert(1) hue-rotate(180deg);
+		.sauce-panel
+		.chart-tooltip
+		.data-label
+		small {
+		color: #fc5200 !important;
 	}
 
 	.show-more-js,
@@ -2361,5 +2369,25 @@ domain("labs.strava.com") {
 		> svg
 		> path {
 		color: #fff77a;
+	}
+
+	/* For WebKit browsers (e.g., Chrome, Safari) */
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #000000a1;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border: 3px solid #fc5200;
+		border-radius: 6px;
+		background-color: #000;
+	}
+
+	/* For Edge, IE */
+	body {
+		-ms-overflow-style: -ms-autohiding-scrollbar;
 	}
 }
