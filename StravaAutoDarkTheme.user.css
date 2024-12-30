@@ -695,7 +695,8 @@ domain("labs.strava.com") {
 		> div
 		> button:not(
 			.drop-down-menu.drop-down-xs .selection
-		) {
+		),
+	.description .btn-link {
 		padding: 3px;
 	}
 
@@ -1258,7 +1259,9 @@ domain("labs.strava.com") {
 	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog
 		header.title,
 	.\------packages-feed-ui-src-features-Post-Post-module__entryTitle--qi9Ab,
-	.\------packages-feed-ui-src-features-Post-Post-module__postBody--st353 {
+	.\------packages-feed-ui-src-features-Post-Post-module__postBody--st353,
+	.KudosCommentsAndAchievementsModal--kudos-and-comments-modal--Y9sxh
+		button {
 		color: #fafafa !important;
 	}
 
@@ -1756,9 +1759,22 @@ domain("labs.strava.com") {
 
 	#progress-goals .volume-bar-container,
 	#progress-goals .bg-circle,
-	#progress-goals .progress-bar-container,
-	#fitness-freshness .stress-bar {
+	#progress-goals .progress-bar-container {
 		fill: #6c6c6c !important;
+	}
+
+	#fitness-freshness .stress-bar:nth-child(odd) {
+		fill: #4c4c4c !important;
+	}
+
+	#fitness-freshness .stress-bar:nth-child(even) {
+		fill: #3c3c3c !important;
+	}
+
+	#fitness-freshness .fitness-dot {
+		fill: #f00;
+		stroke-width: 6px;
+		stroke: #f00;
 	}
 
 	#effort-lines > .vert-line,
@@ -2379,6 +2395,68 @@ domain("labs.strava.com") {
 			.expanded
 		)::after {
 		display: none;
+	}
+
+	#fitness-freshness .line-chart-fitness {
+		stroke: #5081a5;
+	}
+
+	#fitness-freshness .line-chart-fitness-fill {
+		fill: #b8c9d6;
+		opacity: 20%;
+	}
+
+	#fitness-freshness .line-chart-freshness {
+		stroke: #f754d9;
+	}
+
+	#fitness-freshness .line-chart-form {
+		stroke: #f1ad30;
+	}
+
+	.fitness-data
+		ul.list-stats
+		li:nth-child(1)
+		.toggle-containers {
+		color: #5081a5;
+	}
+
+	.fitness-data
+		ul.list-stats
+		li:nth-child(1)
+		.toggle-containers
+		> p::before {
+		background-color: #5081a5 !important;
+	}
+
+	.fitness-data
+		ul.list-stats
+		li:nth-child(2)
+		.toggle-containers {
+		color: #f754d9;
+	}
+
+	.fitness-data
+		ul.list-stats
+		li:nth-child(2)
+		.toggle-containers
+		> p::before {
+		background-color: #f754d9 !important;
+	}
+
+	.fitness-data
+		ul.list-stats
+		li:nth-child(3)
+		.toggle-containers {
+		color: #f1ad30;
+	}
+
+	.fitness-data
+		ul.list-stats
+		li:nth-child(3)
+		.toggle-containers
+		> p::before {
+		background-color: #f1ad30 !important;
 	}
 
 	/* For WebKit browsers (e.g., Chrome, Safari) */
