@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           cssgradient.io - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for CSSGradient.io
 @author         Nick2bad4u
 @license        UnLicense
@@ -27,7 +27,8 @@
 	.js-body-content,
 	.content-backgrounds,
 	.sidenav-fake,
-	.sidenav-backgrounds__list-item .sidenav-backgrounds__background,
+	.sidenav-backgrounds__list-item
+		.sidenav-backgrounds__background,
 	body,
 	#app,
 	.pt-16,
@@ -36,13 +37,11 @@
 	.page-header,
 	.page-card,
 	.swatch-card__bar,
-	.swatch-card__copy
-	{
+	.swatch-card__copy {
 		background: black !important;
 		color: white !important;
 	}
-	.app-color__stop.is-active
-	{
+	.app-color__stop.is-active {
 		background: black !important;
 		color: white !important;
 	}
