@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.7
+@version      2.8
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -37,7 +37,19 @@
 		filter: invert(1) hue-rotate(180deg);
 	}
 
-	.game-web .border__radius__responsive--small {
+	.game-web
+		.border__radius__responsive--small:not(
+			.w-100
+		),
+	.app-container
+		> div
+		> div.column.column--settings.order-1.order-md-0.flex-grow-1.mx-sm-auto
+		> div
+		> div
+		> div
+		> div.partner-grid.d-flex.flex-column
+		> div:nth-child(8)
+		> img {
 		filter: unset !important;
 	}
 
@@ -45,6 +57,27 @@
 	.bg-alabaster .footer__nav-link {
 		background-color: #fff !important;
 		color: #000;
+	}
+
+	#navigation-container
+		> div
+		> div
+		> main
+		> div.app-container
+		> div
+		> div.column.column--settings.order-1.order-md-0.flex-grow-1.mx-sm-auto
+		> div
+		> div:nth-child(1)
+		> div.settings__card__item.settings__card__item--top
+		> div.mb-3.mb-md-4
+		> form
+		> div:nth-child(3)
+		> div.d-flex.justify-content-between.flex-md-row.flex-column
+		> div
+		> div:nth-child(2)
+		> div {
+		background-color: #000 !important;
+		color: #fff;
 	}
 
 	.footer__nav-item .seperator {
