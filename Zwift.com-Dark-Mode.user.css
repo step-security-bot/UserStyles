@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.8
+@version      2.9
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -39,7 +39,8 @@
 
 	.game-web
 		.border__radius__responsive--small:not(
-			.w-100
+			.w-100,
+			.map_overlay.map_overlay--left.pt-5.pt-md-0 > div > div.d-flex.flex-column.mt-3.mt-1440-4 > ul > li:nth-child(n) > img
 		),
 	.app-container
 		> div
