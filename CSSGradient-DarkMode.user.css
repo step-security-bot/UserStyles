@@ -1,0 +1,49 @@
+/* ==UserStyle==
+@name           cssgradient.io - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark theme for CSSGradient.io
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("cssgradient.io") {
+	/* Invert colors except images and videos */
+	main,
+	.panel-app,
+	.app-gradient,
+	.app-color,
+	.app-options,
+	.home-article,
+	.nav,
+	.home-page,
+	.blog-card,
+	.site-footer,
+	.blog-header,
+	.blog-article,
+	.row,
+	.html-backgrounds,
+	.gradient-backgrounds,
+	.js-body-content,
+	.content-backgrounds,
+	.sidenav-fake,
+	.sidenav-backgrounds__list-item .sidenav-backgrounds__background,
+	body,
+	#app,
+	.pt-16,
+	.mt-2,
+	.page-article,
+	.page-header,
+	.page-card,
+	.swatch-card__bar,
+	.swatch-card__copy
+	{
+		background: black !important;
+		color: white !important;
+	}
+	.app-color__stop.is-active
+	{
+		background: black !important;
+		color: white !important;
+	}
+}
