@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	5.9
+@version      	6.0
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -38,6 +38,12 @@ domain("labs.strava.com") {
 
 	.segments-list.ride {
 		contain: content;
+	}
+
+	.table-striped>tbody>tr:nth-child(n)>td, .table-striped>tbody>tr:nth-child(odd)>th,
+	#sidebar .section
+	{
+		color: #000;
 	}
 
 	.onboarding-flow-wrap,
@@ -151,7 +157,7 @@ domain("labs.strava.com") {
 	.pagination > li > a,
 	.pagination > li > span,
 	.leaderboard .leaderboards-upsell,
-	.table-striped > tbody > tr:nth-of-type(2n),
+	.table-striped > tbody > tr:nth-of-type(2n):not(#activity_table > tbody > tr:nth-child(n)),
 	.table-leaderboard th,
 	.ride
 		.segment-effort-detail
@@ -2154,7 +2160,10 @@ domain("labs.strava.com") {
 		> main
 		section.sauce-panels
 		.sauce-panel-content,
-	#sauce-performance .btn {
+	#sauce-performance .btn,
+	.leaflet-map-pane canvas,
+	#compare-outer,
+	#sidebar {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
