@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	5.8
+@version      	5.9
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -1922,7 +1922,8 @@ domain("labs.strava.com") {
 		> a
 		> img,
 	#global-header .upload-menu .options .app-icon,
-	.css-1o7vvpb-menu {
+	.css-1o7vvpb-menu,
+	.StravaMediaLightbox--more-options-dropdown-list--mS7Sa {
 		filter: invert(100%) !important;
 	}
 
