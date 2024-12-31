@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      3.1
+@version      3.3
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -46,17 +46,10 @@
 				> ul
 				> li:nth-child(n)
 				> img,
-			.pos__absolute--right > div
+			.pos__absolute--right > div,
+			.rideOnGiven
 		),
-	.app-container
-		> div
-		> div.column.column--settings.order-1.order-md-0.flex-grow-1.mx-sm-auto
-		> div
-		> div
-		> div
-		> div.partner-grid.d-flex.flex-column
-		> div:nth-child(8)
-		> img {
+	.partner-grid > div:nth-child(8) > img {
 		filter: unset !important;
 	}
 
@@ -76,22 +69,11 @@
 		color: #000;
 	}
 
-	#navigation-container
-		> div
-		> div
-		> main
-		> div.app-container
-		> div
-		> div.column.column--settings.order-1.order-md-0.flex-grow-1.mx-sm-auto
-		> div
-		> div:nth-child(1)
-		> div.settings__card__item.settings__card__item--top
-		> div.mb-3.mb-md-4
-		> form
-		> div:nth-child(3)
-		> div.d-flex.justify-content-between.flex-md-row.flex-column
-		> div
-		> div:nth-child(2)
+	.column.column--settings
+		div:nth-child(1)
+		.settings__card__item
+		div:nth-child(3)
+		div:nth-child(2)
 		> div {
 		background-color: #000 !important;
 		color: #fff;
