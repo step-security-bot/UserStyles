@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      2.9
+@version      3.0
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -40,7 +40,12 @@
 	.game-web
 		.border__radius__responsive--small:not(
 			.w-100,
-			.map_overlay.map_overlay--left.pt-5.pt-md-0 > div > div.d-flex.flex-column.mt-3.mt-1440-4 > ul > li:nth-child(n) > img
+			.map_overlay.map_overlay--left.pt-5.pt-md-0
+				> div
+				> div.d-flex.flex-column.mt-3.mt-1440-4
+				> ul
+				> li:nth-child(n)
+				> img
 		),
 	.app-container
 		> div
@@ -52,6 +57,16 @@
 		> div:nth-child(8)
 		> img {
 		filter: unset !important;
+	}
+
+	.game-web .z_background__wrapper {
+		background: #f1f1f1;
+		color: black !important;
+	}
+
+	.wrapper--athlete-profile .text-white,
+	.wrapper--athlete-profile .text-white h1 {
+		color: black !important;
 	}
 
 	.bg-alabaster,
