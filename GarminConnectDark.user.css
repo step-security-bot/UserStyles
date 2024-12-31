@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      2.4
+@version      2.5
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
@@ -16,7 +16,10 @@
 	.leaflet-zoom-animated,
 	html img,
 	.modal-backdrop,
-	.modal:not(.modal.fullscreen.fullscreen, .modal-wide.metrics-edit-modal.in),
+	.modal:not(
+			.modal.fullscreen.fullscreen,
+			.modal-wide.metrics-edit-modal.in
+		),
 	.edit-carousel-content .edit-image-div,
 	iframe,
 	.Notification_notification__189UW,
@@ -110,6 +113,29 @@
 
 	.btn-small {
 		z-index: 9999;
+	}
+
+	.react-global-modal
+		.Dialog_dialogFooter__W9xGT
+		> a {
+		background-color: #fff !important;
+		color: black;
+	}
+
+	/* For WebKit browsers (e.g., Chrome, Safari) */
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border: 3px solid #30acfd;
+		border-radius: 6px;
+		background-color: #fff;
+	}
+
+	/* For Edge, IE */
+	body {
+		-ms-overflow-style: -ms-autohiding-scrollbar;
 	}
 }
 
