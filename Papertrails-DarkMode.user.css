@@ -1,0 +1,34 @@
+/* ==UserStyle==
+@name           papertrails.io - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark theme for PaperTrails.io
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("papertrails.io")
+{
+	html,
+	.kzrxpN .print-container,
+	#root,
+	.kzrxpN .sc-cLQEGU,
+	.kzrxpN .sc-dVhcbM,
+	.kzrxpN .mobile-actions,
+	.kzrxpN .map-actions,
+	.kzrxpN .mobile-actions .sc-dliRfk,
+	.kzrxpN .sc-hMFtBS .inner,
+	button,
+	.maYvJ,
+	article,
+	footer
+	{
+		background: black !important;
+		color: white !important;
+	}
+	button
+	{
+		border-radius: 20px
+	}
+
+}
