@@ -2175,7 +2175,8 @@ domain("labs.strava.com") {
 		.range-selector
 		select:nth-child(n)
 		> option,
-	.loading-mask > select > option:nth-child(n) {
+	.loading-mask > select > option:nth-child(n),
+	.ftue-education-lightbox > div > div.inset {
 		background: #000;
 	}
 
