@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           statshunters.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.0
+@version        1.0.1
 @description    Dark Mode for Strava StatsHunters
 @author         Nick2bad4u
 @license        UnLicense
@@ -9,26 +9,22 @@
 ==/UserStyle== */
 @-moz-document domain("statshunters.com") {
 	/* Invert colors except images and videos */
-	:is(
-		.leaflet-container.leaflet-touch-drag
-	) {
+	:is(.leaflet-container.leaflet-touch-drag) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
-	.ui-button--type-primary.ui-button--color-default
-	{
-		color: #FFF;
+	.ui-button--type-primary.ui-button--color-default {
 		background: #000;
+		color: #fff;
 	}
-	.ui-menu-option:not(.is-divider), .ui-menu-option__icon
-	{
+	.ui-menu-option:not(.is-divider),
+	.ui-menu-option__icon {
 		overflow: auto;
-		font-size: small
+		font-size: small;
 	}
 
 	.ui-menu-option__icon,
-	 .ui-icon
-	{
+	.ui-icon {
 		display: none;
 	}
 }
