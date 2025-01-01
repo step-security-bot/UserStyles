@@ -1,0 +1,47 @@
+/* ==UserStyle==
+@name           myworkoutcompanion.net - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark theme for MyWorkoutCompanion
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("myworkoutcompanion.net") {
+	/* Invert colors except images and videos */
+	:is(
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video
+	) {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	option {
+		background: black;
+		color: white;
+	}
+
+	.custom-select:focus,
+	.form-control:focus {
+		outline: 0;
+		box-shadow: 0 0 0 0.2rem rgb(124 57 0 / 25%);
+		border-color: #7c3900;
+	}
+
+	.fc .fc-button-primary,
+	.fc .fc-button {
+		opacity: 100% !important;
+		border-color: white !important;
+		background-color: darkgray !important;
+		color: #7c3900 !important;
+	}
+
+	.fc-direction-ltr
+		.fc-daygrid-event.fc-event-end,
+	.fc-direction-rtl
+		.fc-daygrid-event.fc-event-start {
+		background-color: #7c3900 !important;
+	}
+}
