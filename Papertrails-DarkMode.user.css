@@ -1,14 +1,13 @@
 /* ==UserStyle==
 @name           papertrails.io - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for PaperTrails.io
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("papertrails.io")
-{
+@-moz-document domain("papertrails.io") {
 	html,
 	.kzrxpN .print-container,
 	#root,
@@ -21,14 +20,11 @@
 	button,
 	.maYvJ,
 	article,
-	footer
-	{
+	footer {
 		background: black !important;
 		color: white !important;
 	}
-	button
-	{
-		border-radius: 20px
+	button {
+		border-radius: 20px;
 	}
-
 }
