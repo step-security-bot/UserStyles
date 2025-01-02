@@ -1,22 +1,24 @@
 /* ==UserStyle==
 @name           ZwifterBikes - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark mode for Zwifterbikes.web.app
 @author         Nick2bad4u
 @license        UnLicense
-@homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
 @-moz-document domain("zwifterbikes.web.app") {
 	/* Invert colors except images and videos */
 	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video,
-			mat-toolbar
-		):not(z#z.z[z], svg, img.tron),
-	.fit[_ngcontent-ng-c3440179631] {
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		mat-toolbar,
+		z#z.z[z],
+		svg,
+		img.tron,
+		.fit
+	) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
