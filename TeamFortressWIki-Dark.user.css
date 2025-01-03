@@ -1,0 +1,68 @@
+/* ==UserStyle==
+@name           wiki.teamfortress.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark Theme for Team Fortress Wiki
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("wiki.teamfortress.com") {
+	/* Invert colors except images and videos */
+	html:not([stylus-iframe]),
+	img,
+	svg,
+	video,
+	.qua_unusual,
+	.mw-wiki-logo,
+	.quality-tag,
+	.qua_unique,
+	.btn_buynow_market,
+	iframe {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.tfwiki-backpack-item,
+	.att_neutral {
+		background: #e9e9e9 !important;
+		color: #000 !important;
+	}
+
+	div.vectorTabs ul li,
+	div.vectorTabs ul li *,
+	div.vectorTabs li.selected a,
+	div.vectorTabs li.selected a:visited {
+		color: #000 !important;
+	}
+
+	div.vectorTabs ul li:hover * {
+		color: #c25c00 !important;
+		text-shadow: #fff -2px -1px 1px;
+	}
+
+	li#pt-userpage,
+	li#pt-anonuserpage,
+	li#pt-login,
+	#pt-login > a {
+		color: #c25c00 !important;
+	}
+
+	a:link {
+		color: #075ce9 !important;
+	}
+
+	a:visited {
+		color: #ff0051 !important;
+	}
+
+	#right-sidebar
+		> table
+		> tbody
+		> tr:nth-child(20)
+		> td
+		> div
+		> center
+		> div {
+		background: #e9e9e9 !important;
+	}
+}
