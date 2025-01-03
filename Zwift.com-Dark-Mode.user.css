@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      3.3
+@version      3.4
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -33,7 +33,8 @@
 	div.activity__gradient.pos__absolute.w-100.h-100,
 	.MegaNav-module__component--1B_pQ,
 	.bg-retina,
-	.Footer-module__flex--iWjc8 {
+	.Footer-module__flex--iWjc8,
+	.p1z-content-slice-small {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
@@ -64,7 +65,13 @@
 	}
 
 	.bg-alabaster,
-	.bg-alabaster .footer__nav-link {
+	.bg-alabaster .footer__nav-link,
+	.accessibility-info-container:hover
+		.accessibility-info,
+	.accessibility-info-container:focus
+		.accessibility-info,
+	.accessibility-info-container:active
+		.accessibility-info {
 		background-color: #fff !important;
 		color: #000;
 	}
@@ -116,5 +123,26 @@
 	.Footer-module__platformLinks--1axF9 {
 		filter: invert(0) hue-rotate(0deg) !important;
 		background: #141518;
+	}
+
+	/* For WebKit browsers (e.g., Chrome, Safari) */
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		border-radius: 0 !important;
+		background: #000 !important;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border: 3px solid #ff7830 !important;
+		border-radius: 6px !important;
+		background-color: #000 !important;
+	}
+
+	/* For Edge, IE */
+	body {
+		-ms-overflow-style: -ms-autohiding-scrollbar;
 	}
 }
