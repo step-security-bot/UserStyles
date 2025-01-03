@@ -1,5 +1,5 @@
 /* ==UserStyle==
-@name           UserScript Template
+@name           <Stylus>
 @namespace      typpi.online
 @version        1.0.1
 @description    Description
@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 ==/UserStyle== */
-@-moz-document domain("website.com") {
+@-moz-document domain("") {
 	/* Invert colors except images and videos */
 	html,
 	img,
