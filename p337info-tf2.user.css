@@ -1,0 +1,44 @@
+/* ==UserStyle==
+@name           p337.info - Dark Mode
+@namespace      typpi.online
+@version        1.0.2
+@description    Dark mode for TF2 View on P337.info
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("p337.info") {
+	/* Invert colors except images and videos */
+	html,
+	img,
+	svg,
+	video,
+	iframe,
+	body,
+	*:not(.rarity, .c_dot) {
+		background: black !important;
+	}
+
+	.warpaint_prev,
+	.warpaint {
+		border: 1px ridge #5d08a3;
+	}
+
+	.link,
+	#primary_nav_wrap ul ul a {
+		border: 1px dashed #5d08a3;
+		background: #5d08a312 !important;
+		padding: 12px;
+	}
+
+	.link:hover,
+	#primary_nav_wrap ul ul a:hover {
+		border: 1px dashed #5d08a3;
+		background: #a308841f !important;
+		padding: 12px;
+	}
+
+	.tf2_image {
+		background: unset !important;
+	}
+}
