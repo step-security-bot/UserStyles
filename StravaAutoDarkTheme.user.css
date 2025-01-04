@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	6.3
+@version      	6.4
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -2474,6 +2474,12 @@ domain("labs.strava.com") {
 		background-color: #f1ad30 !important;
 	}
 
+	.fancybox-opened .fancybox-skin {
+		-webkit-box-shadow: 0 10px 25px #fc52004a;
+		-moz-box-shadow: 0 10px 25px #fc52004a;
+		box-shadow: 0 10px 25px #fc52004a;
+	}
+
 	/* For WebKit browsers (e.g., Chrome, Safari) */
 	::-webkit-scrollbar {
 		width: 12px;
@@ -2492,5 +2498,38 @@ domain("labs.strava.com") {
 	/* For Edge, IE */
 	body {
 		-ms-overflow-style: -ms-autohiding-scrollbar;
+	}
+
+	.fancybox-overlay-fixed
+		> div
+		> div
+		> div
+		> div::-webkit-scrollbar-thumb {
+		border: 3px solid #fc5200;
+		border-radius: 6px;
+		background-color: #fff;
+	}
+
+	.elevateExtendedData
+		div::-webkit-scrollbar-thumb {
+		border: 1px solid #fc5200;
+		background-color: #fff;
+	}
+
+	.elevateExtendedData div::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.elevateExtendedData
+		div::-webkit-scrollbar-track {
+		background: #ffffffb8;
+	}
+
+	.fancybox-overlay-fixed
+		> div
+		> div
+		> div
+		> div::-webkit-scrollbar-track {
+		background: #fafafa9c;
 	}
 }
