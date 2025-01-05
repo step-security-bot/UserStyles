@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	6.4
+@version      	6.5
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -1728,7 +1728,6 @@ domain("labs.strava.com") {
 	#basic-analysis text.laps-label,
 	#basic-analysis text.segments-label,
 	#basic-analysis #effort-detail,
-	.base-chart .axis text,
 	[class*='ui-Modal-Modal-module__closeButton']
 		> svg,
 	[class*='EmptyTrophyCase_emptyTrophyCase__']
@@ -2531,5 +2530,84 @@ domain("labs.strava.com") {
 		> div
 		> div::-webkit-scrollbar-track {
 		background: #fafafa9c;
+	}
+
+	#similar-activities-section
+		> div.pinnable-anchor {
+		filter: invert(1) hue-rotate(180deg) !important;
+		color: black !important;
+	}
+
+	#similar-activities-section
+		#similar-activities-chart-footer
+		.trending-average
+		a,
+	#similar-activities-section
+		.efforts-table
+		td.date-column {
+		color: #fc5200 !important;
+	}
+
+	body
+		> div.lightbox.trend-education-lightbox
+		> div
+		> div.inset {
+		background: black;
+		color: white;
+	}
+
+	.base-chart .axis text,
+	#similar-activities-section
+		#similar-activities-chart-container
+		#similar-activities-chart
+		.date-tick {
+		fill: #fc5200ba;
+	}
+
+	#similar-activities-chart
+		> svg
+		> g
+		> g:nth-child(3)
+		> g
+		> text.annotation-pace {
+		fill: red;
+	}
+
+	#similar-activities-chart
+		> svg
+		> g
+		> g:nth-child(5)
+		> g
+		> text.annotation-pace {
+		fill: #fc5200;
+	}
+
+	#similar-activities-chart
+		> svg
+		> g
+		> g:nth-child(4)
+		> g
+		> text.annotation-pace {
+		fill: #3c66ac;
+	}
+
+	.base-chart .axis text,
+	#similar-activities-section
+		#similar-activities-chart-container
+		#similar-activities-chart
+		.date-tick,
+	#similar-activities-section
+		#similar-activities-chart-container
+		#similar-activities-chart
+		.annotation-pace,
+	#similar-activities-section
+		#similar-activities-chart-container
+		#similar-activities-chart
+		.annotation {
+		font-size: 14px;
+	}
+
+	table.hoverable > tbody > tr.selected {
+		background-color: #fc520029;
 	}
 }
