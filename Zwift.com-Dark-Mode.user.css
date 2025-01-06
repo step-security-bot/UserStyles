@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      3.5
+@version      3.7
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -75,17 +75,16 @@
 		background-color: #fff !important;
 		color: #000;
 	}
-
+	/*
 	.column.column--settings
 		div:nth-child(1)
 		.settings__card__item
 		div:nth-child(3)
-		div:nth-child(2)
 		> div {
 		background-color: #000 !important;
 		color: #fff;
 	}
-
+*/
 	.footer__nav-item .seperator {
 		opacity: 25%;
 		background-color: #000;
