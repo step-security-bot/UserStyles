@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      3.4
+@version      3.5
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -144,5 +144,10 @@
 	/* For Edge, IE */
 	body {
 		-ms-overflow-style: -ms-autohiding-scrollbar;
+	}
+
+	.default-background {
+		background: #fffffffa;
+		background-image: unset;
 	}
 }
