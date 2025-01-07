@@ -1,0 +1,19 @@
+/* ==UserStyle==
+@name           pathfinder.w3schools.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark mode for W3Schools PathFinder since most Styles dont support it
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("pathfinder.w3schools.com") {
+	/* Invert colors except images and videos */
+	html,
+	img,
+	svg,
+	video,
+	iframe {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+}
