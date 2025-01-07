@@ -1,0 +1,49 @@
+/* ==UserStyle==
+@name           bicycling.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.1
+@description    Description
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("bicycling.com")
+{
+	/* Invert colors except images and videos */
+	html,
+	img,
+	svg,
+	video,
+	iframe
+	{
+		background: black;
+		color: white;
+	}
+
+	.css-1ew0k1
+	{
+		color: orange;
+	}
+
+	.css-1evjo6m
+	{
+		color: mediumpurple;
+	}
+
+	.__resp-container .video-player,
+	[data-embed]:defined
+	{
+		display: none;
+	}
+
+	.css-93j5lg
+	{
+		color: #A94B17C9;
+	}
+
+	.css-79elbk,
+	:host
+	{
+		background: #565656 !important;
+	}
+}
