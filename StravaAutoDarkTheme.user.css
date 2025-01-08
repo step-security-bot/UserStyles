@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	6.8
+@version      	6.9
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -150,6 +150,7 @@ domain("labs.strava.com") {
 	#basic-analysis .chart,
 	.lightbox-window .tabs,
 	.lightbox-window #tab-contents,
+	.lightbox-window #tab-contents .actions,
 	[class*='SegmentDetailsSideBar--card--'],
 	.pagination > .disabled > span,
 	.pagination > .disabled > span:hover,
@@ -1715,7 +1716,6 @@ domain("labs.strava.com") {
 	}
 
 	#progress-goals .bg-circle,
-	.area-chart-curr-fill,
 	#basic-analysis text.static-info-box.value,
 	#basic-analysis text.static-label-box.label,
 	#basic-analysis .xaxis-container text,
@@ -1780,23 +1780,10 @@ domain("labs.strava.com") {
 		fill: #3c3c3c !important;
 	}
 
-	.segments-list .splits-list > :nth-child(even),
-	.laps-list .splits-list > :nth-child(even) {
-		background: #fc5200b5;
-	}
-	#bestsplits > table > thead > tr > th {
-		color: #3c66ad;
-		text-shadow: 1px 1px black;
-	}
-
 	#fitness-freshness .fitness-dot {
 		fill: #f00;
 		stroke-width: 6px;
 		stroke: #f00;
-	}
-
-	.segments-list .splits-list::selection {
-		background: red !important;
 	}
 
 	#effort-lines > .vert-line,
@@ -2592,8 +2579,7 @@ domain("labs.strava.com") {
 		> g
 		> g:nth-child(5)
 		> g
-		> text.annotation-pace,
-	.area-chart-curr {
+		> text.annotation-pace {
 		fill: #fc5200;
 	}
 
@@ -2626,29 +2612,35 @@ domain("labs.strava.com") {
 		background-color: #fc520029;
 	}
 
-	#crossBar > text {
-		text-shadow:
-			3px 3px black,
-			-3px -3px black,
-			-3px 3px black,
-			3px -3px black,
-			3px 0 black,
-			-3px 0 black,
-			0 3px black,
-			0 -3px black;
-		fill: #fc5200;
+	.area-chart-curr {
+		stroke-width: 0;
+		fill: #962f03b0;
 	}
 
-	#infobox-text-distance .title,
-	#infobox-text-altitude .title,
-	#infobox-text-grade_smooth .title {
-		color: #3c66ad;
-		text-shadow: 1px 1px black;
-	}
 	.base-chart .crossbar {
-		stroke: #fff77a82;
+		stroke: #fff77a4f;
+		stroke-width: 1px;
+		pointer-events: none;
 	}
-	.area-chart-curr-fill {
-		fill: #f754d954 !important;
+
+	.base-chart .title {
+		color: #fff77a99;
+	}
+
+	.base-chart .crossbar-text {
+		fill: #fc5200;
+		background-color: black;
+		padding: 2px;
+		text-shadow:
+			-1px -1px 0 #000,
+			1px -1px 0 #000,
+			-1px 1px 0 #000,
+			1px 1px 0 #000,
+			-2px -2px 0 #000,
+			2px -2px 0 #000,
+			-2px 2px 0 #000,
+			2px 2px 0 #000,
+			0 0 5px #000;
+		/* Adjust the last value to make the shadow thicker */
 	}
 }
