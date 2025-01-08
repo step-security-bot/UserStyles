@@ -3,7 +3,7 @@
 @namespace    	https://github.com/Nick2bad4u/UserStyles
 @homepageURL  	https://github.com/Nick2bad4u/UserStyles
 @description  	Updated Dark Mode for Strava for users who use Sauce for Strava.
-@version      	6.6
+@version      	6.8
 @author       	ATX (Updated by Nick2bad4u)
 @license      	CC-BY-SA-4.0
 ==/UserStyle== */
@@ -1716,7 +1716,6 @@ domain("labs.strava.com") {
 
 	#progress-goals .bg-circle,
 	.area-chart-curr-fill,
-	.base-chart .crossbar-text,
 	#basic-analysis text.static-info-box.value,
 	#basic-analysis text.static-label-box.label,
 	#basic-analysis .xaxis-container text,
@@ -1781,10 +1780,23 @@ domain("labs.strava.com") {
 		fill: #3c3c3c !important;
 	}
 
+	.segments-list .splits-list > :nth-child(even),
+	.laps-list .splits-list > :nth-child(even) {
+		background: #fc5200b5;
+	}
+	#bestsplits > table > thead > tr > th {
+		color: #3c66ad;
+		text-shadow: 1px 1px black;
+	}
+
 	#fitness-freshness .fitness-dot {
 		fill: #f00;
 		stroke-width: 6px;
 		stroke: #f00;
+	}
+
+	.segments-list .splits-list::selection {
+		background: red !important;
 	}
 
 	#effort-lines > .vert-line,
@@ -2580,7 +2592,8 @@ domain("labs.strava.com") {
 		> g
 		> g:nth-child(5)
 		> g
-		> text.annotation-pace {
+		> text.annotation-pace,
+	.area-chart-curr {
 		fill: #fc5200;
 	}
 
@@ -2611,5 +2624,31 @@ domain("labs.strava.com") {
 
 	table.hoverable > tbody > tr.selected {
 		background-color: #fc520029;
+	}
+
+	#crossBar > text {
+		text-shadow:
+			3px 3px black,
+			-3px -3px black,
+			-3px 3px black,
+			3px -3px black,
+			3px 0 black,
+			-3px 0 black,
+			0 3px black,
+			0 -3px black;
+		fill: #fc5200;
+	}
+
+	#infobox-text-distance .title,
+	#infobox-text-altitude .title,
+	#infobox-text-grade_smooth .title {
+		color: #3c66ad;
+		text-shadow: 1px 1px black;
+	}
+	.base-chart .crossbar {
+		stroke: #fff77a82;
+	}
+	.area-chart-curr-fill {
+		fill: #f754d954 !important;
 	}
 }
