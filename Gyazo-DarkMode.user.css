@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      2.8
+@version      2.9
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -700,9 +700,17 @@
 		> div
 		> div:nth-child(n)
 		> div
-		> div {
-		background-color: #bb86fc;
+		> div,
+	.page-content .indent-mark .dot {
+		background-color: #bb86fc !important;
 		color: #bb86fc !important;
+	}
+
+	a:-webkit-any-link {
+		cursor: pointer !important;
+		color: -webkit-link !important;
+		color: #5686ffeb !important;
+		text-decoration: underline !important;
 	}
 
 	#conclusion > div > button,
@@ -715,6 +723,10 @@
 	.pricing-box-default,
 	.box.small-team {
 		border: 1px solid #bb86fc;
+	}
+
+	.faq-list .faq-list-bottom {
+		background: #f000;
 	}
 
 	#global-dropdown-menu
@@ -1062,6 +1074,16 @@
 	.B9QQGIFrwoa05qnyZvI5 {
 		gap: 1px 0 !important;
 		background-color: #bb86fc !important;
+	}
+
+	.related-pages
+		.related-pages-body
+		ul
+		> li
+		> a
+		.icon {
+		background-image: url('https://i.gyazo.com/03452dc72b4111fa1641b9fe7c53ef39.png') !important;
+		/* fill: white !important; */
 	}
 
 	#react-root
