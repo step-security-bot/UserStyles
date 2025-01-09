@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      2.9
+@version      3.0
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -27,6 +27,66 @@
 	.sidebar-block {
 		background-color: #121212 !important;
 		color: #e0e0e0 !important;
+	}
+
+	.edit-box-component .image-desc-display {
+		border: 2px solid #bb86fc;
+	}
+
+	.edit-box-component .input-description:focus {
+		box-shadow: 0 0 0 5px #3c2a51;
+		color: white !important;
+	}
+
+	.input-description::placeholder {
+		color: #bb86fc !important;
+	}
+
+	.vtVH6utAExSlC9aN2qwE:focus::placeholder {
+		color: #ffffffd4 !important;
+	}
+
+	.ocr-desc-buttons > div > button:hover {
+		border: 1px dashed !important;
+		border-color: #5686ffeb !important;
+		border-radius: 5px;
+		color: #5686ffeb !important;
+	}
+
+	.captured-info
+		> div:nth-child(n)
+		> div.captured-info-value
+		> div:hover {
+		border: 1px #bb86fc dashed;
+		border-radius: 5px;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.captured-info-key::after,
+	.captured-info,
+	.ocr-icon-block > div::after {
+		content: ':';
+	}
+
+	.metadata-icon.text-center > svg > path {
+		fill: #bb86fc;
+	}
+
+	.image-desc-display.placeholder::after {
+		display: inline-block;
+		animation: cursor-blink 1.5s steps(2) infinite;
+		margin-left: 5px;
+		background: #bb86fc;
+		width: 6px;
+		height: 18px;
+		content: '';
+	}
+
+	@keyframes cursor-blink {
+		0% {
+			opacity: 0%;
+		}
 	}
 
 	.edit-box-component,
@@ -95,15 +155,11 @@
 		> div.explorer-action-btn-group
 		> button.edit-options-button.btn.explorer-action-btn.explorer-action-btn-dark
 		> svg,
-	#react-root
-		> div.header-block.explorer-header-block
-		> div.explorer-action-btn-toolbar
+	.explorer-action-btn-toolbar
 		> div.explorer-action-btn-group
 		> button
 		> svg,
-	#react-root
-		> div.header-block.explorer-header-block
-		> div.explorer-action-btn-toolbar
+	.explorer-action-btn-toolbar
 		> div.explorer-action-btn-group
 		> div.upload-modal.captures-upload-modal.show
 		> button
@@ -118,23 +174,6 @@
 		> div:nth-child(n)
 		> button.switch-save
 		> svg:hover,
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.image-ocrinfo-component
-		> div
-		> div.ocr-desc-buttons
-		> div
-		> div
-		> button
-		> svg,
 	.toplevel-item-kamon > svg > path,
 	.new-collection-field
 		> span
@@ -174,6 +213,10 @@
 		> kamon-lp,
 	#direct-video-link-button > svg {
 		fill: #bb86fc;
+	}
+
+	.ocr-desc-buttons > div > div > button > svg {
+		fill: #bb86fc !important;
 	}
 
 	#global-dropdown-menu
@@ -231,23 +274,6 @@
 		> button
 		> svg,
 	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.image-ocrinfo-component
-		> div
-		> div.ocr-desc-buttons
-		> div
-		> div
-		> button
-		> svg:hover,
-	#react-root
 		> div:nth-child(n)
 		> div
 		> div
@@ -296,6 +322,14 @@
 		> path:hover,
 	[id^='headlessui-menu-item-'] > svg:hover {
 		fill: white;
+	}
+
+	.ocr-desc-buttons
+		> div
+		> div
+		> button:hover
+		> svg {
+		fill: white !important;
 	}
 
 	.new-collection-field > span > span > svg,
@@ -706,7 +740,7 @@
 		color: #bb86fc !important;
 	}
 
-	a:-webkit-any-link {
+	a:any-link {
 		cursor: pointer !important;
 		color: -webkit-link !important;
 		color: #5686ffeb !important;
@@ -1115,39 +1149,11 @@
 		padding-top: 15px !important;
 	}
 
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.image-ocrinfo-component
-		> div
-		> div.ocr-desc-buttons
-		> div
-		> button,
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.image-infos
-		> div.edit-box-component
-		> div
-		> div
-		> div
-		> div.image-ocrinfo-component
-		> div
-		> div.ocr-desc-buttons
-		> div
-		> div
-		> button,
+	.ocr-desc-buttons > div > button,
+	.ocr-desc-buttons > div > div > button,
 	.pjZHyYN8MthPpYWZDS0d,
 	.vtVH6utAExSlC9aN2qwE {
+		margin-right: 3px;
 		border: 1px dashed #bb86fc !important;
 	}
 
@@ -1195,7 +1201,11 @@
 	}
 
 	.image-box-component .image-viewer {
-		background: #fff0 !important;
+		background: #31313170 !important;
+	}
+
+	.image-box-component .image-viewer:hover {
+		background: #31313100 !important;
 	}
 
 	.vknCRY3MsirgC3PJ9Zb8:hover,
@@ -1206,6 +1216,38 @@
 		opacity: 100% !important;
 		transition: opacity ease-in-out 0.2s !important;
 		background: rgb(0 0 0 / 0%) !important;
+	}
+
+	.faq-list ul > li > a .icon {
+		position: relative;
+		visibility: hidden;
+	}
+
+	.faq-list ul > li > a .icon::after {
+		display: block !important;
+		position: absolute !important;
+		top: 0 !important;
+		left: 0 !important;
+		visibility: visible !important;
+		background-image: url('https://i.gyazo.com/4b32d726c89e4fd17dcf36871cc34b4f.png') !important;
+		background-position: center !important;
+		background-size: contain !important;
+		background-repeat: no-repeat !important;
+		width: 100% !important;
+		height: 100% !important;
+		content: '' !important;
+	}
+
+	#feedback-good-button > img {
+		border-radius: 20px;
+		background-color: #00800069 !important;
+		padding: 9px;
+	}
+
+	#feedback-bad-button > img {
+		border-radius: 20px;
+		background-color: #80000069 !important;
+		padding: 9px;
 	}
 }
 
