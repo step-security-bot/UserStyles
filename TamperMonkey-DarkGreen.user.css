@@ -1,66 +1,78 @@
-.dark .scripttable tr,
-.dark .section,
-.dark .actiontable,
-.dark table {
-  background-color: #000000b0;
-}
+/* ==UserStyle==
+@name           TamperMonkey Extension - Dark Green Mode
+@namespace      typpi.online
+@version        1.0.3
+@description    Dark Green mode theme for Tampermonkey Extension
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document url-prefix("extension://iikmkjmpaadaobahmlepeloendndfphd")
+{
+	.dark .scripttable tr,
+	.dark .section,
+	.dark .actiontable,
+	.dark table {
+		background-color: #000000b0;
+	}
 
-.dark .head_container {
-  background-color: #1cbd3fa9;
-}
+	.dark .head_container {
+		background-color: #1cbd3fa9;
+	}
 
-.scripttable tr,
-.section,
-.actiontable,
-.settingstr {
-  border-color: #1cbd3f54 !important;
-}
+	.scripttable tr,
+	.section,
+	.actiontable,
+	.settingstr {
+		border-color: #1cbd3f54 !important;
+	}
 
-.greyed {
-  color: rgb(206 11 11 / 39.7%) !important;
-}
+	.greyed {
+		color: rgb(206 11 11 / 39.7%) !important;
+	}
 
-.dark table {
-  color: rgb(255 255 255 / 77.4%);
-}
+	.dark table {
+		color: rgb(255 255 255 / 77.4%);
+	}
 
-html.dark,
-html.dark body,
-.tv_tabs_fill {
-  background: #000000b0;
-  color: #aaa;
-  scrollbar-color: #1cbd3fa9 #202020;
-}
+	html.dark,
+	html.dark body,
+	.tv_tabs_fill {
+		background: #000000b0;
+		scrollbar-color: #1cbd3fa9 #202020;
+		color: #aaa;
+	}
 
-.dark .tv_selected {
-  color: #eee !important;
-  background-color: #1cbd3fa9 !important;
-  border-bottom-color: #2a2a2a !important;
-}
+	.dark .tv_selected {
+		border-bottom-color: #2a2a2a !important;
+		background-color: #1cbd3fa9 !important;
+		color: #eee !important;
+	}
 
-.dark .editormenu {
-  background-color: #1cbd3f54;
-  color: rgb(255 255 255);
-}
+	.dark .editormenu {
+		background-color: #1cbd3f54;
+		color: rgb(255 255 255);
+	}
 
-.editor_border {
-  background-color: #fff;
-  border-radius: 3px;
-  border: 1px #1cbd3f54 solid;
-  padding: 0;
-}
+	.editor_border {
+		border: 1px #1cbd3f54 solid;
+		border-radius: 3px;
+		background-color: #fff;
+		padding: 0;
+	}
 
-.dark .submenu,
-.dark .submenulist {
-  background-color: #000000ec;
-  color: rgb(255 255 255 / 77.4%);
-}
+	.dark .submenu,
+	.dark .submenulist {
+		background-color: #000000ec;
+		color: rgb(255 255 255 / 77.4%);
+	}
 
-.submenu tr.entry:hover {
-  background: #1cbd3f54 !important;
-}
+	.submenu tr.entry:hover {
+		background: #1cbd3f54 !important;
+	}
 
-.dark .tv_tab {
-  background-color: #000000b0;
-  border: 1px solid #1cbd3f54;
+	.dark .tv_tab {
+		border: 1px solid #1cbd3f54;
+		background-color: #000000b0;
+	}
 }
