@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      2.7
+@version      2.8
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -560,11 +560,21 @@
 		> div
 		> div:nth-child(n)
 		> div
-		> .card.medium-card.checkable:hover {
+		> .card.medium-card.checkable:hover,
+	body.download .hero .download-btn {
 		opacity: 100%;
 		box-shadow:
 			0 0 1px 1px #bb86fc,
 			0 0 1px #bb86fc;
+	}
+
+	body.download .hero .download-btn:hover {
+		opacity: 100%;
+		box-shadow:
+			0 0 1px 1px #fc86af,
+			0 0 1px #fc86bb !important;
+		background-color: #fc86bb !important;
+		color: #000 !important;
 	}
 
 	#react-root
