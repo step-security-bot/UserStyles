@@ -1,0 +1,66 @@
+.dark .scripttable tr,
+.dark .section,
+.dark .actiontable,
+.dark table {
+  background-color: #000000b0;
+}
+
+.dark .head_container {
+  background-color: #1cbd3fa9;
+}
+
+.scripttable tr,
+.section,
+.actiontable,
+.settingstr {
+  border-color: #1cbd3f54 !important;
+}
+
+.greyed {
+  color: rgb(206 11 11 / 39.7%) !important;
+}
+
+.dark table {
+  color: rgb(255 255 255 / 77.4%);
+}
+
+html.dark,
+html.dark body,
+.tv_tabs_fill {
+  background: #000000b0;
+  color: #aaa;
+  scrollbar-color: #1cbd3fa9 #202020;
+}
+
+.dark .tv_selected {
+  color: #eee !important;
+  background-color: #1cbd3fa9 !important;
+  border-bottom-color: #2a2a2a !important;
+}
+
+.dark .editormenu {
+  background-color: #1cbd3f54;
+  color: rgb(255 255 255);
+}
+
+.editor_border {
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px #1cbd3f54 solid;
+  padding: 0;
+}
+
+.dark .submenu,
+.dark .submenulist {
+  background-color: #000000ec;
+  color: rgb(255 255 255 / 77.4%);
+}
+
+.submenu tr.entry:hover {
+  background: #1cbd3f54 !important;
+}
+
+.dark .tv_tab {
+  background-color: #000000b0;
+  border: 1px solid #1cbd3f54;
+}
