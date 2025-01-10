@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      3.0
+@version      3.1
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -35,10 +35,49 @@
 
 	.edit-box-component .input-description:focus {
 		box-shadow: 0 0 0 5px #3c2a51;
-		color: white !important;
+		color: #fff !important;
 	}
 
-	.input-description::placeholder {
+	.add-to-collection-popover
+		.collection-operation-wrap
+		.collection-operation-add,
+	.add-to-collection-popover
+		.new-collection-form
+		.form-box
+		input::placeholder,
+	.input-description::placeholder,
+	.faq.static-page-faq
+		> ul
+		> li.bottom
+		> div.question:hover,
+	.faq.static-page-faq
+		> ul
+		> li:nth-child(n)
+		> div.question:hover,
+	.post > div > div > h2:nth-child(n),
+	.TOTVG659Y6UvGA4WzVD1 > form > input,
+	.card.medium-card,
+	.container-close-date-images.related-info,
+	.images-after-origin,
+	.metadata,
+	.related-info-box-component,
+	.side-block .side-block-items .sub,
+	.testing-swap-image-container
+		.metadata-baseinfo,
+	body > div.content > div:nth-child(2) > h1,
+	body > div.content > div:nth-child(n) > h2,
+	body > div.content > section.faq > div > h2,
+	body
+		> div.content
+		> section.features-table
+		> div
+		> table:nth-child(n)
+		> thead
+		> tr
+		> th
+		> div,
+	.title,
+	.row > div:nth-child(n) > div {
 		color: #bb86fc !important;
 	}
 
@@ -67,10 +106,6 @@
 	.captured-info,
 	.ocr-icon-block > div::after {
 		content: ':';
-	}
-
-	.metadata-icon.text-center > svg > path {
-		fill: #bb86fc;
 	}
 
 	.image-desc-display.placeholder::after {
@@ -105,7 +140,7 @@
 	}
 
 	.content {
-		background: black !important;
+		background: #000 !important;
 	}
 
 	.image-page.image-page-renewal
@@ -211,11 +246,51 @@
 		> td:nth-child(n)
 		> div
 		> kamon-lp,
-	#direct-video-link-button > svg {
+	#direct-video-link-button > svg,
+	.metadata-icon.text-center > svg > path,
+	#react-root
+		> div:nth-child(2)
+		> div
+		> div
+		> aside
+		> div
+		> div
+		> ul
+		> li.toplevel-item.collection-list
+		> ul:hover
+		> li:nth-child(n)
+		> div
+		> button
+		> svg
+		> path,
+	#react-root
+		> div:nth-child(n)
+		> div
+		> div
+		> div
+		> div.image-box-component.zoomable
+		> div.navigation.next-navigation
+		> svg
+		> path,
+	#react-root
+		> div:nth-child(n)
+		> div
+		> div
+		> div
+		> div.image-box-component.zoomable
+		> div.navigation.prev-navigation
+		> svg
+		> path,
+	.search-history-list
+		.histories
+		.history-row
+		button.switch-save
+		.kamon {
 		fill: #bb86fc;
 	}
 
-	.ocr-desc-buttons > div > div > button > svg {
+	.ocr-desc-buttons > div > div > button > svg,
+	#like > svg {
 		fill: #bb86fc !important;
 	}
 
@@ -320,8 +395,18 @@
 	[id^='headlessui-menu-button-']
 		> svg
 		> path:hover,
-	[id^='headlessui-menu-item-'] > svg:hover {
-		fill: white;
+	[id^='headlessui-menu-item-'] > svg:hover,
+	.search-history-list
+		.histories
+		.history-row
+		button.switch-save:hover
+		.kamon,
+	.search-history-list
+		.histories
+		.history-row:hover
+		button.switch-save
+		.kamon {
+		fill: #fff;
 	}
 
 	.ocr-desc-buttons
@@ -329,7 +414,7 @@
 		> div
 		> button:hover
 		> svg {
-		fill: white !important;
+		fill: #fff !important;
 	}
 
 	.new-collection-field > span > span > svg,
@@ -339,7 +424,7 @@
 		> a
 		> span.toplevel-item-kamon
 		> svg {
-		fill: black;
+		fill: #000;
 	}
 
 	#react-root
@@ -397,41 +482,6 @@
 		border: 1px solid #333 !important;
 		background-color: #1e1e1e !important;
 		color: #e0e0e0 !important;
-	}
-
-	.faq.static-page-faq
-		> ul
-		> li.bottom
-		> div.question:hover,
-	.faq.static-page-faq
-		> ul
-		> li:nth-child(n)
-		> div.question:hover,
-	.post > div > div > h2:nth-child(n),
-	.TOTVG659Y6UvGA4WzVD1 > form > input,
-	.card.medium-card,
-	.container-close-date-images.related-info,
-	.images-after-origin,
-	.metadata,
-	.related-info-box-component,
-	.side-block .side-block-items .sub,
-	.testing-swap-image-container
-		.metadata-baseinfo,
-	body > div.content > div:nth-child(2) > h1,
-	body > div.content > div:nth-child(n) > h2,
-	body > div.content > section.faq > div > h2,
-	body
-		> div.content
-		> section.features-table
-		> div
-		> table:nth-child(n)
-		> thead
-		> tr
-		> th
-		> div,
-	.title,
-	.row > div:nth-child(n) > div {
-		color: #bb86fc !important;
 	}
 
 	.header {
@@ -721,7 +771,8 @@
 	.testimonials > div > div > h2,
 	.tutorial > div > h3,
 	.usecases > div > div:nth-child(n) > h3,
-	.usecases > div > h2 {
+	.usecases > div > h2,
+	input[name='new-tag']::placeholder {
 		color: #bb86fc;
 	}
 
@@ -961,10 +1012,6 @@
 		color: #fff;
 	}
 
-	#like > svg {
-		fill: #bb86fc !important;
-	}
-
 	.table > tbody > tr > td,
 	.table > tbody > tr > th,
 	.table > tfoot > tr > td,
@@ -991,60 +1038,6 @@
 		.toplevel-item-active {
 		background: #121212;
 		pointer-events: none;
-	}
-
-	#react-root
-		> div:nth-child(2)
-		> div
-		> div
-		> aside
-		> div
-		> div
-		> ul
-		> li.toplevel-item.collection-list
-		> ul:hover
-		> li:nth-child(n)
-		> div
-		> button
-		> svg
-		> path,
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.image-box-component.zoomable
-		> div.navigation.next-navigation
-		> svg
-		> path,
-	#react-root
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.image-box-component.zoomable
-		> div.navigation.prev-navigation
-		> svg
-		> path,
-	.search-history-list
-		.histories
-		.history-row
-		button.switch-save
-		.kamon {
-		fill: #bb86fc;
-	}
-
-	.search-history-list
-		.histories
-		.history-row
-		button.switch-save:hover
-		.kamon,
-	.search-history-list
-		.histories
-		.history-row:hover
-		button.switch-save
-		.kamon {
-		fill: #fff;
 	}
 
 	.side-block-items .collection-item .file-thumb,
@@ -1157,10 +1150,6 @@
 		border: 1px dashed #bb86fc !important;
 	}
 
-	input[name='new-tag']::placeholder {
-		color: #bb86fc;
-	}
-
 	#headlessui-dialog-overlay-5,
 	#react-root
 		> div.header-block.explorer-header-block
@@ -1188,16 +1177,6 @@
 		border-top: 1px solid #bb86fc !important;
 		border-bottom: 1px solid #bb86fc !important;
 		line-height: 30px !important;
-	}
-
-	.add-to-collection-popover
-		.collection-operation-wrap
-		.collection-operation-add,
-	.add-to-collection-popover
-		.new-collection-form
-		.form-box
-		input::placeholder {
-		color: #bb86fc !important;
 	}
 
 	.image-box-component .image-viewer {
