@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com Dark Mode
-@version      3.1
+@version      3.2
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Purple Accents)
 @author       Nick2bad4u
@@ -1250,7 +1250,16 @@
 				> a
 				> div,
 			.caBpUIyLTfNBwvxfTyDa,
-			div.k3nzGrC3hEubDzXyOg_r
+			div.k3nzGrC3hEubDzXyOg_r,
+			.stickers,
+			.colorset,
+			.btn-group.btn-group-xs
+				> button:nth-child(n)
+				> div,
+			.color-display,
+			[role*='tooltip'],
+			.stamp-select,
+			.HTsz6WzMsfIq0uJedGbz
 		),
 	footer,
 	h1,
@@ -1269,8 +1278,23 @@
 	td,
 	th,
 	ul {
-		background-color: #00000014 !important;
+		background-color: #0000 !important;
 		/* Example style */
+	}
+	.image-page-renewal
+		.draw-toolbar-operation-btn
+		span {
+		border-top: solid 1px #bb86fc;
+		border-bottom: solid 1px #bb86fc;
+		line-height: 30px;
+	}
+	.image-page-renewal
+		.draw-toolbar-operation-btn:hover
+		span {
+		border-top: solid 1px #e0e0e0;
+		border-bottom: solid 1px #e0e0e0;
+		color: #fff !important;
+		line-height: 30px;
 	}
 
 	.explorer-action-btn-default {
@@ -1289,5 +1313,10 @@
 
 	*:hover > svg:not(:root) {
 		fill: #d7d7d7 !important;
+	}
+	[role*='tooltip'],
+	.HTsz6WzMsfIq0uJedGbz {
+		box-shadow: 0 0 5px 5px #bb86fc;
+		border-radius: 8px;
 	}
 }
