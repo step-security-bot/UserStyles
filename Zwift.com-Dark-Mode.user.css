@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Zwift.com Dark Mode
-@version      8.0
+@version      8.1
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Zwift.com Dark Mode
 @author       Nick2bad4u
@@ -71,7 +71,8 @@
 	.accessibility-info-container:focus
 		.accessibility-info,
 	.accessibility-info-container:active
-		.accessibility-info {
+		.accessibility-info,
+	#navigation-container > div > div > main {
 		background-color: #fff !important;
 		color: #000;
 	}
