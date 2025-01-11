@@ -1,0 +1,24 @@
+/* ==UserStyle==
+@name           webhint.io - Dark Theme
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark theme for WebHint.io
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("webhint.io") {
+	/* Invert colors except images and videos */
+	html,
+	img,
+	svg,
+	video,
+	iframe,
+	.highlight {
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.header {
+		background-color: #c797ff;
+	}
+}
