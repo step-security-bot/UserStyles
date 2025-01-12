@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           tampermonkey.net - Dark Mode
 @namespace      typpi.online
-@version        1.0.3
+@version        1.0.4
 @description    Dark mode theme for Tampermonkey
 @author         Nick2bad4u
 @license        UnLicense
@@ -18,7 +18,8 @@
 		.mainnav,
 		.col-full .row h1,
 		.row.md iframe,
-		.toc a
+		.toc a,
+		.changelog .changeset .header .version
 	) {
 		filter: invert(1) hue-rotate(180deg);
 	}
@@ -35,5 +36,9 @@
 
 	.toc a {
 		color: #1182a7;
+	}
+	.changelog .changeset .changes .change .fa,
+	.col-full svg {
+		fill: #cb8a3e;
 	}
 }
