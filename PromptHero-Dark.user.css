@@ -1,0 +1,74 @@
+/* ==UserStyle==
+@name           prompthero.com - Dark Mode
+@namespace      typpi.online
+@version        1.0.2
+@description    Dark theme for Prompt Hero
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+==/UserStyle== */
+@-moz-document domain("prompthero.com") {
+	/* Invert colors except images and videos */
+	body,
+	.navbar-container,
+	.p-3,
+	.text-center,
+	footer,
+	footer ul a,
+	.card,
+	.devise-wrapper form:not(.button_to) {
+		background: black !important;
+		background-color: black !important;
+		color: #ffffff !important;
+	}
+
+	#top-prompthero-navbar > a > span > img {
+		border-radius: 20px;
+		background: #56074300;
+		padding-top: 1px;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	.navbar-shadow {
+		box-shadow:
+			#4505bc 0 8px 8px -8px,
+			inset -30px 0 30px -30px rgb(0 0 0 / 20%);
+	}
+
+	#top-prompthero-navbar > a > span > img,
+	.navbar-light .navbar-toggler-icon,
+	#top-prompthero-navbar-main-area {
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.category-carousel-item {
+		color: #bc0573;
+	}
+
+	.category-carousel-item:hover,
+	footer ul a:hover {
+		color: #4505bc !important;
+	}
+
+	.prompt-area,
+	.p-3,
+	.card {
+		/* background-color: rgba(0,0,0,0.01); */
+		border: 1px solid #4505bc;
+		border-radius: 12px;
+		background-color: #050505;
+		padding: 1.5em 2em;
+		overflow-wrap: break-word;
+	}
+
+	.prompt-area span {
+		color: #bc0573;
+	}
+
+	.prompt-buttons a:hover span,
+	#copyButton:hover span,
+	.footer-section-title {
+		color: #4505bc;
+	}
+}
