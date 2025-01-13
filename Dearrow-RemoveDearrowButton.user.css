@@ -1,15 +1,21 @@
 /* ==UserStyle==
 @name         Dearrow - Remove Dearrow Button
-@version      20241116.23.30
+@version      20241116.23.31
 @namespace    typpi.online
 @description  Dearrow - Remove Button from YouTube Extension Dearrow
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+@preprocessor stylus
+@var          checkbox hidebutton "Hide Button" 1
 ==/UserStyle== */
-
-@-moz-document domain("youtube.com") {
-	#video-title-link > button > img {
-		display: none;
+@-moz-document domain("youtube.com")
+{
+	if hidebutton
+	{
+		#video-title-link > button > img
+		{
+			display: none;
+		}
 	}
 }
