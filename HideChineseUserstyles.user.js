@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide Chinese Userstyles on Userstyles.World
 // @namespace    typpi.online
-// @version      1.4
+// @version      1.5
 // @description  Hide userstyles containing Chinese characters on userstyles.world
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -9,8 +9,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=userstyles.world
 // @grant        none
 // @homepageURL  https://userstyles.github.typpi.online
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/HideChineseUserstyles.user.js
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/HideChineseUserstyles.user.js
+// @downloadURL  https://update.greasyfork.org/scripts/523264/Hide%20Chinese%20Userstyles%20on%20UserstylesWorld.user.js
+// @updateURL    https://update.greasyfork.org/scripts/523264/Hide%20Chinese%20Userstyles%20on%20UserstylesWorld.meta.js
 // ==/UserScript==
 
 (function () {
