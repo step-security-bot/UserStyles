@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com - Dark Mode [Customizable]
-@version      3.4
+@version      3.5
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
@@ -16,24 +16,31 @@
 @var color body-background "Body Background" #121212
 @var color color-gray "Gray" #333
 @var color color-gray2 "Gray (Light)" #e0e0e0
+@var color color-gray3 "Gray (Alternate) #d7d7d7
 @var color color-gray-dark "Gray Color (Dark)" #1e1e1e
 @var color color-red "Red" #ff0000
+@var color download-button "Download Button" #fc86bb
 ==/UserStyle== */
 @-moz-document domain("gyazo.com") {
 	/* Stylus Variables */
-	:root
-	{
+	:root {
 		--primary-color: var(primary-color);
-		--primary-color-darker: var(primary-color-darker);
-		--primary-color-light: var(primary-color-light);
+		--primary-color-darker: var(
+			primary-color-darker
+		);
+		--primary-color-light: var(
+			primary-color-light
+		);
 		--placeholder-color: var(placeholder-color);
 		--white-color: var(white-color);
 		--black-color: var(black-color);
 		--body-background: var(body-background);
 		--color-gray: var(color-gray);
 		--color-gray2: var(color-gray2);
+		--color-gray3: var(color-gray3);
 		--color-gray-dark: var(color-gray-dark);
 		--color-red: var(red-color);
+		--download-button: var(download-button);
 	}
 
 	.related-info-box-component
@@ -694,9 +701,11 @@
 	body.download .hero .download-btn:hover {
 		opacity: 100%;
 		box-shadow:
-			0 0 1px 1px #fc86af,
-			0 0 1px #fc86bb !important;
-		background-color: #fc86bb !important;
+			0 0 1px 1px var(--download-button),
+			0 0 1px var(--download-button) !important;
+		background-color: var(
+			--download-button
+		) !important;
 		color: var(--black-color) !important;
 	}
 
@@ -725,7 +734,7 @@
 		inset: 0;
 		border: 5px solid var(-white-color);
 		border-bottom: 32px solid var(-white-color);
-		background: rgb(58 66 79 / 40%);
+		background: #3a424f66;
 	}
 
 	#metadata-is-public-dropdown,
@@ -1032,7 +1041,7 @@
 		position: relative;
 		cursor: pointer;
 		margin-top: 38px;
-		border: 1px solid #d7d7d7;
+		border: 1px solid var(--color-gray3);
 		border-radius: 10px;
 		width: 300px;
 		height: 60px;
@@ -1137,7 +1146,7 @@
 		> div.upload-modal.captures-upload-modal.show
 		> div
 		> h1:nth-child(2) {
-		color: #d7d7d7;
+		color: var(--color-gray3);
 	}
 
 	.related-images .related-info {
@@ -1175,7 +1184,7 @@
 	}
 
 	.image-page hr {
-		border-top: 0 solid rgb(255 255 255 / 15%);
+		border-top: 0 solid #ffffff26;
 	}
 
 	#react-root
@@ -1209,9 +1218,7 @@
 	.kuJ39tkCjATBXUZiuSKB {
 		position: fixed;
 		inset: 0;
-		background-color: rgb(
-			255 255 255 / 9%
-		) !important;
+		background-color: #ffffff17 !important;
 	}
 
 	#react-root
@@ -1243,7 +1250,7 @@
 	.a5h6q3HOqElFBixS3dB_ {
 		opacity: 100% !important;
 		transition: opacity ease-in-out 0.2s !important;
-		background: rgb(0 0 0 / 0%) !important;
+		background: #00000000 !important;
 	}
 
 	.faq-list ul > li > a .icon {
@@ -1327,7 +1334,7 @@
 	td,
 	th,
 	ul {
-		background-color: #0000 !important;
+		background-color: #00000000 !important;
 		/* Example style */
 	}
 
@@ -1363,7 +1370,7 @@
 	}
 
 	*:hover > svg:not(:root) {
-		fill: #d7d7d7 !important;
+		fill: var(--color-gray3) !important;
 	}
 
 	[role*='tooltip'],
