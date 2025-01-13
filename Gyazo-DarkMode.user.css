@@ -1,13 +1,39 @@
 /* ==UserStyle==
-@name         Gyazo.com Dark Mode
-@version      3.2
+@name         Gyazo.com - Dark Mode [Customizable]
+@version      3.3
 @namespace    typpi.online
-@description  Gyazo Dark Mode (Purple Accents)
+@description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
 @license      UnLicense
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
+
+@var color primary-color "Primary Color" #bb86fc
+@var color primary-color-darker "Primary Color (Darker)" #3c2a51
+@var color primary-color-light "Secondary Color" #5686ffeb
+@var color placeholder-color "Placeholder Color" #ffffffd4
+@var color white-color "White" #fff
+@var color black-color "Black" #000
+@var color body-background "Body Background" #121212
+@var color color-gray "Gray" #333
+@var color color-gray2 "Gray (Light)" #e0e0e0
+@var color color-gray-dark "Gray Color (Dark)" #1e1e1e
 ==/UserStyle== */
 @-moz-document domain("gyazo.com") {
+	/* Stylus Variables */
+	:root
+	{
+		--primary-color: var(primary-color);
+		--primary-color-darker: var(primary-color-darker);
+		--primary-color-light: var(primary-color-light);
+		--placeholder-color: var(placeholder-color);
+		--white-color: var(white-color);
+		--black-color: var(black-color);
+		--body-background: var(body-background);
+		--color-gray: var(color-gray);
+		--color-gray2: var(color-gray2);
+		--color-gray-dark: var(color-gray-dark);
+	}
+
 	.related-info-box-component
 		> div
 		> div.related-images-grid-view.related-info,
@@ -25,17 +51,20 @@
 	.main-block-stage,
 	.side-block-items,
 	.sidebar-block {
-		background-color: #121212 !important;
-		color: #e0e0e0 !important;
+		background-color: var(
+			--body-background
+		) !important;
+		color: var(--color-gray2) !important;
 	}
 
 	.edit-box-component .image-desc-display {
-		border: 2px solid #bb86fc;
+		border: 2px solid var(--primary-color);
 	}
 
 	.edit-box-component .input-description:focus {
-		box-shadow: 0 0 0 5px #3c2a51;
-		color: #fff !important;
+		box-shadow: 0 0 0 5px
+			var(--primary-color-darker);
+		color: var(-white-color) !important;
 	}
 
 	.add-to-collection-popover
@@ -78,7 +107,7 @@
 		> div,
 	.title,
 	.row > div:nth-child(n) > div {
-		color: #bb86fc !important;
+		color: var(--primary-color) !important;
 	}
 
 	.vtVH6utAExSlC9aN2qwE:focus::placeholder {
@@ -87,16 +116,18 @@
 
 	.ocr-desc-buttons > div > button:hover {
 		border: 1px dashed !important;
-		border-color: #5686ffeb !important;
+		border-color: var(
+			--primary-color-light
+		) !important;
 		border-radius: 5px;
-		color: #5686ffeb !important;
+		color: var(--primary-color-light) !important;
 	}
 
 	.captured-info
 		> div:nth-child(n)
 		> div.captured-info-value
 		> div:hover {
-		border: 1px #bb86fc dashed;
+		border: 1px var(--primary-color) dashed;
 		border-radius: 5px;
 		padding-right: 15px;
 		padding-left: 15px;
@@ -112,7 +143,7 @@
 		display: inline-block;
 		animation: cursor-blink 1.5s steps(2) infinite;
 		margin-left: 5px;
-		background: #bb86fc;
+		background: var(--primary-color);
 		width: 6px;
 		height: 18px;
 		content: '';
@@ -134,13 +165,15 @@
 	div.image-infos,
 	.image-box-component .image-close-btn-bg,
 	.image-box-component .navigation {
-		border: 4px solid #000 !important;
-		background-color: #000 !important;
-		color: #bb86fc !important;
+		border: 4px solid var(--black-color) !important;
+		background-color: var(
+			--black-color
+		) !important;
+		color: var(--primary-color) !important;
 	}
 
 	.content {
-		background: #000 !important;
+		background: var(--black-color) !important;
 	}
 
 	.image-page.image-page-renewal
@@ -157,8 +190,10 @@
 	img,
 	input,
 	span {
-		background-color: #121212 !important;
-		color: #bb86fc !important;
+		background-color: var(
+			--body-background
+		) !important;
+		color: var(--primary-color) !important;
 	}
 
 	#global-dropdown-menu
@@ -286,12 +321,12 @@
 		.history-row
 		button.switch-save
 		.kamon {
-		fill: #bb86fc;
+		fill: var(--primary-color);
 	}
 
 	.ocr-desc-buttons > div > div > button > svg,
 	#like > svg {
-		fill: #bb86fc !important;
+		fill: var(--primary-color) !important;
 	}
 
 	#global-dropdown-menu
@@ -406,7 +441,7 @@
 		.history-row:hover
 		button.switch-save
 		.kamon {
-		fill: #fff;
+		fill: var(-white-color);
 	}
 
 	.ocr-desc-buttons
@@ -414,7 +449,7 @@
 		> div
 		> button:hover
 		> svg {
-		fill: #fff !important;
+		fill: var(-white-color) !important;
 	}
 
 	.new-collection-field > span > span > svg,
@@ -424,7 +459,7 @@
 		> a
 		> span.toplevel-item-kamon
 		> svg {
-		fill: #000;
+		fill: var(--black-color);
 	}
 
 	#react-root
@@ -451,14 +486,14 @@
 		> li:nth-child(n)
 		> a
 		> span:hover {
-		color: #fff !important;
+		color: var(-white-color) !important;
 	}
 
 	.images-show
 		.bottom.interactive-popover
 		> .arrow::after,
 	.popover.bottom > .arrow::after {
-		border-bottom-color: #bb86fc;
+		border-bottom-color: var(--primary-color);
 	}
 
 	.explorer-action-btn.dropdown-toggle::after {
@@ -479,26 +514,24 @@
 	.popup,
 	.related-images-grid-view.related-info,
 	.tooltip {
-		border: 1px solid #333 !important;
-		background-color: #1e1e1e !important;
-		color: #e0e0e0 !important;
+		border: 1px solid var(--color-gray) !important;
+		background-color: var(
+			--color-gray-dark
+		) !important;
+		color: var(--color-gray2) !important;
 	}
 
 	.header {
-		background: #121212;
-	}
-
-	:root {
-		--body-background: #121212;
+		background: var(--body-background);
 	}
 
 	.query-input {
-		border: 1px #bb86fc dashed;
+		border: 1px var(--primary-color) dashed;
 		border-radius: 5px;
 	}
 
 	.speech-button {
-		border: 1px #bb86fc dashed;
+		border: 1px var(--primary-color) dashed;
 	}
 
 	.speech-button:hover {
@@ -507,16 +540,18 @@
 
 	.footer-block,
 	.header-block {
-		border-bottom: 1px solid #333 !important;
+		border-bottom: 1px solid var(--color-gray) !important;
 	}
 
 	.sidebar-block {
-		border-right: 1px solid #333 !important;
+		border-right: 1px solid var(--color-gray) !important;
 	}
 
 	.card.medium-card {
-		border: 1px solid #333 !important;
-		background-color: #1e1e1e !important;
+		border: 1px solid var(--color-gray) !important;
+		background-color: var(
+			--color-gray-dark
+		) !important;
 	}
 
 	.metadata-description {
@@ -574,8 +609,8 @@
 	td,
 	th,
 	ul {
-		background-color: #121212;
-		color: #e0e0e0;
+		background-color: var(--body-background);
+		color: var(--color-gray2);
 	}
 
 	#react-root
@@ -600,8 +635,10 @@
 
 	option,
 	select {
-		background-color: #1e1e1e !important;
-		color: #e0e0e0 !important;
+		background-color: var(
+			--color-gray-dark
+		) !important;
+		color: var(--color-gray2) !important;
 	}
 
 	#react-root
@@ -648,8 +685,8 @@
 	body.download .hero .download-btn {
 		opacity: 100%;
 		box-shadow:
-			0 0 1px 1px #bb86fc,
-			0 0 1px #bb86fc;
+			0 0 1px 1px var(--primary-color),
+			0 0 1px var(--primary-color);
 	}
 
 	body.download .hero .download-btn:hover {
@@ -658,7 +695,7 @@
 			0 0 1px 1px #fc86af,
 			0 0 1px #fc86bb !important;
 		background-color: #fc86bb !important;
-		color: #000 !important;
+		color: var(--black-color) !important;
 	}
 
 	#react-root
@@ -673,7 +710,7 @@
 		> div:nth-child(n)
 		> div
 		> div {
-		box-shadow: 0 1px 0 0 #bb86fc;
+		box-shadow: 0 1px 0 0 var(--primary-color);
 	}
 
 	.grid-view
@@ -684,8 +721,8 @@
 		mix-blend-mode: multiply;
 		transition: opacity 0.15s;
 		inset: 0;
-		border: 5px solid #fff;
-		border-bottom: 32px solid #fff;
+		border: 5px solid var(-white-color);
+		border-bottom: 32px solid var(-white-color);
 		background: rgb(58 66 79 / 40%);
 	}
 
@@ -693,25 +730,27 @@
 	#metadata-is-public-dropdown > span,
 	textarea {
 		border: none;
-		background-color: #000 !important;
-		color: #bb86fc;
+		background-color: var(
+			--black-color
+		) !important;
+		color: var(--primary-color);
 	}
 
 	#search-box-input:hover {
-		border-bottom: 1px solid #000;
+		border-bottom: 1px solid var(--black-color);
 	}
 
 	#popover > h3 {
-		border-bottom: 3px solid #000;
+		border-bottom: 3px solid var(--black-color);
 	}
 
 	.faq-list .faq-list-title {
 		background: linear-gradient(
 			to bottom,
-			#121212 calc(100% - 3px),
+			var(--body-background) calc(100% - 3px),
 			rgb(255 255 255 / 0%) 100%
 		);
-		color: #bb86fc !important;
+		color: var(--primary-color) !important;
 	}
 
 	#conclusion > div > div > h2,
@@ -773,7 +812,7 @@
 	.usecases > div > div:nth-child(n) > h3,
 	.usecases > div > h2,
 	input[name='new-tag']::placeholder {
-		color: #bb86fc;
+		color: var(--primary-color);
 	}
 
 	.testimonials .card-footer::before,
@@ -787,14 +826,16 @@
 		> div
 		> div,
 	.page-content .indent-mark .dot {
-		background-color: #bb86fc !important;
-		color: #bb86fc !important;
+		background-color: var(
+			--primary-color
+		) !important;
+		color: var(--primary-color) !important;
 	}
 
 	a:any-link {
 		cursor: pointer !important;
 		color: -webkit-link !important;
-		color: #5686ffeb !important;
+		color: var(--primary-color-light) !important;
 		text-decoration: underline !important;
 	}
 
@@ -807,7 +848,7 @@
 	.Xpov4pPcafwfUVkzW7Gw,
 	.pricing-box-default,
 	.box.small-team {
-		border: 1px solid #bb86fc;
+		border: 1px solid var(--primary-color);
 	}
 
 	.faq-list .faq-list-bottom {
@@ -825,7 +866,7 @@
 	}
 
 	.saved-search-header {
-		color: #bb86fc;
+		color: var(--primary-color);
 		font-size: 16px;
 		text-decoration: underline;
 	}
@@ -835,22 +876,23 @@
 	}
 
 	::-webkit-scrollbar-track {
-		background: #bb86fc;
+		background: var(--primary-color);
 	}
 
 	::-webkit-scrollbar-thumb {
-		border: 3px solid #121212;
+		border: 3px solid var(--body-background);
 		border-radius: 10px;
-		background-color: #121212;
+		background-color: var(--body-background);
 	}
 
 	* {
-		scrollbar-color: #bb86fc #000;
+		scrollbar-color: var(--primary-color)
+			var(--black-color);
 		scrollbar-width: thin;
 	}
 
 	.global-dropdown-menu-divider {
-		background-color: #000;
+		background-color: var(--black-color);
 	}
 
 	#conclusion,
@@ -867,11 +909,13 @@
 	body > div.content > section.testimonials,
 	body.pricing .users,
 	body {
-		background-color: #121212;
+		background-color: var(--body-background);
 	}
 
 	.images-after-origin > section {
-		background-color: #121212 !important;
+		background-color: var(
+			--body-background
+		) !important;
 	}
 
 	body
@@ -885,7 +929,7 @@
 		background-image: url('https://i.gyazo.com/3b48aa49e16ccde7bf0f4903269a9bc0.png');
 		width: 48px;
 		height: 48px;
-		color: red !important;
+		color: #ff0000 !important;
 	}
 
 	body > div.content > section.faq,
@@ -896,9 +940,9 @@
 	body > div.content > section.testimonials {
 		background-image: linear-gradient(
 			80deg,
-			#000 2%,
-			#bb86fc 30%,
-			#121212
+			var(--black-color) 2%,
+			var(--primary-color) 30%,
+			var(--body-background)
 		);
 	}
 
@@ -934,7 +978,7 @@
 		> ul
 		> li:nth-child(n)
 		> div.expand {
-		border: 3px solid #bb86fc;
+		border: 3px solid var(--primary-color);
 	}
 
 	#faq
@@ -962,7 +1006,7 @@
 		> div
 		> ul
 		> li:nth-child(n) {
-		border-top: 1px solid #bb86fc;
+		border-top: 1px solid var(--primary-color);
 	}
 
 	.btn-default:hover,
@@ -972,12 +1016,12 @@
 	.enterprise-plan,
 	.small-team,
 	.teams-pricing > div > div:nth-child(2) > div {
-		border-color: #bb86fc;
+		border-color: var(--primary-color);
 	}
 
 	.btn-primary,
 	.btn-secondary {
-		border-color: #3c2a51;
+		border-color: var(--primary-color-darker);
 	}
 
 	.teams-pricing
@@ -995,21 +1039,21 @@
 
 	.search-box .search-box-input-wrap input:focus,
 	.static-page-faq .bottom {
-		border-bottom: 1px solid #bb86fc;
+		border-bottom: 1px solid var(--primary-color);
 	}
 
 	.static-page-faq li:hover {
 		cursor: pointer;
-		background: #3c2a51;
+		background: var(--primary-color-darker);
 	}
 
 	.dropdown-menu,
 	.like_toggle {
-		background-color: #bb86fc;
+		background-color: var(--primary-color);
 	}
 
 	.dropdown-header {
-		color: #fff;
+		color: var(-white-color);
 	}
 
 	.table > tbody > tr > td,
@@ -1019,31 +1063,31 @@
 	.table > thead > tr > td,
 	.table > thead > tr > th {
 		vertical-align: top;
-		border-top: 1px solid #bb86fc;
+		border-top: 1px solid var(--primary-color);
 		padding: 8px;
 		line-height: 1.75;
 	}
 
 	.table > tbody + tbody {
-		border-top: 2px solid #bb86fc;
+		border-top: 2px solid var(--primary-color);
 	}
 
 	.table > thead > tr > th {
 		vertical-align: bottom;
-		border-bottom: 2px solid #bb86fc;
+		border-bottom: 2px solid var(--primary-color);
 	}
 
 	.side-block
 		.side-block-items
 		.toplevel-item-active {
-		background: #121212;
+		background: var(--body-background);
 		pointer-events: none;
 	}
 
 	.side-block-items .collection-item .file-thumb,
 	.side-block-items .collection-item .thumb {
-		box-shadow: 0 0 0 1px #bb86fc;
-		border: 1px solid #bb86fc;
+		box-shadow: 0 0 0 1px var(--primary-color);
+		border: 1px solid var(--primary-color);
 	}
 
 	.side-block-items .collection-item > a {
@@ -1052,7 +1096,7 @@
 
 	.side-block-items .collection-item:focus-within,
 	.side-block-items .collection-item:hover {
-		background: #bb86fc;
+		background: var(--primary-color);
 	}
 
 	#react-root
@@ -1074,13 +1118,14 @@
 	.global-header-search.global-header-search
 		input:focus {
 		outline: 0;
-		box-shadow: 0 0 0 3px #3c2a51;
-		border-color: #bb86fc !important;
+		box-shadow: 0 0 0 3px
+			var(--primary-color-darker);
+		border-color: var(--primary-color) !important;
 	}
 
 	[data-hover-visible] .btn-primary:hover {
-		border-color: #bb86fc;
-		color: #fff;
+		border-color: var(--primary-color);
+		color: var(-white-color);
 	}
 
 	#react-root
@@ -1100,7 +1145,9 @@
 
 	.B9QQGIFrwoa05qnyZvI5 {
 		gap: 1px 0 !important;
-		background-color: #bb86fc !important;
+		background-color: var(
+			--primary-color
+		) !important;
 	}
 
 	.related-pages
@@ -1138,7 +1185,7 @@
 		> div.related-info-box-component
 		> div
 		> div.related-images-grid-view.related-info {
-		border-top: 5px solid #bb86fc !important;
+		border-top: 5px solid var(--primary-color) !important;
 		padding-top: 15px !important;
 	}
 
@@ -1147,7 +1194,7 @@
 	.pjZHyYN8MthPpYWZDS0d,
 	.vtVH6utAExSlC9aN2qwE {
 		margin-right: 3px;
-		border: 1px dashed #bb86fc !important;
+		border: 1px dashed var(--primary-color) !important;
 	}
 
 	#headlessui-dialog-overlay-5,
@@ -1174,8 +1221,8 @@
 		> div
 		> button:nth-child(n)
 		> span {
-		border-top: 1px solid #bb86fc !important;
-		border-bottom: 1px solid #bb86fc !important;
+		border-top: 1px solid var(--primary-color) !important;
+		border-bottom: 1px solid var(--primary-color) !important;
 		line-height: 30px !important;
 	}
 
@@ -1281,42 +1328,45 @@
 		background-color: #0000 !important;
 		/* Example style */
 	}
+
 	.image-page-renewal
 		.draw-toolbar-operation-btn
 		span {
-		border-top: solid 1px #bb86fc;
-		border-bottom: solid 1px #bb86fc;
+		border-top: solid 1px var(--primary-color);
+		border-bottom: solid 1px var(--primary-color);
 		line-height: 30px;
 	}
+
 	.image-page-renewal
 		.draw-toolbar-operation-btn:hover
 		span {
-		border-top: solid 1px #e0e0e0;
-		border-bottom: solid 1px #e0e0e0;
-		color: #fff !important;
+		border-top: solid 1px var(--color-gray2);
+		border-bottom: solid 1px var(--color-gray2);
+		color: var(-white-color) !important;
 		line-height: 30px;
 	}
 
 	.explorer-action-btn-default {
-		--bg-color: #fff;
+		--bg-color: var(-white-color);
 		--font-color: #4d4d4d;
 		--hover-bg-color: #f2f2f2;
 		--active-bg-color: #e6e6e6;
-		--border-color: #bb86fc;
+		--border-color: var(--primary-color);
 		--hover-border-color: #d9d9d9;
-		--divider-color: #bb86fc;
+		--divider-color: var(--primary-color);
 	}
 
 	svg:not(:root) {
-		fill: #bb86fc !important;
+		fill: var(--primary-color) !important;
 	}
 
 	*:hover > svg:not(:root) {
 		fill: #d7d7d7 !important;
 	}
+
 	[role*='tooltip'],
 	.HTsz6WzMsfIq0uJedGbz {
-		box-shadow: 0 0 5px 5px #bb86fc;
+		box-shadow: 0 0 5px 5px var(--primary-color);
 		border-radius: 8px;
 	}
 }
