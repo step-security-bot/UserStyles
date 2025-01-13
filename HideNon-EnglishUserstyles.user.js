@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide Non-English Userstyles on Userstyles.World
 // @namespace    typpi.online
-// @version      1.5
+// @version      1.7
 // @description  Hide userstyles containing non-English characters on userstyles.world
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -12,12 +12,15 @@
 // @downloadURL  https://update.greasyfork.org/scripts/523266/Hide%20Non-English%20Userstyles%20on%20UserstylesWorld.user.js
 // @updateURL    https://update.greasyfork.org/scripts/523266/Hide%20Non-English%20Userstyles%20on%20UserstylesWorld.meta.js
 // ==/UserScript==
+
 (function () {
 	'use strict';
 
 	// Function to check if a string contains non-English characters
 	function containsNonEnglishCharacters(text) {
-		return /[^a-zA-Z0-9\s.,!?]/.test(text); // Checks for characters that are not English letters, digits, or common punctuation
+		// Allow English letters, digits, spaces, common punctuation, and special characters
+		// Matches any character outside the printable ASCII range
+		return /[^\u0020-\u007E]/.test(text);
 	}
 
 	// Find all card elements on the page
@@ -26,15 +29,18 @@
 		.forEach((card) => {
 			// Get the text content from relevant child elements
 			const title =
+				// Get the title of the userstyle
 				card.querySelector('.name')
-					?.textContent || ''; // Get the title of the userstyle
+					?.textContent || '';
 			const description =
+				// Get the description of the userstyle
 				card.querySelector('.card-body')
-					?.textContent || ''; // Get the description of the userstyle
+					?.textContent || '';
 			const ariaLabel =
 				card
 					.querySelector('.card-header.thumbnail')
-					?.getAttribute('aria-label') || ''; // Get the aria-label which may contain a description
+					// Get the aria-label which may contain a description
+					?.getAttribute('aria-label') || '';
 
 			// Log the content being checked
 			console.log(
