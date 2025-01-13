@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com - Dark Mode [Customizable]
-@version      3.3
+@version      3.4
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
@@ -17,6 +17,7 @@
 @var color color-gray "Gray" #333
 @var color color-gray2 "Gray (Light)" #e0e0e0
 @var color color-gray-dark "Gray Color (Dark)" #1e1e1e
+@var color color-red "Red" #ff0000
 ==/UserStyle== */
 @-moz-document domain("gyazo.com") {
 	/* Stylus Variables */
@@ -32,6 +33,7 @@
 		--color-gray: var(color-gray);
 		--color-gray2: var(color-gray2);
 		--color-gray-dark: var(color-gray-dark);
+		--color-red: var(red-color);
 	}
 
 	.related-info-box-component
@@ -535,7 +537,7 @@
 	}
 
 	.speech-button:hover {
-		border: 1px #f00 dashed;
+		border: 1px var(--color-red) dashed;
 	}
 
 	.footer-block,
@@ -862,7 +864,7 @@
 		> button
 		> svg
 		> path:nth-child(n) {
-		fill: #f00;
+		fill: var(--color-red);
 	}
 
 	.saved-search-header {
@@ -929,7 +931,7 @@
 		background-image: url('https://i.gyazo.com/3b48aa49e16ccde7bf0f4903269a9bc0.png');
 		width: 48px;
 		height: 48px;
-		color: #ff0000 !important;
+		color: var(--color-red) !important;
 	}
 
 	body > div.content > section.faq,
