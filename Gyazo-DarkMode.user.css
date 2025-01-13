@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com - Dark Mode [Customizable]
-@version      3.5
+@version      3.6
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
@@ -25,12 +25,8 @@
 	/* Stylus Variables */
 	:root {
 		--primary-color: var(primary-color);
-		--primary-color-darker: var(
-			primary-color-darker
-		);
-		--primary-color-light: var(
-			primary-color-light
-		);
+		--primary-color-darker: var(primary-color-darker);
+		--primary-color-light: var(primary-color-light);
 		--placeholder-color: var(placeholder-color);
 		--white-color: var(white-color);
 		--black-color: var(black-color);
