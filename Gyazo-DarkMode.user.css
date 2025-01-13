@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com - Dark Mode [Customizable]
-@version      3.6
+@version      3.7
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
@@ -16,7 +16,7 @@
 @var color body-background "Body Background" #121212
 @var color color-gray "Gray" #333
 @var color color-gray2 "Gray (Light)" #e0e0e0
-@var color color-gray3 "Gray (Alternate) #d7d7d7
+@var color color-gray3 "Gray (Alternate)" #d7d7d7
 @var color color-gray-dark "Gray Color (Dark)" #1e1e1e
 @var color color-red "Red" #ff0000
 @var color download-button "Download Button" #fc86bb
