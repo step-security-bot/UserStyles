@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           veloviewer.com - Dark Mode
 @namespace      typpi.online
-@version        1.1.0
+@version        1.2.0
 @description    Dark theme for VeloViewer
 @author         Nick2bad4u
 @license        UnLicense
@@ -58,13 +58,13 @@
 			tbody:first-child
 			tr:first-child
 			td,
-		header#masthead
+		header#masthead,
+		#socialPlaceholder
 	),
 	.tab-content,
 	#dataContainer,
 	.accordion-group#mapChartContainer2,
-	#filterAcc,
-	#chartsTab > div > div.span10,
+	#chartsTab > div > .span10,
 	select,
 	.tableWrapper.st,
 	textarea:focus,
@@ -96,10 +96,7 @@
 		> table,
 	#gearSummary > div > div,
 	#charts,
-	#mainContent
-		> div.row-fluid.awards
-		> div:nth-child(1)
-		> div,
+	#mainContent > .awards > div:nth-child(1) > div,
 	#wheel,
 	#graphic
 		> div:nth-child(2)
@@ -143,7 +140,14 @@
 		> div:nth-child(1)
 		> table
 		> tbody,
-	.table-bordered {
+	.table-bordered,
+	.leaflet-container,
+	#stravaEmbed,
+	#filterAcc,
+	#prDiv,
+	#mwsWrapper,
+	#mapChartContainer3,
+	.tab-content .span6 #mapContainer {
 		filter: invert(1) hue-rotate(180deg);
 	}
 
@@ -171,21 +175,29 @@
 	#monthYear select,
 	#rowCount,
 	#splitsTab
-		> div.tableWrapper.st
-		> div.st-body.splitsDiv
+		> .tableWrapper.st
+		> .st-body.splitsDiv
 		> table,
 	#splitsTab
-		> div.tableWrapper.st
-		> div.st-head
-		> table {
+		> .tableWrapper.st
+		> .st-head
+		> table,
+	#overview > div > .span8 > h1 > img,
+	#tableWrapper table,
+	.tableWrapper
+		table:not(
+			#breakdownTab
+				> div.tableWrapper.breakdownTotalTable
+				> table
+		) {
 		filter: unset !important;
 	}
 
-	#mainContent > div.tab-content,
+	#mainContent > .tab-content,
 	.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom,
 	.tab-content > .active,
 	.pill-content > .active,
-	body > div.container-fluid > div.tab-content,
+	body > .container-fluid > .tab-content,
 	#completedChallenges > div:nth-child(n),
 	#partChallenges > div:nth-child(n),
 	#otherChallenges > div:nth-child(n) {
