@@ -1,7 +1,9 @@
+/* stylelint-disable number-max-precision */
+/* stylelint-disable no-duplicate-selectors */
 /* ==UserStyle==
 @name           osrsworldheatmap.com - Dark Theme
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark theme for OSRS World HeatMap
 @author         Nick2bad4u
 @license        UnLicense
@@ -49,6 +51,7 @@
 
 	.leaflet-safari .leaflet-tile-container {
 		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
 		width: 1600px;
 		height: 1600px;
 	}
@@ -123,6 +126,7 @@
 
 	.leaflet-overlay-pane svg {
 		-moz-user-select: none;
+		user-select: none;;
 	}
 
 	.leaflet-pane {
@@ -275,8 +279,6 @@
 	}
 
 	.leaflet-grab {
-		cursor: grab;
-		cursor: grab;
 		cursor: grab;
 	}
 
@@ -647,6 +649,7 @@
 
 	.leaflet-oldie .leaflet-popup-content-wrapper {
 		-ms-zoom: 1;
+		zoom: 1;
 	}
 
 	.leaflet-oldie .leaflet-popup-tip {
