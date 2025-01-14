@@ -1,14 +1,20 @@
 /* ==UserStyle==
 @name           TamperMonkey Extension - Dark Green Mode
 @namespace      typpi.online
-@version        1.0.9
+@version        1.1.0
 @description    Dark Green mode theme for Tampermonkey Extension
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@downloadURL    https://update.greasyfork.org/scripts/523269/TamperMonkey%20Extension%20-%20Dark%20Green%20Mode.user.js
+@updateURL      https://update.greasyfork.org/scripts/523269/TamperMonkey%20Extension%20-%20Dark%20Green%20Mode.meta.js
 ==/UserStyle== */
 @-moz-document url-prefix("extension://iikmkjmpaadaobahmlepeloendndfphd")
 {
+	/* Start Copying Here  */
+	/* Start Copying Here  */
+	/* Start Copying Here  */
+
 	:root {
 		--background-dark: #000000b0;
 		--background-green: #1cbd3fa9;
