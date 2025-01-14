@@ -1,11 +1,13 @@
 /* ==UserStyle==
 @name           osrsworldheatmap.com - Dark Theme
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for OSRS World HeatMap
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@downloadURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWorldHeatmap-Dark.user.css
+@updateURL      https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/OSRSWorldHeatmap-Dark.user.css
 ==/UserStyle== */
 @-moz-document domain("osrsworldheatmap.com") {
 	/* Invert colors except images and videos */
