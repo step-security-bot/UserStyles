@@ -1,24 +1,33 @@
 /* ==UserStyle==
-@name           webhint.io - Dark Theme
+@name           webhint.io - Dark Theme [Customizable]
 @namespace      typpi.online
-@version        1.0.2
+@version        1.1.0
 @description    Dark theme for WebHint.io
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@updateURL      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/WebHint-Dark.user.css
+@downloadURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/WebHint-Dark.user.css
+
+@var color header-color "Header Color" #c797ff
 ==/UserStyle== */
 @-moz-document domain("webhint.io") {
-	/* Invert colors except images and videos */
-	html,
-	img,
-	svg,
-	video,
-	iframe,
-	.highlight {
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
+  /* Stylus Variables */
+  :root {
+    --header-color: var(header-color);
+  }
 
-	.header {
-		background-color: #c797ff;
-	}
+  /* Invert colors except images and videos */
+  html,
+  img,
+  svg,
+  video,
+  iframe,
+  .highlight {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
+
+  .header {
+    background-color: var(--header-color);
+  }
 }
