@@ -1,11 +1,13 @@
 /* ==UserStyle==
 @name           Five Server - Preview Dark Theme
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark theme for Five Server preview that excludes .html files
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color background-color "Background Color" #ffffff
 ==/UserStyle== */
 @-moz-document url-prefix("http://192.168.1.223:5500/"),
 url-prefix("https://192.168.1.223:5500/"),
@@ -13,33 +15,37 @@ url-prefix("http://localhost:5500/"),
 url-prefix("http://127.0.0.1:5500/"),
 url-prefix("https://127.0.0.1:5500/")
 {
-	/* Invert colors except images and videos */
-	html,
-	img,
-	svg,
-	video,
-	iframe {
-		filter: invert(1) hue-rotate(180deg);
-		background: #fff;
-	}
+    :root {
+        --background-color: var(background-color);
+    }
 
-	.container {
-		filter: invert(1) hue-rotate(180deg);
-	}
+    /* Invert colors except images and videos */
+    html,
+    img,
+    svg,
+    video,
+    iframe {
+        filter: invert(1) hue-rotate(180deg);
+        background: var(--background-color);
+    }
+
+    .container {
+        filter: invert(1) hue-rotate(180deg);
+    }
 }
 
 @-moz-document regexp(".*\.html$") {
-	/* Invert colors except images and videos */
-	html,
-	img,
-	svg,
-	video,
-	iframe {
-		filter: none !important;
-		background: unset !important;
-	}
+    /* Invert colors except images and videos */
+    html,
+    img,
+    svg,
+    video,
+    iframe {
+        filter: none !important;
+        background: unset !important;
+    }
 
-	.container {
-		filter: none !important;
-	}
+    .container {
+        filter: none !important;
+    }
 }

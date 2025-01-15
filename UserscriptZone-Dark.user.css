@@ -1,22 +1,30 @@
 /* ==UserStyle==
 @name           userscript.zone - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for UserScript.zone
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color background-color "Background Color" #ffffff
+@var color text-color "Text Color" #000000
 ==/UserStyle== */
 @-moz-document domain("userscript.zone") {
+	:root {
+			--background-color: var(background-color);
+			--text-color: var(text-color);
+	}
+
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video
 	) {
-		filter: invert(1) hue-rotate(180deg) !important;
-		background: #fff;
-		color: #000;
+			filter: invert(1) hue-rotate(180deg) !important;
+			background: var(--background-color);
+			color: var(--text-color);
 	}
 }

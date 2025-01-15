@@ -1,55 +1,69 @@
 /* ==UserStyle==
 @name           dcrainmaker.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.3
 @description    Dark mode for DC RainMaker
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color background-color "Background Color" #000000
+@var color post-background-color "Post Background Color" #ffffff
+@var color post-text-color "Post Text Color" #000000
+@var color gradient-start-color "Gradient Start Color" #f15e1d
+@var color gradient-end-color "Gradient End Color" #da1111ab
 ==/UserStyle== */
 @-moz-document domain("dcrainmaker.com") {
+	:root {
+			--background-color: var(background-color);
+			--post-background-color: var(post-background-color);
+			--post-text-color: var(post-text-color);
+			--gradient-start-color: var(gradient-start-color);
+			--gradient-end-color: var(gradient-end-color);
+	}
+
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video
 	) {
-		filter: invert(1) hue-rotate(180deg) !important;
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	#post-sections h4 {
-		background: #fff;
-		color: black;
-		font-style: oblique;
-		text-decoration: underline dotted;
+			background: var(--post-background-color);
+			color: var(--post-text-color);
+			font-style: oblique;
+			text-decoration: underline dotted;
 	}
 
 	.commentlist
-		.children
-		li.comment-author-rainmaker,
+			.children
+			li.comment-author-rainmaker,
 	.commentlist li.comment-author-rainmaker > div,
 	.commentlist li.comment.bypostauthor > div {
-		border-radius: 10px !important;
+			border-radius: 10px !important;
 	}
 
 	.reply a,
 	a.comment-edit-link {
-		padding-right: 20px;
+			padding-right: 20px;
 	}
 
 	.comment-author cite {
-		background: linear-gradient(
-			90deg,
-			#f15e1d 55%,
-			#da1111ab 45%
-		);
-		-webkit-background-clip: text;
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
+			background: linear-gradient(
+					90deg,
+					var(--gradient-start-color) 55%,
+					var(--gradient-end-color) 45%
+			);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
 	}
 
 	.commentlist li.comment-author-rainmaker {
-		border: #f15e1d dashed;
+			border: var(--gradient-start-color) dashed;
 	}
 }

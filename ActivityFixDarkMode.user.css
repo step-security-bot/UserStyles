@@ -1,101 +1,117 @@
 /* ==UserStyle==
 @name           activityfix.com - Dark Mode
 @namespace      typpi.online
-@version        1.2
+@version        1.3
 @description    Dark mode theme for ActivityFix
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color background-color-black "Background Color Black" #000000
+@var color text-color-white "Text Color White" #ffffff
+@var color text-color-blue "Text Color Blue" #2196f3
+@var color text-decoration-color "Text Decoration Color" #333333
+@var color background-color-blue "Background Color Blue" #2196f3
+@var color border-color-blue "Border Color Blue" #2196f3
+@var color background-color-white "Background Color White" #ffffff
+@var color text-color-black "Text Color Black" #000000
 ==/UserStyle== */
 @-moz-document domain("activityfix.com") {
+	:root {
+			--background-color-black: var(background-color-black);
+			--text-color-white: var(text-color-white);
+			--text-color-blue: var(text-color-blue);
+			--text-decoration-color: var(text-decoration-color);
+			--background-color-blue: var(background-color-blue);
+			--border-color-blue: var(border-color-blue);
+			--background-color-white: var(background-color-white);
+			--text-color-black: var(text-color-black);
+	}
+
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video,
-		.w3-dark-gray,
-		.w3-dark-grey,
-		.w3-hover-dark-gray:hover,
-		.w3-hover-dark-grey:hover,
-		.w3-center,
-		iframe,
-		.af-disconnect-button
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video,
+			.w3-dark-gray,
+			.w3-dark-grey,
+			.w3-hover-dark-gray:hover,
+			.w3-hover-dark-grey:hover,
+			.w3-center,
+			iframe,
+			.af-disconnect-button
 	) {
-		/*Manipulations stuff*/
-		filter: invert(1) hue-rotate(180deg) !important;
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
+
 	.w3-dark-gray,
 	.w3-dark-grey,
 	.w3-hover-dark-gray:hover,
 	.w3-hover-dark-grey:hover,
 	.w3-padding-16 {
-		/*Box model stuff*/
-		background-color: #000 !important;
-		color: #fff !important;
-		/*Typography stuff*/
-		font-weight: 800;
+			background-color: var(--background-color-black) !important;
+			color: var(--text-color-white) !important;
+			font-weight: 800;
 	}
+
 	.af-update-header,
 	.af-version {
-		color: #2196f3;
-		/*Typography stuff*/
-		text-decoration: underline;
+			color: var(--text-color-blue);
+			text-decoration: underline;
 	}
+
 	.af-update-header span {
-		/*Miscellaneous*/
-		cursor: default;
-		/*Typography stuff*/
-		font-size: 13px;
-		text-decoration: underline #333;
+			cursor: default;
+			font-size: 13px;
+			text-decoration: underline var(--text-decoration-color);
 	}
+
 	.w3-padding-16 {
-		padding-top: 0 !important;
-		/*Box model stuff*/
-		padding-bottom: 16px !important;
+			padding-top: 0 !important;
+			padding-bottom: 16px !important;
 	}
+
 	.w3-bar.w3-top.af-blue.w3-large {
-		/*Box model stuff*/
-		background-color: #2196f3 !important;
+			background-color: var(--background-color-blue) !important;
 	}
+
 	.w3-main {
-		/*Box model stuff*/
-		background-color: #fff;
+			background-color: var(--background-color-white);
 	}
+
 	.w3-container.w3-black.w3-display-container {
-		/*Box model stuff*/
-		margin: 0 !important;
-		background-color: white !important;
-		/*Typography stuff*/
-		color: black !important;
+			margin: 0 !important;
+			background-color: var(--background-color-white) !important;
+			color: var(--text-color-black) !important;
 	}
+
 	#save_success > div {
-		/*Box model stuff*/
-		border: 4px #2196f3 dashed;
+			border: 4px var(--border-color-blue) dashed;
 	}
+
 	.w3-bar-item.w3-left {
-		/*Typography stuff*/
-		font-style: italic;
-		font-weight: 550;
+			font-style: italic;
+			font-weight: 550;
 	}
+
 	.af-help-contents > div:nth-child(n) > img,
 	.w3-center
-		> table
-		> tbody
-		> tr:nth-child(1)
-		> td:nth-child(1)
-		> a
-		> img {
-		/*Manipulations stuff*/
-		filter: invert(0) hue-rotate(0deg) !important;
+			> table
+			> tbody
+			> tr:nth-child(1)
+			> td:nth-child(1)
+			> a
+			> img {
+			filter: invert(0) hue-rotate(0deg) !important;
 	}
+
 	body > br,
 	body > hr {
-		/*Display stuff*/
-		display: none !important;
+			display: none !important;
 	}
+
 	html {
-		/*Box model stuff*/
-		background: #fff;
+			background: var(--background-color-white);
 	}
 }

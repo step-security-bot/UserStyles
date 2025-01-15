@@ -1,42 +1,52 @@
 /* ==UserStyle==
 @name           squadrats.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark Theme for Squad Rats
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color background-color "Background Color" #000000
+@var color text-color "Text Color" #ffffff
+@var color input-background-color "Input Background Color" #ddbcff
 ==/UserStyle== */
 @-moz-document domain("squadrats.com") {
+	:root {
+			--background-color: var(background-color);
+			--text-color: var(text-color);
+			--input-background-color: var(input-background-color);
+	}
+
 	/* Invert colors except images and videos */
 	*:not(
-			#classification #neighbours,
-			img,
-			svg,
-			.change-email,
-			select,
-			input,
-			.provider-icons
-		) {
-		background: black !important;
-		color: white;
+					#classification #neighbours,
+					img,
+					svg,
+					.change-email,
+					select,
+					input,
+					.provider-icons
+			) {
+			background: var(--background-color) !important;
+			color: var(--text-color) !important;
 	}
 
 	.mapboxgl-canvas.maplibregl-canvas,
 	.leader-map,
 	.activity-image {
-		filter: invert(1) hue-rotate(180deg);
+			filter: invert(1) hue-rotate(180deg);
 	}
 
 	select,
 	input {
-		background-position:
-			right 0.7em top 50%,
-			0 0 !important;
-		background-size:
-			0.65em auto,
-			100% !important;
-		background-repeat: no-repeat, repeat !important;
-		background-color: #ddbcff !important;
+			background-position:
+					right 0.7em top 50%,
+					0 0 !important;
+			background-size:
+					0.65em auto,
+					100% !important;
+			background-repeat: no-repeat, repeat !important;
+			background-color: var(--input-background-color) !important;
 	}
 }

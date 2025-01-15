@@ -1,43 +1,56 @@
 /* ==UserStyle==
 @name           fitfileviewer.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.1.1
 @description    Dark theme for FitFileViewer.com
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color text-color-black "Text Color Black" #000000
+@var color text-color-green "Text Color Green" #008b84
+@var color border-color "Border Color" #008b84
+@var color option-background-color "Option Background Color" #454545
+@var color option-text-color "Option Text Color" #ffffff
 ==/UserStyle== */
 @-moz-document domain("fitfileviewer.com") {
+	:root {
+			--text-color-black: var(text-color-black);
+			--text-color-green: var(text-color-green);
+			--border-color: var(border-color);
+			--option-background-color: var(option-background-color);
+			--option-text-color: var(option-text-color);
+	}
+
 	.px-4,
 	.tracking-tight,
 	.whitespace-pre-wrap {
-		color: #000;
+			color: var(--text-color-black);
 	}
 
 	.text-red-500 {
-		color: #008b84;
+			color: var(--text-color-green);
 	}
 
 	.border-slate-700 {
-		--tw-border-opacity: 1;
-		border-color: #008b84;
+			--tw-border-opacity: 1;
+			border-color: var(--border-color);
 	}
 
 	#y1 > option,
 	#y2 > option {
-		background: #454545;
-		color: #fff;
+			background: var(--option-background-color);
+			color: var(--option-text-color);
 	}
 
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video,
-		.w-11\/12
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video,
+			.w-11\/12
 	) {
-		/*Manipulations stuff*/
-		filter: invert(1) hue-rotate(180deg) !important;
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
 }

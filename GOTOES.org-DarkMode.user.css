@@ -1,50 +1,58 @@
 /* ==UserStyle==
 @name         GOTOES.org - Dark Mode
-@version      20241116.21.10
+@version      20241116.21.11
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  GOTOES.org - Dark Mode!
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color background-color-light "Background Color Light" #ffffff
+@var color background-color-dark "Background Color Dark" #000000
 ==/UserStyle== */
 
 @-moz-document domain("gotoes.org") {
+	:root {
+			--background-color-light: var(background-color-light);
+			--background-color-dark: var(background-color-dark);
+	}
+
 	:is(html:not([stylus-iframe])) {
-		filter: invert(1) hue-rotate(180deg) !important;
-		background: #fff;
+			filter: invert(1) hue-rotate(180deg) !important;
+			background: var(--background-color-light);
 	}
 
 	iframe,
 	#top
-		> section
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> div.banners
-		> a:nth-child(n)
-		> img,
+			> section
+			> div:nth-child(n)
+			> div
+			> div
+			> div
+			> div.banners
+			> a:nth-child(n)
+			> img,
 	#leftDashboardPair > div:nth-child(n) > img,
 	#content,
 	#myCanvas,
 	#stuck_container
-		> div
-		> div
-		> div
-		> div
-		> nav
-		> ul
-		> li:nth-child(7)
-		> a {
-		filter: invert(1) hue-rotate(180deg) !important;
+			> div
+			> div
+			> div
+			> div
+			> nav
+			> ul
+			> li:nth-child(7)
+			> a {
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	#progressSection {
-		filter: invert(0);
+			filter: invert(0);
 	}
 
 	#cboxOverlay {
-		filter: invert(1);
-		background: #000;
+			filter: invert(1);
+			background: var(--background-color-dark);
 	}
 }

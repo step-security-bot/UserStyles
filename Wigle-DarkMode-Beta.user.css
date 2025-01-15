@@ -1,14 +1,31 @@
 /* ==UserStyle==
 @name         Wigle.net Dark Mode (Beta)
-@version      20241107.17.35
+@version      20241107.17.36
 @namespace    https://github.com/Nick2bad4u/UserStyles
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Dark Mode (Beta) for Wigle.net
 @author       Nick2bad4u
 @license      UnLicense
-==/UserStyle== */
 
+@var color background-color-dark "Background Color Dark" #121212
+@var color background-color-darker "Background Color Darker" #1e1e1e
+@var color border-color "Border Color" #444444
+@var color border-color-light "Border Color Light" #666666
+@var color text-color "Text Color" #ffffff
+@var color accent-color "Accent Color" #bb86fc
+@var color page-controls-text-color "Page Controls Text Color" #000000
+==/UserStyle== */
 @-moz-document domain("wigle.net") {
+	:root {
+			--background-color-dark: var(background-color-dark);
+			--background-color-darker: var(background-color-darker);
+			--border-color: var(border-color);
+			--border-color-light: var(border-color-light);
+			--text-color: var(text-color);
+			--accent-color: var(accent-color);
+			--page-controls-text-color: var(page-controls-text-color);
+	}
+
 	body,
 	.panel-body,
 	.toolsSection,
@@ -24,20 +41,20 @@
 	#wigleMain > ul > li.active > a,
 	div.preformatted,
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(2)
-		> div {
-		background-color: #121212;
-		color: #ffffff;
+			> div
+			> div.dygraph-legend
+			> span:nth-child(2)
+			> div {
+			background-color: var(--background-color-dark);
+			color: var(--text-color);
 	}
 
 	.navbar,
 	.footer,
 	.dropdown-menu,
 	.modal-content {
-		border-color: #444;
-		background-color: #1e1e1e;
+			border-color: var(--border-color);
+			background-color: var(--background-color-darker);
 	}
 
 	.navbar-brand img,
@@ -49,56 +66,56 @@
 	input#savelinkhereID,
 	#text,
 	.altStatsLink {
-		filter: invert(1) hue-rotate(180);
+			filter: invert(1) hue-rotate(180);
 	}
 
 	input,
 	select,
 	textarea,
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(1),
+			> div
+			> div.dygraph-legend
+			> span:nth-child(1),
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(2),
+			> div
+			> div.dygraph-legend
+			> span:nth-child(2),
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(3),
+			> div
+			> div.dygraph-legend
+			> span:nth-child(3),
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(4),
+			> div
+			> div.dygraph-legend
+			> span:nth-child(4),
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(5),
+			> div
+			> div.dygraph-legend
+			> span:nth-child(5),
 	#userDiscovered
-		> div
-		> div.dygraph-legend
-		> span:nth-child(6) {
-		border: 1px solid #666;
-		background-color: #333;
-		color: #ffffff;
+			> div
+			> div.dygraph-legend
+			> span:nth-child(6) {
+			border: 1px solid var(--border-color-light);
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	a {
-		color: #bb86fc;
+			color: var(--accent-color);
 	}
 
 	.btn,
 	.btn-default,
 	.btn-block {
-		border: 1px solid #666;
-		background-color: #333;
-		color: #ffffff;
+			border: 1px solid var(--border-color-light);
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	.form-control {
-		background-color: #333;
-		color: #ffffff;
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	.mapBarItem,
@@ -112,37 +129,37 @@
 	.mapBarItem select,
 	.mapBarItem label,
 	div.panel {
-		background-color: #1e1e1e;
-		color: #ffffff;
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	.statsGraphInner,
 	.statsgraphcontainer,
 	.graphContextLinks,
 	.graphCaption {
-		background-color: #1e1e1e;
-		color: #ffffff;
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	.hilite-stats {
-		color: #bb86fc;
+			color: var(--accent-color);
 	}
 
 	.modal-header,
 	.modal-footer,
 	.jumbotron {
-		background-color: #1e1e1e;
-		color: #ffffff;
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	.modal-header .close {
-		color: #ffffff;
+			color: var(--text-color);
 	}
 
 	.modal-body,
-	##userDiscovered > div > div.dygraph-legend {
-		background-color: #1e1e1e;
-		color: #ffffff;
+	#userDiscovered > div > div.dygraph-legend {
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	.container,
@@ -152,8 +169,8 @@
 	.col-sm-3,
 	.col-sm-2,
 	.col-sm-1 {
-		background-color: #1e1e1e;
-		color: #fff;
+			background-color: var(--background-color-darker);
+			color: var(--text-color);
 	}
 
 	#newsBar,
@@ -161,13 +178,13 @@
 	.pageControls,
 	input.button1,
 	input.button2 {
-		color: #000000;
+			color: var(--page-controls-text-color);
 	}
 
 	#uploadsTable,
 	#mapBar,
 	table,
 	a {
-		filter: invert(1) hue-rotate(180);
+			filter: invert(1) hue-rotate(180);
 	}
 }

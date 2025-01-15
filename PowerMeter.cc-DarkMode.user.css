@@ -1,47 +1,59 @@
 /* ==UserStyle==
 @name           power-meter.cc - Dark Mode
 @namespace      typpi.online
-@version        1.1.0
+@version        1.1.1
 @description    Dark theme for Power-Meter.cc
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color hover-background-color "Hover Background Color" #c3c3c3
+@var color footer-background-color "Footer Background Color" #000000
+@var color text-color "Text Color" #ffffff
+@var color text-shadow-color "Text Shadow Color" #000000
 ==/UserStyle== */
 @-moz-document domain("power-meter.cc") {
+	:root {
+			--hover-background-color: var(hover-background-color);
+			--footer-background-color: var(footer-background-color);
+			--text-color: var(text-color);
+			--text-shadow-color: var(text-shadow-color);
+	}
+
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img:not(
-				#profileDropdown img,
-				#unreadDropdown img
-			),
-		svg,
-		video,
-		.navbar,
-		.navbar-nav .dropdown-menu,
-		#footer,
-		.dropdown-menu,
-		.carousel,
-		#header h1,
-		.lead,
-		#faq
+			html:not([stylus-iframe]),
+			img:not(
+							#profileDropdown img,
+							#unreadDropdown img
+					),
+			svg,
+			video,
+			.navbar,
+			.navbar-nav .dropdown-menu,
+			#footer,
+			.dropdown-menu,
+			.carousel,
+			#header h1,
+			.lead,
+			#faq
 	) {
-		-webkit-filter: invert(1) hue-rotate(180deg) !important;
-		filter: invert(1) hue-rotate(180deg) !important;
+			-webkit-filter: invert(1) hue-rotate(180deg) !important;
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.dropdown-item:hover {
-		background: #c3c3c3;
+			background: var(--hover-background-color);
 	}
 
 	#strava-footer {
-		background: #000 !important;
+			background: var(--footer-background-color) !important;
 	}
 
 	#header h1,
 	.lead,
 	#faq {
-		color: white !important;
-		text-shadow: 2px 1px #000;
+			color: var(--text-color) !important;
+			text-shadow: 2px 1px var(--text-shadow-color);
 	}
 }

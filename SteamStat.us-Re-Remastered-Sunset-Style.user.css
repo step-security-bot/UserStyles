@@ -1,41 +1,121 @@
 /* ==UserStyle==
 @name         SteamStat.us - Sunset Theme
-@version      20241115.16.04
+@version      20241115.16.05
 @namespace    https://github.com/Nick2bad4u/UserStyles
 @description  SteamStat.us - Bright and Vibrant Style
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       nick2bad4u
 @license      UnLicense
+
+@var color gradient-color-1 "Gradient Color 1" #ff7f50
+@var color gradient-color-2 "Gradient Color 2" #00ffff
+@var color gradient-color-3 "Gradient Color 3" #ffd700
+@var color title-text-color "Title Text Color" #fff
+@var color link-color "Link Color" #00ffff
+@var color link-hover-color "Link Hover Color" #ffd700
+@var color good-status-color "Good Status Color" #32cd32
+@var color minor-status-color "Minor Status Color" #ba55d3
+@var color major-status-color "Major Status Color" #ffd700
+@var color refresh-indicator-color "Refresh Indicator Color" #ff4500
+@var color services-background-gradient-color-1 "Services Background Gradient Color 1" #ff4500
+@var color services-background-gradient-color-2 "Services Background Gradient Color 2" #1e90ff
+@var color body-background-gradient-color-1 "Body Background Gradient Color 1" #ff7f50
+@var color body-background-gradient-color-2 "Body Background Gradient Color 2" #1e90ff
+@var color tooltip-background-gradient-color-1 "Tooltip Background Gradient Color 1" #ffd700
+@var color tooltip-background-gradient-color-2 "Tooltip Background Gradient Color 2" #ba55d3
+@var color text-shadow-color "Text Shadow Color" #000000cc
+@var color vibrant-link-shadow-color "Vibrant Link Shadow Color" #00000099
+@var color good-status-shadow-color "Good Status Shadow Color" #000000e6
+@var color minor-status-shadow-color "Minor Status Shadow Color" #000000e6
+@var color major-status-shadow-color "Major Status Shadow Color" #000000e6
+@var color refresh-indicator-shadow-color "Refresh Indicator Shadow Color" #ff4500cc
+@var color box-shadow-color "Box Shadow Color" #00000099
+@var color text-shadow-color-2 "Text Shadow Color 2" #000000cc
 ==/UserStyle== */
 @-moz-document domain("steamstat.us") {
+	:root {
+		--gradient-color-1: var(gradient-color-1);
+		--gradient-color-2: var(gradient-color-2);
+		--gradient-color-3: var(gradient-color-3);
+		--title-text-color: var(title-text-color);
+		--link-color: var(link-color);
+		--link-hover-color: var(link-hover-color);
+		--good-status-color: var(good-status-color);
+		--minor-status-color: var(minor-status-color);
+		--major-status-color: var(major-status-color);
+		--refresh-indicator-color: var(
+			refresh-indicator-color
+		);
+		--services-background-gradient-color-1: var(
+			services-background-gradient-color-1
+		);
+		--services-background-gradient-color-2: var(
+			services-background-gradient-color-2
+		);
+		--body-background-gradient-color-1: var(
+			body-background-gradient-color-1
+		);
+		--body-background-gradient-color-2: var(
+			body-background-gradient-color-2
+		);
+		--tooltip-background-gradient-color-1: var(
+			tooltip-background-gradient-color-1
+		);
+		--tooltip-background-gradient-color-2: var(
+			tooltip-background-gradient-color-2
+		);
+		--text-shadow-color: var(text-shadow-color);
+		--vibrant-link-shadow-color: var(
+			vibrant-link-shadow-color
+		);
+		--good-status-shadow-color: var(
+			good-status-shadow-color
+		);
+		--minor-status-shadow-color: var(
+			minor-status-shadow-color
+		);
+		--major-status-shadow-color: var(
+			major-status-shadow-color
+		);
+		--refresh-indicator-shadow-color: var(
+			refresh-indicator-shadow-color
+		);
+		--box-shadow-color: var(box-shadow-color);
+		--text-shadow-color-2: var(
+			text-shadow-color-2
+		);
+	}
+
 	.title {
 		margin: 10px 0;
 		background: linear-gradient(
 			145deg,
-			#ff7f50,
-			#00ffff,
-			#ffd700
+			var(--gradient-color-1),
+			var(--gradient-color-2),
+			var(--gradient-color-3)
 		);
 		background-clip: text;
-		color: #fff;
+		color: var(--title-text-color);
 		font-weight: 300;
 		font-size: 2.6em;
 		/* Bright Gradient Title */
 		text-align: center;
-		text-shadow: 2px 2px 8px rgb(0 0 0 / 80%);
+		text-shadow: 2px 2px 8px
+			var(--text-shadow-color);
 		-webkit-text-fill-color: transparent;
 	}
 
 	a {
 		/* Vibrant Links */
-		color: #00ffff;
+		color: var(--link-color);
 		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 1px 1px 4px rgb(0 0 0 / 60%);
+		text-shadow: 1px 1px 4px
+			var(--vibrant-link-shadow-color);
 	}
 
 	a:hover {
-		color: #ffd700;
+		color: var(--link-hover-color);
 		text-decoration: underline;
 	}
 
@@ -47,62 +127,68 @@
 
 	.good {
 		/* Bright Lime Green */
-		color: #32cd32;
-		text-shadow: 1px 1px 5px rgb(0 0 0 / 90%);
+		color: var(--good-status-color);
+		text-shadow: 1px 1px 5px
+			var(--good-status-shadow-color);
 	}
 
 	.minor {
 		/* Electric Purple */
-		color: #ba55d3;
+		color: var(--minor-status-color);
 		font-weight: 700;
-		text-shadow: 1px 1px 5px rgb(0 0 0 / 90%);
+		text-shadow: 1px 1px 5px
+			var(--minor-status-shadow-color);
 	}
 
 	.major {
 		/* Bright Gold */
-		color: #ffd700;
+		color: var(--major-status-color);
 		font-weight: 700;
-		text-shadow: 1px 1px 5px rgb(0 0 0 / 90%);
+		text-shadow: 1px 1px 5px
+			var(--major-status-shadow-color);
 	}
 
 	#js-refresh {
 		/* Refresh Indicator */
-		color: #ff4500;
+		color: var(--refresh-indicator-color);
 		font-weight: bolder;
-		text-shadow: 0 0 8px rgb(255 69 0 / 80%);
+		text-shadow: 0 0 8px
+			var(--refresh-indicator-shadow-color);
 	}
 
 	.services,
 	#psa,
 	noscript {
 		position: relative;
-		box-shadow: 0 4px 12px rgb(0 0 0 / 60%);
-		border: 2px solid #ffd700;
+		box-shadow: 0 4px 12px var(--box-shadow-color);
+		border: 2px solid var(--gradient-color-3);
 		border-radius: 6px;
 		background: linear-gradient(
 			145deg,
-			#ff4500,
-			#1e90ff
+			var(--services-background-gradient-color-1),
+			var(--services-background-gradient-color-2)
 		);
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0 0 6px rgb(0 0 0 / 80%);
+		text-shadow: 0 0 6px
+			var(--text-shadow-color-2);
 	}
 
 	body {
 		margin: 0;
 		background: linear-gradient(
 			145deg,
-			#ff7f50,
-			#1e90ff,
-			#ffd700
+			var(--body-background-gradient-color-1),
+			var(--body-background-gradient-color-2),
+			var(--gradient-color-3)
 		);
 		color: #ffffff;
 		font-weight: 300;
 		font-size: 16px;
 		font-family: Roboto, Arial, sans-serif;
-		text-shadow: 1px 1px 4px rgb(0 0 0 / 80%);
+		text-shadow: 1px 1px 4px
+			var(--text-shadow-color-2);
 	}
 
 	[data-tooltip]::before {
@@ -124,9 +210,9 @@
 		border-radius: 6px;
 		background: linear-gradient(
 			145deg,
-			#ffd700,
-			#ba55d3,
-			#1e90ff
+			var(--tooltip-background-gradient-color-1),
+			var(--tooltip-background-gradient-color-2),
+			var(--gradient-color-2)
 		);
 		padding: 8px;
 		width: 96%;
@@ -134,7 +220,8 @@
 		font-style: italic;
 		font-weight: 300;
 		text-align: left;
-		text-shadow: 1px 1px 5px rgb(0 0 0 / 80%);
+		text-shadow: 1px 1px 5px
+			var(--text-shadow-color-2);
 	}
 
 	[data-tooltip]:hover::before {
