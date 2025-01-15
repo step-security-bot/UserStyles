@@ -1,19 +1,31 @@
 /* ==UserStyle==
-@name           SteamDB - Dark Mode
+@name           SteamDB - Dark Mode [Customizable]
 @namespace      https://github.com/Nick2bad4u/UserStyles
-@version        1.9
+@version        2.1
 @description    Dark mode for SteamDB
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color primary-color "Primary Color" #bb86fc
+@var color black "Black" #121212
+@var color light-gray "Light Gray" #e0e0e0
 ==/UserStyle== */
 @-moz-document domain("steamdb.info") {
+	:root
+	{
+		--primary-color: var(primary-color);
+		--black: var(black);
+		--light-gray: var(light-gray)
+	}
 	/* Dark Mode for SteamDB Free Packages */
 	body,
 	.container,
 	#js-hover {
-		background-color: #121212 !important;
-		color: #e0e0e0 !important;
+		/*Box model stuff*/
+		background-color: var(--black) !important;
+		/*Typography stuff*/
+		color: var(--light-gray) !important;
 	}
 
 	.container-hello.container,
@@ -28,18 +40,18 @@
 	#events,
 	#news-popups,
 	#main > div:nth-child(8),
-	#main > div.container.container-stats,
+	.container-stats,
 	#freepackages {
 		border-width: 3px;
 		border-style: dashed;
-		border-color: #bb86fc;
+		border-color: var(--primary-color);
 		border-radius: 20px;
 	}
 
 	.muted,
 	.muted > a {
 		margin-bottom: 0;
-		border: 1px solid hsl(204deg 100% 21%);
+		border: 1px solid #00406b;
 		border-radius: 6px;
 		padding: 8px;
 	}
@@ -56,9 +68,9 @@
 	.navbar,
 	.footer,
 	.navbar-inverse {
-		background-color: #1c1c1c !important;
-		color: #e0e0e0 !important;
-		text-shadow: 1px 1px #000;
+		background-color: var(--black) !important;
+		color: var(--light-gray) !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	.table,
@@ -66,9 +78,9 @@
 	.modal-content,
 	.card,
 	.panel {
-		background-color: #1c1c1c !important;
-		color: #e0e0e0 !important;
-		text-shadow: 1px 1px #000;
+		background-color: var(--black) !important;
+		color: var(--light-gray) !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	.table th,
@@ -81,8 +93,8 @@
 	.card-body,
 	.panel-heading,
 	.panel-body {
-		border-color: #333 !important;
-		text-shadow: 1px 1px #000;
+		border-color: #333333 !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	a,
@@ -99,21 +111,8 @@
 		> td:nth-child(1)
 		> span
 		> svg,
-	#main
-		> div
-		> div.header-wrapper
-		> div
-		> div.row.app-row
-		> div.span8
-		> table
-		> tbody
-		> tr:nth-child(n)
-		> td.os-icons
-		> span
-		> svg.octicon.octicon-steamdeck_playable
-		> path,
-	#charts
-		> div.row.row-app-charts
+	.octicon-steamdeck_playable > path,
+	.row-app-charts
 		> div:nth-child(n)
 		> ul
 		> li:nth-child(odd),
@@ -123,8 +122,8 @@
 		> tr:nth-child(even)
 		> td:nth-child(n),
 	#js-header-hamburger {
-		color: #bb86fc !important;
-		text-shadow: 1px 1px #000;
+		color: var(--primary-color) !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#charts
@@ -133,101 +132,76 @@
 		> ul
 		> li:nth-child(even) {
 		color: #eb92e5 !important;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	a:hover,
 	span > ins:hover,
-	#main
-		> div
-		> div.header-wrapper
-		> div
-		> div.row.app-row
-		> div.span8
+	.span8
 		> table
 		> tbody
 		> tr:nth-child(n)
 		> td:nth-child(1)
 		> span
 		> svg:hover,
-	#main
-		> div
-		> div.header-wrapper
-		> div
-		> div.row.app-row
-		> div.span8
-		> table
-		> tbody
-		> tr:nth-child(n)
-		> td.os-icons
-		> span
-		> svg.octicon.octicon-steamdeck_playable
-		> path:hover,
-	#charts
-		> div.row.row-app-charts
+	.octicon-steamdeck_playable > path:hover,
+	.row-app-charts
 		> div:nth-child(n)
 		> ul
 		> li:nth-child(odd):hover,
-	#charts
-		> div.row.row-app-charts
+	.row-app-charts
 		> div:nth-child(n)
 		> ul
 		> li:nth-child(even):hover,
-	#charts
-		> div.row.row-app-charts
+	.row-app-charts
 		> div:nth-child(n)
 		> ul
 		> li:nth-child(odd),
 	#chart-month-table > thead > tr > th:hover {
 		color: #8251f2 !important;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	td.text-center.tabular-nums.green,
-	td.text-center.green,
-	#charts
-		> div.table-responsive
+	.text-center.tabular-nums.green,
+	.text-center.green,
+	.table-responsive
 		> table
 		> tbody
 		> tr:nth-child(odd)
 		> td:nth-child(n) {
 		color: #08c9b9 !important;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	td.text-center.tabular-nums.green:hover,
-	td.text-center.green:hover,
-	td.text-center.green,
-	#charts
-		> div.table-responsive
+	.text-center.tabular-nums.green:hover,
+	.text-center.green:hover,
+	.text-center.green,
+	.table-responsive
 		> table
 		> tbody
 		> tr:nth-child(odd)
 		> td:nth-child(n):hover,
-	#charts
-		> div.table-responsive
+	.table-responsive
 		> table
 		> tbody
 		> tr:nth-child(even)
 		> td:nth-child(n):hover {
 		color: #f29fee !important;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	#charts
-		> div.table-responsive
+	.table-responsive
 		> table
 		> tbody
 		> tr:nth-child(even)
 		> td:nth-child(n) {
 		color: #58a5dc !important;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	h2,
-	li.navigation-heading,
-	#main
-		> div.container.container-products
+	.navigation-heading,
+	.container-products
 		> div:nth-child(n)
 		> div:nth-child(n)
 		> table
@@ -238,7 +212,7 @@
 		text-decoration: underline;
 		text-decoration-style: solid;
 		text-decoration-color: #3bd8264a;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	h2:hover,
@@ -259,26 +233,26 @@
 		text-decoration: underline;
 		text-decoration-style: solid;
 		text-decoration-color: #ffffff4a;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	span.app-history-action > del {
 		color: #830751;
 		text-decoration: underline;
 		text-decoration-style: dotted;
-		text-decoration-color: red;
-		text-shadow: 1px 1px #000;
+		text-decoration-color: #ff0000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	span.app-history-action > del:hover {
-		color: #f00;
+		color: #ff0000;
 		text-decoration: underline;
 		text-decoration-style: dotted;
 		text-decoration-color: #9dff00;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	td.app-chart > svg > path {
+	.app-chart > svg > path {
 		filter: invert(1) hue-rotate(0);
 	}
 
@@ -291,7 +265,7 @@
 		> tr:nth-child(n)
 		> td:nth-child(n) {
 		color: #e37575;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -302,8 +276,8 @@
 		> tbody
 		> tr:nth-child(n)
 		> td:nth-child(n):hover {
-		color: #f00;
-		text-shadow: 1px 1px #000;
+		color: #ff0000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -315,7 +289,7 @@
 		> tr:nth-child(n)
 		> td:nth-child(n) {
 		color: #e8ca84;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -327,7 +301,7 @@
 		> tr:nth-child(n)
 		> td:nth-child(n):hover {
 		color: #7491f2;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -346,9 +320,9 @@
 		> tbody
 		> tr:nth-child(odd)
 		> td:nth-child(1) {
-		background: #121212;
+		background: var(--black);
 		text-align: right;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -368,7 +342,7 @@
 		> tr:nth-child(even)
 		> td:nth-child(1) {
 		text-align: right;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -393,18 +367,18 @@
 		> tbody
 		> tr:nth-child(odd)
 		> td:nth-child(3) {
-		background: #121212;
+		background: var(--black);
 		text-align: left;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#chart-month-table
 		> tbody
 		> tr:nth-child(odd)
 		> td:nth-child(n) {
-		background: #121212;
-		text-shadow: 1px 1px #000;
+		background: var(--black);
 		color: #ffa2ec;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	#main
@@ -418,56 +392,22 @@
 		> tr:nth-child(even)
 		> td:nth-child(12) {
 		text-align: left;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	#main
-		> div
-		> div.header-wrapper
-		> div
-		> div.row.app-row
-		> div.span8
-		> table
-		> tbody
-		> tr:nth-child(5)
-		> td.os-icons
-		> svg.octicon.octicon-windows
-		> path {
+	.octicon-windows > path {
 		color: #5bc6fb;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	#main
-		> div
-		> div.header-wrapper
-		> div
-		> div.row.app-row
-		> div.span8
-		> table
-		> tbody
-		> tr:nth-child(5)
-		> td.os-icons
-		> svg.octicon.octicon-linux
-		> path {
+	.octicon-linux > path {
 		color: #00ffae;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
-	#main
-		> div
-		> div.header-wrapper
-		> div
-		> div.row.app-row
-		> div.span8
-		> table
-		> tbody
-		> tr:nth-child(5)
-		> td.os-icons
-		> span
-		> svg.octicon.octicon-steamdeck
-		> path {
+	.octicon-steamdeck > path {
 		color: #b5721b;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	button,
@@ -485,10 +425,10 @@
 		> div
 		> div.hover_body.hover_tag_row
 		> * {
-		border-color: #444 !important;
-		background-color: #333 !important;
-		color: #e0e0e0 !important;
-		text-shadow: 1px 1px #000;
+		border-color: #454545 !important;
+		background-color: var(--black) !important;
+		color: var(--light-gray) !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	button:hover,
@@ -506,25 +446,25 @@
 		> div
 		> div.hover_body.hover_tag_row
 		> *:hover {
-		border-color: #555 !important;
-		background-color: #444 !important;
+		border-color: #555555 !important;
+		background-color: var(--black) !important;
 		color: #ffffff !important;
-		text-shadow: 1px 1px #000;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	input,
 	textarea,
 	select {
-		border-color: #333 !important;
-		background-color: #1c1c1c !important;
-		color: #e0e0e0 !important;
-		text-shadow: 1px 1px #000;
+		border-color: #333333 !important;
+		background-color: var(--black) !important;
+		color: var(--light-gray) !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	input::placeholder,
 	textarea::placeholder {
-		color: #888 !important;
-		text-shadow: 1px 1px #000;
+		color: #888888 !important;
+		text-shadow: 1px 1px var(--black);
 	}
 
 	::-webkit-scrollbar {
@@ -532,18 +472,29 @@
 	}
 
 	::-webkit-scrollbar-track {
-		background: #bb86fc !important;
+		background: var(--primary-color) !important;
 	}
 
 	::-webkit-scrollbar-thumb {
 		border: 3px solid #121212 !important;
 		border-radius: 10px !important;
-		background-color: #121212 !important;
+		background-color: var(--black) !important;
 	}
 
 	* {
-		scrollbar-color: #bb86fc #000 !important;
+		scrollbar-color: var(--primary-color) var(--black) !important;
 		scrollbar-width: thin !important;
+	}
+
+	.container-products *,
+	#loading,
+	#freepackages {
+		background: var(--black) !important;
+		background-color: var(--black) !important;
+	}
+
+	.donate-panel {
+		color: var(--light-gray) !important;
 	}
 
 	body {
