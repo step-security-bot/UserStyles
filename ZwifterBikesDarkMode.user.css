@@ -1,40 +1,50 @@
 /* ==UserStyle==
 @name           ZwifterBikes - Dark Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark mode for Zwifterbikes.web.app
 @author         Nick2bad4u
 @license        UnLicense
+
+@var color background-color "Background Color" #000000
+@var color text-color "Text Color" #872a78
+@var color hover-color "Hover Color" #00d400
 ==/UserStyle== */
 @-moz-document domain("zwifterbikes.web.app") {
+	:root {
+			--background-color: var(background-color);
+			--text-color: var(text-color);
+			--hover-color: var(hover-color);
+	}
+
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video,
-		mat-toolbar,
-		z#z.z[z],
-		svg,
-		img.tron,
-		.fit
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video,
+			mat-toolbar,
+			z#z.z[z],
+			svg,
+			img.tron,
+			.fit
 	) {
-		filter: invert(1) hue-rotate(180deg) !important;
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.mdc-tab__text-label {
-		color: #872a78 !important;
+			color: var(--text-color) !important;
 	}
 
 	*:hover > span.mdc-tab__content > span {
-		color: #00d400 !important;
-		text-decoration: underline;
-		--mdc-tab-indicator-active-indicator-color: #00d400 !important;
-		--mat-tab-header-active-hover-indicator-color: #00d400 !important;
+			color: var(--hover-color) !important;
+			text-decoration: underline;
+			--mdc-tab-indicator-active-indicator-color: var(--hover-color) !important;
+			--mat-tab-header-active-hover-indicator-color: var(--hover-color) !important;
 	}
 
 	* {
-		--mdc-tab-indicator-active-indicator-color: #00d400 !important;
-		--mat-tab-header-active-hover-indicator-color: #00d400 !important;
+			--mdc-tab-indicator-active-indicator-color: var(--hover-color) !important;
+			--mat-tab-header-active-hover-indicator-color: var(--hover-color) !important;
 	}
 }
