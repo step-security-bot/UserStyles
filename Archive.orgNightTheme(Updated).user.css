@@ -4,53 +4,95 @@
 @author       stylish.c0d3d.net / Nick2bad4u (Updated)
 @description  Dark background colors and orange font color.
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
-@version      1.0.2
+@version      1.0.4
 @license      CC-BY-NC-4.0
-@preprocessor uso
+
+@var color background-black "Background Black" #000000
+@var color background-dark-1 "Background Dark 1" #111111
+@var color background-dark-2 "Background Dark 2" #222222
+@var color background-dark-3 "Background Dark 3" #333333
+@var color border-dark-1 "Border Dark 1" #333333
+@var color border-dark-2 "Border Dark 2" #444444
+@var color text-light-1 "Text Light 1" #999999
+@var color text-light-2 "Text Light 2" #cccccc
+@var color link-orange-1 "Link Orange 1" #ff6600
+@var color link-orange-2 "Link Orange 2" #ff8800
+@var color link-red "Link Red" #ff0000
+@var color ia-theme-primary-background-color "IA Theme Primary Background Color" #F5F5F7
+@var color ia-theme-secondary-background-color "IA Theme Secondary Background Color" #FFFFFF
+@var color ia-theme-primary-text-color "IA Theme Primary Text Color" #2C2C2C
+@var color ia-theme-secondary-text-color "IA Theme Secondary Text Color" #666666
+@var color ia-theme-link-color "IA Theme Link Color" #4B64FF
 ==/UserStyle== */
 @-moz-document regexp("^(?!.*archive\\.org\\/web\\/\\d+\\/https?\\:\\/\\/).*archive\\.org.*$") {
+	:root
+	{
+		--background-black: var(background-black);
+		--background-dark-1: var(background-dark-1);
+		--background-dark-2: var(background-dark-2);
+		--background-dark-3: var(background-dark-3);
+		--border-dark-1: var(border-dark-1);
+		--border-dark-2: var(border-dark-2);
+		--text-light-1: var(text-light-1);
+		--text-light-2: var(text-light-2);
+		--link-orange-1: var(link-orange-1);
+		--link-orange-2: var(link-orange-2);
+		--link-red: var(link-red);
+		--ia-theme-primary-background-color: var(ia-theme-primary-background-color);
+		--ia-theme-secondary-background-color: var(ia-theme-secondary-background-color);
+		--ia-theme-primary-text-color: var(ia-theme-primary-text-color);
+		--ia-theme-secondary-text-color: var(ia-theme-secondary-text-color);
+		--ia-theme-link-color: var(ia-theme-link-color);
+	}
+
 	body.navia.bgEEE {
-		background-color: #222 !important;
+		background-color: var(
+			--background-dark-2
+		) !important;
 	}
 
 	body.navia #nav-tophat {
-		background-color: #222;
-		color: #ccc;
+		background-color: var(--background-dark-2);
+		color: var(--text-light-2);
 	}
 
 	body {
-		background: black;
+		background: var(--background-black);
 	}
 
 	h1,
 	h2,
 	h3,
 	h4 {
-		color: #999 !important;
+		color: var(--text-light-1) !important;
 	}
 
 	#wrap,
 	#wrapper {
-		border-color: #333;
-		background: #111;
-		color: #999;
+		border-color: var(--border-dark-1);
+		background: var(--background-dark-1);
+		color: var(--text-light-1);
 		text-shadow: none !important;
 	}
 
 	.col-xs-12,
 	.preamble,
 	.preamble div {
-		border-color: #333;
-		background: #222 !important;
-		color: white !important;
+		border-color: var(--border-dark-1);
+		background: var(
+			--background-dark-2
+		) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
 	.welcome,
 	#wrap .width-max {
 		border: none !important;
-		background: #333 !important;
-		color: white !important;
+		background: var(
+			--background-dark-3
+		) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
@@ -58,33 +100,39 @@
 	.iconochive-fullscreen,
 	.iconochive-flash,
 	.iconochive-unmute {
-		background: #333 !important;
+		background: var(
+			--background-dark-3
+		) !important;
 	}
 
 	.boxy,
 	.item-ia {
 		border-width: 2px !important;
 		border-style: solid !important;
-		border-color: #444 !important;
-		background: #111 !important;
-		color: white !important;
+		border-color: var(--border-dark-2) !important;
+		background: var(
+			--background-dark-1
+		) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
 	body.ia-module.tiles .item-ia .item-ttl .ttl {
-		color: white !important;
+		color: var(--text-light-2) !important;
 	}
 
 	#favorite-button,
 	#share-button,
 	#flag-button,
 	.sortbar {
-		border: black !important;
-		background: #111 !important;
+		border: var(--background-black) !important;
+		background: var(
+			--background-dark-1
+		) !important;
 	}
 
 	.boxy-ttl {
-		color: white !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
@@ -94,26 +142,26 @@
 	}
 
 	p .show-all {
-		border-color: #333 !important;
-		background: #f60 !important;
-		color: white !important;
+		border-color: var(--border-dark-1) !important;
+		background: var(--link-orange-1) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
 	a,
 	a * {
-		color: #f60 !important;
+		color: var(--link-orange-1) !important;
 		text-decoration: none !important;
 	}
 
 	a:visited,
 	a:visited * {
-		color: #f80 !important;
+		color: var(--link-orange-2) !important;
 	}
 
 	a:hover,
 	a:hover * {
-		color: #f00 !important;
+		color: var(--link-red) !important;
 	}
 
 	.about-box,
@@ -122,16 +170,20 @@
 	td,
 	.well,
 	.white-box {
-		border-color: #333 !important;
-		background: #111 !important;
-		color: #999 !important;
+		border-color: var(--border-dark-1) !important;
+		background: var(
+			--background-dark-1
+		) !important;
+		color: var(--text-light-1) !important;
 		text-shadow: none !important;
 	}
 
 	p {
 		border: none !important;
-		background: #111 !important;
-		color: #999 !important;
+		background: var(
+			--background-dark-1
+		) !important;
+		color: var(--text-light-1) !important;
 		text-shadow: none !important;
 	}
 }
@@ -142,36 +194,42 @@
 	}
 
 	.navia {
-		background-color: #222 !important;
+		background-color: var(
+			--background-dark-2
+		) !important;
 	}
 
 	.navia #nav-tophat {
-		background-color: #222;
-		color: #ccc;
+		background-color: var(--background-dark-2);
+		color: var(--text-light-2);
 	}
 
 	#wrap,
 	#wrapper {
-		border-color: #333;
-		background: #111;
-		color: #999;
+		border-color: var(--border-dark-1);
+		background: var(--background-dark-1);
+		color: var(--text-light-1);
 		text-shadow: none !important;
 	}
 
 	.col-xs-12,
 	.preamble,
 	.preamble div {
-		border-color: #333;
-		background: #222 !important;
-		color: white !important;
+		border-color: var(--border-dark-1);
+		background: var(
+			--background-dark-2
+		) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
 	.welcome,
 	#wrap .width-max {
 		border: none !important;
-		background: #333 !important;
-		color: white !important;
+		background: var(
+			--background-dark-3
+		) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
@@ -179,33 +237,39 @@
 	.iconochive-fullscreen,
 	.iconochive-flash,
 	.iconochive-unmute {
-		background: #333 !important;
+		background: var(
+			--background-dark-3
+		) !important;
 	}
 
 	.boxy,
 	.item-ia {
 		border-width: 2px !important;
 		border-style: solid !important;
-		border-color: #444 !important;
-		background: #111 !important;
-		color: white !important;
+		border-color: var(--border-dark-2) !important;
+		background: var(
+			--background-dark-1
+		) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
 	body.ia-module.tiles .item-ia .item-ttl .ttl {
-		color: white !important;
+		color: var(--text-light-2) !important;
 	}
 
 	#favorite-button,
 	#share-button,
 	#flag-button,
 	.sortbar {
-		border: black !important;
-		background: #111 !important;
+		border: var(--background-black) !important;
+		background: var(
+			--background-dark-1
+		) !important;
 	}
 
 	.boxy-ttl {
-		color: white !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
@@ -215,18 +279,20 @@
 	}
 
 	p .show-all {
-		border-color: #333 !important;
-		background: #f60 !important;
-		color: white !important;
+		border-color: var(--border-dark-1) !important;
+		background: var(--link-orange-1) !important;
+		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
 
 	.about-box,
 	.well,
 	.white-box {
-		border-color: #333 !important;
-		background: #111 !important;
-		color: #999 !important;
+		border-color: var(--border-dark-1) !important;
+		background: var(
+			--background-dark-1
+		) !important;
+		color: var(--text-light-1) !important;
 		text-shadow: none !important;
 	}
 }
