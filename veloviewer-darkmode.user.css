@@ -1,17 +1,17 @@
 /* ==UserStyle==
 @name           veloviewer.com - Dark Mode
 @namespace      typpi.online
-@version        1.5.0
+@version        1.6.0
 @description    Dark theme for VeloViewer
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
-@var color      primary-color	"Primary Color" #FF032E
-@var color      header-color   "Header Color" #ff8bc1
-@var color      secondary-color "Secondary Color" #0099c6
-@var color      table-alternate-row      "Table Alternate Row Background Color" #fff
+@var color      primary-color    "Primary Color" #FF032E
+@var color      header-color     "Header Color" #ff8bc1
+@var color      secondary-color  "Secondary Color" #0099c6
+@var color      table-alternate-row "Table Alternate Row Background Color" #fff
 @var color      background-color "Background Color" black
-@var text       invert-filter   "Invert Filter"     "invert(1) hue-rotate(180deg)"
+@var text       invert-filter    "Invert Filter" "invert(1) hue-rotate(180deg)"
 ==/UserStyle== */
 @-moz-document domain("veloviewer.com") {
 	:root {
@@ -21,7 +21,7 @@
 		--table-alternate-row: var(table-alternate-row);
 		--primary-color: var(primary-color);
 		--invert-filter: var(invert-filter);
-	}
+		}
 
 	a:hover,
 	a:focus {
