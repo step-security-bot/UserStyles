@@ -1,47 +1,66 @@
 /* ==UserStyle==
-@name           myworkoutcompanion.net - Dark Mode
+@name           myworkoutcompanion.net - Dark Mode [Customizable]
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for MyWorkoutCompanion
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color option-bg "Option Background" #000000
+@var color option-text "Option Text Color" #ffffff
+@var color border-focus "Border Focus Color" #7c3900
+@var color box-shadow-focus "Box Shadow Focus Color" #7c390040
+@var color button-border "Button Border Color" #ffffff
+@var color button-bg "Button Background Color" #a9a9a9
+@var color button-text "Button Text Color" #7c3900
+@var color event-bg "Event Background Color" #7c3900
 ==/UserStyle== */
 @-moz-document domain("myworkoutcompanion.net") {
-	/* Invert colors except images and videos */
-	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video
-	) {
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
+  /* Stylus Variables */
+  :root {
+    --option-bg: var(option-bg);
+    --option-text: var(option-text);
+    --border-focus: var(border-focus);
+    --box-shadow-focus: var(box-shadow-focus);
+    --button-border: var(button-border);
+    --button-bg: var(button-bg);
+    --button-text: var(button-text);
+    --event-bg: var(event-bg);
+  }
 
-	option {
-		background: black;
-		color: white;
-	}
+  /* Invert colors except images and videos */
+  :is(
+    html:not([stylus-iframe]),
+    img,
+    svg,
+    video
+  ) {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-	.custom-select:focus,
-	.form-control:focus {
-		outline: 0;
-		box-shadow: 0 0 0 0.2rem rgb(124 57 0 / 25%);
-		border-color: #7c3900;
-	}
+  option {
+    background: var(--option-bg);
+    color: var(--option-text);
+  }
 
-	.fc .fc-button-primary,
-	.fc .fc-button {
-		opacity: 100% !important;
-		border-color: white !important;
-		background-color: darkgray !important;
-		color: #7c3900 !important;
-	}
+  .custom-select:focus,
+  .form-control:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--box-shadow-focus);
+    border-color: var(--border-focus);
+  }
 
-	.fc-direction-ltr
-		.fc-daygrid-event.fc-event-end,
-	.fc-direction-rtl
-		.fc-daygrid-event.fc-event-start {
-		background-color: #7c3900 !important;
-	}
+  .fc .fc-button-primary,
+  .fc .fc-button {
+    opacity: 100% !important;
+    border-color: var(--button-border) !important;
+    background-color: var(--button-bg) !important;
+    color: var(--button-text) !important;
+  }
+
+  .fc-direction-ltr .fc-daygrid-event.fc-event-end,
+  .fc-direction-rtl .fc-daygrid-event.fc-event-start {
+    background-color: var(--event-bg) !important;
+  }
 }
