@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           steamtradematcher.com - Dark Mode
 @namespace      typpi.online
-@version        1.1.0
+@version        1.2.0
 @description    Darker mode for Steam Trade Matcher
 @author         Nick2bad4u
 @license        UnLicense
@@ -15,9 +15,9 @@
 	body,
 	.bg-dark,
 	:root {
-		background: black !important;
-		background-color: black !important;
-		color: white !important;
+		background: #000000 !important;
+		background-color: #000000 !important;
+		color: #ffffff !important;
 	}
 
 	*,
@@ -140,48 +140,20 @@
 		--gpColor-LightBlue: #b3dfff !important;
 		--gpColor-Yellow: #ffc82c !important;
 		--gpColor-ChalkyBlue: #66c0f4 !important;
-		--gpBackground-LightSofter: rgb(
-			105 152 187 / 14%
-		) !important;
-		--gpBackground-LightSoft: rgb(
-			59 90 114 / 50%
-		) !important;
-		--gpBackground-LightMedium: rgb(
-			103 139 166 / 44%
-		) !important;
-		--gpBackground-LightHard: rgb(
-			147 184 212 / 50%
-		) !important;
-		--gpBackground-LightHarder: rgb(
-			170 204 230 / 65%
-		) !important;
-		--gpBackground-DarkSofter: rgb(
-			30 84 147 / 20%
-		) !important;
-		--gpBackground-DarkSoft: rgb(
-			14 20 27 / 40%
-		) !important;
-		--gpBackground-DarkMedium: rgb(
-			14 20 27 / 60%
-		) !important;
-		--gpBackground-DarkHard: rgb(
-			14 20 27 / 80%
-		) !important;
-		--gpBackground-Neutral-LightSofter: rgb(
-			235 246 255 / 10%
-		) !important;
-		--gpBackground-Neutral-LightSoft: rgb(
-			235 246 255 / 20%
-		) !important;
-		--gpBackground-Neutral-LightMedium: rgb(
-			235 246 255 / 30%
-		) !important;
-		--gpBackground-Neutral-LightHard: rgb(
-			235 246 255 / 40%
-		) !important;
-		--gpBackground-Neutral-LightHarder: rgb(
-			235 246 255 / 50%
-		) !important;
+		--gpBackground-LightSofter: #6998bb24 !important;
+		--gpBackground-LightSoft: #3b5a7280 !important;
+		--gpBackground-LightMedium: #678ba670 !important;
+		--gpBackground-LightHard: #93b8d480 !important;
+		--gpBackground-LightHarder: #aacce6a6 !important;
+		--gpBackground-DarkSofter: #1e549333 !important;
+		--gpBackground-DarkSoft: #0e141b66 !important;
+		--gpBackground-DarkMedium: #0e141b99 !important;
+		--gpBackground-DarkHard: #0e141bcc !important;
+		--gpBackground-Neutral-LightSofter: #ebf6ff1a !important;
+		--gpBackground-Neutral-LightSoft: #ebf6ff33 !important;
+		--gpBackground-Neutral-LightMedium: #ebf6ff4d !important;
+		--gpBackground-Neutral-LightHard: #ebf6ff66 !important;
+		--gpBackground-Neutral-LightHarder: #ebf6ff80 !important;
 		--gpCorner-Small: 1px !important;
 		--gpCorner-Medium: 2px !important;
 		--gpCorner-Large: 3px !important;
@@ -250,13 +222,10 @@
 			)
 		) !important;
 		--gpStoreMenuHeight: 58px !important;
-		--gpShadow-Small: 0 2px 2px 0 rgb(0 0 0 / 24%) !important;
-		--gpShadow-Medium: 0 3px 6px 0
-			rgb(0 0 0 / 24%) !important;
-		--gpShadow-Large: 0 12px 16px 0
-			rgb(0 0 0 / 24%) !important;
-		--gpShadow-XLarge: 0 24px 32px 0
-			rgb(0 0 0 / 24%) !important;
+		--gpShadow-Small: 0 2px 2px 0 #0000003d !important;
+		--gpShadow-Medium: 0 3px 6px 0 #0000003d !important;
+		--gpShadow-Large: 0 12px 16px 0 #0000003d !important;
+		--gpShadow-XLarge: 0 24px 32px 0 #0000003d !important;
 		--gpText-HeadingLarge: normal 700 26px/1.4
 				'Motiva Sans',
 			arial, sans-serif !important;
