@@ -1,50 +1,65 @@
 /* ==UserStyle==
-@name           cfg.tf - Dark Mode
+@name           cfg.tf - Dark Mode [Customizable]
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark theme for CFG TF
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@downloadURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/CFG.tf-DarkMode.user.css
+@updateURl      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/CFG.tf-DarkMode.user.css
+
+@var color panel-border "Panel Border Color" #6995c0
+@var color panel-heading-bg "Panel Heading Background" #6995c0
+@var color panel-heading-text "Panel Heading Text Color" #ffffff
+@var color navbar-bg "Navbar Background" #3285cc
 ==/UserStyle== */
 @-moz-document domain("cfg.tf") {
-	/* Invert colors except images and videos */
-	html,
-	img,
-	svg,
-	video,
-	iframe,
-	#generator_chooser,
-	.footer {
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
+  /* Stylus Variables */
+  :root {
+    --panel-border: var(panel-border);
+    --panel-heading-bg: var(panel-heading-bg);
+    --panel-heading-text: var(panel-heading-text);
+    --navbar-bg: var(navbar-bg);
+  }
 
-	.panel-primary > .panel-heading {
-		border-color: #6995c0;
-		background-color: #6995c0;
-		color: #ffffff;
-	}
+  /* Invert colors except images and videos */
+  html,
+  img,
+  svg,
+  video,
+  iframe,
+  #generator_chooser,
+  .footer {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-	.panel {
-		border-color: #6995c0;
-	}
+  .panel-primary > .panel-heading {
+    border-color: var(--panel-border);
+    background-color: var(--panel-heading-bg);
+    color: var(--panel-heading-text);
+  }
 
-	hr {
-		margin-top: 21px;
-		margin-bottom: 21px;
-		border: 0;
-		border-top: 1px solid #6995c0;
-	}
+  .panel {
+    border-color: var(--panel-border);
+  }
 
-	.bootstrap-select > .dropdown-toggle,
-	.btn-primary:focus,
-	.btn-primary.focus {
-		opacity: 100%;
-		color: black !important;
-	}
+  hr {
+    margin-top: 21px;
+    margin-bottom: 21px;
+    border: 0;
+    border-top: 1px solid var(--panel-border);
+  }
 
-	.navbar-default {
-		border-color: transparent;
-		background-color: #3285cc;
-	}
+  .bootstrap-select > .dropdown-toggle,
+  .btn-primary:focus,
+  .btn-primary.focus {
+    opacity: 100%;
+    color: black !important;
+  }
+
+  .navbar-default {
+    border-color: transparent;
+    background-color: var(--navbar-bg);
+  }
 }
