@@ -2,110 +2,164 @@
 @name         Style Editor [Chrome] - Dark Theme [Updated]
 @namespace    USO Archive
 @author       Paul Stevenson - [Updated by Nick2bad4u]
-@description  A dark theme for the Stylish style editor chrome extension.  It also includes a code section for recoloring the default syntax highlighting theme.
-@version      1.0.3
+@description  A dark theme for the Stylish style editor chrome extension. It also includes a code section for recoloring the default syntax highlighting theme.
+@version      1.0.4
 @license      CC-BY-SA-4.0
-@preprocessor uso
+
+@var color bg-dark "Background Dark" #111111
+@var color bg-light "Background Light" #ffffff
+@var color bg-accent "Background Accent" #222222
+@var color bg-popup "Background Popup" #000000cc
+@var color text-primary "Text Primary" #ccccff
+@var color text-secondary "Text Secondary" #9999ff
+@var color text-highlight "Text Highlight" #00ccff
+@var color text-hover "Text Hover" #99ffff
+@var color input-border "Input Border" #0099ff
+@var color input-bg "Input Background" #000000
+@var color input-text "Input Text" #00ffff
+@var color button-border "Button Border" #5555ff
+@var color button-bg "Button Background" #222222
+@var color button-text "Button Text" #9999ff
+@var color button-hover-bg "Button Hover Background" #000000
+@var color button-hover-text "Button Hover Text" #99ccff
+@var color scrollbar-thumb "Scrollbar Thumb" #0064ffcc
+@var color scrollbar-thumb-inactive "Scrollbar Thumb Inactive" #0064ff66
+@var color scrollbar-track "Scrollbar Track" #0000004d
+@var color gutter-border "Gutter Border" #0099ff
+@var color gutter-bg "Gutter Background" #000000
+@var color line-number "Line Number" #5599ff
+@var color cursor "Cursor" #ffffff
+@var color secondary-cursor "Secondary Cursor" #c0c0c0
+@var color matching-bracket "Matching Bracket" #fdff00
+@var color nonmatching-bracket "Nonmatching Bracket" #ff7171
+@var color activeline-bg "Active Line Background" #0c0c0c
+@var color keyword "Keyword" #ffac3f
+@var color atom "Atom" #9b8dff
+@var color number "Number" #00dfff
+@var color definition "Definition" #9999ff
+@var color variable "Variable" #ff00ff
+@var color variable-2 "Variable 2" #62b0ff
+@var color variable-3 "Variable 3" #88ffd3
+@var color comment "Comment" #00ff2e
+@var color string "String" #ff9500
+@var color string-2 "String 2" #ff5500
+@var color meta "Meta" #c3c3c3
+@var color builtin "Builtin" #97b6ff
+@var color tag "Tag" #5599ff
+@var color attribute "Attribute" #7d7dff
+@var color error "Error" #ff7474
+@var color highlight-match "Highlight Match" #ff96004d
+@var color bottom-border "Bottom Border" #ff9900
+@var color green1 "Green 1" #00ff00
+@var color green2 "Green 2" #00ff0080
 ==/UserStyle== */
+
+:root {
+	/* Background Colors */
+	--bg-dark: var(bg-dark);
+	--bg-light: var(bg-light);
+	--bg-accent: var(bg-accent);
+	--bg-popup: var(bg-popup);
+
+	/* Text Colors */
+	--text-primary: var(text-primary);
+	--text-secondary: var(text-secondary);
+	--text-highlight: var(text-highlight);
+	--text-hover: var(text-hover);
+
+	/* Input Colors */
+	--input-border: var(input-border);
+	--input-bg: var(input-bg);
+	--input-text: var(input-text);
+
+	/* Button Colors */
+	--button-border: var(button-border);
+	--button-bg: var(button-bg);
+	--button-text: var(button-text);
+	--button-hover-bg: var(button-hover-bg);
+	--button-hover-text: var(button-hover-text);
+
+	/* Scrollbar Colors */
+	--scrollbar-thumb: var(scrollbar-thumb);
+	--scrollbar-thumb-inactive: var(
+		scrollbar-thumb-inactive
+	);
+	--scrollbar-track: var(scrollbar-track);
+
+	/* Gutter Colors */
+	--gutter-border: var(gutter-border);
+	--gutter-bg: var(gutter-bg);
+	--line-number: var(line-number);
+
+	/* Cursor and Bracket Colors */
+	--cursor: var(cursor);
+	--secondary-cursor: var(secondary-cursor);
+	--matching-bracket: var(matching-bracket);
+	--nonmatching-bracket: var(nonmatching-bracket);
+	--activeline-bg: var(activeline-bg);
+
+	/* Syntax Highlighting */
+	--keyword: var(keyword);
+	--atom: var(atom);
+	--number: var(number);
+	--definition: var(definition);
+	--variable: var(variable);
+	--variable-2: var(variable-2);
+	--variable-3: var(variable-3);
+	--comment: var(comment);
+	--string: var(string);
+	--string-2: var(string-2);
+	--meta: var(meta);
+	--builtin: var(builtin);
+	--tag: var(tag);
+	--attribute: var(attribute);
+	--error: var(error);
+	--highlight-match: var(highlight-match);
+	--bottom-border: var(bottom-border);
+	--green1: var(green1);
+	--green2: var(green2);
+}
+
 @-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*"), regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
 {
 	body {
-		background: #111111;
-		color: #ccccff;
+		background: var(--bg-dark);
+		color: var(--text-primary);
 	}
 
 	#stylish-popup {
-		background: #ffffff;
-		color: #000000;
+		background: var(--bg-light);
+		color: var(--input-bg);
 	}
 
 	a,
 	a:visited,
 	a:active {
-		color: #00ccff;
+		color: var(--text-highlight);
 	}
 
 	a:hover {
-		color: #99ffff;
+		color: var(--text-hover);
 	}
 
 	input,
 	#name,
 	.applies-value,
 	select {
-		border-color: #0099ff;
-		background: #000000;
-		color: #00ffff;
+		border-color: var(--input-border);
+		background: var(--input-bg);
+		color: var(--input-text);
 	}
 
 	button {
-		border-color: #5555ff;
-		background: #222222;
-		color: #9999ff;
+		border-color: var(--button-border);
+		background: var(--button-bg);
+		color: var(--button-text);
 	}
 
 	button:hover {
-		background: #000000;
-		color: #99ccff;
-	}
-
-	input[type='checkbox'] {
-		display: none;
-	}
-
-	label {
-		cursor: pointer;
-	}
-
-	#header {
-		border-right: 1px dashed #0099ff;
-	}
-
-	input[type='checkbox'] + label::before {
-		display: inline-block;
-		vertical-align: top;
-		margin: 0 0.25em 0 0;
-		border: 1px solid #0099ff;
-		padding: 0;
-		width: 16px;
-		height: 16px;
-		content: '\00a0';
-		font: 16px/1em sans-serif;
-	}
-
-	input[type='checkbox']:checked + label::before {
-		background: #000000;
-		content: '\2713';
-		color: #ccccff;
-		text-align: center;
-	}
-
-	input[type='checkbox']:checked + label::after {
-		font-weight: bold;
-	}
-
-	#help-popup {
-		background: rgb(0 0 0 / 80%);
-	}
-
-	#help-popup .close-icon {
-		background:
-			linear-gradient(
-					-45deg,
-					transparent 5px,
-					white 5px,
-					white 6px,
-					transparent 6.5px
-				)
-				no-repeat,
-			linear-gradient(
-					45deg,
-					transparent 5px,
-					white 5px,
-					white 6px,
-					transparent 6.5px
-				)
-				no-repeat;
+		background: var(--button-hover-bg);
+		color: var(--button-hover-text);
 	}
 
 	::-webkit-scrollbar {
@@ -114,256 +168,75 @@
 
 	::-webkit-scrollbar-track {
 		-webkit-box-shadow: inset 0 0 6px
-			rgb(0 0 0 / 30%);
-		-webkit-border-radius: 8px;
-		border-radius: 8px;
+			var(--scrollbar-track);
+		background: var(--scrollbar-track);
 	}
 
 	::-webkit-scrollbar-thumb {
 		-webkit-box-shadow: inset 0 0 6px
-			rgb(0 0 0 / 50%);
-		-webkit-border-radius: 8px;
-		border-radius: 8px;
-		background: rgb(0 100 255 / 80%);
+			var(--scrollbar-thumb);
+		background: var(--scrollbar-thumb);
 	}
+
 	::-webkit-scrollbar-thumb:window-inactive {
-		background: rgb(0 100 255 / 40%);
+		background: var(--scrollbar-thumb-inactive);
 	}
 }
 
+/* Syntax highlighting with variables */
 @-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*")
 {
-	/* BASICS */
-
-	.CodeMirror {
-		height: 300px;
-		color: #ffffff;
-		/* Set height, width, borders, and global font properties here */
-		font-family: monospace;
-	}
-
-	/* PADDING */
-
-	.CodeMirror-lines {
-		padding: 4px 0; /* Vertical padding around content */
-	}
-	.CodeMirror pre {
-		padding: 0 4px; /* Horizontal padding of content */
-	}
-
-	.CodeMirror-scrollbar-filler,
-	.CodeMirror-gutter-filler {
-		background-color: black; /* The little square between H and V scrollbars */
-	}
-
-	/* GUTTER */
-
-	.CodeMirror-gutters {
-		border-right: 1px solid #0099ff;
-		background-color: #000000;
-		white-space: nowrap;
-	}
-	.CodeMirror-linenumbers {
-		background: none;
-	}
-	.CodeMirror-linenumber {
-		padding: 0 3px 0 5px;
-		min-width: 20px;
-		color: #5599ff;
-		text-align: right;
-		white-space: nowrap;
-	}
-
-	.CodeMirror-guttermarker {
-		color: #ffffff;
-	}
-	.CodeMirror-guttermarker-subtle {
-		color: #fff;
-	}
-
-	/* CURSOR */
-
-	.CodeMirror div.CodeMirror-cursor {
-		border-left: 1px solid #fff;
-	}
-	/* Shown when moving in bi-directional text */
-	.CodeMirror div.CodeMirror-secondarycursor {
-		border-left: 1px solid silver;
-	}
-	.CodeMirror.cm-fat-cursor
-		div.CodeMirror-cursor {
-		border: 0;
-		background: #7e7;
-		width: auto;
-	}
-	.CodeMirror.cm-fat-cursor
-		div.CodeMirror-cursors {
-		z-index: 1;
-	}
-
-	.cm-animate-fat-cursor {
-		-webkit-animation: blink 1.06s steps(1)
-			infinite;
-		-moz-animation: blink 1.06s steps(1) infinite;
-		animation: blink 1.06s steps(1) infinite;
-		border: 0;
-		background-color: #7e7;
-		width: auto;
-	}
-	@-moz-keyframes blink {
-		0% {
-		}
-		50% {
-			background-color: transparent;
-		}
-		100% {
-		}
-	}
-	@-webkit-keyframes blink {
-		0% {
-		}
-		50% {
-			background-color: transparent;
-		}
-		100% {
-		}
-	}
-	@keyframes blink {
-		0% {
-		}
-		50% {
-			background-color: transparent;
-		}
-		100% {
-		}
-	}
-
-	/* Can style cursor different in overwrite (non-insert) mode */
-	div.CodeMirror-overwrite div.CodeMirror-cursor {
-		color: #ffffff;
-	}
-
-	.cm-tab {
-		display: inline-block;
-		text-decoration: inherit;
-	}
-
-	.CodeMirror-ruler {
-		position: absolute;
-		border-left: 1px solid #ccc;
-	}
-
-	/* DEFAULT THEME */
-
-	.cm-s-default .cm-header {
-		color: #00f;
-	}
-	.cm-s-default .cm-quote {
-		color: #7e7;
-	}
-	.cm-negative {
-		color: #f00;
-	}
-	.cm-positive {
-		color: #7e7;
-	}
-	.cm-header,
-	.cm-strong {
-		font-weight: bold;
-	}
-	.cm-em {
-		font-style: italic;
-	}
-	.cm-link {
-		text-decoration: underline;
-	}
-	.cm-strikethrough {
-		text-decoration: line-through;
-	}
-
 	.cm-s-default .cm-keyword {
-		color: #ffac3f;
+		color: var(--keyword);
 	}
 	.cm-s-default .cm-atom {
-		color: #9b8dff;
+		color: var(--atom);
 	}
 	.cm-s-default .cm-number {
-		color: #00dfff;
+		color: var(--number);
 	}
 	.cm-s-default .cm-def {
-		color: #9999ff;
+		color: var(--definition);
 	}
-	.cm-s-default .cm-variable,
-	.cm-s-default .cm-punctuation,
-	.cm-s-default .cm-property,
-	.cm-s-default .cm-operator {
-		color: #ff00ff;
+	.cm-s-default .cm-variable {
+		color: var(--variable);
 	}
 	.cm-s-default .cm-variable-2 {
-		color: #62b0ff;
+		color: var(--variable-2);
 	}
 	.cm-s-default .cm-variable-3 {
-		color: #88ffd3;
+		color: var(--variable-3);
 	}
 	.cm-s-default .cm-comment {
-		color: #00ff2e;
+		color: var(--comment);
 	}
 	.cm-s-default .cm-string {
-		color: #ff9500;
+		color: var(--string);
 	}
 	.cm-s-default .cm-string-2 {
-		color: #f50;
+		color: var(--string-2);
 	}
 	.cm-s-default .cm-meta {
-		color: #c3c3c3;
-	}
-	.cm-s-default .cm-qualifier {
-		color: #dddddd;
+		color: var(--meta);
 	}
 	.cm-s-default .cm-builtin {
-		color: #97b6ff;
-	}
-	.cm-s-default .cm-bracket {
-		color: #fff;
+		color: var(--builtin);
 	}
 	.cm-s-default .cm-tag {
-		color: #5599ff;
+		color: var(--tag);
 	}
 	.cm-s-default .cm-attribute {
-		color: #7d7dff;
+		color: var(--attribute);
 	}
-	.cm-s-default .cm-hr {
-		color: #ff9f9f;
-	}
-	.cm-s-default .cm-link {
-		color: #00ffd6;
-	}
-
 	.cm-s-default .cm-error {
-		color: #ff7474;
+		color: var(--error);
 	}
-	.cm-invalidchar {
-		color: #ff7a7a;
-	}
-
-	.CodeMirror-composing {
-		border-bottom: 2px solid;
-	}
-
-	div.CodeMirror span.CodeMirror-matchingbracket {
-		color: #fdff00;
-	}
-	div.CodeMirror
-		span.CodeMirror-nonmatchingbracket {
-		color: #f22;
-	}
-	.CodeMirror-matchingtag {
-		background: rgb(255 150 0 / 30%);
+	.CodeMirror-matchingbracket {
+		color: var(--matching-bracket);
 	}
 	.CodeMirror-activeline-background {
-		background: #0c0c0c;
+		background: var(--activeline-bg);
 	}
-
 	.CodeMirror {
 		background: #0c0c0c;
 	}
@@ -380,17 +253,17 @@
 	.CodeMirror-line::selection,
 	.CodeMirror-line > span::selection,
 	.CodeMirror-line > span > span::selection {
-		background: #000000;
+		background: var(--input-bg);
 	}
 	.CodeMirror-line::selection,
 	.CodeMirror-line > span::selection,
 	.CodeMirror-line > span > span::selection {
-		background: #000000;
+		background: var(--input-bg);
 	}
 
 	.cm-searching {
-		border-bottom: 1px solid #ff9900;
-		background: #00ff00;
-		background: rgb(0 255 0 / 50%);
+		border-bottom: 1px solid var(--bottom-border);
+		background: var(--green1);
+		background: var(--green2);
 	}
 }
