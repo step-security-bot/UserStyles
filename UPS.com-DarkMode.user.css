@@ -1,213 +1,156 @@
 /* ==UserStyle==
 @name         UPS.com - Dark Mode
-@version      20241114.23.52
+@version      20241114.23.53
 @namespace    typpi.online
-@description  UPS.com - Dark Mode!
-@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@description  UPS.com - Dark Mode
 @author       Nick2bad4u
 @license      UnLicense
-==/UserStyle== */
 
-@-moz-document domain("ups.com") {
+@var color dark-background "Dark Background" #282a36
+@var color border "Border" #6272a4
+@var color button-background "Button Background" #662f10
+@var color hover-color "Hover Color" #50fa7b
+@var color input-background "Input Background" #44475a
+@var color text "Text Color" #f8f8f2
+@var color black "Black" #000000
+@var color white "White" #ffffff
+==/UserStyle== */
+@-moz-document domain("ups.com")
+{
+	:root
+	{
+		--dark-background: var(dark-background);
+		--border: var(border);
+		--button-background: var(button-background);
+		--hover-color: var(hover-color);
+		--input-background: var(input-background);
+		--text: var(text);
+		--black: var(black);
+		--white: var(white);
+	}
+
 	/* Base dark mode filter */
-	html {
+	html
+	{
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	/* Specific elements to exclude from inversion */
-	:is(
-		img,
-		svg,
-		video,
-		iframe,
-		[class*='footer'],
-		[id*='footer'],
-		.logo,
-		.button,
-		.btn,
-		.input,
-		.textarea,
-		.card,
-		.panel,
-		.table,
-		.modal,
-		#ups-header_logo > img,
-		#ups-navContainer
-			> header
-			> div.ups-container.navbar-expand-lg
-			> div.ups-user-actions.dropdown
-			> a.ups-cta.ups-cta-primary.d-none.d-md-block.ups-analytics
-			> span,
-		#ups-main
-			> div
-			> div
-			> div
-			> div.social.row
-			> ul
-			> li:nth-child(2)
-			> button
-			> span.ups-socialicon.ups-socialicon_facebook,
-		#ups-main
-			> div
-			> div
-			> div
-			> div.social.row
-			> ul
-			> li:nth-child(1)
-			> button
-			> span.ups-socialicon.ups-socialicon_google,
-		.brown.arc-container.apps-container.section,
-		#tabs_0_tabContent_0
-			> div
-			> div
-			> div
-			> div
-			> div.package-tracker,
-		#tracking-numbers
-	) {
-		filter: invert(1) hue-rotate(180deg) !important;
+	:is( img,
+	svg,
+	video,
+	iframe,
+	[class *= 'footer'],
+	[id *= 'footer'],
+	.logo,
+	.button,
+	.btn,
+	.input,
+	.textarea,
+	.card,
+	.panel,
+	.table,
+	.modal,
+	#ups-header_logo > img,
+	.ups-cta.ups-cta-primary.d-none.d-md-block.ups-analytics > span,
+	.ups-socialicon_facebook,
+	.ups-socialicon_google,
+	.brown.arc-container.apps-container.section,
+	#tabs_0_tabContent_0 > div > div > div > div > div.package-tracker,
+	#tracking-numbers)
+	{
+		filter: invert(1) hue-rotate(180deg);
+	}
+
+	.hero-img > div > picture > img
+	{
+		filter: unset !important;
 	}
 
 	/* Additional styling for better dark mode experience */
 	a,
-	li:nth-child(n)
-		> a
-		> span.icon.ups-icon-link_newwindow,
-	#sublist-connect-with-us-3
-		> li:nth-child(n)
-		> a
-		> span.icon.icon-new-window
-		> svg,
-	#sublist-ups-companies-2
-		> li:nth-child(n)
-		> a
-		> span
-		> svg
-		> use,
-	#sublist-ups-sites-1
-		> li:nth-child(n)
-		> a
-		> span
-		> svg,
-	#sublist-this-site-0
-		> li:nth-child(n)
-		> a
-		> span
-		> svg,
-	#sublist-connect-with-us-3
-		> li:nth-child(n)
-		> a
-		> span.icon.icon-facebook
-		> svg
-		> use,
-	#sublist-connect-with-us-3
-		> li:nth-child(2)
-		> a
-		> span.icon.icon-x
-		> svg
-		> use,
-	#sublist-connect-with-us-3
-		> li:nth-child(3)
-		> a
-		> span.icon.icon-instagram
-		> svg
-		> use,
-	#sublist-connect-with-us-3
-		> li:nth-child(4)
-		> a
-		> span.icon.icon-linkedin
-		> svg
-		> use,
-	#sublist-connect-with-us-3
-		> li:nth-child(5)
-		> a
-		> span.icon.icon-youtube
-		> svg,
-	#tabs_0_tabContent_0
-		> div
-		> div
-		> div
-		> div
-		> div.track-form-wrapper
-		> form
-		> button.toggle-help
-		> span
-		> svg
-		> use {
-		color: #000 !important;
+	li:nth-child(n) > a > span.icon.ups-icon-link_newwindow,
+	.icon-new-window > svg,
+	#sublist-ups-companies-2 > li:nth-child(n) > a > span > svg > use,
+	#sublist-ups-sites-1 > li:nth-child(n) > a > span > svg,
+	#sublist-this-site-0 > li:nth-child(n) > a > span > svg,
+	.icon-facebook > svg > use,
+	.icon-x > svg > use,
+	.icon-instagram > svg > use,
+	.icon-linkedin > svg > use,
+	.icon-youtube > svg,
+	.toggle-help > span > svg > use
+	{
+		color: var(--black) !important;
 	}
 
 	a > span.icon.ups-icon-link_newwindow,
 	#ups-footer_legalLinks > li:nth-child(n) > a,
-	#ups-footer_connectLinks
-		> li:nth-child(n)
-		> a
-		> span.icon.ups-icon-link_newwindow,
+	#ups-footer_connectLinks > li:nth-child(n) > a > span.icon.ups-icon-link_newwindow,
 	#sublist-legal-0 > li:nth-child(n) > a,
 	#sublist-ups-companies-2 > li:nth-child(n) > a,
 	#sublist-ups-sites-1 > li:nth-child(n) > a,
 	#sublist-this-site-0 > li:nth-child(n) > a,
-	#sublist-connect-with-us-3
-		> li:nth-child(n)
-		> a,
+	#sublist-connect-with-us-3 > li:nth-child(n) > a,
 	#tabs_0_tab_2 > h2,
 	#tabs_0_tab_3 > h2,
-	#tabs_0_tabContent_0
-		> div
-		> div
-		> div
-		> div
-		> div.track-form-wrapper
-		> div.help-content
-		> p
-		> a,
-	#ups-footer_connectLinks > li:nth-child(n) > a {
-		color: #fff !important;
+	.help-content > p > a,
+	#ups-footer_connectLinks > li:nth-child(n) > a
+	{
+		color: var(--white) !important;
 	}
 
 	.button,
-	.btn {
+	.btn
+	{
 		border: none !important;
-		background-color: #662f10 !important;
-		color: #f8f8f2 !important;
+		background-color: var(--button-background) !important;
+		color: var(--text) !important;
 	}
 
 	.button:hover,
-	.btn:hover {
-		color: #50fa7b !important;
+	.btn:hover
+	{
+		color: var(--hover-color) !important;
 	}
 
 	.input,
-	.textarea {
-		border: 1px solid #6272a4 !important;
-		background-color: #44475a !important;
-		color: #f8f8f2 !important;
+	.textarea
+	{
+		border: 1px solid var(--border) !important;
+		background-color: var(--input-background) !important;
+		color: var(--text) !important;
 	}
 
 	.input:focus,
-	.textarea:focus {
-		border-color: #50fa7b !important;
+	.textarea:focus
+	{
+		border-color: var(--hover-color) !important;
 	}
 
 	.card,
-	.panel {
-		border: 1px solid #6272a4 !important;
-		background-color: #44475a !important;
-		color: #f8f8f2 !important;
+	.panel
+	{
+		border: 1px solid var(--border) !important;
+		background-color: var(--input-background) !important;
+		color: var(--text) !important;
 	}
 
-	.table {
-		background-color: #44475a !important;
-		color: #f8f8f2 !important;
+	.table
+	{
+		background-color: var(--input-background) !important;
+		color: var(--text) !important;
 	}
 
 	.table th,
-	.table td {
-		border: 1px solid #6272a4 !important;
+	.table td
+	{
+		border: 1px solid var(--border) !important;
 	}
 
-	.modal {
-		background-color: #282a36 !important;
-		color: #f8f8f2 !important;
+	.modal
+	{
+		background-color: var(--dark-background) !important;
+		color: var(--text) !important;
 	}
 }
