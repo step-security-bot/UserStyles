@@ -1,13 +1,29 @@
 /* ==UserStyle==
 @name           crystalmathlabs.com - Black Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.4
 @description    CrystalMathLabs Black mode theme
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color background-black "Background Black" #000000
+@var color background-dark "Background Dark" #252323
+@var color color-green "Green" #32cd32
+@var color background-banner "Banner Background" #006400
+@var color color-white "White" #ffffff
+@var color color-pink "Pink" #ff69b4
 ==/UserStyle== */
 @-moz-document domain("crystalmathlabs.com") {
+	:root {
+		--background-black: var(background-black);
+		--background-dark: var(background-dark);
+		--color-green: var(color-green);
+		--background-banner: var(background-banner);
+		--color-white: var(color-white);
+		--color-pink: var(color-pink);
+	}
+
 	/* Invert colors except images and videos */
 	html,
 	body,
@@ -15,8 +31,12 @@
 	#contentwrap,
 	.news,
 	.menubar ul li ul.dropdown {
-		background: black !important;
-		background-color: black !important;
+		background: var(
+			--background-black
+		) !important;
+		background-color: var(
+			--background-black
+		) !important;
 	}
 
 	.menubar,
@@ -24,8 +44,10 @@
 	.xp-table > div:first-child,
 	#footer {
 		border-radius: 20px;
-		background: #252323 !important;
-		background-color: #252323 !important;
+		background: var(--background-dark) !important;
+		background-color: var(
+			--background-dark
+		) !important;
 		padding-right: 10px;
 		padding-left: 10px;
 	}
@@ -37,27 +59,33 @@
 		> li:nth-child(n)
 		> a:hover {
 		border-radius: 20px;
-		background: #252323 !important;
-		background-color: #252323 !important;
+		background: var(--background-dark) !important;
+		background-color: var(
+			--background-dark
+		) !important;
 		padding-left: 20px;
-		color: limegreen;
+		color: var(--color-green);
 	}
 
 	#global-banner {
-		background: darkgreen;
-		color: white;
+		background: var(--background-banner);
+		color: var(--color-white);
 	}
 
 	#global-banner a {
-		color: hotpink;
+		color: var(--color-pink);
 	}
 
 	input:nth-child(1),
 	input:nth-child(2),
 	input[type='text' i],
 	#xp-calc-form button {
-		background: black !important;
-		background-color: black !important;
-		color: white;
+		background: var(
+			--background-black
+		) !important;
+		background-color: var(
+			--background-black
+		) !important;
+		color: var(--color-white);
 	}
 }
