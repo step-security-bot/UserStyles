@@ -1,68 +1,85 @@
 /* ==UserStyle==
-@name           wiki.teamfortress.com - Dark Mode
+@name           wiki.teamfortress.com - Dark Mode [Customizable]
 @namespace      typpi.online
-@version        1.0.1
+@version        1.1.0
 @description    Dark Theme for Team Fortress Wiki
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@updateURL      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/TeamFortressWIki-Dark.user.css
+@downloadURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/TeamFortressWIki-Dark.user.css
+
+@var color background-neutral "Neutral Background" #e9e9e9
+@var color text-color "Text Color" #000000
+@var color hover-color "Hover Color" #c25c00
+@var color link-color "Link Color" #075ce9
+@var color visited-link-color "Visited Link Color" #ff0051
 ==/UserStyle== */
 @-moz-document domain("wiki.teamfortress.com") {
-	/* Invert colors except images and videos */
-	html:not([stylus-iframe]),
-	img,
-	svg,
-	video,
-	.qua_unusual,
-	.mw-wiki-logo,
-	.quality-tag,
-	.qua_unique,
-	.btn_buynow_market,
-	iframe {
-		filter: invert(1) hue-rotate(180deg) !important;
-	}
+  /* Stylus Variables */
+  :root {
+    --background-neutral: var(background-neutral);
+    --text-color: var(text-color);
+    --hover-color: var(hover-color);
+    --link-color: var(link-color);
+    --visited-link-color: var(visited-link-color);
+  }
 
-	.tfwiki-backpack-item,
-	.att_neutral {
-		background: #e9e9e9 !important;
-		color: #000 !important;
-	}
+  /* Invert colors except images and videos */
+  html:not([stylus-iframe]),
+  img,
+  svg,
+  video,
+  .qua_unusual,
+  .mw-wiki-logo,
+  .quality-tag,
+  .qua_unique,
+  .btn_buynow_market,
+  iframe {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
 
-	div.vectorTabs ul li,
-	div.vectorTabs ul li *,
-	div.vectorTabs li.selected a,
-	div.vectorTabs li.selected a:visited {
-		color: #000 !important;
-	}
+  .tfwiki-backpack-item,
+  .att_neutral {
+    background: var(--background-neutral) !important;
+    color: var(--text-color) !important;
+  }
 
-	div.vectorTabs ul li:hover * {
-		color: #c25c00 !important;
-		text-shadow: #fff -2px -1px 1px;
-	}
+  div.vectorTabs ul li,
+  div.vectorTabs ul li *,
+  div.vectorTabs li.selected a,
+  div.vectorTabs li.selected a:visited {
+    color: var(--text-color) !important;
+  }
 
-	li#pt-userpage,
-	li#pt-anonuserpage,
-	li#pt-login,
-	#pt-login > a {
-		color: #c25c00 !important;
-	}
+  div.vectorTabs ul li:hover * {
+    color: var(--hover-color) !important;
+    text-shadow: #ffffff -2px -1px 1px;
+  }
 
-	a:link {
-		color: #075ce9 !important;
-	}
+  li#pt-userpage,
+  li#pt-anonuserpage,
+  li#pt-login,
+  #pt-login > a {
+    color: var(--hover-color) !important;
+  }
 
-	a:visited {
-		color: #ff0051 !important;
-	}
+  a:link {
+    color: var(--link-color) !important;
+  }
 
-	#right-sidebar
-		> table
-		> tbody
-		> tr:nth-child(20)
-		> td
-		> div
-		> center
-		> div {
-		background: #e9e9e9 !important;
-	}
+  a:visited {
+    color: var(--visited-link-color) !important;
+  }
+
+  #right-sidebar
+    > table
+    > tbody
+    > tr:nth-child(20)
+    > td
+    > div
+    > center
+    > div {
+    background: var(--background-neutral) !important;
+  }
 }
