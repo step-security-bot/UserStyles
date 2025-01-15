@@ -1,13 +1,28 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      2.6
+@version      2.8
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color background-invert "Background Invert" #000000
+@var color text "Text Color" #ffffff
+@var color border "Border" #5971c6f0
+@var color scroll-thumb "Scroll Thumb" #30acfd
+@var color scroll-background "Scroll Background" #ffffff
 ==/UserStyle== */
+
 @-moz-document domain("connect.garmin.com") {
+	:root {
+		--background-invert: var(background-invert);
+		--text: var(text);
+		--border: var(border);
+		--scroll-thumb: var(scroll-thumb);
+		--scroll-background: var(scroll-background);
+	}
+
 	:is(.connect-container) {
 		filter: invert(1) hue-rotate(180deg);
 	}
@@ -58,8 +73,10 @@
 	.photo-carousel-modal .icon-arrow-right,
 	.modal-body > select {
 		filter: invert(1) hue-rotate(180deg);
-		background-color: black !important;
-		color: #fff !important;
+		background-color: var(
+			--background-invert
+		) !important;
+		color: var(--text) !important;
 	}
 
 	.in.fade.modal-backdrop {
@@ -97,18 +114,18 @@
 		/*Manipulations stuff*/
 		filter: invert(1) hue-rotate(180deg);
 		/*Box model stuff*/
-		border-color: #5971c6f0;
-		background-color: #fff !important;
+		border-color: var(--border);
+		background-color: var(--text) !important;
 		/*Typography stuff*/
-		color: #000 !important;
+		color: var(--background-invert) !important;
 	}
 
 	.photo-carousel {
-		background-color: #fff !important;
+		background-color: var(--text) !important;
 	}
 
 	.photo-carousel-modal .close {
-		color: black !important;
+		color: var(--background-invert) !important;
 	}
 
 	.btn-small {
@@ -118,8 +135,8 @@
 	.react-global-modal
 		.Dialog_dialogFooter__W9xGT
 		> a {
-		background-color: #fff !important;
-		color: black;
+		background-color: var(--text) !important;
+		color: var(--background-invert);
 	}
 
 	/* For WebKit browsers (e.g., Chrome, Safari) */
@@ -128,9 +145,9 @@
 	}
 
 	::-webkit-scrollbar-thumb {
-		border: 3px solid #30acfd;
+		border: 3px solid var(--scroll-thumb);
 		border-radius: 6px;
-		background-color: #fff;
+		background-color: var(--text);
 	}
 
 	/* For Edge, IE */
@@ -141,6 +158,12 @@
 
 @-moz-document domain("forums.garmin.com"),
 regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$") {
+	:root {
+		--background-invert: var(background-invert);
+		--text: var(text);
+		--scroll-thumb: var(scroll-thumb);
+	}
+
 	:is(
 		html:not([stylus-iframe]),
 		#app,
@@ -167,22 +190,23 @@ regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$") {
 	.g__email-signup__copy__disclaimer,
 	.g__email-signup__copy__disclaimer a,
 	.app__sidebar__full {
-		background-color: black;
-		color: white;
+		background-color: var(--background-invert);
+		color: var(--text);
 	}
 
 	.app__feature__card__image {
 		filter: unset !important;
 	}
+
 	/* For WebKit browsers (e.g., Chrome, Safari) */
 	::-webkit-scrollbar {
 		width: 12px;
 	}
 
 	::-webkit-scrollbar-thumb {
-		border: 3px solid #30acfd;
+		border: 3px solid var(--scroll-thumb);
 		border-radius: 6px;
-		background-color: #fff;
+		background-color: var(--scroll-background);
 	}
 
 	/* For Edge, IE */
