@@ -1,13 +1,27 @@
 /* ==UserStyle==
 @name           p337.info TF2 View and Skins - Dark Mode
 @namespace      typpi.online
-@version        1.0.3
+@version        1.0.4
 @description    Dark mode for TF2 View on P337.info
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@updateURL      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/p337info-tf2.user.css
+@downloadURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/p337info-tf2.user.css
+
+@var color background-color "Background Color" #000000
+@var color border-color "Border Color" #5d08a3
+@var color link-background-color "Link Background Color" #5d08a312
+@var color hover-background-color "Hover Background Color" #a308841f
 ==/UserStyle== */
 @-moz-document domain("p337.info") {
+	:root {
+			--background-color: var(background-color);
+			--border-color: var(border-color);
+			--link-background-color: var(link-background-color);
+			--hover-background-color: var(hover-background-color);
+	}
+
 	/* Invert colors except images and videos */
 	html,
 	img,
@@ -16,29 +30,29 @@
 	iframe,
 	body,
 	*:not(.rarity, .c_dot) {
-		background: black !important;
+			background: var(--background-color) !important;
 	}
 
 	.warpaint_prev,
 	.warpaint {
-		border: 1px ridge #5d08a3;
+			border: 1px ridge var(--border-color);
 	}
 
 	.link,
 	#primary_nav_wrap ul ul a {
-		border: 1px dashed #5d08a3;
-		background: #5d08a312 !important;
-		padding: 12px;
+			border: 1px dashed var(--border-color);
+			background: var(--link-background-color) !important;
+			padding: 12px;
 	}
 
 	.link:hover,
 	#primary_nav_wrap ul ul a:hover {
-		border: 1px dashed #5d08a3;
-		background: #a308841f !important;
-		padding: 12px;
+			border: 1px dashed var(--border-color);
+			background: var(--hover-background-color) !important;
+			padding: 12px;
 	}
 
 	.tf2_image {
-		background: unset !important;
+			background: unset !important;
 	}
 }
