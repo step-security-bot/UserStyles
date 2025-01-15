@@ -1,14 +1,46 @@
 /* ==UserStyle==
 @name         Walmart.com - Dark Mode
-@version      20241114.16.22
+@version      20241114.16.30
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  Dark mode for Walmart.com
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color base-border "Base Border" #333333
+@var color base-background "Base Background" #111111
+@var color base-text "Base Text" #dddddd
+@var color link-color "Link Color" #1e90ff
+@var color button-border "Button Border" #444444
+@var color button-background "Button Background" #222222
+@var color button-hover-border "Button Hover Border" #555555
+@var color button-hover-background "Button Hover Background" #333333
+@var color price-color "Price Color" #ffcc00
+@var color notification-background "Notification Background" #444444
+@var color notification-text "Notification Text" #ffcc00
 ==/UserStyle== */
 
 @-moz-document domain("walmart.com") {
+	:root {
+		--base-border: var(base-border);
+		--base-background: var(base-background);
+		--base-text: var(base-text);
+		--link-color: var(link-color);
+		--button-border: var(button-border);
+		--button-background: var(button-background);
+		--button-hover-border: var(
+			button-hover-border
+		);
+		--button-hover-background: var(
+			button-hover-background
+		);
+		--price-color: var(price-color);
+		--notification-background: var(
+			notification-background
+		);
+		--notification-text: var(notification-text);
+	}
+
 	/* Base styles */
 	*:not(
 			img,
@@ -20,13 +52,15 @@
 			span.mh2,
 			p
 		) {
-		border-color: #333 !important;
-		background-color: #111 !important;
-		color: #ddd !important;
+		border-color: var(--base-border) !important;
+		background-color: var(
+			--base-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	a {
-		color: #1e90ff !important;
+		color: var(--link-color) !important;
 	}
 
 	/* Media elements */
@@ -41,17 +75,23 @@
 	select,
 	textarea,
 	div > div.z-2.relative.mt2.w-60 > div > a {
-		border-color: #444 !important;
-		background-color: #222 !important;
-		color: #ddd !important;
+		border-color: var(--button-border) !important;
+		background-color: var(
+			--button-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	button:hover,
 	input:focus,
 	select:focus,
 	textarea:focus {
-		border-color: #555 !important;
-		background-color: #333 !important;
+		border-color: var(
+			--button-hover-border
+		) !important;
+		background-color: var(
+			--button-hover-background
+		) !important;
 	}
 
 	/* Header, Navbar, and Footer */
@@ -60,8 +100,10 @@
 	.footer,
 	nav,
 	.navbar {
-		background-color: #111 !important;
-		color: #ddd !important;
+		background-color: var(
+			--base-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	header a,
@@ -69,36 +111,40 @@
 	.footer a,
 	nav a,
 	.navbar a {
-		color: #1e90ff !important;
+		color: var(--link-color) !important;
 	}
 
 	/* Product Listings */
 	.product,
 	.product-card,
 	.product-list-item {
-		border-color: #333 !important;
-		background-color: #222 !important;
-		color: #ddd !important;
+		border-color: var(--base-border) !important;
+		background-color: var(
+			--button-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	.product-card .price,
 	.product-list-item .price {
-		color: #ffcc00 !important;
+		color: var(--price-color) !important;
 	}
 
 	/* Category and Sidebar Menus */
 	.sidebar,
 	.category-menu,
 	.filter-menu {
-		border-color: #333 !important;
-		background-color: #111 !important;
-		color: #ddd !important;
+		border-color: var(--base-border) !important;
+		background-color: var(
+			--base-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	.sidebar a,
 	.category-menu a,
 	.filter-menu a {
-		color: #1e90ff !important;
+		color: var(--link-color) !important;
 	}
 
 	/* Shopping Cart and Checkout */
@@ -106,59 +152,73 @@
 	.checkout,
 	.order-summary,
 	.cart-item {
-		border-color: #333 !important;
-		background-color: #222 !important;
-		color: #ddd !important;
+		border-color: var(--base-border) !important;
+		background-color: var(
+			--button-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	.cart .price,
 	.checkout .price,
 	.order-summary .price {
-		color: #ffcc00 !important;
+		color: var(--price-color) !important;
 	}
 
 	/* Forms and Popups */
 	.modal,
 	.popup,
 	.form-container {
-		border-color: #333 !important;
-		background-color: #111 !important;
-		color: #ddd !important;
+		border-color: var(--base-border) !important;
+		background-color: var(
+			--base-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	.modal button,
 	.popup button,
 	.form-container button {
-		background-color: #222 !important;
-		color: #ddd !important;
+		background-color: var(
+			--button-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	/* Specific UI Adjustments */
 	.breadcrumb,
 	.pagination,
 	.page-navigation {
-		border-color: #333 !important;
-		background-color: #222 !important;
-		color: #ddd !important;
+		border-color: var(--base-border) !important;
+		background-color: var(
+			--button-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 
 	.breadcrumb a,
 	.pagination a,
 	.page-navigation a {
-		color: #1e90ff !important;
+		color: var(--link-color) !important;
 	}
 
 	.notification,
 	.alert,
 	.badge {
-		background-color: #444 !important;
-		color: #ffcc00 !important;
+		background-color: var(
+			--notification-background
+		) !important;
+		color: var(--notification-text) !important;
 	}
 
 	/* Tooltip */
 	.tooltip {
-		border-color: #555 !important;
-		background-color: #333 !important;
-		color: #ddd !important;
+		border-color: var(
+			--button-hover-border
+		) !important;
+		background-color: var(
+			--button-hover-background
+		) !important;
+		color: var(--base-text) !important;
 	}
 }
