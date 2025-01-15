@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         17track.net - Dark Mode
-@version      20241115.05.13
+@version      20241115.05.14
 @namespace    https://userstyles.world/user/Nick2bad4u
 @description  17track.net - Dark Mode!
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
@@ -12,7 +12,7 @@
 	/* Base dark mode filter */
 	html {
 		filter: invert(1) hue-rotate(180deg) !important;
-		background: white;
+		background: #ffffff;
 	}
 
 	img,
