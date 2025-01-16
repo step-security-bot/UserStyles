@@ -2,12 +2,22 @@
 @name           ZwiftPower.com - Dark Mode
 @namespace      https://github.com/Nick2bad4u/UserStyles
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
-@version        1.3.0
+@version        1.4.0
 @description    ZwiftPower Dark Mode
 @author         Nick2bad4u
 @license        UnLicense
+@var color darkColor "Dark Color" #000000
+@var color lightColor "Light Color" #ffffff
+@var color blueColor "Blue Color" #337ab7
 ==/UserStyle== */
 @-moz-document domain("zwiftpower.com") {
+	/* Use the variables for colors */
+	:root {
+		--darkColor: var(darkColor);
+		--lightColor: var(lightColor);
+		--blueColor: var(blueColor);
+	}
+
 	html,
 	svg,
 	iframe,
@@ -43,36 +53,36 @@
 	}
 
 	button:nth-child(n) {
-		color: #000 !important;
+		color: var(--darkColor) !important;
 	}
 
 	#zp_submenu > ul,
 	#zp_submenu > ul > li:nth-child(n) > a {
-		background: white;
-		color: #000 !important;
-		text-shadow: 1px 1px 1px white !important;
+		background: var(--lightColor);
+		color: var(--darkColor) !important;
+		text-shadow: 1px 1px 1px var(--lightColor) !important;
 	}
 
 	#highcharts-ptc6m8e-28 > div > span {
-		border-color: black;
-		background: #fff;
+		border-color: var(--darkColor);
+		background: var(--lightColor);
 	}
 
 	#page-footer {
 		border-radius: 50px;
-		background-color: #fff;
+		background-color: var(--lightColor);
 	}
 
 	button:nth-child(n):hover,
 	.grey_bg {
-		background-color: #337ab7 !important;
+		background-color: var(--blueColor) !important;
 	}
 
 	.panel.panel-grey > div.panel-heading {
 		filter: invert(1) hue-rotate(180deg);
-		border-bottom: 1px solid #337ab7;
-		background-color: #337ab7;
-		color: black;
+		border-bottom: 1px solid var(--blueColor);
+		background-color: var(--blueColor);
+		color: var(--darkColor);
 		font-weight: 500;
 		font-size: 20px;
 	}
@@ -86,7 +96,7 @@
 		> tr
 		> th:nth-child(n)::after {
 		opacity: 30%;
-		color: #000 !important;
+		color: var(--darkColor) !important;
 	}
 
 	#rdetails_body
