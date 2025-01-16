@@ -1,42 +1,57 @@
 /* ==UserStyle==
 @name           bicycling.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.1.0
 @description    Description
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color backgroundColor "Background Color" #000000
+@var color textColor "Text Color" #ffffff
+@var color color1 "Color 1" #ffa500
+@var color color2 "Color 2" #9370d8
+@var color color3 "Color 3" #a94b17c9
 ==/UserStyle== */
 @-moz-document domain("bicycling.com") {
+	/* Use the variables for colors */
+	:root {
+			--backgroundColor: var(--backgroundColor);
+			--textColor: var(textColor);
+			--color1: var(color1);
+			--color2: var(color2);
+			--color3: var(color3);
+	}
+
 	/* Invert colors except images and videos */
 	html,
 	img,
 	svg,
 	video,
 	iframe {
-		background: black;
-		color: white;
+			background: var(--backgroundColor);
+			color: var(--textColor);
 	}
 
 	.css-1ew0k1 {
-		color: orange;
+			color: var(--color1);
 	}
 
 	.css-1evjo6m {
-		color: mediumpurple;
+			color: var(--color2);
 	}
 
 	.__resp-container .video-player,
 	[data-embed]:defined {
-		display: none;
+			display: none;
 	}
 
 	.css-93j5lg {
-		color: #a94b17c9;
+			color: var(--color3);
 	}
 
 	.css-79elbk,
 	:host {
-		background: #565656 !important;
+			background: #565656 !important;
 	}
 }

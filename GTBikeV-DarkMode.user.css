@@ -1,29 +1,35 @@
 /* ==UserStyle==
 @name           gtbikev.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.0
+@version        1.1.0
 @description    Dark mode theme for GTBikeV.com
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@var color darkColor "Dark Color" #000000
 ==/UserStyle== */
 @-moz-document domain("gtbikev.com") {
+	/* Use the variables for colors */
+	:root {
+			--darkColor: var(darkColor);
+	}
+
 	/* Invert colors except images and videos */
 	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video,
-		#footer,
-		#socket,
-		.av-masonry-image-container
+			html:not([stylus-iframe]),
+			img,
+			svg,
+			video,
+			#footer,
+			#socket,
+			.av-masonry-image-container
 	),
 	iframe,
 	#header_main > div > div > span > a {
-		filter: invert(1) hue-rotate(180deg) !important;
+			filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.header_color span {
-		color: #000;
+			color: var(--darkColor);
 	}
 }

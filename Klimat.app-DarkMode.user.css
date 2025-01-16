@@ -1,84 +1,102 @@
 /* ==UserStyle==
 @name         klimat.app - Dark Mode
-@version      2.1
+@version      2.2
 @namespace    klimat.app
 @description  Klimat.app Dark Mode
 @author       Nick2bad4u@hotmail.com
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @license      UnLicense
+
+@var color backgroundColor "Background Color" #121212
+@var color textColor "Text Color" #e0e0e0
+@var color headerFooterColor "Header/Footer Color" #1e1e1e
+@var color linkColor "Link Color" #bb86fc
+@var color linkHoverColor "Link Hover Color" #3700b3
+@var color buttonColor "Button Color" #333333
+@var color buttonHoverColor "Button Hover Color" #bb86fc
 ==/UserStyle== */
 @-moz-document domain("klimat.app") {
-	/* Dark Mode Theme for Klimat Weather Page */
+	/* Use the variables for colors */
+	:root {
+			--backgroundColor: var(backgroundColor);
+			--textColor: var(textColor);
+			--headerFooterColor: var(headerFooterColor);
+			--linkColor: var(linkColor);
+			--linkHoverColor: var(linkHoverColor);
+			--buttonColor: var(buttonColor);
+			--buttonHoverColor: var(buttonHoverColor);
+	}
+
 	body {
-		background-color: #121212;
-		color: #e0e0e0;
+			background-color: var(--backgroundColor);
+			color: var(--textColor);
 	}
 
 	header,
 	footer,
 	.sidebar,
 	.content {
-		background-color: #1e1e1e;
-		color: #e0e0e0;
+			background-color: var(--headerFooterColor);
+			color: var(--textColor);
 	}
 
 	a,
 	.mbn {
-		color: #bb86fc;
+			color: var(--linkColor);
 	}
 
 	a:hover {
-		color: #3700b3;
+			color: var(--linkHoverColor);
 	}
 
 	table {
-		background-color: #1e1e1e;
-		color: #e0e0e0;
+			background-color: var(--headerFooterColor);
+			color: var(--textColor);
 	}
 
 	table th,
 	table td {
-		border: 1px solid #333;
+			border: 1px solid #333;
 	}
 
 	button,
 	input,
 	select,
 	textarea {
-		border: 1px solid #444;
-		background-color: #333;
-		color: #e0e0e0;
+			border: 1px solid #444;
+			background-color: var(--buttonColor);
+			color: var(--textColor);
 	}
 
 	button:hover,
 	input:hover,
 	select:hover,
 	textarea:hover {
-		border-radius: 5px;
-		background-color: #bb86fc;
+			border-radius: 5px;
+			background-color: var(--buttonHoverColor);
 	}
 
 	::selection {
-		background-color: #bb86fc;
-		color: #121212;
+			background-color: var(--buttonHoverColor);
+			color: var(--backgroundColor);
 	}
 
 	span {
-		color: #bb86fc;
+			color: var(--linkColor);
 	}
 
 	.information__left__blk {
-		border-color: #bb86fc;
+			border-color: var(--linkColor);
 	}
 
 	#content_wrapper,
 	.form-actions,
 	#fieldDetails > tbody {
-		filter: invert(1) hue-rotate(180deg);
+			filter: invert(1) hue-rotate(180deg);
 	}
 
 	.modal-backdrop.fade {
-		display: none;
-		opacity: 0%;
+			display: none;
+			opacity: 0%;
 	}
 }
