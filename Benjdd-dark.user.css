@@ -1,0 +1,72 @@
+/* ==UserStyle==
+@name           benjdd.com - Dark Mode [Customizable]
+@namespace      typpi.online
+@version        1.0.2
+@description    Description
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color primary-color "Primary Color" #A52FDEB5
+@var color background-color "Background Color" #000000
+@var color benchmark-background "Benchmark Background" #000000
+@var color header-color "Header Color" #bf1199cc
+@var color list-color "List Color" #bd7a4d
+@var color code-color "Code Color" #eaff00
+@var color link-color "Link Color" #0062ff
+==/UserStyle== */
+@-moz-document domain("benjdd.com")
+{
+	:root
+	{
+		--primary-color: var(primary-color);
+		--background-color: var(background-color);
+		--benchmark-background: var(benchmark-background)
+		--header-color: var(header-color);
+		--list-color: var(list-color);
+		--code-color: var(code-color);
+		--link-color: var(link-color);
+	}
+
+	html,
+	#main-content,
+	body > header
+	{
+		background: var(--background-color);
+		color: var(--primary-color);
+	}
+
+	#loops
+	{
+		border: 1px dashed var(--primary-color);
+	}
+#background-1,
+	#latencySVGID > g > g > rect.background
+	{
+		fill: var(--benchmark-background) !important;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6
+	{
+		color: var(--header-color);
+	}
+
+	li
+	{
+		color: var(--list-color);
+	}
+
+	pre
+	{
+		color: var(--code-color);
+	}
+
+	a:-webkit-any-link
+	{
+		color: var(--link-color);
+	}
+}
