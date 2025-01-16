@@ -1,9 +1,9 @@
 /* ==UserStyle==
-@name         Style Editor [Chrome] - Dark Theme [Updated]
-@namespace    USO Archive
+@name         Style Editor [Chrome] - Dark Theme [Updated][Customizable]
+@namespace    typpi.online
 @author       Paul Stevenson - [Updated by Nick2bad4u]
 @description  A dark theme for the Stylish style editor chrome extension. It also includes a code section for recoloring the default syntax highlighting theme.
-@version      1.0.4
+@version      1.1.0
 @license      CC-BY-SA-4.0
 
 @var color bg-dark "Background Dark" #111111
@@ -14,6 +14,7 @@
 @var color text-secondary "Text Secondary" #9999ff
 @var color text-highlight "Text Highlight" #00ccff
 @var color text-hover "Text Hover" #99ffff
+@var color selected "Selected Text" #000000
 @var color input-border "Input Border" #0099ff
 @var color input-bg "Input Background" #000000
 @var color input-text "Input Text" #00ffff
@@ -53,132 +54,141 @@
 @var color green1 "Green 1" #00ff00
 @var color green2 "Green 2" #00ff0080
 ==/UserStyle== */
-
-:root {
-	/* Background Colors */
-	--bg-dark: var(bg-dark);
-	--bg-light: var(bg-light);
-	--bg-accent: var(bg-accent);
-	--bg-popup: var(bg-popup);
-
-	/* Text Colors */
-	--text-primary: var(text-primary);
-	--text-secondary: var(text-secondary);
-	--text-highlight: var(text-highlight);
-	--text-hover: var(text-hover);
-
-	/* Input Colors */
-	--input-border: var(input-border);
-	--input-bg: var(input-bg);
-	--input-text: var(input-text);
-
-	/* Button Colors */
-	--button-border: var(button-border);
-	--button-bg: var(button-bg);
-	--button-text: var(button-text);
-	--button-hover-bg: var(button-hover-bg);
-	--button-hover-text: var(button-hover-text);
-
-	/* Scrollbar Colors */
-	--scrollbar-thumb: var(scrollbar-thumb);
-	--scrollbar-thumb-inactive: var(
-		scrollbar-thumb-inactive
-	);
-	--scrollbar-track: var(scrollbar-track);
-
-	/* Gutter Colors */
-	--gutter-border: var(gutter-border);
-	--gutter-bg: var(gutter-bg);
-	--line-number: var(line-number);
-
-	/* Cursor and Bracket Colors */
-	--cursor: var(cursor);
-	--secondary-cursor: var(secondary-cursor);
-	--matching-bracket: var(matching-bracket);
-	--nonmatching-bracket: var(nonmatching-bracket);
-	--activeline-bg: var(activeline-bg);
-
-	/* Syntax Highlighting */
-	--keyword: var(keyword);
-	--atom: var(atom);
-	--number: var(number);
-	--definition: var(definition);
-	--variable: var(variable);
-	--variable-2: var(variable-2);
-	--variable-3: var(variable-3);
-	--comment: var(comment);
-	--string: var(string);
-	--string-2: var(string-2);
-	--meta: var(meta);
-	--builtin: var(builtin);
-	--tag: var(tag);
-	--attribute: var(attribute);
-	--error: var(error);
-	--highlight-match: var(highlight-match);
-	--bottom-border: var(bottom-border);
-	--green1: var(green1);
-	--green2: var(green2);
-}
-
-@-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*"), regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
+@-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*"),
+regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
 {
-	body {
+	:root
+	{
+		/* Background Colors */
+		--bg-dark: var(bg-dark);
+		--bg-light: var(bg-light);
+		--bg-accent: var(bg-accent);
+		--bg-popup: var(bg-popup);
+
+		/* Text Colors */
+		--text-primary: var(text-primary);
+		--text-secondary: var(text-secondary);
+		--text-highlight: var(text-highlight);
+		--text-hover: var(text-hover);
+		--text-selected: var(--text-selected);
+
+		/* Input Colors */
+		--input-border: var(input-border);
+		--input-bg: var(input-bg);
+		--input-text: var(input-text);
+
+		/* Button Colors */
+		--button-border: var(button-border);
+		--button-bg: var(button-bg);
+		--button-text: var(button-text);
+		--button-hover-bg: var(button-hover-bg);
+		--button-hover-text: var(button-hover-text);
+
+		/* Scrollbar Colors */
+		--scrollbar-thumb: var(scrollbar-thumb);
+		--scrollbar-thumb-inactive: var( scrollbar-thumb-inactive);
+		--scrollbar-track: var(scrollbar-track);
+
+		/* Gutter Colors */
+		--gutter-border: var(gutter-border);
+		--gutter-bg: var(gutter-bg);
+		--line-number: var(line-number);
+
+		/* Cursor and Bracket Colors */
+		--cursor: var(cursor);
+		--secondary-cursor: var(secondary-cursor);
+		--matching-bracket: var(matching-bracket);
+		--nonmatching-bracket: var(nonmatching-bracket);
+		--activeline-bg: var(activeline-bg);
+
+		/* Syntax Highlighting */
+		--keyword: var(keyword);
+		--atom: var(atom);
+		--number: var(number);
+		--definition: var(definition);
+		--variable: var(variable);
+		--variable-2: var(variable-2);
+		--variable-3: var(variable-3);
+		--comment: var(comment);
+		--string: var(string);
+		--string-2: var(string-2);
+		--meta: var(meta);
+		--builtin: var(builtin);
+		--tag: var(tag);
+		--attribute: var(attribute);
+		--error: var(error);
+		--highlight-match: var(highlight-match);
+		--bottom-border: var(bottom-border);
+		--green1: var(green1);
+		--green2: var(green2);
+	}
+
+	body
+	{
 		background: var(--bg-dark);
 		color: var(--text-primary);
 	}
 
-	#stylish-popup {
+	#stylish-popup
+	{
 		background: var(--bg-light);
 		color: var(--input-bg);
 	}
 
 	a,
 	a:visited,
-	a:active {
+	a:active
+	{
 		color: var(--text-highlight);
 	}
 
-	a:hover {
+	a:hover
+	{
 		color: var(--text-hover);
 	}
 
 	input,
 	#name,
 	.applies-value,
-	select {
+	select
+	{
 		border-color: var(--input-border);
 		background: var(--input-bg);
 		color: var(--input-text);
 	}
 
-	button {
+	button
+	{
 		border-color: var(--button-border);
 		background: var(--button-bg);
 		color: var(--button-text);
 	}
 
-	button:hover {
+	button:hover
+	{
 		background: var(--button-hover-bg);
 		color: var(--button-hover-text);
 	}
 
-	::-webkit-scrollbar {
+	::-webkit-scrollbar
+	{
 		width: 10px;
 	}
 
-	::-webkit-scrollbar-track {
-		-webkit-box-shadow: inset 0 0 6px
-			var(--scrollbar-track);
+	::-webkit-scrollbar-track
+	{
+		-webkit-box-shadow: inset 0 0 6px var(--scrollbar-track);
 		background: var(--scrollbar-track);
 	}
 
-	::-webkit-scrollbar-thumb {
-		-webkit-box-shadow: inset 0 0 6px
-			var(--scrollbar-thumb);
+	::-webkit-scrollbar-thumb
+	{
+		-webkit-box-shadow: inset 0 0 6px var(--scrollbar-thumb);
 		background: var(--scrollbar-thumb);
 	}
 
-	::-webkit-scrollbar-thumb:window-inactive {
+	::-webkit-scrollbar-thumb:window-inactive
+	{
 		background: var(--scrollbar-thumb-inactive);
 	}
 }
@@ -186,82 +196,127 @@
 /* Syntax highlighting with variables */
 @-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*")
 {
-	.cm-s-default .cm-keyword {
+	.cm-s-default .cm-keyword
+	{
 		color: var(--keyword);
 	}
-	.cm-s-default .cm-atom {
+
+	.cm-s-default .cm-atom
+	{
 		color: var(--atom);
 	}
-	.cm-s-default .cm-number {
+
+	.cm-s-default .cm-number
+	{
 		color: var(--number);
 	}
-	.cm-s-default .cm-def {
+
+	.cm-s-default .cm-def
+	{
 		color: var(--definition);
 	}
-	.cm-s-default .cm-variable {
+
+	.cm-s-default .cm-variable
+	{
 		color: var(--variable);
 	}
-	.cm-s-default .cm-variable-2 {
+
+	.cm-s-default .cm-variable-2
+	{
 		color: var(--variable-2);
 	}
-	.cm-s-default .cm-variable-3 {
+
+	.cm-s-default .cm-variable-3
+	{
 		color: var(--variable-3);
 	}
-	.cm-s-default .cm-comment {
+
+	.cm-s-default .cm-comment
+	{
 		color: var(--comment);
 	}
-	.cm-s-default .cm-string {
+
+	.cm-s-default .cm-string
+	{
 		color: var(--string);
 	}
-	.cm-s-default .cm-string-2 {
+
+	.cm-s-default .cm-string-2
+	{
 		color: var(--string-2);
 	}
-	.cm-s-default .cm-meta {
+
+	.cm-s-default .cm-meta
+	{
 		color: var(--meta);
 	}
-	.cm-s-default .cm-builtin {
+
+	.cm-s-default .cm-builtin
+	{
 		color: var(--builtin);
 	}
-	.cm-s-default .cm-tag {
+
+	.cm-s-default .cm-tag
+	{
 		color: var(--tag);
 	}
-	.cm-s-default .cm-attribute {
+
+	.cm-s-default .cm-attribute
+	{
 		color: var(--attribute);
 	}
-	.cm-s-default .cm-error {
+
+	.cm-s-default .cm-error
+	{
 		color: var(--error);
 	}
-	.CodeMirror-matchingbracket {
+
+	.CodeMirror-matchingbracket
+	{
 		color: var(--matching-bracket);
 	}
-	.CodeMirror-activeline-background {
+
+	.CodeMirror-activeline-background
+	{
 		background: var(--activeline-bg);
 	}
-	.CodeMirror {
-		background: #0c0c0c;
+
+	.CodeMirror
+	{
+		background: var(--activeline-bg);
 	}
 
-	.CodeMirror-selected {
-		background: #000000;
+	.CodeMirror-selected
+	{
+		background: var(--text-selected);
 	}
-	.CodeMirror-focused .CodeMirror-selected {
-		background: #000000;
+
+	.CodeMirror-focused .CodeMirror-selected
+	{
+		background: var(--text-selected);
 	}
-	.CodeMirror-crosshair {
+
+	.CodeMirror-crosshair
+	{
 		cursor: crosshair;
 	}
+
 	.CodeMirror-line::selection,
 	.CodeMirror-line > span::selection,
-	.CodeMirror-line > span > span::selection {
-		background: var(--input-bg);
-	}
-	.CodeMirror-line::selection,
-	.CodeMirror-line > span::selection,
-	.CodeMirror-line > span > span::selection {
+	.CodeMirror-line > span > span::selection
+	{
 		background: var(--input-bg);
 	}
 
-	.cm-searching {
+	.CodeMirror-line::selection,
+	.CodeMirror-line > span::selection,
+	.CodeMirror-line > span > span::selection
+	{
+		background: var(--input-bg);
+	}
+
+	.cm-searching
+	{
 		border-bottom: 1px solid var(--bottom-border);
 		background: var(--green1);
 		background: var(--green2);
