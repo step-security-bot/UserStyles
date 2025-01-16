@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           benjdd.com - Dark Mode [Customizable]
 @namespace      typpi.online
-@version        1.0.2
-@description    Description
+@version        1.1.0
+@description    Customizable Dark Mode for Benjdd.com
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@updateURL      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/Benjdd-dark.user.css
 
 @var color primary-color "Primary Color" #A52FDEB5
 @var color background-color "Background Color" #000000
@@ -15,13 +16,11 @@
 @var color code-color "Code Color" #eaff00
 @var color link-color "Link Color" #0062ff
 ==/UserStyle== */
-@-moz-document domain("benjdd.com")
-{
-	:root
-	{
+@-moz-document domain("benjdd.com") {
+	:root {
 		--primary-color: var(primary-color);
 		--background-color: var(background-color);
-		--benchmark-background: var(benchmark-background)
+		--benchmark-background: var(benchmark-background);
 		--header-color: var(header-color);
 		--list-color: var(list-color);
 		--code-color: var(code-color);
@@ -30,43 +29,39 @@
 
 	html,
 	#main-content,
-	body > header
-	{
+	body > header {
 		background: var(--background-color);
 		color: var(--primary-color);
 	}
 
-	#loops
-	{
+	#loops {
 		border: 1px dashed var(--primary-color);
 	}
-#background-1,
-	#latencySVGID > g > g > rect.background
-	{
+
+	#background-1,
+	#latencySVGID > g > g > rect.background {
 		fill: var(--benchmark-background) !important;
 	}
+
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
-	h6
-	{
+	h6 {
 		color: var(--header-color);
 	}
 
-	li
-	{
+	li {
 		color: var(--list-color);
 	}
 
-	pre
-	{
+	pre {
 		color: var(--code-color);
 	}
 
-	a:-webkit-any-link
-	{
+	/* stylelint-disable-next-line selector-no-vendor-prefix */
+	a:-webkit-any-link {
 		color: var(--link-color);
 	}
 }
