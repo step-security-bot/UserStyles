@@ -1,13 +1,36 @@
 /* ==UserStyle==
-@name           zwiftalizer.com - Darker Mode
+@name           zwiftalizer.com - Darker Mode [Customizable]
 @namespace      typpi.online
-@version        1.0.4
+@version        1.0.5
 @description    Darker mode for Zwiftalizer - Set theme on site to dark
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+
+@var color darker "Darker Color" #000000
+@var color green "Green Color" #2dce89
+@var color purple "Purple Color" #8965e0
+@var color dark "Dark Color" #212529
+@var color blue "Blue Color" #08354f
+@var color lighter "Lighter Color" #e9ecef
+@var color gray "Gray Color" #6c757d
+@var color white "White Color" #ffffff
+@var color pink "Pink Color" #f3a4b5
 ==/UserStyle== */
 @-moz-document domain("zwiftalizer.com") {
+	/* Use the variables for colors */
+	:root {
+		--darker: var(darker) !important;
+		--green: var(green) !important;
+		--purple: var(purple) !important;
+		--dark: var(dark) !important;
+		--blue: var(blue) !important;
+		--lighter: var(lighter) !important;
+		--gray: var(gray) !important;
+		--white: var(white) !important;
+		--pink: var(pink) !important;
+	}
+
 	/* Invert colors except images and videos */
 	html,
 	.content,
@@ -68,7 +91,7 @@
 		border: 1px solid var(--dark);
 		background: var(--darker) !important;
 		/*Typography stuff*/
-		color: #fff;
+		color: var(--white);
 	}
 
 	.tooltip.show {
@@ -151,6 +174,7 @@
 	}
 
 	/* Responsive Design */
+	/* stylelint-disable-next-line media-query-no-invalid */
 	@media (max-width: var(--breakpoint-sm)) {
 		table {
 			display: block;
@@ -191,21 +215,16 @@
 		display: none;
 	}
 
+	/* stylelint-disable-next-line no-duplicate-selectors */
 	:root {
-		--blue: #08354f;
 		--indigo: #5603ad;
-		--purple: #8965e0;
-		--pink: #f3a4b5;
 		--red: #f5365c;
 		--orange: #fc6719;
 		--yellow: #ffd12c;
-		--green: #2dce89;
 		--teal: #11cdef;
 		--cyan: #2bffc6;
-		--gray: #6c757d;
 		--gray-dark: #4a4a63;
 		--light: #ced4da;
-		--lighter: #e9ecef;
 		--primary: #f96332;
 		--secondary: #f4f5f7;
 		--success: #5cb85c;
@@ -213,12 +232,9 @@
 		--warning: #f0ad4e;
 		--danger: #fd5d93;
 		--light2: #adb5bd;
-		--dark: #212529;
 		--dark2: #0d0d0d;
 		--default: #4f4f4f;
-		--white: #fff;
 		--neutral: #fff;
-		--darker: #000;
 		--breakpoint-xs: 0;
 		--breakpoint-sm: 576px;
 		--breakpoint-md: 768px;
