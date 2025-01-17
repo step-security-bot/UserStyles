@@ -4,7 +4,7 @@
 @author       Lucifuga / Nick2bad4u
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
-@version      20240102.22.45
+@version      20240102.22.48
 @license      CC0-1.0
 
 @var color primary-color "Primary Color" #33ccff
@@ -16,15 +16,21 @@
 @var color white "White" #ffffff
 ==/UserStyle== */
 
-@-moz-document domain("kiwifarms.st") {
+@-moz-document domain("kiwifarms.st"),
+domain("kiwifarms.net"),
+url-prefix("https://kiwifarms"),
+url-prefix("http://kiwifarms")
+{
 	:root {
-			--primary-color: var(primary-color);
-			--secondary-color: var(secondary-color);
-			--background-color: var(background-color);
-			--border-color: var(border-color);
-			--border-color2: var(border-color2);
-			--hover-background-color: var(hover-background-color);
-			--white: var(white);
+		--primary-color: var(primary-color);
+		--secondary-color: var(secondary-color);
+		--background-color: var(background-color);
+		--border-color: var(border-color);
+		--border-color2: var(border-color2);
+		--hover-background-color: var(
+			hover-background-color
+		);
+		--white: var(white);
 	}
 
 	.navTabs .navTab.selected .navLink,
@@ -39,9 +45,9 @@
 	.navigationSideBar a:hover,
 	.discussionListItems .unread .title a,
 	.discussionListItems
-			.unread
-			.lastPostInfo
-			.username,
+		.unread
+		.lastPostInfo
+		.username,
 	.externalLink.ProxyLink,
 	.message .messageMeta .control:hover,
 	.redactor_toolbar li a.redactor_act,
@@ -49,8 +55,8 @@
 	.xenOverlay.memberCard .userLinks,
 	.messageContent .username.poster,
 	.messageMeta
-			.publicControls
-			.LikeLink.item.control.like,
+		.publicControls
+		.LikeLink.item.control.like,
 	a.CommentPoster.item.control.postComment,
 	ul.links a,
 	a.username.primaryText,
@@ -90,7 +96,7 @@
 	.ctaFtAuthorListItem .ctaFtAuthorSnippet a,
 	a.ctaFtReadMoreLink,
 	a.ctaFtThreadTitleLink {
-			color: var(--primary-color) !important;
+		color: var(--primary-color) !important;
 	}
 	.sidebar .avatarList .userTitle,
 	span.nodeIcon.hasGlyph,
@@ -100,9 +106,9 @@
 	.ctaFtThreadTextAvatar,
 	.sidebar .section .secondaryContent .footnote,
 	.sidebar
-			.section
-			.secondaryContent
-			.minorHeading,
+		.section
+		.secondaryContent
+		.minorHeading,
 	.sidebar .section .primaryContent h3,
 	.sidebar .section .secondaryContent h3,
 	.profilePage .mast .section.infoBlock h3,
@@ -171,7 +177,7 @@
 	.message .newIndicator,
 	#SignupButton .inner,
 	.messageUserBlock .userTitle {
-			color: var(--secondary-color) !important;
+		color: var(--secondary-color) !important;
 	}
 	#userBar .navTabs,
 	.navTabs .navTab.Popup.PopupOpen,
@@ -184,16 +190,20 @@
 	.userBanner.bannerStaff,
 	#uix_jumpToFixed,
 	.message
-			.publicControls
-			.MultiQuoteControl.active,
+		.publicControls
+		.MultiQuoteControl.active,
 	.pollBlock .buttons .button,
 	.button {
-			background-color: var(--primary-color) !important;
+		background-color: var(
+			--primary-color
+		) !important;
 	}
 	a.callToAction span,
 	.PageNav a.currentPage {
-			background-color: var(--primary-color) !important;
-			color: var(--secondary-color) !important;
+		background-color: var(
+			--primary-color
+		) !important;
+		color: var(--secondary-color) !important;
 	}
 	a:link,
 	.node .unread .nodeText .nodeTitle,
@@ -201,11 +211,13 @@
 	span.DateTime,
 	#copyrightCompliance,
 	.secondaryContent a {
-			color: var(--primary-color) !important;
+		color: var(--primary-color) !important;
 	}
 	body {
-			background-image: none !important;
-			background-color: var(--background-color) !important;
+		background-image: none !important;
+		background-color: var(
+			--background-color
+		) !important;
 	}
 	.nodeList .categoryStrip,
 	.nodeList,
@@ -221,7 +233,9 @@
 	#uix_wrapper,
 	.pageContent,
 	.navTabs .navTab.selected .tabLinks {
-			background-color: var(--background-color) !important;
+		background-color: var(
+			--background-color
+		) !important;
 	}
 	.forum_list .nodeList .nodeList,
 	.sectionMain.ctaFtContainer,
@@ -229,12 +243,14 @@
 	.footer .choosers a,
 	.messageList .message,
 	.breadcrumb {
-			border-color: var(--border-color) !important;
+		border-color: var(--border-color) !important;
 	}
 	.navTabs,
 	.navTabs .navTab.selected .navLink {
-			border-color: var(--border-color);
-			background-color: var(--background-color) !important;
+		border-color: var(--border-color);
+		background-color: var(
+			--background-color
+		) !important;
 	}
 	.PageNav a.currentPage,
 	.textCtrl:focus,
@@ -243,41 +259,45 @@
 	.xenOverlay .formOverlay .textCtrl.Focus,
 	.profilePage .mast .section.infoBlock,
 	.messageSimple {
-			border-color: var(--border-color);
+		border-color: var(--border-color);
 	}
 	.discussionList .discussionListItem.sticky {
-			border-top-color: var(--border-color);
-			border-bottom-color: var(--border-color);
+		border-top-color: var(--border-color);
+		border-bottom-color: var(--border-color);
 	}
 	.discussionListItem:nth-child(2n),
 	.discussionListItem {
-			border-bottom-color: var(--border-color);
+		border-bottom-color: var(--border-color);
 	}
 	.breadcrumb .crust .arrow span {
-			border-color: var(--border-color) var(--border-color2) var(--border-color2);
-			border-top-color: var(--border-color);
+		border-color: var(--border-color)
+			var(--border-color2) var(--border-color2);
+		border-top-color: var(--border-color);
 	}
 	.message .messageDetails {
-			border-top-color: var(--border-color);
+		border-top-color: var(--border-color);
 	}
 	.navTabs .navTab.selected .tabLinks {
-			border-color: var(--border-color);
+		border-color: var(--border-color);
 	}
 	.Menu {
-			border-color: var(--border-color) var(--border-color2) var(--border-color2);
-			border-top-color: var(--border-color);
+		border-color: var(--border-color)
+			var(--border-color2) var(--border-color2);
+		border-top-color: var(--border-color);
 	}
 	.message
-			.publicControls
-			.MultiQuoteControl.active {
-			color: var(--white) !important;
+		.publicControls
+		.MultiQuoteControl.active {
+		color: var(--white) !important;
 	}
 	.footer .choosers a:hover {
-			border-color: var(--border-color2) !important;
-			color: var(--secondary-color) !important;
+		border-color: var(--border-color2) !important;
+		color: var(--secondary-color) !important;
 	}
 	.navTabs .navTab.selected.PopupOpen .navLink {
-		background-color: var(--secondary-color) !important;
+		background-color: var(
+			--secondary-color
+		) !important;
 		color: var(--white) !important;
 	}
 	#uix_wrapper,
@@ -297,7 +317,9 @@
 	}
 	.button:hover,
 	#SignupButton:hover .inner {
-		background-color: var(--hover-background-color) !important;
+		background-color: var(
+			--hover-background-color
+		) !important;
 	}
 	.ugc a:hover,
 	.ugc a:focus {
