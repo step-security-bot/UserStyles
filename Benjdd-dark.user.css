@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           benjdd.com - Dark Mode [Customizable]
 @namespace      typpi.online
-@version        1.1.0
+@version        1.1.1
 @description    Customizable Dark Mode for Benjdd.com
 @author         Nick2bad4u
 @license        UnLicense
@@ -20,7 +20,9 @@
 	:root {
 		--primary-color: var(primary-color);
 		--background-color: var(background-color);
-		--benchmark-background: var(benchmark-background);
+		--benchmark-background: var(
+			benchmark-background
+		);
 		--header-color: var(header-color);
 		--list-color: var(list-color);
 		--code-color: var(code-color);
@@ -60,7 +62,7 @@
 		color: var(--code-color);
 	}
 
-	/* stylelint-disable-next-line selector-no-vendor-prefix */
+	/* stylelint-disable selector-no-vendor-prefix -- Unneeded */
 	a:-webkit-any-link {
 		color: var(--link-color);
 	}
