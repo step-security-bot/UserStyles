@@ -4,7 +4,7 @@
 @author       Lucifuga / Nick2bad4u
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
-@version      20240102.22.48
+@version      20240102.22.49
 @license      CC0-1.0
 
 @var color primary-color "Primary Color" #33ccff
@@ -15,7 +15,6 @@
 @var color hover-background-color "Hover Background Color" #4a4e51
 @var color white "White" #ffffff
 ==/UserStyle== */
-
 @-moz-document domain("kiwifarms.st"),
 domain("kiwifarms.net"),
 url-prefix("https://kiwifarms"),
