@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      2.8
+@version      2.9
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
@@ -13,7 +13,6 @@
 @var color scroll-thumb "Scroll Thumb" #30acfd
 @var color scroll-background "Scroll Background" #ffffff
 ==/UserStyle== */
-
 @-moz-document domain("connect.garmin.com") {
 	:root {
 		--background-invert: var(background-invert);
@@ -30,13 +29,13 @@
 	.main-nav,
 	.leaflet-zoom-animated,
 	html img,
+	#activityYouTubePlaceholder > div,
 	.modal-backdrop,
 	.modal:not(
 			.modal.fullscreen.fullscreen,
 			.modal-wide.metrics-edit-modal.in
 		),
 	.edit-carousel-content .edit-image-div,
-	iframe,
 	.Notification_notification__189UW,
 	.connect-map-view .leaflet-container {
 		-webkit-filter: invert(1) hue-rotate(180deg) !important;
@@ -69,14 +68,20 @@
 		> div
 		> button
 		> i,
-	.photo-carousel-modal .icon-arrow-left,
-	.photo-carousel-modal .icon-arrow-right,
 	.modal-body > select {
 		filter: invert(1) hue-rotate(180deg);
 		background-color: var(
 			--background-invert
 		) !important;
 		color: var(--text) !important;
+	}
+
+	.video-container {
+		opacity: 10%;
+	}
+
+	.video-container:hover {
+		opacity: 100% !important;
 	}
 
 	.in.fade.modal-backdrop {
@@ -126,6 +131,16 @@
 
 	.photo-carousel-modal .close {
 		color: var(--background-invert) !important;
+	}
+
+	.photo-carousel-modal .photo {
+		filter: unset !important;
+		cursor: initial;
+	}
+
+	.photo-carousel-modal .slides {
+		margin-bottom: 35px;
+		background: var(--background-invert);
 	}
 
 	.btn-small {
