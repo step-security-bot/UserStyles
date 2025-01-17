@@ -1,25 +1,25 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      2.9
+@version      3.0
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @description  Garmin Connect Dark Dashboard
 @author       Nick2bad4u
 @license      UnLicense
 
-@var color background-invert "Background Invert" #000000
-@var color text "Text Color" #ffffff
-@var color border "Border" #5971c6f0
-@var color scroll-thumb "Scroll Thumb" #30acfd
-@var color scroll-background "Scroll Background" #ffffff
+@var color inverted-background "Inverted Background Color" #000000
+@var color primary-text-color "Primary Text Color" #ffffff
+@var color border-color "Border Color" #5971c6f0
+@var color scrollbar-thumb-color "Scrollbar Thumb Color" #30acfd
+@var color scrollbar-background-color "Scrollbar Background Color" #ffffff
 ==/UserStyle== */
 @-moz-document domain("connect.garmin.com") {
 	:root {
-		--background-invert: var(background-invert);
-		--text: var(text);
-		--border: var(border);
-		--scroll-thumb: var(scroll-thumb);
-		--scroll-background: var(scroll-background);
+		--inverted-background: var(inverted-background);
+		--primary-text: var(primary-text-color);
+		--border: var(border-color);
+		--scrollbar-thumb: var(scrollbar-thumb-color);
+		--scrollbar-background: var(scrollbar-background-color);
 	}
 
 	:is(.connect-container) {
@@ -71,9 +71,9 @@
 	.modal-body > select {
 		filter: invert(1) hue-rotate(180deg);
 		background-color: var(
-			--background-invert
+			--inverted-background
 		) !important;
-		color: var(--text) !important;
+		color: var(--primary-text) !important;
 	}
 
 	.video-container {
@@ -120,17 +120,21 @@
 		filter: invert(1) hue-rotate(180deg);
 		/*Box model stuff*/
 		border-color: var(--border);
-		background-color: var(--text) !important;
+		background-color: var(
+			--primary-text
+		) !important;
 		/*Typography stuff*/
-		color: var(--background-invert) !important;
+		color: var(--inverted-background) !important;
 	}
 
 	.photo-carousel {
-		background-color: var(--text) !important;
+		background-color: var(
+			--primary-text
+		) !important;
 	}
 
 	.photo-carousel-modal .close {
-		color: var(--background-invert) !important;
+		color: var(--inverted-background) !important;
 	}
 
 	.photo-carousel-modal .photo {
@@ -140,7 +144,7 @@
 
 	.photo-carousel-modal .slides {
 		margin-bottom: 35px;
-		background: var(--background-invert);
+		background: var(--inverted-background);
 	}
 
 	.btn-small {
@@ -150,8 +154,10 @@
 	.react-global-modal
 		.Dialog_dialogFooter__W9xGT
 		> a {
-		background-color: var(--text) !important;
-		color: var(--background-invert);
+		background-color: var(
+			--primary-text
+		) !important;
+		color: var(--inverted-background);
 	}
 
 	/* For WebKit browsers (e.g., Chrome, Safari) */
@@ -160,9 +166,9 @@
 	}
 
 	::-webkit-scrollbar-thumb {
-		border: 3px solid var(--scroll-thumb);
+		border: 3px solid var(--scrollbar-thumb);
 		border-radius: 6px;
-		background-color: var(--text);
+		background-color: var(--primary-text);
 	}
 
 	/* For Edge, IE */
@@ -174,9 +180,11 @@
 @-moz-document domain("forums.garmin.com"),
 regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$") {
 	:root {
-		--background-invert: var(background-invert);
-		--text: var(text);
-		--scroll-thumb: var(scroll-thumb);
+		--inverted-background: var(
+			inverted-background
+		);
+		--primary-text: var(primary-text-color);
+		--scrollbar-thumb: var(scrollbar-thumb-color);
 	}
 
 	:is(
@@ -205,8 +213,8 @@ regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$") {
 	.g__email-signup__copy__disclaimer,
 	.g__email-signup__copy__disclaimer a,
 	.app__sidebar__full {
-		background-color: var(--background-invert);
-		color: var(--text);
+		background-color: var(--inverted-background);
+		color: var(--primary-text);
 	}
 
 	.app__feature__card__image {
@@ -219,9 +227,9 @@ regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$") {
 	}
 
 	::-webkit-scrollbar-thumb {
-		border: 3px solid var(--scroll-thumb);
+		border: 3px solid var(--scrollbar-thumb);
 		border-radius: 6px;
-		background-color: var(--scroll-background);
+		background-color: var(--scrollbar-background);
 	}
 
 	/* For Edge, IE */
