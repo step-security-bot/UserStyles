@@ -1,0 +1,101 @@
+/* ==UserStyle==
+@name         Reddit Colored Comments [Updated for RES Users]
+@namespace    typpi.online
+@description  Customizable Colored Comments for Reddit. [Updated for ReS Users 2025]
+@author       Nick2bad4u
+@version      1.2.3
+@license      MIT
+@preprocessor stylus
+
+@var range    lineWidth 'Line width' [2, 1, 8, 1]
+@var checkbox lineStyle 'Line color style: full or partial' 0
+@var checkbox hideLines 'Hide previous lines' 0
+
+@var range    oldLineWidth 'Old design line width' [2, 1, 8, 1]
+@var checkbox oldLineStyle 'Old design line border style: solid or dotted' 0
+
+@var color color1  'Level  1 color' #f07178
+@var color color2  'Level  2 color' #f78c6c
+@var color color3  'Level  3 color' #ffcb6b
+@var color color4  'Level  4 color' #f3ff89
+@var color color5  'Level  5 color' #c3e88d
+@var color color6  'Level  6 color' #8de89e
+@var color color7  'Level  7 color' #89ddff
+@var color color8  'Level  8 color' #82aaff
+@var color color9  'Level  9 color' #c792ea
+@var color color10 'Level 10 color' #9a91ea
+==/UserStyle== */
+@-moz-document domain('reddit.com')
+{
+	t = transparent;
+	i = !important; // Set line width for the new design
+	if lineWidth != 2
+	{
+		.threadline
+		{
+			border-right-width: s('%spx', lineWidth) i;
+		}
+	} // Set mode for line style in the new design
+	$mode = '';
+	if lineStyle
+	{
+		$mode = '> div >';
+	}
+
+	for $i in 1..10
+	{
+		div[id ^= 't'] > :first-child,
+		div[id ^= 'moreComments'] > :first-child,
+		div[id ^= 'continueThread'] > :first-child
+		{
+			$nth = s('%s', $i); // Set line colors
+			> :nth-child({$nth})
+			{
+				$mode
+			}
+
+			.threadline
+			{
+				border-right-color: color + $i i;
+			} // Hide previous lines
+			if hideLines
+			{
+				> :nth-child({$nth})
+
+				) > .threadline
+				{
+					border-right-color: t i;
+				}
+			}
+		}
+	} // Old design specific styles
+	.comment .child,
+	.comment .showreplies,
+	.res-commentBoxes.res-continuity .comment div.child
+	{
+		// Set line width
+		if oldLineWidth != 1
+		{
+			border-left-width: s('%spx', oldLineWidth) i;
+		} // Set line style
+		if oldLineStyle == 0
+		{
+			border-left-style: solid i;
+		}
+
+		else
+		{
+			border-left-style: dotted i;
+		}
+	}
+
+	$str = '.res-commentBoxes.res-continuity .comment div.child ';
+	for $i in 1..10	{
+		{ $str }
+		{
+			border-left-color: color + $i i;
+		}
+
+		$str += '> .sitetable > .comment > .child ';
+	}
+}
