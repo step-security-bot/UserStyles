@@ -1,4 +1,4 @@
-import { default as FitParser } from 'https://dmwnz.github.io/damso-analyzer/fit-parser-1.8.4/dist/fit-parser.js'
+import { default as FitParser } from 'https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/strava-balance/strava-fit-parser.js'
 
 function checkFitSanity(buffer) {
   var blob = new Uint8Array(buffer);
