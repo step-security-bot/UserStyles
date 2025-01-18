@@ -60,9 +60,7 @@
 			} // Hide previous lines
 			if hideLines
 			{
-				> :nth-child({$nth})
-
-				) > .threadline
+				> :nth-child({$nth}) > .threadline
 				{
 					border-right-color: t i;
 				}
@@ -91,8 +89,7 @@
 
 	$str = '.res-commentBoxes.res-continuity .comment div.child ';
 	for $i in 1..10	{
-		{ $str }
-		{
+		{ $str } {
 			border-left-color: color + $i i;
 		}
 
