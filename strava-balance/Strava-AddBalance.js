@@ -89,7 +89,7 @@ Strava.Charts.Activities.BasicAnalysisStacked.prototype.handleStreamsReady = asy
       this.streamTypes.push(stream);
       const formatter=LeftRightPowerBalanceFormatter;
       this.context.sportObject().streamTypes[stream] = { formatter };
-      Strava.I18n.Locales.DICTIONARY.strava.charts.activities.chart_context[stream] = 'Équilibre G/D';
+      Strava.I18n.Locales.DICTIONARY.strava.charts.activities.chart_context[stream] = 'Balance L/R';
     }
   }
   catch (error) {
