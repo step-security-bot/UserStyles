@@ -2,15 +2,15 @@
 // @name         Left-Right Balance for Strava [Updated]
 // @namespace    typpi.online
 // @description  Shows your Left/Right balance under the analysis section on Strava.
-// @version      2.0
+// @version      2.1
 // @include      https://www.strava.com/activities/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
 // @author       Nick2bad4u
 // @license      UnLicense
 // @grant        none
 // @homepageURL  https://userstyles.github.typpi.online
-// @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/strava-balance/Strava-Add-Balance-Updated.user.js
-// @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/strava-balance/Strava-Add-Balance-Updated.user.js
+// @downloadURL  https://update.greasyfork.org/scripts/524193/Left-Right%20Balance%20for%20Strava%20%5BUpdated%5D.user.js
+// @updateURL    https://update.greasyfork.org/scripts/524193/Left-Right%20Balance%20for%20Strava%20%5BUpdated%5D.meta.js
 // ==/UserScript==
 
 var q = document.createElement('script');
