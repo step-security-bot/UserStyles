@@ -7,7 +7,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
 // @author       Nick2bad4u
 // @license      UnLicense
-// @grant        none
+// @grant        https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/strava-balance/*
 // @homepageURL  https://userstyles.github.typpi.online
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/strava-balance/Strava-Add-Balance-Updated-Short.user.js
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/strava-balance/Strava-Add-Balance-Updated-Short.user.js
