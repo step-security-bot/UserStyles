@@ -2,7 +2,7 @@
 // @name         Left-Right Balance for Strava [Updated]
 // @namespace    typpi.online
 // @description  Shows your Left/Right balance under the analysis section on Strava.
-// @version      1.5
+// @version      2.0
 // @include      https://www.strava.com/activities/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=strava.com
 // @author       Nick2bad4u
