@@ -3,7 +3,7 @@
 @namespace    typpi.online
 @description  Customizable Colored Comments for Reddit. [Updated for ReS Users 2025]
 @author       Nick2bad4u
-@version      1.2.5
+@version      1.2.6
 @license      MIT
 @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/RedditColoredComments.user.css
 @preprocessor stylus
@@ -25,6 +25,17 @@
 @var color color8  'Level  8 color' #82aaff
 @var color color9  'Level  9 color' #c792ea
 @var color color10 'Level 10 color' #9a91ea
+@var color color11 'Level 11 color' #ffb6c1
+@var color color12 'Level 12 color' #ffcccb
+@var color color13 'Level 13 color' #ffe4e1
+@var color color14 'Level 14 color' #f0e68c
+@var color color15 'Level 15 color' #e0ffff
+@var color color16 'Level 16 color' #d8bfd8
+@var color color17 'Level 17 color' #e6e6fa
+@var color color18 'Level 18 color' #f5f5dc
+@var color color19 'Level 19 color' #ffffe0
+@var color color20 'Level 20 color' #f8f8ff
+
 ==/UserStyle== */
 @-moz-document domain('reddit.com')
 {
@@ -43,7 +54,7 @@
 		$mode = '> div >';
 	}
 
-	for $i in 1..10
+	for $i in 1..20
 	{
 		div[id ^= 't'] > :first-child,
 		div[id ^= 'moreComments'] > :first-child,
@@ -89,11 +100,24 @@
 	}
 
 	$str = '.res-commentBoxes.res-continuity .comment div.child ';
-	for $i in 1..10	{
+	for $i in 1..20	{
 		{ $str } {
 			border-left-color: color + $i i;
 		}
 
 		$str += '> .sitetable > .comment > .child ';
 	}
+
+	$str2 = '.res-commentBoxes.res-continuity .comment div.child  ';
+	for $i in 1..20	{
+		{ $str2 } .expand:hover {
+			background-color: color + $i i;
+		}
+
+		$str2 += '> .sitetable > .comment > .child ';
+	}
+		.commentarea .entry > .tagline > .expand
+		{
+			background-color: #00000080;
+		}
 }
