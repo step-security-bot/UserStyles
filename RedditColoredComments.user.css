@@ -2,18 +2,18 @@
 @name         Reddit Colored Comments [Updated for RES Users]
 @namespace    typpi.online
 @description  Customizable Colored Comments for Reddit. [Updated for ReS Users 2025]
-@author       Nick2bad4u
-@version      1.2.6
+@author       vednoc [Updated by Nick2bad4u]
+@version      1.3.1
 @license      MIT
 @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/RedditColoredComments.user.css
 @preprocessor stylus
 
-@var range    lineWidth 'Line width' [2, 1, 8, 1]
-@var checkbox lineStyle 'Line color style: full or partial' 0
-@var checkbox hideLines 'Hide previous lines' 0
+@var range    lineWidth 'New Design - Line Width' [2, 1, 8, 1]
+@var checkbox lineStyle 'New Design - Line Color Style: Full or Partial' 0
+@var checkbox hideLines 'New Design - Hide previous lines' 0
 
-@var range    oldLineWidth 'Old design line width' [2, 1, 8, 1]
-@var checkbox oldLineStyle 'Old design line border style: solid or dotted' 0
+@var range    oldLineWidth 'Old Design - Line Width' [2, 1, 8, 1]
+@var checkbox oldLineStyle 'Old Design - Line Style: Solid or Dotted' 0
 
 @var color color1  'Level  1 color' #f07178
 @var color color2  'Level  2 color' #f78c6c
@@ -36,6 +36,7 @@
 @var color color19 'Level 19 color' #ffffe0
 @var color color20 'Level 20 color' #f8f8ff
 
+@var text originalstyle 'Original Style' "'https://userstyles.world/style/4734/reddit-colored-comments'"
 ==/UserStyle== */
 @-moz-document domain('reddit.com')
 {
