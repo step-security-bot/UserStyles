@@ -1,9 +1,9 @@
 /* ==UserStyle==
 @name         Reddit Colored Comments [Updated for RES Users]
 @namespace    typpi.online
-@description  Customizable Colored Comments for Reddit. [Updated for ReS Users 2025]
+@description  Customizable Colored Comments for Reddit. [Updated for RES Users 2025]
 @author       vednoc [Updated by Nick2bad4u]
-@version      1.3.1
+@version      1.3.2
 @license      MIT
 @updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/RedditColoredComments.user.css
 @preprocessor stylus
@@ -40,85 +40,104 @@
 ==/UserStyle== */
 @-moz-document domain('reddit.com')
 {
-	t = transparent;
-	i = !important; // Set line width for the new design
-	if lineWidth != 2
-	{
-		.threadline
-		{
-			border-right-width: s('%spx', lineWidth) i;
-		}
-	} // Set mode for line style in the new design
-	$mode = '';
-	if lineStyle
-	{
-		$mode = '> div >';
-	}
+    // Define some convenient variables
+    t = transparent;
+    i = !important;
 
-	for $i in 1..20
-	{
-		div[id ^= 't'] > :first-child,
-		div[id ^= 'moreComments'] > :first-child,
-		div[id ^= 'continueThread'] > :first-child
-		{
-			$nth = s('%s', $i); // Set line colors
-			> :nth-child({$nth})
-			{
-				$mode
-			}
+    // Set line width for the new design
+    if lineWidth != 2
+    {
+        .threadline
+        {
+            border-right-width: s('%spx', lineWidth) i;
+        }
+    }
 
-			.threadline
-			{
-				border-right-color: color + $i i;
-			} // Hide previous lines
-			if hideLines
-			{
-				> :nth-child({$nth}) > .threadline
-				{
-					border-right-color: t i;
-				}
-			}
-		}
-	} // Old design specific styles
-	.comment .child,
-	.comment .showreplies,
-	.res-commentBoxes.res-continuity .comment div.child
-	{
-		// Set line width
-		if oldLineWidth != 1
-		{
-			border-left-width: s('%spx', oldLineWidth) i;
-		} // Set line style
-		if oldLineStyle == 0
-		{
-			border-left-style: solid i;
-		}
+    // Set mode for line style in the new design
+    $mode = '';
+    if lineStyle
+    {
+        $mode = '> div >';
+    }
 
-		else
-		{
-			border-left-style: dotted i;
-		}
-	}
+    // Apply colors and styles to each level up to 20
+    for $i in 1..20
+    {
+        div[id ^= 't'] > :first-child,
+        div[id ^= 'moreComments'] > :first-child,
+        div[id ^= 'continueThread'] > :first-child
+        {
+            $nth = s('%s', $i); // Create a string for the nth-child selector
+            > :nth-child({$nth})
+            {
+                $mode
+            }
 
-	$str = '.res-commentBoxes.res-continuity .comment div.child ';
-	for $i in 1..20	{
-		{ $str } {
-			border-left-color: color + $i i;
-		}
+            .threadline
+            {
+                border-right-color: color + $i i;
+            }
 
-		$str += '> .sitetable > .comment > .child ';
-	}
+            // Hide previous lines if the option is checked
+            if hideLines
+            {
+                > :nth-child({$nth}) > .threadline
+                {
+                    border-right-color: t i;
+                }
+            }
+        }
+    }
 
-	$str2 = '.res-commentBoxes.res-continuity .comment div.child  ';
-	for $i in 1..20	{
-		{ $str2 } .expand:hover {
-			background-color: color + $i i;
-		}
+    // Old design specific styles
+    .comment .child,
+    .comment .showreplies,
+    .res-commentBoxes.res-continuity .comment div.child
+    {
+        // Set line width for the old design
+        if oldLineWidth != 1
+        {
+            border-left-width: s('%spx', oldLineWidth) i;
+        }
 
-		$str2 += '> .sitetable > .comment > .child ';
-	}
-		.commentarea .entry > .tagline > .expand
-		{
-			background-color: #00000080;
-		}
+        // Set line style for the old design
+        if oldLineStyle == 0
+        {
+            border-left-style: solid i;
+        }
+        else
+        {
+            border-left-style: dotted i;
+        }
+    }
+
+    // Apply colors to nested child elements
+    $str = '.res-commentBoxes.res-continuity .comment div.child ';
+    for $i in 1..20
+    {
+        { $str } {
+            border-left-color: color + $i i;
+        }
+
+        // Increase the nesting level for each iteration
+        $str += '> .sitetable > .comment > .child ';
+    }
+
+    // Apply hover effect to .expand elements within nested child elements
+    $str2 = '.res-commentBoxes.res-continuity .comment div.child ';
+    for $i in 1..20
+    {
+        { $str2 } .expand:hover {
+            background-color: color + $i i;
+        }
+
+        // Increase the nesting level for each iteration
+        $str2 += '> .sitetable > .comment > .child ';
+    }
+
+    // Apply a background color to .expand elements in the tagline
+    .commentarea .entry > .tagline > .expand
+    {
+        background-color: #00000080;
+    }
 }
