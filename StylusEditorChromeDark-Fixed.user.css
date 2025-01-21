@@ -3,8 +3,10 @@
 @namespace    typpi.online
 @author       Paul Stevenson [Fixed by Nick2bad4u]
 @description  A dark theme for Stylish. It also includes a code section for recoloring the default syntax highlighting theme. [Fixed 11-24-25]
-@version      20241224.6.21
+@version      20241224.6.22
 @license      CC-BY-SA-4.0
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @preprocessor uso
 ==/UserStyle== */
 @-moz-document regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")

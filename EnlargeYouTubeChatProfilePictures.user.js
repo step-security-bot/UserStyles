@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Enlarge YouTube Chat Profile Pictures (HD Version with Caching)
-// @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      2.0
+// @namespace    typpi.online
+// @version      2.1
 // @description  Enlarges YouTube chat profile pictures on mouse over, shows HD version, Caches HD images for faster display using Tampermonkey caching.
 // @author       Nick2bad4u
 // @match        https://www.youtube.com/*

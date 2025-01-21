@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           visualstudio.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.3
+@version        1.0.4
 @description    Dark mode theme for Visual Studio
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("visualstudio.com") {
 	/* Invert colors except images and videos */

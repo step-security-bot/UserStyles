@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           Uptime Robot Status Page - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark mode for Stats.uptimerobot.com pages
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("stats.uptimerobot.com") {
 	/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */

@@ -1,15 +1,16 @@
-/* stylelint-disable declaration-property-value-no-unknown */
-/* stylelint-disable selector-pseudo-class-no-unknown */
-/* stylelint-disable selector-pseudo-element-no-unknown */
-/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable declaration-property-value-no-unknown -- Stylus Formatting */
+/* stylelint-disable selector-pseudo-class-no-unknown -- Stylus Formatting */
+/* stylelint-disable selector-pseudo-element-no-unknown -- Stylus Formatting */
+/* stylelint-disable no-duplicate-selectors -- Stylus Formatting */
 /* ==UserStyle==
 @name           wahoofitness.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark mode theme for Wahoo
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("wahoofitness.com") {
 	/* Invert colors except images and videos */

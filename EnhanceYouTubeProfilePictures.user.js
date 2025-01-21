@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Enhance YouTube Profile Pictures (HD Version with Caching)
-// @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      5.2
+// @namespace    typpi.online
+// @version      5.3
 // @description  Enlarges YouTube profile pictures on mouse over, shows HD version, Caches HD images for faster display using localStorage caching. Enlarges profile picture when a creator hearts a comment.
 // @author       Nick2bad4u
 // @match        https://www.youtube.com/*

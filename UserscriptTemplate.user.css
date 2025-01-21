@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           UserScript Template
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Description
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("") {
 	/* Invert colors except images and videos */

@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           wandrer.earth - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark Mode for Wandrer
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("wandrer.earth") {
 	/* Invert colors except images and videos */

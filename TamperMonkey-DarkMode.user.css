@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           tampermonkey.net - Dark Mode
 @namespace      typpi.online
-@version        1.0.4
+@version        1.0.5
 @description    Dark mode theme for Tampermonkey
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("tampermonkey.net") {
 	/* Invert colors except images and videos */

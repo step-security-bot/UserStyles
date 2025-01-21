@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           Strava Toolbox - Dark Mode
 @namespace      typpi.online
-@version        1.0.1
+@version        1.0.2
 @description    Dark mode for  Strava toolbox
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("marcellobrivio.com") {
 	/* Invert colors except images and videos */

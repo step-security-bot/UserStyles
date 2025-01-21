@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name         trainingpeaks.com - Dark Mode
-@version      20241107.04.55
+@version      20241107.04.56
 @namespace    typpi.online
 @description  trainingpeaks.com Dark Mode
 @author       Nick2bad4u
 @license      UnLicense
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
+@supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("trainingpeaks.com") {
 	/* Invert colors except images and videos */

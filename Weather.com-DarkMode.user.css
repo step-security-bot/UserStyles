@@ -1,11 +1,13 @@
 /* ==UserStyle==
 @name           weather.com - Dark Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark Mode for Weather.com
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
+
 @var color bgColor "Background Color" #ffd7cb
 @var color textColor "Text Color" #ffffff
 ==/UserStyle== */

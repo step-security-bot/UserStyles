@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Volume Display
-// @namespace    https://github.com/Nick2bad4u/UserStyles
-// @version      1.2
+// @namespace    typpi.online
+// @version      1.3
 // @description  Display current YouTube volume level in the UI
 // @match        *://www.youtube.com/*
 // @grant        none

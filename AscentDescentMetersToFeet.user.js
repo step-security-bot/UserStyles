@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Convert Ascent and Descent to Feet
-// @namespace   https://github.com/Nick2bad4u/UserScripts
-// @version     1.01
+// @namespace   typpi.online
+// @version     1.02
 // @description Converts ascent and descent values from meters to feet on the for Strava Sauce users.
 // @author      Nick2bad4u
 // @license     UnLicense

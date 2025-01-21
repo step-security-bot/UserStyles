@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           Medicare.Gov - Dark Mode
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Dark mode for Medicare.gov
 @author         Nick2bad4u
 @license        UnLicense
-@homepageURL  https://github.com/Nick2bad4u/UserStyles
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 ==/UserStyle== */
 @-moz-document domain("medicare.gov") {
 	/* Invert colors except images and videos */

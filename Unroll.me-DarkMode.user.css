@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name         Unroll.me Dark Mode
-@version      20241013.22.61
+@version      20241013.22.62
 @namespace    Unroll.me
 @description  Dark Mode for Unroll.me
 @author       Nick2bad4u
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
-@license      The UnLicense
+@supportURL   https://github.com/Nick2bad4u/UserStyles/issues
+@license      UnLicense
 ==/UserStyle== */
 @-moz-document domain("unroll.me") {
 	:root {

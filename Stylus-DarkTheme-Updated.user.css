@@ -3,8 +3,10 @@
 @namespace    typpi.online
 @author       Paul Stevenson - [Updated by Nick2bad4u]
 @description  A dark theme for the Stylish style editor chrome extension. It also includes a code section for recoloring the default syntax highlighting theme.
-@version      1.1.0
+@version      1.1.1
 @license      CC-BY-SA-4.0
+@supportURL   https://github.com/Nick2bad4u/UserStyles/issues
+@homepageURL  https://github.com/Nick2bad4u/UserStyles
 
 @var color bg-dark "Background Dark" #111111
 @var color bg-light "Background Light" #ffffff
