@@ -1,143 +1,156 @@
 /* ==UserStyle==
-@name         Reddit Colored Comments [Updated for RES Users]
-@namespace    typpi.online
-@description  Customizable Colored Comments for Reddit. [Updated for RES Users 2025]
-@author       vednoc [Updated by Nick2bad4u]
-@version      1.3.2
-@license      MIT
-@updateURL    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/RedditColoredComments.user.css
+@name Reddit Colored Comments [Updated for RES Users]
+@namespace typpi.online
+@description Customizable Colored Comments for Reddit. [Updated for RES Users 2025]
+@author vednoc [Updated by Nick2bad4u]
+@version 1.5.1
+@license MIT
+@updateURL https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/RedditColoredComments.user.css
 @preprocessor stylus
 
-@var range    lineWidth 'New Design - Line Width' [2, 1, 8, 1]
-@var checkbox lineStyle 'New Design - Line Color Style: Full or Partial' 0
-@var checkbox hideLines 'New Design - Hide previous lines' 0
+@var range    lineWidth           'New Design - Line Width'                        [2, 1, 8, 1]
+@var checkbox lineStyle           'New Design - Line Color Style: Full or Partial' 0
+@var checkbox hideLines           'New Design - Hide previous lines'               0
 
-@var range    oldLineWidth 'Old Design - Line Width' [2, 1, 8, 1]
-@var checkbox oldLineStyle 'Old Design - Line Style: Solid or Dotted' 0
+@var range    oldLineWidth        'Old Design - Line Width'                        [2, 1, 8, 1]
+@var checkbox oldLineStyle        'Old Design - Line Style: Solid or Dotted'       0
+@var checkbox oldExtraLineColors  'Old Design - Add Color to More Lines'           0
 
-@var color color1  'Level  1 color' #f07178
-@var color color2  'Level  2 color' #f78c6c
-@var color color3  'Level  3 color' #ffcb6b
-@var color color4  'Level  4 color' #f3ff89
-@var color color5  'Level  5 color' #c3e88d
-@var color color6  'Level  6 color' #8de89e
-@var color color7  'Level  7 color' #89ddff
-@var color color8  'Level  8 color' #82aaff
-@var color color9  'Level  9 color' #c792ea
-@var color color10 'Level 10 color' #9a91ea
-@var color color11 'Level 11 color' #ffb6c1
-@var color color12 'Level 12 color' #ffcccb
-@var color color13 'Level 13 color' #ffe4e1
-@var color color14 'Level 14 color' #f0e68c
-@var color color15 'Level 15 color' #e0ffff
-@var color color16 'Level 16 color' #d8bfd8
-@var color color17 'Level 17 color' #e6e6fa
-@var color color18 'Level 18 color' #f5f5dc
-@var color color19 'Level 19 color' #ffffe0
-@var color color20 'Level 20 color' #f8f8ff
+@var color    color1              'Comment Depth 1 Color'                          #f07178
+@var color    color2              'Comment Depth 2 Color'                          #f78c6c
+@var color    color3              'Comment Depth 3 Color'                          #ffcb6b
+@var color    color4              'Comment Depth 4 Color'                          #f3ff89
+@var color    color5              'Comment Depth 5 Color'                          #c3e88d
+@var color    color6              'Comment Depth 6 Color'                          #8de89e
+@var color    color7              'Comment Depth 7 Color'                          #89ddff
+@var color    color8              'Comment Depth 8 Color'                          #82aaff
+@var color    color9              'Comment Depth 9 Color'                          #c792ea
+@var color    color10             'Comment Depth 10 Color'                         #9a91ea
+@var color    color11             'Comment Depth 11 Color'                         #f8b0b7
+@var color    color12             'Comment Depth 12 Color'                         #fbc7c3
+@var color    color13             'Comment Depth 13 Color'                         #ffd6a9
+@var color    color14             'Comment Depth 14 Color'                         #fdf8b2
+@var color    color15             'Comment Depth 15 Color'                         #d8f1b9
+@var color    color16             'Comment Depth 16 Color'                         #aeecc3
+@var color    color17             'Comment Depth 17 Color'                         #a5e2f9
+@var color    color18             'Comment Depth 18 Color'                         #a2bff8
+@var color    color19             'Comment Depth 19 Color'                         #ddbaf5
+@var color    color20             'Comment Depth 20 Color'                         #c4bcf5
 
-@var text originalstyle 'Original Style' "'https://userstyles.world/style/4734/reddit-colored-comments'"
+
+@var text     originalstyle       'Original Style'                                 "'https://userstyles.world/style/4734/reddit-colored-comments'"
 ==/UserStyle== */
-@-moz-document domain('reddit.com')
-{
-    // Define some convenient variables
-    t = transparent;
-    i = !important;
+@-moz-document domain('reddit.com') {
+  // Set line width for the new design
+  if ( lineWidth != 2 ) {
+    .threadline {
+      border-right-width: s( '%spx', lineWidth ) !important;
+    }
+  }
 
-    // Set line width for the new design
-    if lineWidth != 2
-    {
-        .threadline
-        {
-            border-right-width: s('%spx', lineWidth) i;
+  // Set mode for line style in the new design
+  $mode = '';
+
+  if ( lineStyle ) {
+    $mode = '> div >';
+  }
+
+  // Apply colors and styles to each level up to 20
+  for $i in 1 .. 20 {
+    div[id ^= 't'] > :first-child,
+    div[id ^= 'moreComments'] > :first-child,
+    div[id ^= 'continueThread'] > :first-child {
+      // Create a string for the nth-child selector
+      $nth = s( '%s', $i );
+
+      > :nth-child({$nth}) {
+        $mode;
+      }
+
+      .threadline {
+        border-right-color: color + $i !important;
+      }
+
+      // Hide previous lines if the option is checked
+      if ( hideLines ) {
+        > :nth-child({$nth}) > .threadline {
+          border-right-color: #0000 !important;
         }
+      }
+    }
+  }
+
+  // Old design specific styles
+  .comment .child,
+  .comment .showreplies,
+  .res-commentBoxes.res-continuity .comment div.child {
+    // Set line width for the old design
+    if ( oldLineWidth != 1 ) {
+      border-left-width: s( '%spx', oldLineWidth ) !important;
     }
 
-    // Set mode for line style in the new design
-    $mode = '';
-    if lineStyle
-    {
-        $mode = '> div >';
+    // Set line style for the old design
+    if ( oldLineStyle == 0 ) {
+      border-left-style: solid !important;
+    }
+    else {
+      border-left-style: dotted !important;
+    }
+  }
+
+  // Apply colors to nested child elements
+  $str = '.res-commentBoxes.res-continuity .comment div.child ';
+
+  for $i in 1 .. 20 {
+    {$str} {
+      border-left-color: color + $i !important;
     }
 
-    // Apply colors and styles to each level up to 20
-    for $i in 1..20
-    {
-        div[id ^= 't'] > :first-child,
-        div[id ^= 'moreComments'] > :first-child,
-        div[id ^= 'continueThread'] > :first-child
-        {
-            $nth = s('%s', $i); // Create a string for the nth-child selector
-            > :nth-child({$nth})
-            {
-                $mode
-            }
+    // Increase the nesting level for each iteration
+    $str += '> .sitetable > .comment > .child ';
+  }
 
-            .threadline
-            {
-                border-right-color: color + $i i;
-            }
-
-            // Hide previous lines if the option is checked
-            if hideLines
-            {
-                > :nth-child({$nth}) > .threadline
-                {
-                    border-right-color: t i;
-                }
-            }
-        }
-    }
-
-    // Old design specific styles
-    .comment .child,
-    .comment .showreplies,
-    .res-commentBoxes.res-continuity .comment div.child
-    {
-        // Set line width for the old design
-        if oldLineWidth != 1
-        {
-            border-left-width: s('%spx', oldLineWidth) i;
-        }
-
-        // Set line style for the old design
-        if oldLineStyle == 0
-        {
-            border-left-style: solid i;
-        }
-        else
-        {
-            border-left-style: dotted i;
-        }
-    }
-
-    // Apply colors to nested child elements
-    $str = '.res-commentBoxes.res-continuity .comment div.child ';
-    for $i in 1..20
-    {
-        { $str } {
-            border-left-color: color + $i i;
-        }
-
-        // Increase the nesting level for each iteration
-        $str += '> .sitetable > .comment > .child ';
-    }
-
+  if ( oldExtraLineColors == 1 ) {
     // Apply hover effect to .expand elements within nested child elements
     $str2 = '.res-commentBoxes.res-continuity .comment div.child ';
-    for $i in 1..20
-    {
-        { $str2 } .expand:hover {
-            background-color: color + $i i;
+
+    for $i in 1 .. 20 {
+      {$str2} .expand {
+        background-color: color + $i !important;
+      }
+
+      // Increase the nesting level for each iteration
+      $str2 += '> .sitetable > .comment > .child ';
+      // Apply hover effect to .expand elements within nested child elements
+      $str3 = '.res-commentBoxes.res-continuity .comment div.child ';
+
+      for $i in 11 .. 20 {
+        {$str3} .expand:hover {
+          background-color: color + $i !important;
         }
 
         // Increase the nesting level for each iteration
-        $str2 += '> .sitetable > .comment > .child ';
+        $str3 += '> .sitetable > .comment > .child ';
+      }
     }
+  }
 
-    // Apply a background color to .expand elements in the tagline
-    .commentarea .entry > .tagline > .expand
-    {
-        background-color: #00000080;
+  if ( oldExtraLineColors != 1 ) {
+    // Apply hover effect to .expand elements within nested child elements
+    $str4 = '.res-commentBoxes.res-continuity .comment div.child ';
+
+    for $i in 1 .. 20 {
+      {$str4} .expand:hover {
+        background-color: color + $i !important;
+      }
+
+      // Increase the nesting level for each iteration
+      $str4 += '> .sitetable > .comment > .child ';
     }
+  }
+
+  // Apply a background color to .expand elements in the tagline
+  .commentarea .entry > .tagline > .expand {
+    background-color: #00000080;
+  }
 }
