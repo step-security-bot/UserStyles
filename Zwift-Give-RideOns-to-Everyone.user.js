@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Give 'Ride-ons' to everyone on Zwift Feed
 // @namespace    typpi.online
-// @version      2.2
+// @version      2.3
 // @description  Click all buttons with a 750ms delay between each click
 // @author       Nick2bad4u
 // @license      UnLicense
-// @homepageURL  https://userstyles.github.typpi.online
+// @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @grant        none
 // @run-at       document-idle
 // @include      *://*.zwift.com/feed

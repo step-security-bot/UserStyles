@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Hide Non-English Userstyles on Userstyles.World
 // @namespace    typpi.online
-// @version      1.9
+// @version      1.10
 // @description  Hide userstyles containing non-English characters on userstyles.world
 // @author       Nick2bad4u
 // @license      UnLicense
 // @match        https://userstyles.world/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=userstyles.world
 // @grant        none
-// @homepageURL  https://userstyles.github.typpi.online
+// @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @downloadURL  https://update.greasyfork.org/scripts/523266/Hide%20Non-English%20Userstyles%20on%20UserstylesWorld.user.js
 // @updateURL    https://update.greasyfork.org/scripts/523266/Hide%20Non-English%20Userstyles%20on%20UserstylesWorld.meta.js
 // ==/UserScript==

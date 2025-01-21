@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Delete YouTube Playlists Except First
 // @namespace    typpi.online
-// @version      1.5
+// @version      1.6
 // @description  Delete all YouTube playlists except the first one from YouTube Studio
 // @author       Nick2bad4u
 // @license      UnLicense
-// @homepageURL  https://userstyles.github.typpi.online
+// @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @match        https://studio.youtube.com/*
 // @grant        none
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com

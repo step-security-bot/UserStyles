@@ -2,17 +2,17 @@
 /* jshint esversion: 6 */
 
 // ==UserScript==
-// @name			Supercharged Local Directory File Browser (Nick2bad4u Version)
-// @version			8.1.6
+// @name			    Supercharged Local Directory File Browser (Nick2bad4u Version)
+// @version			  8.1.7
 // @description		Makes directory index pages (either local or remote open directories) actually useful. Adds sidebar and content preview pane; keyboard navigation; sorting; light/dark UI; preview images/fonts in navigable grids; browse subdirectories w/o page reload (“tree view”); media playback, shuffle/loop options; basic playlist (m3u, extm3u) & cuesheet (.cue) support; create, edit, preview, save markdown/plain text files; open font files, view complete glyph repertoire, save glyphs as .svg; more.
-// @author			gaspar_schot
-// @author			Nick2bad4u
-// @namespace   typpi.online
-// @license			GPL-3.0-or-later
-// @homepageURL		https://openuserjs.org/scripts/gaspar_schot/Supercharged_Local_Directory_File_Browser
+// @author		  	gaspar_schot
+// @author			  Nick2bad4u
+// @namespace     typpi.online
+// @license			  GPL-3.0-or-later
+// @homepageURL	https://github.com/Nick2bad4u/UserStyles
 // @icon data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAACVBMVEUmRcmZzP8zmf8pVcWPAAAAAXRSTlMAQObYZgAAAFBJREFUeF7tyqERwDAMBEE3mX5UiqDmqwwziTPHjG7xrmzrLFtRaApDIRiKQlMYCsFQFJrCUAiGotAU5hTA1WB4fhkMBsOJwWAwgHvB8CHpBcTbpxy4RZNvAAAAAElFTkSuQmCC
-// @match			file://*/*
-// @match			https://www.example.com/path/to/directory/*
+// @match			      file://*/*
+// @match			      https://www.example.com/path/to/directory/*
 // @exclude         file://*/*.*
 // @require         https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js
 // @require         https://cdn.jsdelivr.net/npm/markdown-it-footnote@3.0.2/dist/markdown-it-footnote.min.js
@@ -25,7 +25,7 @@
 // @require         https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js
 // @require         https://cdn.jsdelivr.net/npm/@gerhobbelt/markdown-it-checkbox@1.2.0-3/dist/markdownItCheckbox.umd.js
 // @downloadURL     https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/SuperchargedLocalDirectoryWebUI.user.js
-// @updateURL	    https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/SuperchargedLocalDirectoryWebUI.user.js
+// @updateURL	      https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/SuperchargedLocalDirectoryWebUI.user.js
 
 // ==/UserScript==
 

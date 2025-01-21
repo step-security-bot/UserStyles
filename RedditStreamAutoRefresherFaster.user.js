@@ -5,11 +5,11 @@
 // @author       Nick2bad4u
 // @match        https://reddit-stream.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
-// @version      2.1
+// @version      2.2
 // @grant        none
-// @homepage     https://github.com/Nick2bad4u/RedditCommentStreamRefresh
-// @homepageURL  https://github.com/Nick2bad4u/RedditCommentStreamRefresh
-// @supportURL   https://github.com/Nick2bad4u/RedditCommentStreamRefresh/issues
+// @homepage     https://github.com/Nick2bad4u/UserStyles
+// @homepageURL  https://github.com/Nick2bad4u/UserStyles
+// @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 // @downloadURL  https://github.com/Nick2bad4u/UserStyles/blob/main/RedditStreamAutoRefresherFasterFaster.user.js
 // @updateURL    https://github.com/Nick2bad4u/UserStyles/blob/main/RedditStreamAutoRefresherFaster.user.js
 // @license CC-BY-SA-3.0; http://creativecommons.org/licenses/by-sa/3.0/
