@@ -1,6 +1,6 @@
 /* ==UserStyle==
-@name         Dearrow - Remove Dearrow Button
-@version      20250112.23.19
+@name         DeArrow - Remove Dearrow Button
+@version      20250112.23.21
 @namespace    typpi.online
 @description  Dearrow - Remove Button from YouTube Extension Dearrow
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
@@ -8,7 +8,21 @@
 @author       Nick2bad4u
 @license      UnLicense
 @preprocessor stylus
-@var          checkbox hidebutton "Hide Button" 1
+
+@var          checkbox  hidebutton         "Hide Button"                   1
+@var          checkbox  customDeArrowColor "Change Color of DeArrow Button Color"   0
+@advanced     dropdown  DeArrowColor "      Dearrow Button Color"          {
+    Default "Default" <<<EOT 0 EOT;
+    Pink "Pink" <<<EOT 90 EOT;
+    Green "Green" <<<EOT 250 EOT;
+    Red "Red" <<<EOT 150 EOT;
+    Cyan "Cyan" <<<EOT 340 EOT;
+    Purple "Purple" <<<EOT 60 EOT;
+    Blue "Blue" <<<EOT 20 EOT;
+    Orange "Orange" <<<EOT 150 EOT;
+    Yellow "Yellow" <<<EOT 200 EOT;
+}
+
 ==/UserStyle== */
 @-moz-document domain("youtube.com")
 {
@@ -17,6 +31,14 @@
 		#video-title-link > button > img
 		{
 			display: none;
+		}
+	}
+
+	if customDeArrowColor
+	{
+		.cbButton img
+		{
+			filter: hue-rotate(DeArrowColor deg) saturate(3) !important;
 		}
 	}
 }
