@@ -1,34 +1,88 @@
 /* ==UserStyle==
 @name         SteamStat.us - Re-Remastered - Orange/Black Style
-@version      20241115.16.03
+@version      20241115.16.04
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  Orange/Black!
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color title-color "Title Color" #ffa500
+@var color title-shadow "Title Shadow Color" #ffa500cc
+@var color link-color "Link Color" #ff8c00
+@var color link-shadow "Link Shadow Color" #ff8c0099
+@var color link-hover-color "Link Hover Color" #ffffff
+@var color good-color "Good Status Color" #ff8c00
+@var color good-shadow "Good Status Shadow Color" #ff8c00cc
+@var color minor-color "Minor Status Color" #ffa07a
+@var color minor-shadow "Minor Status Shadow Color" #ffa07acc
+@var color major-color "Major Status Color" #ff4500
+@var color major-shadow "Major Status Shadow Color" #ff4500cc
+@var color refresh-color "Refresh Color" #ff8c00
+@var color refresh-shadow "Refresh Shadow Color" #ff8c00cc
+@var color box-shadow "Box Shadow Color" #00000066
+@var color border-color "Border Color" #ff8c00
+@var color background-gradient-start "Background Gradient Start Color" #282a36
+@var color background-gradient-end "Background Gradient End Color" #191a21
+@var color body-background "Body Background Color" #121212
+@var color body-color "Body Color" #ffa500
+@var color body-shadow "Body Shadow Color" #000000cc
+@var color tooltip-background "Tooltip Background Color" #21222c
+@var color tooltip-color "Tooltip Color" #ffa500
+@var color tooltip-shadow "Tooltip Shadow Color" #000000cc
 ==/UserStyle== */
 
 @-moz-document domain("steamstat.us") {
+	:root {
+		--title-color: var(title-color);
+		--title-shadow: var(title-shadow);
+		--link-color: var(link-color);
+		--link-shadow: var(link-shadow);
+		--link-hover-color: var(link-hover-color);
+		--good-color: var(good-color);
+		--good-shadow: var(good-shadow);
+		--minor-color: var(minor-color);
+		--minor-shadow: var(minor-shadow);
+		--major-color: var(major-color);
+		--major-shadow: var(major-shadow);
+		--refresh-color: var(refresh-color);
+		--refresh-shadow: var(refresh-shadow);
+		--box-shadow: var(box-shadow);
+		--border-color: var(border-color);
+		--background-gradient-start: var(
+			background-gradient-start
+		);
+		--background-gradient-end: var(
+			background-gradient-end
+		);
+		--body-background: var(body-background);
+		--body-color: var(body-color);
+		--body-shadow: var(body-shadow);
+		--tooltip-background: var(tooltip-background);
+		--tooltip-color: var(tooltip-color);
+		--tooltip-shadow: var(tooltip-shadow);
+	}
+
 	.title {
 		margin: 10px 0;
-		color: #ffa500;
+		color: var(--title-color);
 		font-weight: 300;
 		font-size: 2.6em;
 		/* Black/Orange Status Title */
 		text-align: center;
-		text-shadow: 2px 2px 8px rgb(255 165 0 / 80%);
+		text-shadow: 2px 2px 8px var(--title-shadow);
 	}
 
 	a {
-		color: #ff8c00;
+		color: var(--link-color);
 		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 1px 1px 4px rgb(255 140 0 / 60%);
+		text-shadow: 1px 1px 4px var(--link-shadow);
 	}
 
 	a:hover {
-		color: #ffffff;
+		color: var(--link-hover-color);
 		text-decoration: underline;
 	}
 
@@ -40,58 +94,57 @@
 
 	.good {
 		/* Neon Orange */
-		color: #ff8c00;
-		text-shadow: 1px 1px 6px rgb(255 140 0 / 80%);
+		color: var(--good-color);
+		text-shadow: 1px 1px 6px var(--good-shadow);
 	}
 
 	.minor {
 		/* Light Orange */
-		color: #ffa07a;
+		color: var(--minor-color);
 		font-weight: 700;
-		text-shadow: 1px 1px 6px
-			rgb(255 160 122 / 80%);
+		text-shadow: 1px 1px 6px var(--minor-shadow);
 	}
 
 	.major {
 		/* Dark Orange */
-		color: #ff4500;
+		color: var(--major-color);
 		font-weight: 700;
-		text-shadow: 1px 1px 6px rgb(255 69 0 / 80%);
+		text-shadow: 1px 1px 6px var(--major-shadow);
 	}
 
 	#js-refresh {
 		/* Refreshing in idk seconds */
-		color: #ff8c00;
+		color: var(--refresh-color);
 		font-weight: bolder;
-		text-shadow: 0 0 8px rgb(255 140 0 / 80%);
+		text-shadow: 0 0 8px var(--refresh-shadow);
 	}
 
 	.services,
 	#psa,
 	noscript {
 		position: relative;
-		box-shadow: 0 4px 8px rgb(0 0 0 / 40%);
-		border: 1px solid #ff8c00;
+		box-shadow: 0 4px 8px var(--box-shadow);
+		border: 1px solid var(--border-color);
 		border-radius: 6px;
 		background: linear-gradient(
 			145deg,
-			#282a36,
-			#191a21
+			var(--background-gradient-start),
+			var(--background-gradient-end)
 		);
 		color: #f8f8f2;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0 0 6px rgb(0 0 0 / 60%);
+		text-shadow: 0 0 6px var(--box-shadow);
 	}
 
 	body {
 		margin: 0;
-		background: #121212;
-		color: #ffa500;
+		background: var(--body-background);
+		color: var(--body-color);
 		font-weight: 300;
 		font-size: 16px;
 		font-family: Roboto, Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%);
+		text-shadow: 1px 1px 3px var(--body-shadow);
 	}
 
 	[data-tooltip]::before {
@@ -111,14 +164,14 @@
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 6px;
-		background: #21222c;
+		background: var(--tooltip-background);
 		padding: 8px;
 		width: 96%;
-		color: #ffa500;
+		color: var(--tooltip-color);
 		font-style: italic;
 		font-weight: 300;
 		text-align: left;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%);
+		text-shadow: 1px 1px 3px var(--tooltip-shadow);
 	}
 
 	[data-tooltip]:hover::before {

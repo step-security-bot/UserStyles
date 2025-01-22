@@ -1,31 +1,69 @@
 /* ==UserStyle==
 @name         SteamStat.us - Re-remastered
-@version      20241115.16.1
+@version      20241115.16.2
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  SteamStat.us - Re-Remastered - Purple
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color title-color "Title Color" #d4b5ff
+@var color link-color "Link Color" #9e86ff
+@var color good-color "Good Status Color" #57e39b
+@var color minor-color "Minor Status Color" #63d1ff
+@var color major-color "Major Status Color" #ffd700
+@var color refresh-color "Refresh Color" #a569ff
+@var color border-color "Border Color" #3a1e5d
+@var color background-color "Background Color" #1f1b2e
+@var color body-color "Body Text Color" #c2a3e8
+@var color tooltip-background "Tooltip Background Color" #221936
+@var color tooltip-text "Tooltip Text Color" #e6d5ff
+@var color title-shadow "Title Shadow Color" #4a0072
+@var color link-shadow "Link Shadow Color" #3e045f
+@var color good-shadow "Good Status Shadow Color" #154d47
+@var color minor-shadow "Minor Status Shadow Color" #005f72
+@var color major-shadow "Major Status Shadow Color" #705c00
+@var color refresh-shadow "Refresh Shadow Color" #a569ff
 ==/UserStyle== */
 
 @-moz-document url("https://steamstat.us/")
 {
+	:root {
+		--title-color: var(title-color);
+		--link-color: var(link-color);
+		--good-color: var(good-color);
+		--minor-color: var(minor-color);
+		--major-color: var(major-color);
+		--refresh-color: var(refresh-color);
+		--border-color: var(border-color);
+		--background-color: var(background-color);
+		--body-color: var(body-color);
+		--tooltip-background: var(tooltip-background);
+		--tooltip-text: var(tooltip-text);
+		--title-shadow: var(title-shadow);
+		--link-shadow: var(link-shadow);
+		--good-shadow: var(good-shadow);
+		--minor-shadow: var(minor-shadow);
+		--major-shadow: var(major-shadow);
+		--refresh-shadow: var(refresh-shadow);
+	}
+
 	.title {
 		margin: 10px 0;
-		color: #d4b5ff;
+		color: var(--title-color);
 		font-weight: 300;
 		font-size: 2.6em;
 		/* Steam Status Title */
 		text-align: center;
-		text-shadow: 2px 2px 8px #4a0072;
+		text-shadow: 2px 2px 8px var(--title-shadow);
 	}
 
 	a {
-		color: #9e86ff;
+		color: var(--link-color);
 		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 2px 2px 6px #3e045f;
+		text-shadow: 2px 2px 6px var(--link-shadow);
 	}
 
 	.pull-right,
@@ -36,38 +74,38 @@
 
 	.good {
 		/* Soft Green */
-		color: #57e39b;
-		text-shadow: 2px 2px 6px #154d47;
+		color: var(--good-color);
+		text-shadow: 2px 2px 6px var(--good-shadow);
 	}
 
 	.minor {
 		/* Soft Teal */
-		color: #63d1ff;
+		color: var(--minor-color);
 		font-weight: 700;
-		text-shadow: 2px 2px 6px #005f72;
+		text-shadow: 2px 2px 6px var(--minor-shadow);
 	}
 
 	.major {
 		/* Soft Yellow */
-		color: #ffd700;
+		color: var(--major-color);
 		font-weight: 700;
-		text-shadow: 2px 2px 6px #705c00;
+		text-shadow: 2px 2px 6px var(--major-shadow);
 	}
 
 	#js-refresh {
 		/* Refreshing in idk seconds */
-		color: #a569ff;
+		color: var(--refresh-color);
 		font-weight: bolder;
-		text-shadow: 0 0 8px #a569ff;
+		text-shadow: 0 0 8px var(--refresh-shadow);
 	}
 
 	.services,
 	#psa,
 	noscript {
 		position: relative;
-		border: 1px solid #3a1e5d;
+		border: 1px solid var(--border-color);
 		border-radius: 6px;
-		background-color: #1f1b2e;
+		background-color: var(--background-color);
 		font-size: 1em;
 		line-height: 1.5;
 		text-shadow: 0 0 6px #000;
@@ -76,7 +114,7 @@
 	body {
 		margin: 0;
 		background: #000;
-		color: #c2a3e8;
+		color: var(--body-color);
 		font-weight: lighter;
 		font-size: 16px;
 		font-family:
@@ -101,10 +139,10 @@
 		left: 2%;
 		z-index: 1;
 		border-radius: 6px;
-		background: #221936;
+		background: var(--tooltip-background);
 		padding: 8px;
 		width: 97%;
-		color: #e6d5ff;
+		color: var(--tooltip-text);
 		font-style: italic;
 		font-weight: lighter;
 		text-align: left;

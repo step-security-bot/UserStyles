@@ -5,9 +5,8 @@
 @description  YouTube Rainbow Progress Bar [Updated] by Nick2bad4u - 2024
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      1.3.1
+@version      1.3.2
 @license      UnLicense
-
 
 @var color color-red "Red" #f80d1b
 @var color color-orange "Orange" #ffa200
@@ -15,6 +14,8 @@
 @var color color-green "Green" #00fa22
 @var color color-blue "Blue" #00a9ee
 @var color color-purple "Purple" #9f00ff
+@var color scrubber-border "Scrubber Border" #000000
+@var color scrubber-background "Scrubber Background" #9f00ff
 ==/UserStyle== */
 @-moz-document domain("youtube.com") {
 	:root {
@@ -24,6 +25,8 @@
 		--color-green: var(color-green);
 		--color-blue: var(color-blue);
 		--color-purple: var(color-purple);
+		--scrubber-border: var(scrubber-border);
+		--scrubber-background: var(scrubber-background);
 	}
 
 	.html5-progress-bar,
@@ -63,9 +66,9 @@
 	.ytp-scrubber-button {
 		margin-top: -6px !important;
 		margin-left: 0 !important;
-		border: 1px solid #000000 !important;
+		border: 1px solid var(--scrubber-border) !important;
 		background-color: var(
-			--color-purple
+			--scrubber-background
 		) !important;
 		width: 8px !important;
 		height: 32px !important;

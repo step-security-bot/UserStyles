@@ -1,158 +1,209 @@
 /* ==UserStyle==
 @name         SteamStat.us - Re-Remastered Halloween Style
-@version      20241115.16.05
+@version      20241115.16.06
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  Halloween Style theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color title-color "Title Color" #ffa500
+@var color title-gradient-start "Title Gradient Start Color" #ffa500
+@var color title-gradient-end "Title Gradient End Color" #4b0082
+@var color title-shadow "Title Shadow Color" #4b0082e6
+@var color link-color "Link Color" #4b0082
+@var color link-shadow "Link Shadow Color" #00000099
+@var color link-hover-color "Link Hover Color" #ffa500
+@var color good-color "Good Status Color" #ff7518
+@var color minor-color "Minor Status Color" #9932cc
+@var color major-color "Major Status Color" #8b0000
+@var color refresh-color "Refresh Color" #4b0082
+@var color refresh-shadow "Refresh Shadow Color" #ffa500cc
+@var color box-shadow "Box Shadow Color" #00000066
+@var color border-color "Border Color" #ff7518
+@var color background-gradient-start "Background Gradient Start Color" #ffa500
+@var color background-gradient-end "Background Gradient End Color" #4b0082
+@var color body-background-start "Body Background Start Color" #000000
+@var color body-background-end "Body Background End Color" #4b0082
+@var color body-color "Body Color" #ffa500
+@var color body-shadow "Body Shadow Color" #000000cc
+@var color tooltip-background "Tooltip Background Color" #2c2c2c
+@var color tooltip-color "Tooltip Color" #ffa500
+@var color tooltip-shadow "Tooltip Shadow Color" #4b0082cc
 ==/UserStyle== */
+
 @-moz-document domain("steamstat.us") {
+	:root {
+			--title-color: var(title-color);
+			--title-gradient-start: var(title-gradient-start);
+			--title-gradient-end: var(title-gradient-end);
+			--title-shadow: var(title-shadow);
+			--link-color: var(link-color);
+			--link-shadow: var(link-shadow);
+			--link-hover-color: var(link-hover-color);
+			--good-color: var(good-color);
+			--minor-color: var(minor-color);
+			--major-color: var(major-color);
+			--refresh-color: var(refresh-color);
+			--refresh-shadow: var(refresh-shadow);
+			--box-shadow: var(box-shadow);
+			--border-color: var(border-color);
+			--background-gradient-start: var(background-gradient-start);
+			--background-gradient-end: var(background-gradient-end);
+			--body-background-start: var(body-background-start);
+			--body-background-end: var(body-background-end);
+			--body-color: var(body-color);
+			--body-shadow: var(body-shadow);
+			--tooltip-background: var(tooltip-background);
+			--tooltip-color: var(tooltip-color);
+			--tooltip-shadow: var(tooltip-shadow);
+	}
+
 	.title {
-		margin: 10px 0;
-		/* Purple shadow */
-		background: linear-gradient(
-			145deg,
-			#ffa500,
-			#4b0082
-		);
-		/* Orange to Purple gradient */
-		background-clip: text;
-		color: #ffa500;
-		font-weight: 300;
-		font-size: 2.6em;
-		/* Halloween Orange/Purple/Black Title */
-		text-align: center;
-		/* Bright Orange */
-		text-shadow: 1px 1px 1px rgb(75 0 130 / 90%);
-		-webkit-text-fill-color: transparent;
+			margin: 10px 0;
+			/* Purple shadow */
+			background: linear-gradient(
+					145deg,
+					var(--title-gradient-start),
+					var(--title-gradient-end)
+			);
+			/* Orange to Purple gradient */
+			background-clip: text;
+			color: var(--title-color);
+			font-weight: 300;
+			font-size: 2.6em;
+			/* Halloween Orange/Purple/Black Title */
+			text-align: center;
+			/* Bright Orange */
+			text-shadow: 1px 1px 1px var(--title-shadow);
+			-webkit-text-fill-color: transparent;
 	}
 
 	a {
-		color: #4b0082;
-		/* Black shadow */
-		font-weight: 700;
-		/* Purple */
-		text-decoration: none;
-		text-shadow: 1px 1px 1px rgb(0 0 0 / 60%);
+			color: var(--link-color);
+			/* Black shadow */
+			font-weight: 700;
+			/* Purple */
+			text-decoration: none;
+			text-shadow: 1px 1px 1px var(--link-shadow);
 	}
 
 	a:hover {
-		color: #ffa500;
-		/* Orange */
-		text-decoration: underline;
+			color: var(--link-hover-color);
+			/* Orange */
+			text-decoration: underline;
 	}
 
 	.pull-right,
 	.service .status {
-		float: right;
-		text-align: right;
+			float: right;
+			text-align: right;
 	}
 
 	.good {
-		/* Pumpkin Orange */
-		color: #ff7518;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%);
-		/* Black shadow */
+			/* Pumpkin Orange */
+			color: var(--good-color);
+			text-shadow: 1px 1px 2px var(--body-shadow);
+			/* Black shadow */
 	}
 
 	.minor {
-		/* Deep Purple */
-		color: #9932cc;
-		/* Black shadow */
-		font-weight: 700;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%);
+			/* Deep Purple */
+			color: var(--minor-color);
+			/* Black shadow */
+			font-weight: 700;
+			text-shadow: 1px 1px 2px var(--body-shadow);
 	}
 
 	.major {
-		/* Blood Red */
-		color: #8b0000;
-		/* Black shadow */
-		font-weight: 700;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%);
+			/* Blood Red */
+			color: var(--major-color);
+			/* Black shadow */
+			font-weight: 700;
+			text-shadow: 1px 1px 2px var(--body-shadow);
 	}
 
 	#js-refresh {
-		/* Refreshing in idk seconds */
-		color: #4b0082;
-		/* Orange shadow */
-		font-weight: bolder;
-		/* Purple */
-		text-shadow: 0 0 2px rgb(255 165 0 / 80%);
+			/* Refreshing in idk seconds */
+			color: var(--refresh-color);
+			/* Orange shadow */
+			font-weight: bolder;
+			/* Purple */
+			text-shadow: 0 0 2px var(--refresh-shadow);
 	}
 
 	.services,
 	#psa,
 	noscript {
-		position: relative;
-		/* Black shadow */
-		box-shadow: 0 4px 8px rgb(0 0 0 / 40%);
-		/* Orange to Purple gradient */
-		border: 1px solid #ff7518;
-		/* Pumpkin Orange border */
-		border-radius: 3px;
-		background: linear-gradient(
-			145deg,
-			#ffa500,
-			#4b0082
-		);
-		color: #f8f8f2;
-		font-size: 1em;
-		line-height: 1.5;
-		text-shadow: 0 0 5px rgb(0 0 0 / 80%);
-		/* Ghost White */
+			position: relative;
+			/* Black shadow */
+			box-shadow: 0 4px 8px var(--box-shadow);
+			/* Orange to Purple gradient */
+			border: 1px solid var(--border-color);
+			/* Pumpkin Orange border */
+			border-radius: 3px;
+			background: linear-gradient(
+					145deg,
+					var(--background-gradient-start),
+					var(--background-gradient-end)
+			);
+			color: #f8f8f2;
+			font-size: 1em;
+			line-height: 1.5;
+			text-shadow: 0 0 5px var(--body-shadow);
+			/* Ghost White */
 	}
 
 	body {
-		margin: 0;
-		background: linear-gradient(
-			145deg,
-			#000000,
-			#4b0082
-		);
-		color: #ffa500;
-		/* Black shadow */
-		font-weight: 300;
-		font-size: 16px;
-		/* Bright Orange text */
-		font-family: Roboto, Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%);
-		/* Black to Purple gradient */
+			margin: 0;
+			background: linear-gradient(
+					145deg,
+					var(--body-background-start),
+					var(--body-background-end)
+			);
+			color: var(--body-color);
+			/* Black shadow */
+			font-weight: 300;
+			font-size: 16px;
+			/* Bright Orange text */
+			font-family: Roboto, Arial, sans-serif;
+			text-shadow: 1px 1px 3px var(--body-shadow);
+			/* Black to Purple gradient */
 	}
 
 	[data-tooltip]::before {
-		/* Time since last status change Box */
-		visibility: hidden;
-		opacity: 0%;
-		overflow: hidden;
-		content: attr(data-tooltip);
-		font-size: 0.9em;
-		white-space: pre;
-		word-wrap: break-word;
-		position: absolute;
-		top: 0;
-		left: 2%;
-		z-index: 1;
-		transition:
-			visibility 0s,
-			opacity 0.3s ease-in-out;
-		border-radius: 6px;
-		background: #2c2c2c;
-		padding: 8px;
-		width: 96%;
-		/* Dark Gray */
-		color: #ffa500;
-		/* Purple shadow */
-		font-style: italic;
-		font-weight: 300;
-		/* Orange text */
-		text-align: left;
-		text-shadow: 1px 1px 3px rgb(75 0 130 / 80%);
+			/* Time since last status change Box */
+			visibility: hidden;
+			opacity: 0%;
+			overflow: hidden;
+			content: attr(data-tooltip);
+			font-size: 0.9em;
+			white-space: pre;
+			word-wrap: break-word;
+			position: absolute;
+			top: 0;
+			left: 2%;
+			z-index: 1;
+			transition:
+					visibility 0s,
+					opacity 0.3s ease-in-out;
+			border-radius: 6px;
+			background: var(--tooltip-background);
+			padding: 8px;
+			width: 96%;
+			/* Dark Gray */
+			color: var(--tooltip-color);
+			/* Purple shadow */
+			font-style: italic;
+			font-weight: 300;
+			/* Orange text */
+			text-align: left;
+			text-shadow: 1px 1px 3px var(--tooltip-shadow);
 	}
 
 	[data-tooltip]:hover::before {
-		visibility: visible;
-		opacity: 100%;
+			visibility: visible;
+			opacity: 100%;
 	}
 }

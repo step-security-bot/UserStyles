@@ -1,31 +1,84 @@
 /* ==UserStyle==
 @name         SteamStat.us - University of Michigan Wolverines
-@version      20241115.16.04
+@version      20241115.16.05
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  SteamStat.us - University of Michigan Wolverines Theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color title-color "Title Color" #00274c
+@var color title-gradient-start "Title Gradient Start Color" #00274c
+@var color title-gradient-end "Title Gradient End Color" #ffcb05
+@var color title-shadow "Title Shadow Color" #00000099
+@var color link-color "Link Color" #00274c
+@var color link-shadow "Link Shadow Color" #00000066
+@var color link-hover-color "Link Hover Color" #ffcb05
+@var color good-color "Good Status Color" #00274c
+@var color minor-color "Minor Status Color" #ffcb05
+@var color major-color "Major Status Color" #ffffff
+@var color refresh-color "Refresh Color" #ffcb05
+@var color refresh-shadow "Refresh Shadow Color" #000000
+@var color box-shadow "Box Shadow Color" #000000
+@var color border-color "Border Color" #ffffff
+@var color background-gradient-start "Background Gradient Start Color" #00274c
+@var color background-gradient-end "Background Gradient End Color" #ffcb05
+@var color body-color "Body Color" #00274c
+@var color body-shadow "Body Shadow Color" #000000
+@var color tooltip-background "Tooltip Background Color" #ffffff
+@var color tooltip-color "Tooltip Color" #00274c
+@var color tooltip-shadow "Tooltip Shadow Color" #00000066
 ==/UserStyle== */
+
 @-moz-document domain("steamstat.us") {
+	:root {
+		--title-color: var(title-color);
+		--title-gradient-start: var(
+			title-gradient-start
+		);
+		--title-gradient-end: var(title-gradient-end);
+		--title-shadow: var(title-shadow);
+		--link-color: var(link-color);
+		--link-shadow: var(link-shadow);
+		--link-hover-color: var(link-hover-color);
+		--good-color: var(good-color);
+		--minor-color: var(minor-color);
+		--major-color: var(major-color);
+		--refresh-color: var(refresh-color);
+		--refresh-shadow: var(refresh-shadow);
+		--box-shadow: var(box-shadow);
+		--border-color: var(border-color);
+		--background-gradient-start: var(
+			background-gradient-start
+		);
+		--background-gradient-end: var(
+			background-gradient-end
+		);
+		--body-color: var(body-color);
+		--body-shadow: var(body-shadow);
+		--tooltip-background: var(tooltip-background);
+		--tooltip-color: var(tooltip-color);
+		--tooltip-shadow: var(tooltip-shadow);
+	}
+
 	.title {
 		margin: 10px 0;
 		/* Subtle black shadow */
 		background: linear-gradient(
 			145deg,
-			#00274c,
-			#ffcb05
+			var(--title-gradient-start),
+			var(--title-gradient-end)
 		);
 		/* Blue to Maize gradient */
 		background-clip: text;
-		color: #00274c;
+		color: var(--title-color);
 		font-weight: 700;
 		font-size: 2.6em;
 		/* Michigan Wolverines Title */
 		text-align: center;
 		/* Maize and Blue - Dark Blue */
-		text-shadow: 1px 1px 1px rgb(0 0 0 / 60%);
+		text-shadow: 1px 1px 1px var(--title-shadow);
 		-webkit-text-fill-color: transparent;
 		display: flex;
 		position: relative;
@@ -46,16 +99,16 @@
 	}
 
 	a {
-		color: #00274c;
+		color: var(--link-color);
 		/* Light shadow */
 		font-weight: 700;
 		/* Dark Blue */
 		text-decoration: none;
-		text-shadow: 1px 1px 0 rgb(0 0 0 / 40%);
+		text-shadow: 1px 1px 0 var(--link-shadow);
 	}
 
 	a:hover {
-		color: #ffcb05;
+		color: var(--link-hover-color);
 		/* Maize */
 		text-decoration: underline;
 	}
@@ -68,33 +121,33 @@
 
 	.good {
 		/* Blue for good statuses */
-		color: #00274c;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
+		color: var(--good-color);
+		text-shadow: 1px 1px 2px var(--box-shadow);
 		/* Black shadow */
 	}
 
 	.minor {
 		/* Maize for minor issues */
-		color: #ffcb05;
+		color: var(--minor-color);
 		/* Black shadow */
 		font-weight: 700;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
+		text-shadow: 1px 1px 2px var(--box-shadow);
 	}
 
 	.major {
 		/* White for major issues */
-		color: #ffffff;
+		color: var(--major-color);
 		/* Black shadow */
 		font-weight: 700;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
+		text-shadow: 1px 1px 2px var(--box-shadow);
 	}
 
 	#js-refresh {
 		/* Refreshing in seconds */
-		color: #ffcb05;
+		color: var(--refresh-color);
 		/* Subtle shadow */
 		font-weight: bolder;
-		text-shadow: 0 0 2px rgb(0 0 0);
+		text-shadow: 0 0 2px var(--refresh-shadow);
 	}
 
 	.services,
@@ -102,20 +155,20 @@
 	noscript {
 		position: relative;
 		/* Subtle shadow */
-		box-shadow: 0 4px 8px rgb(0 0 0);
+		box-shadow: 0 4px 8px var(--box-shadow);
 		/* Blue to Maize */
-		border: 1px solid #ffffff;
+		border: 1px solid var(--border-color);
 		/* White border */
 		border-radius: 3px;
 		background: linear-gradient(
 			145deg,
-			#00274c,
-			#ffcb05
+			var(--background-gradient-start),
+			var(--background-gradient-end)
 		);
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0 0 1px rgb(0 0 1);
+		text-shadow: 0 0 1px var(--box-shadow);
 		/* White text */
 	}
 
@@ -123,16 +176,16 @@
 		margin: 0;
 		background: linear-gradient(
 			145deg,
-			#00274c,
-			#ffcb05
+			var(--background-gradient-start),
+			var(--background-gradient-end)
 		);
-		color: #00274c;
+		color: var(--body-color);
 		/* Subtle shadow */
 		font-weight: 300;
 		font-size: 16px;
 		/* Dark Blue text */
 		font-family: Roboto, Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgb(0 0 0);
+		text-shadow: 1px 1px 3px var(--box-shadow);
 		/* Blue to Maize background */
 	}
 
@@ -153,17 +206,17 @@
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 6px;
-		background: #ffffff;
+		background: var(--tooltip-background);
 		padding: 8px;
 		width: 96%;
 		/* White box */
-		color: #00274c;
+		color: var(--tooltip-color);
 		/* Subtle shadow */
 		font-style: italic;
 		font-weight: 300;
 		/* Dark Blue text */
 		text-align: left;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
+		text-shadow: 1px 1px 3px var(--tooltip-shadow);
 	}
 
 	[data-tooltip]:hover::before {

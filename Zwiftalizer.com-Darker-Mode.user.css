@@ -175,7 +175,7 @@
 	}
 
 	/* Responsive Design */
-	/* stylelint-disable-next-line media-query-no-invalid */
+	/* stylelint-disable-next-line media-query-no-invalid -- UnNeeded */
 	@media (max-width: var(--breakpoint-sm)) {
 		table {
 			display: block;
@@ -216,7 +216,7 @@
 		display: none;
 	}
 
-	/* stylelint-disable-next-line no-duplicate-selectors */
+	/* stylelint-disable-next-line no-duplicate-selectors -- UnNeeded  */
 	:root {
 		--indigo: #5603ad;
 		--red: #f5365c;

@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         trainingpeaks.com - Dark Mode
-@version      20241107.04.56
+@version      20241107.04.57
 @namespace    typpi.online
 @description  trainingpeaks.com Dark Mode
 @author       Nick2bad4u
@@ -16,27 +16,8 @@
 			svg,
 			video
 		):not(png),
-	#workOutQuickView
-		> div.QVHeader
-		> div.QVHeaderItemsContain.cf
-		> div.workoutBarView
-		> div:nth-child(2)
-		> div
-		> div
-		> div.workoutIconAndKeyStats
-		> div.tomahawkButton,
-	body
-		> div.tabbedSettings.userSettings.overlayBox.modal.modalShadow
-		> div.overlayBoxBody
-		> div.tabbedLayoutBody.scrollable
-		> div
-		> div
-		> div
-		> div
-		> div:nth-child(1)
-		> div.profilePicture
-		> fieldset
-		> div {
+	.tomahawkButton,
+	.profilePicture > fieldset > div {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
@@ -57,31 +38,10 @@
 		background-color: inherit !important;
 	}
 
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer,
-	#wrapper
-		> div
-		> div
-		> div.appHeader
-		> div.userControls,
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer
-		> div
-		> div
-		> div.trainingPeaksAthleteHomeContent
-		> div.columns
-		> div.column__center
-		> div
-		> div.todaysWorkouts
+	.appContainerMainContentContainer,
+	.userControls,
+	.todaysWorkouts
 		> div:nth-child(n)
-		> div
-		> div
 		> div.workoutHeader {
 		background: #fff !important;
 	}
@@ -101,41 +61,12 @@
 		text-decoration-color: blue;
 	}
 
-	#wrapper
-		> div
-		> div
-		> div.appHeader
-		> div.userControls
-		> div.logoAndUserType
-		> a.appHeaderLogoLargeScreen,
-	#wrapper
-		> div
-		> div
-		> div.appHeader
-		> div.userControls
-		> div.secondaryNavigation
-		> div.appHeaderUserSettings
-		> div.appHeaderUserPhoto,
+	.appHeaderLogoLargeScreen,
+	.appHeaderUserPhoto,
 	span,
 	button,
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer
-		> div
-		> div
-		> div.trainingPeaksAthleteHomeHeader
-		> div.athletePhoto
-		> div
-		> div,
-	#wrapper
-		> div
-		> div
-		> div.appHeader
-		> div.userControls
-		> div.secondaryNavigation
-		> div.tpVirtualButtonContainer
+	.athletePhoto > div > div,
+	.tpVirtualButtonContainer
 		> button
 		> svg
 		> path:nth-child(n) {
@@ -159,31 +90,11 @@
 	}
 
 	.css-37jdci-MuiTypography-root.title.newActivityUItitle.MuiTypography-H6.MuiTypography-root,
-	body
-		> div.tabbedSettings.userSettings.overlayBox.modal.modalShadow
-		> div.overlayBoxBody
-		> div.tabbedLayoutBody.scrollable
-		> div
-		> div
-		> div:nth-child(n)
-		> div.heartRateZones
-		> div
-		> div
-		> div.zoneSetContain.heartrate
+	.zoneSetContain.heartrate
 		> fieldset
 		> label:nth-child(n)
 		> span,
-	body
-		> div.tabbedSettings.userSettings.overlayBox.modal.modalShadow
-		> div.overlayBoxBody
-		> div.tabbedLayoutBody.scrollable
-		> div
-		> div
-		> div:nth-child(n)
-		> div.heartRateZones
-		> div
-		> div
-		> div.zones.zonesConfigGroupView.ui-sortable
+	.zones.zonesConfigGroupView.ui-sortable
 		> div:nth-child(n)
 		> span,
 	span.zoneEntryTo,
@@ -199,17 +110,7 @@
 		color: #007580 !important;
 	}
 
-	body
-		> div.tabbedSettings.userSettings.overlayBox.modal.modalShadow
-		> div.overlayBoxBody
-		> div.tabbedLayoutBody.scrollable
-		> div
-		> div
-		> div:nth-child(n)
-		> div.heartRateZones
-		> div
-		> div
-		> div.zoneSetContain.heartrate
+	.zoneSetContain.heartrate
 		> fieldset
 		> label:nth-child(n)
 		> input,
@@ -219,31 +120,11 @@
 		> div.zones.zonesConfigGroupView.ui-sortable
 		> div:nth-child(n)
 		> input,
-	body
-		> div.tabbedSettings.userSettings.overlayBox.modal.modalShadow
-		> div.overlayBoxBody
-		> div.tabbedLayoutBody.scrollable
-		> div
-		> div
-		> div:nth-child()
-		> div.powerZones
-		> div
-		> div
-		> div.zoneSetContain.power
+	.zoneSetContain.power
 		> fieldset
 		> label
 		> input,
-	body
-		> div.tabbedSettings.userSettings.overlayBox.modal.modalShadow
-		> div.overlayBoxBody
-		> div.tabbedLayoutBody.scrollable
-		> div
-		> div
-		> div:nth-child(2)
-		> div.powerZones
-		> div
-		> div
-		> div.zones.zonesConfigGroupView.ui-sortable
+	.zones.zonesConfigGroupView.ui-sortable
 		> div:nth-child(n)
 		> input.numberInput.tpSettingsInput.min.first {
 		color: black;
@@ -264,80 +145,28 @@
 		color: green;
 	}
 
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer
-		> div
-		> div
-		> div.trainingPeaksAthleteHomeContent
-		> div.columns
-		> div.column__center
-		> div
-		> div.todaysWorkouts
-		> div.metric
-		> div
-		> div.activityHeader.metricsTileHeader
+	.activityHeader.metricsTileHeader
 		> div
 		> div
 		> span.metricKeyStat.activitySubText,
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer
-		> div
-		> div
-		> div.trainingPeaksAthleteHomeContent
-		> div.columns
-		> div.column__center
-		> div
-		> div.todaysWorkouts
-		> div.metric
-		> div
-		> div.activityHeader.metricsTileHeader
+	.activityHeader.metricsTileHeader
 		> div
 		> span:nth-child(n) {
 		color: red;
 	}
 
-	#quickViewContent
-		> div.tabContent.tabContentRegion
-		> div
-		> div
-		> div.rightColumn
-		> div.otherThanCommentsContainer
-		> div.workoutTagsContainer
+	.workoutTagsContainer
 		> div
 		> div
 		> div:nth-child(n)
 		> span,
-	#wrapper
-		> div
-		> div
-		> div.appHeader
-		> div.dreamingSeasonPencilBanner
-		> div.dreamingSeasonPencilBannerContainer
+	.dreamingSeasonPencilBannerContainer
 		> div
 		> span.MuiTypography-root.MuiTypography-body1.css-1njuh5f-MuiTypography-root,
-	#wrapper
-		> div
-		> div
-		> div.appHeader
-		> div.dreamingSeasonPencilBanner
-		> div.dreamingSeasonPencilBannerContainer
+	.dreamingSeasonPencilBannerContainer
 		> div
 		> span.MuiTypography-root.MuiTypography-body1.css-1d9r2xn-MuiTypography-root,
-	#workOutQuickView
-		> div.QVHeader
-		> div.QVHeaderItemsContain.cf
-		> div.performanceData
-		> div
-		> div
-		> div
-		> div.form.TSB
-		> span.label,
+	.form.TSB > span.label,
 	#workOutQuickView
 		> div.QVHeader
 		> div.QVHeaderItemsContain.cf
@@ -346,34 +175,14 @@
 		> div
 		> div
 		> span,
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer
-		> div
-		> div
-		> div.trainingPeaksAthleteHomeContent
-		> div.columns
-		> div.column__center
-		> div
-		> div.todaysWorkouts
-		> div.metric
-		> div
-		> div.activityHeader.metricsTileHeader
+	.activityHeader.metricsTileHeader
 		> div
 		> div
 		> span:nth-child(1) {
 		color: white;
 	}
 
-	#workOutQuickView
-		> div.QVHeader
-		> div.QVHeaderItemsContain.cf
-		> div.workoutBarView
-		> div:nth-child(2)
-		> div
-		> div {
+	.workoutBarView > div:nth-child(2) > div > div {
 		border: white !important;
 		border-style: dashed !important;
 		border-color: #cb0808 !important;
@@ -386,23 +195,7 @@
 		/* changes the color to red */
 	}
 
-	#wrapper
-		> div
-		> div
-		> div.appContainerLibrayAndContentContainer
-		> div.appContainerMainContentContainer
-		> div
-		> div.frameworkMainWrapper
-		> div
-		> div.calendarContainer
-		> div
-		> div
-		> div.contents.scrollable
-		> div.focusedWeeks
-		> div.calendarWeekContainer.inView
-		> div
-		> div:nth-child(n)
-		> div.activities
+	.activities
 		> div:nth-child(n)
 		> div
 		> div
@@ -413,16 +206,7 @@
 			contrast(90%);
 	}
 
-	#commentsContainer
-		> div
-		> div
-		> div:nth-child(1)
-		> div.rpeContainer
-		> div
-		> div
-		> div.emojiSelector.greatToBrutal
-		> div.emojiScale
-		> div:nth-child(n) {
+	.emojiScale > div:nth-child(n) {
 		filter: invert(70%) sepia(100%) saturate(500%)
 			hue-rotate(18deg) brightness(50%)
 			contrast(100%);

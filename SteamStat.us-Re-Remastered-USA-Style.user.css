@@ -1,42 +1,99 @@
 /* ==UserStyle==
 @name         SteamStat.us - Re-Remastered USA Style
-@version      20241115.16.04
+@version      20241115.16.05
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  SteamStat.us - Re-Remastered USA Red/White/Blue Style
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color title-gradient-start "Title Gradient Start Color" #ff0000
+@var color title-gradient-end "Title Gradient End Color" #0000ff
+@var color title-color "Title Color" #ff0000
+@var color title-shadow "Title Shadow Color" #000080e6
+@var color link-color "Link Color" #0000ff
+@var color link-shadow "Link Shadow Color" #ffffff99
+@var color link-hover-color "Link Hover Color" #ff0000
+@var color good-color "Good Status Color" #ffffff
+@var color good-shadow "Good Status Shadow Color" #000000cc
+@var color minor-color "Minor Status Color" #87ceeb
+@var color minor-shadow "Minor Status Shadow Color" #000000cc
+@var color major-color "Major Status Color" #ff4500
+@var color major-shadow "Major Status Shadow Color" #000000cc
+@var color refresh-color "Refresh Color" #0000ff
+@var color refresh-shadow "Refresh Shadow Color" #ffffffcc
+@var color box-shadow "Box Shadow Color" #00000066
+@var color border-color "Border Color" #ffffff
+@var color background-gradient-start "Background Gradient Start Color" #ff0000
+@var color background-gradient-end "Background Gradient End Color" #0000ff
+@var color body-color "Body Color" #ffffff
+@var color body-shadow "Body Shadow Color" #000000cc
+@var color tooltip-background "Tooltip Background Color" #000000
+@var color tooltip-color "Tooltip Color" #ffffff
+@var color tooltip-shadow "Tooltip Shadow Color" #ff0000cc
 ==/UserStyle== */
 
 @-moz-document domain("steamstat.us") {
+	:root {
+		--title-gradient-start: var(
+			title-gradient-start
+		);
+		--title-gradient-end: var(title-gradient-end);
+		--title-color: var(title-color);
+		--title-shadow: var(title-shadow);
+		--link-color: var(link-color);
+		--link-shadow: var(link-shadow);
+		--link-hover-color: var(link-hover-color);
+		--good-color: var(good-color);
+		--good-shadow: var(good-shadow);
+		--minor-color: var(minor-color);
+		--minor-shadow: var(minor-shadow);
+		--major-color: var(major-color);
+		--major-shadow: var(major-shadow);
+		--refresh-color: var(refresh-color);
+		--refresh-shadow: var(refresh-shadow);
+		--box-shadow: var(box-shadow);
+		--border-color: var(border-color);
+		--background-gradient-start: var(
+			background-gradient-start
+		);
+		--background-gradient-end: var(
+			background-gradient-end
+		);
+		--body-color: var(body-color);
+		--body-shadow: var(body-shadow);
+		--tooltip-background: var(tooltip-background);
+		--tooltip-color: var(tooltip-color);
+		--tooltip-shadow: var(tooltip-shadow);
+	}
+
 	.title {
 		margin: 10px 0;
 		background: linear-gradient(
 			145deg,
-			#ff0000,
-			#0000ff
+			var(--title-gradient-start),
+			var(--title-gradient-end)
 		); /* Red to Blue gradient */
 		background-clip: text;
-		color: #ff0000; /* Red */
+		color: var(--title-color); /* Red */
 		font-weight: 300;
 		font-size: 2.6em;
 		/* USA Red/White/Blue Status Title */
 		text-align: center;
-		text-shadow: 1px 1px 1px rgb(0 0 128 / 90%); /* Navy blue shadow */
+		text-shadow: 1px 1px 1px var(--title-shadow); /* Navy blue shadow */
 		-webkit-text-fill-color: transparent;
 	}
 
 	a {
-		color: #0000ff; /* Blue */
+		color: var(--link-color); /* Blue */
 		font-weight: 700;
 		text-decoration: none;
-		text-shadow: 1px 1px 1px
-			rgb(255 255 255 / 60%); /* White shadow */
+		text-shadow: 1px 1px 1px var(--link-shadow); /* White shadow */
 	}
 
 	a:hover {
-		color: #ff0000; /* Red */
+		color: var(--link-hover-color); /* Red */
 		text-decoration: underline;
 	}
 
@@ -48,61 +105,61 @@
 
 	.good {
 		/* White */
-		color: #ffffff;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%); /* Black shadow */
+		color: var(--good-color);
+		text-shadow: 1px 1px 2px var(--good-shadow); /* Black shadow */
 	}
 
 	.minor {
 		/* Sky Blue */
-		color: #87ceeb;
+		color: var(--minor-color);
 		font-weight: 700;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%); /* Black shadow */
+		text-shadow: 1px 1px 2px var(--minor-shadow); /* Black shadow */
 	}
 
 	.major {
 		/* Bright Red */
-		color: #ff4500;
+		color: var(--major-color);
 		font-weight: 700;
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 80%); /* Black shadow */
+		text-shadow: 1px 1px 2px var(--major-shadow); /* Black shadow */
 	}
 
 	#js-refresh {
 		/* Refreshing in idk seconds */
-		color: #0000ff; /* Blue */
+		color: var(--refresh-color); /* Blue */
 		font-weight: bolder;
-		text-shadow: 0 0 2px rgb(255 255 255 / 80%); /* White shadow */
+		text-shadow: 0 0 2px var(--refresh-shadow); /* White shadow */
 	}
 
 	.services,
 	#psa,
 	noscript {
 		position: relative;
-		box-shadow: 0 4px 8px rgb(0 0 0 / 40%);
-		border: 1px solid #ffffff; /* White border */
+		box-shadow: 0 4px 8px var(--box-shadow);
+		border: 1px solid var(--border-color); /* White border */
 		border-radius: 3px;
 		background: linear-gradient(
 			145deg,
-			#ff0000,
-			#0000ff
+			var(--background-gradient-start),
+			var(--background-gradient-end)
 		); /* Red to Blue gradient */
-		color: #ffffff; /* White text */
+		color: var(--body-color); /* White text */
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0 0 5px rgb(0 0 0 / 80%); /* Black shadow */
+		text-shadow: 0 0 5px var(--box-shadow); /* Black shadow */
 	}
 
 	body {
 		margin: 0;
 		background: linear-gradient(
 			145deg,
-			#ff0000,
-			#0000ff
+			var(--background-gradient-start),
+			var(--background-gradient-end)
 		); /* Red to Blue gradient */
-		color: #ffffff; /* White text */
+		color: var(--body-color); /* White text */
 		font-weight: 300;
 		font-size: 16px;
 		font-family: Roboto, Arial, sans-serif;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 80%); /* Black shadow */
+		text-shadow: 1px 1px 3px var(--body-shadow); /* Black shadow */
 	}
 
 	[data-tooltip]::before {
@@ -122,14 +179,16 @@
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 6px;
-		background: #000000; /* Black background for contrast */
+		background: var(
+			--tooltip-background
+		); /* Black background for contrast */
 		padding: 8px;
 		width: 96%;
-		color: #ffffff; /* White text */
+		color: var(--tooltip-color); /* White text */
 		font-style: italic;
 		font-weight: 300;
 		text-align: left;
-		text-shadow: 1px 1px 3px rgb(255 0 0 / 80%); /* Red shadow */
+		text-shadow: 1px 1px 3px var(--tooltip-shadow); /* Red shadow */
 	}
 
 	[data-tooltip]:hover::before {

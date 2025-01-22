@@ -15,59 +15,61 @@
 ==/UserStyle== */
 @-moz-document domain("zwifthacks.com") {
 	:root {
-			--background-color: var(background-color);
-			--hover-background-color: var(hover-background-color);
-			--border-color: var(border-color);
-			--text-color: var(text-color);
+		--background-color: var(background-color);
+		--hover-background-color: var(
+			hover-background-color
+		);
+		--border-color: var(border-color);
+		--text-color: var(text-color);
 	}
 
 	/* Invert colors except images and videos */
 	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video,
-			.footer-wrap,
-			.comments-header,
-			.comment-reply-title,
-			.widget-header,
-			.page-header
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		.footer-wrap,
+		.comments-header,
+		.comment-reply-title,
+		.widget-header,
+		.page-header
 	),
 	.main-navigation-menu
-			> .menu-item-has-children
-			> a::after,
+		> .menu-item-has-children
+		> a::after,
 	.main-navigation-menu
-			ul
-			.menu-item-has-children
-			> a::after {
-			filter: invert(1) hue-rotate(180deg) !important;
+		ul
+		.menu-item-has-children
+		> a::after {
+		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.site-branding .custom-logo,
 	#title > a > img {
-			filter: unset !important;
+		filter: unset !important;
 	}
 
 	.primary-navigation,
 	.main-navigation-menu a:link,
 	.main-navigation-menu a:visited {
-			background: var(--background-color);
-			color: var(--text-color) !important;
+		background: var(--background-color);
+		color: var(--text-color) !important;
 	}
 
 	.main-navigation-menu a:link:hover,
 	.main-navigation-menu a:visited:hover {
-			background: var(--hover-background-color);
-			color: var(--text-color) !important;
+		background: var(--hover-background-color);
+		color: var(--text-color) !important;
 	}
 
 	.main-navigation-menu ul {
-			border-top: 1px solid var(--border-color);
+		border-top: 1px solid var(--border-color);
 	}
 
 	input[type='search'i],
 	input[type='search'i]:focus {
-			color: var(--hover-background-color);
+		color: var(--hover-background-color);
 	}
 
 	input[type='text']:focus,
@@ -76,23 +78,24 @@
 	input[type='password']:focus,
 	input[type='search']:focus,
 	textarea:focus {
-			border: 1px solid var(--border-color);
-			color: var(--hover-background-color);
+		border: 1px solid var(--border-color);
+		color: var(--hover-background-color);
 	}
 
 	:focus-visible {
-			outline: var(--hover-background-color) auto 1px;
+		outline: var(--hover-background-color) auto
+			1px;
 	}
 
 	.main-navigation-menu
-			li.menu-item-has-children:hover
-			> ul,
+		li.menu-item-has-children:hover
+		> ul,
 	.main-navigation-menu
-			li.page_item_has_children:hover
-			> ul,
+		li.page_item_has_children:hover
+		> ul,
 	.main-navigation-menu
-			li.menu-item-has-children[aria-expanded='true']
-			> ul {
-			display: block;
+		li.menu-item-has-children[aria-expanded='true']
+		> ul {
+		display: block;
 	}
 }

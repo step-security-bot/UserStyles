@@ -18,13 +18,19 @@
 ==/UserStyle== */
 @-moz-document domain("wigle.net") {
 	:root {
-			--background-color-dark: var(background-color-dark);
-			--background-color-darker: var(background-color-darker);
-			--border-color: var(border-color);
-			--border-color-light: var(border-color-light);
-			--text-color: var(text-color);
-			--accent-color: var(accent-color);
-			--page-controls-text-color: var(page-controls-text-color);
+		--background-color-dark: var(
+			background-color-dark
+		);
+		--background-color-darker: var(
+			background-color-darker
+		);
+		--border-color: var(border-color);
+		--border-color-light: var(border-color-light);
+		--text-color: var(text-color);
+		--accent-color: var(accent-color);
+		--page-controls-text-color: var(
+			page-controls-text-color
+		);
 	}
 
 	body,
@@ -42,20 +48,24 @@
 	#wigleMain > ul > li.active > a,
 	div.preformatted,
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(2)
-			> div {
-			background-color: var(--background-color-dark);
-			color: var(--text-color);
+		> div
+		> div.dygraph-legend
+		> span:nth-child(2)
+		> div {
+		background-color: var(
+			--background-color-dark
+		);
+		color: var(--text-color);
 	}
 
 	.navbar,
 	.footer,
 	.dropdown-menu,
 	.modal-content {
-			border-color: var(--border-color);
-			background-color: var(--background-color-darker);
+		border-color: var(--border-color);
+		background-color: var(
+			--background-color-darker
+		);
 	}
 
 	.navbar-brand img,
@@ -67,56 +77,62 @@
 	input#savelinkhereID,
 	#text,
 	.altStatsLink {
-			filter: invert(1) hue-rotate(180);
+		filter: invert(1) hue-rotate(180);
 	}
 
 	input,
 	select,
 	textarea,
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(1),
+		> div
+		> div.dygraph-legend
+		> span:nth-child(1),
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(2),
+		> div
+		> div.dygraph-legend
+		> span:nth-child(2),
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(3),
+		> div
+		> div.dygraph-legend
+		> span:nth-child(3),
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(4),
+		> div
+		> div.dygraph-legend
+		> span:nth-child(4),
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(5),
+		> div
+		> div.dygraph-legend
+		> span:nth-child(5),
 	#userDiscovered
-			> div
-			> div.dygraph-legend
-			> span:nth-child(6) {
-			border: 1px solid var(--border-color-light);
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		> div
+		> div.dygraph-legend
+		> span:nth-child(6) {
+		border: 1px solid var(--border-color-light);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	a {
-			color: var(--accent-color);
+		color: var(--accent-color);
 	}
 
 	.btn,
 	.btn-default,
 	.btn-block {
-			border: 1px solid var(--border-color-light);
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		border: 1px solid var(--border-color-light);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	.form-control {
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	.mapBarItem,
@@ -130,37 +146,45 @@
 	.mapBarItem select,
 	.mapBarItem label,
 	div.panel {
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	.statsGraphInner,
 	.statsgraphcontainer,
 	.graphContextLinks,
 	.graphCaption {
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	.hilite-stats {
-			color: var(--accent-color);
+		color: var(--accent-color);
 	}
 
 	.modal-header,
 	.modal-footer,
 	.jumbotron {
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	.modal-header .close {
-			color: var(--text-color);
+		color: var(--text-color);
 	}
 
 	.modal-body,
 	#userDiscovered > div > div.dygraph-legend {
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	.container,
@@ -170,8 +194,10 @@
 	.col-sm-3,
 	.col-sm-2,
 	.col-sm-1 {
-			background-color: var(--background-color-darker);
-			color: var(--text-color);
+		background-color: var(
+			--background-color-darker
+		);
+		color: var(--text-color);
 	}
 
 	#newsBar,
@@ -179,13 +205,13 @@
 	.pageControls,
 	input.button1,
 	input.button2 {
-			color: var(--page-controls-text-color);
+		color: var(--page-controls-text-color);
 	}
 
 	#uploadsTable,
 	#mapBar,
 	table,
 	a {
-			filter: invert(1) hue-rotate(180);
+		filter: invert(1) hue-rotate(180);
 	}
 }
