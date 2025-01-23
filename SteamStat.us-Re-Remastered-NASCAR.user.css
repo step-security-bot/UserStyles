@@ -1,30 +1,53 @@
 /* ==UserStyle==
 @name         SteamStat.us - NASCAR Theme
-@version      20241117.22.06
+@version      20241117.22.08
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  SteamStat.us - NASCAR Theme with Advanced CSS
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color color1 "Color 1" #d71920
+@var color color2 "Color 2" #ffd700
+@var color color3 "Color 3" #00529b
+@var color color4 "Color 4" #ffffff
+@var color color5 "Color 5" #000000
+@var color color6 "Color 6" red
+@var color color7 "Color 7" yellow
+@var color color8 "Color 8" blue
+@var color color9 "Color 9" white
+@var color color10 "Color 10" black
 ==/UserStyle== */
 @-moz-document domain("steamstat.us") {
-	/* Main title styling with NASCAR colors */
+	:root {
+		--color-1: var(color1);
+		--color-2: var(color2);
+		--color-3: var(color3);
+		--color-4: var(color4);
+		--color-5: var(color5);
+		--color-6: var(color6);
+		--color-7: var(color7);
+		--color-8: var(color8);
+		--color-9: var(color9);
+		--color-10: var(color10);
+	}
+
 	.title {
 		margin: 10px 0;
 		background: linear-gradient(
 			135deg,
-			#d71920 30%,
-			#ffd700 70%
+			var(--color-1) 30%,
+			var(--color-2) 70%
 		);
-		/* Red to Yellow gradient */
+		/* var(--color-6) to var(--color-7) gradient */
 		background-clip: text;
-		color: #00529b;
+		color: var(--color-3);
 		font-weight: 700;
 		font-size: 2.6em;
 		text-align: center;
-		/* NASCAR Blue */
-		text-shadow: 2px 2px 4px rgb(0 0 0 / 60%);
+		/* NASCAR var(--color-8) */
+		text-shadow: 2px 2px 4px #00000099;
 		-webkit-text-fill-color: transparent;
 		display: flex;
 		position: relative;
@@ -71,41 +94,41 @@
 		transition:
 			color 0.3s ease,
 			text-shadow 0.3s ease;
-		color: #00529b;
+		color: var(--color-3);
 		font-weight: 700;
-		/* NASCAR Blue */
+		/* NASCAR var(--color-8) */
 		text-decoration: none;
 		text-shadow: 1px 1px 0 rgb(0 0 0 / 40%);
 	}
 
 	a:hover {
-		color: #d71920;
-		/* NASCAR Red */
+		color: var(--color-1);
+		/* NASCAR var(--color-6) */
 		text-decoration: underline;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 60%);
+		text-shadow: 1px 1px 3px #00000099;
 	}
 
 	/* Status colors with NASCAR theme */
 	.good {
 		transition: color 0.3s ease;
-		color: #ffd700;
-		/* NASCAR Yellow */
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
+		color: var(--color-2);
+		/* NASCAR var(--color-7) */
+		text-shadow: 1px 1px 2px #00000099;
 	}
 
 	.minor {
 		transition: color 0.3s ease;
-		color: #ffffff;
+		color: var(--color-4);
 		font-weight: 700;
-		/* White for minor status */
-		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
+		/* var(--color-8) for minor status */
+		text-shadow: 1px 1px 2px #00000099;
 	}
 
 	.major {
 		transition: color 0.3s ease;
-		color: #000000;
+		color: var(--color-5);
 		font-weight: 700;
-		/* Black for major status */
+		/* var(--color-10) for major status */
 		text-shadow: 1px 1px 2px
 			rgb(255 255 255 / 60%);
 	}
@@ -115,16 +138,16 @@
 		transition:
 			color 0.3s ease,
 			transform 0.3s ease;
-		color: #00529b;
+		color: var(--color-3);
 		font-weight: bolder;
-		/* NASCAR Blue */
-		text-shadow: 0 0 2px rgb(0 0 0);
+		/* NASCAR var(--color-8) */
+		text-shadow: 0 0 2px #000000;
 	}
 
 	#js-refresh:hover {
-		/* NASCAR Red */
+		/* NASCAR var(--color-6) */
 		transform: scale(1.1);
-		color: #d71920;
+		color: var(--color-1);
 	}
 
 	/* Container with dark background and bright accents */
@@ -132,17 +155,17 @@
 	#psa,
 	noscript {
 		position: relative;
-		/* White text */
+		/* var(--color-8) text */
 		transition:
 			box-shadow 0.3s ease,
 			background 0.3s ease;
-		box-shadow: 0 4px 8px rgb(0 0 0 / 50%);
-		/* Black background */
-		border: 1px solid #ffd700;
-		/* Yellow border */
+		box-shadow: 0 4px 8px #00000080;
+		/* var(--color-10) background */
+		border: 1px solid var(--color-2);
+		/* var(--color-7) border */
 		border-radius: 3px;
-		background: rgb(0 0 0 / 50%);
-		color: #ffffff;
+		background: #00000080;
+		color: var(--color-4);
 		font-size: 1em;
 		line-height: 1.5;
 		text-shadow: 0 0 1px rgb(255 255 255);
@@ -151,8 +174,8 @@
 	.services:hover,
 	#psa:hover,
 	noscript:hover {
-		box-shadow: 0 4px 12px rgb(0 0 0 / 70%);
-		background: rgb(0 0 0 / 93%);
+		box-shadow: 0 4px 12px #000000b3;
+		background: #000000ed;
 	}
 
 	/* Body styling with NASCAR-inspired gradient */
@@ -161,25 +184,25 @@
 		margin: 0;
 		background: linear-gradient(
 			135deg,
-			#000000 30%,
-			#00529b 70%
+			var(--color-5) 30%,
+			var(--color-3) 70%
 		);
-		color: #ffffff;
+		color: var(--color-4);
 		font-weight: 300;
 		font-size: 16px;
-		/* White text */
+		/* var(--color-8) text */
 		font-family: Roboto, Arial, sans-serif;
-		/* Black to Blue gradient */
-		text-shadow: 1px 1px 3px rgb(0 0 0);
+		/* var(--color-10) to var(--color-8) gradient */
+		text-shadow: 1px 1px 3px #000000;
 	}
 
 	body:hover {
 		background: linear-gradient(
 			135deg,
-			#ffd700 30%,
-			#d71920 70%
+			var(--color-2) 30%,
+			var(--color-1) 70%
 		);
-		/* Yellow to Red gradient */
+		/* var(--color-7) to var(--color-6) gradient */
 	}
 
 	/* Tooltip customization with smooth transition */
@@ -194,17 +217,17 @@
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 6px;
-		background: #000000;
-		/* Yellow text */
+		background: var(--color-5);
+		/* var(--color-7) text */
 		padding: 8px;
 		width: 96%;
 		content: attr(data-tooltip);
-		/* Black background */
-		color: #ffd700;
+		/* var(--color-10) background */
+		color: var(--color-2);
 		font-style: italic;
 		font-weight: 300;
 		font-size: 0.9em;
-		text-shadow: 1px 1px 3px rgb(0 0 0 / 40%);
+		text-shadow: 1px 1px 3px #00000066;
 	}
 
 	[data-tooltip]:hover::before {
@@ -216,11 +239,11 @@
 	.gradient-border {
 		position: relative;
 		border-radius: 5px;
-		background-color: #000000;
+		background-color: var(--color-5);
 		padding: 10px;
-		/* Black background */
-		color: #ffffff;
-		/* White text */
+		/* var(--color-10) background */
+		color: var(--color-4);
+		/* var(--color-8) text */
 		font-weight: 700;
 		text-align: center;
 	}
@@ -233,12 +256,12 @@
 		border-radius: 7px;
 		background: linear-gradient(
 			45deg,
-			#d71920,
-			#ffd700,
-			#00529b,
-			#d71920
+			var(--color-1),
+			var(--color-2),
+			var(--color-3),
+			var(--color-1)
 		);
-		/* Red, Yellow, Blue */
+		/* var(--color-6), var(--color-7), var(--color-8) */
 		background-size: 600% 600%;
 		content: '';
 	}

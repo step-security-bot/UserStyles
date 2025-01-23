@@ -1,29 +1,45 @@
 /* ==UserStyle==
 @name         SteamStat.us - /r/pcmasterrace Theme
-@version      20241119.00.06
+@version      20241119.00.07
 @namespace    typpi.online
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 @description  SteamStat.us - /r/pcmasterrace style
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @author       Nick2bad4u
 @license      UnLicense
+
+@var color color1 "Color 1" #ffffff
+@var color color2 "Color 2" #ffd700
+@var color color3 "Color 3" #000000
+@var color color4 "Color 4" #ff4500
+@var color color5 "Color 5" #ffffff
+@var color color6 "Color 6" #ff0000
 ==/UserStyle== */
 @-moz-document domain("steamstat.us") {
+	:root {
+		--color-1: var(color1);
+		--color-2: var(color2);
+		--color-3: var(color3);
+		--color-4: var(color4);
+		--color-5: var(color5);
+		--color-6: var(color6);
+	}
+
 	/* Main title styling with /r/pcmasterrace colors */
 	.title {
 		margin: 10px 0;
 		background: linear-gradient(
 			135deg,
-			#ffffff 30%,
-			#ffd700 70%
-		); /* White to Gold */
-		color: #ffd700; /* Gold */
+			var(--color-1) 30%,
+			var(--color-2) 70%
+		); /* var(--color-8) to Gold */
+		color: var(--color-2); /* Gold */
 		font-weight: 700;
 		font-size: 2.6em;
 		text-align: center;
 		text-shadow: 2px 2px 5px rgb(0 0 0 / 60%);
 		-webkit-text-stroke-width: 1px;
-		-webkit-text-stroke-color: #000000;
+		-webkit-text-stroke-color: var(--color-3);
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		display: flex;
@@ -62,31 +78,33 @@
 		transition:
 			color 0.3s ease,
 			text-shadow 0.3s ease;
-		color: #ffd700; /* Gold */
+		color: var(--color-2); /* Gold */
 		font-weight: 700;
 		text-decoration: none;
 		text-shadow: 1px 1px 2px rgb(0 0 0 / 40%);
 	}
 	a:hover {
-		color: #ffffff; /* White */
+		color: var(--color-1); /* var(--color-8) */
 		text-decoration: underline;
 		text-shadow: 2px 2px 6px rgb(0 0 0 / 70%);
 	}
 	/* Status colors with /r/pcmasterrace theme */
 	.good {
 		transition: color 0.3s ease;
-		color: #ffffff; /* White */
+		color: var(--color-1); /* var(--color-8) */
 		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 	.minor {
 		transition: color 0.3s ease;
-		color: #ffd700; /* Gold */
+		color: var(--color-2); /* Gold */
 		font-weight: 700;
 		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
 	.major {
 		transition: color 0.3s ease;
-		color: #ff4500; /* Bright Red */
+		color: var(
+			--color-4
+		); /* Bright var(--color-6) */
 		font-weight: 700;
 		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}
@@ -95,13 +113,13 @@
 		transition:
 			color 0.3s ease,
 			transform 0.3s ease;
-		color: #ffd700; /* Gold */
+		color: var(--color-2); /* Gold */
 		font-weight: bolder;
 		text-shadow: 0 0 3px rgb(0 0 0 / 80%);
 	}
 	#js-refresh:hover {
 		transform: scale(1.1);
-		color: #ffffff; /* White */
+		color: var(--color-1); /* var(--color-8) */
 	}
 	/* Container with /r/pcmasterrace-inspired accents */
 	.services,
@@ -113,14 +131,14 @@
 			box-shadow 0.3s ease,
 			background 0.3s ease;
 		box-shadow: 0 4px 12px rgb(0 0 0 / 80%);
-		border: 1px solid #ffd700;
+		border: 1px solid var(--color-2);
 		border-radius: 4px;
 		background: linear-gradient(
 			135deg,
 			rgb(255 215 0 / 80%) 30%,
 			rgb(255 255 255 / 80%) 70%
 		);
-		color: #000000;
+		color: var(--color-3);
 		font-size: 1em;
 		line-height: 1.5;
 		text-shadow: 0 0 4px rgb(0 0 0 / 90%);
@@ -131,7 +149,7 @@
 	footer:hover {
 		box-shadow: 0 6px 15px rgb(0 0 0 / 90%);
 		background: rgb(0 0 0 / 95%);
-		color: #ffffff;
+		color: var(--color-1);
 	}
 	/* Body styling with /r/pcmasterrace backdrop */
 	body {
@@ -140,7 +158,7 @@
 		background: url('https://i.gyazo.com/144fb81227c6f8e81bc6b9eaada78fc2.jpg')
 			no-repeat center center fixed; /* Replace with /r/pcmasterrace background URL */
 		background-size: cover;
-		color: #ffd700; /* Gold */
+		color: var(--color-2); /* Gold */
 		font-weight: 300;
 		font-size: 16px;
 		font-family:
@@ -167,7 +185,7 @@
 		padding: 8px;
 		width: 96%;
 		content: attr(data-tooltip);
-		color: #000000;
+		color: var(--color-3);
 		font-size: 0.9em;
 		text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
 	}
@@ -182,7 +200,7 @@
 		border-radius: 6px;
 		background-color: rgb(0 0 0 / 90%);
 		padding: 12px;
-		color: #ffffff;
+		color: var(--color-1);
 		font-weight: 700;
 		text-align: center;
 	}
@@ -194,10 +212,10 @@
 		border-radius: 6px;
 		background: linear-gradient(
 			45deg,
-			#ffd700,
-			#ffffff,
-			#ffd700
-		); /* Gold to White */
+			var(--color-2),
+			var(--color-1),
+			var(--color-2)
+		); /* Gold to var(--color-8) */
 		background-size: 300% 300%;
 		content: '';
 	}
