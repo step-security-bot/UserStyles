@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      3.1
+@version      3.2
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
@@ -9,18 +9,30 @@
 @license      UnLicense
 
 @var color inverted-background "Inverted Background Color" #000000
-@var color primary-text-color "Primary Text Color" #ffffff
+@var color inverted-background2 "Inverted Background Color2" #ffffff
+@var color primary-text "Primary Text Color" #ffffff
+@var color primary-text2 "Primary Text Color2" #000000
+@var color header-text "Header Text Color" #000000
 @var color border-color "Border Color" #5971c6f0
 @var color scrollbar-thumb-color "Scrollbar Thumb Color" #30acfd
 @var color scrollbar-background-color "Scrollbar Background Color" #ffffff
 ==/UserStyle== */
 @-moz-document domain("connect.garmin.com") {
 	:root {
-		--inverted-background: var(inverted-background);
-		--primary-text: var(primary-text-color);
-		--border: var(border-color);
+		--inverted-background: var(
+			inverted-background
+		);
+		--inverted-background2: var(
+			inverted-background2
+		);
+		--primary-text: var(primary-text);
+		--primary-text2: var(primary-text2);
+		--header-text: var(header-text)
+			--border: var(border-color);
 		--scrollbar-thumb: var(scrollbar-thumb-color);
-		--scrollbar-background: var(scrollbar-background-color);
+		--scrollbar-background: var(
+			scrollbar-background-color
+		);
 	}
 
 	:is(.connect-container) {
@@ -55,6 +67,7 @@
 	.h5,
 	h6,
 	.h6 {
+		color: var(--header-text);
 		font-weight: 600;
 	}
 
@@ -122,20 +135,20 @@
 		/*Box model stuff*/
 		border-color: var(--border);
 		background-color: var(
-			--primary-text
+			--inverted-background2
 		) !important;
 		/*Typography stuff*/
-		color: var(--inverted-background) !important;
+		color: var(--primary-text2) !important;
 	}
 
 	.photo-carousel {
 		background-color: var(
-			--primary-text
+			--inverted-background2
 		) !important;
 	}
 
 	.photo-carousel-modal .close {
-		color: var(--inverted-background) !important;
+		color: var(--primary-text2) !important;
 	}
 
 	.photo-carousel-modal .photo {
@@ -156,9 +169,9 @@
 		.Dialog_dialogFooter__W9xGT
 		> a {
 		background-color: var(
-			--primary-text
+			--inverted-background2
 		) !important;
-		color: var(--inverted-background);
+		color: var(--primary-text2);
 	}
 
 	/* For WebKit browsers (e.g., Chrome, Safari) */
@@ -167,9 +180,12 @@
 	}
 
 	::-webkit-scrollbar-thumb {
-		border: 3px solid var(--scrollbar-thumb);
+		border: 3px solid
+			var(--scrollbar-background-color);
 		border-radius: 6px;
-		background-color: var(--primary-text);
+		background-color: var(
+			--scrollbar-thumb-color
+		);
 	}
 
 	/* For Edge, IE */
