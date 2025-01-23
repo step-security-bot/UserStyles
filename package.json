@@ -41,6 +41,7 @@
 		"find-up": "^7.0.0",
 		"flat-cache": "^6.1.4",
 		"flatted": "^3.3.2",
+		"generator-code": "^1.11.5",
 		"glob-parent": "^6.0.2",
 		"graphemer": "^1.4.0",
 		"has-flag": "^5.0.1",
@@ -91,12 +92,14 @@
 		"ts-api-utils": "^2.0.0",
 		"type-check": "^0.4.0",
 		"uri-js": "^4.4.1",
+		"vscode": "^1.1.37",
 		"which": "^5.0.0",
 		"word-wrap": "^1.2.5",
 		"yocto-queue": "^1.1.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.18.0",
+		"@types/vscode": "^1.96.0",
 		"@typescript-eslint/eslint-plugin": "^8.21.0",
 		"@typescript-eslint/parser": "^8.21.0",
 		"eslint": "^9.18.0",
@@ -116,7 +119,10 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint:css": "csslint ."
+		"lint:css": "csslint .",
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
 	},
 	"repository": {
 		"type": "git",
