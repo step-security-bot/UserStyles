@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Userstyle World - Auto Sync UserStyles with Selection UI
 // @namespace    typpi.online
-// @version      1.6
+// @version      1.7
 // @description  Automatically sync userstyles by visiting the mirror URL with a selection UI
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -10,6 +10,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=userstyles.world
 // @match        *://userstyles.world/*
 // @grant        none
+// @downloadURL https://update.greasyfork.org/scripts/524688/Userstyle%20World%20-%20Auto%20Sync%20UserStyles%20with%20Selection%20UI.user.js
+// @updateURL   https://update.greasyfork.org/scripts/524688/Userstyle%20World%20-%20Auto%20Sync%20UserStyles%20with%20Selection%20UI.meta.js
 // ==/UserScript==
 
 (function () {
