@@ -58,11 +58,11 @@
 		container.style.bottom = '10px';
 		container.style.right = '10px';
 		container.style.width = '250px';
-		container.style.backgroundColor = 'rgb(0 0 0)';
-		container.style.border = '1px solid rgb(90, 78, 188)';
+		container.style.backgroundColor = '#000';
+		container.style.border = '1px solid #5a4ebc';
 		container.style.borderRadius = '5px';
 		container.style.padding = '15px';
-		container.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+		container.style.boxShadow = '0 2px 10px #0000001a';
 		container.style.zIndex = '1000';
 		container.style.maxHeight = '50vh';
 		container.style.overflowY = 'auto'; // Make the container scrollable
