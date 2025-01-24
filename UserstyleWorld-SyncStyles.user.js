@@ -1,8 +1,13 @@
 // ==UserScript==
-// @name         Auto Sync UserStyles with Selection UI
-// @namespace    http://your.namespace/here
-// @version      1.4
+// @name         Userstyle World - Auto Sync UserStyles with Selection UI
+// @namespace    typpi.online
+// @version      1.5
 // @description  Automatically sync userstyles by visiting the mirror URL with a selection UI
+// @author       Nick2bad4u
+// @license      UnLicense
+// @homepageURL  https://github.com/Nick2bad4u/UserStyles
+// @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=userstyle.world
 // @match        *://userstyles.world/*
 // @grant        none
 // ==/UserScript==
