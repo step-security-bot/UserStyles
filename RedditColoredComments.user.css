@@ -3,7 +3,7 @@
 @namespace typpi.online
 @description Customizable Colored Comments for Reddit. [Updated for RES Users 2025]
 @author vednoc [Updated by Nick2bad4u]
-@version 1.5.9
+@version 1.6.1
 @license MIT
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
@@ -159,6 +159,26 @@ Original Style made by Vendoc
   //Switch to toggle coloring of the hover needs to be on first
   if ( oldHoverArea == 1 ) {
     if ( oldHoverRainbow == 1 ) {
+		if ( oldMinimizeRainbow == 1 ) {
+      // Apply hover effect to .expand elements within nested child elements
+      $str4 = '.res-commentBoxes.res-continuity .comment div.child ';
+
+      for $i in 11 .. 20 {
+        {$str4} .expand:hover {
+          background-color: color + $i !important;
+        }
+
+        // Increase the nesting level for each iteration
+        $str4 += '> .sitetable > .comment > .child ';
+      }
+    }
+  }
+}
+
+  //Switch to toggle coloring of the hover needs to be on first
+  if ( oldHoverArea == 1 ) {
+    if ( oldHoverRainbow == 1 ) {
+		if ( oldMinimizeRainbow == 0 ) {
       // Apply hover effect to .expand elements within nested child elements
       $str4 = '.res-commentBoxes.res-continuity .comment div.child ';
 
@@ -172,6 +192,7 @@ Original Style made by Vendoc
       }
     }
   }
+}
 
   if ( oldMinimizeArea == 1 ) {
     // Apply a background color to .expand elements in the tagline
