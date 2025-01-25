@@ -3,7 +3,7 @@
 @namespace typpi.online
 @description Customizable Colored Comments for Reddit. [Updated for RES Users 2025]
 @author vednoc [Updated by Nick2bad4u]
-@version 1.6.1
+@version 1.6.3
 @license MIT
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
@@ -14,14 +14,14 @@
 ------------------------------------------------
 New Reddit Options
 ------------------------------------------------
-@var range    lineWidth           '● New Design - Line Width'               [4, 1, 8, 1]
+@var range    lineWidth           '● New Design - Line Width'               [4, 1, 25, 1]
 @var checkbox lineStyle           '⠀⠀⚬ Line Color Style: Full or Partial'   0
 @var checkbox hideLines           '⠀⠀⚬ Hide previous lines'                 0
 
 ------------------------------------------------
 Old Reddit Options
 ------------------------------------------------
-@var range    oldLineWidth        '● Old Design - Line Width'      [4, 1, 8, 1]
+@var range    oldLineWidth        '● Old Design - Line Width'      [4, 1, 25, 1]
 @var checkbox oldLineStyle        '⠀⠀Line Style: Solid or Dotted'  0
 
 ------------------------------------------------
@@ -69,7 +69,6 @@ Original Style made by Vendoc
 
 ==/UserStyle== */
 @-moz-document domain('reddit.com') {
-
   // Set line width for the new design
   if ( lineWidth != 2 ) {
     .threadline {
@@ -139,60 +138,49 @@ Original Style made by Vendoc
     $str += '> .sitetable > .comment > .child ';
   }
 
-  //Switch to toggle coloring of the area needs to be on first
-  if ( oldMinimizeArea == 1 ) {
-    if ( oldMinimizeRainbow == 1 ) {
-      // Apply color to .expand elements within nested child elements
-      $str2 = '.res-commentBoxes.res-continuity .comment div.child ';
+  // Toggle coloring of the area
+  if ( oldMinimizeRainbow == 1 ) {
+    // Apply color to .expand elements within nested child elements
+    $str2 = '.res-commentBoxes.res-continuity .comment div.child ';
 
-      for $i in 1 .. 20 {
-        {$str2} .expand {
-          background-color: color + $i !important;
-        }
-
-        // Increase the nesting level for each iteration
-        $str2 += '> .sitetable > .comment > .child ';
+    for $i in 1 .. 20 {
+      {$str2} .expand {
+        background-color: color + $i !important;
       }
+
+      // Increase the nesting level for each iteration
+      $str2 += '> .sitetable > .comment > .child ';
     }
   }
 
-  //Switch to toggle coloring of the hover needs to be on first
-  if ( oldHoverArea == 1 ) {
-    if ( oldHoverRainbow == 1 ) {
-		if ( oldMinimizeRainbow == 1 ) {
-      // Apply hover effect to .expand elements within nested child elements
-      $str4 = '.res-commentBoxes.res-continuity .comment div.child ';
+  if ( oldHoverRainbow == 1 && oldMinimizeRainbow == 1 ) {
+    // Apply hover effect to .expand elements within nested child elements
+    $str5 = '.res-commentBoxes.res-continuity .comment div.child ';
 
-      for $i in 11 .. 20 {
-        {$str4} .expand:hover {
-          background-color: color + $i !important;
-        }
-
-        // Increase the nesting level for each iteration
-        $str4 += '> .sitetable > .comment > .child ';
+    for $i in 11 .. 20 {
+      {$str5} .expand:hover {
+        background-color: color + $i !important;
       }
+
+      // Increase the nesting level for each iteration
+      $str5 += '> .sitetable > .comment > .child ';
     }
   }
-}
 
-  //Switch to toggle coloring of the hover needs to be on first
-  if ( oldHoverArea == 1 ) {
-    if ( oldHoverRainbow == 1 ) {
-		if ( oldMinimizeRainbow == 0 ) {
-      // Apply hover effect to .expand elements within nested child elements
-      $str4 = '.res-commentBoxes.res-continuity .comment div.child ';
 
-      for $i in 1 .. 20 {
-        {$str4} .expand:hover {
-          background-color: color + $i !important;
-        }
+  if ( oldHoverRainbow == 1 && oldMinimizeRainbow == 0 ) {
+    // Apply hover effect to .expand elements within nested child elements
+    $str5 = '.res-commentBoxes.res-continuity .comment div.child ';
 
-        // Increase the nesting level for each iteration
-        $str4 += '> .sitetable > .comment > .child ';
+    for $i in 1 .. 20 {
+      {$str5} .expand:hover {
+        background-color: color + $i !important;
       }
+
+      // Increase the nesting level for each iteration
+      $str5 += '> .sitetable > .comment > .child ';
     }
   }
-}
 
   if ( oldMinimizeArea == 1 ) {
     // Apply a background color to .expand elements in the tagline
@@ -207,5 +195,4 @@ Original Style made by Vendoc
       background-color: oldHoverColor !important;
     }
   }
-
 }
