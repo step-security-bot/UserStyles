@@ -9,6 +9,80 @@ AnyChange:
 - changed-files:
   - any-glob-to-any-file: '**'
 
+# Add 'Actions' label to any changes within '.workflows' folder or any subfolders
+Actions:
+- changed-files:
+  - any-glob-to-any-file: .github/.workflows/**
+
+GitHub:
+- changed-files:
+  - any-glob-to-any-file: .github/**
+
+Style:
+- changed-files:
+  - any-glob-to-any-file: .github/styles/**
+
+Userstyle:
+  - changed-files:
+    - any-glob-to-any-file: **.user.css
+
+CSS:
+  - changed-files:
+    - any-glob-to-any-file: **.css
+
+Userscript:
+  - changed-files:
+    - any-glob-to-any-file: **.user.js
+
+JavaScript:
+  - changed-files:
+    - any-glob-to-any-file: **.js
+
+HTML:
+  - changed-files:
+    - any-glob-to-any-file: **.html
+
+PNG:
+  - changed-files:
+    - any-glob-to-any-file: **.png
+
+SVG:
+  - changed-files:
+    - any-glob-to-any-file: **.svg
+
+JPG:
+  - changed-files:
+    - any-glob-to-any-file: **.jpg
+
+GIF:
+  - changed-files:
+    - any-glob-to-any-file: **.gif
+
+JSON:
+  - changed-files:
+    - any-glob-to-any-file: **.json
+
+XML:
+  - changed-files:
+    - any-glob-to-any-file: **.xml
+
+Markdown:
+  - changed-files:
+    - any-glob-to-any-file: **.md
+
+YAML:
+  - changed-files:
+    - any-glob-to-any-file: **.yaml
+
+TypeScript:
+  - changed-files:
+    - any-glob-to-any-file: **.ts
+
+SCSS:
+  - changed-files:
+    - any-glob-to-any-file: **.scss
+
+
 # Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature:
  - head-branch: ['^feature', 'feature']
