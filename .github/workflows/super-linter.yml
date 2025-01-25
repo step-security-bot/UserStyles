@@ -32,10 +32,6 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-          
-      - name: Install Modules
-        uses: ./
-        with:
           command: npm isntall prettier-plugin-css-order
       
       - name: Lint Code Base
