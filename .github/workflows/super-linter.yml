@@ -34,7 +34,9 @@ jobs:
           fetch-depth: 0
           
       - name: Install Modules
-        uses: npm install prettier-plugin-css-order@latest
+        uses: ./
+        with:
+          command: npm isntall prettier-plugin-css-order
       
       - name: Lint Code Base
         uses: github/super-linter@b807e99ddd37e444d189cfd2c2ca1274d8ae8ef1 # v7
