@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - Universal Version
 // @namespace    typpi.online
-// @version      7.0.4
+// @version      7.0.6
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage.
 // @author       Nick2bad4u
 // @match        *://*.reddit.com/*
@@ -25,12 +25,10 @@
 	console.log('Script loaded');
 
 	let profilePictureCache = JSON.parse(
-		localStorage.getItem('profilePictureCache') ||
-			'{}',
+		localStorage.getItem('profilePictureCache') || '{}',
 	);
 	let cacheTimestamps = JSON.parse(
-		localStorage.getItem('cacheTimestamps') ||
-			'{}',
+		localStorage.getItem('cacheTimestamps') || '{}',
 	);
 	const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 	const MAX_CACHE_SIZE = 25000; // Maximum number of cache entries
@@ -40,23 +38,15 @@
 			'profilePictureCache',
 			JSON.stringify(profilePictureCache),
 		);
-		localStorage.setItem(
-			'cacheTimestamps',
-			JSON.stringify(cacheTimestamps),
-		);
+		localStorage.setItem('cacheTimestamps', JSON.stringify(cacheTimestamps));
 	}
 
 	function flushOldCache() {
 		console.log('Flushing old cache');
 		const now = Date.now();
 		for (const username in cacheTimestamps) {
-			if (
-				now - cacheTimestamps[username] >
-				CACHE_DURATION
-			) {
-				console.log(
-					`Deleting cache for ${username}`,
-				);
+			if (now - cacheTimestamps[username] > CACHE_DURATION) {
+				console.log(`Deleting cache for ${username}`);
 				delete profilePictureCache[username];
 				delete cacheTimestamps[username];
 			}
@@ -66,16 +56,11 @@
 	}
 
 	function limitCacheSize() {
-		const cacheEntries = Object.keys(
-			profilePictureCache,
-		);
+		const cacheEntries = Object.keys(profilePictureCache);
 		if (cacheEntries.length > MAX_CACHE_SIZE) {
-			console.log(
-				'Cache size exceeded, removing oldest entries',
-			);
+			console.log('Cache size exceeded, removing oldest entries');
 			const sortedEntries = cacheEntries.sort(
-				(a, b) =>
-					cacheTimestamps[a] - cacheTimestamps[b],
+				(a, b) => cacheTimestamps[a] - cacheTimestamps[b],
 			);
 			const entriesToRemove = sortedEntries.slice(
 				0,
@@ -100,95 +85,64 @@
 		);
 		if (uncachedUsernames.length === 0) {
 			console.log('All usernames are cached');
-			return usernames.map(
-				(username) =>
-					profilePictureCache[username],
-			);
+			return usernames.map((username) => profilePictureCache[username]);
 		}
 
 		console.log(
 			`Fetching profile pictures for: ${uncachedUsernames.join(', ')}`,
 		);
 
-		const fetchPromises = uncachedUsernames.map(
-			async (username) => {
-				try {
-					const response = await fetch(
-						`https://www.reddit.com/user/${username}/about.json`,
-					);
-					if (!response.ok) {
-						console.error(
-							`Error fetching profile picture for ${username}: ${response.statusText}`,
-						);
-						return null;
-					}
-					const data = await response.json();
-					if (data.data && data.data.icon_img) {
-						const profilePictureUrl =
-							data.data.icon_img.split('?')[0];
-						profilePictureCache[username] =
-							profilePictureUrl;
-						cacheTimestamps[username] =
-							Date.now();
-						saveCache();
-						console.log(
-							`Fetched profile picture: ${username}`,
-						);
-						return profilePictureUrl;
-					} else {
-						console.warn(
-							`No profile picture found for: ${username}`,
-						);
-						return null;
-					}
-				} catch (error) {
+		const fetchPromises = uncachedUsernames.map(async (username) => {
+			try {
+				const response = await fetch(
+					`https://www.reddit.com/user/${username}/about.json`,
+				);
+				if (!response.ok) {
 					console.error(
-						`Error fetching profile picture for ${username}:`,
-						error,
+						`Error fetching profile picture for ${username}: ${response.statusText}`,
 					);
 					return null;
 				}
-			},
-		);
+				const data = await response.json();
+				if (data.data && data.data.icon_img) {
+					const profilePictureUrl = data.data.icon_img.split('?')[0];
+					profilePictureCache[username] = profilePictureUrl;
+					cacheTimestamps[username] = Date.now();
+					saveCache();
+					console.log(`Fetched profile picture: ${username}`);
+					return profilePictureUrl;
+				} else {
+					console.warn(`No profile picture found for: ${username}`);
+					return null;
+				}
+			} catch (error) {
+				console.error(`Error fetching profile picture for ${username}:`, error);
+				return null;
+			}
+		});
 
-		const results = await Promise.all(
-			fetchPromises,
-		);
+		const results = await Promise.all(fetchPromises);
 		limitCacheSize();
-		return usernames.map(
-			(username) => profilePictureCache[username],
-		);
+		return usernames.map((username) => profilePictureCache[username]);
 	}
 
 	async function injectProfilePictures(comments) {
-		console.log(
-			`Comments found: ${comments.length}`,
-		);
+		console.log(`Comments found: ${comments.length}`);
 		const usernames = Array.from(comments)
-			.map((comment) =>
-				comment.textContent.trim(),
-			)
+			.map((comment) => comment.textContent.trim())
 			.filter(
-				(username) =>
-					username !== '[deleted]' &&
-					username !== '[removed]',
+				(username) => username !== '[deleted]' && username !== '[removed]',
 			);
-		const profilePictureUrls =
-			await fetchProfilePictures(usernames);
+		const profilePictureUrls = await fetchProfilePictures(usernames);
 
 		comments.forEach((comment, index) => {
 			const username = usernames[index];
-			const profilePictureUrl =
-				profilePictureUrls[index];
+			const profilePictureUrl = profilePictureUrls[index];
 			if (
 				profilePictureUrl &&
-				!comment.previousElementSibling?.classList.contains(
-					'profile-picture',
-				)
+				!comment.previousElementSibling?.classList.contains('profile-picture')
 			) {
-				console.log(
-					`Injecting profile picture: ${username}`,
-				);
+				console.log(`Injecting profile picture: ${username}`);
 				const img = document.createElement('img');
 				img.src = profilePictureUrl;
 				img.classList.add('profile-picture');
@@ -196,27 +150,17 @@
 					img.style.display = 'none';
 				};
 				img.addEventListener('click', () => {
-					window.open(
-						profilePictureUrl,
-						'_blank',
-					);
+					window.open(profilePictureUrl, '_blank');
 				});
-				comment.insertAdjacentElement(
-					'beforebegin',
-					img,
-				);
+				comment.insertAdjacentElement('beforebegin', img);
 
-				const enlargedImg =
-					document.createElement('img');
+				const enlargedImg = document.createElement('img');
 				enlargedImg.src = profilePictureUrl;
-				enlargedImg.classList.add(
-					'enlarged-profile-picture',
-				);
+				enlargedImg.classList.add('enlarged-profile-picture');
 				document.body.appendChild(enlargedImg);
 				img.addEventListener('mouseover', () => {
 					enlargedImg.style.display = 'block';
-					const rect =
-						img.getBoundingClientRect();
+					const rect = img.getBoundingClientRect();
 					enlargedImg.style.top = `${rect.top + window.scrollY + 20}px`;
 					enlargedImg.style.left = `${rect.left + window.scrollX + 20}px`;
 				});
@@ -230,19 +174,14 @@
 
 	function setupObserver() {
 		console.log('Setting up observer');
-		const observer = new MutationObserver(
-			(mutations) => {
-				const comments =
-					document.querySelectorAll(
-						'.author, .c-username',
-					);
-				if (comments.length > 0) {
-					console.log('New comments detected');
-					observer.disconnect();
-					injectProfilePictures(comments);
-				}
-			},
-		);
+		const observer = new MutationObserver((mutations) => {
+			const comments = document.querySelectorAll('.author, .c-username');
+			if (comments.length > 0) {
+				console.log('New comments detected');
+				observer.disconnect();
+				injectProfilePictures(comments);
+			}
+		});
 		observer.observe(document.body, {
 			childList: true,
 			subtree: true,
@@ -252,10 +191,7 @@
 
 	function runScript() {
 		flushOldCache();
-		console.log(
-			'Cache loaded:',
-			profilePictureCache,
-		);
+		console.log('Cache loaded:', profilePictureCache);
 		setupObserver();
 	}
 

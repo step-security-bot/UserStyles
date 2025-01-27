@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - API Key Version
 // @namespace    typpi.online
-// @version      7.0.5
+// @version      7.0.6
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage. This version requires an API key. Enter your API Key under CLIENT_ID and CLIENT_SECRET or it will not work.
 // @author       Nick2bad4u
 // @match        *://*.reddit.com/*
@@ -22,9 +22,7 @@
 
 (function () {
 	'use strict';
-	console.log(
-		'Reddit Profile Picture Injector Script loaded',
-	);
+	console.log('Reddit Profile Picture Injector Script loaded');
 
 	// Reddit API credentials
 	/**
@@ -46,15 +44,12 @@
 	 * Format: {ApplicationName}/{Version} by {Author}
 	 * @constant {string}
 	 */
-	const USER_AGENT =
-		'ProfilePictureInjector/7.0.5 by Nick2bad4u';
+	const USER_AGENT = 'ProfilePictureInjector/7.0.6 by Nick2bad4u';
 	/**
 	 * Access token retrieved from localStorage for authentication purposes.
 	 * @type {string|null}
 	 */
-	let accessToken = localStorage.getItem(
-		'accessToken',
-	);
+	let accessToken = localStorage.getItem('accessToken');
 
 	// Retrieve cached profile pictures and timestamps from localStorage
 	/**
@@ -63,8 +58,7 @@
 	 * @type {Object.<string, string>} Key-value pairs of username to profile picture URL
 	 */
 	let profilePictureCache = JSON.parse(
-		localStorage.getItem('profilePictureCache') ||
-			'{}',
+		localStorage.getItem('profilePictureCache') || '{}',
 	);
 	/**
 	 * Object storing timestamps for cached items.
@@ -72,8 +66,7 @@
 	 * @type {Object.<string, number>}
 	 */
 	let cacheTimestamps = JSON.parse(
-		localStorage.getItem('cacheTimestamps') ||
-			'{}',
+		localStorage.getItem('cacheTimestamps') || '{}',
 	);
 	/**
 	 * Duration in milliseconds for which profile picture data will be cached.
@@ -93,9 +86,7 @@
 	 * @type {string[]}
 	 * @const
 	 */
-	const cacheEntries = Object.keys(
-		profilePictureCache,
-	);
+	const cacheEntries = Object.keys(profilePictureCache);
 
 	// Rate limit variables
 	/**
@@ -131,10 +122,7 @@
 			'profilePictureCache',
 			JSON.stringify(profilePictureCache),
 		);
-		localStorage.setItem(
-			'cacheTimestamps',
-			JSON.stringify(cacheTimestamps),
-		);
+		localStorage.setItem('cacheTimestamps', JSON.stringify(cacheTimestamps));
 	}
 
 	// Remove old cache entries
@@ -152,18 +140,11 @@
 	 * @requires saveCache - Function to persist the cache to storage
 	 */
 	function flushOldCache() {
-		console.log(
-			'Flushing old Reddit profile picture URL cache',
-		);
+		console.log('Flushing old Reddit profile picture URL cache');
 		const now = Date.now();
 		for (const username in cacheTimestamps) {
-			if (
-				now - cacheTimestamps[username] >
-				CACHE_DURATION
-			) {
-				console.log(
-					`Deleting cache for Reddit user - ${username}`,
-				);
+			if (now - cacheTimestamps[username] > CACHE_DURATION) {
+				console.log(`Deleting cache for Reddit user - ${username}`);
 				delete profilePictureCache[username];
 				delete cacheTimestamps[username];
 			}
@@ -187,19 +168,12 @@
 	 * @uses saveCache - Function to persist the cache to storage
 	 */
 	function limitCacheSize() {
-		const cacheEntries = Object.keys(
-			profilePictureCache,
-		);
+		const cacheEntries = Object.keys(profilePictureCache);
 		if (cacheEntries.length > MAX_CACHE_SIZE) {
-			console.log(
-				`Current cache size: ${cacheEntries.length} URLs`,
-			);
-			console.log(
-				'Cache size exceeded, removing oldest entries',
-			);
+			console.log(`Current cache size: ${cacheEntries.length} URLs`);
+			console.log('Cache size exceeded, removing oldest entries');
 			const sortedEntries = cacheEntries.sort(
-				(a, b) =>
-					cacheTimestamps[a] - cacheTimestamps[b],
+				(a, b) => cacheTimestamps[a] - cacheTimestamps[b],
 			);
 			const entriesToRemove = sortedEntries.slice(
 				0,
@@ -223,22 +197,16 @@
 	 * @returns {number} The total size of the cache in bytes
 	 */
 	function getCacheSizeInBytes() {
-		const cacheEntries = Object.keys(
-			profilePictureCache,
-		);
+		const cacheEntries = Object.keys(profilePictureCache);
 		let totalSize = 0;
 
 		// Calculate size of profilePictureCache
 		cacheEntries.forEach((username) => {
-			const pictureData =
-				profilePictureCache[username];
-			const timestampData =
-				cacheTimestamps[username];
+			const pictureData = profilePictureCache[username];
+			const timestampData = cacheTimestamps[username];
 
 			// Estimate size of data by serializing to JSON and getting the length
-			totalSize += new TextEncoder().encode(
-				JSON.stringify(pictureData),
-			).length;
+			totalSize += new TextEncoder().encode(JSON.stringify(pictureData)).length;
 			totalSize += new TextEncoder().encode(
 				JSON.stringify(timestampData),
 			).length;
@@ -281,9 +249,7 @@
 	 */
 	async function getAccessToken() {
 		console.log('Obtaining access token');
-		const credentials = btoa(
-			`${CLIENT_ID}:${CLIENT_SECRET}`,
-		);
+		const credentials = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 		try {
 			const response = await fetch(
 				'https://www.reddit.com/api/v1/access_token',
@@ -291,40 +257,24 @@
 					method: 'POST',
 					headers: {
 						Authorization: `Basic ${credentials}`,
-						'Content-Type':
-							'application/x-www-form-urlencoded',
+						'Content-Type': 'application/x-www-form-urlencoded',
 					},
 					body: 'grant_type=client_credentials',
 				},
 			);
 			if (!response.ok) {
-				console.error(
-					'Failed to obtain access token:',
-					response.statusText,
-				);
+				console.error('Failed to obtain access token:', response.statusText);
 				return null;
 			}
 			const data = await response.json();
 			accessToken = data.access_token;
-			const expiration =
-				Date.now() + data.expires_in * 1000;
-			localStorage.setItem(
-				'accessToken',
-				accessToken,
-			);
-			localStorage.setItem(
-				'tokenExpiration',
-				expiration.toString(),
-			);
-			console.log(
-				'Access token obtained and saved',
-			);
+			const expiration = Date.now() + data.expires_in * 1000;
+			localStorage.setItem('accessToken', accessToken);
+			localStorage.setItem('tokenExpiration', expiration.toString());
+			console.log('Access token obtained and saved');
 			return accessToken;
 		} catch (error) {
-			console.error(
-				'Error obtaining access token:',
-				error,
-			);
+			console.error('Error obtaining access token:', error);
 			return null;
 		}
 	}
@@ -353,31 +303,18 @@
 		);
 
 		// Check rate limit
-		if (
-			rateLimitRemaining <= 0 &&
-			now < rateLimitResetTime
-		) {
-			console.warn(
-				'Rate limit reached. Waiting until reset...',
-			);
+		if (rateLimitRemaining <= 0 && now < rateLimitResetTime) {
+			console.warn('Rate limit reached. Waiting until reset...');
 
-			const timeRemaining =
-				rateLimitResetTime - now;
-			const minutesRemaining = Math.floor(
-				timeRemaining / 60000,
-			);
-			const secondsRemaining = Math.floor(
-				(timeRemaining % 60000) / 1000,
-			);
+			const timeRemaining = rateLimitResetTime - now;
+			const minutesRemaining = Math.floor(timeRemaining / 60000);
+			const secondsRemaining = Math.floor((timeRemaining % 60000) / 1000);
 
 			console.log(
 				`Rate limit will reset in ${minutesRemaining} minutes and ${secondsRemaining} seconds.`,
 			);
 			await new Promise((resolve) =>
-				setTimeout(
-					resolve,
-					rateLimitResetTime - now,
-				),
+				setTimeout(resolve, rateLimitResetTime - now),
 			);
 		}
 
@@ -396,10 +333,7 @@
 		);
 		if (uncachedUsernames.length === 0) {
 			console.log('All usernames are cached');
-			return usernames.map(
-				(username) =>
-					profilePictureCache[username],
-			);
+			return usernames.map((username) => profilePictureCache[username]);
 		}
 
 		// Fetch profile pictures for uncached usernames
@@ -416,91 +350,62 @@
 		 * - null for failed fetches or users without profile pictures
 		 * @throws {Error} Individual promises may throw network or API errors, but these are caught and handled
 		 */
-		const fetchPromises = uncachedUsernames.map(
-			async (username) => {
-				try {
-					const response = await fetch(
-						`https://oauth.reddit.com/user/${username}/about`,
-						{
-							headers: {
-								Authorization: `Bearer ${accessToken}`,
-								'User-Agent': USER_AGENT,
-							},
+		const fetchPromises = uncachedUsernames.map(async (username) => {
+			try {
+				const response = await fetch(
+					`https://oauth.reddit.com/user/${username}/about`,
+					{
+						headers: {
+							Authorization: `Bearer ${accessToken}`,
+							'User-Agent': USER_AGENT,
 						},
-					);
+					},
+				);
 
-					// Update rate limit
-					rateLimitRemaining =
-						parseInt(
-							response.headers.get(
-								'x-ratelimit-remaining',
-							),
-						) || rateLimitRemaining;
-					rateLimitResetTime =
-						now +
-							parseInt(
-								response.headers.get(
-									'x-ratelimit-reset',
-								),
-							) *
-								1000 || rateLimitResetTime;
+				// Update rate limit
+				rateLimitRemaining =
+					parseInt(response.headers.get('x-ratelimit-remaining')) ||
+					rateLimitRemaining;
+				rateLimitResetTime =
+					now + parseInt(response.headers.get('x-ratelimit-reset')) * 1000 ||
+					rateLimitResetTime;
 
-					// Log rate limit information
-					const timeRemaining =
-						rateLimitResetTime - now;
-					const minutesRemaining = Math.floor(
-						timeRemaining / 60000,
-					);
-					const secondsRemaining = Math.floor(
-						(timeRemaining % 60000) / 1000,
-					);
+				// Log rate limit information
+				const timeRemaining = rateLimitResetTime - now;
+				const minutesRemaining = Math.floor(timeRemaining / 60000);
+				const secondsRemaining = Math.floor((timeRemaining % 60000) / 1000);
 
-					console.log(
-						`Rate Limit Requests Remaining: ${rateLimitRemaining}, 1000 more requests will be added in ${minutesRemaining} minutes and ${secondsRemaining} seconds`,
-					);
+				console.log(
+					`Rate Limit Requests Remaining: ${rateLimitRemaining}, 1000 more requests will be added in ${minutesRemaining} minutes and ${secondsRemaining} seconds`,
+				);
 
-					if (!response.ok) {
-						console.error(
-							`Error fetching profile picture for ${username}: ${response.statusText}`,
-						);
-						return null;
-					}
-					const data = await response.json();
-					if (data.data && data.data.icon_img) {
-						const profilePictureUrl =
-							data.data.icon_img.split('?')[0];
-						profilePictureCache[username] =
-							profilePictureUrl;
-						cacheTimestamps[username] =
-							Date.now();
-						saveCache();
-						console.log(
-							`Fetched profile picture: ${username}`,
-						);
-						return profilePictureUrl;
-					} else {
-						console.warn(
-							`No profile picture found for: ${username}`,
-						);
-						return null;
-					}
-				} catch (error) {
+				if (!response.ok) {
 					console.error(
-						`Error fetching profile picture for ${username}:`,
-						error,
+						`Error fetching profile picture for ${username}: ${response.statusText}`,
 					);
 					return null;
 				}
-			},
-		);
+				const data = await response.json();
+				if (data.data && data.data.icon_img) {
+					const profilePictureUrl = data.data.icon_img.split('?')[0];
+					profilePictureCache[username] = profilePictureUrl;
+					cacheTimestamps[username] = Date.now();
+					saveCache();
+					console.log(`Fetched profile picture: ${username}`);
+					return profilePictureUrl;
+				} else {
+					console.warn(`No profile picture found for: ${username}`);
+					return null;
+				}
+			} catch (error) {
+				console.error(`Error fetching profile picture for ${username}:`, error);
+				return null;
+			}
+		});
 
-		const results = await Promise.all(
-			fetchPromises,
-		);
+		const results = await Promise.all(fetchPromises);
 		limitCacheSize();
-		return usernames.map(
-			(username) => profilePictureCache[username],
-		);
+		return usernames.map((username) => profilePictureCache[username]);
 	}
 
 	/**
@@ -528,36 +433,24 @@
 	 * @requires getCacheSizeInKB - Function to calculate cache size in kilobytes
 	 */
 	async function injectProfilePictures(comments) {
-		console.log(
-			`Comments found: ${comments.length}`,
-		);
+		console.log(`Comments found: ${comments.length}`);
 		const usernames = Array.from(comments)
-			.map((comment) =>
-				comment.textContent.trim(),
-			)
+			.map((comment) => comment.textContent.trim())
 			.filter(
-				(username) =>
-					username !== '[deleted]' &&
-					username !== '[removed]',
+				(username) => username !== '[deleted]' && username !== '[removed]',
 			);
-		const profilePictureUrls =
-			await fetchProfilePictures(usernames);
+		const profilePictureUrls = await fetchProfilePictures(usernames);
 
 		let injectedCount = 0; // Counter for injected profile pictures
 
 		comments.forEach((comment, index) => {
 			const username = usernames[index];
-			const profilePictureUrl =
-				profilePictureUrls[index];
+			const profilePictureUrl = profilePictureUrls[index];
 			if (
 				profilePictureUrl &&
-				!comment.previousElementSibling?.classList.contains(
-					'profile-picture',
-				)
+				!comment.previousElementSibling?.classList.contains('profile-picture')
 			) {
-				console.log(
-					`Injecting profile picture: ${username}`,
-				);
+				console.log(`Injecting profile picture: ${username}`);
 				const img = document.createElement('img');
 				img.src = profilePictureUrl;
 				img.classList.add('profile-picture');
@@ -565,27 +458,17 @@
 					img.style.display = 'none';
 				};
 				img.addEventListener('click', () => {
-					window.open(
-						profilePictureUrl,
-						'_blank',
-					);
+					window.open(profilePictureUrl, '_blank');
 				});
-				comment.insertAdjacentElement(
-					'beforebegin',
-					img,
-				);
+				comment.insertAdjacentElement('beforebegin', img);
 
-				const enlargedImg =
-					document.createElement('img');
+				const enlargedImg = document.createElement('img');
 				enlargedImg.src = profilePictureUrl;
-				enlargedImg.classList.add(
-					'enlarged-profile-picture',
-				);
+				enlargedImg.classList.add('enlarged-profile-picture');
 				document.body.appendChild(enlargedImg);
 				img.addEventListener('mouseover', () => {
 					enlargedImg.style.display = 'block';
-					const rect =
-						img.getBoundingClientRect();
+					const rect = img.getBoundingClientRect();
 					enlargedImg.style.top = `${rect.top + window.scrollY + 20}px`;
 					enlargedImg.style.left = `${rect.left + window.scrollX + 20}px`;
 				});
@@ -597,12 +480,8 @@
 			}
 		});
 
-		console.log(
-			`Profile pictures injected this run: ${injectedCount}`,
-		);
-		console.log(
-			`Current cache size: ${cacheEntries.length}`,
-		);
+		console.log(`Profile pictures injected this run: ${injectedCount}`);
+		console.log(`Current cache size: ${cacheEntries.length}`);
 		console.log(
 			`Cache size limited to ${MAX_CACHE_SIZE.toLocaleString()} URLs`,
 		);
@@ -612,14 +491,9 @@
 			`Current cache size: ${currentCacheSizeMB.toFixed(2)} MB or ${currentCacheSizeKB.toFixed(2)} KB`,
 		);
 
-		const timeRemaining =
-			rateLimitResetTime - Date.now();
-		const minutesRemaining = Math.floor(
-			timeRemaining / 60000,
-		);
-		const secondsRemaining = Math.floor(
-			(timeRemaining % 60000) / 1000,
-		);
+		const timeRemaining = rateLimitResetTime - Date.now();
+		const minutesRemaining = Math.floor(timeRemaining / 60000);
+		const secondsRemaining = Math.floor((timeRemaining % 60000) / 1000);
 		console.log(
 			`Rate Limit Requests Remaining: ${rateLimitRemaining} requests, refresh in ${minutesRemaining} minutes and ${secondsRemaining} seconds`,
 		);
@@ -638,19 +512,14 @@
 	 */
 	function setupObserver() {
 		console.log('Setting up observer');
-		const observer = new MutationObserver(
-			(mutations) => {
-				const comments =
-					document.querySelectorAll(
-						'.author, .c-username',
-					);
-				if (comments.length > 0) {
-					console.log('New comments detected');
-					observer.disconnect();
-					injectProfilePictures(comments);
-				}
-			},
-		);
+		const observer = new MutationObserver((mutations) => {
+			const comments = document.querySelectorAll('.author, .c-username');
+			if (comments.length > 0) {
+				console.log('New comments detected');
+				observer.disconnect();
+				injectProfilePictures(comments);
+			}
+		});
 		observer.observe(document.body, {
 			childList: true,
 			subtree: true,
@@ -669,10 +538,7 @@
 	 */
 	function runScript() {
 		flushOldCache();
-		console.log(
-			'Cache loaded:',
-			profilePictureCache,
-		);
+		console.log('Cache loaded:', profilePictureCache);
 		setupObserver();
 	}
 
