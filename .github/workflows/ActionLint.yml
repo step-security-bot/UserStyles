@@ -1,6 +1,21 @@
+# This GitHub Actions workflow is named "ActionLint".
+# It is triggered on push events and manually via the workflow_dispatch event.
+#
+# Permissions:
+# - Read access to repository contents.
+# - Write access to pull requests.
+#
+# Jobs:
+# - job-1:
+#   - Runs on the latest Ubuntu runner.
+#   - Steps:
+#     - Harden Runner: Uses the step-security/harden-runner action to audit egress policy.
+#     - Checkout: Uses the actions/checkout action to check out the repository.
+#     - ActionLint: Uses the devops-actions/actionlint action to lint the workflow files.
+#       - Continues on error and sets the ID to action-lint.
 name: ActionLint
 on:
-  push: 
+  push:
 
   workflow_dispatch:
 
@@ -11,7 +26,7 @@ permissions:
 jobs:
   job-1:
     runs-on: ubuntu-latest
-    steps:       
+    steps:
     - name: Harden Runner
       uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
       with:

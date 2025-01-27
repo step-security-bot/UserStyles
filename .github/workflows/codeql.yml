@@ -1,3 +1,24 @@
+# This GitHub Actions workflow is designed to run CodeQL analysis on your repository.
+# CodeQL is a powerful semantic code analysis engine that helps find security vulnerabilities.
+#
+# The workflow is triggered on:
+# - Push events to the 'main' branch
+# - Pull requests targeting the 'main' branch
+# - A scheduled cron job that runs every Monday at midnight
+#
+# The workflow consists of a single job named 'analyze' which runs on the latest Ubuntu runner.
+# It has the following steps:
+# 1. Harden Runner: Uses the 'step-security/harden-runner' action to enhance the security of the runner.
+# 2. Checkout repository: Uses the 'actions/checkout' action to check out the repository's code.
+# 3. Initialize CodeQL: Uses the 'github/codeql-action/init' action to initialize CodeQL with the specified languages.
+# 4. Autobuild: Uses the 'github/codeql-action/autobuild' action to automatically build the code if necessary.
+# 5. Perform CodeQL Analysis: Uses the 'github/codeql-action/analyze' action to perform the actual CodeQL analysis.
+#
+# The workflow is configured to analyze JavaScript and Ruby code. You can modify the 'language' matrix
+# to include other supported languages as needed.
+#
+# For more information on CodeQL and its language support, visit: https://aka.ms/codeql-docs/language-support
+#
 # For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #

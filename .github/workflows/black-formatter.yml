@@ -1,9 +1,24 @@
+# This GitHub Actions workflow is named "black-formatter" and is triggered on push and pull request events.
+# It has read permissions for repository contents.
+#
+# The workflow defines a single job named "black-linter" that runs on the latest Ubuntu runner.
+#
+# Steps:
+# 1. Harden Runner:
+#    - Uses the "step-security/harden-runner" action (specific commit) to enhance security.
+#    - Disables sudo, blocks egress traffic, and allows specific endpoints (files.pythonhosted.org, github.com, pypi.org).
+#
+# 2. Checkout Code:
+#    - Uses the "actions/checkout" action (specific commit) to check out the repository code.
+#
+# 3. Run Black Formatter:
+#    - Uses the "psf/black" action (specific commit) to run the Black code formatter on the repository.
 name: black-formatter
 
 on: [push, pull_request]
 permissions:
   contents: read
-  
+
 jobs:
   black-linter:
     runs-on: ubuntu-latest
