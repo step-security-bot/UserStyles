@@ -22,17 +22,9 @@ Style:
 - changed-files:
   - any-glob-to-any-file: .github/styles/**
 
-Userstyle:
-  - changed-files:
-    - any-glob-to-any-file: **.user.css
-
 CSS:
   - changed-files:
     - any-glob-to-any-file: **.css
-
-Userscript:
-  - changed-files:
-    - any-glob-to-any-file: **.user.js
 
 JavaScript:
   - changed-files:
