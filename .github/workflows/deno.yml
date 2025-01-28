@@ -1,3 +1,22 @@
+# This GitHub Actions workflow is designed to automate the process of setting up Deno,
+# running lint checks, and executing tests on a repository. It triggers on push and
+# pull request events to the 'main' branch. The workflow includes the following steps:
+#
+# 1. Harden Runner: Uses the 'step-security/harden-runner' action to enhance the security
+#    of the GitHub Actions runner by auditing egress traffic.
+#
+# 2. Setup repo: Uses the 'actions/checkout' action to check out the repository's code.
+#
+# 3. Setup Deno: Uses the 'denoland/setup-deno' action to install Deno with the specified
+#    version (v1.x).
+#
+# 4. Run linter: Executes 'deno lint' to perform linting on the codebase.
+#
+# 5. Run tests: Executes 'deno test -A' to run tests with all permissions.
+#
+# Additionally, there is an optional step to verify code formatting using 'deno fmt --check',
+# which is currently commented out.
+#
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -10,9 +29,9 @@ name: Deno
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   pull_request:
-    branches: ['main']
+    branches: ["main"]
 
 permissions:
   contents: read

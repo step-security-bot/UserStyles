@@ -1,3 +1,15 @@
+# This GitHub Actions workflow is named "DevSkim" and is triggered on pushes and pull requests to the "main" branch,
+# as well as on a scheduled cron job that runs every Tuesday at 2:32 AM.
+#
+# The workflow has read permissions for the contents and includes a single job named "lint" that runs on an Ubuntu 20.04 runner.
+# The job has read permissions for actions and contents, and write permissions for security events.
+#
+# The job consists of the following steps:
+# 1. Harden Runner: Uses the step-security/harden-runner action to harden the runner with specific configurations.
+# 2. Checkout code: Uses the actions/checkout action to check out the repository's code.
+# 3. Run DevSkim scanner: Uses the microsoft/DevSkim-Action to run the DevSkim security scanner.
+# 4. Upload DevSkim scan results to GitHub Security tab: Uses the github/codeql-action/upload-sarif action to upload the DevSkim scan results in SARIF format to the GitHub Security tab.
+#
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -7,11 +19,11 @@ name: DevSkim
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   schedule:
-    - cron: '32 2 * * 2'
+    - cron: "32 2 * * 2"
 
 permissions:
   contents: read

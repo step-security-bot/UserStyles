@@ -1,3 +1,12 @@
+# This GitHub Actions workflow is designed to run ESLint, a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+# The workflow is triggered on push and pull request events to the "main" branch, as well as on a scheduled basis every Saturday at 12:25 PM UTC.
+# It includes the following steps:
+# 1. Harden Runner: Uses the step-security/harden-runner action to enhance the security of the GitHub Actions runner.
+# 2. Checkout code: Uses the actions/checkout action to check out the repository code.
+# 3. Install ESLint: Installs ESLint and the Microsoft SARIF formatter for ESLint.
+# 4. Run ESLint: Executes ESLint with the specified configuration and file extensions, outputting the results in SARIF format.
+# 5. Upload analysis results to GitHub: Uses the github/codeql-action/upload-sarif action to upload the ESLint results to GitHub for analysis.
+#
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -11,12 +20,12 @@ name: ESLint
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: ['main']
+    branches: ["main"]
   schedule:
-    - cron: '25 12 * * 6'
+    - cron: "25 12 * * 6"
 
 permissions:
   contents: read
@@ -45,7 +54,7 @@ jobs:
 
       - name: Run ESLint
         env:
-          SARIF_ESLINT_IGNORE_SUPPRESSED: 'true'
+          SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: npx eslint .
           --config .eslintrc.js
           --ext .js,.jsx,.ts,.tsx

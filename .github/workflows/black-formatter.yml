@@ -13,6 +13,7 @@
 #
 # 3. Run Black Formatter:
 #    - Uses the "psf/black" action (specific commit) to run the Black code formatter on the repository.
+
 name: black-formatter
 
 on: [push, pull_request]

@@ -1,3 +1,29 @@
+# This GitHub Actions workflow is designed to periodically scan for vulnerabilities using OSV-Scanner.
+# It performs scans on pull requests, merge groups, scheduled events, and pushes to the main branch.
+#
+# Workflow Name: OSV-Scanner
+#
+# Triggers:
+# - pull_request: Triggers when a pull request is made to the main branch.
+# - merge_group: Triggers when a merge group is created for the main branch.
+# - schedule: Triggers based on a cron schedule (every Monday at 12:39 PM).
+# - push: Triggers when code is pushed to the main branch.
+#
+# Permissions:
+# - security-events: write - Required to upload SARIF files to the security tab.
+# - contents: read - Required to read commit contents.
+# - actions: read - Required to read actions.
+#
+# Jobs:
+# - scan-scheduled: Runs on push or scheduled events. Uses a reusable workflow from the OSV-Scanner action.
+# - scan-pr: Runs on pull request or merge group events. Uses a reusable workflow from the OSV-Scanner action.
+#
+# Both jobs use custom arguments for the OSV-Scanner:
+# - -r: Recursively scan directories.
+# - --skip-git: Skip scanning of git-related files.
+# - ./: Scan the current directory.
+# - --fail-on-vuln=false: Do not fail the workflow if vulnerabilities are found.
+
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -13,13 +39,13 @@ name: OSV-Scanner
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   merge_group:
-    branches: [ "main" ]
+    branches: ["main"]
   schedule:
-    - cron: '39 12 * * 1'
+    - cron: "39 12 * * 1"
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 permissions:
   # Require writing security events to upload SARIF file to security tab

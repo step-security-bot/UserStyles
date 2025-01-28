@@ -1,3 +1,12 @@
+# This GitHub Actions workflow file is named "Greetings" and is triggered by pull requests and issues.
+# It grants read permissions to the repository contents and write permissions to issues and pull requests.
+# The workflow consists of a single job named "greeting" that runs on the latest Ubuntu runner.
+# The job has two steps:
+# 1. Harden Runner: Uses the step-security/harden-runner action to enhance the security of the runner with an egress policy set to audit.
+# 2. First Interaction: Uses the actions/first-interaction action to send a greeting message when an issue or pull request is opened.
+#    - The issue message is: "Greetings, thanks for opening an issue, I'll look when I can."
+#    - The pull request message is: "Greetings, thanks for opening a pull request, I'll look when I can."
+
 name: Greetings
 
 on: [pull_request_target, issues]

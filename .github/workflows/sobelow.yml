@@ -10,15 +10,32 @@
 # Instructions:
 # 2. Follow the annotated workflow below and make any necessary modifications then save the workflow to your repository
 #    and review the "Security" tab once the action has run.
+
+# This GitHub Actions workflow is named "Sobelow" and is triggered on push and pull request events to the "main" branch,
+# as well as on a scheduled cron job every Friday at 22:25 UTC.
+#
+# The workflow has read permissions for repository contents.
+#
+# The "security-scan" job within the workflow has the following permissions:
+# - Write access to contents for actions/checkout to fetch code.
+# - Write access to security events for github/codeql-action/upload-sarif to upload SARIF results.
+# - Read access to actions, required only for private repositories by github/codeql-action/upload-sarif to get the Action run status.
+#
+# The job runs on the latest Ubuntu runner and includes the following steps:
+# 1. Harden Runner: Uses the step-security/harden-runner action to enhance security by disabling sudo, blocking egress traffic,
+#    and allowing specific endpoints.
+# 2. Checkout Code: Uses the actions/checkout action to fetch the repository code.
+# 3. Run Sobelow Action: Uses the sobelow/action to perform a security scan.
+
 name: Sobelow
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   schedule:
-    - cron: '25 22 * * 5'
+    - cron: "25 22 * * 5"
 
 permissions:
   contents: read

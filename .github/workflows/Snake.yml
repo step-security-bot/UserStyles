@@ -1,10 +1,25 @@
+# This GitHub Actions workflow is named "Snake" and generates a snake game SVG based on a GitHub user's contribution graph.
+# The workflow is triggered by three events:
+# 1. Automatically every 24 hours using a cron schedule.
+# 2. Manually through the GitHub Actions interface.
+# 3. On every push to the master branch.
+
+# The workflow has read permissions for the contents of the repository.
+
+# The workflow consists of a single job named "generate" which has write permissions for the contents.
+# The job runs on the latest version of Ubuntu and has a timeout of 5 minutes.
+
+# The job includes the following steps:
+# 1. Harden Runner: Uses the step-security/harden-runner action to enhance security by auditing egress traffic.
+# 2. Generate SVG: Uses the Platane/snk/svg-only action to generate the snake game SVGs based on the GitHub user's contribution graph.
+# 3. Push SVG to Output Branch: Uses the crazy-max/ghaction-github-pages action to push the generated SVGs to the "output" branch,
+#    making them available as raw content or as a GitHub page. The GITHUB_TOKEN secret is used for authentication.
 name: Snake
 
 on:
-  # run automatically every 24 hours
+  # run automatically every day at midnight
   schedule:
-    - cron: '0 */24 * * *'
-
+    - cron: "0 0 * * *"
   # allows to manually run the job at any time
   workflow_dispatch:
 
@@ -12,6 +27,7 @@ on:
   push:
     branches:
       - master
+      - main
 
 permissions:
   contents: read

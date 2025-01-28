@@ -33,15 +33,15 @@
 # and provide permission before this can report data back to azure.
 # Read the official documentation here : <https://learn.microsoft.com/en-us/azure/defender-for-cloud/quickstart-onboard-github>
 
-name: 'Microsoft Defender For Devops'
+name: "Microsoft Defender For Devops"
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   pull_request:
-    branches: ['main']
+    branches: ["main"]
   schedule:
-    - cron: '16 2 * * 6'
+    - cron: "16 2 * * 6"
 
 jobs:
   MSDO:

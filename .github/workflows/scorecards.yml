@@ -1,3 +1,28 @@
+# This GitHub Actions workflow is designed to perform a Scorecard supply-chain security analysis on the repository.
+# It triggers on branch protection rule changes, scheduled cron jobs, and pushes to the main branch.
+# The workflow uses various third-party actions to harden the runner, checkout code, run the Scorecard analysis,
+# and upload the results as artifacts and to GitHub's code scanning dashboard.
+#
+# Workflow name: Scorecard supply-chain security
+#
+# Triggers:
+# - branch_protection_rule: Triggered by changes to branch protection rules.
+# - schedule: Runs every Tuesday at 07:20 UTC.
+# - push: Triggered by pushes to the main branch.
+#
+# Permissions:
+# - Default permissions are set to read-only.
+# - Specific permissions are granted for security events, id-token, contents, actions, issues, pull-requests, and checks.
+#
+# Jobs:
+# - analysis: Runs the Scorecard analysis on an Ubuntu runner.
+#   - Steps:
+#     - Harden Runner: Uses step-security/harden-runner to harden the runner with an egress policy set to audit.
+#     - Checkout code: Uses actions/checkout to checkout the repository code.
+#     - Run analysis: Uses ossf/scorecard-action to perform the Scorecard analysis and optionally publish results.
+#     - Upload artifact: Uses actions/upload-artifact to upload the results as artifacts.
+#     - Upload to code-scanning: Uses github/codeql-action/upload-sarif to upload the results to GitHub's code scanning dashboard.
+
 # This workflow uses actions that are not certified by GitHub. They are provided
 # by a third-party and are governed by separate terms of service, privacy
 # policy, and support documentation.
@@ -10,9 +35,9 @@ on:
   # To guarantee Maintained check is occasionally updated. See
   # https://github.com/ossf/scorecard/blob/main/docs/checks.md#maintained
   schedule:
-    - cron: '20 7 * * 2'
+    - cron: "20 7 * * 2"
   push:
-    branches: ['main']
+    branches: ["main"]
 
 # Declare default permissions as read only.
 permissions: read-all
@@ -40,12 +65,12 @@ jobs:
         with:
           egress-policy: audit
 
-      - name: 'Checkout code'
+      - name: "Checkout code"
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
-      - name: 'Run analysis'
+      - name: "Run analysis"
         uses: ossf/scorecard-action@62b2cac7ed8198b15735ed49ab1e5cf35480ba46 # v2.4.0
         with:
           results_file: results.sarif
@@ -67,7 +92,7 @@ jobs:
 
       # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
       # format to the repository Actions tab.
-      - name: 'Upload artifact'
+      - name: "Upload artifact"
         uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
         with:
           name: SARIF file
@@ -75,7 +100,7 @@ jobs:
           retention-days: 5
 
       # Upload the results to GitHub's code scanning dashboard.
-      - name: 'Upload to code-scanning'
+      - name: "Upload to code-scanning"
         uses: github/codeql-action/upload-sarif@f6091c0113d1dcf9b98e269ee48e8a7e51b7bdd4 # v2.27.0
         with:
           sarif_file: results.sarif
