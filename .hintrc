@@ -3,6 +3,7 @@
     "development"
   ],
   "hints": {
+    "meta-viewport": "off",
     "compat-api/css": [
       "default",
       {
@@ -10,8 +11,7 @@
           "@-moz-document"
         ]
       }
-    ],
-    "meta-viewport": "off"
+    ]
   },
   "browserslist": [
     "defaults",
