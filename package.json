@@ -36,7 +36,7 @@
 		"fast-json-stable-stringify": "^2.1.0",
 		"fast-levenshtein": "^3.0.0",
 		"fastq": "^1.18.0",
-		"file-entry-cache": "^10.0.5",
+		"file-entry-cache": "^10.0.6",
 		"fill-range": "^7.1.1",
 		"find-up": "^7.0.0",
 		"flat-cache": "^6.1.4",
@@ -100,8 +100,8 @@
 	"devDependencies": {
 		"@eslint/js": "^9.19.0",
 		"@types/vscode": "^1.96.0",
-		"@typescript-eslint/eslint-plugin": "^8.21.0",
-		"@typescript-eslint/parser": "^8.21.0",
+		"@typescript-eslint/eslint-plugin": "^8.22.0",
+		"@typescript-eslint/parser": "^8.22.0",
 		"eslint": "^9.19.0",
 		"eslint-plugin-prettier": "^5.2.3",
 		"eslint-plugin-react": "^7.37.4",
@@ -111,10 +111,10 @@
 		"prettier-eslint": "^16.3.0",
 		"prettier-plugin-stylus": "^0.1.0",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"stylelint": "^16.14.0",
+		"stylelint": "^16.14.1",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.7.3",
-		"typescript-eslint": "^8.21.0"
+		"typescript-eslint": "^8.22.0"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
