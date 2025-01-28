@@ -6,8 +6,13 @@
 	"endOfLine": "lf",
 	"htmlWhitespaceSensitivity": "css",
 	"jsxSingleQuote": false,
-	"plugins": [],
-	"printWidth": 50,
+	"plugins": [
+		"prettier-plugin-css-order",
+		"prettier-plugin-tailwindcss",
+		"eslint-plugin-prettier",
+		"prettier-plugin-stylus"
+	],
+	"printWidth": 80,
 	"proseWrap": "preserve",
 	"quoteProps": "as-needed",
 	"semi": true,
@@ -20,7 +25,8 @@
 		{
 			"files": "*.css",
 			"options": {
-				"parser": "css"
+				"parser": "css",
+				"printWidth": 60
 			}
 		},
 		{
