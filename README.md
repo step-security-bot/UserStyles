@@ -6,6 +6,7 @@
 [![Dependency Review](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml)
 [![DevSkim](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml)
 [![Github Pages Deployment](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment)
+[![Labeler](https://github.com/Nick2bad4u/UserStyles/actions/workflows/label.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/label.yml)
 [![Microsoft Defender](https://github.com/Nick2bad4u/UserStyles/actions/workflows/defender.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/defender.yml)
 [![OSSAR](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ossar.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ossar.yml)
 [![OSV-Scanner](https://github.com/Nick2bad4u/UserStyles/actions/workflows/osv-scanner.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/osv-scanner.yml)
@@ -13,6 +14,7 @@
 [![Snake](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Snake.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Snake.yml)
 [![Sobelow](https://github.com/Nick2bad4u/UserStyles/actions/workflows/sobelow.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/sobelow.yml)
 [![Stale Issues Management](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml)
+[![Super-Linter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/super-linter.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/super-linter.yml)
 [![Supply Chain Security](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml)
 [![Welcome Greetings](https://github.com/Nick2bad4u/UserStyles/actions/workflows/greetings.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/greetings.yml)
 
