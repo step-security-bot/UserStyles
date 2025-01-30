@@ -32,8 +32,8 @@
 		position: relative;
 		justify-content: center;
 		align-items: center;
-		animation: title-animation 2s ease-in-out
-			infinite alternate;
+		animation: title-animation 2s ease-in-out infinite
+			alternate;
 		font-family: Merriweather, serif;
 	}
 

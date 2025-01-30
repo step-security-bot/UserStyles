@@ -30,8 +30,8 @@
 		position: relative;
 		justify-content: center;
 		align-items: center;
-		animation: title-animation 3s ease-in-out
-			infinite alternate;
+		animation: title-animation 3s ease-in-out infinite
+			alternate;
 	}
 
 	/* Animation for the title */
@@ -165,9 +165,7 @@
 			visibility 0s,
 			opacity 0.3s ease-in-out;
 		border-radius: 8px;
-		background: rgb(
-			184 56 59 / 90%
-		); /* Red background */
+		background: rgb(184 56 59 / 90%); /* Red background */
 		padding: 8px;
 		width: 96%;
 		content: attr(data-tooltip);

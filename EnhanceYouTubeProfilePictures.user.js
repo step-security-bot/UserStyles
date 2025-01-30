@@ -22,50 +22,32 @@
 
 	// Load cache from localStorage
 	function loadCache() {
-		const cache = JSON.parse(
-			localStorage.getItem('profilePicCache') ||
-				'{}',
-		);
+		const cache = JSON.parse(localStorage.getItem('profilePicCache') || '{}');
 		const now = Date.now();
 		// Clear out expired cache entries
 		Object.keys(cache).forEach((key) => {
-			if (
-				now - cache[key].timestamp >
-				CACHE_TTL_MS
-			) {
+			if (now - cache[key].timestamp > CACHE_TTL_MS) {
 				delete cache[key]; // Remove expired entry
 			}
 		});
-		localStorage.setItem(
-			'profilePicCache',
-			JSON.stringify(cache),
-		); // Update cache after removing expired entries
+		localStorage.setItem('profilePicCache', JSON.stringify(cache)); // Update cache after removing expired entries
 		return cache;
 	}
 
 	// Save cache to localStorage
 	function saveCache(cache) {
-		localStorage.setItem(
-			'profilePicCache',
-			JSON.stringify(cache),
-		);
+		localStorage.setItem('profilePicCache', JSON.stringify(cache));
 	}
 
 	let cache = loadCache(); // Load the cache once when the script runs
 
 	// Preload HD image
 	function preloadHDImage(src) {
-		const hdSrc = src.replace(
-			/=s(32|88|48)-c/,
-			'=s800-c',
-		); // Adjust as needed for HD
+		const hdSrc = src.replace(/=s(32|88|48)-c/, '=s800-c'); // Adjust as needed for HD
 		if (!preloadedImages.has(hdSrc)) {
 			if (cache[hdSrc]) {
 				// If in persistent cache, load directly from cache
-				preloadedImages.set(
-					hdSrc,
-					cache[hdSrc].url,
-				);
+				preloadedImages.set(hdSrc, cache[hdSrc].url);
 			} else {
 				// Preload HD image and store in cache
 				const img = new Image();
@@ -91,13 +73,9 @@
 
 		debounceTimeout = setTimeout(() => {
 			const originalSrc = img.src;
-			const hdSrc = originalSrc.replace(
-				/=s(32|88|48)-c/,
-				'=s800-c',
-			); // Increase the size to 800px
+			const hdSrc = originalSrc.replace(/=s(32|88|48)-c/, '=s800-c'); // Increase the size to 800px
 			img.dataset.originalSrc = originalSrc; // Store the original src
-			img.src =
-				preloadedImages.get(hdSrc) || hdSrc;
+			img.src = preloadedImages.get(hdSrc) || hdSrc;
 
 			// Get the position of the original image
 			const rect = img.getBoundingClientRect();
@@ -108,10 +86,8 @@
 					'h-5.w-5.inline.align-middle.rounded-full.flex-none',
 				)
 			) {
-				img.style.transform =
-					'scale(6) translateX(20px)';
-				img.style.transition =
-					'transform 0.2s ease';
+				img.style.transform = 'scale(6) translateX(20px)';
+				img.style.transition = 'transform 0.2s ease';
 				img.style.border = '1px solid black';
 				img.style.zIndex = '9999';
 				img.style.position = 'relative';
@@ -152,54 +128,40 @@
 
 	// Add event listeners to profile pictures
 	function addEventListeners() {
-		const profilePicsChat =
-			document.querySelectorAll(
-				'.h-5.w-5.inline.align-middle.rounded-full.flex-none',
-			);
-		const profilePicsComments =
-			document.querySelectorAll(
-				'.style-scope yt-img-shadow img:not(#avatar-btn > yt-img-shadow img)',
-			);
-		const heartedThumbnails =
-			document.querySelectorAll(
-				'#creator-heart-button yt-img-shadow img, #creator-heart-button img',
-			);
+		const profilePicsChat = document.querySelectorAll(
+			'.h-5.w-5.inline.align-middle.rounded-full.flex-none',
+		);
+		const profilePicsComments = document.querySelectorAll(
+			'.style-scope yt-img-shadow img:not(#avatar-btn > yt-img-shadow img)',
+		);
+		const heartedThumbnails = document.querySelectorAll(
+			'#creator-heart-button yt-img-shadow img, #creator-heart-button img',
+		);
 
 		profilePicsChat.forEach((pic) => {
 			preloadHDImage(pic.src); // Preload HD image
-			pic.addEventListener(
-				'mouseenter',
-				enlargeProfilePic,
-			);
+			pic.addEventListener('mouseenter', enlargeProfilePic);
 		});
 
 		profilePicsComments.forEach((pic) => {
 			preloadHDImage(pic.src); // Preload HD image
-			pic.addEventListener(
-				'mouseenter',
-				enlargeProfilePic,
-			);
+			pic.addEventListener('mouseenter', enlargeProfilePic);
 		});
 
 		heartedThumbnails.forEach((pic) => {
 			preloadHDImage(pic.src); // Preload HD image
-			pic.addEventListener(
-				'mouseenter',
-				enlargeProfilePic,
-			); // Add hover event
+			pic.addEventListener('mouseenter', enlargeProfilePic); // Add hover event
 		});
 	}
 
 	// Observe changes in the chat and comments section to dynamically add event listeners
-	const observer = new MutationObserver(
-		(mutations) => {
-			mutations.forEach((mutation) => {
-				if (mutation.addedNodes.length > 0) {
-					addEventListeners();
-				}
-			});
-		},
-	);
+	const observer = new MutationObserver((mutations) => {
+		mutations.forEach((mutation) => {
+			if (mutation.addedNodes.length > 0) {
+				addEventListeners();
+			}
+		});
+	});
 	observer.observe(document.body, {
 		childList: true,
 		subtree: true,

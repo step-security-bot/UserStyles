@@ -15,11 +15,10 @@
 @var color light-gray "Light Gray" #e0e0e0
 ==/UserStyle== */
 @-moz-document domain("steamdb.info") {
-	:root
-	{
+	:root {
 		--primary-color: var(primary-color);
 		--black: var(black);
-		--light-gray: var(light-gray)
+		--light-gray: var(light-gray);
 	}
 	/* Dark Mode for SteamDB Free Packages */
 	body,
@@ -424,10 +423,7 @@
 	.btn-light,
 	.btn-dark,
 	#js-hover > div > div.hover_buttons > *,
-	#js-hover
-		> div
-		> div.hover_body.hover_tag_row
-		> * {
+	#js-hover > div > div.hover_body.hover_tag_row > * {
 		border-color: #454545 !important;
 		background-color: var(--black) !important;
 		color: var(--light-gray) !important;
@@ -445,10 +441,7 @@
 	.btn-light:hover,
 	.btn-dark:hover,
 	#js-hover > div > div.hover_buttons > *:hover,
-	#js-hover
-		> div
-		> div.hover_body.hover_tag_row
-		> *:hover {
+	#js-hover > div > div.hover_body.hover_tag_row > *:hover {
 		border-color: #555555 !important;
 		background-color: var(--black) !important;
 		color: #ffffff !important;

@@ -10,12 +10,7 @@
 ==/UserStyle== */
 @-moz-document domain("trainingpeaks.com") {
 	/* Invert colors except images and videos */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-		):not(png),
+	:is(html:not([stylus-iframe]), img, svg, video):not(png),
 	.tomahawkButton,
 	.profilePicture > fieldset > div {
 		filter: invert(1) hue-rotate(180deg) !important;
@@ -40,9 +35,7 @@
 
 	.appContainerMainContentContainer,
 	.userControls,
-	.todaysWorkouts
-		> div:nth-child(n)
-		> div.workoutHeader {
+	.todaysWorkouts > div:nth-child(n) > div.workoutHeader {
 		background: #fff !important;
 	}
 
@@ -120,27 +113,17 @@
 		> div.zones.zonesConfigGroupView.ui-sortable
 		> div:nth-child(n)
 		> input,
-	.zoneSetContain.power
-		> fieldset
-		> label
-		> input,
+	.zoneSetContain.power > fieldset > label > input,
 	.zones.zonesConfigGroupView.ui-sortable
 		> div:nth-child(n)
 		> input.numberInput.tpSettingsInput.min.first {
 		color: black;
 	}
 
-	div.workoutStatsColumn.workoutStatsUnitLabel
-		> label,
-	div.workoutStatsColumn.workoutStatsLabel
-		> label,
-	div.workoutStatsColumn.workoutStatsMinMaxAvgLabel
-		> label,
-	div.equipment
-		> div
-		> div:nth-child(2)
-		> div
-		> label,
+	div.workoutStatsColumn.workoutStatsUnitLabel > label,
+	div.workoutStatsColumn.workoutStatsLabel > label,
+	div.workoutStatsColumn.workoutStatsMinMaxAvgLabel > label,
+	div.equipment > div > div:nth-child(2) > div > label,
 	div.equipment > div > div:nth-child(3) > label {
 		color: green;
 	}
@@ -202,14 +185,12 @@
 		> div.lowerWorkoutCard
 		> div.PRCommentRPEContainer {
 		filter: invert(20%) sepia(90%) saturate(700%)
-			hue-rotate(180deg) brightness(90%)
-			contrast(90%);
+			hue-rotate(180deg) brightness(90%) contrast(90%);
 	}
 
 	.emojiScale > div:nth-child(n) {
 		filter: invert(70%) sepia(100%) saturate(500%)
-			hue-rotate(18deg) brightness(50%)
-			contrast(100%);
+			hue-rotate(18deg) brightness(50%) contrast(100%);
 	}
 
 	#chartsContainer > div > div.dashboardChart {

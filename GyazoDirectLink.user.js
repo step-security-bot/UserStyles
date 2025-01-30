@@ -17,38 +17,26 @@
 
 	function addRedirectButton() {
 		// Remove existing button if it exists
-		const existingButton =
-			document.getElementById(
-				'direct-video-link-button',
-			);
+		const existingButton = document.getElementById('direct-video-link-button');
 		if (existingButton) {
 			existingButton.remove();
 		}
 
-		const videoElement = document.querySelector(
-			'#gyazo-video-player > video',
-		);
+		const videoElement = document.querySelector('#gyazo-video-player > video');
 		const targetElement = document.querySelector(
 			'#react-root > div.header-block.explorer-header-block > div.explorer-action-btn-toolbar > div.explorer-action-btn-group',
 		);
 
 		if (videoElement && targetElement) {
-			const button =
-				document.createElement('button');
+			const button = document.createElement('button');
 			button.id = 'direct-video-link-button';
 			button.setAttribute(
 				'class',
 				'btn explorer-action-btn explorer-action-btn-dark',
 			);
-			button.setAttribute(
-				'data-tooltip-content',
-				'Direct Link',
-			);
+			button.setAttribute('data-tooltip-content', 'Direct Link');
 
-			const svg = document.createElementNS(
-				'http://www.w3.org/2000/svg',
-				'svg',
-			);
+			const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 			svg.setAttribute('width', '24');
 			svg.setAttribute('height', '24');
 			svg.setAttribute('viewBox', '0 0 24 24');
@@ -67,10 +55,8 @@
 			button.appendChild(svg);
 
 			// Create tooltip element
-			const tooltip =
-				document.createElement('div');
-			tooltip.id =
-				'tooltip-direct-video-link-button';
+			const tooltip = document.createElement('div');
+			tooltip.id = 'tooltip-direct-video-link-button';
 			tooltip.setAttribute('role', 'tooltip');
 			tooltip.setAttribute(
 				'class',
@@ -85,15 +71,9 @@
 
 			// Show tooltip on hover
 			button.onmouseover = function () {
-				const rect =
-					button.getBoundingClientRect();
-				tooltip.style.left =
-					rect.left +
-					window.scrollX -
-					18.9453 +
-					'px';
-				tooltip.style.top =
-					rect.top + window.scrollY + 42 + 'px';
+				const rect = button.getBoundingClientRect();
+				tooltip.style.left = rect.left + window.scrollX - 18.9453 + 'px';
+				tooltip.style.top = rect.top + window.scrollY + 42 + 'px';
 				tooltip.style.display = 'block';
 			};
 
@@ -103,8 +83,7 @@
 			};
 
 			// Extract the unique identifier from the current URL
-			const urlPath =
-				window.location.pathname.split('/')[1];
+			const urlPath = window.location.pathname.split('/')[1];
 			const directLink = `https://i.gyazo.com/${urlPath}.mp4`;
 
 			button.onclick = function () {
@@ -112,18 +91,12 @@
 			};
 
 			// Insert the button to the left of the target element
-			targetElement.insertAdjacentElement(
-				'beforebegin',
-				button,
-			);
+			targetElement.insertAdjacentElement('beforebegin', button);
 		}
 	}
 
 	// Initial run at document-idle
-	window.addEventListener(
-		'load',
-		addRedirectButton,
-	);
+	window.addEventListener('load', addRedirectButton);
 
 	// Observe changes in the URL to update the button
 	let lastUrl = location.href;

@@ -77,13 +77,9 @@
 		outline: 0;
 		border: 1px solid;
 		border-bottom-width: 2px;
-		border-color: rgb(
-			255 255 255 / 6.98%
-		) !important;
+		border-color: rgb(255 255 255 / 6.98%) !important;
 		border-radius: 4px;
-		background-color: rgb(
-			255 255 255 / 6.05%
-		) !important;
+		background-color: rgb(255 255 255 / 6.05%) !important;
 		padding-left: 10px;
 		/*Box model stuff*/
 		width: 100%;
@@ -129,9 +125,7 @@
 		outline: 0;
 		border: 1px solid;
 		border-bottom-width: 2px;
-		border-color: rgb(
-			255 255 255 / 6.98%
-		) !important;
+		border-color: rgb(255 255 255 / 6.98%) !important;
 		border-radius: 4px;
 		background-color: #363636 !important;
 		padding-left: 10px;
@@ -173,9 +167,7 @@
 		width: 20px;
 		height: 20px;
 	}
-	input[type='checkbox']:not(
-			.slider
-		):checked::after {
+	input[type='checkbox']:not(.slider):checked::after {
 		/*Display stuff*/
 		content: '';
 	}
@@ -189,9 +181,7 @@
 		background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='%23479EF5'/%3E%3Cpath d='M19.765 13.2047C20.0661 13.4892 20.0797 13.9638 19.7953 14.265L15.5453 18.765C15.4061 18.9123 15.2133 18.997 15.0107 18.9999C14.8081 19.0028 14.6129 18.9236 14.4697 18.7803L12.2197 16.5303C11.9268 16.2374 11.9268 15.7626 12.2197 15.4697C12.5126 15.1768 12.9874 15.1768 13.2803 15.4697L14.9846 17.174L18.7047 13.235C18.9891 12.9339 19.4638 12.9203 19.765 13.2047Z' fill='%23242424'/%3E%3C/svg%3E");
 		background-position: -6px -6px;
 	}
-	input[type='checkbox']:not(
-			.slider
-		):hover:checked {
+	input[type='checkbox']:not(.slider):hover:checked {
 		/*Box model stuff*/
 		background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='%2362ABF5'/%3E%3Cpath d='M19.765 13.2047C20.0661 13.4892 20.0797 13.9638 19.7953 14.265L15.5453 18.765C15.4061 18.9123 15.2133 18.997 15.0107 18.9999C14.8081 19.0028 14.6129 18.9236 14.4697 18.7803L12.2197 16.5303C11.9268 16.2374 11.9268 15.7626 12.2197 15.4697C12.5126 15.1768 12.9874 15.1768 13.2803 15.4697L14.9846 17.174L18.7047 13.235C18.9891 12.9339 19.4638 12.9203 19.765 13.2047Z' fill='%23242424'/%3E%3C/svg%3E%0A");
 		background-position: -6px -6px;

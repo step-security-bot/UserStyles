@@ -35,143 +35,145 @@
 
 @-moz-document domain("steamstat.us") {
 	:root {
-			--title-color: var(title-color);
-			--title-shadow: var(title-shadow);
-			--link-color: var(link-color);
-			--link-shadow: var(link-shadow);
-			--link-hover-color: var(link-hover-color);
-			--good-color: var(good-color);
-			--good-shadow: var(good-shadow);
-			--minor-color: var(minor-color);
-			--minor-shadow: var(minor-shadow);
-			--major-color: var(major-color);
-			--major-shadow: var(major-shadow);
-			--refresh-color: var(refresh-color);
-			--refresh-shadow: var(refresh-shadow);
-			--box-shadow: var(box-shadow);
-			--border-color: var(border-color);
-			--background-gradient-start: var(background-gradient-start);
-			--background-gradient-end: var(background-gradient-end);
-			--body-background: var(body-background);
-			--body-color: var(body-color);
-			--body-shadow: var(body-shadow);
-			--tooltip-background: var(tooltip-background);
-			--tooltip-color: var(tooltip-color);
-			--tooltip-shadow: var(tooltip-shadow);
+		--title-color: var(title-color);
+		--title-shadow: var(title-shadow);
+		--link-color: var(link-color);
+		--link-shadow: var(link-shadow);
+		--link-hover-color: var(link-hover-color);
+		--good-color: var(good-color);
+		--good-shadow: var(good-shadow);
+		--minor-color: var(minor-color);
+		--minor-shadow: var(minor-shadow);
+		--major-color: var(major-color);
+		--major-shadow: var(major-shadow);
+		--refresh-color: var(refresh-color);
+		--refresh-shadow: var(refresh-shadow);
+		--box-shadow: var(box-shadow);
+		--border-color: var(border-color);
+		--background-gradient-start: var(
+			background-gradient-start
+		);
+		--background-gradient-end: var(background-gradient-end);
+		--body-background: var(body-background);
+		--body-color: var(body-color);
+		--body-shadow: var(body-shadow);
+		--tooltip-background: var(tooltip-background);
+		--tooltip-color: var(tooltip-color);
+		--tooltip-shadow: var(tooltip-shadow);
 	}
 
 	.title {
-			margin: 10px 0;
-			color: var(--title-color);
-			font-weight: 300;
-			font-size: 2.6em;
-			/* Black/Green Status Title */
-			text-align: center;
-			text-shadow: 2px 2px 8px var(--title-shadow);
+		margin: 10px 0;
+		color: var(--title-color);
+		font-weight: 300;
+		font-size: 2.6em;
+		/* Black/Green Status Title */
+		text-align: center;
+		text-shadow: 2px 2px 8px var(--title-shadow);
 	}
 
 	a {
-			color: var(--link-color);
-			font-weight: 700;
-			text-decoration: none;
-			text-shadow: 1px 1px 4px var(--link-shadow);
+		color: var(--link-color);
+		font-weight: 700;
+		text-decoration: none;
+		text-shadow: 1px 1px 4px var(--link-shadow);
 	}
 
 	a:hover {
-			color: var(--link-hover-color);
-			text-decoration: underline;
+		color: var(--link-hover-color);
+		text-decoration: underline;
 	}
 
 	.pull-right,
 	.service .status {
-			float: right;
-			text-align: right;
+		float: right;
+		text-align: right;
 	}
 
 	.good {
-			/* Bright Green */
-			color: var(--good-color);
-			text-shadow: 1px 1px 6px var(--good-shadow);
+		/* Bright Green */
+		color: var(--good-color);
+		text-shadow: 1px 1px 6px var(--good-shadow);
 	}
 
 	.minor {
-			/* Light Green */
-			color: var(--minor-color);
-			font-weight: 700;
-			text-shadow: 1px 1px 6px var(--minor-shadow);
+		/* Light Green */
+		color: var(--minor-color);
+		font-weight: 700;
+		text-shadow: 1px 1px 6px var(--minor-shadow);
 	}
 
 	.major {
-			/* Dark Green */
-			color: var(--major-color);
-			font-weight: 700;
-			text-shadow: 1px 1px 6px var(--major-shadow);
+		/* Dark Green */
+		color: var(--major-color);
+		font-weight: 700;
+		text-shadow: 1px 1px 6px var(--major-shadow);
 	}
 
 	#js-refresh {
-			/* Refreshing in idk seconds */
-			color: var(--refresh-color);
-			font-weight: bolder;
-			text-shadow: 0 0 8px var(--refresh-shadow);
+		/* Refreshing in idk seconds */
+		color: var(--refresh-color);
+		font-weight: bolder;
+		text-shadow: 0 0 8px var(--refresh-shadow);
 	}
 
 	.services,
 	#psa,
 	noscript {
-			position: relative;
-			box-shadow: 0 4px 8px var(--box-shadow);
-			border: 1px solid var(--border-color);
-			border-radius: 6px;
-			background: linear-gradient(
-					145deg,
-					var(--background-gradient-start),
-					var(--background-gradient-end)
-			);
-			color: #f8f8f2;
-			font-size: 1em;
-			line-height: 1.5;
-			text-shadow: 0 0 6px var(--box-shadow);
+		position: relative;
+		box-shadow: 0 4px 8px var(--box-shadow);
+		border: 1px solid var(--border-color);
+		border-radius: 6px;
+		background: linear-gradient(
+			145deg,
+			var(--background-gradient-start),
+			var(--background-gradient-end)
+		);
+		color: #f8f8f2;
+		font-size: 1em;
+		line-height: 1.5;
+		text-shadow: 0 0 6px var(--box-shadow);
 	}
 
 	body {
-			margin: 0;
-			background: var(--body-background);
-			color: var(--body-color);
-			font-weight: 300;
-			font-size: 16px;
-			font-family: Roboto, Arial, sans-serif;
-			text-shadow: 1px 1px 3px var(--body-shadow);
+		margin: 0;
+		background: var(--body-background);
+		color: var(--body-color);
+		font-weight: 300;
+		font-size: 16px;
+		font-family: Roboto, Arial, sans-serif;
+		text-shadow: 1px 1px 3px var(--body-shadow);
 	}
 
 	[data-tooltip]::before {
-			/* Time since last status change Box */
-			visibility: hidden;
-			opacity: 0%;
-			overflow: hidden;
-			content: attr(data-tooltip);
-			font-size: 0.9em;
-			white-space: pre;
-			word-wrap: break-word;
-			position: absolute;
-			top: 0;
-			left: 2%;
-			z-index: 1;
-			transition:
-					visibility 0s,
-					opacity 0.3s ease-in-out;
-			border-radius: 6px;
-			background: var(--tooltip-background);
-			padding: 8px;
-			width: 96%;
-			color: var(--tooltip-color);
-			font-style: italic;
-			font-weight: 300;
-			text-align: left;
-			text-shadow: 1px 1px 3px var(--tooltip-shadow);
+		/* Time since last status change Box */
+		visibility: hidden;
+		opacity: 0%;
+		overflow: hidden;
+		content: attr(data-tooltip);
+		font-size: 0.9em;
+		white-space: pre;
+		word-wrap: break-word;
+		position: absolute;
+		top: 0;
+		left: 2%;
+		z-index: 1;
+		transition:
+			visibility 0s,
+			opacity 0.3s ease-in-out;
+		border-radius: 6px;
+		background: var(--tooltip-background);
+		padding: 8px;
+		width: 96%;
+		color: var(--tooltip-color);
+		font-style: italic;
+		font-weight: 300;
+		text-align: left;
+		text-shadow: 1px 1px 3px var(--tooltip-shadow);
 	}
 
 	[data-tooltip]:hover::before {
-			visibility: visible;
-			opacity: 100%;
+		visibility: visible;
+		opacity: 100%;
 	}
 }

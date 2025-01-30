@@ -24,12 +24,7 @@
 	}
 
 	/* Ensure background images are not inverted */
-	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video
-	) {
+	:is(html:not([stylus-iframe]), img, svg, video) {
 		background-color: inherit !important;
 	}
 

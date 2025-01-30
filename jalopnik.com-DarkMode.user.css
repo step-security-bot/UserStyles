@@ -16,15 +16,8 @@
 			img,
 			svg,
 			video,
-			body
-				> div:nth-child(5)
-				> div.js_footer-container
-		):not(
-			z#z.z[z],
-			svg,
-			a > img,
-			#site-footer-container
-		) {
+			body > div:nth-child(5) > div.js_footer-container
+		):not(z#z.z[z], svg, a > img, #site-footer-container) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 }

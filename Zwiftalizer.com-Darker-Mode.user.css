@@ -40,13 +40,11 @@
 		background: var(--darker);
 	}
 
-	.bootstrap-select.show
-		.dropdown-menu:not(.inner),
+	.bootstrap-select.show .dropdown-menu:not(.inner),
 	.dropdown-menu.bootstrap-datetimepicker-widget.bottom.open,
 	.dropdown-menu.bootstrap-datetimepicker-widget.top.open,
 	.dropdown.show .dropdown-menu,
-	.dropup.show:not(.bootstrap-select)
-		.dropdown-menu,
+	.dropup.show:not(.bootstrap-select) .dropdown-menu,
 	.navbar .dropdown.show .dropdown-menu,
 	.form-group .form-control,
 	.input-group .form-control,
@@ -243,12 +241,10 @@
 		--breakpoint-xl: 1200px;
 		--font-family-sans-serif: -apple-system,
 			blinkmacsystemfont, 'Segoe UI', roboto,
-			'Helvetica Neue', arial, 'Noto Sans',
-			sans-serif, 'Apple Color Emoji',
-			'Segoe UI Emoji', 'Segoe UI Symbol',
-			'Noto Color Emoji';
-		--font-family-monospace: sfmono-regular,
-			menlo, monaco, consolas, 'Liberation Mono',
-			'Courier New', monospace;
+			'Helvetica Neue', arial, 'Noto Sans', sans-serif,
+			'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol', 'Noto Color Emoji';
+		--font-family-monospace: sfmono-regular, menlo, monaco,
+			consolas, 'Liberation Mono', 'Courier New', monospace;
 	}
 }

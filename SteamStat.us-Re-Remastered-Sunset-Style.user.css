@@ -44,9 +44,7 @@
 		--good-status-color: var(good-status-color);
 		--minor-status-color: var(minor-status-color);
 		--major-status-color: var(major-status-color);
-		--refresh-indicator-color: var(
-			refresh-indicator-color
-		);
+		--refresh-indicator-color: var(refresh-indicator-color);
 		--services-background-gradient-color-1: var(
 			services-background-gradient-color-1
 		);
@@ -82,9 +80,7 @@
 			refresh-indicator-shadow-color
 		);
 		--box-shadow-color: var(box-shadow-color);
-		--text-shadow-color-2: var(
-			text-shadow-color-2
-		);
+		--text-shadow-color-2: var(text-shadow-color-2);
 	}
 
 	.title {
@@ -101,8 +97,7 @@
 		font-size: 2.6em;
 		/* Bright Gradient Title */
 		text-align: center;
-		text-shadow: 2px 2px 8px
-			var(--text-shadow-color);
+		text-shadow: 2px 2px 8px var(--text-shadow-color);
 		-webkit-text-fill-color: transparent;
 	}
 
@@ -129,8 +124,7 @@
 	.good {
 		/* Bright Lime Green */
 		color: var(--good-status-color);
-		text-shadow: 1px 1px 5px
-			var(--good-status-shadow-color);
+		text-shadow: 1px 1px 5px var(--good-status-shadow-color);
 	}
 
 	.minor {
@@ -172,8 +166,7 @@
 		color: #ffffff;
 		font-size: 1em;
 		line-height: 1.5;
-		text-shadow: 0 0 6px
-			var(--text-shadow-color-2);
+		text-shadow: 0 0 6px var(--text-shadow-color-2);
 	}
 
 	body {
@@ -188,8 +181,7 @@
 		font-weight: 300;
 		font-size: 16px;
 		font-family: Roboto, Arial, sans-serif;
-		text-shadow: 1px 1px 4px
-			var(--text-shadow-color-2);
+		text-shadow: 1px 1px 4px var(--text-shadow-color-2);
 	}
 
 	[data-tooltip]::before {
@@ -221,8 +213,7 @@
 		font-style: italic;
 		font-weight: 300;
 		text-align: left;
-		text-shadow: 1px 1px 5px
-			var(--text-shadow-color-2);
+		text-shadow: 1px 1px 5px var(--text-shadow-color-2);
 	}
 
 	[data-tooltip]:hover::before {

@@ -44,17 +44,12 @@
 	};
 
 	const loadSavedVolume = () => {
-		const savedVolume =
-			localStorage.getItem(VOLUME_KEY);
-		console.log(
-			`Saved volume found: ${savedVolume}`,
-		);
+		const savedVolume = localStorage.getItem(VOLUME_KEY);
+		console.log(`Saved volume found: ${savedVolume}`);
 		if (savedVolume) {
 			setVolume(parseFloat(savedVolume));
 		} else {
-			console.log(
-				'No saved volume found, defaulting to 100',
-			);
+			console.log('No saved volume found, defaulting to 100');
 			setVolume(DEFAULT_VOLUME);
 		}
 	};
@@ -66,9 +61,7 @@
 		if (slider) {
 			loadSavedVolume();
 		} else {
-			console.error(
-				'Volume slider not found, retrying in 3 seconds',
-			);
+			console.error('Volume slider not found, retrying in 3 seconds');
 			setTimeout(tryLoadVolume, 3000);
 		}
 	};
@@ -78,38 +71,24 @@
 			'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
 		);
 		if (slider) {
-			console.log(
-				'Observing the volume slider for changes',
-			);
-			const observer = new MutationObserver(
-				() => {
-					const currentValue = slider.value;
-					console.log(
-						`Current volume changed to: ${currentValue}`,
-					);
-					localStorage.setItem(
-						VOLUME_KEY,
-						currentValue,
-					);
-					if (currentValue === '100') {
-						const savedVolume =
-							localStorage.getItem(VOLUME_KEY);
-						if (savedVolume) {
-							console.log(
-								`Resetting volume to saved value: ${savedVolume}`,
-							);
-							setVolume(parseFloat(savedVolume));
-						}
+			console.log('Observing the volume slider for changes');
+			const observer = new MutationObserver(() => {
+				const currentValue = slider.value;
+				console.log(`Current volume changed to: ${currentValue}`);
+				localStorage.setItem(VOLUME_KEY, currentValue);
+				if (currentValue === '100') {
+					const savedVolume = localStorage.getItem(VOLUME_KEY);
+					if (savedVolume) {
+						console.log(`Resetting volume to saved value: ${savedVolume}`);
+						setVolume(parseFloat(savedVolume));
 					}
-				},
-			);
+				}
+			});
 			observer.observe(slider, {
 				attributes: true,
 			});
 		} else {
-			console.error(
-				'Volume slider not found during initialization',
-			);
+			console.error('Volume slider not found during initialization');
 			setTimeout(observeSliderChanges, 1000);
 		}
 	};
@@ -120,8 +99,7 @@
 		);
 		if (slider) {
 			const currentValue = slider.value;
-			const savedVolume =
-				localStorage.getItem(VOLUME_KEY);
+			const savedVolume = localStorage.getItem(VOLUME_KEY);
 			if (currentValue === '100' && savedVolume) {
 				console.log(
 					`Monitoring: Resetting volume to saved value: ${savedVolume}`,
@@ -132,9 +110,7 @@
 	};
 
 	globalThis.addEventListener('load', () => {
-		console.log(
-			'YouTube TV Volume Rememberer script loaded',
-		);
+		console.log('YouTube TV Volume Rememberer script loaded');
 		setTimeout(() => {
 			tryLoadVolume();
 			observeSliderChanges();
@@ -142,36 +118,21 @@
 		}, 1000);
 	});
 
-	globalThis.addEventListener(
-		'keydown',
-		(event) => {
-			const slider = document.querySelector(
-				'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
-			);
-			if (!slider) return;
+	globalThis.addEventListener('keydown', (event) => {
+		const slider = document.querySelector(
+			'tp-yt-paper-slider[role="slider"].ytu-volume-slider',
+		);
+		if (!slider) return;
 
-			// Check if either Shift key is pressed
-			const isShiftPressed = event.shiftKey;
+		// Check if either Shift key is pressed
+		const isShiftPressed = event.shiftKey;
 
-			if (
-				isShiftPressed &&
-				event.key === 'ArrowUp'
-			) {
-				const newValue = Math.min(
-					parseFloat(slider.value) + 5,
-					100,
-				);
-				setVolume(newValue);
-			} else if (
-				isShiftPressed &&
-				event.key === 'ArrowDown'
-			) {
-				const newValue = Math.max(
-					parseFloat(slider.value) - 5,
-					0,
-				);
-				setVolume(newValue);
-			}
-		},
-	);
+		if (isShiftPressed && event.key === 'ArrowUp') {
+			const newValue = Math.min(parseFloat(slider.value) + 5, 100);
+			setVolume(newValue);
+		} else if (isShiftPressed && event.key === 'ArrowDown') {
+			const newValue = Math.max(parseFloat(slider.value) - 5, 0);
+			setVolume(newValue);
+		}
+	});
 })();

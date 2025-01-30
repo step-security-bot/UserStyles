@@ -16,42 +16,42 @@
 ==/UserStyle== */
 @-moz-document domain("fitfileviewer.com") {
 	:root {
-			--text-color-black: var(text-color-black);
-			--text-color-green: var(text-color-green);
-			--border-color: var(border-color);
-			--option-background-color: var(option-background-color);
-			--option-text-color: var(option-text-color);
+		--text-color-black: var(text-color-black);
+		--text-color-green: var(text-color-green);
+		--border-color: var(border-color);
+		--option-background-color: var(option-background-color);
+		--option-text-color: var(option-text-color);
 	}
 
 	.px-4,
 	.tracking-tight,
 	.whitespace-pre-wrap {
-			color: var(--text-color-black);
+		color: var(--text-color-black);
 	}
 
 	.text-red-500 {
-			color: var(--text-color-green);
+		color: var(--text-color-green);
 	}
 
 	.border-slate-700 {
-			--tw-border-opacity: 1;
-			border-color: var(--border-color);
+		--tw-border-opacity: 1;
+		border-color: var(--border-color);
 	}
 
 	#y1 > option,
 	#y2 > option {
-			background: var(--option-background-color);
-			color: var(--option-text-color);
+		background: var(--option-background-color);
+		color: var(--option-text-color);
 	}
 
 	/* Invert colors except images and videos */
 	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video,
-			.w-11\/12
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		.w-11\/12
 	) {
-			filter: invert(1) hue-rotate(180deg) !important;
+		filter: invert(1) hue-rotate(180deg) !important;
 	}
 }

@@ -10,13 +10,7 @@
 ==/UserStyle== */
 @-moz-document domain("findthatride.com") {
 	/* Invert colors except images and videos */
-	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video,
-		#header
-	) {
+	:is(html:not([stylus-iframe]), img, svg, video, #header) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 }

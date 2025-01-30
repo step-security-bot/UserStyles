@@ -19,85 +19,85 @@
 @-moz-document domain("klimat.app") {
 	/* Use the variables for colors */
 	:root {
-			--backgroundColor: var(backgroundColor);
-			--textColor: var(textColor);
-			--headerFooterColor: var(headerFooterColor);
-			--linkColor: var(linkColor);
-			--linkHoverColor: var(linkHoverColor);
-			--buttonColor: var(buttonColor);
-			--buttonHoverColor: var(buttonHoverColor);
+		--backgroundColor: var(backgroundColor);
+		--textColor: var(textColor);
+		--headerFooterColor: var(headerFooterColor);
+		--linkColor: var(linkColor);
+		--linkHoverColor: var(linkHoverColor);
+		--buttonColor: var(buttonColor);
+		--buttonHoverColor: var(buttonHoverColor);
 	}
 
 	body {
-			background-color: var(--backgroundColor);
-			color: var(--textColor);
+		background-color: var(--backgroundColor);
+		color: var(--textColor);
 	}
 
 	header,
 	footer,
 	.sidebar,
 	.content {
-			background-color: var(--headerFooterColor);
-			color: var(--textColor);
+		background-color: var(--headerFooterColor);
+		color: var(--textColor);
 	}
 
 	a,
 	.mbn {
-			color: var(--linkColor);
+		color: var(--linkColor);
 	}
 
 	a:hover {
-			color: var(--linkHoverColor);
+		color: var(--linkHoverColor);
 	}
 
 	table {
-			background-color: var(--headerFooterColor);
-			color: var(--textColor);
+		background-color: var(--headerFooterColor);
+		color: var(--textColor);
 	}
 
 	table th,
 	table td {
-			border: 1px solid #333;
+		border: 1px solid #333;
 	}
 
 	button,
 	input,
 	select,
 	textarea {
-			border: 1px solid #444;
-			background-color: var(--buttonColor);
-			color: var(--textColor);
+		border: 1px solid #444;
+		background-color: var(--buttonColor);
+		color: var(--textColor);
 	}
 
 	button:hover,
 	input:hover,
 	select:hover,
 	textarea:hover {
-			border-radius: 5px;
-			background-color: var(--buttonHoverColor);
+		border-radius: 5px;
+		background-color: var(--buttonHoverColor);
 	}
 
 	::selection {
-			background-color: var(--buttonHoverColor);
-			color: var(--backgroundColor);
+		background-color: var(--buttonHoverColor);
+		color: var(--backgroundColor);
 	}
 
 	span {
-			color: var(--linkColor);
+		color: var(--linkColor);
 	}
 
 	.information__left__blk {
-			border-color: var(--linkColor);
+		border-color: var(--linkColor);
 	}
 
 	#content_wrapper,
 	.form-actions,
 	#fieldDetails > tbody {
-			filter: invert(1) hue-rotate(180deg);
+		filter: invert(1) hue-rotate(180deg);
 	}
 
 	.modal-backdrop.fade {
-			display: none;
-			opacity: 0%;
+		display: none;
+		opacity: 0%;
 	}
 }

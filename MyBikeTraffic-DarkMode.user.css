@@ -21,15 +21,17 @@
 
 @-moz-document domain("mybiketraffic.com") {
 	:root {
-			--background-color-dark: var(background-color-dark);
-			--text-color: var(text-color);
-			--link-color: var(link-color);
-			--border-color-dark: var(border-color-dark);
-			--border-color-light: var(border-color-light);
-			--row-background-color: var(row-background-color);
-			--row-hover-background-color: var(row-hover-background-color);
-			--form-checked-color: var(form-checked-color);
-			--link-hover-color: var(link-hover-color);
+		--background-color-dark: var(background-color-dark);
+		--text-color: var(text-color);
+		--link-color: var(link-color);
+		--border-color-dark: var(border-color-dark);
+		--border-color-light: var(border-color-light);
+		--row-background-color: var(row-background-color);
+		--row-hover-background-color: var(
+			row-hover-background-color
+		);
+		--form-checked-color: var(form-checked-color);
+		--link-hover-color: var(link-hover-color);
 	}
 
 	body,
@@ -39,113 +41,125 @@
 	.thead-light,
 	.footer,
 	.terms {
-			background-color: var(--background-color-dark) !important;
-			color: var(--text-color) !important;
+		background-color: var(
+			--background-color-dark
+		) !important;
+		color: var(--text-color) !important;
 	}
 
 	.nav-link,
 	.nav-item a,
 	.terms a,
 	.footer a {
-			color: var(--link-color) !important;
+		color: var(--link-color) !important;
 	}
 
 	.table th,
 	.table td {
-			border-color: var(--border-color-dark) !important;
+		border-color: var(--border-color-dark) !important;
 	}
 
 	input,
 	select,
 	textarea {
-			border: 1px solid var(--border-color-light) !important;
-			background-color: var(--border-color-dark) !important;
-			color: var(--text-color) !important;
+		border: 1px solid var(--border-color-light) !important;
+		background-color: var(--border-color-dark) !important;
+		color: var(--text-color) !important;
 	}
 
 	.btn,
 	.form-control {
-			border: 1px solid var(--border-color-light) !important;
-			background-color: var(--border-color-dark) !important;
-			color: var(--text-color) !important;
+		border: 1px solid var(--border-color-light) !important;
+		background-color: var(--border-color-dark) !important;
+		color: var(--text-color) !important;
 	}
 
 	.navbar-toggler {
-			border-color: var(--border-color-dark) !important;
+		border-color: var(--border-color-dark) !important;
 	}
 
 	.navbar-toggler-icon {
-			filter: invert(1) !important;
+		filter: invert(1) !important;
 	}
 
 	.table thead th {
-			background-color: var(--border-color-dark) !important;
+		background-color: var(--border-color-dark) !important;
 	}
 
 	.table tbody tr {
-			background-color: var(--row-background-color) !important;
+		background-color: var(
+			--row-background-color
+		) !important;
 	}
 
 	.table tbody tr:hover {
-			background-color: var(--row-hover-background-color) !important;
+		background-color: var(
+			--row-hover-background-color
+		) !important;
 	}
 
 	.table tbody tr td {
-			border-color: var(--border-color-dark) !important;
+		border-color: var(--border-color-dark) !important;
 	}
 
 	.table tbody tr td span,
 	.table tbody tr td span.imperial,
 	.table tbody tr td span.metric {
-			color: var(--link-color) !important;
+		color: var(--link-color) !important;
 	}
 
 	.chart-container {
-			background-color: var(--row-background-color) !important;
+		background-color: var(
+			--row-background-color
+		) !important;
 	}
 
 	.chart-legend {
-			color: var(--text-color) !important;
+		color: var(--text-color) !important;
 	}
 
 	.form-check-input:checked {
-			border-color: var(--form-checked-color) !important;
-			background-color: var(--form-checked-color) !important;
+		border-color: var(--form-checked-color) !important;
+		background-color: var(--form-checked-color) !important;
 	}
 
 	.form-check-label {
-			color: var(--text-color) !important;
+		color: var(--text-color) !important;
 	}
 
 	.tooltip-inner,
 	.popover-body {
-			background-color: var(--border-color-dark) !important;
-			color: var(--text-color) !important;
+		background-color: var(--border-color-dark) !important;
+		color: var(--text-color) !important;
 	}
 
 	.arrow::before {
-			border-color: var(--border-color-dark) !important;
+		border-color: var(--border-color-dark) !important;
 	}
 
 	.modal-content {
-			background-color: var(--row-background-color) !important;
-			color: var(--text-color) !important;
+		background-color: var(
+			--row-background-color
+		) !important;
+		color: var(--text-color) !important;
 	}
 
 	.modal-header,
 	.modal-footer {
-			border-color: var(--border-color-dark) !important;
+		border-color: var(--border-color-dark) !important;
 	}
 
 	.nav-link:hover,
 	.nav-item a:hover,
 	.terms a:hover,
 	.footer a:hover {
-			color: var(--link-hover-color) !important;
+		color: var(--link-hover-color) !important;
 	}
 
 	.btn:hover,
 	.form-control:hover {
-			background-color: var(--row-hover-background-color) !important;
+		background-color: var(
+			--row-hover-background-color
+		) !important;
 	}
 }

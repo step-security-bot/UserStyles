@@ -24,17 +24,11 @@
 
 	// Load cache from Tampermonkey storage
 	function loadCache() {
-		const cache = GM_getValue(
-			'profilePicCache',
-			{},
-		);
+		const cache = GM_getValue('profilePicCache', {});
 		const now = Date.now();
 		// Clear out expired cache entries
 		Object.keys(cache).forEach((key) => {
-			if (
-				now - cache[key].timestamp >
-				CACHE_TTL_MS
-			) {
+			if (now - cache[key].timestamp > CACHE_TTL_MS) {
 				delete cache[key]; // Remove expired entry
 			}
 		});
@@ -51,17 +45,11 @@
 
 	// Preload HD image
 	function preloadHDImage(src) {
-		const hdSrc = src.replace(
-			/=s32-c/,
-			'=s800-c',
-		); // Adjust as needed for HD
+		const hdSrc = src.replace(/=s32-c/, '=s800-c'); // Adjust as needed for HD
 		if (!preloadedImages.has(hdSrc)) {
 			if (cache[hdSrc]) {
 				// If in persistent cache, load directly from cache
-				preloadedImages.set(
-					hdSrc,
-					cache[hdSrc].url,
-				);
+				preloadedImages.set(hdSrc, cache[hdSrc].url);
 			} else {
 				// Preload HD image and store in cache
 				const img = new Image();
@@ -82,18 +70,12 @@
 		debounceTimeout = setTimeout(() => {
 			const img = event.target;
 			const originalSrc = img.src;
-			const hdSrc = originalSrc.replace(
-				/=s32-c/,
-				'=s800-c',
-			); // Increase the size to 800px
+			const hdSrc = originalSrc.replace(/=s32-c/, '=s800-c'); // Increase the size to 800px
 			img.dataset.originalSrc = originalSrc; // Store the original src
 			// Swap in the HD version, check preloadedImages cache
-			img.src =
-				preloadedImages.get(hdSrc) || hdSrc;
-			img.style.transform =
-				'scale(6) translateX(20px)';
-			img.style.transition =
-				'transform 0.2s ease';
+			img.src = preloadedImages.get(hdSrc) || hdSrc;
+			img.style.transform = 'scale(6) translateX(20px)';
+			img.style.transition = 'transform 0.2s ease';
 			img.style.border = '1px solid black';
 			img.style.zIndex = '9999';
 			img.style.position = 'relative';
@@ -107,8 +89,7 @@
 	// Function to reset profile pictures to original size and source
 	function resetProfilePic(img) {
 		img.src = img.dataset.originalSrc || img.src; // Restore the original src if it was replaced
-		img.style.transform =
-			'scale(1) translateX(0)';
+		img.style.transform = 'scale(1) translateX(0)';
 		img.style.border = 'none';
 		img.style.zIndex = 'auto';
 		img.style.position = 'static';
@@ -121,10 +102,7 @@
 		);
 		profilePics.forEach((pic) => {
 			preloadHDImage(pic.src); // Preload HD image
-			pic.addEventListener(
-				'mouseover',
-				enlargeProfilePic,
-			);
+			pic.addEventListener('mouseover', enlargeProfilePic);
 		});
 	}
 

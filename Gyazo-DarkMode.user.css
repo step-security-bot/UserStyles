@@ -59,9 +59,7 @@
 	.main-block-stage,
 	.side-block-items,
 	.sidebar-block {
-		background-color: var(
-			--background-main
-		) !important;
+		background-color: var(--background-main) !important;
 		color: var(--gray-light) !important;
 	}
 
@@ -70,8 +68,7 @@
 	}
 
 	.edit-box-component .input-description:focus {
-		box-shadow: 0 0 0 5px
-			var(--primary-color-darker);
+		box-shadow: 0 0 0 5px var(--primary-color-darker);
 		color: var(-color-white) !important;
 	}
 
@@ -99,8 +96,7 @@
 	.metadata,
 	.related-info-box-component,
 	.side-block .side-block-items .sub,
-	.testing-swap-image-container
-		.metadata-baseinfo,
+	.testing-swap-image-container .metadata-baseinfo,
 	body > div.content > div:nth-child(2) > h1,
 	body > div.content > div:nth-child(n) > h2,
 	body > div.content > section.faq > div > h2,
@@ -124,9 +120,7 @@
 
 	.ocr-desc-buttons > div > button:hover {
 		border: 1px dashed !important;
-		border-color: var(
-			--secondary-color
-		) !important;
+		border-color: var(--secondary-color) !important;
 		border-radius: 5px;
 		color: var(--secondary-color) !important;
 	}
@@ -174,9 +168,7 @@
 	.image-box-component .image-close-btn-bg,
 	.image-box-component .navigation {
 		border: 4px solid var(--color-black) !important;
-		background-color: var(
-			--color-black
-		) !important;
+		background-color: var(--color-black) !important;
 		color: var(--primary-color) !important;
 	}
 
@@ -198,9 +190,7 @@
 	img,
 	input,
 	span {
-		background-color: var(
-			--background-main
-		) !important;
+		background-color: var(--background-main) !important;
 		color: var(--primary-color) !important;
 	}
 
@@ -220,12 +210,7 @@
 		> path:nth-child(n),
 	#like > svg,
 	#like > svg > path,
-	#popover
-		> div.popover-content
-		> div
-		> div
-		> div
-		> svg,
+	#popover > div.popover-content > div > div > div > svg,
 	.reblog-control > a > svg > path:nth-child(n),
 	#react-root
 		> div.header-block.explorer-header-block
@@ -253,11 +238,7 @@
 		> button.switch-save
 		> svg:hover,
 	.toplevel-item-kamon > svg > path,
-	.new-collection-field
-		> span
-		> span
-		> svg
-		> path,
+	.new-collection-field > span > span > svg > path,
 	#react-root
 		> div
 		> div
@@ -435,9 +416,7 @@
 		> button:hover:nth-child(n)
 		> svg
 		> path,
-	[id^='headlessui-menu-button-']
-		> svg
-		> path:hover,
+	[id^='headlessui-menu-button-'] > svg > path:hover,
 	[id^='headlessui-menu-item-'] > svg:hover,
 	.search-history-list
 		.histories
@@ -452,11 +431,7 @@
 		fill: var(-color-white);
 	}
 
-	.ocr-desc-buttons
-		> div
-		> div
-		> button:hover
-		> svg {
+	.ocr-desc-buttons > div > div > button:hover > svg {
 		fill: var(-color-white) !important;
 	}
 
@@ -497,9 +472,7 @@
 		color: var(-color-white) !important;
 	}
 
-	.images-show
-		.bottom.interactive-popover
-		> .arrow::after,
+	.images-show .bottom.interactive-popover > .arrow::after,
 	.popover.bottom > .arrow::after {
 		border-bottom-color: var(--primary-color);
 	}
@@ -523,9 +496,7 @@
 	.related-images-grid-view.related-info,
 	.tooltip {
 		border: 1px solid var(--gray-dark) !important;
-		background-color: var(
-			--gray-darker
-		) !important;
+		background-color: var(--gray-darker) !important;
 		color: var(--gray-light) !important;
 	}
 
@@ -557,9 +528,7 @@
 
 	.card.medium-card {
 		border: 1px solid var(--gray-dark) !important;
-		background-color: var(
-			--gray-darker
-		) !important;
+		background-color: var(--gray-darker) !important;
 	}
 
 	.metadata-description {
@@ -568,15 +537,8 @@
 
 	.captured-info,
 	.ocr-icon-block > div,
-	.related-info
-		> div
-		> div
-		> span
-		> span:first-child,
-	.section-headline
-		> a
-		> span
-		> span:first-child {
+	.related-info > div > div > span > span:first-child,
+	.section-headline > a > span > span:first-child {
 		margin-left: 10px;
 	}
 
@@ -643,9 +605,7 @@
 
 	option,
 	select {
-		background-color: var(
-			--gray-darker
-		) !important;
+		background-color: var(--gray-darker) !important;
 		color: var(--gray-light) !important;
 	}
 
@@ -702,9 +662,7 @@
 		box-shadow:
 			0 0 1px 1px var(--download-button),
 			0 0 1px var(--download-button) !important;
-		background-color: var(
-			--download-button
-		) !important;
+		background-color: var(--download-button) !important;
 		color: var(--color-black) !important;
 	}
 
@@ -723,9 +681,7 @@
 		box-shadow: 0 1px 0 0 var(--primary-color);
 	}
 
-	.grid-view
-		.card.medium-card
-		.hover-layer:hover {
+	.grid-view .card.medium-card .hover-layer:hover {
 		position: absolute;
 		opacity: 0%;
 		mix-blend-mode: multiply;
@@ -740,9 +696,7 @@
 	#metadata-is-public-dropdown > span,
 	textarea {
 		border: none;
-		background-color: var(
-			--color-black
-		) !important;
+		background-color: var(--color-black) !important;
 		color: var(--primary-color);
 	}
 
@@ -795,13 +749,7 @@
 		> i,
 	#section-features > div > h2,
 	.closing > div > h2,
-	.faq
-		> div
-		> div
-		> ul
-		> li:nth-child(n)
-		> div.expand
-		> i,
+	.faq > div > div > ul > li:nth-child(n) > div.expand > i,
 	.pricing > div > h2,
 	.testimonials
 		> div
@@ -836,9 +784,7 @@
 		> div
 		> div,
 	.page-content .indent-mark .dot {
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 		color: var(--primary-color) !important;
 	}
 
@@ -851,10 +797,7 @@
 
 	#conclusion > div > button,
 	.transform-page-header > div > button,
-	.transform-page-header
-		> div
-		> div
-		> button:nth-child(n),
+	.transform-page-header > div > div > button:nth-child(n),
 	.Xpov4pPcafwfUVkzW7Gw,
 	.pricing-box-default,
 	.box.small-team {
@@ -896,8 +839,7 @@
 	}
 
 	* {
-		scrollbar-color: var(--primary-color)
-			var(--color-black);
+		scrollbar-color: var(--primary-color) var(--color-black);
 		scrollbar-width: thin;
 	}
 
@@ -923,9 +865,7 @@
 	}
 
 	.images-after-origin > section {
-		background-color: var(
-			--background-main
-		) !important;
+		background-color: var(--background-main) !important;
 	}
 
 	body
@@ -943,9 +883,7 @@
 	}
 
 	body > div.content > section.faq,
-	body
-		> div.content
-		> section.hero-header.hidden-xs,
+	body > div.content > section.hero-header.hidden-xs,
 	body > div.content > section.hero.hidden-xs,
 	body > div.content > section.testimonials {
 		background-image: linear-gradient(
@@ -1034,8 +972,7 @@
 		border-color: var(--primary-color-darker);
 	}
 
-	.teams-pricing
-		.pricing-toggle-switch-container {
+	.teams-pricing .pricing-toggle-switch-container {
 		display: inline-block;
 		position: relative;
 		cursor: pointer;
@@ -1087,9 +1024,7 @@
 		border-bottom: 2px solid var(--primary-color);
 	}
 
-	.side-block
-		.side-block-items
-		.toplevel-item-active {
+	.side-block .side-block-items .toplevel-item-active {
 		background: var(--background-main);
 		pointer-events: none;
 	}
@@ -1109,9 +1044,7 @@
 		background: var(--primary-color);
 	}
 
-	#react-root
-		> div.header-block.explorer-header-block
-		> a {
+	#react-root > div.header-block.explorer-header-block > a {
 		border-bottom: 10px;
 		background-color: #12121200 !important;
 	}
@@ -1125,11 +1058,9 @@
 	}
 
 	.form-control:focus,
-	.global-header-search.global-header-search
-		input:focus {
+	.global-header-search.global-header-search input:focus {
 		outline: 0;
-		box-shadow: 0 0 0 3px
-			var(--primary-color-darker);
+		box-shadow: 0 0 0 3px var(--primary-color-darker);
 		border-color: var(--primary-color) !important;
 	}
 
@@ -1155,17 +1086,10 @@
 
 	.B9QQGIFrwoa05qnyZvI5 {
 		gap: 1px 0 !important;
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 	}
 
-	.related-pages
-		.related-pages-body
-		ul
-		> li
-		> a
-		.icon {
+	.related-pages .related-pages-body ul > li > a .icon {
 		background-image: url('https://i.gyazo.com/03452dc72b4111fa1641b9fe7c53ef39.png') !important;
 		/* fill: white !important; */
 	}
@@ -1308,9 +1232,7 @@
 			div.k3nzGrC3hEubDzXyOg_r,
 			.stickers,
 			.colorset,
-			.btn-group.btn-group-xs
-				> button:nth-child(n)
-				> div,
+			.btn-group.btn-group-xs > button:nth-child(n) > div,
 			.color-display,
 			[role*='tooltip'],
 			.stamp-select,
@@ -1337,9 +1259,7 @@
 		/* Example style */
 	}
 
-	.image-page-renewal
-		.draw-toolbar-operation-btn
-		span {
+	.image-page-renewal .draw-toolbar-operation-btn span {
 		border-top: solid 1px var(--primary-color);
 		border-bottom: solid 1px var(--primary-color);
 		line-height: 30px;

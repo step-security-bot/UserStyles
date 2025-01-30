@@ -11,12 +11,7 @@
 
 @-moz-document domain("detroitmi.gov") {
 	/* Invert colors except images and videos */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-		):not(
+	:is(html:not([stylus-iframe]), img, svg, video):not(
 			z#z.z[z],
 			a.logo > img,
 			a.abclogo > img
@@ -25,12 +20,9 @@
 	}
 
 	/* Ensure background images are not inverted */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-		):not(z#z.z[z]) {
+	:is(html:not([stylus-iframe]), img, svg, video):not(
+			z#z.z[z]
+		) {
 		background-color: inherit !important;
 	}
 }

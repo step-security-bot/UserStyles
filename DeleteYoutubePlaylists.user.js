@@ -15,8 +15,7 @@
 	'use strict';
 
 	// Create and style the UI button
-	const uiButton =
-		document.createElement('button');
+	const uiButton = document.createElement('button');
 	uiButton.innerText = 'Start Deleting Playlists';
 	uiButton.style.position = 'fixed';
 	uiButton.style.top = '10px';
@@ -49,46 +48,34 @@
 							document.querySelectorAll(
 								'ytcp-text-menu yt-formatted-string.item-text',
 							),
-						).find(
-							(el) => el.innerText === 'Delete',
-						);
+						).find((el) => el.innerText === 'Delete');
 
 						if (deleteButton) {
 							deleteButton.click();
 
 							setTimeout(() => {
-								const confirmButton =
-									document.querySelector(
-										'ytcp-button[id="confirm-button"]',
-									);
+								const confirmButton = document.querySelector(
+									'ytcp-button[id="confirm-button"]',
+								);
 								if (confirmButton) {
 									confirmButton.click();
 									i++;
-									setTimeout(
-										deleteNextPlaylist,
-										1000,
-									); // Wait for 1 seconds before the next deletion
+									setTimeout(deleteNextPlaylist, 1000); // Wait for 1 seconds before the next deletion
 								}
 							}, 500);
 						} else {
 							i++;
-							setTimeout(
-								deleteNextPlaylist,
-								2000,
-							); // Move to next if delete button not found
+							setTimeout(deleteNextPlaylist, 2000); // Move to next if delete button not found
 						}
 					}, 500);
 				} else {
-					uiButton.innerText =
-						'Deletion Complete';
+					uiButton.innerText = 'Deletion Complete';
 				}
 			}
 
 			deleteNextPlaylist();
 		} else {
-			alert(
-				'No playlists found or only one playlist present.',
-			);
+			alert('No playlists found or only one playlist present.');
 		}
 	}
 

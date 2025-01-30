@@ -23,7 +23,7 @@
 		--table-alternate-row: var(table-alternate-row);
 		--primary-color: var(primary-color);
 		--invert-filter: var(invert-filter);
-		}
+	}
 
 	a:hover,
 	a:focus {
@@ -44,48 +44,15 @@
 	video,
 	.navbar-fixed-top,
 	.open > .dropdown-menu,
-	.table-bordered
-		caption
-		+ thead
-		tr:first-child
-		th,
-	.table-bordered
-		caption
-		+ tbody
-		tr:first-child
-		th,
-	.table-bordered
-		caption
-		+ tbody
-		tr:first-child
-		td,
-	.table-bordered
-		colgroup
-		+ thead
-		tr:first-child
-		th,
-	.table-bordered
-		colgroup
-		+ tbody
-		tr:first-child
-		th,
-	.table-bordered
-		colgroup
-		+ tbody
-		tr:first-child
-		td,
-	.table-bordered
-		thead:first-child
-		tr:first-child
-		th,
-	.table-bordered
-		tbody:first-child
-		tr:first-child
-		th,
-	.table-bordered
-		tbody:first-child
-		tr:first-child
-		td,
+	.table-bordered caption + thead tr:first-child th,
+	.table-bordered caption + tbody tr:first-child th,
+	.table-bordered caption + tbody tr:first-child td,
+	.table-bordered colgroup + thead tr:first-child th,
+	.table-bordered colgroup + tbody tr:first-child th,
+	.table-bordered colgroup + tbody tr:first-child td,
+	.table-bordered thead:first-child tr:first-child th,
+	.table-bordered tbody:first-child tr:first-child th,
+	.table-bordered tbody:first-child tr:first-child td,
 	header#masthead,
 	#socialPlaceholder,
 	.tab-content,
@@ -115,12 +82,7 @@
 	#summaryTab > div:nth-child(n),
 	.day,
 	#mainContent > div:nth-child(n),
-	#mainContent
-		> div:nth-child(n)
-		> div
-		> div
-		> div
-		> table,
+	#mainContent > div:nth-child(n) > div > div > div > table,
 	#gearSummary > div > div,
 	#charts,
 	#mainContent > .awards > div:nth-child(1) > div,
@@ -157,16 +119,8 @@
 	#bbCode,
 	.leaflet-map-pane,
 	#mapContainer2,
-	#activitiesTab
-		> div
-		> div:nth-child(1)
-		> table
-		> thead,
-	#activitiesTab
-		> div
-		> div:nth-child(1)
-		> table
-		> tbody,
+	#activitiesTab > div > div:nth-child(1) > table > thead,
+	#activitiesTab > div > div:nth-child(1) > table > tbody,
 	.table-bordered,
 	.leaflet-container,
 	#stravaEmbed,
@@ -205,10 +159,7 @@
 		> .tableWrapper.st
 		> .st-body.splitsDiv
 		> table,
-	#splitsTab
-		> .tableWrapper.st
-		> .st-head
-		> table,
+	#splitsTab > .tableWrapper.st > .st-head > table,
 	#overview > div > .span8 > h1 > img,
 	#tableWrapper table,
 	.tableWrapper
@@ -228,9 +179,7 @@
 	#completedChallenges > div:nth-child(n),
 	#partChallenges > div:nth-child(n),
 	#otherChallenges > div:nth-child(n) {
-		background: var(
-			--background-color
-		) !important;
+		background: var(--background-color) !important;
 	}
 
 	html,

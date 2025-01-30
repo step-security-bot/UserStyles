@@ -16,9 +16,7 @@
 @-moz-document domain("zwifthacks.com") {
 	:root {
 		--background-color: var(background-color);
-		--hover-background-color: var(
-			hover-background-color
-		);
+		--hover-background-color: var(hover-background-color);
 		--border-color: var(border-color);
 		--text-color: var(text-color);
 	}
@@ -83,8 +81,7 @@
 	}
 
 	:focus-visible {
-		outline: var(--hover-background-color) auto
-			1px;
+		outline: var(--hover-background-color) auto 1px;
 	}
 
 	.main-navigation-menu

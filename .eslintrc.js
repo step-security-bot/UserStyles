@@ -18,12 +18,7 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: [
-		'react',
-		'@typescript-eslint',
-		'html',
-		'json',
-	],
+	plugins: ['react', '@typescript-eslint', 'html', 'json'],
 	rules: {
 		semi: ['error', 'always'],
 		quotes: ['error', 'single'],
@@ -38,8 +33,7 @@ module.exports = {
 	overrides: [
 		{
 			files: ['**/*.css'],
-			processor:
-				'stylelint-processor-styled-components',
+			processor: 'stylelint-processor-styled-components',
 		},
 		{
 			files: ['**/*.html'],

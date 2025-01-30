@@ -30,9 +30,7 @@ url-prefix("http://kiwifarms")
 		--border-color: var(border-color);
 		--border-color2: var(border-color2);
 		--border-highlight: var(border-highlight);
-		--hover-background-color: var(
-			hover-background-color
-		);
+		--hover-background-color: var(hover-background-color);
 		--white: var(white);
 	}
 
@@ -44,9 +42,7 @@ url-prefix("http://kiwifarms")
 	.p-footer,
 	.block-container *,
 	.block-container button {
-		background-color: var(
-			--background-color
-		) !important;
+		background-color: var(--background-color) !important;
 	}
 
 	.structItem.structItem,
@@ -54,8 +50,7 @@ url-prefix("http://kiwifarms")
 		border: 1px solid var(--border-color);
 	}
 
-	.block--messages
-		.message.hb-react-threadHighlight {
+	.block--messages .message.hb-react-threadHighlight {
 		box-shadow:
 			-1px -4px 1px var(--border-highlight),
 			inset 2px 3px 5px #0000004d,
@@ -63,12 +58,8 @@ url-prefix("http://kiwifarms")
 		border: 2px outset var(--border-highlight);
 	}
 
-	.XenBase
-		:not(.block-header)
-		.button.button--link,
-	.XenBase
-		:not(.block-header)
-		a.button.button--link {
+	.XenBase :not(.block-header) .button.button--link,
+	.XenBase :not(.block-header) a.button.button--link {
 		background-color: #212428 !important;
 		color: #fff !important;
 	}
@@ -99,19 +90,14 @@ url-prefix("http://kiwifarms")
 	.sidebar .visitorPanel .username,
 	.navigationSideBar a:hover,
 	.discussionListItems .unread .title a,
-	.discussionListItems
-		.unread
-		.lastPostInfo
-		.username,
+	.discussionListItems .unread .lastPostInfo .username,
 	.externalLink.ProxyLink,
 	.message .messageMeta .control:hover,
 	.redactor_toolbar li a.redactor_act,
 	.xenOverlay.memberCard .userInfo h3 a,
 	.xenOverlay.memberCard .userLinks,
 	.messageContent .username.poster,
-	.messageMeta
-		.publicControls
-		.LikeLink.item.control.like,
+	.messageMeta .publicControls .LikeLink.item.control.like,
 	a.CommentPoster.item.control.postComment,
 	ul.links a,
 	a.username.primaryText,
@@ -161,10 +147,7 @@ url-prefix("http://kiwifarms")
 	.message .editDate,
 	.ctaFtThreadTextAvatar,
 	.sidebar .section .secondaryContent .footnote,
-	.sidebar
-		.section
-		.secondaryContent
-		.minorHeading,
+	.sidebar .section .secondaryContent .minorHeading,
 	.sidebar .section .primaryContent h3,
 	.sidebar .section .secondaryContent h3,
 	.profilePage .mast .section.infoBlock h3,
@@ -246,30 +229,22 @@ url-prefix("http://kiwifarms")
 	.xenForm .formHeader,
 	.userBanner.bannerStaff,
 	#uix_jumpToFixed,
-	.message
-		.publicControls
-		.MultiQuoteControl.active,
+	.message .publicControls .MultiQuoteControl.active,
 	.pollBlock .buttons .button,
 	.button {
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 	}
 
 	a.callToAction span,
 	.PageNav a.currentPage {
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 		color: var(--secondary-color) !important;
 	}
 
 	.navTabs,
 	.navTabs .navTab.selected .navLink {
 		border-color: var(--border-color);
-		background-color: var(
-			--background-color
-		) !important;
+		background-color: var(--background-color) !important;
 	}
 
 	.footer .choosers a:hover {
@@ -278,9 +253,7 @@ url-prefix("http://kiwifarms")
 	}
 
 	.navTabs .navTab.selected.PopupOpen .navLink {
-		background-color: var(
-			--secondary-color
-		) !important;
+		background-color: var(--secondary-color) !important;
 		color: var(--white) !important;
 	}
 

@@ -11,33 +11,19 @@
 
 @-moz-document domain("michigan.gov") {
 	/* Invert colors except images and videos */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-		):not(png) {
+	:is(html:not([stylus-iframe]), img, svg, video):not(png) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	/* Ensure background images are not inverted */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-		):not(z#z.z[z]) {
+	:is(html:not([stylus-iframe]), img, svg, video):not(
+			z#z.z[z]
+		) {
 		background-color: inherit !important;
 	}
 
 	/* Additional styling for the Michigan Department of State */
-	#footer
-		> section
-		> div
-		> div
-		> div
-		> div
-		> div.row {
+	#footer > section > div > div > div > div > div.row {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 

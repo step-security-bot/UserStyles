@@ -38,15 +38,9 @@
 	}
 
 	// Function to click all buttons sequentially
-	async function clickButtonsSequentially(
-		buttons,
-		delay,
-	) {
+	async function clickButtonsSequentially(buttons, delay) {
 		for (let i = 0; i < buttons.length; i++) {
-			await clickButtonWithDelay(
-				buttons[i],
-				delay,
-			);
+			await clickButtonWithDelay(buttons[i], delay);
 		}
 	}
 
@@ -54,31 +48,18 @@
 	async function startClickingProcess() {
 		if (isClicking) return;
 		isClicking = true;
-		console.log(
-			'Starting the clicking process...',
-		);
+		console.log('Starting the clicking process...');
 
 		intervalId = setInterval(async () => {
 			const buttons = Array.from(
-				document.querySelectorAll(
-					'.button.button--rideon:not(.clicked)',
-				),
+				document.querySelectorAll('.button.button--rideon:not(.clicked)'),
 			);
 			if (buttons.length > 0) {
-				console.log(
-					`Found ${buttons.length} buttons. Clicking...`,
-				);
-				await clickButtonsSequentially(
-					buttons,
-					750,
-				); // 750ms delay
-				buttons.forEach((button) =>
-					button.classList.add('clicked'),
-				);
+				console.log(`Found ${buttons.length} buttons. Clicking...`);
+				await clickButtonsSequentially(buttons, 750); // 750ms delay
+				buttons.forEach((button) => button.classList.add('clicked'));
 			} else {
-				console.log(
-					'No new buttons found at this moment.',
-				);
+				console.log('No new buttons found at this moment.');
 			}
 		}, 3000); // Check for new buttons every 3 seconds
 	}
@@ -96,8 +77,7 @@
 	function toggleClickingProcess() {
 		if (isClicking) {
 			stopClickingProcess();
-			startStopButton.textContent =
-				'Give Ride-ons';
+			startStopButton.textContent = 'Give Ride-ons';
 		} else {
 			startClickingProcess();
 			startStopButton.textContent = 'Stop';
@@ -106,31 +86,22 @@
 
 	// Create a UI integrated into the navbar
 	function createUI() {
-		const navRight = document.querySelector(
-			'.PrimaryNav-module__right--_UfGm',
-		);
+		const navRight = document.querySelector('.PrimaryNav-module__right--_UfGm');
 		if (!navRight) {
-			console.error(
-				'Navbar not found. UI cannot be created.',
-			);
+			console.error('Navbar not found. UI cannot be created.');
 			return;
 		}
 
-		const uiContainer =
-			document.createElement('li');
+		const uiContainer = document.createElement('li');
 		uiContainer.className =
 			'PrimaryNav-module__hideNav--2X2zV PrimaryNav-module__lessLinks--2fidO';
 		// Assign to the global variable
 		startStopButton = document.createElement('a');
 		startStopButton.textContent = 'Give Ride-ons';
-		startStopButton.className =
-			'PrimaryNav-module__page-link--24LJd';
+		startStopButton.className = 'PrimaryNav-module__page-link--24LJd';
 		startStopButton.style.cursor = 'pointer';
 		startStopButton.style.marginRight = '10px';
-		startStopButton.addEventListener(
-			'click',
-			toggleClickingProcess,
-		);
+		startStopButton.addEventListener('click', toggleClickingProcess);
 
 		uiContainer.appendChild(startStopButton);
 		navRight.appendChild(uiContainer);

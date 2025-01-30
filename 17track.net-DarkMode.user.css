@@ -14,30 +14,30 @@
 @-moz-document domain("17track.net") {
 	/* Use the variables for colors */
 	:root {
-			--baseColor: var(baseColor);
+		--baseColor: var(baseColor);
 	}
 
 	/* Base dark mode filter */
 	html {
-			filter: invert(1) hue-rotate(180deg) !important;
-			background: var(--baseColor);
+		filter: invert(1) hue-rotate(180deg) !important;
+		background: var(--baseColor);
 	}
 
 	img,
 	video,
 	trk-shared-icon > svg > use,
 	header > nav {
-			filter: invert(1) hue-rotate(180deg) !important;
+		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.up-deals-img,
 	.up-deals,
 	.tracklist-details
-			> .yqcr-action
-			> .hidden-xs
-			> .up-deals,
+		> .yqcr-action
+		> .hidden-xs
+		> .up-deals,
 	.chart-gpt-text,
 	.chart-gpt-icon {
-			display: none;
+		display: none;
 	}
 }

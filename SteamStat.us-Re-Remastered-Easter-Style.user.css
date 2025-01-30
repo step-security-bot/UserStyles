@@ -38,12 +38,8 @@
 
 @-moz-document domain("steamstat.us") {
 	:root {
-		--title-gradient-start: var(
-			title-gradient-start
-		);
-		--title-gradient-middle: var(
-			title-gradient-middle
-		);
+		--title-gradient-start: var(title-gradient-start);
+		--title-gradient-middle: var(title-gradient-middle);
 		--title-gradient-end: var(title-gradient-end);
 		--title-color: var(title-color);
 		--title-shadow: var(title-shadow);
@@ -63,18 +59,10 @@
 		--background-gradient-middle: var(
 			background-gradient-middle
 		);
-		--background-gradient-end: var(
-			background-gradient-end
-		);
-		--body-background-start: var(
-			body-background-start
-		);
-		--body-background-middle: var(
-			body-background-middle
-		);
-		--body-background-end: var(
-			body-background-end
-		);
+		--background-gradient-end: var(background-gradient-end);
+		--body-background-start: var(body-background-start);
+		--body-background-middle: var(body-background-middle);
+		--body-background-end: var(body-background-end);
 		--body-color: var(body-color);
 		--body-shadow: var(body-shadow);
 		--tooltip-background: var(tooltip-background);

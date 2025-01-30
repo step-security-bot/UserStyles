@@ -55,8 +55,7 @@
 	button.style.borderRadius = '5px';
 	button.style.fontSize = '16px';
 	button.style.cursor = 'pointer';
-	button.style.boxShadow =
-		'0px 2px 10px rgba(0, 0, 0, 0.3)';
+	button.style.boxShadow = '0px 2px 10px rgba(0, 0, 0, 0.3)';
 	button.onclick = clickElements;
 	document.body.appendChild(button);
 })();

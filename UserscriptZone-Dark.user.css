@@ -13,19 +13,14 @@
 ==/UserStyle== */
 @-moz-document domain("userscript.zone") {
 	:root {
-			--background-color: var(background-color);
-			--text-color: var(text-color);
+		--background-color: var(background-color);
+		--text-color: var(text-color);
 	}
 
 	/* Invert colors except images and videos */
-	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video
-	) {
-			filter: invert(1) hue-rotate(180deg) !important;
-			background: var(--background-color);
-			color: var(--text-color);
+	:is(html:not([stylus-iframe]), img, svg, video) {
+		filter: invert(1) hue-rotate(180deg) !important;
+		background: var(--background-color);
+		color: var(--text-color);
 	}
 }

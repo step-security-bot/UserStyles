@@ -44,19 +44,14 @@ url-prefix("http://kiwifarms")
 	.sidebar .visitorPanel .username,
 	.navigationSideBar a:hover,
 	.discussionListItems .unread .title a,
-	.discussionListItems
-		.unread
-		.lastPostInfo
-		.username,
+	.discussionListItems .unread .lastPostInfo .username,
 	.externalLink.ProxyLink,
 	.message .messageMeta .control:hover,
 	.redactor_toolbar li a.redactor_act,
 	.xenOverlay.memberCard .userInfo h3 a,
 	.xenOverlay.memberCard .userLinks,
 	.messageContent .username.poster,
-	.messageMeta
-		.publicControls
-		.LikeLink.item.control.like,
+	.messageMeta .publicControls .LikeLink.item.control.like,
 	a.CommentPoster.item.control.postComment,
 	ul.links a,
 	a.username.primaryText,
@@ -107,10 +102,7 @@ url-prefix("http://kiwifarms")
 	.message .editDate,
 	.ctaFtThreadTextAvatar,
 	.sidebar .section .secondaryContent .footnote,
-	.sidebar
-		.section
-		.secondaryContent
-		.minorHeading,
+	.sidebar .section .secondaryContent .minorHeading,
 	.sidebar .section .primaryContent h3,
 	.sidebar .section .secondaryContent h3,
 	.profilePage .mast .section.infoBlock h3,
@@ -193,22 +185,16 @@ url-prefix("http://kiwifarms")
 	.xenForm .formHeader,
 	.userBanner.bannerStaff,
 	#uix_jumpToFixed,
-	.message
-		.publicControls
-		.MultiQuoteControl.active,
+	.message .publicControls .MultiQuoteControl.active,
 	.pollBlock .buttons .button,
 	.button {
-		background-color: var(
-			--halloweenOrange
-		) !important;
+		background-color: var(--halloweenOrange) !important;
 		/* Halloween Orange */
 	}
 
 	a.callToAction span,
 	.PageNav a.currentPage {
-		background-color: var(
-			--halloweenOrange
-		) !important;
+		background-color: var(--halloweenOrange) !important;
 		color: var(--darkText) !important;
 		/* Dark Text for contrast */
 	}
@@ -225,9 +211,7 @@ url-prefix("http://kiwifarms")
 
 	body {
 		background-image: none !important;
-		background-color: var(
-			--halloweenBlack
-		) !important;
+		background-color: var(--halloweenBlack) !important;
 		/* Halloween Black */
 	}
 
@@ -245,9 +229,7 @@ url-prefix("http://kiwifarms")
 	#uix_wrapper,
 	.pageContent,
 	.navTabs .navTab.selected .tabLinks {
-		background-color: var(
-			--halloweenBlack
-		) !important;
+		background-color: var(--halloweenBlack) !important;
 		/* Halloween Black */
 	}
 
@@ -257,18 +239,14 @@ url-prefix("http://kiwifarms")
 	.footer .choosers a,
 	.messageList .message,
 	.breadcrumb {
-		border-color: var(
-			--halloweenPurple
-		) !important;
+		border-color: var(--halloweenPurple) !important;
 		/* Halloween Purple */
 	}
 
 	.navTabs,
 	.navTabs .navTab.selected .navLink {
 		border-color: var(--halloweenPurple);
-		background-color: var(
-			--halloweenBlack
-		) !important;
+		background-color: var(--halloweenBlack) !important;
 		/* Halloween Black */
 	}
 
@@ -293,8 +271,8 @@ url-prefix("http://kiwifarms")
 	}
 
 	.breadcrumb .crust .arrow span {
-		border-color: var(--halloweenPurple)
-			var(--greyBorder) var(--greyBorder);
+		border-color: var(--halloweenPurple) var(--greyBorder)
+			var(--greyBorder);
 		border-top-color: var(--halloweenPurple);
 	}
 
@@ -307,14 +285,12 @@ url-prefix("http://kiwifarms")
 	}
 
 	.Menu {
-		border-color: var(--halloweenPurple)
-			var(--greyBorder) var(--greyBorder);
+		border-color: var(--halloweenPurple) var(--greyBorder)
+			var(--greyBorder);
 		border-top-color: var(--halloweenPurple);
 	}
 
-	.message
-		.publicControls
-		.MultiQuoteControl.active {
+	.message .publicControls .MultiQuoteControl.active {
 		color: var(--white) !important;
 	}
 
@@ -325,9 +301,7 @@ url-prefix("http://kiwifarms")
 	}
 
 	.navTabs .navTab.selected.PopupOpen .navLink {
-		background-color: var(
-			--halloweenPurple
-		) !important;
+		background-color: var(--halloweenPurple) !important;
 		color: var(--white) !important;
 	}
 

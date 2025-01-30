@@ -24,17 +24,11 @@
 
 	// Load cache from Tampermonkey storage
 	function loadCache() {
-		const cache = GM_getValue(
-			'profilePicCache',
-			{},
-		);
+		const cache = GM_getValue('profilePicCache', {});
 		const now = Date.now();
 		// Clear out expired cache entries
 		Object.keys(cache).forEach((key) => {
-			if (
-				now - cache[key].timestamp >
-				CACHE_TTL_MS
-			) {
+			if (now - cache[key].timestamp > CACHE_TTL_MS) {
 				delete cache[key]; // Remove expired entry
 			}
 		});
@@ -51,17 +45,11 @@
 
 	// Preload HD image
 	function preloadHDImage(src) {
-		const hdSrc = src.replace(
-			/=s(88|48)-c/,
-			'=s800-c',
-		); // Adjust as needed for HD
+		const hdSrc = src.replace(/=s(88|48)-c/, '=s800-c'); // Adjust as needed for HD
 		if (!preloadedImages.has(hdSrc)) {
 			if (cache[hdSrc]) {
 				// If in persistent cache, load directly from cache
-				preloadedImages.set(
-					hdSrc,
-					cache[hdSrc].url,
-				);
+				preloadedImages.set(hdSrc, cache[hdSrc].url);
 			} else {
 				// Preload HD image and store in cache
 				const img = new Image();
@@ -87,13 +75,9 @@
 
 		debounceTimeout = setTimeout(() => {
 			const originalSrc = img.src;
-			const hdSrc = originalSrc.replace(
-				/=s(88|48)-c/,
-				'=s800-c',
-			); // Use HD version
+			const hdSrc = originalSrc.replace(/=s(88|48)-c/, '=s800-c'); // Use HD version
 			img.dataset.originalSrc = originalSrc; // Store the original src
-			img.src =
-				preloadedImages.get(hdSrc) || hdSrc;
+			img.src = preloadedImages.get(hdSrc) || hdSrc;
 
 			// Get the position of the original image
 			const rect = img.getBoundingClientRect();
@@ -138,10 +122,7 @@
 		);
 		profilePics.forEach((pic) => {
 			preloadHDImage(pic.src); // Preload HD image
-			pic.addEventListener(
-				'mouseover',
-				enlargeProfilePic,
-			);
+			pic.addEventListener('mouseover', enlargeProfilePic);
 		});
 	}
 

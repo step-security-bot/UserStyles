@@ -18,8 +18,8 @@
 		justify-content: center;
 		align-items: center;
 		/*Manipulations stuff*/
-		animation: title-animation 3s ease-in-out
-			infinite alternate;
+		animation: title-animation 3s ease-in-out infinite
+			alternate;
 		/*Box model stuff*/
 		margin: 10px 0;
 		background: linear-gradient(

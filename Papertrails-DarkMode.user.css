@@ -14,8 +14,8 @@
 ==/UserStyle== */
 @-moz-document domain("papertrails.io") {
 	:root {
-			--background-color: var(background-color);
-			--text-color: var(text-color);
+		--background-color: var(background-color);
+		--text-color: var(text-color);
 	}
 
 	html,
@@ -31,10 +31,10 @@
 	.maYvJ,
 	article,
 	footer {
-			background: var(--background-color) !important;
-			color: var(--text-color) !important;
+		background: var(--background-color) !important;
+		color: var(--text-color) !important;
 	}
 	button {
-			border-radius: 20px;
+		border-radius: 20px;
 	}
 }

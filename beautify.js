@@ -6,14 +6,10 @@
 
 CodeMirror.commands.beautify = (cm) => {
 	// using per-section mode when code editor or applies-to block is focused
-	const isPerSection =
-		cm.display.wrapper.parentElement.contains(
-			document.activeElement,
-		);
-	beautify(
-		isPerSection ? [cm] : editor.getEditors(),
-		false,
+	const isPerSection = cm.display.wrapper.parentElement.contains(
+		document.activeElement,
 	);
+	beautify(isPerSection ? [cm] : editor.getEditors(), false);
 };
 
 /**
@@ -131,32 +127,22 @@ async function beautify(scope, ui = true) {
 	};
 
 	for (const cm of scope) {
-		setTimeout(
-			beautifyEditor,
-			0,
-			cm,
-			options,
-			ui,
-		);
+		setTimeout(beautifyEditor, 0, cm, options, ui);
 	}
 }
 
 function beautifyEditor(cm, options, ui) {
-	const pos = (options.translate_positions =
-		[].concat.apply(
-			[],
-			cm.doc.sel.ranges.map((r) => [
-				Object.assign({}, r.anchor),
-				Object.assign({}, r.head),
-			]),
-		));
+	const pos = (options.translate_positions = [].concat.apply(
+		[],
+		cm.doc.sel.ranges.map((r) => [
+			Object.assign({}, r.anchor),
+			Object.assign({}, r.head),
+		]),
+	));
 	const text = cm.getValue();
 	const newText = css_beautify(text, options);
 	if (newText !== text) {
-		if (
-			!cm.beautifyChange ||
-			!cm.beautifyChange[cm.changeGeneration()]
-		) {
+		if (!cm.beautifyChange || !cm.beautifyChange[cm.changeGeneration()]) {
 			// clear the list if last change wasn't a css-beautify
 			cm.beautifyChange = {};
 		}
@@ -171,8 +157,7 @@ function beautifyEditor(cm, options, ui) {
 		const { scrollX, scrollY } = window;
 		cm.setSelections(selections);
 		window.scrollTo(scrollX, scrollY);
-		cm.beautifyChange[cm.changeGeneration()] =
-			true;
+		cm.beautifyChange[cm.changeGeneration()] = true;
 	}
 }
 
@@ -180,9 +165,6 @@ function beautifyEditor(cm, options, ui) {
 function initBeautifyButton(btn, scope) {
 	btn.onclick = btn.oncontextmenu = (e) => {
 		e.preventDefault();
-		beautify(
-			scope || editor.getEditors(),
-			e.type === 'click',
-		);
+		beautify(scope || editor.getEditors(), e.type === 'click');
 	};
 }

@@ -74,9 +74,7 @@
 
 	/* Additional styling for better dark mode experience */
 	a,
-	li:nth-child(n)
-		> a
-		> span.icon.ups-icon-link_newwindow,
+	li:nth-child(n) > a > span.icon.ups-icon-link_newwindow,
 	.icon-new-window > svg,
 	#sublist-ups-companies-2
 		> li:nth-child(n)
@@ -84,16 +82,8 @@
 		> span
 		> svg
 		> use,
-	#sublist-ups-sites-1
-		> li:nth-child(n)
-		> a
-		> span
-		> svg,
-	#sublist-this-site-0
-		> li:nth-child(n)
-		> a
-		> span
-		> svg,
+	#sublist-ups-sites-1 > li:nth-child(n) > a > span > svg,
+	#sublist-this-site-0 > li:nth-child(n) > a > span > svg,
 	.icon-facebook > svg > use,
 	.icon-x > svg > use,
 	.icon-instagram > svg > use,
@@ -113,9 +103,7 @@
 	#sublist-ups-companies-2 > li:nth-child(n) > a,
 	#sublist-ups-sites-1 > li:nth-child(n) > a,
 	#sublist-this-site-0 > li:nth-child(n) > a,
-	#sublist-connect-with-us-3
-		> li:nth-child(n)
-		> a,
+	#sublist-connect-with-us-3 > li:nth-child(n) > a,
 	#tabs_0_tab_2 > h2,
 	#tabs_0_tab_3 > h2,
 	.help-content > p > a,
@@ -126,9 +114,7 @@
 	.button,
 	.btn {
 		border: none !important;
-		background-color: var(
-			--button-background
-		) !important;
+		background-color: var(--button-background) !important;
 		color: var(--text) !important;
 	}
 
@@ -140,9 +126,7 @@
 	.input,
 	.textarea {
 		border: 1px solid var(--border) !important;
-		background-color: var(
-			--input-background
-		) !important;
+		background-color: var(--input-background) !important;
 		color: var(--text) !important;
 	}
 
@@ -154,16 +138,12 @@
 	.card,
 	.panel {
 		border: 1px solid var(--border) !important;
-		background-color: var(
-			--input-background
-		) !important;
+		background-color: var(--input-background) !important;
 		color: var(--text) !important;
 	}
 
 	.table {
-		background-color: var(
-			--input-background
-		) !important;
+		background-color: var(--input-background) !important;
 		color: var(--text) !important;
 	}
 
@@ -173,9 +153,7 @@
 	}
 
 	.modal {
-		background-color: var(
-			--dark-background
-		) !important;
+		background-color: var(--dark-background) !important;
 		color: var(--text) !important;
 	}
 }

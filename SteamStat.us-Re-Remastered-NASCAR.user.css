@@ -53,8 +53,8 @@
 		position: relative;
 		justify-content: center;
 		align-items: center;
-		animation: title-animation 2s ease-in-out
-			infinite alternate;
+		animation: title-animation 2s ease-in-out infinite
+			alternate;
 	}
 
 	h1.title::after {
@@ -129,8 +129,7 @@
 		color: var(--color-5);
 		font-weight: 700;
 		/* var(--color-10) for major status */
-		text-shadow: 1px 1px 2px
-			rgb(255 255 255 / 60%);
+		text-shadow: 1px 1px 2px rgb(255 255 255 / 60%);
 	}
 
 	/* Refresh button styling with hover effect */

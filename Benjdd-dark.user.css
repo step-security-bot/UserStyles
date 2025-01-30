@@ -21,9 +21,7 @@
 	:root {
 		--primary-color: var(primary-color);
 		--background-color: var(background-color);
-		--benchmark-background: var(
-			benchmark-background
-		);
+		--benchmark-background: var(benchmark-background);
 		--header-color: var(header-color);
 		--list-color: var(list-color);
 		--code-color: var(code-color);

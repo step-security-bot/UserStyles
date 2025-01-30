@@ -22,27 +22,16 @@
 		const popupContent = document.querySelector(
 			'a[href="https://gotoes.org/stravatoolsforum/viewtopic.php?f=2&t=115"] h3',
 		);
-		console.log(
-			'closePopup: popupContent',
-			popupContent,
-		);
+		console.log('closePopup: popupContent', popupContent);
 		if (
 			popupContent &&
-			popupContent.innerHTML.includes(
-				'Option 2:<br>Help Others (FREE)',
-			)
+			popupContent.innerHTML.includes('Option 2:<br>Help Others (FREE)')
 		) {
-			const closeButton =
-				document.getElementById('cboxClose');
-			console.log(
-				'closePopup: closeButton',
-				closeButton,
-			);
+			const closeButton = document.getElementById('cboxClose');
+			console.log('closePopup: closeButton', closeButton);
 			if (closeButton) {
 				closeButton.click();
-				console.log(
-					'closePopup: closeButton clicked',
-				);
+				console.log('closePopup: closeButton clicked');
 			}
 		}
 	}
@@ -52,10 +41,7 @@
 		const popupContent = document.querySelector(
 			'a[href="https://gotoes.org/stravatoolsforum/viewtopic.php?f=2&t=115"] h3',
 		);
-		console.log(
-			'MutationObserver: popupContent',
-			popupContent,
-		);
+		console.log('MutationObserver: popupContent', popupContent);
 		if (popupContent) {
 			closePopup();
 		}
@@ -69,10 +55,7 @@
 	const popupContent = document.querySelector(
 		'a[href="https://gotoes.org/stravatoolsforum/viewtopic.php?f=2&t=115"] h3',
 	);
-	console.log(
-		'Initial check: popupContent',
-		popupContent,
-	);
+	console.log('Initial check: popupContent', popupContent);
 	if (popupContent) {
 		closePopup();
 	}

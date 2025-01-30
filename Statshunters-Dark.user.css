@@ -13,27 +13,27 @@
 ==/UserStyle== */
 @-moz-document domain("statshunters.com") {
 	:root {
-			--background-color: var(background-color);
-			--text-color: var(text-color);
+		--background-color: var(background-color);
+		--text-color: var(text-color);
 	}
 
 	/* Invert colors except images and videos */
 	:is(.leaflet-container.leaflet-touch-drag) {
-			filter: invert(1) hue-rotate(180deg) !important;
+		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.ui-button--type-primary.ui-button--color-default {
-			background: var(--background-color);
-			color: var(--text-color);
+		background: var(--background-color);
+		color: var(--text-color);
 	}
 	.ui-menu-option:not(.is-divider),
 	.ui-menu-option__icon {
-			overflow: auto;
-			font-size: small;
+		overflow: auto;
+		font-size: small;
 	}
 
 	.ui-menu-option__icon,
 	.ui-icon {
-			display: none;
+		display: none;
 	}
 }

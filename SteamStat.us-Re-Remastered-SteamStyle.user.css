@@ -43,12 +43,8 @@
 		--text-shadow: var(text-shadow);
 		--box-shadow: var(box-shadow);
 		--border-color: var(border-color);
-		--background-gradient-1: var(
-			background-gradient-1
-		);
-		--background-gradient-2: var(
-			background-gradient-2
-		);
+		--background-gradient-1: var(background-gradient-1);
+		--background-gradient-2: var(background-gradient-2);
 		--body-background: var(body-background);
 		--body-text: var(body-text);
 		--tooltip-background: var(tooltip-background);

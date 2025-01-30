@@ -54,12 +54,8 @@ url-prefix("https://dev.scrap.tf")
 		color: #ccc;
 	}
 
-	.navbar-nav
-		> li
-		> a:not(.nav-userdropdown):hover,
-	.navbar-nav
-		> li
-		> a:not(.nav-userdropdown):focus,
+	.navbar-nav > li > a:not(.nav-userdropdown):hover,
+	.navbar-nav > li > a:not(.nav-userdropdown):focus,
 	.yamm-content li > a:hover,
 	.yamm-content li > a:focus {
 		background-color: #1b1b1b !important;
@@ -77,12 +73,7 @@ url-prefix("https://dev.scrap.tf")
 	}
 
 	.navbar .nav ul a:hover {
-		background-color: rgb(
-			136
-			134
-			134 /
-			15%
-		) !important;
+		background-color: rgb(136 134 134 / 15%) !important;
 	}
 
 	.dropdown-menu .badge {
@@ -112,9 +103,7 @@ url-prefix("https://dev.scrap.tf")
 	/* Forms */
 	.form-group.focus .form-control,
 	.form-control:focus,
-	.form-group.focus
-		.select2-search
-		input[type='text'],
+	.form-group.focus .select2-search input[type='text'],
 	.select2-search input[type='text']:focus {
 		border-color: #888;
 	}
@@ -651,9 +640,7 @@ url-prefix("https://dev.scrap.tf")
 	.input-group-btn .btn-default:focus,
 	.input-group-btn .btn-default:active,
 	.input-group-btn .btn-default.active,
-	.open
-		> .dropdown-toggle.input-group-btn
-		.btn-default {
+	.open > .dropdown-toggle.input-group-btn .btn-default {
 		border-color: #464545;
 		background-color: #444;
 	}
@@ -722,10 +709,7 @@ url-prefix("https://dev.scrap.tf")
 	}
 
 	.table-striped > tbody > tr:nth-child(odd) > td,
-	.table-striped
-		> tbody
-		> tr:nth-child(odd)
-		> th {
+	.table-striped > tbody > tr:nth-child(odd) > th {
 		background-color: #313131;
 	}
 
@@ -810,12 +794,7 @@ url-prefix("https://dev.scrap.tf")
 	}
 
 	.ban_waitingreply {
-		background-color: rgb(
-			155
-			89
-			182 /
-			14%
-		) !important;
+		background-color: rgb(155 89 182 / 14%) !important;
 	}
 
 	pre {

@@ -33,8 +33,7 @@
 		.CurrentConditions--header--z8kOV,
 		.CurrentConditions--overlayBox--veKTl,
 		.styles--locationNameBadge--CwsOx,
-		.styles--mini--GBfrx
-			.styles--temperature--aIAgZ,
+		.styles--mini--GBfrx .styles--temperature--aIAgZ,
 		.RecentLocations--container--Vn06V.RecentLocations--open--WrsUf
 	) {
 		filter: invert(1) hue-rotate(180deg) !important;

@@ -73,9 +73,8 @@
 			'Helvetica Neue', arial, sans-serif,
 			'Apple Color Emoji', 'Segoe UI Emoji',
 			'Segoe UI Symbol' !important;
-		--bs-font-monospace: sfmono-regular, menlo,
-			monaco, consolas, 'Liberation Mono',
-			'Courier New', monospace !important;
+		--bs-font-monospace: sfmono-regular, menlo, monaco,
+			consolas, 'Liberation Mono', 'Courier New', monospace !important;
 		--bs-gradient: linear-gradient(
 			180deg,
 			hsl(0deg 0% 100% / 15%),
@@ -178,72 +177,59 @@
 		--screen-width: 100vw !important;
 		--gpWidth-6colcap: calc(
 			(
-					var(--screen-width) -
-						(5 * var(--gpSpace-Gap)) -
+					var(--screen-width) - (5 * var(--gpSpace-Gap)) -
 						(2 * var(--gpSpace-Gutter))
 				) /
 				6
 		) !important;
 		--gpWidth-5colcap: calc(
 			(
-					var(--screen-width) -
-						(4 * var(--gpSpace-Gap)) -
+					var(--screen-width) - (4 * var(--gpSpace-Gap)) -
 						(2 * var(--gpSpace-Gutter))
 				) /
 				5
 		) !important;
 		--gpWidth-4colcap: calc(
 			(
-					var(--screen-width) -
-						(3 * var(--gpSpace-Gap)) -
+					var(--screen-width) - (3 * var(--gpSpace-Gap)) -
 						(2 * var(--gpSpace-Gutter))
 				) /
 				4
 		) !important;
 		--gpWidth-3colcap: calc(
 			(
-					var(--screen-width) -
-						(2 * var(--gpSpace-Gap)) -
+					var(--screen-width) - (2 * var(--gpSpace-Gap)) -
 						(2 * var(--gpSpace-Gutter))
 				) /
 				3
 		) !important;
 		--gpWidth-2colcap: calc(
 			(
-					var(--screen-width) -
-						(1 * var(--gpSpace-Gap)) -
+					var(--screen-width) - (1 * var(--gpSpace-Gap)) -
 						(2 * var(--gpSpace-Gutter))
 				) /
 				2
 		) !important;
 		--gpWidth-1colcap: calc(
-			(
-				var(--screen-width) -
-					(2 * var(--gpSpace-Gutter))
-			)
+			(var(--screen-width) - (2 * var(--gpSpace-Gutter)))
 		) !important;
 		--gpStoreMenuHeight: 58px !important;
 		--gpShadow-Small: 0 2px 2px 0 #0000003d !important;
 		--gpShadow-Medium: 0 3px 6px 0 #0000003d !important;
 		--gpShadow-Large: 0 12px 16px 0 #0000003d !important;
 		--gpShadow-XLarge: 0 24px 32px 0 #0000003d !important;
-		--gpText-HeadingLarge: normal 700 26px/1.4
-				'Motiva Sans',
+		--gpText-HeadingLarge: normal 700 26px/1.4 'Motiva Sans',
 			arial, sans-serif !important;
 		--gpText-HeadingMedium: normal 700 22px/1.4
 				'Motiva Sans',
 			arial, sans-serif !important;
-		--gpText-HeadingSmall: normal 700 18px/1.4
-				'Motiva Sans',
+		--gpText-HeadingSmall: normal 700 18px/1.4 'Motiva Sans',
 			arial, sans-serif !important;
-		--gpText-BodyLarge: normal 400 16px/1.4
-				'Motiva Sans',
+		--gpText-BodyLarge: normal 400 16px/1.4 'Motiva Sans',
 			arial, sans-serif !important;
-		--gpText-BodyMedium: normal 400 14px/1.4
-				'Motiva Sans',
+		--gpText-BodyMedium: normal 400 14px/1.4 'Motiva Sans',
 			arial, sans-serif !important;
-		--gpText-BodySmall: normal 400 12px/1.4
-				'Motiva Sans',
+		--gpText-BodySmall: normal 400 12px/1.4 'Motiva Sans',
 			arial, sans-serif !important;
 	}
 }

@@ -26,8 +26,7 @@
 @var color ia-theme-link-color "IA Theme Link Color" #4B64FF
 ==/UserStyle== */
 @-moz-document regexp("^(?!.*archive\\.org\\/web\\/\\d+\\/https?\\:\\/\\/).*archive\\.org.*$") {
-	:root
-	{
+	:root {
 		--background-black: var(background-black);
 		--background-dark-1: var(background-dark-1);
 		--background-dark-2: var(background-dark-2);
@@ -39,17 +38,23 @@
 		--link-orange-1: var(link-orange-1);
 		--link-orange-2: var(link-orange-2);
 		--link-red: var(link-red);
-		--ia-theme-primary-background-color: var(ia-theme-primary-background-color);
-		--ia-theme-secondary-background-color: var(ia-theme-secondary-background-color);
-		--ia-theme-primary-text-color: var(ia-theme-primary-text-color);
-		--ia-theme-secondary-text-color: var(ia-theme-secondary-text-color);
+		--ia-theme-primary-background-color: var(
+			ia-theme-primary-background-color
+		);
+		--ia-theme-secondary-background-color: var(
+			ia-theme-secondary-background-color
+		);
+		--ia-theme-primary-text-color: var(
+			ia-theme-primary-text-color
+		);
+		--ia-theme-secondary-text-color: var(
+			ia-theme-secondary-text-color
+		);
 		--ia-theme-link-color: var(ia-theme-link-color);
 	}
 
 	body.navia.bgEEE {
-		background-color: var(
-			--background-dark-2
-		) !important;
+		background-color: var(--background-dark-2) !important;
 	}
 
 	body.navia #nav-tophat {
@@ -80,9 +85,7 @@
 	.preamble,
 	.preamble div {
 		border-color: var(--border-dark-1);
-		background: var(
-			--background-dark-2
-		) !important;
+		background: var(--background-dark-2) !important;
 		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
@@ -90,9 +93,7 @@
 	.welcome,
 	#wrap .width-max {
 		border: none !important;
-		background: var(
-			--background-dark-3
-		) !important;
+		background: var(--background-dark-3) !important;
 		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
@@ -101,9 +102,7 @@
 	.iconochive-fullscreen,
 	.iconochive-flash,
 	.iconochive-unmute {
-		background: var(
-			--background-dark-3
-		) !important;
+		background: var(--background-dark-3) !important;
 	}
 
 	.boxy,
@@ -111,9 +110,7 @@
 		border-width: 2px !important;
 		border-style: solid !important;
 		border-color: var(--border-dark-2) !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
@@ -127,9 +124,7 @@
 	#flag-button,
 	.sortbar {
 		border: var(--background-black) !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 	}
 
 	.boxy-ttl {
@@ -172,18 +167,14 @@
 	.well,
 	.white-box {
 		border-color: var(--border-dark-1) !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 		color: var(--text-light-1) !important;
 		text-shadow: none !important;
 	}
 
 	p {
 		border: none !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 		color: var(--text-light-1) !important;
 		text-shadow: none !important;
 	}
@@ -195,9 +186,7 @@
 	}
 
 	.navia {
-		background-color: var(
-			--background-dark-2
-		) !important;
+		background-color: var(--background-dark-2) !important;
 	}
 
 	.navia #nav-tophat {
@@ -217,9 +206,7 @@
 	.preamble,
 	.preamble div {
 		border-color: var(--border-dark-1);
-		background: var(
-			--background-dark-2
-		) !important;
+		background: var(--background-dark-2) !important;
 		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
@@ -227,9 +214,7 @@
 	.welcome,
 	#wrap .width-max {
 		border: none !important;
-		background: var(
-			--background-dark-3
-		) !important;
+		background: var(--background-dark-3) !important;
 		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
@@ -238,9 +223,7 @@
 	.iconochive-fullscreen,
 	.iconochive-flash,
 	.iconochive-unmute {
-		background: var(
-			--background-dark-3
-		) !important;
+		background: var(--background-dark-3) !important;
 	}
 
 	.boxy,
@@ -248,9 +231,7 @@
 		border-width: 2px !important;
 		border-style: solid !important;
 		border-color: var(--border-dark-2) !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 		color: var(--text-light-2) !important;
 		text-shadow: none !important;
 	}
@@ -264,9 +245,7 @@
 	#flag-button,
 	.sortbar {
 		border: var(--background-black) !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 	}
 
 	.boxy-ttl {
@@ -290,9 +269,7 @@
 	.well,
 	.white-box {
 		border-color: var(--border-dark-1) !important;
-		background: var(
-			--background-dark-1
-		) !important;
+		background: var(--background-dark-1) !important;
 		color: var(--text-light-1) !important;
 		text-shadow: none !important;
 	}

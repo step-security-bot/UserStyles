@@ -27,9 +27,7 @@
 	.img-circle,
 	rect,
 	.text-gray,
-	.text-left.text-nowrap.athlete_col.sorting_1
-		> div
-		> span,
+	.text-left.text-nowrap.athlete_col.sorting_1 > div > span,
 	.fix-right-nav > li > ul,
 	#team_list
 		> tbody
@@ -45,11 +43,7 @@
 	}
 
 	.btn-group
-		> .btn:not(
-			:first-child,
-			:last-child,
-			.dropdown-toggle
-		),
+		> .btn:not(:first-child, :last-child, .dropdown-toggle),
 	.btn-group > .btn:last-child:not(:first-child) {
 		filter: invert(0) hue-rotate(0deg) !important;
 	}
@@ -93,17 +87,12 @@
 		filter: invert(1) hue-rotate(180deg);
 	}
 
-	#friends_results
-		> thead
-		> tr
-		> th:nth-child(n)::after {
+	#friends_results > thead > tr > th:nth-child(n)::after {
 		opacity: 30%;
 		color: var(--darkColor) !important;
 	}
 
-	#rdetails_body
-		> div.panel-body
-		> a:nth-child(8) {
+	#rdetails_body > div.panel-body > a:nth-child(8) {
 		word-wrap: break-word;
 	}
 }

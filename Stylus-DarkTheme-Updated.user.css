@@ -59,8 +59,7 @@
 @-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*"),
 regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
 {
-	:root
-	{
+	:root {
 		/* Background Colors */
 		--bg-dark: var(bg-dark);
 		--bg-light: var(bg-light);
@@ -88,7 +87,9 @@ regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
 
 		/* Scrollbar Colors */
 		--scrollbar-thumb: var(scrollbar-thumb);
-		--scrollbar-thumb-inactive: var( scrollbar-thumb-inactive);
+		--scrollbar-thumb-inactive: var(
+			scrollbar-thumb-inactive
+		);
 		--scrollbar-track: var(scrollbar-track);
 
 		/* Gutter Colors */
@@ -125,72 +126,61 @@ regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
 		--green2: var(green2);
 	}
 
-	body
-	{
+	body {
 		background: var(--bg-dark);
 		color: var(--text-primary);
 	}
 
-	#stylish-popup
-	{
+	#stylish-popup {
 		background: var(--bg-light);
 		color: var(--input-bg);
 	}
 
 	a,
 	a:visited,
-	a:active
-	{
+	a:active {
 		color: var(--text-highlight);
 	}
 
-	a:hover
-	{
+	a:hover {
 		color: var(--text-hover);
 	}
 
 	input,
 	#name,
 	.applies-value,
-	select
-	{
+	select {
 		border-color: var(--input-border);
 		background: var(--input-bg);
 		color: var(--input-text);
 	}
 
-	button
-	{
+	button {
 		border-color: var(--button-border);
 		background: var(--button-bg);
 		color: var(--button-text);
 	}
 
-	button:hover
-	{
+	button:hover {
 		background: var(--button-hover-bg);
 		color: var(--button-hover-text);
 	}
 
-	::-webkit-scrollbar
-	{
+	::-webkit-scrollbar {
 		width: 10px;
 	}
 
-	::-webkit-scrollbar-track
-	{
+	::-webkit-scrollbar-track {
 		-webkit-box-shadow: inset 0 0 6px var(--scrollbar-track);
 		background: var(--scrollbar-track);
 	}
 
-	::-webkit-scrollbar-thumb
-	{
+	::-webkit-scrollbar-thumb {
 		-webkit-box-shadow: inset 0 0 6px var(--scrollbar-thumb);
 		background: var(--scrollbar-thumb);
 	}
 
-	::-webkit-scrollbar-thumb:window-inactive
-	{
+	::-webkit-scrollbar-thumb:window-inactive {
 		background: var(--scrollbar-thumb-inactive);
 	}
 }
@@ -198,127 +188,103 @@ regexp("chrome-extension://clngdbkpkpeebahjckkjfobafhncgmne/.*")
 /* Syntax highlighting with variables */
 @-moz-document regexp("chrome-extension://fjnbnpbmkenffdnngjfgmeleoegfcffe/.*")
 {
-	.cm-s-default .cm-keyword
-	{
+	.cm-s-default .cm-keyword {
 		color: var(--keyword);
 	}
 
-	.cm-s-default .cm-atom
-	{
+	.cm-s-default .cm-atom {
 		color: var(--atom);
 	}
 
-	.cm-s-default .cm-number
-	{
+	.cm-s-default .cm-number {
 		color: var(--number);
 	}
 
-	.cm-s-default .cm-def
-	{
+	.cm-s-default .cm-def {
 		color: var(--definition);
 	}
 
-	.cm-s-default .cm-variable
-	{
+	.cm-s-default .cm-variable {
 		color: var(--variable);
 	}
 
-	.cm-s-default .cm-variable-2
-	{
+	.cm-s-default .cm-variable-2 {
 		color: var(--variable-2);
 	}
 
-	.cm-s-default .cm-variable-3
-	{
+	.cm-s-default .cm-variable-3 {
 		color: var(--variable-3);
 	}
 
-	.cm-s-default .cm-comment
-	{
+	.cm-s-default .cm-comment {
 		color: var(--comment);
 	}
 
-	.cm-s-default .cm-string
-	{
+	.cm-s-default .cm-string {
 		color: var(--string);
 	}
 
-	.cm-s-default .cm-string-2
-	{
+	.cm-s-default .cm-string-2 {
 		color: var(--string-2);
 	}
 
-	.cm-s-default .cm-meta
-	{
+	.cm-s-default .cm-meta {
 		color: var(--meta);
 	}
 
-	.cm-s-default .cm-builtin
-	{
+	.cm-s-default .cm-builtin {
 		color: var(--builtin);
 	}
 
-	.cm-s-default .cm-tag
-	{
+	.cm-s-default .cm-tag {
 		color: var(--tag);
 	}
 
-	.cm-s-default .cm-attribute
-	{
+	.cm-s-default .cm-attribute {
 		color: var(--attribute);
 	}
 
-	.cm-s-default .cm-error
-	{
+	.cm-s-default .cm-error {
 		color: var(--error);
 	}
 
-	.CodeMirror-matchingbracket
-	{
+	.CodeMirror-matchingbracket {
 		color: var(--matching-bracket);
 	}
 
-	.CodeMirror-activeline-background
-	{
+	.CodeMirror-activeline-background {
 		background: var(--activeline-bg);
 	}
 
-	.CodeMirror
-	{
+	.CodeMirror {
 		background: var(--activeline-bg);
 	}
 
-	.CodeMirror-selected
-	{
+	.CodeMirror-selected {
 		background: var(--text-selected);
 	}
 
-	.CodeMirror-focused .CodeMirror-selected
-	{
+	.CodeMirror-focused .CodeMirror-selected {
 		background: var(--text-selected);
 	}
 
-	.CodeMirror-crosshair
-	{
+	.CodeMirror-crosshair {
 		cursor: crosshair;
 	}
 
 	.CodeMirror-line::selection,
 	.CodeMirror-line > span::selection,
-	.CodeMirror-line > span > span::selection
-	{
+	.CodeMirror-line > span > span::selection {
 		background: var(--input-bg);
 	}
 
 	.CodeMirror-line::selection,
 	.CodeMirror-line > span::selection,
-	.CodeMirror-line > span > span::selection
-	{
+	.CodeMirror-line > span > span::selection {
 		background: var(--input-bg);
 	}
 
-	.cm-searching
-	{
+	.cm-searching {
 		border-bottom: 1px solid var(--bottom-border);
 		background: var(--green1);
 		background: var(--green2);

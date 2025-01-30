@@ -46,8 +46,8 @@
 		position: relative;
 		justify-content: center;
 		align-items: center;
-		animation: title-animation 3s ease-in-out
-			infinite alternate;
+		animation: title-animation 3s ease-in-out infinite
+			alternate;
 	}
 	/* Animation for the title */
 	@keyframes title-animation {
@@ -102,9 +102,7 @@
 	}
 	.major {
 		transition: color 0.3s ease;
-		color: var(
-			--color-4
-		); /* Bright var(--color-6) */
+		color: var(--color-4); /* Bright var(--color-6) */
 		font-weight: 700;
 		text-shadow: 1px 1px 2px rgb(0 0 0 / 60%);
 	}

@@ -29,34 +29,17 @@
 		--link-color: var(link-color);
 		--button-border: var(button-border);
 		--button-background: var(button-background);
-		--button-hover-border: var(
-			button-hover-border
-		);
-		--button-hover-background: var(
-			button-hover-background
-		);
+		--button-hover-border: var(button-hover-border);
+		--button-hover-background: var(button-hover-background);
 		--price-color: var(price-color);
-		--notification-background: var(
-			notification-background
-		);
+		--notification-background: var(notification-background);
 		--notification-text: var(notification-text);
 	}
 
 	/* Base styles */
-	*:not(
-			img,
-			svg,
-			iframe,
-			a,
-			i,
-			span.mr2,
-			span.mh2,
-			p
-		) {
+	*:not(img, svg, iframe, a, i, span.mr2, span.mh2, p) {
 		border-color: var(--base-border) !important;
-		background-color: var(
-			--base-background
-		) !important;
+		background-color: var(--base-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -77,9 +60,7 @@
 	textarea,
 	div > div.z-2.relative.mt2.w-60 > div > a {
 		border-color: var(--button-border) !important;
-		background-color: var(
-			--button-background
-		) !important;
+		background-color: var(--button-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -87,9 +68,7 @@
 	input:focus,
 	select:focus,
 	textarea:focus {
-		border-color: var(
-			--button-hover-border
-		) !important;
+		border-color: var(--button-hover-border) !important;
 		background-color: var(
 			--button-hover-background
 		) !important;
@@ -101,9 +80,7 @@
 	.footer,
 	nav,
 	.navbar {
-		background-color: var(
-			--base-background
-		) !important;
+		background-color: var(--base-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -120,9 +97,7 @@
 	.product-card,
 	.product-list-item {
 		border-color: var(--base-border) !important;
-		background-color: var(
-			--button-background
-		) !important;
+		background-color: var(--button-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -136,9 +111,7 @@
 	.category-menu,
 	.filter-menu {
 		border-color: var(--base-border) !important;
-		background-color: var(
-			--base-background
-		) !important;
+		background-color: var(--base-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -154,9 +127,7 @@
 	.order-summary,
 	.cart-item {
 		border-color: var(--base-border) !important;
-		background-color: var(
-			--button-background
-		) !important;
+		background-color: var(--button-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -171,18 +142,14 @@
 	.popup,
 	.form-container {
 		border-color: var(--base-border) !important;
-		background-color: var(
-			--base-background
-		) !important;
+		background-color: var(--base-background) !important;
 		color: var(--base-text) !important;
 	}
 
 	.modal button,
 	.popup button,
 	.form-container button {
-		background-color: var(
-			--button-background
-		) !important;
+		background-color: var(--button-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -191,9 +158,7 @@
 	.pagination,
 	.page-navigation {
 		border-color: var(--base-border) !important;
-		background-color: var(
-			--button-background
-		) !important;
+		background-color: var(--button-background) !important;
 		color: var(--base-text) !important;
 	}
 
@@ -214,9 +179,7 @@
 
 	/* Tooltip */
 	.tooltip {
-		border-color: var(
-			--button-hover-border
-		) !important;
+		border-color: var(--button-hover-border) !important;
 		background-color: var(
 			--button-hover-background
 		) !important;

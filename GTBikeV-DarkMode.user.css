@@ -12,25 +12,25 @@
 @-moz-document domain("gtbikev.com") {
 	/* Use the variables for colors */
 	:root {
-			--darkColor: var(darkColor);
+		--darkColor: var(darkColor);
 	}
 
 	/* Invert colors except images and videos */
 	:is(
-			html:not([stylus-iframe]),
-			img,
-			svg,
-			video,
-			#footer,
-			#socket,
-			.av-masonry-image-container
+		html:not([stylus-iframe]),
+		img,
+		svg,
+		video,
+		#footer,
+		#socket,
+		.av-masonry-image-container
 	),
 	iframe,
 	#header_main > div > div > span > a {
-			filter: invert(1) hue-rotate(180deg) !important;
+		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
 	.header_color span {
-			color: var(--darkColor);
+		color: var(--darkColor);
 	}
 }

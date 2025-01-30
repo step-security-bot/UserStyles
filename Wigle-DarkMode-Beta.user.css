@@ -18,12 +18,8 @@
 ==/UserStyle== */
 @-moz-document domain("wigle.net") {
 	:root {
-		--background-color-dark: var(
-			background-color-dark
-		);
-		--background-color-darker: var(
-			background-color-darker
-		);
+		--background-color-dark: var(background-color-dark);
+		--background-color-darker: var(background-color-darker);
 		--border-color: var(border-color);
 		--border-color-light: var(border-color-light);
 		--text-color: var(text-color);
@@ -52,9 +48,7 @@
 		> div.dygraph-legend
 		> span:nth-child(2)
 		> div {
-		background-color: var(
-			--background-color-dark
-		);
+		background-color: var(--background-color-dark);
 		color: var(--text-color);
 	}
 
@@ -63,9 +57,7 @@
 	.dropdown-menu,
 	.modal-content {
 		border-color: var(--border-color);
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 	}
 
 	.navbar-brand img,
@@ -108,9 +100,7 @@
 		> div.dygraph-legend
 		> span:nth-child(6) {
 		border: 1px solid var(--border-color-light);
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
@@ -122,16 +112,12 @@
 	.btn-default,
 	.btn-block {
 		border: 1px solid var(--border-color-light);
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
 	.form-control {
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
@@ -146,9 +132,7 @@
 	.mapBarItem select,
 	.mapBarItem label,
 	div.panel {
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
@@ -156,9 +140,7 @@
 	.statsgraphcontainer,
 	.graphContextLinks,
 	.graphCaption {
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
@@ -169,9 +151,7 @@
 	.modal-header,
 	.modal-footer,
 	.jumbotron {
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
@@ -181,9 +161,7 @@
 
 	.modal-body,
 	#userDiscovered > div > div.dygraph-legend {
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 
@@ -194,9 +172,7 @@
 	.col-sm-3,
 	.col-sm-2,
 	.col-sm-1 {
-		background-color: var(
-			--background-color-darker
-		);
+		background-color: var(--background-color-darker);
 		color: var(--text-color);
 	}
 

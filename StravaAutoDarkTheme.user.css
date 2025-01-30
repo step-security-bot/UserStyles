@@ -141,9 +141,7 @@ domain("labs.strava.com") {
 	.table > tbody > tr.active > th,
 	.table > tfoot > tr.active > th,
 	#search-results.table .edit-col,
-	.react-card-container
-		> div
-		> [class*='-feed-entry'],
+	.react-card-container > div > [class*='-feed-entry'],
 	.activity-tags label:hover,
 	[class*='ExpandableOptionList--'],
 	[data-reach-dialog-content],
@@ -155,10 +153,7 @@ domain("labs.strava.com") {
 	#athlete-profile.card,
 	.btn-white,
 	.tab-contents > [data-sport],
-	.tabbed-cards
-		.tabs
-		> li[aria-selected='true']
-		.tab,
+	.tabbed-cards .tabs > li[aria-selected='true'] .tab,
 	#progress-goals + .card,
 	.drop-down-menu .options,
 	.drop-down-menu .options .opt-group.premium,
@@ -175,14 +170,8 @@ domain("labs.strava.com") {
 	#notifications-drop-down,
 	.card:not(#js-dashboard-athlete-goals),
 	#map-control-container
-		.button:not(
-			#toggle-fullscreen,
-			#create-route,
-			:hover
-		),
-	#map-control-container
-		.drop-down-menu
-		.selection,
+		.button:not(#toggle-fullscreen, #create-route, :hover),
+	#map-control-container .drop-down-menu .selection,
 	#basic-analysis .chart,
 	.lightbox-window .tabs,
 	.lightbox-window #tab-contents,
@@ -200,14 +189,8 @@ domain("labs.strava.com") {
 			#activity_table > tbody > tr:nth-child(n)
 		),
 	.table-leaderboard th,
-	.ride
-		.segment-effort-detail
-		.segment-leaderboard
-		thead,
-	.swim
-		.segment-effort-detail
-		.segment-leaderboard
-		thead,
+	.ride .segment-effort-detail .segment-leaderboard thead,
+	.swim .segment-effort-detail .segment-leaderboard thead,
 	#profile-heatmap-upsell,
 	.invite-friends,
 	ul.tabs > li.selected .tab,
@@ -226,12 +209,9 @@ domain("labs.strava.com") {
 	#search-results > thead > tr > th,
 	._3Qs1zA618wFVYn1omT73_U,
 	.g7N7fBojz_GFCESrdaxzf,
-	._2wk2mpI6KzJRgwh0uUGnGU:hover
-		.cQx-n1x8ZWjdIAziPar_Y,
-	._2wk2mpI6KzJRgwh0uUGnGU:active
-		.cQx-n1x8ZWjdIAziPar_Y,
-	._2wk2mpI6KzJRgwh0uUGnGU:focus
-		.cQx-n1x8ZWjdIAziPar_Y,
+	._2wk2mpI6KzJRgwh0uUGnGU:hover .cQx-n1x8ZWjdIAziPar_Y,
+	._2wk2mpI6KzJRgwh0uUGnGU:active .cQx-n1x8ZWjdIAziPar_Y,
+	._2wk2mpI6KzJRgwh0uUGnGU:focus .cQx-n1x8ZWjdIAziPar_Y,
 	.more-stats > table.unstyled tr > th,
 	.more-stats > table.unstyled tr > td,
 	.month-calendar.marginless th,
@@ -269,9 +249,7 @@ domain("labs.strava.com") {
 		> li:not([class*='styles_navItem']),
 	[class*='-packages-feed-ui-src-components-media-'],
 	[class*='HeaderWithOwnerMetadata__icon-container'],
-	.invite-friends
-		+ .drop-down-menu
-		> div:not(:hover),
+	.invite-friends + .drop-down-menu > div:not(:hover),
 	.my-segments > thead th,
 	[class^='LimitedProfileEntry--content--'],
 	[class*='packages-ui-ModalWithTabs-styles__tab-list'],
@@ -302,17 +280,13 @@ domain("labs.strava.com") {
 	[class*='NotificationsList'] a,
 	[class*='packages-shared-ui-src-challenges'],
 	[class*='PromotedDoradoSection-styles__challenge-info'],
-	.activity-summary-v2
-		.activity-breakdown
-		.cycling,
+	.activity-summary-v2 .activity-breakdown .cycling,
 	[class*='SubscriptionValueProps-module__'],
 	[class*='ModalWithTabs--tabList'],
-	[class*='styles_navItem']
-		> a[class*='Button_default_'],
+	[class*='styles_navItem'] > a[class*='Button_default_'],
 	[class*='Leaderboard--privacy-section'],
 	[class*='LeaderboardsTable--paywall-banner'],
-	[class*='DropdownSelect']
-		> .react-select__control,
+	[class*='DropdownSelect'] > .react-select__control,
 	[id*='listbox'][class*='react-select__menu'] {
 		background-color: var(--gray2) !important;
 	}
@@ -352,13 +326,8 @@ domain("labs.strava.com") {
 	.drop-down-menu .options .btn:hover,
 	.slide-menu .options .btn:hover,
 	#global-header .nav-group .drop-down-menu:hover,
-	#global-header
-		.nav-group
-		.drop-down-menu.active,
-	#global-header
-		.nav-group
-		.drop-down-menu:hover
-		.nav-link,
+	#global-header .nav-group .drop-down-menu.active,
+	#global-header .nav-group .drop-down-menu:hover .nav-link,
 	#global-header
 		.nav-group
 		.drop-down-menu.active
@@ -497,13 +466,7 @@ domain("labs.strava.com") {
 				> ul
 				> li:nth-child(n)
 				> button,
-			#view
-				> section
-				> div
-				> table
-				> tfoot
-				> tr
-				> td,
+			#view > section > div > table > tfoot > tr > td,
 			#feed-entry-null
 				> div
 				> div.------packages-feed-ui-src-components-media-EntryHeader-EntryHeader-module__entryHeader--m1apc
@@ -527,12 +490,8 @@ domain("labs.strava.com") {
 	.pagination em,
 	table.unstyled tr,
 	table.unstyled tr:nth-child(2n),
-	.ride
-		.segment-effort-detail
-		.leaderboard-footer,
-	.swim
-		.segment-effort-detail
-		.leaderboard-footer,
+	.ride .segment-effort-detail .leaderboard-footer,
+	.swim .segment-effort-detail .leaderboard-footer,
 	#settings-menu a:hover,
 	#settings-menu a:active,
 	#explorer #segment-list ul li:hover,
@@ -548,9 +507,7 @@ domain("labs.strava.com") {
 	.dropzone,
 	.leaderboard-page .leaders tbody td,
 	.gear,
-	#interval-date-range
-		.drop-down-menu
-		> div:not(:hover),
+	#interval-date-range .drop-down-menu > div:not(:hover),
 	#distance-unit-dd > div,
 	#activity-type-dd > div,
 	#workout-type-run-dd > div,
@@ -573,8 +530,7 @@ domain("labs.strava.com") {
 		[class*='css'][class*='-control']:hover,
 	[class*='packages-ui-Select-Select-module']
 		[class*='css'][class*='-control']:focus,
-	[class*='styles_menu__']:hover
-		[class*='styles_button'],
+	[class*='styles_menu__']:hover [class*='styles_button'],
 	[class*='-ui-Dropdown-Dropdown-module__list'],
 	[class*='-ui-Button-Button-module__default--jLxgA']:hover,
 	[class*='-ui-Button-Button-module__default--jLxgA']:focus,
@@ -583,9 +539,7 @@ domain("labs.strava.com") {
 	#roster .roster-entry-row:nth-child(2n) td,
 	.grabber,
 	[class*='styles_menuItems_']
-		[class*='styles']:not(
-			[class*='subscription']
-		):hover,
+		[class*='styles']:not([class*='subscription']):hover,
 	[class*='styles_menuItems_'] a:hover,
 	[class*='NotificationsList-module'] a:hover,
 	[class*='NotificationsList'] li:hover,
@@ -594,10 +548,8 @@ domain("labs.strava.com") {
 	[class^='styles_menuItems'] a:hover,
 	[class^='styles_menu_']:active
 		> [class^='styles_button_'],
-	[class^='styles_menu_']:focus
-		> [class^='styles_button_'],
-	[class^='styles_menu_']:hover
-		> [class^='styles_button_'],
+	[class^='styles_menu_']:focus > [class^='styles_button_'],
+	[class^='styles_menu_']:hover > [class^='styles_button_'],
 	.alert-info,
 	[class*='-SuggestedRoutes-module__routeCard-'],
 	[class*='-module__achievementCelebration'],
@@ -632,13 +584,10 @@ domain("labs.strava.com") {
 	button.minimal:hover,
 	.button.minimal:focus,
 	button.minimal:focus,
-	#global-footer
-		.footer-nav-menu
-		.footer-nav-submenu,
+	#global-footer .footer-nav-menu .footer-nav-submenu,
 	:not(.photo-nav) > .btn:hover,
 	.button:hover,
-	:not(.photo-nav, .drop-down-menu)
-		> button:hover,
+	:not(.photo-nav, .drop-down-menu) > button:hover,
 	input[type='submit']:hover,
 	input[type='button']:hover,
 	input[type='reset']:hover,
@@ -701,15 +650,11 @@ domain("labs.strava.com") {
 	.pagination > .active > span:focus,
 	#settings-menu .selected a,
 	.flagged.error {
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 	}
 
 	.leaderboard tr.highlighted > td {
-		background-color: var(
-			--secondary-color3
-		) !important;
+		background-color: var(--secondary-color3) !important;
 	}
 
 	.upload-tags label .hole::after,
@@ -724,10 +669,7 @@ domain("labs.strava.com") {
 	}
 
 	[class*='FriendList-FriendList__scroll-shadow'],
-	.view-col.col-actions
-		> ul
-		> li:nth-child(n)
-		> button,
+	.view-col.col-actions > ul > li:nth-child(n) > button,
 	.view-col.col-actions
 		> ul
 		> li:nth-child(n)
@@ -737,17 +679,12 @@ domain("labs.strava.com") {
 		background: transparent !important;
 	}
 
-	.view-col.col-actions
-		> ul
-		> li:nth-child(n)
-		> button,
+	.view-col.col-actions > ul > li:nth-child(n) > button,
 	.view-col.col-actions
 		> ul
 		> li:nth-child(n)
 		> div
-		> button:not(
-			.drop-down-menu.drop-down-xs .selection
-		),
+		> button:not(.drop-down-menu.drop-down-xs .selection),
 	.description .btn-link {
 		padding: 3px;
 	}
@@ -755,15 +692,9 @@ domain("labs.strava.com") {
 	.link-learn-more-cookie-banner,
 	.btn-accept-cookie-banner,
 	.feed-entry .entry-body .media-body,
-	#global-header
-		.nav-group
-		.drop-down-menu
-		.selection,
+	#global-header .nav-group .drop-down-menu .selection,
 	.sidebar
-		.section:first-child:not(
-			.limited,
-			.your-challenges
-		),
+		.section:first-child:not(.limited, .your-challenges),
 	.search > .panel-default,
 	.table > tbody > tr > td,
 	[class*='--list-stats'] > li::after,
@@ -789,8 +720,7 @@ domain("labs.strava.com") {
 	.card .card-footer,
 	.card .card-section,
 	#progress-goals .yearly-goal,
-	[class*='GroupActivity--list-entries--']
-		> li::before,
+	[class*='GroupActivity--list-entries--'] > li::before,
 	[class*='GroupActivity--headline-image']::before,
 	.btn-white,
 	.list-stats li::after,
@@ -814,8 +744,7 @@ domain("labs.strava.com") {
 	.dense > tbody > tr > td,
 	#notifications-drop-down,
 	.athlete-graph ul.intervals .interval,
-	[class*='Details--follow-stats-']
-		> li:first-child,
+	[class*='Details--follow-stats-'] > li:first-child,
 	[class*='AthleteProfileApp--activities-'],
 	.dropdown-menu > li > a::after,
 	.dropdown-menu > li > .btn::after,
@@ -823,9 +752,7 @@ domain("labs.strava.com") {
 	[class*='Activities--card--']
 		[class*='Activities--list-stats-']
 		> li,
-	[class*='Achievements--athlete-achievements-']
-		> ul
-		> li,
+	[class*='Achievements--athlete-achievements-'] > ul > li,
 	[class*='AthleteProfileApp--metrics-']
 		[class*='AthleteProfileApp--section-'],
 	.drop-down-menu > ul,
@@ -893,12 +820,9 @@ domain("labs.strava.com") {
 	.css-16j759p-control,
 	.css-drn9af-control,
 	._2tHFsObM1XTWmMJqQESh9T,
-	._2wk2mpI6KzJRgwh0uUGnGU:hover
-		.cQx-n1x8ZWjdIAziPar_Y,
-	._2wk2mpI6KzJRgwh0uUGnGU:active
-		.cQx-n1x8ZWjdIAziPar_Y,
-	._2wk2mpI6KzJRgwh0uUGnGU:focus
-		.cQx-n1x8ZWjdIAziPar_Y,
+	._2wk2mpI6KzJRgwh0uUGnGU:hover .cQx-n1x8ZWjdIAziPar_Y,
+	._2wk2mpI6KzJRgwh0uUGnGU:active .cQx-n1x8ZWjdIAziPar_Y,
+	._2wk2mpI6KzJRgwh0uUGnGU:focus .cQx-n1x8ZWjdIAziPar_Y,
 	._3r8IlbmQT2zCJZ1LnVpdVH,
 	.comments li.media,
 	.comments form.media,
@@ -908,8 +832,7 @@ domain("labs.strava.com") {
 	#totals li,
 	.month-calendar.marginless th,
 	.month-calendar td,
-	[class*='ActivityEntryBody--activity-entry-container']
-		li,
+	[class*='ActivityEntryBody--activity-entry-container'] li,
 	.general-info .stat.spacer,
 	.setting,
 	.editable-setting,
@@ -974,8 +897,7 @@ domain("labs.strava.com") {
 		li,
 	[class^='Header_container__'],
 	[class^='styles_globalHeader__'],
-	[class*='styles_menu__']:hover
-		[class*='styles_button'],
+	[class*='styles_menu__']:hover [class*='styles_button'],
 	[class*='styles_subscriptionCallout__'],
 	[class*='-Dropdown-module__item'],
 	[class*='-KudosAndComments__comments-form'],
@@ -992,10 +914,8 @@ domain("labs.strava.com") {
 	[class*='NotificationsList'] li,
 	[class^='styles_menu_']:active
 		> [class^='styles_button_'],
-	[class^='styles_menu_']:focus
-		> [class^='styles_button_'],
-	[class^='styles_menu_']:hover
-		> [class^='styles_button_'],
+	[class^='styles_menu_']:focus > [class^='styles_button_'],
+	[class^='styles_menu_']:hover > [class^='styles_button_'],
 	.activity-summary-v2 .activity-breakdown .sport,
 	.alert-info,
 	[class*='src-components-account-Membership-Membership-module__row'],
@@ -1004,23 +924,18 @@ domain("labs.strava.com") {
 	[class*='ModalWithTabs--tabList'],
 	[class*='-SuggestedRoutes-module__routeCard-'],
 	[class*='-ModalWithTabs-module__tabList'],
-	[class*='-ActivityEntryBody-module__stats']
-		> li,
+	[class*='-ActivityEntryBody-module__stats'] > li,
 	[class*='ProfileEveryone_activities'],
 	[class*='RecentActivities_card__'],
 	[class*='KudosCommentsAndAchievementsModal-module__entr'],
 	.upgrade > a,
 	[class*='-KudosAndComments-module__hairlin'],
-	[class*='styles_navItem']
-		> a[class*='Button_default_'],
+	[class*='styles_navItem'] > a[class*='Button_default_'],
 	[class*='LeaderboardsTable--leaderboard-entry'],
-	[class*='LeaderboardsTable--table-container']
-		> table
-		th,
+	[class*='LeaderboardsTable--table-container'] > table th,
 	[class*='CategoryTabs--container--']
 		[data-reach-tab][data-selected],
-	[class*='DropdownSelect']
-		> .react-select__control,
+	[class*='DropdownSelect'] > .react-select__control,
 	[class*='Discussions--discussion-list']
 		> :not(:last-child),
 	[class*='CollapsibleSection--line'],
@@ -1049,19 +964,13 @@ domain("labs.strava.com") {
 	.swim .segment-effort-detail .pr-comparison,
 	.sidebar .section:not(:first-child),
 	[class*='Form--hr-'],
-	.dense
-		.drop-down-minimal.enabled
-		.selection::after,
-	.uploads
-		.drop-down-menu.enabled
-		> .selection::after,
+	.dense .drop-down-minimal.enabled .selection::after,
+	.uploads .drop-down-menu.enabled > .selection::after,
 	.uploads
 		.drop-down-menu[class*='workout-type']
 		> .selection::after,
-	[class*='GlobalHeatmapAboutModal_aboutModal_']
-		> hr,
-	[class*='GlobalHeatmapAboutModal_modalBod']
-		> hr,
+	[class*='GlobalHeatmapAboutModal_aboutModal_'] > hr,
+	[class*='GlobalHeatmapAboutModal_modalBod'] > hr,
 	[class*='KudosCommentsAndAchievementsModal-module__footer'] {
 		border-top-color: var(--gray) !important;
 	}
@@ -1073,18 +982,13 @@ domain("labs.strava.com") {
 	#dropdown-more-button::after,
 	#dropdown-follow-us-button::after,
 	#selected-map::after,
-	.text-nowrap
-		> .drop-down-menu
-		.selection::after,
+	.text-nowrap > .drop-down-menu .selection::after,
 	#language-picker > .btn-white.selection::after,
-	.drop-down-menu.leaderboard-filter
-		> .selection::after,
+	.drop-down-menu.leaderboard-filter > .selection::after,
 	#ytd_year_run > .selection::after,
 	.drop-down-menu > .btn.selection::after,
 	#interval-date-range .selection::after,
-	.dense
-		.drop-down-minimal.enabled
-		.selection:hover::after,
+	.dense .drop-down-minimal.enabled .selection:hover::after,
 	.sauce-title-menu a.selection::after,
 	#distance-unit-dd > div::after,
 	#activity-type-dd > div::after,
@@ -1094,12 +998,10 @@ domain("labs.strava.com") {
 		border-top-color: var(--gray3) !important;
 	}
 
-	[class*='Spinner_spinner']
-		> [class*='Spinner_graphic'],
+	[class*='Spinner_spinner'] > [class*='Spinner_graphic'],
 	.PopupContents--popup-button-list--OU7Sn
 		> li:first-child {
-		border-color: var(--gray3) var(--gray6)
-			var(--gray6) !important;
+		border-color: var(--gray3) var(--gray6) var(--gray6) !important;
 	}
 
 	h1,
@@ -1203,9 +1105,7 @@ domain("labs.strava.com") {
 	.dropzone .header,
 	.manual-entry label,
 	.manual-entry legend,
-	.nav-categories-container
-		li
-		> [aria-selected='true'],
+	.nav-categories-container li > [aria-selected='true'],
 	.leaderboard-page .leaders .unit,
 	.leaderboard-page .leaderboard .unit,
 	.index-heading section .upsell,
@@ -1216,33 +1116,13 @@ domain("labs.strava.com") {
 	.ui-dialog-titlebar,
 	#map-vis-modal-title,
 	.sauce-header,
-	#__next
-		> header
-		> div
-		ul
-		> li
-		div
-		> a:not(:hover),
-	#__next
-		> header
-		> div
-		nav
-		> ul
-		> li
-		> a:not(:hover),
+	#__next > header > div ul > li div > a:not(:hover),
+	#__next > header > div nav > ul > li > a:not(:hover),
 	#__next div > div li > a,
 	[class^='TextBlock--text-block-'] p,
-	[class*='KudosCommentsAndAchievement']
-		> a:not(:hover),
+	[class*='KudosCommentsAndAchievement'] > a:not(:hover),
 	[class*='Activity__headline-text-btn'],
-	body
-		> div#__next
-		header
-		+ div
-		> div
-		div
-		label
-		> span,
+	body > div#__next header + div > div div label > span,
 	[class*='Stat--sta'],
 	[class*='-AthleteProfile-AthleteName-AthleteName-']:not(
 			:hover
@@ -1251,12 +1131,8 @@ domain("labs.strava.com") {
 			:focus
 		),
 	[class*='-Stat-module__statLabel'],
-	[class*='-components-YourSuggestedFollows']:not(
-			:hover
-		),
-	[class*='-components-YourSuggestedFollows']:not(
-			:focus
-		),
+	[class*='-components-YourSuggestedFollows']:not(:hover),
+	[class*='-components-YourSuggestedFollows']:not(:focus),
 	[class*='-Footer-Footer-module__sidebarFooter']
 		li
 		> a:not(:hover),
@@ -1351,17 +1227,13 @@ domain("labs.strava.com") {
 	div.text-title3,
 	[class*='LocationAndTime'],
 	.stat-subtext,
-	[class*='ActivityEntryBody--count--']:not(
-			:hover
-		),
+	[class*='ActivityEntryBody--count--']:not(:hover),
 	[class*='ActivityEntryBody--achievements-summary'],
 	[class*='ActivityEntryBody--achievements-summary']
 		li
 		strong,
 	#clamped-content-default,
-	[class*='GroupActivity--headline-text']:not(
-			:hover
-		),
+	[class*='GroupActivity--headline-text']:not(:hover),
 	.btn-section-link,
 	.h5.btn-text,
 	.activity-calendar .day,
@@ -1381,8 +1253,7 @@ domain("labs.strava.com") {
 	#global-header .nav-bar .nav-link,
 	[class*='Details--location-'],
 	#similar-activities-teaser .trending,
-	[class*='LocationAndTime--subtitle-wrapper-']
-		time,
+	[class*='LocationAndTime--subtitle-wrapper-'] time,
 	[class*='KudosCommentsAndAchievementsModal--tab-content']
 		a:not(
 			[class*='KudosCommentsAndAchievementsModal--btn-']
@@ -1458,18 +1329,11 @@ domain("labs.strava.com") {
 	[class*='src-components-ActivityEntryBody-ActivityEntryBody__description-body'],
 	[class*='KudosCommentsAndAchievements-AvatarAndMeta-AvatarAndMeta__location'],
 	[class*='ActivityEntryBody__stats'],
-	.leaflet-bottom
-		> .leaflet-control-attribution
-		> a[title],
+	.leaflet-bottom > .leaflet-control-attribution > a[title],
 	.mapboxgl-ctrl-scale,
-	[class*='shared-friends-components-shared-AthleteInfo']
-		p,
-	[class*='-module__latestActivityLink']:not(
-			:hover
-		),
-	[class*='-module__latestActivityLink']:not(
-			:focus
-		),
+	[class*='shared-friends-components-shared-AthleteInfo'] p,
+	[class*='-module__latestActivityLink']:not(:hover),
+	[class*='-module__latestActivityLink']:not(:focus),
 	[class*='-DashboardCardLink-DashboardCardLink-module']:not(
 			:hover
 		),
@@ -1500,8 +1364,7 @@ domain("labs.strava.com") {
 	[class*='-ui-Button-Button-module__default--jLxgA'],
 	.seg-leaderboard-upsell .text,
 	.breadcrumbs,
-	[class*='-CommentsThread-CommentsThread__']
-		a:not(:hover),
+	[class*='-CommentsThread-CommentsThread__'] a:not(:hover),
 	[class^='Modal_body_'],
 	[class*='DesktopNav--navLinks'] li > a,
 	[class*='styles_navItem'] a,
@@ -1524,8 +1387,7 @@ domain("labs.strava.com") {
 	[class*='MembershipStatus-module__iconInline'],
 	.page .row .btn-block.button,
 	[class*='-SuggestedRoutes-SuggestedRoutes-module__subtitle'],
-	[class*='AvatarAndMeta--athlete-name']
-		> a:not(:hover),
+	[class*='AvatarAndMeta--athlete-name'] > a:not(:hover),
 	[class*='-DateRange-module__dateRange'],
 	[class*='-SuggestedRoutes-module__statText'],
 	[class*='-ActivityEntryBody-module__achievementsSummary']
@@ -1533,8 +1395,7 @@ domain("labs.strava.com") {
 		strong,
 	[class*='Stat_statLabel_'],
 	[class*='-AvatarAndMeta-module__location'],
-	[class*='NotificationsList-module__notificationsEmpty']
-		p,
+	[class*='NotificationsList-module__notificationsEmpty'] p,
 	[class*='MediaBody-MediaBody__mediaBody'],
 	[class*='Legend_overflowString'],
 	[class*='Calendar_bottomContainer'],
@@ -1545,9 +1406,7 @@ domain("labs.strava.com") {
 			:hover
 		),
 	[class*='LeaderboardsTable--leaderboard-entry'],
-	[class*='DropdownSelect']
-		> .react-select__control
-		div,
+	[class*='DropdownSelect'] > .react-select__control div,
 	.react-select__option,
 	[class*='CollapsibleSection--light'],
 	[class*='Post--author-name--'],
@@ -1560,15 +1419,9 @@ domain("labs.strava.com") {
 	}
 
 	.ui-dialog.sauce-dialog
-		.btn:not(
-			.btn-unstyled,
-			.btn-primary,
-			.btn-secondary
-		) {
+		.btn:not(.btn-unstyled, .btn-primary, .btn-secondary) {
 		border: 1px solid var(--white) !important;
-		background-color: var(
-			--secondary-color2
-		) !important;
+		background-color: var(--secondary-color2) !important;
 		color: var(--white) !important;
 	}
 
@@ -1583,8 +1436,7 @@ domain("labs.strava.com") {
 		background-color: #999 !important;
 	}
 
-	.ui-dialog.sauce-dialog
-		input:not([type='range']),
+	.ui-dialog.sauce-dialog input:not([type='range']),
 	.entry.block.history.ftp.history-view.mutable-data-view
 		> div.mutable-data-entries
 		> div:nth-child(n)
@@ -1595,9 +1447,7 @@ domain("labs.strava.com") {
 		.btn {
 		outline: 1px solid var(--white) !important;
 		border: 1px solid var(--white) !important;
-		background-color: var(
-			--secondary-color2
-		) !important;
+		background-color: var(--secondary-color2) !important;
 		color: var(--white) !important;
 	}
 
@@ -1660,9 +1510,7 @@ domain("labs.strava.com") {
 	}
 
 	.hr-zones-panel table tr.lt {
-		background-color: var(
-			--secondary-color2
-		) !important;
+		background-color: var(--secondary-color2) !important;
 		color: var(--white) !important;
 	}
 
@@ -1678,11 +1526,9 @@ domain("labs.strava.com") {
 	[class*='Stat--stat-value-'],
 	[class*='ActivityEntryBody__achievements-summary'],
 	[class*='ActivityEntryBody-ActivityEntryBody__stat-label'],
-	[class*='-LocationAndTime-LocationAndTime']
-		> time,
+	[class*='-LocationAndTime-LocationAndTime'] > time,
 	[class*='RelativeEffort-RelativeEffort-module__head'],
-	[class*='SegmentDetailsSideBar--action-link']
-		.light,
+	[class*='SegmentDetailsSideBar--action-link'] .light,
 	.segment-data .inline-stats,
 	[class*='CommentsThread__comment'] time,
 	.activity-summary-v2 .count-label,
@@ -1693,11 +1539,9 @@ domain("labs.strava.com") {
 
 	[class*='src-components-media-EntryBody-EntryBody__entry-inset']
 		> a:hover,
-	[class*='-ChallengeCard-styles__card-title']
-		a:hover,
+	[class*='-ChallengeCard-styles__card-title'] a:hover,
 	[class*='shared-ui-src-challenges']:hover,
-	[class*='CommentsThread-module__athleteName']
-		> a:hover,
+	[class*='CommentsThread-module__athleteName'] > a:hover,
 	[class*='-CommentsThread-module__commentText']
 		> .mention:hover,
 	.src-components-TextWithIcon-TextWithIcon-module__textFields--a2gUr
@@ -1716,9 +1560,7 @@ domain("labs.strava.com") {
 		color: #1a1a1a !important;
 	}
 
-	#global-header
-		.nav-item:hover
-		> a:not(.btn-default),
+	#global-header .nav-item:hover > a:not(.btn-default),
 	footer.achievements
 		.footer-achievements-title
 		.segment-achievement,
@@ -1748,8 +1590,7 @@ domain("labs.strava.com") {
 	.chart-tooltip-label,
 	.chart-tooltip-unit,
 	[class*='packages-ui-Button-styles__bt'] > svg,
-	[class*='ui-Modal-Modal-module__closeButton']:hover
-		> svg,
+	[class*='ui-Modal-Modal-module__closeButton']:hover > svg,
 	[class*='__commentReactionContainer']
 		button:hover
 		svg
@@ -1774,14 +1615,9 @@ domain("labs.strava.com") {
 	#basic-analysis text.laps-label,
 	#basic-analysis text.segments-label,
 	#basic-analysis #effort-detail,
-	[class*='ui-Modal-Modal-module__closeButton']
-		> svg,
-	[class*='EmptyTrophyCase_emptyTrophyCase__']
-		svg,
-	[class*='__commentReactionContainer']
-		button
-		svg
-		> path,
+	[class*='ui-Modal-Modal-module__closeButton'] > svg,
+	[class*='EmptyTrophyCase_emptyTrophyCase__'] svg,
+	[class*='__commentReactionContainer'] button svg > path,
 	[class*='Search_searchIcon'] > svg {
 		fill: var(--gray3) !important;
 	}
@@ -1801,9 +1637,7 @@ domain("labs.strava.com") {
 		fill: var(--gray2) !important;
 	}
 
-	#basic-analysis
-		#elevation-chart
-		rect.static-info-box {
+	#basic-analysis #elevation-chart rect.static-info-box {
 		fill: var(--gray5) !important;
 	}
 
@@ -1869,8 +1703,7 @@ domain("labs.strava.com") {
 	table.segments tr.selected > td,
 	table.hidden-segments tr.selected > td,
 	table.laps-list tr.selected > td {
-		box-shadow: inset 1px 0 1px 1px
-			var(--secondary-color) !important;
+		box-shadow: inset 1px 0 1px 1px var(--secondary-color) !important;
 	}
 
 	.icon-elliptical,
@@ -1948,20 +1781,10 @@ domain("labs.strava.com") {
 		> img,
 	.nav-item
 		> .experiment
-		> img[alt]:not(
-			#global-header .user-nav .upgrade img
-		),
+		> img[alt]:not(#global-header .user-nav .upgrade img),
 	[class*='ActionsDropdown--more-icon'][role='button'],
-	#sauce-infopanel
-		table
-		td
-		.sauce-peak-rank
-		.place,
-	#sauce-infopanel
-		table
-		td
-		.sauce-peak-rank
-		.category,
+	#sauce-infopanel table td .sauce-peak-rank .place,
+	#sauce-infopanel table td .sauce-peak-rank .category,
 	#main
 		> div
 		> div
@@ -2005,16 +1828,8 @@ domain("labs.strava.com") {
 		font-size: 10px;
 	}
 
-	#sauce-infopanel
-		table
-		td
-		.sauce-peak-rank
-		.place,
-	#sauce-infopanel
-		table
-		td
-		.sauce-peak-rank
-		.category {
+	#sauce-infopanel table td .sauce-peak-rank .place,
+	#sauce-infopanel table td .sauce-peak-rank .category {
 		font-size: 8px;
 	}
 
@@ -2063,11 +1878,7 @@ domain("labs.strava.com") {
 		> div:nth-child(2),
 	.elevateExtendedData .gridDataContainer:hover,
 	.elevateExtendedData td:hover,
-	#sauce-performance
-		> nav
-		section
-		row.full
-		> header,
+	#sauce-performance > nav section row.full > header,
 	#sauce-performance
 		> main
 		section.sauce-panels
@@ -2181,11 +1992,7 @@ domain("labs.strava.com") {
 		> div
 		> div,
 	#sauce-performance,
-	#sauce-performance
-		> nav
-		.summary
-		section
-		> header,
+	#sauce-performance > nav .summary section > header,
 	#sauce-performance a.view-control,
 	#sauce-performance
 		> main
@@ -2269,9 +2076,7 @@ domain("labs.strava.com") {
 		> div
 		> h2:nth-child(8),
 	#dated-ftp-contents > div > table > thead > tr {
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 	}
 
 	body
@@ -2286,9 +2091,7 @@ domain("labs.strava.com") {
 		.src-components-BeesAdpTable-BeesAdpTable-module__highlightedRow--y7wRu,
 	.ui-dialog.sauce-dialog.sauce-sync-athlete-dialog
 		header.title {
-		background-color: var(
-			--secondary-color3
-		) !important;
+		background-color: var(--secondary-color3) !important;
 	}
 
 	.ride table.segments th,
@@ -2354,11 +2157,7 @@ domain("labs.strava.com") {
 		background-color: var(--gray2) !important;
 	}
 
-	#sauce-performance
-		> nav
-		section
-		row.full
-		> header,
+	#sauce-performance > nav section row.full > header,
 	#sauce-performance
 		> main
 		section.sauce-panels
@@ -2373,11 +2172,7 @@ domain("labs.strava.com") {
 		fill: var(--secondary-color2) !important;
 	}
 
-	#sauce-performance
-		> nav
-		section
-		row.full
-		.backdrop-icon {
+	#sauce-performance > nav section row.full .backdrop-icon {
 		opacity: 100%;
 	}
 
@@ -2385,21 +2180,11 @@ domain("labs.strava.com") {
 	.btn-icon.sauce-invoke:hover,
 	.half > a:hover,
 	.spans6 > select {
-		background-color: var(
-			--primary-color
-		) !important;
+		background-color: var(--primary-color) !important;
 		color: var(--white) !important;
 	}
 
-	#view
-		> section
-		> div
-		> table
-		> tfoot
-		> tr
-		> td
-		> p
-		> a {
+	#view > section > div > table > tfoot > tr > td > p > a {
 		color: var(--red) !important;
 	}
 
@@ -2407,21 +2192,13 @@ domain("labs.strava.com") {
 		color: rgb(255 241 131 / 69%) !important;
 	}
 
-	#view
-		> section
-		> div
-		> table
-		> tfoot
-		> tr
-		> td {
+	#view > section > div > table > tfoot > tr > td {
 		background: #e3e3e3;
 	}
 
 	.gear.bikes.hidden {
 		border: medium dashed var(--primary-color);
-		border-top-color: var(
-			--primary-color
-		) !important;
+		border-top-color: var(--primary-color) !important;
 		border-radius: 25px;
 		padding: 10px;
 	}
@@ -2564,8 +2341,7 @@ domain("labs.strava.com") {
 		background-color: var(--white);
 	}
 
-	.elevateExtendedData
-		div::-webkit-scrollbar-thumb {
+	.elevateExtendedData div::-webkit-scrollbar-thumb {
 		border: 1px solid var(--primary-color);
 		background-color: var(--white);
 	}
@@ -2574,8 +2350,7 @@ domain("labs.strava.com") {
 		width: 6px;
 	}
 
-	.elevateExtendedData
-		div::-webkit-scrollbar-track {
+	.elevateExtendedData div::-webkit-scrollbar-track {
 		background: #ffffffb8;
 	}
 
@@ -2587,8 +2362,7 @@ domain("labs.strava.com") {
 		background: #fafafa9c;
 	}
 
-	#similar-activities-section
-		> div.pinnable-anchor {
+	#similar-activities-section > div.pinnable-anchor {
 		filter: invert(1) hue-rotate(180deg) !important;
 		color: black !important;
 	}

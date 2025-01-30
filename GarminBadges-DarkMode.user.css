@@ -10,12 +10,7 @@
 ==/UserStyle== */
 @-moz-document domain("garminbadges.com") {
 	/* Invert colors except images and videos */
-	:is(
-		html:not([stylus-iframe]),
-		img,
-		svg,
-		video
-	) {
+	:is(html:not([stylus-iframe]), img, svg, video) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 }

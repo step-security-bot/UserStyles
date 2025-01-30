@@ -50,8 +50,5 @@
 	}
 
 	// Register the option in the Tampermonkey menu
-	GM_registerMenuCommand(
-		'Enable Right-Click',
-		enableRightClick,
-	);
+	GM_registerMenuCommand('Enable Right-Click', enableRightClick);
 })();

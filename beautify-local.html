@@ -46,11 +46,7 @@
 				align-items: center;
 				gap: 10px;
 				margin-bottom: 20px;
-				background-image: linear-gradient(
-					to right,
-					#9b59b6,
-					purple
-				);
+				background-image: linear-gradient(to right, #9b59b6, purple);
 				-webkit-background-clip: text;
 				color: transparent;
 				font-weight: 600;
@@ -91,11 +87,7 @@
 				border-color: #bb86fc;
 				border-radius: 4px;
 				border-radius: 20px;
-				background-image: linear-gradient(
-					to right,
-					#9b59b6,
-					purple
-				);
+				background-image: linear-gradient(to right, #9b59b6, purple);
 				padding: 10px 0;
 				width: 200px;
 				color: white;
@@ -103,11 +95,7 @@
 			}
 
 			.beautify-button:hover {
-				background-image: linear-gradient(
-					to right,
-					#9b59b6,
-					black
-				);
+				background-image: linear-gradient(to right, #9b59b6, black);
 			}
 
 			.CodeMirror {
@@ -205,81 +193,71 @@
 		<script src="C:\Users\Nick\Dropbox\PC (2)\Documents\GitHub\UserStyles\beautify-css-mod.js"></script>
 		<script>
 			// Initialize CodeMirror
-			const editor = CodeMirror.fromTextArea(
-				document.getElementById('editor'),
-				{
-					mode: 'css',
-					lineNumbers: false,
-					tabSize: 4,
-					lineWrapping: false,
-					smartIndent: true,
-					lineSeparator: null,
-					spellcheck: false,
-					autocapitalize: false,
-					autocorrect: false,
-					readOnly: false,
-					indentUnit: 2,
-					indentWithTabs: true,
-					specialChars:
-						/[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b\u200e\u200f\u2028\u2029\ufeff\ufff9-\ufffc]/g,
-					electricChars: true,
-					wholeLineUpdateBefore: true,
-					theme: 'default',
-					keyMap: 'default',
-					extraKeys: null,
-					configureMouse: function (
-						cm,
-						repeat,
-						event,
-					) {
-						return {
-							addNew: event.altKey,
-						};
-						<!-- Use the Alt key to add new selections. -->
-					},
-					fixedGutter: true,
-					coverGutterNextToScrollbar: false,
-					scrollbarStyle: 'native',
-					firstLineNumber: 1,
-					showCursorWhenSelecting: false,
-					resetSelectionOnContextMenu: true,
-					lineWiseCopyCut: true,
-					pasteLinesPerSelection: true,
-					selectionsMayTouch: false,
-					screenReaderLabel: null,
-					disableInput: false,
-					dragDrop: true,
-					allowDropFileTypes: null,
-					cursorBlinkRate: 530,
-					cursorScrollMargin: 0,
-					cursorHeight: 1,
-					singleCursorHeightPerLine: true,
-					workTime: 100,
-					workDelay: 100,
-					flattenSpans: true,
-					addModeClass: true,
-					pollInterval: 100,
-					undoDepth: 200,
-					historyEventDelay: 1250,
-					viewportMargin: 10,
-					maxHighlightLength: 10000,
-					moveInputWithCursor: true,
-					tabindex: null,
-					autofocus: null,
-					direction: 'ltr',
-					phrases: null,
-					selector_separator_newline: true,
-					newline_between_rules: true,
-					newline_before_open_brace: true,
+			const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+				mode: 'css',
+				lineNumbers: false,
+				tabSize: 4,
+				lineWrapping: false,
+				smartIndent: true,
+				lineSeparator: null,
+				spellcheck: false,
+				autocapitalize: false,
+				autocorrect: false,
+				readOnly: false,
+				indentUnit: 2,
+				indentWithTabs: true,
+				specialChars: /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b\u200e\u200f\u2028\u2029\ufeff\ufff9-\ufffc]/g,
+				electricChars: true,
+				wholeLineUpdateBefore: true,
+				theme: 'default',
+				keyMap: 'default',
+				extraKeys: null,
+				configureMouse: function (cm, repeat, event) {
+					return {
+						addNew: event.altKey,
+					};
+					<!-- Use the Alt key to add new selections. -->
 				},
-			);
+				fixedGutter: true,
+				coverGutterNextToScrollbar: false,
+				scrollbarStyle: 'native',
+				firstLineNumber: 1,
+				showCursorWhenSelecting: false,
+				resetSelectionOnContextMenu: true,
+				lineWiseCopyCut: true,
+				pasteLinesPerSelection: true,
+				selectionsMayTouch: false,
+				screenReaderLabel: null,
+				disableInput: false,
+				dragDrop: true,
+				allowDropFileTypes: null,
+				cursorBlinkRate: 530,
+				cursorScrollMargin: 0,
+				cursorHeight: 1,
+				singleCursorHeightPerLine: true,
+				workTime: 100,
+				workDelay: 100,
+				flattenSpans: true,
+				addModeClass: true,
+				pollInterval: 100,
+				undoDepth: 200,
+				historyEventDelay: 1250,
+				viewportMargin: 10,
+				maxHighlightLength: 10000,
+				moveInputWithCursor: true,
+				tabindex: null,
+				autofocus: null,
+				direction: 'ltr',
+				phrases: null,
+				selector_separator_newline: true,
+				newline_between_rules: true,
+				newline_before_open_brace: true,
+			});
 
 			// Beautify Button
-			document
-				.getElementById('beautifyButton')
-				.addEventListener('click', () => {
-					beautify([editor], true);
-				});
+			document.getElementById('beautifyButton').addEventListener('click', () => {
+				beautify([editor], true);
+			});
 		</script>
 	</body>
 </html>

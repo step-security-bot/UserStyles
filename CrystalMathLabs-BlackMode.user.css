@@ -32,12 +32,8 @@
 	#contentwrap,
 	.news,
 	.menubar ul li ul.dropdown {
-		background: var(
-			--background-black
-		) !important;
-		background-color: var(
-			--background-black
-		) !important;
+		background: var(--background-black) !important;
+		background-color: var(--background-black) !important;
 	}
 
 	.menubar,
@@ -46,9 +42,7 @@
 	#footer {
 		border-radius: 20px;
 		background: var(--background-dark) !important;
-		background-color: var(
-			--background-dark
-		) !important;
+		background-color: var(--background-dark) !important;
 		padding-right: 10px;
 		padding-left: 10px;
 	}
@@ -61,9 +55,7 @@
 		> a:hover {
 		border-radius: 20px;
 		background: var(--background-dark) !important;
-		background-color: var(
-			--background-dark
-		) !important;
+		background-color: var(--background-dark) !important;
 		padding-left: 20px;
 		color: var(--color-green);
 	}
@@ -81,12 +73,8 @@
 	input:nth-child(2),
 	input[type='text' i],
 	#xp-calc-form button {
-		background: var(
-			--background-black
-		) !important;
-		background-color: var(
-			--background-black
-		) !important;
+		background: var(--background-black) !important;
+		background-color: var(--background-black) !important;
 		color: var(--color-white);
 	}
 }

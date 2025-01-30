@@ -36,9 +36,7 @@
 
 @-moz-document domain("steamstat.us") {
 	:root {
-		--title-gradient-start: var(
-			title-gradient-start
-		);
+		--title-gradient-start: var(title-gradient-start);
 		--title-gradient-end: var(title-gradient-end);
 		--title-color: var(title-color);
 		--title-shadow: var(title-shadow);
@@ -58,9 +56,7 @@
 		--background-gradient-start: var(
 			background-gradient-start
 		);
-		--background-gradient-end: var(
-			background-gradient-end
-		);
+		--background-gradient-end: var(background-gradient-end);
 		--body-color: var(body-color);
 		--body-shadow: var(body-shadow);
 		--tooltip-background: var(tooltip-background);

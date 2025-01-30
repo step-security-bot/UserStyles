@@ -19,11 +19,7 @@
 	// Function to convert meters to feet
 	const metersToFeet = (meters) => {
 		// Return converted value or 0 if invalid
-		if (
-			isNaN(meters) ||
-			meters === null ||
-			meters === ''
-		) {
+		if (isNaN(meters) || meters === null || meters === '') {
 			return 0; // Return 0 if value is invalid
 		}
 		return (meters * 3.28084).toFixed(2);
@@ -50,55 +46,34 @@
 			);
 
 			// Extract the numeric values and convert them to feet
-			const ascentValueInMeters = parseFloat(
-				ascentElement.textContent.trim(),
-			);
+			const ascentValueInMeters = parseFloat(ascentElement.textContent.trim());
 			const descentValueInMeters = parseFloat(
 				descentElement.textContent.trim(),
 			);
 
 			// Convert ascent value and check if valid
-			const ascentValueInFeet = metersToFeet(
-				ascentValueInMeters,
-			);
+			const ascentValueInFeet = metersToFeet(ascentValueInMeters);
 			if (ascentValueInFeet !== 0) {
-				console.log(
-					'Converted ascent value (feet):',
-					ascentValueInFeet,
-				);
+				console.log('Converted ascent value (feet):', ascentValueInFeet);
 				ascentElement.innerHTML = `${ascentValueInFeet} <span class="gridUnits">ft</span><br><span class="gridTitle">Ascent</span>`;
 			} else {
-				console.log(
-					'Invalid Ascent value detected:',
-					ascentValueInMeters,
-				);
+				console.log('Invalid Ascent value detected:', ascentValueInMeters);
 			}
 
 			// Convert descent value and check if valid
-			const descentValueInFeet = metersToFeet(
-				descentValueInMeters,
-			);
+			const descentValueInFeet = metersToFeet(descentValueInMeters);
 			if (descentValueInFeet !== 0) {
-				console.log(
-					'Converted descent value (feet):',
-					descentValueInFeet,
-				);
+				console.log('Converted descent value (feet):', descentValueInFeet);
 				descentElement.innerHTML = `${descentValueInFeet} <span class="gridUnits">ft</span><br><span class="gridTitle">Descent</span>`;
 			} else {
-				console.log(
-					'Invalid Descent value detected:',
-					descentValueInMeters,
-				);
+				console.log('Invalid Descent value detected:', descentValueInMeters);
 			}
 
 			// Add the ascent and descent data to the same row in the grid
 			const grid = document.querySelector(
 				'#heading > div > div.row.no-margins.activity-summary-container > div.spans8.activity-stats.mt-md.mb-md > div.summaryGrid > table > tbody',
 			);
-			console.log(
-				'Adding ascent and descent values to the grid:',
-				grid,
-			);
+			console.log('Adding ascent and descent values to the grid:', grid);
 
 			const newRow = document.createElement('tr');
 			newRow.innerHTML = `
@@ -114,20 +89,13 @@
                 </td>
             `;
 			grid.appendChild(newRow);
-			console.log(
-				'Ascent and Descent values added to grid:',
-				newRow,
-			);
+			console.log('Ascent and Descent values added to grid:', newRow);
 
 			// Disconnect the observer after updating the values
 			observer.disconnect();
-			console.log(
-				'Observer disconnected after values are updated',
-			);
+			console.log('Observer disconnected after values are updated');
 		} else {
-			console.log(
-				'Ascent or descent elements not found',
-			);
+			console.log('Ascent or descent elements not found');
 		}
 	};
 
@@ -136,10 +104,7 @@
 		let timeout;
 		return function (...args) {
 			clearTimeout(timeout);
-			timeout = setTimeout(
-				() => func.apply(this, args),
-				wait,
-			);
+			timeout = setTimeout(() => func.apply(this, args), wait);
 		};
 	}
 
@@ -151,17 +116,12 @@
 	});
 
 	// Wrap the updateValues function with debounce
-	const updateValuesDebounced = debounce(
-		updateValues,
-		1000,
-	); // Adjust the delay as needed
+	const updateValuesDebounced = debounce(updateValues, 1000); // Adjust the delay as needed
 
 	// Observe changes to the document body
 	observer.observe(document.body, {
 		childList: true,
 		subtree: true,
 	});
-	console.log(
-		'Observer is now watching for changes',
-	);
+	console.log('Observer is now watching for changes');
 })();

@@ -53,9 +53,7 @@
 		--background-gradient-start: var(
 			background-gradient-start
 		);
-		--background-gradient-end: var(
-			background-gradient-end
-		);
+		--background-gradient-end: var(background-gradient-end);
 		--body-background: var(body-background);
 		--body-color: var(body-color);
 		--body-shadow: var(body-shadow);

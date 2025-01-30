@@ -16,37 +16,37 @@ url-prefix("http://localhost:5500/"),
 url-prefix("http://127.0.0.1:5500/"),
 url-prefix("https://127.0.0.1:5500/")
 {
-    :root {
-        --background-color: var(background-color);
-    }
+	:root {
+		--background-color: var(background-color);
+	}
 
-    /* Invert colors except images and videos */
-    html,
-    img,
-    svg,
-    video,
-    iframe {
-        filter: invert(1) hue-rotate(180deg);
-        background: var(--background-color);
-    }
+	/* Invert colors except images and videos */
+	html,
+	img,
+	svg,
+	video,
+	iframe {
+		filter: invert(1) hue-rotate(180deg);
+		background: var(--background-color);
+	}
 
-    .container {
-        filter: invert(1) hue-rotate(180deg);
-    }
+	.container {
+		filter: invert(1) hue-rotate(180deg);
+	}
 }
 
 @-moz-document regexp(".*\.html$") {
-    /* Invert colors except images and videos */
-    html,
-    img,
-    svg,
-    video,
-    iframe {
-        filter: none !important;
-        background: unset !important;
-    }
+	/* Invert colors except images and videos */
+	html,
+	img,
+	svg,
+	video,
+	iframe {
+		filter: none !important;
+		background: unset !important;
+	}
 
-    .container {
-        filter: none !important;
-    }
+	.container {
+		filter: none !important;
+	}
 }
