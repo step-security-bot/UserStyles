@@ -10,7 +10,6 @@ insert_final_newline = true
 
 [*.{css,user.css,styl}]
 parser = css
-print_width = 60
 
 [*.styl]
 parser = stylus

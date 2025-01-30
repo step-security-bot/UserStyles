@@ -10,7 +10,6 @@ insert_final_newline = true
 
 [*.{css,user.css,styl}]
 parser = css
-print_width = 60
 
 [*.styl]
 parser = stylus
@@ -21,7 +20,7 @@ bracket_spacing = true
 embedded_language_formatting = auto
 html_whitespace_sensitivity = css
 jsx_single_quote = false
-print_width = 80
+print_width = 50
 prose_wrap = preserve
 quote_props = as-needed
 semi = true
