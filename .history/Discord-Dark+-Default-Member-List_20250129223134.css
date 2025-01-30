@@ -1,5 +1,3 @@
-/* stylelint-disable declaration-block-no-duplicate-properties */
-/* stylelint-disable no-duplicate-selectors */
 /*
  ________  ________  ________  ___  __    ________  ___       ___  ___  ________
 |\   ___ \|\   __  \|\   __  \|\  \|\  \ |\   __  \|\  \     |\  \|\  \|\   ____\
@@ -24,7 +22,7 @@
 	--darkplus-bg2: #302f2f;
 	--darkplus-sec: #bb86fc;
 	--darkplus-links: #cdaef3;
-	--darkplus-home-icon: url('https://devevil.com/betterdiscord/dark%2b-logo.png');
+	--darkplus-home-icon: url(https://devevil.com/betterdiscord/dark%2b-logo.png);
 	--watermark-filter-invert: 0%;
 	--watermark-filter-sepia: 50%;
 	--watermark-filter-saturate: 3000%;
@@ -98,7 +96,7 @@
 	background-color: transparent;
 }
 
-.form_a7d72e::before {
+.form_a7d72e:before {
 	display: none;
 }
 
@@ -110,7 +108,7 @@
 	background-color: var(--darkplus-bg);
 }
 
-.children_fc4f04::after {
+.children_fc4f04:after {
 	display: none;
 }
 
@@ -183,7 +181,7 @@
 	) !important;
 }
 
-.mentioned_d5deea::before {
+.mentioned_d5deea:before {
 	background-color: var(--darkplus-sec);
 }
 
@@ -396,7 +394,7 @@
 }
 
 .search_ff5f90 {
-	margin-left: 0;
+	margin-left: 0px;
 }
 
 .search_ff5f90 {
@@ -483,8 +481,8 @@
 	border-radius: 15px;
 	background-color: var(--darkplus-bg2);
 	padding: 8px;
-	width: fit-content;
-	width: fit-content;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
 	width: fit-content;
 	max-width: 650px;
 }
@@ -518,7 +516,7 @@ article.embedWrapper_b558d0.embedFlexGrow_b558d0.embedFull_b0068a.embed_b0068a.m
 }
 
 .title_a7d72e.container_fc4f04.themed_fc4f04,
-.theme-dark .children_fc4f04::after {
+.theme-dark .children_fc4f04:after {
 	background: var(--darkplus-bg);
 }
 
@@ -1207,14 +1205,14 @@ button[aria-label='Send a gift'] {
 	color: var(--darkplus-sec);
 	font-weight: 600;
 	font-size: 14px;
-	font-family: Lato;
+	font-family: 'Lato';
 }
 
 .wordmark_a934d8 > svg {
 	display: none;
 }
 
-.wordmark_a934d8::after {
+.wordmark_a934d8:after {
 	filter: invert(var(--watermark-filter-invert))
 		sepia(var(--watermark-filter-sepia))
 		saturate(var(--watermark-filter-saturate))
@@ -1696,7 +1694,7 @@ button[aria-label='Send a gift'] {
 	color: var(--darkplus-sec);
 }
 
-.theme-dark .option-2KkUJO::after {
+.theme-dark .option-2KkUJO:after {
 	background: transparent;
 }
 
@@ -1772,7 +1770,7 @@ button[aria-label='Send a gift'] {
 	background-color: var(--darkplus-bg);
 }
 
-.theme-dark .children_fc4f04::after {
+.theme-dark .children_fc4f04:after {
 	background: var(--darkplus-bg);
 }
 

@@ -12,7 +12,7 @@
 		"eslint-plugin-prettier",
 		"prettier-plugin-stylus"
 	],
-	"printWidth": 80,
+	"printWidth": 50,
 	"proseWrap": "preserve",
 	"quoteProps": "as-needed",
 	"semi": true,
@@ -25,8 +25,7 @@
 		{
 			"files": "*.css",
 			"options": {
-				"parser": "css",
-				"printWidth": 60
+				"parser": "css"
 			}
 		},
 		{
