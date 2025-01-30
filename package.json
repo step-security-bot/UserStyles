@@ -81,7 +81,7 @@
 		"resolve-from": "^5.0.0",
 		"reusify": "^1.0.4",
 		"run-parallel": "^1.2.0",
-		"semver": "^7.6.3",
+		"semver": "^7.7.0",
 		"shebang-command": "^2.0.0",
 		"shebang-regex": "^4.0.0",
 		"strip-json-comments": "^5.0.1",
