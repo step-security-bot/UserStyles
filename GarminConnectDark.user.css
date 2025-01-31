@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Garmin Connect Dark Mode (Updated)
-@version      3.3
+@version      3.4
 @namespace    typpi.online
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
@@ -23,17 +23,17 @@
 {
 	:root
 	{
-		--inverted-background: var( inverted-background);
-		--inverted-background2: var( inverted-background2);
+		--inverted-background: var(inverted-background);
+		--inverted-background2: var(inverted-background2);
 		--primary-text: var(primary-text);
 		--primary-text2: var(primary-text2);
 		--header-text: var(header-text);
 		--border: var(border-color);
 		--scrollbar-thumb: var(scrollbar-thumb-color);
-		--scrollbar-background: var( scrollbar-background-color);
+		--scrollbar-background: var(scrollbar-background-color);
 	}
 
-	:is(.connect-container)
+	.connect-container
 	{
 		filter: invert(1) hue-rotate(180deg);
 	}
@@ -76,7 +76,7 @@
 	.modal-body > select
 	{
 		filter: invert(1) hue-rotate(180deg);
-		background-color: var( --inverted-background) !important;
+		background-color: var(--inverted-background) !important;
 		color: var(--primary-text) !important;
 	}
 
@@ -111,14 +111,14 @@
 		filter: invert(1) hue-rotate(180deg);
 		/*Box model stuff*/
 		border-color: var(--border);
-		background-color: var( --inverted-background2) !important;
+		background-color: var(--inverted-background2) !important;
 		/*Typography stuff*/
 		color: var(--primary-text2) !important;
 	}
 
 	.photo-carousel
 	{
-		background-color: var( --inverted-background2) !important;
+		background-color: var(--inverted-background2) !important;
 	}
 
 	.photo-carousel-modal .close
@@ -145,7 +145,7 @@
 
 	.react-global-modal .Dialog_dialogFooter__W9xGT > a
 	{
-		background-color: var( --inverted-background2) !important;
+		background-color: var(--inverted-background2) !important;
 		color: var(--primary-text2);
 	}
 
@@ -159,7 +159,7 @@
 	{
 		border: 3px solid var(--scrollbar-background-color);
 		border-radius: 6px;
-		background-color: var( --scrollbar-thumb-color);
+		background-color: var(--scrollbar-thumb-color);
 	}
 
 	/* For Edge, IE */
@@ -174,9 +174,14 @@ regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$")
 {
 	:root
 	{
-		--inverted-background: var( inverted-background);
-		--primary-text: var(primary-text-color);
+		--inverted-background: var(inverted-background);
+		--inverted-background2: var(inverted-background2);
+		--primary-text: var(primary-text);
+		--primary-text2: var(primary-text2);
+		--header-text: var(header-text);
+		--border: var(border-color);
 		--scrollbar-thumb: var(scrollbar-thumb-color);
+		--scrollbar-background: var(scrollbar-background-color);
 	}
 
 	:is( html:not([stylus-iframe]),
@@ -224,7 +229,7 @@ regexp("^https?:\\/\\/(www\\.)?garmin\\.com(\\/[^\\s]*)?$")
 	{
 		border: 3px solid var(--scrollbar-thumb);
 		border-radius: 6px;
-		background-color: var(--scrollbar-background);
+		background-color: var(--scrollbar-background-color);
 	}
 
 	/* For Edge, IE */
