@@ -3,3 +3,4 @@
 *.ffs_db
 sync.ffs_db
 /.github/styles
+.history/

@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         jalopnik.com - Dark Mode
-@version      20241115.20.24
+@version      20241115.20.25
 @namespace    typpi.online
 @description  jalopnik.com - Dark Mode
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
@@ -17,7 +17,17 @@
 			svg,
 			video,
 			body > div:nth-child(5) > div.js_footer-container
-		):not(z#z.z[z], svg, a > img, #site-footer-container) {
+		/* Exclude specific elements from the filter */
+		):not(
+			/* Exclude elements with id 'z' and class 'z' that have attribute 'z' */
+			z#z.z[z],
+			/* Exclude SVG elements */
+			svg,
+			/* Exclude images inside anchor tags */
+			a > img,
+			/* Exclude the site footer container */
+			#site-footer-container
+		) {
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 }
