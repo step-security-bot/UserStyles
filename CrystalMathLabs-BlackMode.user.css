@@ -15,6 +15,25 @@
 @var color color-white "White" #ffffff
 @var color color-pink "Pink" #ff69b4
 ==/UserStyle== */
+/*
+
+This CSS file applies a dark mode theme to the CrystalMathLabs website.
+
+Variables:
+	--background-black: Background color for main elements.
+	--background-dark: Background color for secondary elements.
+	--color-green: Text color for hover effects.
+	--background-banner: Background color for the global banner.
+	--color-white: Text color for main elements.
+	--color-pink: Text color for links in the global banner.
+
+Styles:
+	- Applies dark background colors to the main content areas.
+	- Adds rounded corners and padding to the menubar, hints, XP table, and footer.
+	- Changes the background and text color of menu items on hover.
+	- Sets the background and text color of the global banner and its links.
+	- Styles input fields and buttons with dark backgrounds and white text.
+*/
 @-moz-document domain("crystalmathlabs.com") {
 	:root {
 		--background-black: var(background-black);

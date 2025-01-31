@@ -7,8 +7,18 @@
 				"severity": "warning"
 			}
 		],
-		"block-no-empty": [true, { "severity": "error" }],
-		"color-no-invalid-hex": [true, { "severity": "error" }],
+		"block-no-empty": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
+		"color-no-invalid-hex": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
 		"declaration-block-no-duplicate-properties": [
 			true,
 			{
@@ -18,70 +28,232 @@
 		],
 		"declaration-block-no-shorthand-property-overrides": [
 			true,
-			{ "severity": "warning" }
+			{
+				"severity": "warning"
+			}
 		],
-		"font-family-no-duplicate-names": [true, { "severity": "warning" }],
-		"function-calc-no-unspaced-operator": [true, { "severity": "error" }],
+		"font-family-no-duplicate-names": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"function-calc-no-unspaced-operator": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
 		"function-linear-gradient-no-nonstandard-direction": [
 			true,
-			{ "severity": "error" }
+			{
+				"severity": "error"
+			}
 		],
-		"keyframe-declaration-no-important": [true, { "severity": "warning" }],
-		"media-feature-name-no-unknown": [true, { "severity": "warning" }],
-		"no-invalid-double-slash-comments": [true, { "severity": "warning" }],
-		"property-no-unknown": [true, { "severity": "warning" }],
-		"selector-pseudo-class-no-unknown": [true, { "severity": "warning" }],
-		"selector-pseudo-element-no-unknown": [true, { "severity": "warning" }],
-		"string-no-newline": [true, { "severity": "error" }],
-		"unit-no-unknown": [true, { "severity": "error" }],
+		"keyframe-declaration-no-important": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"media-feature-name-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"no-invalid-double-slash-comments": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"property-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"selector-pseudo-element-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"string-no-newline": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
+		"unit-no-unknown": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
 		"alpha-value-notation": "percentage",
-		"annotation-no-unknown": [true, { "severity": "warning" }],
-		"at-rule-no-vendor-prefix": [null, { "severity": "warning" }],
+		"annotation-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"at-rule-no-vendor-prefix": [
+			null,
+			{
+				"severity": "warning"
+			}
+		],
 		"color-function-notation": "modern",
-		"comment-no-empty": [true, { "severity": "warning" }],
+		"comment-no-empty": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"custom-property-no-missing-var-function": [
 			true,
-			{ "severity": "warning" }
+			{
+				"severity": "warning"
+			}
 		],
 		"declaration-block-no-duplicate-custom-properties": [
 			true,
-			{ "severity": "warning" }
+			{
+				"severity": "warning"
+			}
 		],
 		"declaration-block-no-redundant-longhand-properties": [
 			true,
-			{ "severity": "warning" }
+			{
+				"severity": "warning"
+			}
 		],
-		"declaration-property-value-no-unknown": [true, { "severity": "warning" }],
+		"declaration-property-value-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"font-family-name-quotes": "always-where-required",
 		"font-family-no-missing-generic-family-keyword": [
 			null,
-			{ "severity": "error" }
+			{
+				"severity": "error"
+			}
 		],
 		"function-name-case": "lower",
-		"function-no-unknown": [true, { "severity": "warning" }],
+		"function-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"function-url-quotes": "always",
 		"hue-degree-notation": "angle",
 		"import-notation": "string",
-		"keyframe-block-no-duplicate-selectors": [true, { "severity": "warning" }],
+		"keyframe-block-no-duplicate-selectors": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"keyframe-selector-notation": "percentage-unless-within-keyword-only-block",
-		"length-zero-no-unit": [true, { "severity": "warning" }],
+		"length-zero-no-unit": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"lightness-notation": "percentage",
 		"max-nesting-depth": 3,
-		"media-feature-name-no-vendor-prefix": [true, { "severity": "warning" }],
-		"media-feature-name-value-no-unknown": [true, { "severity": "warning" }],
+		"media-feature-name-no-vendor-prefix": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"media-feature-name-value-no-unknown": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"media-feature-range-notation": "context",
-		"media-query-no-invalid": [true, { "severity": "error" }],
-		"named-grid-areas-no-invalid": [true, { "severity": "error" }],
-		"no-descending-specificity": [null, { "severity": "warning" }],
-		"no-duplicate-at-import-rules": [true, { "severity": "warning" }],
-		"no-duplicate-selectors": [true, { "severity": "warning" }],
-		"no-empty-source": [true, { "severity": "warning" }],
-		"no-invalid-position-at-import-rule": [true, { "severity": "warning" }],
-		"no-irregular-whitespace": [true, { "severity": "error" }],
-		"no-unknown-animations": [true, { "severity": "warning" }],
+		"media-query-no-invalid": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
+		"named-grid-areas-no-invalid": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
+		"no-descending-specificity": [
+			null,
+			{
+				"severity": "warning"
+			}
+		],
+		"no-duplicate-at-import-rules": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"no-duplicate-selectors": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"no-empty-source": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"no-invalid-position-at-import-rule": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
+		"no-irregular-whitespace": [
+			true,
+			{
+				"severity": "error"
+			}
+		],
+		"no-unknown-animations": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"number-max-precision": 4,
-		"property-no-vendor-prefix": [null, { "severity": "warning" }],
-		"selector-anb-no-unmatchable": [true, { "severity": "warning" }],
+		"property-no-vendor-prefix": [
+			null,
+			{
+				"severity": "warning"
+			}
+		],
+		"selector-anb-no-unmatchable": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"selector-attribute-quotes": "always",
 		"selector-max-attribute": 3,
 		"selector-max-class": 30,
@@ -91,17 +263,42 @@
 		"selector-max-pseudo-class": 5,
 		"selector-max-type": 30,
 		"selector-max-universal": 3,
-		"selector-no-qualifying-type": [null, { "severity": "warning" }],
-		"selector-no-vendor-prefix": [true, { "severity": "warning" }],
+		"selector-no-qualifying-type": [
+			null,
+			{
+				"severity": "warning"
+			}
+		],
+		"selector-no-vendor-prefix": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"selector-not-notation": "complex",
 		"selector-pseudo-element-colon-notation": "double",
 		"selector-type-case": "lower",
-		"selector-type-no-unknown": [null, { "severity": "error" }],
-		"shorthand-property-no-redundant-values": [true, { "severity": "warning" }],
+		"selector-type-no-unknown": [
+			null,
+			{
+				"severity": "error"
+			}
+		],
+		"shorthand-property-no-redundant-values": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"time-min-milliseconds": 100,
 		"unit-disallowed-list": ["pt", "cm", "in", "mm"],
 		"value-keyword-case": "lower",
-		"value-no-vendor-prefix": [true, { "severity": "warning" }],
+		"value-no-vendor-prefix": [
+			true,
+			{
+				"severity": "warning"
+			}
+		],
 		"at-rule-allowed-list": null,
 		"at-rule-disallowed-list": null,
 		"at-rule-empty-line-before": null,

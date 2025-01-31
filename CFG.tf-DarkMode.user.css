@@ -7,7 +7,7 @@
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 @downloadURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/CFG.tf-DarkMode.user.css
-@updateURl      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/CFG.tf-DarkMode.user.css
+@updateURL      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/CFG.tf-DarkMode.user.css
 @supportURL     https://github.com/Nick2bad4u/UserStyles/issues
 
 @var color panel-border "Panel Border Color" #6995c0
@@ -32,6 +32,7 @@
 	iframe,
 	#generator_chooser,
 	.footer {
+		/* Invert colors and adjust hue to create a dark mode effect */
 		filter: invert(1) hue-rotate(180deg) !important;
 	}
 
