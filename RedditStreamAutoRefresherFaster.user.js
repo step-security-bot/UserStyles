@@ -5,7 +5,7 @@
 // @author       Nick2bad4u
 // @match        https://reddit-stream.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit-stream.com
-// @version      2.2
+// @version      2.3
 // @grant        none
 // @homepage     https://github.com/Nick2bad4u/UserStyles
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
@@ -19,7 +19,10 @@
 
 (function () {
 	'use strict';
+	// Refresh Interval in milliseconds
+	const REFRESH_INTERVAL = 10 * 1000;
+	// Reload page after REFRESH_INTERVAL
 	setTimeout(function () {
-		location.reload();
-	}, 10 * 1000);
+		location.reload(); // Reload the page
+	}, REFRESH_INTERVAL); // 10 seconds
 })();
