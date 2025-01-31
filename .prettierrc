@@ -45,7 +45,7 @@
 		{
 			"files": "*.user.js",
 			"options": {
-				"printWidth": 80
+				"printWidth": 160
 			}
 		}
 	]
