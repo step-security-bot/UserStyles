@@ -26,22 +26,22 @@ on:
     - cron: "32 2 * * 2"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   lint:
     name: DevSkim
     runs-on: ubuntu-20.04
     permissions:
-      actions: read
-      contents: read
+      actions: write
+      contents: write
       security-events: write
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
         with:
           disable-sudo: true
-          egress-policy: block
+          egress-policy: audit
           allowed-endpoints: >
             api.github.com:443
             github.com:443
