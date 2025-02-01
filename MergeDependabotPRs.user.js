@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      1.1
+// @version      1.2
 // @description  Merges Dependabot PRs in any of your repositories
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -11,6 +11,7 @@
 // @grant        GM_setValue
 // @connect      api.github.com
 // @license      MIT
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // ==/UserScript==
 
 (function () {
