@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      1.2
+// @version      1.3
 // @description  Merges Dependabot PRs in any of your repositories
+// @var          number merge_delay "Delay between merge requests in milliseconds" 2000 // The delay in milliseconds between each merge request
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
 // @grant        GM_xmlhttpRequest
@@ -12,17 +13,39 @@
 // @connect      api.github.com
 // @license      MIT
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
+// @homepageURL  https://github.com/Nick2bad4u/UserStyles
+// @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 // ==/UserScript==
-
-(function () {
+/* global GM_getValue, GM_setValue, GM_xmlhttpRequest */
+(async function () {
 	'use strict';
 
 	// let repo = GM_getValue('github_repo'); // redundant declaration removed
 
-	(async function() {
-		let token = await retrieveAndDecryptToken();
+	// Delay between each merge request in milliseconds, default is 2000ms
+	let delay = GM_getValue('merge_delay', 2000);
+	if (isNaN(delay) || Number(delay) <= 0) {
+		delay = 2000; // default value if invalid
+	} else {
+		delay = Number(delay);
+	}
+
+	async function initialize() {
+		let token;
+		try {
+			token = await retrieveAndDecryptToken();
+		} catch (error) {
+			console.error('Failed to retrieve and decrypt token:', error);
+			alert('Failed to retrieve and decrypt token. Please check the console for more details.');
+			return;
+		}
 		if (!token) {
-			token = prompt('Please enter your GitHub token:');
+			while (!token) {
+				token = prompt('Please enter your GitHub token:');
+				if (!token) {
+					alert('GitHub token is required.');
+				}
+			}
 			if (token) {
 				await encryptAndStoreToken(token);
 			} else {
@@ -31,27 +54,44 @@
 			}
 		}
 		let username = GM_getValue('github_username');
-		if (!username) {
+		while (!username) {
 			username = prompt('Please enter your GitHub username:');
-			GM_setValue('github_username', username);
+			if (username) {
+				GM_setValue('github_username', username);
+			} else {
+				alert('GitHub username is required.');
+			}
 		}
 
 		let repo = GM_getValue('github_repo');
-		if (!repo) {
+		while (!repo) {
 			repo = prompt('Please enter your GitHub repository name:');
-			GM_setValue('github_repo', repo);
+			if (repo) {
+				GM_setValue('github_repo', repo);
+			} else {
+				alert('GitHub repository name is required.');
+			}
 		}
-	})();
+	}
+
+	await initialize();
 
 	async function encryptAndStoreToken(token) {
 		const enc = new TextEncoder();
 		const encodedToken = enc.encode(token);
-		const key = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt', 'decrypt']);
+		let key;
+		const storedKey = GM_getValue('encryption_key', null);
+		if (storedKey) {
+			key = await crypto.subtle.importKey('jwk', JSON.parse(storedKey), { name: 'AES-GCM' }, true, ['encrypt', 'decrypt']);
+		} else {
+			key = await crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, ['encrypt', 'decrypt']);
+			GM_setValue('encryption_key', JSON.stringify(await crypto.subtle.exportKey('jwk', key)));
+		}
 		const iv = crypto.getRandomValues(new Uint8Array(12));
 		const encryptedToken = await crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, encodedToken);
 		GM_setValue(
 			'github_token',
-			JSON.stringify({ key: await crypto.subtle.exportKey('jwk', key), iv: Array.from(iv), token: Array.from(new Uint8Array(encryptedToken)) }),
+			JSON.stringify({ iv: Array.from(iv), token: Array.from(new Uint8Array(encryptedToken)) }),
 		);
 	}
 
@@ -68,18 +108,17 @@
 	async function mergeDependabotPRs(username, repo, token) {
 		GM_xmlhttpRequest({
 			method: 'GET',
-			url: `https://api.github.com/repos/${username}/${repo}/pulls`,
+			url: `https://api.github.com/repos/${username}/${repo}/pulls?per_page=100&state=open&user=dependabot[bot]`,
 			headers: {
 				Authorization: `token ${token}`,
 			},
 			onload: function (response) {
 				const pulls = JSON.parse(response.responseText);
-				const dependabotPRs = pulls.filter((pr) => pr.user.login === 'dependabot[bot]');
 				let index = 0;
 
 				function processNextPR() {
-					if (index < dependabotPRs.length) {
-						const pr = dependabotPRs[index];
+					if (index < pulls.length) {
+						const pr = pulls[index];
 						mergePR(pr, username, repo, token, function (error) {
 							if (error) {
 								console.error(`Failed to merge PR #${pr.number}:`, error);
@@ -87,7 +126,7 @@
 							}
 						});
 						index++;
-						setTimeout(processNextPR, 2000); // 2 seconds delay between each request
+						setTimeout(processNextPR, delay); // configurable delay between each request
 					}
 				}
 
@@ -145,6 +184,17 @@
 		document.body.appendChild(button);
 	}
 
-	GM_addStyle('button { background-color: #2ea44f; color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }');
+	const style = document.createElement('style');
+	style.textContent = `
+		button {
+			background-color: #2ea44f;
+			color: #fff;
+			border: none;
+			padding: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	`;
+	document.head.appendChild(style);
 	window.onload = addButton;
 })();
