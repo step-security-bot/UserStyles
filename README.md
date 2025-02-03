@@ -8,23 +8,31 @@
     />
 </div>
 
-[![ActionLint](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ActionLint.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ActionLint.yml)
-[![Bandit](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Bandit.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Bandit.yml)
-[![Black-Formatter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/black-formatter.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/black-formatter.yml)
-[![Code Quality Scan](https://github.com/Nick2bad4u/UserStyles/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/github-code-scanning/codeql)
+<!--
+	This README file references multiple GitHub Actions workflows via badges to indicate
+	the current status of various checks (linting, security scanning, deployment, etc.).
+	Each badge provides a direct link to the corresponding workflow run,
+	offering at-a-glance insight into the project's health checks and automation processes.
+-->
+
+[![Action Lint](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ActionLint.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ActionLint.yml)
+[![Bandit Linter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Bandit.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Bandit.yml)
+[![Black Formatter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/black-formatter.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/black-formatter.yml)
+[![Code Quality](https://github.com/Nick2bad4u/UserStyles/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/github-code-scanning/codeql)
 [![Dependabot Updates](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependabot/dependabot-updates)
 [![Dependency Review](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml)
-[![DevSkim](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml)
-[![Github Pages Deployment](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment)
-[![Labeler](https://github.com/Nick2bad4u/UserStyles/actions/workflows/label.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/label.yml)
+[![Dev Skim](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml)
+[![GitHub Pages](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment)
+[![GitHub Static Pages](https://github.com/Nick2bad4u/UserStyles/actions/workflows/static.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/static.yml)
+[![Labeler Workflow](https://github.com/Nick2bad4u/UserStyles/actions/workflows/label.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/label.yml)
 [![Microsoft Defender](https://github.com/Nick2bad4u/UserStyles/actions/workflows/defender.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/defender.yml)
-[![OSSAR](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ossar.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ossar.yml)
-[![OSV-Scanner](https://github.com/Nick2bad4u/UserStyles/actions/workflows/osv-scanner.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/osv-scanner.yml)
-[![Semgrep](https://github.com/Nick2bad4u/UserStyles/actions/workflows/semgrep.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/semgrep.yml)
+[![OSSAR Analysis](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ossar.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/ossar.yml)
+[![OSV Scanner](https://github.com/Nick2bad4u/UserStyles/actions/workflows/osv-scanner.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/osv-scanner.yml)
+[![Semgrep Linter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/semgrep.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/semgrep.yml)
 [![Snake](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Snake.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/Snake.yml)
 [![Sobelow](https://github.com/Nick2bad4u/UserStyles/actions/workflows/sobelow.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/sobelow.yml)
-[![Stale Issues Management](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml)
-[![Super-Linter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/super-linter.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/super-linter.yml)
+[![Stale Issues](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/stale.yml)
+[![Super Linter](https://github.com/Nick2bad4u/UserStyles/actions/workflows/super-linter.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/super-linter.yml)
 [![Supply Chain Security](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/scorecards.yml)
 [![Welcome Greetings](https://github.com/Nick2bad4u/UserStyles/actions/workflows/greetings.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/greetings.yml)
 
@@ -215,6 +223,8 @@ Always making new themes, check back.
 </div>
 
 ## Hosted Styles & Scripts
+
+Explore the collection of user styles and scripts hosted on various platforms, designed to enhance your web experience.
 
 - **UserStyles**: [https://userstyles.world/user/Nick2bad4u](https://userstyles.world/user/Nick2bad4u)
 - **Userscripts**: [https://greasyfork.org/en/users/872842-nick2bad4u](https://greasyfork.org/en/users/872842-nick2bad4u)
