@@ -16,6 +16,9 @@ updates:
     allow:
       # Allow both direct and indirect updates for all packages
       - dependency-type: "all"
+    labels:
+      - "github-actions"
+    automerge: true
     groups:
       github-actions:
         applies-to: version-updates
@@ -29,6 +32,9 @@ updates:
     allow:
       # Allow both direct and indirect updates for all packages
       - dependency-type: "all"
+    labels:
+      - "bundler"
+    automerge: true
     groups:
       bundler:
         applies-to: version-updates
@@ -42,6 +48,9 @@ updates:
     allow:
       # Allow both direct and indirect updates for all packages
       - dependency-type: "all"
+    labels:
+      - "npm"
+    automerge: true
     groups:
       npm:
         applies-to: version-updates
