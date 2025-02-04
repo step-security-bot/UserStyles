@@ -36,7 +36,7 @@ jobs:
           echo "url-count = ${{ steps.sitemap.outputs.url-count }}"
           echo "excluded-count = ${{ steps.sitemap.outputs.excluded-count }}"
 
-      - name: Create Pull Request
+      - name: Create Pull Request with new SiteMap
         uses: peter-evans/create-pull-request@v3
         with:
           title: "Automated sitemap update"
