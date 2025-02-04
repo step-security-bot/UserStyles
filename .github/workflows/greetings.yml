@@ -1,33 +1,35 @@
-# This GitHub Actions workflow file is named "Greetings" and is triggered by pull requests and issues.
-# It grants read permissions to the repository contents and write permissions to issues and pull requests.
-# The workflow consists of a single job named "greeting" that runs on the latest Ubuntu runner.
-# The job has two steps:
-# 1. Harden Runner: Uses the step-security/harden-runner action to enhance the security of the runner with an egress policy set to audit.
-# 2. First Interaction: Uses the actions/first-interaction action to send a greeting message when an issue or pull request is opened.
-#    - The issue message is: "Greetings, thanks for opening an issue, I'll look when I can."
-#    - The pull request message is: "Greetings, thanks for opening a pull request, I'll look when I can."
-
 name: Greetings
 
-on: [pull_request_target, issues]
+# Define the events that trigger this workflow
+on:
+  pull_request_target: # Trigger on pull request events targeting the repository
+  issues: # Trigger on issue events
 
+# Define permissions required for the workflow
 permissions:
-  contents: read
+  contents: read # Required to fetch repository contents
 
 jobs:
   greeting:
+    # Specify the runner to use (ubuntu-latest)
     runs-on: ubuntu-latest
+
+    # Define permissions specific to the job
     permissions:
-      issues: write
-      pull-requests: write
+      issues: write # Required to write comments on issues
+      pull-requests: write # Required to write comments on pull requests
+
     steps:
+      # Step to harden the runner for security purposes
       - name: Harden Runner
         uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
         with:
-          egress-policy: audit
+          egress-policy: audit # Set egress policy to audit
 
-      - uses: actions/first-interaction@3c71ce730280171fd1cfb57c00c774f8998586f7 # v1
+      # Step to send a greeting message for issues and pull requests
+      - name: First Interaction
+        uses: actions/first-interaction@3c71ce730280171fd1cfb57c00c774f8998586f7 # v1
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: "Greetings, thanks for opening an issue, I'll look when I can."
-          pr-message: "Greetings, thanks for opening a pull request, I'll look when I can."
+          repo-token: ${{ secrets.GITHUB_TOKEN }} # Use the repository token for authentication
+          issue-message: "Greetings, thanks for opening an issue, I'll look when I can." # Message for new issues
+          pr-message: "Greetings, thanks for opening a pull request, I'll look when I can." # Message for new pull requests

@@ -16,23 +16,36 @@
 
 name: black-formatter
 
-on: [push, pull_request]
+# Define the events that trigger this workflow
+on:
+  push: # Trigger on push events
+  pull_request: # Trigger on pull request events
+
+# Define permissions required for the workflow
 permissions:
-  contents: read
+  contents: read # Required to fetch repository contents
 
 jobs:
   black-linter:
+    # Specify the runner to use (ubuntu-latest)
     runs-on: ubuntu-latest
+
     steps:
+      # Step to harden the runner for security purposes
       - name: Harden Runner
         uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
         with:
-          disable-sudo: true
-          egress-policy: block
-          allowed-endpoints: >
+          disable-sudo: true # Disable sudo to prevent privilege escalation
+          egress-policy: block # Block all egress traffic
+          allowed-endpoints: > # Allow specific endpoints for necessary traffic
             files.pythonhosted.org:443
             github.com:443
             pypi.org:443
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: psf/black@8a737e727ac5ab2f1d4cf5876720ed276dc8dc4b # stable
+      # Step to checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      # Step to run the Black code formatter
+      - name: Run Black Formatter
+        uses: psf/black@8a737e727ac5ab2f1d4cf5876720ed276dc8dc4b # stable
