@@ -48,7 +48,7 @@ jobs:
             [create-pull-request](https://github.com/peter-evans/create-pull-request) GitHub action.
 
       - name: Enable Pull Request Automerge SiteMap PR
-        if: github.event_name == 'pull_request' && github.actor == 'nick2bad4u'
+        if: github.actor == 'nick2bad4u'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.TOKEN }}
