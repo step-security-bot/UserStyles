@@ -57,9 +57,16 @@ jobs:
           fi
 
       - name: Enable Pull Request Automerge
-        if: github.actor == 'nick2bad4u'
+        if: github.actor == 'Nick2bad4u'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.TOKEN }}
           pull-request-number: ${{ env.PR_NUMBER }}
           merge-method: squash
+
+      - name: Merge Pull Request
+        if: github.actor == 'Nick2bad4u'
+        run: |
+          gh pr merge -R "Nick2bad4u/UserStyles" --squash --auto "${{ env.PR_NUMBER }}"
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
