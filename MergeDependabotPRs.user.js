@@ -2,21 +2,23 @@
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
 // @version      2.0
-// @description  Merges Dependabot PRs in any of your repositories
-// @var          number merge_delay "Delay between merge requests in milliseconds" 2000
+// @description  Merges Dependabot PRs in any of your repositories - pulls the PRs into a table and lets you select which ones to merge.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
+// @match        https://github.com/*/*/pull/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @connect      api.github.com
-// @license      MIT
+// @license      UnLicense
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
 // ==/UserScript==
 /* global GM_getValue, GM_setValue, GM_xmlhttpRequest */
+// @var          number merge_delay "Delay between merge requests in milliseconds" 2000
+
 (async function () {
 	'use strict';
 
