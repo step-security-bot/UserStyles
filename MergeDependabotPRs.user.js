@@ -209,7 +209,6 @@
 			});
 		});
 	}
-
 	async function mergeDependabotPRs(prs, username, repo, token) {
 		const statusContainer = document.getElementById('merge-status');
 		let index = 0;
@@ -219,12 +218,18 @@
 				const pr = prs[index];
 				try {
 					await mergePR(pr, username, repo, token);
-					statusContainer.innerHTML += `PR #${pr.number} merged successfully!<br>`;
+					const messageElement = document.createElement('div');
+					messageElement.innerHTML = `PR #${pr.number} merged successfully!<br>`;
+					statusContainer.appendChild(messageElement);
+					setTimeout(() => messageElement.remove(), 7000);
 				} catch (error) {
-					statusContainer.innerHTML += `Failed to merge PR #${pr.number}: ${error.message}<br>`;
+					const messageElement = document.createElement('div');
+					messageElement.innerHTML = `Failed to merge PR #${pr.number}: ${error.message}<br>`;
+					statusContainer.appendChild(messageElement);
+					setTimeout(() => messageElement.remove(), 7000);
 				}
 				index++;
-				setTimeout(processNextPR, delay); // configurable delay between each request
+				setTimeout(processNextPR, delay);
 			}
 		}
 
@@ -292,7 +297,8 @@
 				bottom: 50px;
 				right: 10px;
 				z-index: 1000;
-				background: white;
+				background-color: #79e4f2;
+				color: #000000;
 				padding: 10px;
 				border: 1px solid #ccc;
 				max-height: 300px;
@@ -348,7 +354,7 @@
 
 	const style = document.createElement('style');
 	style.textContent = `
-			mergebutton {
+			mergebutton, body > div.pr-selection-container > button {
 					background-color: #2ea44f;
 					color: #ffffff;
 					border: none;
