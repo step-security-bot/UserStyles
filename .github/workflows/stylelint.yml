@@ -2,7 +2,10 @@ name: StyleLint
 
 on:
   # Runs on pushes targeting the default branch
+  workflow_dispatch:
   push:
+    branches: ["main"]
+  pull_request:
     branches: ["main"]
 
 permissions:
@@ -16,4 +19,6 @@ jobs:
     steps:
       - name: Checkout Repo Code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: Nick2bad4u/stylelint@master
+
+      - name: Run StyleLint
+        uses: Nick2bad4u/stylelint@master
