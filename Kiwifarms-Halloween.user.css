@@ -49,14 +49,13 @@ url-prefix("http://kiwifarms")
 		--remove-background-image: var(remove-background-image);
 		--custom-background-url: var(custom-background-url);
 	}
-	}
 
-	.p-pageWrapper
-	{
-		background-image: var(--remove-background-image) !important;
+	.p-pageWrapper {
+		background-image: var(
+			--remove-background-image
+		) !important;
 		background-position: unset !important;
 	}
-
 
 	.navTabs .navTab.selected .navLink,
 	.PageNav a:focus,
