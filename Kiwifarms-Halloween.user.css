@@ -5,12 +5,13 @@
 @description  Spooky Halloween theme for the forum
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20240102.22.91
+@version      20240103.14.22
 @license      CC0-1.0
 
 @var color halloweenOrange "Halloween Orange" #ff8800
 @var color halloweenPurple "Halloween Purple" #bb33ff
 @var color halloweenBlack "Halloween Black" #000000
+@var color link-color "Link Visited Color" #c296ff
 @var color darkText "Dark Text" #333333
 @var color contrastPink "Contrast Pink" #ffccff
 @var color greyBorder "Grey Border" #464646
@@ -33,6 +34,7 @@ url-prefix("http://kiwifarms")
 		--darkGrey: var(darkGrey);
 		--white: var(white);
 	}
+
 	.navTabs .navTab.selected .navLink,
 	.PageNav a:focus,
 	.nodeIcon.hasGlyph,
@@ -207,6 +209,10 @@ url-prefix("http://kiwifarms")
 	.secondaryContent a {
 		color: var(--halloweenOrange) !important;
 		/* Halloween Orange */
+	}
+
+	a:link {
+		color: var(--link-color);
 	}
 
 	body {

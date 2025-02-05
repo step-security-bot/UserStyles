@@ -5,12 +5,13 @@
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20240102.22.50
+@version      20240103.14.22
 @license      CC0-1.0
 
 @var color primary-color "Primary Color" #33ccff
 @var color secondary-color "Secondary Color" #ffccff
 @var color background-color "Background Color" #333333
+@var color link-color "Link Visited Color" #c296ff
 @var color border-color "Border Color" #ffccff
 @var color border-color2 "Border Color 2" #464646
 @var color hover-background-color "Hover Background Color" #4a4e51
@@ -29,6 +30,7 @@ url-prefix("http://kiwifarms")
 		--border-color2: var(border-color2);
 		--hover-background-color: var(hover-background-color);
 		--white: var(white);
+		--link-color: var(link-color);
 	}
 
 	.navTabs .navTab.selected .navLink,
@@ -91,6 +93,7 @@ url-prefix("http://kiwifarms")
 	a.ctaFtThreadTitleLink {
 		color: var(--primary-color) !important;
 	}
+
 	.sidebar .avatarList .userTitle,
 	span.nodeIcon.hasGlyph,
 	.messageText,
@@ -169,6 +172,7 @@ url-prefix("http://kiwifarms")
 	.messageUserBlock .userTitle {
 		color: var(--secondary-color) !important;
 	}
+
 	#userBar .navTabs,
 	.navTabs .navTab.Popup.PopupOpen,
 	#QuickSearch .primaryControls .uix_icon,
@@ -184,11 +188,13 @@ url-prefix("http://kiwifarms")
 	.button {
 		background-color: var(--primary-color) !important;
 	}
+
 	a.callToAction span,
 	.PageNav a.currentPage {
 		background-color: var(--primary-color) !important;
 		color: var(--secondary-color) !important;
 	}
+
 	a:link,
 	.node .unread .nodeText .nodeTitle,
 	span.DateTime.muted.lastThreadDate,
@@ -197,10 +203,16 @@ url-prefix("http://kiwifarms")
 	.secondaryContent a {
 		color: var(--primary-color) !important;
 	}
+
+	a:link {
+		color: var(--link-color);
+	}
+
 	body {
 		background-image: none !important;
 		background-color: var(--background-color) !important;
 	}
+
 	.nodeList .categoryStrip,
 	.nodeList,
 	#content .pageContent,
@@ -217,6 +229,7 @@ url-prefix("http://kiwifarms")
 	.navTabs .navTab.selected .tabLinks {
 		background-color: var(--background-color) !important;
 	}
+
 	.forum_list .nodeList .nodeList,
 	.sectionMain.ctaFtContainer,
 	.sidebar .section .secondaryContent h3,
@@ -225,11 +238,13 @@ url-prefix("http://kiwifarms")
 	.breadcrumb {
 		border-color: var(--border-color) !important;
 	}
+
 	.navTabs,
 	.navTabs .navTab.selected .navLink {
 		border-color: var(--border-color);
 		background-color: var(--background-color) !important;
 	}
+
 	.PageNav a.currentPage,
 	.textCtrl:focus,
 	.textCtrl.Focus,
@@ -239,41 +254,51 @@ url-prefix("http://kiwifarms")
 	.messageSimple {
 		border-color: var(--border-color);
 	}
+
 	.discussionList .discussionListItem.sticky {
 		border-top-color: var(--border-color);
 		border-bottom-color: var(--border-color);
 	}
+
 	.discussionListItem:nth-child(2n),
 	.discussionListItem {
 		border-bottom-color: var(--border-color);
 	}
+
 	.breadcrumb .crust .arrow span {
 		border-color: var(--border-color) var(--border-color2)
 			var(--border-color2);
 		border-top-color: var(--border-color);
 	}
+
 	.message .messageDetails {
 		border-top-color: var(--border-color);
 	}
+
 	.navTabs .navTab.selected .tabLinks {
 		border-color: var(--border-color);
 	}
+
 	.Menu {
 		border-color: var(--border-color) var(--border-color2)
 			var(--border-color2);
 		border-top-color: var(--border-color);
 	}
+
 	.message .publicControls .MultiQuoteControl.active {
 		color: var(--white) !important;
 	}
+
 	.footer .choosers a:hover {
 		border-color: var(--border-color2) !important;
 		color: var(--secondary-color) !important;
 	}
+
 	.navTabs .navTab.selected.PopupOpen .navLink {
 		background-color: var(--secondary-color) !important;
 		color: var(--white) !important;
 	}
+
 	#uix_wrapper,
 	#content .pageContent,
 	.sidebar .section .secondaryContent,
@@ -282,23 +307,28 @@ url-prefix("http://kiwifarms")
 	.DiscussionListOptions {
 		border-color: var(--secondary-color);
 	}
+
 	.node.level_2 .nodeInfo {
 		border-top-color: var(--secondary-color);
 	}
+
 	.PageNav a:hover {
 		background-color: #292c2e !important;
 		color: var(--secondary-color) !important;
 	}
+
 	.button:hover,
 	#SignupButton:hover .inner {
 		background-color: var(
 			--hover-background-color
 		) !important;
 	}
+
 	.ugc a:hover,
 	.ugc a:focus {
 		box-shadow: 0 1px 0 var(--secondary-color) !important;
 	}
+
 	#logo img {
 		background: url('http://i.cubeupload.com/Cw1wYQ.png')
 			no-repeat !important;
