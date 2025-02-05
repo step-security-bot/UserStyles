@@ -5,7 +5,7 @@
 @description  Spooky Halloween theme for the forum
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20240103.14.23
+@version      20240103.14.24
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
@@ -20,6 +20,7 @@
 	"Trees": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-trees-background.png')",
 	"custom": "var(--custom-background-url)",
 }
+@var text custom-background-url "Custom Background URL" "url("https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-trees-background.png")"
 @var color halloweenOrange "Halloween Orange" #ff8800
 @var color halloweenPurple "Halloween Purple" #bb33ff
 @var color halloweenBlack "Halloween Black" #000000
