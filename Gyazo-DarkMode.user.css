@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com - Dark Mode [Customizable]
-@version      4.1
+@version      4.2
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
@@ -41,6 +41,8 @@
 		--color-black: var(color-black);
 		--color-red: var(red-color);
 	}
+
+/* stylelint-disable selector-no-vendor-prefix -- Vendor prefixes wanted*/
 
 	.related-info-box-component
 		> div
