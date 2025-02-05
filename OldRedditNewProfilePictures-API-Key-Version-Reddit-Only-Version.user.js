@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Old Reddit with New Reddit Profile Pictures - API Key Version - Reddit Only Version
 // @namespace    typpi.online
-// @version      7.0.6
+// @version      7.0.7
 // @description  Injects new Reddit profile pictures into Old Reddit and Reddit-Stream.com next to the username. Caches in localstorage. This version requires an API key. Enter your API Key under CLIENT_ID and CLIENT_SECRET or it will not work.
 // @author       Nick2bad4u
 // @match        *://*.reddit.com/*
@@ -43,7 +43,9 @@
 	// Rate limit variables
 	let rateLimitRemaining = 1000;
 	let rateLimitResetTime = 0;
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const resetDate = new Date(rateLimitResetTime);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const now = Date.now();
 
 	// Save the cache to localStorage
@@ -251,6 +253,7 @@
 			}
 		});
 
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const results = await Promise.all(fetchPromises);
 		limitCacheSize();
 		return usernames.map((username) => profilePictureCache[username]);
@@ -326,6 +329,7 @@
 
 	function setupObserver() {
 		console.log('Setting up observer');
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const observer = new MutationObserver((mutations) => {
 			const comments = document.querySelectorAll('.author, .c-username');
 			if (comments.length > 0) {
