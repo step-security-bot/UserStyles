@@ -5,10 +5,22 @@
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20240103.14.22
+@version      20240103.14.23
 @license      CC0-1.0
 
-@var checkbox remove-background-image "Remove Background Image" 0
+@var select remove-background-image "Remove Background Image" {
+	"None": "none",
+	"Default": "url('/styles/custom/backgrounds/damnatio-memoriae5.webp')",
+	"Default-Backup": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@3f9a24b32be016dc4e996fe63319253b72ce4987/assets/kiwi-default-background.png')",
+	"City": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-city-background.png')",
+	"Green": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-green-background.png')",
+	"Purple": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-purple-background.png')",
+	"Space Apple": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-space-apple-background.png')",
+	"Swirls": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-swirls-background.png')",
+	"Trees": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-trees-background.png')",
+	"custom": "var(--custom-background-url)",
+}
+@var text custom-background-url "Custom Background URL" "url("https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-trees-background.png")"
 @var color primary-color "Primary Color" #33ccff
 @var color secondary-color "Secondary Color" #ffccff
 @var color background-color "Background Color" #333333
@@ -23,7 +35,8 @@ domain("kiwifarms.net"),
 url-prefix("https://kiwifarms"),
 url-prefix("http://kiwifarms")
 {
-	:root {
+	:root
+	{
 		--primary-color: var(primary-color);
 		--secondary-color: var(secondary-color);
 		--background-color: var(background-color);
@@ -32,13 +45,17 @@ url-prefix("http://kiwifarms")
 		--hover-background-color: var(hover-background-color);
 		--white: var(white);
 		--link-color: var(link-color);
+		--remove-background-image: var(remove-background-image);
+		--custom-background-url: var(custom-background-url);
 	}
 
-	if remove-background-image {
-		.p-pageWrapper {
-			background-image: unset !important;
-		}
+
+	.p-pageWrapper
+	{
+		background-image: var(--remove-background-image) !important;
+		background-position: unset !important;
 	}
+
 
 	.navTabs .navTab.selected .navLink,
 	.PageNav a:focus,
@@ -97,7 +114,8 @@ url-prefix("http://kiwifarms")
 	.ctaFtAuthorMeta a,
 	.ctaFtAuthorListItem .ctaFtAuthorSnippet a,
 	a.ctaFtReadMoreLink,
-	a.ctaFtThreadTitleLink {
+	a.ctaFtThreadTitleLink
+	{
 		color: var(--primary-color) !important;
 	}
 
@@ -176,7 +194,8 @@ url-prefix("http://kiwifarms")
 	.bbCodeQuote .attribution,
 	.message .newIndicator,
 	#SignupButton .inner,
-	.messageUserBlock .userTitle {
+	.messageUserBlock .userTitle
+	{
 		color: var(--secondary-color) !important;
 	}
 
@@ -192,12 +211,14 @@ url-prefix("http://kiwifarms")
 	#uix_jumpToFixed,
 	.message .publicControls .MultiQuoteControl.active,
 	.pollBlock .buttons .button,
-	.button {
+	.button
+	{
 		background-color: var(--primary-color) !important;
 	}
 
 	a.callToAction span,
-	.PageNav a.currentPage {
+	.PageNav a.currentPage
+	{
 		background-color: var(--primary-color) !important;
 		color: var(--secondary-color) !important;
 	}
@@ -207,15 +228,18 @@ url-prefix("http://kiwifarms")
 	span.DateTime.muted.lastThreadDate,
 	span.DateTime,
 	#copyrightCompliance,
-	.secondaryContent a {
+	.secondaryContent a
+	{
 		color: var(--primary-color) !important;
 	}
 
-	a:link {
+	a:link
+	{
 		color: var(--link-color);
 	}
 
-	body {
+	body
+	{
 		background-image: none !important;
 		background-color: var(--background-color) !important;
 	}
@@ -233,7 +257,8 @@ url-prefix("http://kiwifarms")
 	.breadcrumb .crust a.crumb,
 	#uix_wrapper,
 	.pageContent,
-	.navTabs .navTab.selected .tabLinks {
+	.navTabs .navTab.selected .tabLinks
+	{
 		background-color: var(--background-color) !important;
 	}
 
@@ -242,12 +267,14 @@ url-prefix("http://kiwifarms")
 	.sidebar .section .secondaryContent h3,
 	.footer .choosers a,
 	.messageList .message,
-	.breadcrumb {
+	.breadcrumb
+	{
 		border-color: var(--border-color) !important;
 	}
 
 	.navTabs,
-	.navTabs .navTab.selected .navLink {
+	.navTabs .navTab.selected .navLink
+	{
 		border-color: var(--border-color);
 		background-color: var(--background-color) !important;
 	}
@@ -258,50 +285,58 @@ url-prefix("http://kiwifarms")
 	.xenOverlay .formOverlay .textCtrl:focus,
 	.xenOverlay .formOverlay .textCtrl.Focus,
 	.profilePage .mast .section.infoBlock,
-	.messageSimple {
+	.messageSimple
+	{
 		border-color: var(--border-color);
 	}
 
-	.discussionList .discussionListItem.sticky {
+	.discussionList .discussionListItem.sticky
+	{
 		border-top-color: var(--border-color);
 		border-bottom-color: var(--border-color);
 	}
 
 	.discussionListItem:nth-child(2n),
-	.discussionListItem {
+	.discussionListItem
+	{
 		border-bottom-color: var(--border-color);
 	}
 
-	.breadcrumb .crust .arrow span {
-		border-color: var(--border-color) var(--border-color2)
-			var(--border-color2);
+	.breadcrumb .crust .arrow span
+	{
+		border-color: var(--border-color) var(--border-color2) var(--border-color2);
 		border-top-color: var(--border-color);
 	}
 
-	.message .messageDetails {
+	.message .messageDetails
+	{
 		border-top-color: var(--border-color);
 	}
 
-	.navTabs .navTab.selected .tabLinks {
+	.navTabs .navTab.selected .tabLinks
+	{
 		border-color: var(--border-color);
 	}
 
-	.Menu {
-		border-color: var(--border-color) var(--border-color2)
-			var(--border-color2);
+	.Menu
+	{
+		border-color: var(--border-color) var(--border-color2) var(--border-color2);
 		border-top-color: var(--border-color);
 	}
 
-	.message .publicControls .MultiQuoteControl.active {
+	.message .publicControls .MultiQuoteControl.active
+	{
 		color: var(--white) !important;
 	}
 
-	.footer .choosers a:hover {
+	.footer .choosers a:hover
+	{
 		border-color: var(--border-color2) !important;
 		color: var(--secondary-color) !important;
 	}
 
-	.navTabs .navTab.selected.PopupOpen .navLink {
+	.navTabs .navTab.selected.PopupOpen .navLink
+	{
 		background-color: var(--secondary-color) !important;
 		color: var(--white) !important;
 	}
@@ -311,34 +346,37 @@ url-prefix("http://kiwifarms")
 	.sidebar .section .secondaryContent,
 	.footer .pageContent,
 	.sectionMain,
-	.DiscussionListOptions {
+	.DiscussionListOptions
+	{
 		border-color: var(--secondary-color);
 	}
 
-	.node.level_2 .nodeInfo {
+	.node.level_2 .nodeInfo
+	{
 		border-top-color: var(--secondary-color);
 	}
 
-	.PageNav a:hover {
+	.PageNav a:hover
+	{
 		background-color: #292c2e !important;
 		color: var(--secondary-color) !important;
 	}
 
 	.button:hover,
-	#SignupButton:hover .inner {
-		background-color: var(
-			--hover-background-color
-		) !important;
+	#SignupButton:hover .inner
+	{
+		background-color: var( --hover-background-color) !important;
 	}
 
 	.ugc a:hover,
-	.ugc a:focus {
+	.ugc a:focus
+	{
 		box-shadow: 0 1px 0 var(--secondary-color) !important;
 	}
 
-	#logo img {
-		background: url('http://i.cubeupload.com/Cw1wYQ.png')
-			no-repeat !important;
+	#logo img
+	{
+		background: url('http://i.cubeupload.com/Cw1wYQ.png') no-repeat !important;
 		padding-top: 75px !important;
 		padding-left: 200px !important;
 		width: 0 !important;
