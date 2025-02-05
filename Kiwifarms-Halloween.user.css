@@ -5,12 +5,12 @@
 @description  Spooky Halloween theme for the forum
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20240103.14.24
+@version      20240103.14.25
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
-	"None": "none",
 	"Default": "url('/styles/custom/backgrounds/damnatio-memoriae5.webp')",
+	"None": "none",
 	"Default-Backup": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@3f9a24b32be016dc4e996fe63319253b72ce4987/assets/kiwi-default-background.png')",
 	"City": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-city-background.png')",
 	"Green": "url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@552ffb4c2b6cd01dae20ae3a5c8909e2cad9d637/assets/kiwi-green-background.png')",
