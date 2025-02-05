@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Kiwifarms - Expand Avatars on Hover
 // @namespace    typpi.online
-// @version      1.1.0
+// @version      1.1.1
 // @description  Expand avatars on hover for Kiwifarms Users
 // @author       Nick2bad4u
 // @match        kiwifarms.com/*
@@ -24,6 +24,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=kiwifarms.st
 // @icon64       https://www.google.com/s2/favicons?sz=64&domain=kiwifarms.st
 // @tag          kiwifarms
+// @downloadURL  https://update.greasyfork.org/scripts/525997/Kiwifarms%20-%20Expand%20Avatars%20on%20Hover.user.js
+// @updateURL    https://update.greasyfork.org/scripts/525997/Kiwifarms%20-%20Expand%20Avatars%20on%20Hover.meta.js
 // ==/UserScript==
 
 (function () {
