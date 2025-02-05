@@ -35,8 +35,7 @@ domain("kiwifarms.net"),
 url-prefix("https://kiwifarms"),
 url-prefix("http://kiwifarms")
 {
-	:root
-	{
+	:root {
 		--primary-color: var(primary-color);
 		--secondary-color: var(secondary-color);
 		--background-color: var(background-color);
@@ -49,13 +48,12 @@ url-prefix("http://kiwifarms")
 		--custom-background-url: var(custom-background-url);
 	}
 
-
-	.p-pageWrapper
-	{
-		background-image: var(--remove-background-image) !important;
+	.p-pageWrapper {
+		background-image: var(
+			--remove-background-image
+		) !important;
 		background-position: unset !important;
 	}
-
 
 	.navTabs .navTab.selected .navLink,
 	.PageNav a:focus,
@@ -114,8 +112,7 @@ url-prefix("http://kiwifarms")
 	.ctaFtAuthorMeta a,
 	.ctaFtAuthorListItem .ctaFtAuthorSnippet a,
 	a.ctaFtReadMoreLink,
-	a.ctaFtThreadTitleLink
-	{
+	a.ctaFtThreadTitleLink {
 		color: var(--primary-color) !important;
 	}
 
@@ -194,8 +191,7 @@ url-prefix("http://kiwifarms")
 	.bbCodeQuote .attribution,
 	.message .newIndicator,
 	#SignupButton .inner,
-	.messageUserBlock .userTitle
-	{
+	.messageUserBlock .userTitle {
 		color: var(--secondary-color) !important;
 	}
 
@@ -211,14 +207,12 @@ url-prefix("http://kiwifarms")
 	#uix_jumpToFixed,
 	.message .publicControls .MultiQuoteControl.active,
 	.pollBlock .buttons .button,
-	.button
-	{
+	.button {
 		background-color: var(--primary-color) !important;
 	}
 
 	a.callToAction span,
-	.PageNav a.currentPage
-	{
+	.PageNav a.currentPage {
 		background-color: var(--primary-color) !important;
 		color: var(--secondary-color) !important;
 	}
@@ -228,18 +222,15 @@ url-prefix("http://kiwifarms")
 	span.DateTime.muted.lastThreadDate,
 	span.DateTime,
 	#copyrightCompliance,
-	.secondaryContent a
-	{
+	.secondaryContent a {
 		color: var(--primary-color) !important;
 	}
 
-	a:link
-	{
+	a:link {
 		color: var(--link-color);
 	}
 
-	body
-	{
+	body {
 		background-image: none !important;
 		background-color: var(--background-color) !important;
 	}
@@ -257,8 +248,7 @@ url-prefix("http://kiwifarms")
 	.breadcrumb .crust a.crumb,
 	#uix_wrapper,
 	.pageContent,
-	.navTabs .navTab.selected .tabLinks
-	{
+	.navTabs .navTab.selected .tabLinks {
 		background-color: var(--background-color) !important;
 	}
 
@@ -267,14 +257,12 @@ url-prefix("http://kiwifarms")
 	.sidebar .section .secondaryContent h3,
 	.footer .choosers a,
 	.messageList .message,
-	.breadcrumb
-	{
+	.breadcrumb {
 		border-color: var(--border-color) !important;
 	}
 
 	.navTabs,
-	.navTabs .navTab.selected .navLink
-	{
+	.navTabs .navTab.selected .navLink {
 		border-color: var(--border-color);
 		background-color: var(--background-color) !important;
 	}
@@ -285,58 +273,50 @@ url-prefix("http://kiwifarms")
 	.xenOverlay .formOverlay .textCtrl:focus,
 	.xenOverlay .formOverlay .textCtrl.Focus,
 	.profilePage .mast .section.infoBlock,
-	.messageSimple
-	{
+	.messageSimple {
 		border-color: var(--border-color);
 	}
 
-	.discussionList .discussionListItem.sticky
-	{
+	.discussionList .discussionListItem.sticky {
 		border-top-color: var(--border-color);
 		border-bottom-color: var(--border-color);
 	}
 
 	.discussionListItem:nth-child(2n),
-	.discussionListItem
-	{
+	.discussionListItem {
 		border-bottom-color: var(--border-color);
 	}
 
-	.breadcrumb .crust .arrow span
-	{
-		border-color: var(--border-color) var(--border-color2) var(--border-color2);
+	.breadcrumb .crust .arrow span {
+		border-color: var(--border-color) var(--border-color2)
+			var(--border-color2);
 		border-top-color: var(--border-color);
 	}
 
-	.message .messageDetails
-	{
+	.message .messageDetails {
 		border-top-color: var(--border-color);
 	}
 
-	.navTabs .navTab.selected .tabLinks
-	{
+	.navTabs .navTab.selected .tabLinks {
 		border-color: var(--border-color);
 	}
 
-	.Menu
-	{
-		border-color: var(--border-color) var(--border-color2) var(--border-color2);
+	.Menu {
+		border-color: var(--border-color) var(--border-color2)
+			var(--border-color2);
 		border-top-color: var(--border-color);
 	}
 
-	.message .publicControls .MultiQuoteControl.active
-	{
+	.message .publicControls .MultiQuoteControl.active {
 		color: var(--white) !important;
 	}
 
-	.footer .choosers a:hover
-	{
+	.footer .choosers a:hover {
 		border-color: var(--border-color2) !important;
 		color: var(--secondary-color) !important;
 	}
 
-	.navTabs .navTab.selected.PopupOpen .navLink
-	{
+	.navTabs .navTab.selected.PopupOpen .navLink {
 		background-color: var(--secondary-color) !important;
 		color: var(--white) !important;
 	}
@@ -346,37 +326,34 @@ url-prefix("http://kiwifarms")
 	.sidebar .section .secondaryContent,
 	.footer .pageContent,
 	.sectionMain,
-	.DiscussionListOptions
-	{
+	.DiscussionListOptions {
 		border-color: var(--secondary-color);
 	}
 
-	.node.level_2 .nodeInfo
-	{
+	.node.level_2 .nodeInfo {
 		border-top-color: var(--secondary-color);
 	}
 
-	.PageNav a:hover
-	{
+	.PageNav a:hover {
 		background-color: #292c2e !important;
 		color: var(--secondary-color) !important;
 	}
 
 	.button:hover,
-	#SignupButton:hover .inner
-	{
-		background-color: var( --hover-background-color) !important;
+	#SignupButton:hover .inner {
+		background-color: var(
+			--hover-background-color
+		) !important;
 	}
 
 	.ugc a:hover,
-	.ugc a:focus
-	{
+	.ugc a:focus {
 		box-shadow: 0 1px 0 var(--secondary-color) !important;
 	}
 
-	#logo img
-	{
-		background: url('http://i.cubeupload.com/Cw1wYQ.png') no-repeat !important;
+	#logo img {
+		background: url('http://i.cubeupload.com/Cw1wYQ.png')
+			no-repeat !important;
 		padding-top: 75px !important;
 		padding-left: 200px !important;
 		width: 0 !important;

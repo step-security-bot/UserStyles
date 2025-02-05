@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name         Gyazo.com - Dark Mode [Customizable]
-@version      4.0
+@version      4.1
 @namespace    typpi.online
 @description  Gyazo Dark Mode (Customizable Color - Defaults to Purple Accents)
 @author       Nick2bad4u
@@ -73,6 +73,14 @@
 	}
 
 	.add-to-collection-popover
+		.new-collection-form
+		.form-box
+		input::-moz-placeholder,
+	.input-description::-moz-placeholder {
+		color: var(--primary-color) !important;
+	}
+
+	.add-to-collection-popover
 		.collection-operation-wrap
 		.collection-operation-add,
 	.add-to-collection-popover
@@ -112,6 +120,10 @@
 	.title,
 	.row > div:nth-child(n) > div {
 		color: var(--primary-color) !important;
+	}
+
+	.vtVH6utAExSlC9aN2qwE:focus::-moz-placeholder {
+		color: var(--placeholder-color) !important;
 	}
 
 	.vtVH6utAExSlC9aN2qwE:focus::placeholder {
@@ -717,6 +729,11 @@
 		color: var(--primary-color) !important;
 	}
 
+	#search-box-input::-moz-placeholder,
+	input[name='new-tag']::-moz-placeholder {
+		color: var(--primary-color);
+	}
+
 	#conclusion > div > div > h2,
 	#faq
 		> div
@@ -786,6 +803,13 @@
 	.page-content .indent-mark .dot {
 		background-color: var(--primary-color) !important;
 		color: var(--primary-color) !important;
+	}
+
+	a:-moz-any-link {
+		cursor: pointer !important;
+		color: -webkit-link !important;
+		color: var(--secondary-color) !important;
+		text-decoration: underline !important;
 	}
 
 	a:any-link {
