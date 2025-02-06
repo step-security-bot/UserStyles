@@ -5,7 +5,7 @@
 @description  Spooky Halloween theme for the forum
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20241027.00.00
+@version      2025.02.06
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
@@ -25,6 +25,7 @@
 @var color halloweenPurple "Halloween Purple" #bb33ff
 @var color halloweenBlack "Halloween Black" #000000
 @var color link-color "Link Visited Color" #c296ff
+@var color unread-color "Unread Thread Color" #f96de4
 @var color darkText "Dark Text" #333333
 @var color contrastPink "Contrast Pink" #ffccff
 @var color greyBorder "Grey Border" #464646
@@ -47,8 +48,13 @@ url-prefix("http://kiwifarms")
 		--darkGrey: var(darkGrey);
 		--white: var(white);
 		--link-color: var(link-color);
+		--unread-color: var(unread-color);
 		--remove-background-image: var(remove-background-image);
 		--custom-background-url: var(custom-background-url);
+	}
+
+	.block--category {
+		--link-color: var(link-color) !important;
 	}
 
 	.p-pageWrapper {
@@ -118,6 +124,12 @@ url-prefix("http://kiwifarms")
 	a.ctaFtThreadTitleLink {
 		color: var(--halloweenOrange) !important;
 		/* Halloween Orange */
+	}
+
+	.node-icon i {
+		fill: var(--primary-color) !important;
+		color: var(--primary-color) !important;
+		filter: invert(1) hue-rotate(270deg);
 	}
 
 	.sidebar .avatarList .userTitle,
@@ -362,8 +374,8 @@ url-prefix("http://kiwifarms")
 		box-shadow: 0 1px 0 var(--contrastPink) !important;
 	}
 
-	#logo img {
-		background: url('https://web.archive.org/web/20190407024131/https://u.cubeupload.com/Cw1wYQ.png')
+	.p-nav-smallLogo img {
+		background: url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@be8d3396d4ccfc014c5f4b76c448a854b3aa527a/assets/kiwi-vaporwave-logo.png')
 			no-repeat !important;
 		padding-top: 75px !important;
 		padding-left: 200px !important;

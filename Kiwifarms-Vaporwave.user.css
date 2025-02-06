@@ -5,7 +5,7 @@
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      20241027.00.00
+@version      2025.02.06
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
@@ -25,6 +25,7 @@
 @var color secondary-color "Secondary Color" #ffccff
 @var color background-color "Background Color" #333333
 @var color link-color "Link Visited Color" #c296ff
+@var color unread-color "Unread Thread Color" #6de9f9
 @var color border-color "Border Color" #ffccff
 @var color border-color2 "Border Color 2" #464646
 @var color hover-background-color "Hover Background Color" #4a4e51
@@ -44,8 +45,13 @@ url-prefix("http://kiwifarms")
 		--hover-background-color: var(hover-background-color);
 		--white: var(white);
 		--link-color: var(link-color);
+		--unread-color: var(unread-color);
 		--remove-background-image: var(remove-background-image);
 		--custom-background-url: var(custom-background-url);
+	}
+
+	.block--category {
+		--link-color: var(link-color) !important;
 	}
 
 	.p-pageWrapper {
@@ -112,8 +118,16 @@ url-prefix("http://kiwifarms")
 	.ctaFtAuthorMeta a,
 	.ctaFtAuthorListItem .ctaFtAuthorSnippet a,
 	a.ctaFtReadMoreLink,
-	a.ctaFtThreadTitleLink {
+	a.ctaFtThreadTitleLink,
+	.badgeContainer.badgeContainer--highlighted > i,
+	.node .node-title a {
 		color: var(--primary-color) !important;
+	}
+
+	.node-icon i {
+		fill: var(--primary-color) !important;
+		color: var(--primary-color) !important;
+		filter: invert(1) hue-rotate(270deg);
 	}
 
 	.sidebar .avatarList .userTitle,
@@ -193,6 +207,14 @@ url-prefix("http://kiwifarms")
 	#SignupButton .inner,
 	.messageUserBlock .userTitle {
 		color: var(--secondary-color) !important;
+	}
+
+	.block-container
+		.structItemContainer-group
+		.is-unread
+		.structItem-title
+		a {
+		color: var(--unread-color) !important;
 	}
 
 	#userBar .navTabs,
@@ -351,8 +373,8 @@ url-prefix("http://kiwifarms")
 		box-shadow: 0 1px 0 var(--secondary-color) !important;
 	}
 
-	#logo img {
-		background: url('http://i.cubeupload.com/Cw1wYQ.png')
+	.p-nav-smallLogo img {
+		background: url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@be8d3396d4ccfc014c5f4b76c448a854b3aa527a/assets/kiwi-vaporwave-logo.png')
 			no-repeat !important;
 		padding-top: 75px !important;
 		padding-left: 200px !important;
