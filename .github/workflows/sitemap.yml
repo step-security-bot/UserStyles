@@ -32,8 +32,8 @@ jobs:
         id: sitemap
         uses: cicirello/generate-sitemap@eb8db82126ee30619883c8c43e8c49ec14ebd6dc # v1.10.1
         with:
-          base-url-path: https://userstyles.github.typpi.online/
-          additional-extensions: doc docx ppt pptx js css json xml xlsx xls pdf md markdown txt
+          base-url-path: https://recycling.typpi.online/
+          additional-extensions: doc docx ppt pptx js css json xml xlsx xls pdf md markdown txt lua yaml yml png
 
       # Step to output the sitemap generation stats for debugging and verification
       - name: Output stats
@@ -57,38 +57,30 @@ jobs:
       - name: Set pull request number or ID
         id: set_pr_number
         run: |
-          if [ -n "${{ github.event.pull_request.number }}" ]; then
-            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          pr_number=$(gh pr list --state open --base main --json number -q '.[0].number')
+          if [ -n "$pr_number" ]; then
+            echo "PR_NUMBER=$pr_number" >> $GITHUB_ENV
           else
-            echo "PR_NUMBER=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+            echo "PR_NUMBER=" >> $GITHUB_ENV
           fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Step to enable auto-merge for the pull request if the actor is 'Nick2bad4u'
       - name: Enable Pull Request Automerge
-        if: github.actor == 'Nick2bad4u'
+        if: github.actor == 'Nick2bad4u' && env.PR_NUMBER != ''
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ env.PR_NUMBER }}
           merge-method: squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Step to merge the pull request automatically using the GitHub CLI
       - name: Merge Pull Request
-        if: github.actor == 'Nick2bad4u'
+        if: github.actor == 'Nick2bad4u' && env.PR_NUMBER != ''
         run: |
-          gh pr merge -R "Nick2bad4u/UserStyles" --squash --auto "${{ env.PR_NUMBER }}"
+          gh pr merge -R "Nick2bad4u/Userstyles" --squash --auto "${{ env.PR_NUMBER }}"
         env:
-          GH_TOKEN: ${{ secrets.TOKEN }}
-
-      - name: Mark Notification as Read
-        if: github.actor == 'Nick2bad4u'
-        run: |
-          pr_id="${{ env.PR_NUMBER }}"
-          notification_id=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/notifications | jq -r ".[] | select(.subject.url | contains(\"pulls/$pr_id\")) | .id")
-          if [ -n "$notification_id" ]; then
-            curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/notifications/threads/$notification_id
-          else
-            echo "Notification not found"
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
