@@ -69,7 +69,7 @@ jobs:
       # Step to enable auto-merge for the pull request if the actor is 'Nick2bad4u'
       - name: Enable Pull Request Automerge
         if: github.actor == 'Nick2bad4u' && env.PR_NUMBER != ''
-        uses: peter-evans/enable-pull-request-automerge@v3
+        uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d # v3.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ env.PR_NUMBER }}
