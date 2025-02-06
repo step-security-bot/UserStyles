@@ -5,7 +5,7 @@
 @description  Spooky Halloween theme for the forum
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      2025.02.06
+@version      2025.02.07
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
@@ -129,7 +129,7 @@ url-prefix("http://kiwifarms")
 	.node-icon i {
 		fill: var(--primary-color) !important;
 		color: var(--primary-color) !important;
-		filter: invert(1) hue-rotate(270deg);
+		filter: invert(1) hue-rotate(100deg);
 	}
 
 	.sidebar .avatarList .userTitle,
