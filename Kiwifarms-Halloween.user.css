@@ -5,7 +5,7 @@
 @description  Spooky Halloween theme for the forum
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      2025.02.07
+@version      2025.02.08
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
@@ -381,5 +381,6 @@ url-prefix("http://kiwifarms")
 		padding-left: 200px !important;
 		width: 0 !important;
 		height: 0 !important;
+		filter: invert(0) hue-rotate(180deg);
 	}
 }
