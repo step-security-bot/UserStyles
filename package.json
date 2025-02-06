@@ -16,7 +16,7 @@
 		"braces": "^3.0.3",
 		"callsites": "^4.2.0",
 		"chalk": "^5.4.1",
-		"color-convert": "^2.0.1",
+		"color-convert": "^3.0.0",
 		"color-name": "^2.0.0",
 		"concat-map": "^0.0.2",
 		"cross-spawn": "^7.0.6",
