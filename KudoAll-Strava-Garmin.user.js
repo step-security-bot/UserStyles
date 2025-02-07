@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava and Garmin Kudos All (Working)
 // @namespace    typpi.online
-// @version      1.3
+// @version      1.4
 // @description  Adds a button to give kudos to all visible activities on Strava and Garmin Connect.
 // @author       Nick2bad4u
 // @license      Unlicense
@@ -16,73 +16,112 @@
 (function () {
 	'use strict';
 
+	// Function to get localized message
 	function getMessage(messageName, substitutions) {
-		if (substitutions) {
-			return substitutions;
-		}
-		return messageName;
+		const messages = {
+			en: {
+				kudo_all: 'Kudo All',
+			},
+			es: {
+				kudo_all: 'Dar Kudos a Todos',
+			},
+			fr: {
+				kudo_all: 'Féliciter Tout le Monde',
+			},
+			de: {
+				kudo_all: 'Allen Kudos geben',
+			},
+			it: {
+				kudo_all: 'Dai Kudos a Tutti',
+			},
+			pt: {
+				kudo_all: 'Dar Kudos a Todos',
+			},
+			nl: {
+				kudo_all: 'Geef Kudos aan Iedereen',
+			},
+			ru: {
+				kudo_all: 'Похвалить всех',
+			},
+			zh: {
+				kudo_all: '赞所有',
+			},
+			ja: {
+				kudo_all: '全員にKudos',
+			},
+			ko: {
+				kudo_all: '모두에게 칭찬하기',
+			},
+			ar: {
+				kudo_all: 'إعطاء Kudos للجميع',
+			},
+			hi: {
+				kudo_all: 'सभी को कुडोस दें',
+			},
+			bn: {
+				kudo_all: 'সবাইকে কুডোস দিন',
+			},
+			// Add more languages as needed
+		};
+
+		const userLanguage = navigator.language.split('-')[0]; // Get the user's language
+		const messageSet = messages[userLanguage] || messages['en']; // Default to English if language not supported
+
+		return messageSet[messageName] || substitutions || messageName;
 	}
 
 	const Strava = {
+		// Get the container element on Strava
 		getContainer: function () {
 			const container = document.querySelector('[class="user-nav nav-group"]');
 			console.log('Strava: Found container:', container);
 			return container;
 		},
 
+		// Find all kudos buttons within the container
 		findKudosButtons: function (container) {
-			const selector =
-				"button[data-testid='kudos_button'] > svg[data-testid='unfilled_kudos']";
-			const buttons = container
-				? Array.from(container.querySelectorAll(selector))
-				: Array.from(document.querySelectorAll(selector));
+			const selector = "button[data-testid='kudos_button'] > svg[data-testid='unfilled_kudos']";
+			const buttons = container ? Array.from(container.querySelectorAll(selector)) : Array.from(document.querySelectorAll(selector));
 			console.log('Strava: Found kudos buttons:', buttons);
 			return buttons;
 		},
 
+		// Create filter for athlete link to exclude own activities
 		createFilter: function (athleteLink) {
-			const href = athleteLink.href
-				.replace('https://www.strava.com', '')
-				.replace('https://strava.com', '');
+			const href = athleteLink.href.replace('https://www.strava.com', '').replace('https://strava.com', '');
 			console.log('Strava: Filter created for athlete link:', href);
 			return (item) => !item.querySelector(`a[href^="${href}"]`);
 		},
 
+		// Get all kudos buttons for the current user
 		getKudosButtons: function () {
-			const athleteLink = document.querySelector(
-				"#athlete-profile a[href^='/athletes']",
-			);
+			const athleteLink = document.querySelector("#athlete-profile a[href^='/athletes']");
 			console.log('Strava: Athlete link:', athleteLink);
 
 			if (!athleteLink) {
 				return Strava.findKudosButtons();
 			}
 
-			let activities = document.querySelectorAll(
-				"div[data-testid='web-feed-entry']",
-			);
+			let activities = document.querySelectorAll("div[data-testid='web-feed-entry']");
 			console.log('Strava: Found activities:', activities);
 
 			if (activities.length < 1) {
 				return Strava.findKudosButtons();
 			}
 
-			activities = Array.from(activities).filter(
-				Strava.createFilter(athleteLink),
-			);
+			activities = Array.from(activities).filter(Strava.createFilter(athleteLink));
 			console.log('Strava: Filtered activities:', activities);
 
 			if (activities.length < 1) {
 				return Strava.findKudosButtons();
 			}
 
-			const buttons = activities
-				.flatMap(Strava.findKudosButtons)
-				.filter((item) => !!item);
+			const buttons = activities.flatMap(Strava.findKudosButtons).filter((item) => !!item);
 			console.log('Strava: Final kudos buttons:', buttons);
 			return buttons;
 		},
 
+		// Create a new button for kudo all
 		createButton: function () {
 			const label = getMessage('kudo_all', 'Kudo All');
 			console.log('Strava: Creating button with label:', label);
@@ -111,6 +150,7 @@
 			return navItemLi;
 		},
 
+		// Handler for the kudo all button click event
 		kudoAllHandler: function (event) {
 			event.preventDefault();
 
@@ -125,11 +165,10 @@
 			});
 		},
 
+		// Initialize Strava functionality
 		stravaStandBy: function () {
 			console.log('Strava: Standby initiated');
-			const buttonExisted = document.querySelector(
-				'div[class="ka-progress text-caption1"]',
-			);
+			const buttonExisted = document.querySelector('div[class="ka-progress text-caption1"]');
 			if (!buttonExisted) {
 				console.log('Strava: Button does not exist, creating');
 
@@ -145,6 +184,7 @@
 	};
 
 	const GC = {
+		// Get the container element on Garmin
 		getContainer: function () {
 			const container = document.querySelector('div[class="header-nav"]');
 			console.log('Garmin: Found container:', container);
@@ -160,16 +200,15 @@
 			return null;
 		},
 
+		// Find all kudos buttons within the container
 		findKudosButtons: function (container) {
-			const selector =
-				'button[class^="CommentLikeSection_socialIconWrapper"] > div[class*="CommentLikeSection_animateBox"] > i[class*=icon-heart-inverted]';
-			const buttons = container
-				? Array.from(container.querySelectorAll(selector))
-				: Array.from(document.querySelectorAll(selector));
+			const selector = 'button[class^="CommentLikeSection_socialIconWrapper"] > div[class*="CommentLikeSection_animateBox"] > i[class*=icon-heart-inverted]';
+			const buttons = container ? Array.from(container.querySelectorAll(selector)) : Array.from(document.querySelectorAll(selector));
 			console.log('Garmin: Found kudos buttons:', buttons);
 			return buttons;
 		},
 
+		// Create a new button for kudo all
 		createButton: function () {
 			const label = getMessage('kudo_all', 'Kudo All');
 			console.log('Garmin: Creating button with label:', label);
@@ -183,6 +222,7 @@
 			return link;
 		},
 
+		// Handler for the kudo all button click event
 		kudoAllHandler: function (event) {
 			event.preventDefault();
 			if (window.location.pathname !== '/modern/newsfeed') {
@@ -200,6 +240,7 @@
 			});
 		},
 
+		// Execute Garmin functionality
 		execute: function () {
 			console.log('Garmin: Execute function called');
 			const container = GC.getContainer();
@@ -211,6 +252,7 @@
 			}
 		},
 
+		// Initialize Garmin functionality
 		garminConnectStandBy: function () {
 			console.log('Garmin: Standby initiated');
 
@@ -243,12 +285,14 @@
 		},
 	};
 
+	// Check if the current host is Strava
 	const isHostStrava = function () {
 		const currentHostname = window.location.hostname;
 		const stravaDomainPattern = /^.*\.strava\.com$/;
 		return stravaDomainPattern.test(currentHostname);
 	};
 
+	// Check if the current host is Garmin
 	const isHostGarmin = function () {
 		const currentHostname = window.location.hostname;
 		const garminDomainPattern = /^.*\.garmin\.com$/;
@@ -257,6 +301,7 @@
 		return isGarmin;
 	};
 
+	// Initialize script on window load
 	window.onload = function () {
 		console.log('Kudo All Starts running....');
 

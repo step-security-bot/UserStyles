@@ -10,7 +10,7 @@ Thank you for considering contributing to UserStyles! We appreciate your support
 - [Creating Pull Requests](#creating-pull-requests)
 - [Style Guidelines](#style-guidelines)
 - [Commit Messages](#commit-messages)
-- [Testing](#testing)
+- [License](#license)
 
 ## Code of Conduct
 
@@ -65,5 +65,22 @@ Please adhere to the following style guidelines:
 
 ## Commit Messages
 
-Use the following format for commit messages:
+Write clear and concise commit messages. The first line should be a brief summary of the changes, followed by a blank line, and then a more detailed explanation if necessary.
 
+Example:
+
+```txt
+feat: Add new theme
+
+This commit introduces a new theme to the application.
+The theme is based on the Material Design guidelines and
+provides a modern and visually appealing user interface.
+```
+
+## Testing
+
+Ensure that your changes are thoroughly tested before submitting a pull request. Write unit tests and integration tests to verify the correctness of your code.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
