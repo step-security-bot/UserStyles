@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Gyazo Gif and Video Direct Link Button
 // @namespace    typpi.online
-// @version      1.8
+// @version      3.1
 // @description  Adds a link button to redirect to the direct video or gif link on Gyazo
 // @author       Nick2bad4u
 // @license      UnLicense
@@ -19,7 +19,7 @@
 		console.log('Creating button element');
 		const button = document.createElement('button');
 		button.id = 'direct-video-link-button';
-		button.setAttribute('class', 'btn explorer-action-btn explorer-action-btn-dark');
+		button.classList.add('btn', 'explorer-action-btn', 'explorer-action-btn-dark');
 		button.setAttribute('data-tooltip-content', 'Direct Link');
 
 		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -46,9 +46,14 @@
 		const tooltip = document.createElement('div');
 		tooltip.id = 'tooltip-direct-video-link-button';
 		tooltip.setAttribute('role', 'tooltip');
-		tooltip.setAttribute(
-			'class',
-			'react-tooltip core-styles-module_tooltip__3vRRp styles-module_tooltip__mnnfp styles-module_dark__xNqje react-tooltip__place-bottom core-styles-module_show__Nt9eE react-tooltip__show',
+		tooltip.classList.add(
+			'react-tooltip',
+			'core-styles-module_tooltip__3vRRp',
+			'styles-module_tooltip__mnnfp',
+			'styles-module_dark__xNqje',
+			'react-tooltip__place-bottom',
+			'core-styles-module_show__Nt9eE',
+			'react-tooltip__show',
 		);
 		tooltip.style.cssText = 'z-index: 2147483647; font-size: 14px; padding: 6px 10px; max-width: 250px; display: none; position: absolute;';
 		tooltip.innerHTML =
@@ -95,6 +100,7 @@
 	}
 
 	function addRedirectButton() {
+		removeRedirectButton();
 		console.log('Adding redirect button');
 		const existingButton = document.getElementById('direct-video-link-button');
 		if (existingButton) {
@@ -102,59 +108,93 @@
 			existingButton.remove();
 		}
 
-		const targetElement = document.querySelector(
-			'#react-root > div.header-block.explorer-header-block > div.explorer-action-btn-toolbar > div.explorer-action-btn-group',
-		);
-		if (!targetElement) {
-			console.log('Target element not found, exiting');
-			return;
-		}
+		let targetElement = null;
+		let attempts = 0;
+		const maxAttempts = 10;
+		const interval = 500;
 
-		const button = createButtonElement();
-		const tooltip = createTooltipElement();
+		const findTargetElement = () => {
+			targetElement = document.querySelector(
+				'#react-root > div.header-block.explorer-header-block > div.explorer-action-btn-toolbar > div.explorer-action-btn-group',
+			);
 
-		addTooltipListeners(button, tooltip);
+			if (targetElement) {
+				console.log('Target element found');
+				const button = createButtonElement();
+				const tooltip = createTooltipElement();
 
-		const directLink = extractDirectLink();
-		button.onclick = function () {
-			console.log('Button clicked, redirecting to', directLink);
-			window.location.href = directLink;
+				addTooltipListeners(button, tooltip);
+
+				const directLink = extractDirectLink();
+				button.onclick = function () {
+					console.log('Button clicked, redirecting to', directLink);
+					window.location.href = directLink;
+				};
+
+				targetElement.insertAdjacentElement('beforebegin', button);
+				console.log('Redirect button added');
+			} else if (attempts < maxAttempts) {
+				attempts++;
+				console.log(`Target element not found, retrying in ${interval}ms (attempt ${attempts}/${maxAttempts})`);
+				setTimeout(findTargetElement, interval);
+			} else {
+				console.log('Target element not found after multiple attempts, exiting');
+			}
 		};
 
-		targetElement.insertAdjacentElement('beforebegin', button);
-		console.log('Redirect button added');
+		findTargetElement();
 	}
 
 	function removeRedirectButton() {
+		if (!location.href.includes('https://gyazo.com/captures')) {
+			console.log('Not removing redirect button since not on captures page');
+			return;
+		}
+
 		console.log('Removing redirect button');
 		const existingButton = document.getElementById('direct-video-link-button');
-		if (existingButton) {
+		if (existingButton !== null) {
 			console.log('Existing button found, removing it');
 			existingButton.remove();
 		}
 		console.log('Redirect button removed');
 	}
 
-	window.addEventListener('load', function () {
-		console.log('Window loaded');
-		addRedirectButton();
+	function handlePageChange() {
+		console.log('Handling page change');
+		const currentUrl = location.href;
+		if (currentUrl.includes('https://gyazo.com/captures')) {
+			removeRedirectButton();
+			console.log('On captures page, not adding button');
+		} else {
+			addRedirectButton();
+		}
+	}
 
-		let lastUrl = location.href;
-		new MutationObserver(() => {
+	function initialize() {
+		console.log('Initializing script');
+		handlePageChange();
+
+		const observer = new MutationObserver(() => {
 			const currentUrl = location.href;
-			if (lastUrl !== currentUrl) {
-				console.log('URL changed from', lastUrl, 'to', currentUrl);
-				lastUrl = currentUrl;
-				if (currentUrl === 'https://gyazo.com/captures') {
-					removeRedirectButton();
-				} else {
-					addRedirectButton();
-				}
+			if (currentUrl !== observer.lastUrl) {
+				console.log('URL changed from', observer.lastUrl, 'to', currentUrl);
+				observer.lastUrl = currentUrl;
+				handlePageChange();
 			}
-		}).observe(document, {
-			subtree: true,
+		});
+
+		observer.lastUrl = location.href;
+		observer.observe(document.body, {
 			childList: true,
+			subtree: true,
 		});
 		console.log('Mutation observer added');
+	}
+
+	window.addEventListener('load', initialize);
+	window.addEventListener('popstate', () => {
+		console.log('A soft navigation has been detected:', location.href);
+		initialize();
 	});
 })();
