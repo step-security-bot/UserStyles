@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava and Garmin Kudos All (Working)
 // @namespace    typpi.online
-// @version      1.4
+// @version      1.5
 // @description  Adds a button to give kudos to all visible activities on Strava and Garmin Connect.
 // @author       Nick2bad4u
 // @license      Unlicense
@@ -289,7 +289,9 @@
 	const isHostStrava = function () {
 		const currentHostname = window.location.hostname;
 		const stravaDomainPattern = /^.*\.strava\.com$/;
-		return stravaDomainPattern.test(currentHostname);
+		const isStrava = stravaDomainPattern.test(currentHostname);
+		console.log('Host check: Is Strava?', isStrava);
+		return isStrava;
 	};
 
 	// Check if the current host is Garmin
