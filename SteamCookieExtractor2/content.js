@@ -1,0 +1,89 @@
+/* eslint-disable no-undef */
+(async function () {
+	'use strict';
+
+	// Check if chrome storage and sync are available
+	if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
+		try {
+			const result = await getChromeStorage([
+				'disableSteamCommunity',
+				'disableStore',
+			]);
+			const url = window.location.href;
+
+			// Check if the URL matches the conditions to not inject the UI
+			if (
+				(result.disableSteamCommunity && url.includes('steamcommunity.com')) ||
+				(result.disableStore && url.includes('store.steampowered.com'))
+			) {
+				return; // Do not inject the UI
+			}
+
+			// Create and append the button
+			createAndAppendButton();
+			// Inject CSS styles
+			injectStyles();
+		} catch (error) {
+			console.error('Error fetching chrome storage:', error);
+		}
+	}
+
+	// Function to get chrome storage data
+	function getChromeStorage(keys) {
+		return new Promise((resolve, reject) => {
+			chrome.storage.sync.get(keys, (result) => {
+				if (chrome.runtime.lastError) {
+					reject(chrome.runtime.lastError);
+				} else {
+					resolve(result);
+				}
+			});
+		});
+	}
+
+	// Function to create and append the button
+	function createAndAppendButton() {
+		const button = document.createElement('button');
+		button.textContent = 'Show Steam Cookies';
+		button.classList.add('steam-cookie-button');
+
+		// Add click event to open the popup
+		button.addEventListener('click', () => {
+			chrome.runtime.sendMessage(
+				{
+					action: 'openPopup',
+				},
+				(response) => {
+					if (chrome.runtime.lastError) {
+						console.error('Error sending message:', chrome.runtime.lastError);
+					} else {
+						console.log('Popup opened:', response);
+					}
+				},
+			);
+		});
+
+		// Append the button to the body
+		document.body.appendChild(button);
+	}
+
+	// Function to inject CSS styles dynamically
+	function injectStyles() {
+		const style = document.createElement('style');
+		style.textContent = `
+					.steam-cookie-button {
+							position: fixed;
+							bottom: 10px;
+							right: 10px;
+							background-color: #333;
+							color: #fff;
+							padding: 10px;
+							border: none;
+							border-radius: 5px;
+							cursor: pointer;
+							z-index: 10000;
+					}
+			`;
+		document.head.appendChild(style);
+	}
+})();
