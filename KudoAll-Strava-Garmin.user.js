@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava and Garmin Kudos All (Working)
 // @namespace    typpi.online
-// @version      2.0.3
+// @version      2.0.4
 // @description  Adds a button to give kudos to all visible activities on Strava and Garmin Connect.
 // @author       Nick2bad4u
 // @license      Unlicense
@@ -13,8 +13,8 @@
 // @icon         https://i.gyazo.com/e2fabcfc9e9fd6d011e98215764c109c.png
 // @tag          garmin
 // @tag          strava
-// @downloadURL https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.user.js
-// @updateURL https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.meta.js
+// @downloadURL  https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.user.js
+// @updateURL    https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.meta.js
 // ==/UserScript==
 
 (function () {
@@ -98,14 +98,13 @@
 	 * @returns {HTMLElement[]} An array of HTML elements representing the Strava kudos buttons found.
 	 */
 	function findStravaKudosButtons(container) {
-		const kudosButtonSelector = "button[data-testid='kudos_button']";
-		const unfilledKudosSelector = "svg[data-testid='unfilled_kudos']";
-		const selector = `${kudosButtonSelector} > ${unfilledKudosSelector}`;
-		const buttons = container
-			? Array.from(container.querySelectorAll(selector)).filter(Boolean)
-			: Array.from(document.querySelectorAll(selector)).filter(Boolean);
-		console.log('Strava: Found kudos buttons:', buttons);
-		return buttons;
+		// Find Strava kudos buttons
+		const kudosButtonSelector = "button[data-testid='kudos_button']"; // Define the selector for the kudos button
+		const unfilledKudosSelector = "svg[data-testid='unfilled_kudos']"; // Define the selector for the unfilled kudos icon
+		const selector = `${kudosButtonSelector} > ${unfilledKudosSelector}`; // Combine the selectors
+		const buttons = container ? Array.from(container.querySelectorAll(selector)) : document.querySelectorAll(selector); // Find the kudos buttons
+		console.log('Strava: Found kudos buttons:', buttons); // Log the found kudos buttons
+		return buttons; // Return the found kudos buttons
 	}
 
 	/**
@@ -120,6 +119,7 @@
 	let cachedFilterFunction = null; // Cache the filter function
 
 	function createStravaFilter(athleteLink) {
+		// Create a filter function for Strava activities
 		const url = new URL(athleteLink.href); // Get the athlete link URL
 		const href = url.pathname; // Get the pathname from the URL
 		if (cachedAthleteLink === href) {
@@ -527,6 +527,7 @@
 		const isGarminHost = isHostGarmin(); // Check if the current host is Garmin Connect
 
 		if (isStravaHost) {
+			// If the current host is Strava
 			console.log('Detected Strava domain. Initiating Strava standby...'); // Log the initiation of the Strava standby mode
 			Strava.stravaStandBy(); // Initiate the Strava standby mode
 		} else if (isGarminHost) {
