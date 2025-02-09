@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava and Garmin Kudos All (Working)
 // @namespace    typpi.online
-// @version      2.0.2
+// @version      2.0.3
 // @description  Adds a button to give kudos to all visible activities on Strava and Garmin Connect.
 // @author       Nick2bad4u
 // @license      Unlicense
@@ -11,8 +11,10 @@
 // @include      https://www.strava.com/*
 // @include      https://connect.garmin.com/modern/*
 // @icon         https://i.gyazo.com/e2fabcfc9e9fd6d011e98215764c109c.png
-// @downloadURL  https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.user.js
-// @updateURL    https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.meta.js
+// @tag          garmin
+// @tag          strava
+// @downloadURL https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.user.js
+// @updateURL https://update.greasyfork.org/scripts/520059/Strava%20and%20Garmin%20Kudos%20All%20%28Working%29.meta.js
 // ==/UserScript==
 
 (function () {
