@@ -17,6 +17,12 @@ repos:
       - id: check-xml
       - id: check-ast
       - id: check-toml
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: fix-byte-order-marker
+      - id: name-tests-test
+      - id: requirements-txt-fixer
+      - id: check-builtin-literals
       - id: check-added-large-files
       - id: check-case-conflict
       - id: check-illegal-windows-names
@@ -24,5 +30,6 @@ repos:
       - id: check-symlinks
       - id: detect-private-key
       - id: mixed-line-ending
+      - id: check-vcs-permalinks
       # - id: pretty-format-json
       - id: check-docstring-first
