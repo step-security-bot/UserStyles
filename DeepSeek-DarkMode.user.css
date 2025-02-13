@@ -1,0 +1,151 @@
+/* ==UserStyle==
+@name           Dark Mode for DeepSeek [Customizable]
+@namespace      typpi.online
+@version        1.0.1
+@description    Apply dark mode to the DeepSeek website
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
+
+@var color white "White" #ffffff
+@var color black "Black" #000000
+@var color red "Red" #f35a5a
+@var color light-white "Light White" #f8faff
+@var color light-gray "Light Gray" #d4d4d4
+@var color light-gray2 "Light Gray 2" #404040
+@var color light-gray3 "Light Gray 3" #353535
+@var color dark-gray "Dark Gray" #131313
+
+@var color transparent "Transparent" #212327
+
+==/UserStyle== */
+
+@-moz-document domain("chat.deepseek.com") {
+	:root {
+		--white: var(white);
+		--black: var(black);
+		--red: var(red);
+		--light-white: var(light-white);
+		--light-gray: var(light-gray);
+		--light-gray2: var(light-gray2);
+		--light-gray3: var(light-gray3);
+		--dark-gray: var(dark-gray);
+		--transparent: var(transparent);
+	}
+
+	body {
+		--dsr-main: var(--white);
+		--dsr-main-2: #ffffff66;
+		--dsr-main-3: #ffffff33;
+	}
+
+	body[data-ds-dark-theme] {
+		--ds-rgb-red-500: #ef4444;
+		--ds-rgb-red-550: #e53535;
+		--dsr-delete-button-bg: rgb(
+			var(--ds-rgb-red-500) / 85%
+		);
+		--dsr-delete-button-bg-hover: rgb(
+			var(--ds-rgb-red-550) / 45%
+		);
+
+		--ds-rgb-neutral-300: var(--light-gray);
+		--ds-rgb-neutral-700: var(--light-gray2);
+		--dsr-bg: var(--black);
+		--dsr-text-0: var(--black);
+		--dsr-text-1: var(--white);
+		--dsr-text-2: var(--white);
+		--dsr-text-3: rgb(var(--ds-rgb-neutral-300));
+		--dsr-text-4: var(--white);
+		--dsr-border-1: var(--black);
+		--dsr-border-2: var(--black);
+		--dsr-input-border: var(--black);
+		--dsr-input-bg: var(--black);
+		--dsr-button-main-bg: var(--black);
+		--dsr-button-main-bg-hover: var(--black);
+		--dsr-button-second-bg: #00000066;
+		--dsr-button-grey-0: var(--black);
+		--dsr-button-grey-1: var(--black);
+		--dsr-button-grey-2: var(--black);
+		--dsr-tooltip-fg: var(--black);
+		--dsr-tooltip-bg: var(--black);
+		--dsr-side-bg: var(--transparent);
+		--dsr-side-hover-bg-rgb: 51, 51, 51;
+		--dsr-side-hover-bg: var(--black);
+		--dsr-icon-fg-1: var(--black);
+		--dsr-icon-hover-0: var(--black);
+		--dsr-icon-hover-1: rgb(var(--ds-rgb-neutral-700));
+		--dsr-side-icon-hover: var(--black);
+		/* --dsr-error-fg: var(--black); */
+		--dsr-error-fg: var(--red);
+	}
+
+	.cdfc1683 {
+		background-color: var(--black);
+		color: var(--white);
+	}
+
+	.b8812f16 {
+		background-color: var(--black);
+	}
+
+	[data-ds-dark-theme] .a8ac7a80 {
+		--local-button: var(--black);
+		--local-button-hover: var(--black);
+		--local-button-text: var(--white);
+	}
+
+	.f9edaa3c {
+		background-color: var(--black);
+	}
+
+	[data-ds-dark-theme] .be88ba8a {
+		display: none;
+	}
+
+	[data-ds-dark-theme] .fbb737a4 {
+		background-color: var(--black);
+	}
+
+	[data-ds-dark-theme] .e214291b {
+		color: var(--light-white);
+		background-color: var(--black);
+	}
+
+	.ds-textarea.ds-textarea--focused {
+		background-color: var(--black);
+	}
+
+	.dc04ec1d.a02af2e6 .a7f3a288 {
+		background-color: var(--black);
+	}
+
+	.md-code-block {
+		background: var(--black);
+	}
+
+	.f9edaa3c .f8773756 {
+		background: linear-gradient(
+			90deg,
+			#21232700 0%,
+			#2807451f 50%,
+			var(--transparent) 100%
+		);
+	}
+
+	/* Scrollbar styling */
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+	::-webkit-scrollbar-track {
+		background: var(--black);
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--dark-gray);
+		border-radius: 3px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--white0);
+	}
+}
