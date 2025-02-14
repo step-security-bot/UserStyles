@@ -1,13 +1,12 @@
 /* ==UserStyle==
 @name           Dark Mode for DeepSeek [Customizable]
 @namespace      typpi.online
-@version        1.0.2
+@version        1.0.3
 @description    Apply dark mode to the DeepSeek website
 @author         Nick2bad4u
 @license        UnLicense
 @homepageURL    https://github.com/Nick2bad4u/UserStyles
 @supportURL     https://github.com/Nick2bad4u/UserStyles/issues
-@updateURL      https://github.com/Nick2bad4u/UserStyles/raw/refs/heads/main/DeepSeek-DarkMode.user.css
 
 @var color white "White" #ffffff
 @var color black "Black" #000000
@@ -20,8 +19,9 @@
 
 @var color transparent "Transparent" #212327
 
+@downloadURL https://update.greasyfork.org/scripts/526831/Dark%20Mode%20for%20DeepSeek%20%5BCustomizable%5D.user.css
+@updateURL https://update.greasyfork.org/scripts/526831/Dark%20Mode%20for%20DeepSeek%20%5BCustomizable%5D.meta.css
 ==/UserStyle== */
-
 @-moz-document domain("chat.deepseek.com") {
 	:root {
 		--white: var(white);
@@ -33,6 +33,14 @@
 		--light-gray3: var(light-gray3);
 		--dark-gray: var(dark-gray);
 		--transparent: var(transparent);
+		--chatwidth: var(chatwidth);
+	}
+
+	.dad65929,
+	.aaff8b8f,
+	.a2f8e4bb,
+	.aaff8b8f.eb830e32 {
+		max-width: 100%;
 	}
 
 	body {
@@ -139,13 +147,16 @@
 	::-webkit-scrollbar {
 		width: 12px;
 	}
+
 	::-webkit-scrollbar-track {
 		background: var(--black);
 	}
+
 	::-webkit-scrollbar-thumb {
 		background: var(--dark-gray);
 		border-radius: 3px;
 	}
+
 	::-webkit-scrollbar-thumb:hover {
 		background: var(--white0);
 	}
