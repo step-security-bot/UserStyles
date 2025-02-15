@@ -65,22 +65,3 @@ jobs:
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Step to enable auto-merge for the pull request if the actor is 'Nick2bad4u'
-      - name: Enable Pull Request Automerge
-        if: github.actor == 'Nick2bad4u' && env.PR_NUMBER != ''
-        uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d # v3.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ env.PR_NUMBER }}
-          merge-method: squash
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Step to merge the pull request automatically using the GitHub CLI
-      - name: Merge Pull Request
-        if: github.actor == 'Nick2bad4u' && env.PR_NUMBER != ''
-        run: |
-          gh pr merge -R "Nick2bad4u/Userstyles" --squash --auto "${{ env.PR_NUMBER }}"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
