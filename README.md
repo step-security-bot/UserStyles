@@ -1,4 +1,4 @@
-# Userstyles and Userscripts by Nick2bad4u / Typpi
+# Userstyles and Userscripts by Nick2bad4u / Typpi ☠️
 
 <div align="center">
     <img
