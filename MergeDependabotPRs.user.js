@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      4.3
+// @version      4.7
 // @description  Merges Dependabot PRs in any of your repositories - pulls the PRs into a table and lets you select which ones to merge.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -65,10 +65,10 @@
 		}
 
 		// Retrieve the GitHub username from storage or prompt the user for it
-		let username = GM_getValue('github_username');
-		while (!username) {
-			username = prompt('Please enter your GitHub username:');
-			if (username) {
+		let username = GM_getValue('github_username') || '';
+		while (!username || username.trim() === '') {
+				username = prompt('Please enter your GitHub username:');
+				if (username && username.trim() !== '') {
 				GM_setValue('github_username', username);
 			} else {
 				alert('GitHub username is required.');
@@ -290,7 +290,7 @@
 		mergeButton.classList.add('merge-button');
 		mergeButton.addEventListener('click', async () => {
 			try {
-				const token = await retrieveAndDecryptToken();
+				let token = await retrieveAndDecryptToken();
 				if (!token) {
 					alert('Invalid or missing GitHub token. Please check your settings.');
 					return;
@@ -421,6 +421,7 @@
 	}
 
 	const style = document.createElement('style');
+	document.head.appendChild(style);
 	style.textContent = `
 			.merge-button, mergebutton, body > div.pr-selection-container > button {
 				position: fixed;
@@ -465,6 +466,5 @@
 				border: 1px solid #cccccc;
 	}
 	`;
-	document.head.appendChild(style);
 	window.addEventListener('load', addButton);
 })();
