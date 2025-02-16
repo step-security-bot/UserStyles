@@ -30,6 +30,16 @@ IGNORE_LIST = [
     "zwiftbikes",
 ]
 
+top_folder = []
+second_folder = []
+third_folder = []
+file_extension_top_folder_ext = ".user.css"
+file_extension_top_folder_name = "<h2>Userstyles</h2>"
+file_extension_second_folder_ext = ".user.js"
+file_extension_second_folder_name = "<h2>Userscripts</h2>"
+file_extension_third_folder_ext = ".css"
+file_extension_third_folder_name = "<h2>CSS</h2>"
+
 # --- End Configuration ---
 
 # Configure logging
@@ -135,15 +145,6 @@ def generate_file_list_with_links(
         str: An HTML string containing the file list grouped by folder.
     """
     file_list_html = defaultdict(list)
-    top_folder = []
-    second_folder = []
-    third_folder = []
-    file_extension_top_folder_ext = ".user.css"
-    file_extension_top_folder_name = "<h2>Userstyles</h2>"
-    file_extension_second_folder_ext = ".user.js"
-    file_extension_second_folder_name = "<h2>Userscripts</h2>"
-    file_extension_third_folder_ext = ".css"
-    file_extension_third_folder_name = "<h2>CSS</h2>"
     try:
         for file in file_list:
             file_url = f"{repo_url}/blob/main/{file}".replace("\\", "/")
