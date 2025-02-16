@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Merge Dependabot PRs Automatically on GitHub with UI and Selection Options
 // @namespace    typpi.online
-// @version      2.2
+// @version      2.3
 // @description  Automatically clicks the merge button on Dependabot PRs and "Done" button on the notification bar
 // @author       Nick2bad4u
 // @match        https://github.com/*/*/pull/*
@@ -51,10 +51,8 @@
 	const debounce = (func, delay) => {
 		let debounceTimer;
 		return function () {
-			const context = this;
-			const args = arguments;
 			clearTimeout(debounceTimer);
-			debounceTimer = setTimeout(() => func.apply(context, args), delay);
+			debounceTimer = setTimeout(() => func.apply(this, arguments), delay);
 		};
 	};
 
