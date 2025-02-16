@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      3.1
+// @version      4.3
 // @description  Merges Dependabot PRs in any of your repositories - pulls the PRs into a table and lets you select which ones to merge.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -12,7 +12,6 @@
 // @grant        GM_setValue
 // @connect      api.github.com
 // @license      UnLicense
-// @tag          github
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
@@ -145,12 +144,17 @@
 			if (!storedData) return '';
 
 			// Parse the stored data to extract the initialization vector (iv) and the token
-			const { key, iv, token } = JSON.parse(storedData);
+			const { iv, token } = JSON.parse(storedData);
+			const key = GM_getValue('encryption_key', null);
+
+			if (!key) {
+				throw new Error('Encryption key is missing.');
+			}
 
 			// Import the encryption key for decryption
 			const importedKey = await crypto.subtle.importKey(
 				'jwk',
-				key,
+				JSON.parse(key),
 				{
 					name: 'AES-GCM',
 				},
@@ -283,7 +287,7 @@
 	function addButton() {
 		const mergeButton = document.createElement('mergebutton');
 		mergeButton.textContent = 'Merge Dependabot PRs';
-		mergeButton.style = 'position: fixed; bottom: 10px; right: 10px; z-index: 1000;';
+		mergeButton.classList.add('merge-button');
 		mergeButton.addEventListener('click', async () => {
 			try {
 				const token = await retrieveAndDecryptToken();
@@ -313,7 +317,10 @@
 					updateStatusElement(statusElement, 'No Dependabot PRs found to merge.');
 					displayNoPRsMessage();
 				}
-				setTimeout(() => (statusElement.innerHTML = ''), 5000);
+				setTimeout(() => {
+					statusElement.innerHTML = '';
+					statusElement.remove();
+				}, 10000);
 			} catch (error) {
 				console.error('Error during merge operation:', error);
 			}
@@ -326,7 +333,7 @@
 		if (!statusElement) {
 			statusElement = document.createElement('div');
 			statusElement.id = 'merge-status';
-			statusElement.style = 'position: fixed; bottom: 70px; right: 10px; z-index: 1000; background-color: #79e4f2; padding: 10px; border: 1px solid #ccc;';
+			statusElement.classList.add('merge-status');
 			document.body.appendChild(statusElement);
 		}
 		return statusElement;
@@ -405,12 +412,21 @@
 		// Automatically hide the message after 5 seconds (5000 milliseconds)
 		setTimeout(() => {
 			container.remove();
+			// Also remove the merge-status container
+			const statusContainer = document.getElementById('merge-status');
+			if (statusContainer) {
+				statusContainer.remove();
+			}
 		}, 5000);
 	}
 
 	const style = document.createElement('style');
 	style.textContent = `
-			mergebutton, body > div.pr-selection-container > button {
+			.merge-button, mergebutton, body > div.pr-selection-container > button {
+				position: fixed;
+				bottom: 10px;
+				right: 10px;
+				z-index: 1000;
 					background-color: #2ea44f;
 					color: #ffffff;
 					border: none;
@@ -426,11 +442,17 @@
 					border-radius: 5px;
 					cursor: pointer;
 			}
-			#merge-status {
+			#merge-status, .merge-status {
+					position: fixed;
+					bottom: 70px;
+					right: 10px;
+					z-index: 1000;
+					background-color: #79e4f2;
+					padding: 10px;
+					border: 1px solid #ccc;
 					margin-top: 10px;
 					font-size: 0.9em;
 					color: #333;
-					background-color: #79e4f2;
 			}
 			.pr-container {
 				background-color: #ff0000;
