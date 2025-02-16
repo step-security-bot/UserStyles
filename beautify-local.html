@@ -48,6 +48,7 @@
 				margin-bottom: 20px;
 				background-image: linear-gradient(to right, #9b59b6, purple);
 				-webkit-background-clip: text;
+				background-clip: text;
 				color: transparent;
 				font-weight: 600;
 				font-size: 28px;
@@ -155,6 +156,19 @@
 			* {
 				scrollbar-color: #bb86fc #000 !important;
 				scrollbar-width: thin !important;
+				/* Fallback for Safari */
+				::-webkit-scrollbar {
+					width: 12px !important;
+				}
+				::-webkit-scrollbar-track {
+					background: #bb86fc !important;
+				}
+				::-webkit-scrollbar-thumb {
+					border: 3px solid #121212 !important;
+					border-radius: 10px !important;
+					background-color: #121212 !important;
+				}
+				caret-color: red;
 			}
 		</style>
 	</head>
@@ -174,6 +188,8 @@
 				<textarea
 					id="editor"
 					name="editor"
+					title="CSS Code Editor"
+					placeholder="Enter your CSS code here"
 				></textarea>
 				<button
 					class="beautify-button"
