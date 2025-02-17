@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      4.5
+// @version      4.4
 // @description  Merges Dependabot PRs in any of your repositories - pulls the PRs into a table and lets you select which ones to merge.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -12,6 +12,7 @@
 // @grant        GM_setValue
 // @connect      api.github.com
 // @license      UnLicense
+// @tag          github
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
@@ -67,8 +68,8 @@
 		// Retrieve the GitHub username from storage or prompt the user for it
 		let username = GM_getValue('github_username') || '';
 		while (!username || username.trim() === '') {
-				username = prompt('Please enter your GitHub username:');
-				if (username && username.trim() !== '') {
+			username = prompt('Please enter your GitHub username:');
+			if (username && username.trim() !== '') {
 				GM_setValue('github_username', username);
 			} else {
 				alert('GitHub username is required.');
