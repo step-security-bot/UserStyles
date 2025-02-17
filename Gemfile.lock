@@ -237,7 +237,7 @@ GEM
     resolv (0.6.0)
     resolv-replace (0.1.1)
       resolv
-    rexml (3.4.0)
+    rexml (3.4.1)
     rinda (0.2.0)
       drb
       forwardable
