@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      5.0
+// @version      5.1
 // @description  Merges Dependabot PRs in any of your repositories - pulls the PRs into a table and lets you select which ones to merge.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -16,6 +16,9 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
+
+// @downloadURL https://update.greasyfork.org/scripts/525498/Auto-Merge%20Dependabot%20PRs.user.js
+// @updateURL   https://update.greasyfork.org/scripts/525498/Auto-Merge%20Dependabot%20PRs.meta.js
 // ==/UserScript==
 /* global GM_getValue, GM_setValue, GM_xmlhttpRequest */
 // @var          number merge_delay "Delay between merge requests in milliseconds" 2000
