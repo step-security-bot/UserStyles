@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mark All Merged Notifications Done
 // @namespace    typpi.online
-// @version      1.6
+// @version      1.7
 // @description  Marks all merged notifications as "done" on GitHub (client-side) and only shows UI when needed. Includes console logging and error handling.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -13,6 +13,9 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @homepageURL  https://github.com/Nick2bad4u/UserStyles
 // @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
+//
+// @downloadURL https://update.greasyfork.org/scripts/527154/Mark%20All%20Merged%20Notifications%20Done.user.js
+// @updateURL   https://update.greasyfork.org/scripts/527154/Mark%20All%20Merged%20Notifications%20Done.meta.js
 // ==/UserScript==
 
 (function() {
