@@ -239,6 +239,7 @@ Explore the collection of user styles and scripts hosted on various platforms, d
     />
 </div>
 
+<!-- FILE_LIST_START -->
 ## File List
 
 <p> # Here is a list of files included in this repository:</p>
@@ -585,3 +586,4 @@ Explore the collection of user styles and scripts hosted on various platforms, d
 <li><a href="https://github.com/Nick2bad4u/Userstyles/blob/main/.vscode/launch.json" style="color: #5661ba;">.vscode\launch.json</a></li>
 <li><a href="https://github.com/Nick2bad4u/Userstyles/blob/main/.vscode/settings.json" style="color: #39c5e3;">.vscode\settings.json</a></li>
 <li><a href="https://github.com/Nick2bad4u/Userstyles/blob/main/.vscode/tasks.json" style="color: #f8ec25;">.vscode\tasks.json</a></li></ul>
+<!-- FILE_LIST_END -->
