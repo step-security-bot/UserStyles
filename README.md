@@ -590,3 +590,10 @@ Explore the collection of user styles and scripts hosted on various platforms, d
 <li><a href="https://github.com/Nick2bad4u/UserStyles/blob/main/.vscode/launch.json" style="color: #ba34a4;">.vscode/launch.json</a></li>
 </ul>
 <!-- FILE_LIST_END -->
+<div align="center">
+    <img
+      src="https://github.com/Nick2bad4u/Nick2bad4u/blob/main/assets/GitHubProfileLines%20(7).gif?raw=true"
+      alt="Repository Banner Line Animation"
+      width="100%"
+    />
+</div>
