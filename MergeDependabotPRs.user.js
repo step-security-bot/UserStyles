@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto-Merge Dependabot PRs
 // @namespace    typpi.online
-// @version      4.7
+// @version      4.5
 // @description  Merges Dependabot PRs in any of your repositories - pulls the PRs into a table and lets you select which ones to merge.
 // @author       Nick2bad4u
 // @match        https://github.com/notifications
@@ -67,8 +67,8 @@
 		// Retrieve the GitHub username from storage or prompt the user for it
 		let username = GM_getValue('github_username') || '';
 		while (!username || username.trim() === '') {
-			username = prompt('Please enter your GitHub username:');
-			if (username && username.trim() !== '') {
+				username = prompt('Please enter your GitHub username:');
+				if (username && username.trim() !== '') {
 				GM_setValue('github_username', username);
 			} else {
 				alert('GitHub username is required.');
@@ -238,11 +238,13 @@
 					await mergePR(pr, username, repo, token);
 					const messageElement = document.createElement('div');
 					messageElement.innerHTML = `PR #${pr.number} merged successfully!<br>`;
+					messageElement.id = `merge-status-${pr.number}`;
 					statusContainer.appendChild(messageElement);
 					setTimeout(() => messageElement.remove(), 7000);
 				} catch (error) {
 					const messageElement = document.createElement('div');
 					messageElement.innerHTML = `Failed to merge PR #${pr.number}: ${error.message}<br>`;
+					messageElement.id = `merge-status-${pr.number}`;
 					statusContainer.appendChild(messageElement);
 					setTimeout(() => messageElement.remove(), 7000);
 				}
@@ -250,7 +252,7 @@
 				setTimeout(processNextPR, delay);
 			} else {
 				// Remove status container after processing all PRs
-				setTimeout(() => statusContainer.remove(), 7000);
+				setTimeout(() => statusContainer.remove(), 10000);
 			}
 		}
 
@@ -428,43 +430,48 @@
 				bottom: 10px;
 				right: 10px;
 				z-index: 1000;
-					background-color: #2ea44f;
-					color: #ffffff;
-					border: none;
-					padding: 10px;
-					border-radius: 5px;
-					cursor: pointer;
+				background-color: #2ea44f;
+				color: #ffffff;
+				border: none;
+				padding: 10px;
+				border-radius: 5px;
+				cursor: pointer;
 			}
-			mergebutton:hover {
-					background-color: #79e4f2;
-					color: #ffffff;
-					border: none;
-					padding: 10px;
-					border-radius: 5px;
-					cursor: pointer;
+			.merge-button:hover, mergebutton:hover {
+				background-color: #79e4f2;
+				color: #ffffff;
+				border: none;
+				padding: 10px;
+				border-radius: 5px;
+				cursor: pointer;
 			}
 			#merge-status, .merge-status {
-					position: fixed;
-					bottom: 70px;
-					right: 10px;
-					z-index: 1000;
-					background-color: #79e4f2;
-					padding: 10px;
-					border: 1px solid #ccc;
-					margin-top: 10px;
-					font-size: 0.9em;
-					color: #333;
+				position: fixed;
+				bottom: 90px;
+				right: 10px;
+				z-index: 1000;
+				background-color: #79e4f2;
+				padding: 10px;
+				border: 1px solid #ccc;
+				margin-top: 10px;
+				font-size: 0.9em;
+				color: #333;
+				max-width: 300px;
+				overflow-wrap: break-word;
+			}
+			#merge-status > div {
+				margin-bottom: 5px;
 			}
 			.pr-container {
 				background-color: #ff0000;
 				color: #ffffff;
 				position: fixed;
-				bottom: 50px;
+				bottom: 130px;
 				right: 10px;
 				z-index: 1000;
 				padding: 10px;
 				border: 1px solid #cccccc;
-	}
+			}
 	`;
 	window.addEventListener('load', addButton);
 })();
