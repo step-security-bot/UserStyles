@@ -22,6 +22,7 @@
 [![Dependabot Updates](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependabot/dependabot-updates)
 [![Dependency Review](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/dependency-review.yml)
 [![Dev Skim](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/devskim.yml)
+[![Generate File List](https://github.com/Nick2bad4u/UserStyles/actions/workflows/generate-file-list.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/generate-file-list.yml)
 [![GitHub Pages](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/pages/pages-build-deployment)
 [![GitHub Static Pages](https://github.com/Nick2bad4u/UserStyles/actions/workflows/static.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/static.yml)
 [![GitHub Pages - Generate XML sitemap](https://github.com/Nick2bad4u/UserStyles/actions/workflows/sitemap.yml/badge.svg)](https://github.com/Nick2bad4u/UserStyles/actions/workflows/sitemap.yml)
