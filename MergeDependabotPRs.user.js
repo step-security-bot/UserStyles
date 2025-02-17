@@ -67,8 +67,8 @@
 		// Retrieve the GitHub username from storage or prompt the user for it
 		let username = GM_getValue('github_username') || '';
 		while (!username || username.trim() === '') {
-				username = prompt('Please enter your GitHub username:');
-				if (username && username.trim() !== '') {
+			username = prompt('Please enter your GitHub username:');
+			if (username && username.trim() !== '') {
 				GM_setValue('github_username', username);
 			} else {
 				alert('GitHub username is required.');

@@ -1,0 +1,110 @@
+/* ==UserStyle==
+@name           Windy.com - Dark Mode [Customizable]
+@namespace      typpi.online
+@version        2.1
+@description    Dark theme for Windy.com with customizable colors
+@author         Nick2bad4u
+@license        UnLicense
+
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
+@updateURL      https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/Windy-DarkMode.user.css
+@downloadURL    https://raw.githubusercontent.com/Nick2bad4u/UserStyles/refs/heads/main/Windy-DarkMode.user.css
+@preprocessor   stylus
+
+@var checkbox darken-map 'Darken Map' 1
+@var color darken-map-strength 'Darken Map Strength' #0000004D
+
+@var color primary-red "Primary Red" #ff0000
+@var color light-red "Light Red" #ff4d4d
+@var color primary-orange "Primary Orange" #ffa500
+@var color light-orange "Light Orange" #ffcc80
+@var color primary-white "Primary White" #ffffff
+@var color primary-yellow "Primary Yellow" #ffff00
+@var color primary-black "Primary Black" #000000
+@var color error-red "Error Red" #ff0000
+@var color ok-green "OK Green" #00ff00
+@var color moderate-warning "Moderate Warning" #ffcc00
+@var color severe-warning "Severe Warning" #ff9900
+@var color extreme-warning "Extreme Warning" #ff3300
+@var color primary-gray "Primary Gray" #808080
+@var color dark-gray "Dark Gray" #666666
+@var color light-gray "Light Gray" #cccccc
+@var color lighter-gray "Lighter Gray" #e0e0e0
+==/UserStyle== */
+@-moz-document domain("windy.com")
+{
+	:root
+	{
+		--color-red: var(primary-red) !important;
+		--color-red-light: var(light-red) !important;
+		--color-orange: var(primary-orange) !important;
+		--color-orange-light: var(light-orange) !important;
+		--color-white: var(primary-white) !important;
+		--color-yellow: var(primary-yellow) !important;
+		--color-transparent: #404040c7;
+		--color-transparent-dark: #d11010a2;
+		--color-black: var(primary-black) !important;
+		--color-error: var(error-red) !important;
+		--color-ok: var(ok-green) !important;
+		--color-warning-moderate: var(moderate-warning) !important;
+		--color-warning-severe: var(severe-warning) !important;
+		--color-warning-extreme: var(extreme-warning) !important;
+		--color-gray: var(primary-gray) !important;
+		--color-gray-dark: var(dark-gray) !important;
+		--color-gray-light: var(light-gray) !important;
+		--color-gray-light2: var(lighter-gray) !important;
+		--color-text-primary: var(light-gray) !important;
+		--color-text-secondary: var(primary-yellow) !important;
+		--color-text-link: var(light-orange) !important;
+		--color-header: var(light-orange) !important;
+		--color-icons: var(light-orange) !important;
+		--color-background-primary: var(primary-black) !important;
+		--color-background-secondary: var(primary-gray) !important;
+		--color-ui-primary: var(primary-red) !important;
+		--color-ui-secondary: var(light-red) !important;
+		--color-ui-background: var(dark-gray) !important;
+		--color-border: var(primary-gray) !important;
+		--color-border-selected: var(light-orange) !important;
+		--darken-map-strength: var(darken-map-strength) !important;
+	}
+
+	#plugin-detail,
+	#device-tablet #plugin-multimodel.open,
+	#device-desktop #plugin-multimodel.open,
+	.detail .forecast-table .td-hour td,
+	.detail .forecast-table td,
+	.detail .legend span,
+	.detail .legend .legend-both,
+	.mm-fullscreen,
+	#search-top-wrapper,
+	.nearby-features.svelte-ckoxom .nearby-feature__text
+	{
+		filter: invert(1) hue-rotate(180deg) !important;
+	}
+
+	.detail .forecast-table .td-hour td,
+	.detail .forecast-table td,
+	.detail .legend span,
+	.detail .legend .legend-both,
+	.mm-fullscreen,
+	.detail .sticky-title,
+	#plugin-search .results-item,
+	.nearby-features.svelte-ckoxom .nearby-feature__text
+	{
+		color: #ffffff9c !important;
+	}
+
+	if ( darken-map)
+	{
+		.leaflet-container .leaflet-marker-pane,
+		.leaflet-container .leaflet-overlay-pane,
+		.leaflet-container .leaflet-shadow-pane,
+		.leaflet-container .leaflet-tile,
+		.leaflet-container .leaflet-tile-pane,
+		.leaflet-container .leaflet-image-layer
+		{
+			background-color: darken-map-strength !important;
+		}
+	}
+}
