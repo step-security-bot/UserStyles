@@ -1,9 +1,8 @@
 name: Generate File List
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "0 0 * * *" # Runs once a day at 00:00 UTC
   workflow_dispatch: # Allows manual triggering
 
 jobs:
