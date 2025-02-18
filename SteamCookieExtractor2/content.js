@@ -37,7 +37,11 @@
 	let chromeStorageCache = null;
 
 	// Listen for changes to Chrome storage and invalidate the cache
-	if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.onChanged) {
+	if (
+		typeof chrome !== 'undefined' &&
+		chrome.storage &&
+		chrome.storage.onChanged
+	) {
 		chrome.storage.onChanged.addListener(() => {
 			chromeStorageCache = null;
 		});
@@ -99,21 +103,25 @@
 	 * Injects CSS styles dynamically into the document head.
 	 */
 	function injectStyles() {
-		const style = document.createElement('style');
-		style.textContent = `
-					.steam-cookie-button {
-							position: fixed;
-							bottom: 10px;
-							right: 10px;
-							background-color: #333;
-							color: #fff;
-							padding: 10px;
-							border: none;
-							border-radius: 5px;
-							cursor: pointer;
-							z-index: 10000;
-					}
+		try {
+			const style = document.createElement('style');
+			style.textContent = `
+				.steam-cookie-button {
+					position: fixed;
+					bottom: 10px;
+					right: 10px;
+					background-color: #333;
+					color: #fff;
+					padding: 10px;
+					border: none;
+					border-radius: 5px;
+					cursor: pointer;
+					z-index: 10000;
+				}
 			`;
-		document.head.appendChild(style);
+			document.head.appendChild(style);
+		} catch (error) {
+			console.error('Failed to inject styles:', error);
+		}
 	}
 })();
