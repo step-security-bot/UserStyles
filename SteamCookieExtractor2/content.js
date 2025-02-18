@@ -96,7 +96,11 @@
 		});
 
 		// Append the button to the body
-		document.body.appendChild(button);
+		try {
+			document.body.appendChild(button);
+		} catch (error) {
+			console.error('Failed to append button:', error);
+		}
 	}
 
 	/**
