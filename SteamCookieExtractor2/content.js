@@ -3,7 +3,12 @@
 	'use strict';
 
 	// Check if chrome storage and sync are available
-	if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.sync) {
+	if (
+		typeof chrome !== 'undefined' &&
+		chrome.storage &&
+		chrome.storage.sync &&
+		chrome.runtime
+	) {
 		try {
 			const result = await getChromeStorage([
 				'disableSteamCommunity',
@@ -24,17 +29,29 @@
 			// Inject CSS styles
 			injectStyles();
 		} catch (error) {
-			console.error('Error fetching chrome storage:', error);
+			console.error('Error fetching chrome storage:', error); // Log error if fetching chrome storage fails
 		}
 	}
 
+	// Cache to store chrome storage data to avoid redundant fetches
+	let chromeStorageCache = null;
+
 	// Function to get chrome storage data
+	/**
+	 * Retrieves data from Chrome storage.
+	 * @param {Array<string>} keys - The keys to retrieve from Chrome storage.
+	 * @returns {Promise<Object>} A promise that resolves to the retrieved data.
+	 */
 	function getChromeStorage(keys) {
+		if (chromeStorageCache) {
+			return Promise.resolve(chromeStorageCache);
+		}
 		return new Promise((resolve, reject) => {
 			chrome.storage.sync.get(keys, (result) => {
 				if (chrome.runtime.lastError) {
 					reject(chrome.runtime.lastError);
 				} else {
+					chromeStorageCache = result;
 					resolve(result);
 				}
 			});
@@ -49,25 +66,31 @@
 
 		// Add click event to open the popup
 		button.addEventListener('click', () => {
-			chrome.runtime.sendMessage(
-				{
-					action: 'openPopup',
-				},
-				(response) => {
-					if (chrome.runtime.lastError) {
-						console.error('Error sending message:', chrome.runtime.lastError);
-					} else {
-						console.log('Popup opened:', response);
-					}
-				},
-			);
+			try {
+				chrome.runtime.sendMessage(
+					{
+						action: 'openPopup',
+					},
+					(response) => {
+						if (chrome.runtime.lastError) {
+							console.error('Error sending message:', chrome.runtime.lastError);
+						} else {
+							console.log('Popup opened:', response);
+						}
+					},
+				);
+			} catch (error) {
+				console.error('Failed to send message:', error);
+			}
 		});
 
 		// Append the button to the body
 		document.body.appendChild(button);
 	}
 
-	// Function to inject CSS styles dynamically
+	/**
+	 * Injects CSS styles dynamically into the document head.
+	 */
 	function injectStyles() {
 		const style = document.createElement('style');
 		style.textContent = `
