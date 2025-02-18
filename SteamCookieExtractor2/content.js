@@ -42,9 +42,13 @@
 		chrome.storage &&
 		chrome.storage.onChanged
 	) {
-		chrome.storage.onChanged.addListener(() => {
-			chromeStorageCache = null;
-		});
+		try {
+			chrome.storage.onChanged.addListener(() => {
+				chromeStorageCache = null;
+			});
+		} catch (error) {
+			console.error('Error attaching storage listener:', error);
+		}
 	}
 
 	// Function to get chrome storage data
@@ -58,14 +62,18 @@
 			return Promise.resolve(chromeStorageCache);
 		}
 		return new Promise((resolve, reject) => {
-			chrome.storage.sync.get(keys, (result) => {
-				if (chrome.runtime.lastError) {
-					reject(chrome.runtime.lastError);
-				} else {
-					chromeStorageCache = result;
-					resolve(result);
-				}
-			});
+			try {
+				chrome.storage.sync.get(keys, (result) => {
+					if (chrome.runtime.lastError) {
+						reject(chrome.runtime.lastError);
+					} else {
+						chromeStorageCache = result;
+						resolve(result);
+					}
+				});
+			} catch (error) {
+				reject(error);
+			}
 		});
 	}
 
