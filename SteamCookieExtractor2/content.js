@@ -36,6 +36,13 @@
 	// Cache to store chrome storage data to avoid redundant fetches
 	let chromeStorageCache = null;
 
+	// Listen for changes to Chrome storage and invalidate the cache
+	if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.onChanged) {
+		chrome.storage.onChanged.addListener(() => {
+			chromeStorageCache = null;
+		});
+	}
+
 	// Function to get chrome storage data
 	/**
 	 * Retrieves data from Chrome storage.
