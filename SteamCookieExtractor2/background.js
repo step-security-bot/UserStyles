@@ -3,13 +3,21 @@
 // Event listener for extension installation
 chrome.runtime.onInstalled.addListener(() => {
 	console.log('Extension installed');
-	initializeFetch();
+	try {
+		initializeFetch();
+	} catch (error) {
+		console.error('Error initializing fetch on installation:', error);
+	}
 });
 
 // Event listener for browser startup
 chrome.runtime.onStartup.addListener(() => {
 	console.log('Browser restarted');
-	initializeFetch();
+	try {
+		initializeFetch();
+	} catch (error) {
+		console.error('Error initializing fetch on startup:', error);
+	}
 });
 
 // Initialize fetch settings
@@ -28,40 +36,53 @@ async function initializeFetch() {
 // Event listener for messages
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 	console.log('Message received:', request);
-	if (request.action === 'openPopup') {
-		openPopupWindow();
+	try {
+		if (request.action === 'openPopup') {
+			openPopupWindow();
+		}
+		sendResponse({ status: 'received' });
+	} catch (error) {
+		console.error('Error handling message:', error);
+		sendResponse({ status: 'error', message: error.message });
 	}
-	sendResponse({ status: 'received' });
 });
 
 // Function to get data from Chrome storage
 function getChromeStorage(keys) {
 	return new Promise((resolve, reject) => {
-		chrome.storage.sync.get(keys, (result) => {
-			if (chrome.runtime.lastError) {
-				reject(chrome.runtime.lastError);
-			} else {
-				resolve(result);
-			}
-		});
+		try {
+			chrome.storage.sync.get(keys, (result) => {
+				if (chrome.runtime.lastError) {
+					reject(chrome.runtime.lastError);
+				} else {
+					resolve(result);
+				}
+			});
+		} catch (error) {
+			reject(error);
+		}
 	});
 }
 
 // Function to open a popup window
 function openPopupWindow() {
-	chrome.windows.create(
-		{
-			url: chrome.runtime.getURL('popup.html'),
-			type: 'popup',
-			width: 500,
-			height: 600,
-		},
-		(window) => {
-			console.log('Popup window created:', window);
-			// Refresh cookies when the popup is opened
-			fetchSteamCookies();
-		},
-	);
+	try {
+		chrome.windows.create(
+			{
+				url: chrome.runtime.getURL('popup.html'),
+				type: 'popup',
+				width: 500,
+				height: 600,
+			},
+			(window) => {
+				console.log('Popup window created:', window);
+				// Refresh cookies when the popup is opened
+				fetchSteamCookies();
+			},
+		);
+	} catch (error) {
+		console.error('Failed to open popup window:', error);
+	}
 }
 
 // Function to fetch Steam cookies from both the store and community pages
@@ -86,81 +107,120 @@ async function fetchSteamCookies() {
 			lastFetched: new Date().toISOString(),
 		};
 
-		chrome.storage.local.set({ steamCookies: cookies }, () => {
-			if (chrome.runtime.lastError) {
-				console.error('Error setting cookies:', chrome.runtime.lastError);
-			} else {
-				console.log('Cookies set:', cookies);
-				showNotification(
-					'Cookies refreshed',
-					'Steam cookies have been successfully refreshed.',
-				);
-				chrome.runtime.sendMessage({ action: 'updateCookies', cookies });
-			}
-		});
+		try {
+			chrome.storage.local.set({ steamCookies: cookies }, () => {
+				if (chrome.runtime.lastError) {
+					console.error('Error setting cookies:', chrome.runtime.lastError);
+				} else {
+					console.log('Cookies set:', cookies);
+					showNotification(
+						'Cookies refreshed',
+						'Steam cookies have been successfully refreshed.',
+					);
+					chrome.runtime.sendMessage({ action: 'updateCookies', cookies });
+				}
+			});
+		} catch (storageError) {
+			console.error('Error during chrome.storage.local.set:', storageError);
+		}
 	} catch (error) {
 		console.error('Error fetching Steam cookies:', error);
 	} finally {
 		for (const tabId of tabsToClose) {
-			await closeTab(tabId);
+			try {
+				await closeTab(tabId);
+			} catch (closeTabError) {
+				console.error('Error closing tab:', closeTabError);
+			}
 		}
 	}
 }
 
 // Function to create a new tab
 function createTab(url) {
-	return new Promise((resolve, reject) => {
-		chrome.tabs.create({ url, active: false }, (tab) => {
-			if (chrome.runtime.lastError) {
-				reject(chrome.runtime.lastError);
-			} else {
-				resolve(tab);
+	try {
+		return new Promise((resolve, reject) => {
+			try {
+				chrome.tabs.create({ url, active: false }, (tab) => {
+					if (chrome.runtime.lastError) {
+						reject(chrome.runtime.lastError);
+					} else {
+						resolve(tab);
+					}
+				});
+			} catch (error) {
+				reject(error);
 			}
 		});
-	});
+	} catch (error) {
+		console.error('Error creating tab:', error);
+		throw error;
+	}
 }
 
 // Function to wait for a tab to load completely
 function waitForTabLoad(tabId, urlFragment) {
-	return new Promise((resolve) => {
-		function handleTabUpdate(updatedTabId, info, updatedTab) {
-			if (
-				updatedTabId === tabId &&
-				info.status === 'complete' &&
-				updatedTab.url.includes(urlFragment)
-			) {
-				chrome.tabs.onUpdated.removeListener(handleTabUpdate);
-				resolve();
+	try {
+		return new Promise((resolve) => {
+			function handleTabUpdate(updatedTabId, info, updatedTab) {
+				try {
+					if (
+						updatedTabId === tabId &&
+						info.status === 'complete' &&
+						updatedTab.url.includes(urlFragment)
+					) {
+						chrome.tabs.onUpdated.removeListener(handleTabUpdate);
+						resolve();
+					}
+				} catch (error) {
+					console.error('Error in handleTabUpdate:', error);
+				}
 			}
-		}
 
-		chrome.tabs.onUpdated.addListener(handleTabUpdate);
-	});
+			chrome.tabs.onUpdated.addListener(handleTabUpdate);
+		});
+	} catch (error) {
+		console.error('Error in waitForTabLoad:', error);
+		throw error;
+	}
 }
 
 // Function to get cookies for a specific domain
 function getCookies(domain) {
-	return new Promise((resolve, reject) => {
-		chrome.cookies.getAll({ domain }, (cookies) => {
-			if (chrome.runtime.lastError) {
-				reject(chrome.runtime.lastError);
-			} else {
-				resolve(cookies);
+	try {
+		return new Promise((resolve, reject) => {
+			try {
+				chrome.cookies.getAll({ domain }, (cookies) => {
+					if (chrome.runtime.lastError) {
+						reject(chrome.runtime.lastError);
+					} else {
+						resolve(cookies);
+					}
+				});
+			} catch (error) {
+				reject(error);
 			}
 		});
-	});
+	} catch (error) {
+		console.error('Error in getCookies:', error);
+		throw error;
+	}
 }
 
 // Function to close a tab
 function closeTab(tabId) {
 	return new Promise((resolve, reject) => {
-		chrome.tabs.remove(tabId, () => {
-			if (chrome.runtime.lastError) {
-				reject(chrome.runtime.lastError);
-			} else {
-				resolve();
-			}
-		});
+		try {
+			chrome.tabs.remove(tabId, () => {
+				if (chrome.runtime.lastError) {
+					reject(chrome.runtime.lastError);
+				} else {
+					resolve();
+				}
+			});
+		} catch (error) {
+			reject(error);
+		}
 	});
 }
 
@@ -168,23 +228,35 @@ function closeTab(tabId) {
 function setFetchInterval(minutes) {
 	const interval = minutes * 60 * 1000;
 	setInterval(async () => {
-		const result = await getChromeStorage(['disableFetch']);
-		if (!result.disableFetch) {
-			await fetchSteamCookies();
+		try {
+			const result = await getChromeStorage(['disableFetch']);
+			if (!result.disableFetch) {
+				await fetchSteamCookies();
+			}
+		} catch (error) {
+			console.error('Error in fetch interval:', error);
 		}
 	}, interval);
 }
 
 // Function to show notifications
 function showNotification(title, message) {
-	chrome.storage.sync.get('enableNotifications', (result) => {
-		if (result.enableNotifications) {
-			chrome.notifications.create({
-				type: 'basic',
-				iconUrl: 'icons/icon128.png',
-				title: title,
-				message: message,
-			});
-		}
-	});
+	try {
+		chrome.storage.sync.get('enableNotifications', (result) => {
+			try {
+				if (result.enableNotifications) {
+					chrome.notifications.create({
+						type: 'basic',
+						iconUrl: 'icons/icon128.png',
+						title: title,
+						message: message,
+					});
+				}
+			} catch (error) {
+				console.error('Error showing notification:', error);
+			}
+		});
+	} catch (error) {
+		console.error('Error getting enableNotifications from storage:', error);
+	}
 }
