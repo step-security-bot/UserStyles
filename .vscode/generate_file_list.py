@@ -121,9 +121,11 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
+
 def should_ignore(path, ignore_list):
     """Checks if a given path should be ignored based on the ignore list."""
     return any(ignore_item in path.split(os.sep) for ignore_item in ignore_list)
+
 
 def generate_file_list(directory, ignore_list):
     """Generates a list of files in a directory, excluding those in the ignore list."""
@@ -136,11 +138,13 @@ def generate_file_list(directory, ignore_list):
     logging.info(f"Generated file list with {len(file_list)} files.")
     return file_list
 
+
 def is_dark_color(hex_color):
     """Determines if a color is dark based on its hex value."""
     r, g, b = tuple(int(hex_color[i : i + 2], 16) for i in (1, 3, 5))
     luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
     return luminance < 128
+
 
 def is_bright_color(hex_color):
     """Determines if a color is bright based on its hex value."""
@@ -148,11 +152,13 @@ def is_bright_color(hex_color):
     luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
     return luminance > 200
 
+
 def is_readable_color(hex_color):
     """Determines if a color is readable based on its contrast with a white background."""
     r, g, b = tuple(int(hex_color[i : i + 2], 16) for i in (1, 3, 5))
     luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
     return 50 < luminance < 200
+
 
 def get_random_color(color_range=None):
     """Generates a random hexadecimal color code, optionally within a specified range."""
@@ -183,6 +189,7 @@ def get_random_color(color_range=None):
             continue
 
         return color
+
 
 def generate_file_list_with_links(
     file_list, repo_url, color_source="random", color_range=None, color_list=None
@@ -234,7 +241,7 @@ def generate_file_list_with_links(
 
     # Add files without a folder under a "Root" header
     if root_files:
-        sorted_html.append(f'<li><h2>{REPO_ROOT_HEADER}</h2></li>')
+        sorted_html.append(f"<li><h2>{REPO_ROOT_HEADER}</h2></li>")
         sorted_html.extend(sorted(root_files, key=lambda x: os.path.splitext(x)[1]))
 
     for category in FILE_CATEGORIES:
@@ -264,6 +271,7 @@ def generate_file_list_with_links(
 
     return "\n".join(sorted_html)
 
+
 def save_file_list(file_list_html, output_file, chunk_size=100):
     """Saves the list of HTML links to a file with lazy loading."""
     file_list_html = file_list_html.replace("\\", "/")
@@ -279,13 +287,16 @@ def save_file_list(file_list_html, output_file, chunk_size=100):
 
     try:
         with open(output_file, "w") as f:
-            f.write(f"## {HEADER_TEXT}\n\n")
-            f.write(f"<p># {INTRO_TEXT}</p>\n\n")
+            f.write(f"<h1>{HEADER_TEXT}</h1>\n\n")
+            f.write(f"<p>{INTRO_TEXT}</p>\n\n")
             for i in range(len(file_list_chunks)):
-                f.write(f'<div class="lazyload-placeholder" data-content="file-list-{i+1}"></div>\n')
+                f.write(
+                    f'<div class="lazyload-placeholder" data-content="file-list-{i+1}"></div>\n'
+                )
 
             # Add lazy loading script
-            f.write("""
+            f.write(
+                """
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const lazyLoadElements = document.querySelectorAll('.lazyload-placeholder');
@@ -298,13 +309,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     let contentId = placeholder.dataset.content;
                     let file_list_html = '';
                     switch(contentId) {
-""")
+"""
+            )
             for i in range(len(file_list_chunks)):
-                f.write(f"""
+                f.write(
+                    f"""
                         case 'file-list-{i+1}':
                             file_list_html = `{file_list_chunks[i].replace('`', '`')}`
-                            break;""")
-            f.write("""
+                            break;"""
+                )
+            f.write(
+                """
                     }
                     placeholder.innerHTML = file_list_html;
                     observer.unobserve(placeholder);
@@ -321,23 +336,29 @@ document.addEventListener("DOMContentLoaded", function() {
             let contentId = placeholder.dataset.content;
             let file_list_html = '';
             switch(contentId) {
-""")
+"""
+            )
             for i in range(len(file_list_chunks)):
-                f.write(f"""
+                f.write(
+                    f"""
                 case 'file-list-{i+1}':
                     file_list_html = `{file_list_chunks[i].replace('`', '`')}`
-                    break;""")
-            f.write("""
+                    break;"""
+                )
+            f.write(
+                """
             }
             placeholder.innerHTML = file_list_html;
         });
     }
 });
 </script>
-""")
+"""
+            )
         logging.info(f"File list saved to {output_file}")
     except Exception as e:
         logging.error(f"Error saving file list to {output_file}: {e}")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
