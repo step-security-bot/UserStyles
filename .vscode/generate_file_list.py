@@ -74,6 +74,10 @@ DEFAULT_COLOR_RANGE = None
 # Specifies a list of files and folders to ignore during the directory walk.
 IGNORE_LIST = [".git", "node_modules", ".DS_Store", ".history", "styles", "zwiftbikes"]
 
+# Chunk size
+# Specifies the number of lines per chunk for lazy loading.
+CHUNK_SIZE = 40
+
 # File categories
 # Specifies categories of files based on their extensions.
 # Each category includes:
@@ -94,19 +98,24 @@ REPO_ROOT_HEADER = "Repo Root"
 
 # HEADER_TEXT determines the header text for the file list.
 # This is displayed at the top of the generated HTML file.
-HEADER_TEXT = "File List"
+HEADER_TEXT = "## File List"
 
 # INTRO_TEXT determines the introductory text for the file list.
 # This is displayed below the header in the generated HTML file.
-INTRO_TEXT = "Here is a list of files included in this repository:"
+INTRO_TEXT = "# Here is a list of files included in this repository:"
 
 
 # Color exclusion options
+
 # If set to True, excludes dark colors from being used.
 EXCLUDE_DARK_COLORS = False
+# Luminance threshold for determining if a color is dark
+DARK_COLOR_LUMINANCE_THRESHOLD = 128
 
 # If set to True, excludes bright colors from being used.
 EXCLUDE_BRIGHT_COLORS = False
+# Luminance threshold for determining if a color is bright
+BRIGHT_COLOR_LUMINANCE_THRESHOLD = 200
 
 # If set to True, excludes black color from being used.
 EXCLUDE_BLACKS = True
@@ -122,8 +131,16 @@ logging.basicConfig(
 )
 
 
-def should_ignore(path, ignore_list):
-    """Checks if a given path should be ignored based on the ignore list."""
+def should_ignore(path: str, ignore_list: list) -> bool:
+    """Checks if a given path should be ignored based on the ignore list.
+
+    Args:
+        path (str): The file or directory path to check.
+        ignore_list (list): A list of strings representing files or directories to ignore.
+
+    Returns:
+        bool: True if the path should be ignored, False otherwise.
+    """
     return any(ignore_item in path.split(os.sep) for ignore_item in ignore_list)
 
 
@@ -139,24 +156,45 @@ def generate_file_list(directory, ignore_list):
     return file_list
 
 
+def calculate_luminance(hex_color):
+    """Calculates the luminance of a color based on its hex value.
+
+    Args:
+        hex_color (str): The hexadecimal color code (e.g., "#RRGGBB").
+
+    Returns:
+        float: The luminance of the color.
+    """
+    r, g, b = [int(hex_color[i : i + 2], 16) / 255.0 for i in (1, 3, 5)]
+    r, g, b = r / 255.0, g / 255.0, b / 255.0
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
 def is_dark_color(hex_color):
-    """Determines if a color is dark based on its hex value."""
-    r, g, b = tuple(int(hex_color[i : i + 2], 16) for i in (1, 3, 5))
-    luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
-    return luminance < 128
+    """Determines if a color is dark based on its hex value.
+
+    Args:
+        hex_color (str): The hexadecimal color code (e.g., "#RRGGBB").
+
+    Returns:
+        bool: True if the color is dark, False otherwise.
+
+    Note:
+        A color is considered dark if its luminance is below DARK_COLOR_LUMINANCE_THRESHOLD.
+    """
+    luminance = calculate_luminance(hex_color)
+    return luminance < DARK_COLOR_LUMINANCE_THRESHOLD
 
 
 def is_bright_color(hex_color):
     """Determines if a color is bright based on its hex value."""
-    r, g, b = tuple(int(hex_color[i : i + 2], 16) for i in (1, 3, 5))
-    luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
-    return luminance > 200
+    luminance = calculate_luminance(hex_color)
+    return luminance > BRIGHT_COLOR_LUMINANCE_THRESHOLD
 
 
 def is_readable_color(hex_color):
     """Determines if a color is readable based on its contrast with a white background."""
-    r, g, b = tuple(int(hex_color[i : i + 2], 16) for i in (1, 3, 5))
-    luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    luminance = calculate_luminance(hex_color)
     return 50 < luminance < 200
 
 
@@ -222,6 +260,7 @@ def generate_file_list_with_links(
                 )
 
         logging.info(f"Generated HTML links for {len(file_list)} files.")
+    # Catch and log any exceptions to ensure the script continues running even if an error occurs.
     except Exception as e:
         logging.error(f"Error generating HTML links: {e}")
 
@@ -249,32 +288,57 @@ def generate_file_list_with_links(
             sorted_html.append(f'<li><h2>{category["name"]}</h2></li>')
             sorted_html.extend(sorted(category["files"]))
 
-    regular_folders = [
-        folder for folder in sorted(file_list_html) if not folder.startswith(".")
-    ]
-    dot_folders = [
-        folder for folder in sorted(file_list_html) if folder.startswith(".")
-    ]
-
-    def sort_files_by_extension(files):
-        return sorted(files, key=lambda x: os.path.splitext(x)[1])
-
-    for folder in regular_folders:
-        sorted_html.append(f"<li><h2>{folder}</h2></li>")
-        sorted_html.extend(sort_files_by_extension(file_list_html[folder]))
-
-    for folder in dot_folders:
+    for folder in sorted(file_list_html):
         sorted_html.append(f"<li><h2>{folder}</h2></li>")
         sorted_html.extend(sort_files_by_extension(file_list_html[folder]))
 
     sorted_html.append("</ul>")
-
     return "\n".join(sorted_html)
 
 
-def save_file_list(file_list_html, output_file, chunk_size=100):
-    """Saves the list of HTML links to a file with lazy loading."""
+def sort_files_by_extension(files):
+    """Sorts a list of files by their extension."""
+    return sorted(files, key=lambda x: os.path.splitext(x)[1])
+
+
+# The HTML content is split into chunks for lazy loading.
+# This allows the page to load faster by loading the content in smaller pieces.
+
+
+def save_file_list(file_list_html, output_file):
+    """Saves the list of HTML links to a file with lazy loading.
+
+    Args:
+            file_list_html (str): The HTML content of the file list.
+            output_file (str): The name of the output file.
+    """
     file_list_html = file_list_html.replace("\\", "/")
+    file_list_chunks = split_into_chunks(file_list_html, CHUNK_SIZE)
+
+    try:
+        with open(output_file, "w") as f:
+            write_html_header(f)
+            write_lazyload_placeholders(f, file_list_chunks)
+            write_lazyload_script(f, file_list_chunks)
+        logging.info(f"File list saved to {output_file}")
+    except Exception as e:
+        logging.error(f"Error saving file list to {output_file}: {e}")
+
+
+def split_into_chunks(file_list_html, chunk_size):
+    """Splits the file list HTML into smaller chunks for lazy loading.
+
+    Args:
+        file_list_html (str): The HTML content of the file list.
+        chunk_size (int): The number of lines per chunk.
+
+    Returns:
+        list: A list of HTML chunks, each containing up to chunk_size lines.
+
+    Purpose:
+        Chunking the HTML content allows for lazy loading, which improves page load performance
+        by loading the content in smaller pieces as needed, rather than all at once.
+    """
     file_list_chunks = []
     current_chunk = []
     for line in file_list_html.splitlines():
@@ -284,80 +348,82 @@ def save_file_list(file_list_html, output_file, chunk_size=100):
             current_chunk = []
     if current_chunk:
         file_list_chunks.append("\n".join(current_chunk))
+    return file_list_chunks
 
-    try:
-        with open(output_file, "w") as f:
-            f.write(f"<h1>{HEADER_TEXT}</h1>\n\n")
-            f.write(f"<p>{INTRO_TEXT}</p>\n\n")
-            for i in range(len(file_list_chunks)):
-                f.write(
-                    f'<div class="lazyload-placeholder" data-content="file-list-{i+1}"></div>\n'
-                )
 
-            # Add lazy loading script
-            f.write(
-                """
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const lazyLoadElements = document.querySelectorAll('.lazyload-placeholder');
+def write_html_header(f):
+    """Writes the HTML header to the file.
 
-    if ("IntersectionObserver" in window) {
-        let observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    let placeholder = entry.target;
-                    let contentId = placeholder.dataset.content;
-                    let file_list_html = '';
-                    switch(contentId) {
-"""
-            )
-            for i in range(len(file_list_chunks)):
-                f.write(
-                    f"""
-                        case 'file-list-{i+1}':
-                            file_list_html = `{file_list_chunks[i].replace('`', '`')}`
-                            break;"""
-                )
-            f.write(
-                """
-                    }
-                    placeholder.innerHTML = file_list_html;
-                    observer.unobserve(placeholder);
-                }
-            });
-        });
+    Args:
+        f (file object): The file object to write the HTML header to.
+    """
+    """Writes the HTML header to the file."""
+    f.write(f"<h1>{HEADER_TEXT}</h1>\n\n")
+    f.write(f"<p>{INTRO_TEXT}</p>\n\n")
 
-        lazyLoadElements.forEach(element => {
-            observer.observe(element);
-        });
-    } else {
-        // Fallback for browsers without IntersectionObserver support
-        lazyLoadElements.forEach(placeholder => {
-            let contentId = placeholder.dataset.content;
-            let file_list_html = '';
-            switch(contentId) {
-"""
-            )
-            for i in range(len(file_list_chunks)):
-                f.write(
-                    f"""
-                case 'file-list-{i+1}':
-                    file_list_html = `{file_list_chunks[i].replace('`', '`')}`
-                    break;"""
-                )
-            f.write(
-                """
-            }
-            placeholder.innerHTML = file_list_html;
-        });
-    }
-});
-</script>
-"""
-            )
-        logging.info(f"File list saved to {output_file}")
-    except Exception as e:
-        logging.error(f"Error saving file list to {output_file}: {e}")
+
+def write_lazyload_placeholders(f, file_list_chunks):
+    """Writes the lazy load placeholders to the file."""
+    for i in range(len(file_list_chunks)):
+        f.write(
+            f'<div class="lazyload-placeholder" data-content="file-list-{i+1}"></div>\n'
+        )
+
+
+def write_lazyload_script(f, file_list_chunks):
+    """Writes the lazy load script to the file."""
+    f.write(
+        "<script>\n"
+        'document.addEventListener("DOMContentLoaded", function() {\n'
+        "    const lazyLoadElements = document.querySelectorAll('.lazyload-placeholder');\n"
+        "\n"
+        '    if ("IntersectionObserver" in window) {\n'
+        "        let observer = new IntersectionObserver((entries, observer) => {\n"
+        "            entries.forEach(entry => {\n"
+        "                if (entry.isIntersecting) {\n"
+        "                    let placeholder = entry.target;\n"
+        "                    let contentId = placeholder.dataset.content;\n"
+        "                    let file_list_html = '';\n"
+        "                    switch(contentId) {\n"
+    )
+    for i in range(len(file_list_chunks)):
+        f.write(
+            f"                        case 'file-list-{i+1}':\n"
+            f'                            file_list_html = `{file_list_chunks[i]}`\n'
+            f"                            break;\n"
+        )
+    f.write(
+        "                    }\n"
+        "                    placeholder.innerHTML = file_list_html;\n"
+        "                    observer.unobserve(placeholder);\n"
+        "                }\n"
+        "            });\n"
+        "        });\n"
+        "\n"
+        "        lazyLoadElements.forEach(element => {\n"
+        "            observer.observe(element);\n"
+        "        });\n"
+        "    } else {\n"
+        "        // Fallback for browsers without IntersectionObserver support\n"
+        "        lazyLoadElements.forEach(placeholder => {\n"
+        "            let contentId = placeholder.dataset.content;\n"
+        "            let file_list_html = '';\n"
+        "            switch(contentId) {\n"
+    )
+    for i in range(len(file_list_chunks)):
+        f.write(
+            f"                case 'file-list-{i+1}':\n"
+            f'                    file_list_html = `{file_list_chunks[i]}`\n'
+            f"                    break;\n"
+        )
+    f.write(
+        "            }\n"
+        "            placeholder.innerHTML = file_list_html;\n"
+        "        });\n"
+        "    }\n"
+        "});\n"
+        "</script>\n"
+    )
 
 
 if __name__ == "__main__":
@@ -407,15 +473,15 @@ if __name__ == "__main__":
 
     if args.color_range:
         try:
-            for color in args.color_range:
-                if not (
-                    color.startswith("#")
-                    and len(color) == 7
-                    and all(c in "0123456789abcdefABCDEF" for c in color[1:])
-                ):
-                    raise ValueError(
-                        f"Invalid color code: {color}. Color codes must be in hex format (#RRGGBB)."
-                    )
+            if not all(
+                color.startswith("#")
+                and len(color) == 7
+                and all(c in "0123456789abcdefABCDEF" for c in color[1:])
+                for color in args.color_range
+            ):
+                raise ValueError(
+                    "Invalid color code(s). Color codes must be in hex format (#RRGGBB)."
+                )
         except ValueError as e:
             logging.error(e)
             exit(1)
@@ -427,7 +493,11 @@ if __name__ == "__main__":
 
     file_list = generate_file_list(args.directory, IGNORE_LIST)
     file_list_html = generate_file_list_with_links(
-        file_list, args.repo_url, args.color_source, args.color_range
+        file_list,
+        args.repo_url,
+        args.color_source,
+        args.color_range,
+        DEFAULT_COLOR_LIST,
     )
     save_file_list(file_list_html, args.output_file)
 
