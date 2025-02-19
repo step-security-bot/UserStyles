@@ -46,7 +46,7 @@ from collections import defaultdict
 # --- Configuration ---
 # Default GitHub repository URL
 # Specifies the default URL of the GitHub repository.
-DEFAULT_GIT_REPO_URL = "https://github.com/Nick2bad4u/TF2"
+DEFAULT_GIT_REPO_URL = "https://github.com/Nick2bad4u/Userstyles"
 
 # Output file name
 # Specifies the default name of the output HTML file.
