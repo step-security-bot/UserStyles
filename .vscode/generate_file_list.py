@@ -123,29 +123,47 @@ EXCLUDE_BLACKS = True
 # If set to True, ensures that the generated colors are readable by maintaining a certain contrast ratio with a white background.
 ENSURE_READABLE_COLORS = True
 
+import os
+import random
+import urllib.parse
+import logging
+import argparse
+from collections import defaultdict
+
+# --- Configuration ---
+DEFAULT_GIT_REPO_URL = "https://github.com/Nick2bad4u/Userstyles"
+DEFAULT_OUTPUT_FILE = "file_list.html"
+DEFAULT_COLOR_SOURCE = "random"
+DEFAULT_COLOR_LIST = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF"]
+DEFAULT_COLOR_RANGE = None
+IGNORE_LIST = [".git", "node_modules", ".DS_Store", ".history", "styles", "zwiftbikes"]
+CHUNK_SIZE = 40
+FILE_CATEGORIES = [
+    {"ext": ".user.css", "name": "Userstyles", "files": []},
+    {"ext": ".user.js", "name": "Userscripts", "files": []},
+    {"ext": ".css", "name": "CSS", "files": []},
+    {"ext": ".js", "name": "JavaScript", "files": []},
+    {"ext": ".yml", "name": "YAML", "files": []},
+]
+REPO_ROOT_HEADER = "Repo Root"
+HEADER_TEXT = "## File List"
+INTRO_TEXT = "# Here is a list of files included in this repository:"
+
+EXCLUDE_DARK_COLORS = False
+DARK_COLOR_LUMINANCE_THRESHOLD = 128
+EXCLUDE_BRIGHT_COLORS = False
+BRIGHT_COLOR_LUMINANCE_THRESHOLD = 200
+EXCLUDE_BLACKS = True
+ENSURE_READABLE_COLORS = True
+
 # --- End Configuration ---
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-
-def should_ignore(path: str, ignore_list: list) -> bool:
-    """Checks if a given path should be ignored based on the ignore list.
-
-    Args:
-        path (str): The file or directory path to check.
-        ignore_list (list): A list of strings representing files or directories to ignore.
-
-    Returns:
-        bool: True if the path should be ignored, False otherwise.
-    """
+def should_ignore(path, ignore_list):
     return any(ignore_item in path.split(os.sep) for ignore_item in ignore_list)
 
-
 def generate_file_list(directory, ignore_list):
-    """Generates a list of files in a directory, excluding those in the ignore list."""
     file_list = []
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -155,64 +173,30 @@ def generate_file_list(directory, ignore_list):
     logging.info(f"Generated file list with {len(file_list)} files.")
     return file_list
 
-
 def calculate_luminance(hex_color):
-    """Calculates the luminance of a color based on its hex value.
-
-    Args:
-        hex_color (str): The hexadecimal color code (e.g., "#RRGGBB").
-
-    Returns:
-        float: The luminance of the color.
-    """
-    r, g, b = [int(hex_color[i : i + 2], 16) / 255.0 for i in (1, 3, 5)]
-    r, g, b = r / 255.0, g / 255.0, b / 255.0
+    r, g, b = [int(hex_color[i:i + 2], 16) for i in (1, 3, 5)]
     return 0.2126 * r + 0.7152 * g + 0.0722 * b
 
-
 def is_dark_color(hex_color):
-    """Determines if a color is dark based on its hex value.
-
-    Args:
-        hex_color (str): The hexadecimal color code (e.g., "#RRGGBB").
-
-    Returns:
-        bool: True if the color is dark, False otherwise.
-
-    Note:
-        A color is considered dark if its luminance is below DARK_COLOR_LUMINANCE_THRESHOLD.
-    """
     luminance = calculate_luminance(hex_color)
     return luminance < DARK_COLOR_LUMINANCE_THRESHOLD
 
-
 def is_bright_color(hex_color):
-    """Determines if a color is bright based on its hex value."""
     luminance = calculate_luminance(hex_color)
     return luminance > BRIGHT_COLOR_LUMINANCE_THRESHOLD
 
-
 def is_readable_color(hex_color):
-    """Determines if a color is readable based on its contrast with a white background."""
     luminance = calculate_luminance(hex_color)
     return 50 < luminance < 200
 
-
 def get_random_color(color_range=None):
-    """Generates a random hexadecimal color code, optionally within a specified range."""
     while True:
         if color_range:
-            r_min, g_min, b_min = (
-                int(color_range[0][i : i + 2], 16) for i in (1, 3, 5)
-            )
-            r_max, g_max, b_max = (
-                int(color_range[1][i : i + 2], 16) for i in (1, 3, 5)
-            )
-
+            r_min, g_min, b_min = [int(color_range[0][i:i + 2], 16) for i in (1, 3, 5)]
+            r_max, g_max, b_max = [int(color_range[1][i:i + 2], 16) for i in (1, 3, 5)]
             r = random.randint(r_min, r_max)
             g = random.randint(g_min, g_max)
             b = random.randint(b_min, b_max)
-
             color = "#{:02x}{:02x}{:02x}".format(r, g, b)
         else:
             color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
@@ -228,11 +212,7 @@ def get_random_color(color_range=None):
 
         return color
 
-
-def generate_file_list_with_links(
-    file_list, repo_url, color_source="random", color_range=None, color_list=None
-):
-    """Generates a list of HTML links for the given file list, with customizable colors."""
+def generate_file_list_with_links(file_list, repo_url, color_source="random", color_range=None, color_list=None):
     color_list = color_list or DEFAULT_COLOR_LIST
     file_list_html = defaultdict(list)
     try:
@@ -245,40 +225,26 @@ def generate_file_list_with_links(
             elif color_source == "list":
                 color = random.choice(color_list)
             else:
-                color = "#000000"  # Default to black
+                color = "#000000"
 
             for category in FILE_CATEGORIES:
                 if file.endswith(category["ext"]):
-                    category["files"].append(
-                        f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>'
-                    )
+                    category["files"].append(f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>')
                     break
             else:
                 folder = os.path.dirname(file)
-                file_list_html[folder].append(
-                    f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>'
-                )
+                file_list_html[folder].append(f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>')
 
         logging.info(f"Generated HTML links for {len(file_list)} files.")
-    # Catch and log any exceptions to ensure the script continues running even if an error occurs.
     except Exception as e:
         logging.error(f"Error generating HTML links: {e}")
 
-    sorted_html = ["<ul>"]
+    sorted_html = []
 
-    for category in FILE_CATEGORIES:
-        if category["files"]:
-            sorted_html.append(f'<li><h2>{category["name"]}</h2></li>')
-            sorted_html.extend(sorted(category["files"]))
-
-    # Collect files without a folder
     root_files = []
     if "" in file_list_html:
         root_files = file_list_html.pop("")
 
-    sorted_html = ["<ul>"]
-
-    # Add files without a folder under a "Root" header
     if root_files:
         sorted_html.append(f"<li><h2>{REPO_ROOT_HEADER}</h2></li>")
         sorted_html.extend(sorted(root_files, key=lambda x: os.path.splitext(x)[1]))
@@ -295,23 +261,10 @@ def generate_file_list_with_links(
     sorted_html.append("</ul>")
     return "\n".join(sorted_html)
 
-
 def sort_files_by_extension(files):
-    """Sorts a list of files by their extension."""
     return sorted(files, key=lambda x: os.path.splitext(x)[1])
 
-
-# The HTML content is split into chunks for lazy loading.
-# This allows the page to load faster by loading the content in smaller pieces.
-
-
 def save_file_list(file_list_html, output_file):
-    """Saves the list of HTML links to a file with lazy loading.
-
-    Args:
-            file_list_html (str): The HTML content of the file list.
-            output_file (str): The name of the output file.
-    """
     file_list_html = file_list_html.replace("\\", "/")
     file_list_chunks = split_into_chunks(file_list_html, CHUNK_SIZE)
 
@@ -324,21 +277,7 @@ def save_file_list(file_list_html, output_file):
     except Exception as e:
         logging.error(f"Error saving file list to {output_file}: {e}")
 
-
 def split_into_chunks(file_list_html, chunk_size):
-    """Splits the file list HTML into smaller chunks for lazy loading.
-
-    Args:
-        file_list_html (str): The HTML content of the file list.
-        chunk_size (int): The number of lines per chunk.
-
-    Returns:
-        list: A list of HTML chunks, each containing up to chunk_size lines.
-
-    Purpose:
-        Chunking the HTML content allows for lazy loading, which improves page load performance
-        by loading the content in smaller pieces as needed, rather than all at once.
-    """
     file_list_chunks = []
     current_chunk = []
     for line in file_list_html.splitlines():
@@ -350,28 +289,15 @@ def split_into_chunks(file_list_html, chunk_size):
         file_list_chunks.append("\n".join(current_chunk))
     return file_list_chunks
 
-
 def write_html_header(f):
-    """Writes the HTML header to the file.
-
-    Args:
-        f (file object): The file object to write the HTML header to.
-    """
-    """Writes the HTML header to the file."""
     f.write(f"<h1>{HEADER_TEXT}</h1>\n\n")
     f.write(f"<p>{INTRO_TEXT}</p>\n\n")
 
-
 def write_lazyload_placeholders(f, file_list_chunks):
-    """Writes the lazy load placeholders to the file."""
     for i in range(len(file_list_chunks)):
-        f.write(
-            f'<div class="lazyload-placeholder" data-content="file-list-{i+1}"></div>\n'
-        )
-
+        f.write(f'<div class="lazyload-placeholder" data-content="file-list-{i+1}"></div>\n')
 
 def write_lazyload_script(f, file_list_chunks):
-    """Writes the lazy load script to the file."""
     f.write(
         "<script>\n"
         'document.addEventListener("DOMContentLoaded", function() {\n'
@@ -389,7 +315,7 @@ def write_lazyload_script(f, file_list_chunks):
     for i in range(len(file_list_chunks)):
         f.write(
             f"                        case 'file-list-{i+1}':\n"
-            f'                            file_list_html = `{file_list_chunks[i]}`\n'
+            f'                            file_list_html = `<ul>{file_list_chunks[i]}</ul>`;\n'
             f"                            break;\n"
         )
     f.write(
@@ -404,7 +330,6 @@ def write_lazyload_script(f, file_list_chunks):
         "            observer.observe(element);\n"
         "        });\n"
         "    } else {\n"
-        "        // Fallback for browsers without IntersectionObserver support\n"
         "        lazyLoadElements.forEach(placeholder => {\n"
         "            let contentId = placeholder.dataset.content;\n"
         "            let file_list_html = '';\n"
@@ -413,7 +338,7 @@ def write_lazyload_script(f, file_list_chunks):
     for i in range(len(file_list_chunks)):
         f.write(
             f"                case 'file-list-{i+1}':\n"
-            f'                    file_list_html = `{file_list_chunks[i]}`\n'
+            f'                    file_list_html = `<ul>{file_list_chunks[i]}</ul>`;\n'
             f"                    break;\n"
         )
     f.write(
@@ -425,47 +350,17 @@ def write_lazyload_script(f, file_list_chunks):
         "</script>\n"
     )
 
-
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Generate a file list for a GitHub repository with HTML links."
-    )
-    parser.add_argument(
-        "--directory", default=".", help="Root directory of the repository"
-    )
-    parser.add_argument(
-        "--repo_url", default=DEFAULT_GIT_REPO_URL, help="GitHub repository URL"
-    )
-    parser.add_argument(
-        "--output_file", default=DEFAULT_OUTPUT_FILE, help="Output file name"
-    )
-    parser.add_argument(
-        "--color_source",
-        choices=["random", "list"],
-        default=DEFAULT_COLOR_SOURCE,
-        help="Color source: 'random' or 'list'",
-    )
-    parser.add_argument(
-        "--color_range",
-        nargs=2,
-        metavar=("COLOR_MIN", "COLOR_MAX"),
-        default=DEFAULT_COLOR_RANGE,
-        help="Color range (hex codes) for random color generation (e.g., --color_range #000000 #FFFFFF)",
-    )
-    parser.add_argument(
-        "--exclude_dark_colors", action="store_true", help="Exclude dark colors"
-    )
-    parser.add_argument(
-        "--exclude_bright_colors", action="store_true", help="Exclude bright colors"
-    )
-    parser.add_argument(
-        "--exclude_blacks", action="store_true", help="Exclude black color"
-    )
-    parser.add_argument(
-        "--ensure_readable_colors",
-        action="store_true",
-        help="Ensure colors are readable",
-    )
+    parser = argparse.ArgumentParser(description="Generate a file list for a GitHub repository with HTML links.")
+    parser.add_argument("--directory", default=".", help="Root directory of the repository")
+    parser.add_argument("--repo_url", default=DEFAULT_GIT_REPO_URL, help="GitHub repository URL")
+    parser.add_argument("--output_file", default=DEFAULT_OUTPUT_FILE, help="Output file name")
+    parser.add_argument("--color_source", choices=["random", "list"], default=DEFAULT_COLOR_SOURCE, help="Color source: 'random' or 'list'")
+    parser.add_argument("--color_range", nargs=2, metavar=("COLOR_MIN", "COLOR_MAX"), default=DEFAULT_COLOR_RANGE, help="Color range (hex codes) for random color generation (e.g., --color_range #000000 #FFFFFF)")
+    parser.add_argument("--exclude_dark_colors", action="store_true", help="Exclude dark colors")
+    parser.add_argument("--exclude_bright_colors", action="store_true", help="Exclude bright colors")
+    parser.add_argument("--exclude_blacks", action="store_true", help="Exclude black color")
+    parser.add_argument("--ensure_readable_colors", action="store_true", help="Ensure colors are readable")
 
     args = parser.parse_args()
 
@@ -473,15 +368,8 @@ if __name__ == "__main__":
 
     if args.color_range:
         try:
-            if not all(
-                color.startswith("#")
-                and len(color) == 7
-                and all(c in "0123456789abcdefABCDEF" for c in color[1:])
-                for color in args.color_range
-            ):
-                raise ValueError(
-                    "Invalid color code(s). Color codes must be in hex format (#RRGGBB)."
-                )
+            if not all(color.startswith("#") and len(color) == 7 and all(c in "0123456789abcdefABCDEF" for c in color[1:]) for color in args.color_range):
+                raise ValueError("Invalid color code(s). Color codes must be in hex format (#RRGGBB).")
         except ValueError as e:
             logging.error(e)
             exit(1)
@@ -492,13 +380,7 @@ if __name__ == "__main__":
     ENSURE_READABLE_COLORS = args.ensure_readable_colors
 
     file_list = generate_file_list(args.directory, IGNORE_LIST)
-    file_list_html = generate_file_list_with_links(
-        file_list,
-        args.repo_url,
-        args.color_source,
-        args.color_range,
-        DEFAULT_COLOR_LIST,
-    )
+    file_list_html = generate_file_list_with_links(file_list, args.repo_url, args.color_source, args.color_range, DEFAULT_COLOR_LIST)
     save_file_list(file_list_html, args.output_file)
 
     logging.info("Script finished.")
