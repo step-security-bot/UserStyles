@@ -123,39 +123,6 @@ EXCLUDE_BLACKS = True
 # If set to True, ensures that the generated colors are readable by maintaining a certain contrast ratio with a white background.
 ENSURE_READABLE_COLORS = True
 
-import os
-import random
-import urllib.parse
-import logging
-import argparse
-from collections import defaultdict
-
-# --- Configuration ---
-DEFAULT_GIT_REPO_URL = "https://github.com/Nick2bad4u/Userstyles"
-DEFAULT_OUTPUT_FILE = "file_list.html"
-DEFAULT_COLOR_SOURCE = "random"
-DEFAULT_COLOR_LIST = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF"]
-DEFAULT_COLOR_RANGE = None
-IGNORE_LIST = [".git", "node_modules", ".DS_Store", ".history", "styles", "zwiftbikes"]
-CHUNK_SIZE = 40
-FILE_CATEGORIES = [
-    {"ext": ".user.css", "name": "Userstyles", "files": []},
-    {"ext": ".user.js", "name": "Userscripts", "files": []},
-    {"ext": ".css", "name": "CSS", "files": []},
-    {"ext": ".js", "name": "JavaScript", "files": []},
-    {"ext": ".yml", "name": "YAML", "files": []},
-]
-REPO_ROOT_HEADER = "Repo Root"
-HEADER_TEXT = "## File List"
-INTRO_TEXT = "# Here is a list of files included in this repository:"
-
-EXCLUDE_DARK_COLORS = False
-DARK_COLOR_LUMINANCE_THRESHOLD = 128
-EXCLUDE_BRIGHT_COLORS = False
-BRIGHT_COLOR_LUMINANCE_THRESHOLD = 200
-EXCLUDE_BLACKS = True
-ENSURE_READABLE_COLORS = True
-
 # --- End Configuration ---
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
