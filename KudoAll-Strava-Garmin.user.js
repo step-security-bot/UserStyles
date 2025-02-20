@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Strava and Garmin Kudos All (Working)
 // @namespace    typpi.online
-// @version      2.0.4
+// @version      2.0.5
 // @description  Adds a button to give kudos to all visible activities on Strava and Garmin Connect.
 // @author       Nick2bad4u
 // @license      Unlicense
@@ -363,10 +363,10 @@
 	function findGarminKudosButtons(container) {
 		// Find Garmin kudos buttons
 		const selector = `
-			button[class^="CommentLikeSection_socialIconWrapper"] >
-			div[class*="CommentLikeSection_animateBox"] >
-			i[class*=icon-heart-inverted]
-		`; // Define the selector for the kudos buttons
+		button[class^="CommentLikeSection_socialIconWrapper"] >
+		div[class*="CommentLikeSection_animateBox"] >
+		i[class*=icon-heart-inverted]
+	`; // Define the selector for the kudos buttons
 		const buttons = container ? Array.from(container.querySelectorAll(selector)) : Array.from(document.querySelectorAll(selector)); // Find the kudos buttons
 		console.log('Garmin: Found kudos buttons:', buttons); // Log the found kudos buttons
 		return buttons; // Return the found kudos buttons
@@ -404,7 +404,8 @@
 		event.preventDefault(); // Prevent the default event behavior
 		if (window.location.pathname !== '/modern/newsfeed') {
 			// Check if the current page is the newsfeed
-			console.log('Garmin: Not on the newsfeed page, aborting'); // Log the abort message
+			console.log('Garmin: Not on the newsfeed page, redirecting'); // Log the redirect message
+			window.location.href = 'https://connect.garmin.com/modern/newsfeed'; // Redirect to the newsfeed page
 			return; // Abort the function
 		}
 
