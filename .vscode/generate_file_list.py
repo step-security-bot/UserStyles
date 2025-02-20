@@ -48,6 +48,11 @@ from collections import defaultdict
 # Specifies the default URL of the GitHub repository.
 DEFAULT_GIT_REPO_URL = "https://github.com/Nick2bad4u/Userstyles"
 
+# Root directory
+# Specifies the root directory of the repository to generate the file list for.
+# Default value is the current directory.
+ROOT_DIRECTORY = "."
+
 # Output file name
 # Specifies the default name of the output HTML file.
 DEFAULT_OUTPUT_FILE = "file_list.html"
@@ -119,6 +124,10 @@ BRIGHT_COLOR_LUMINANCE_THRESHOLD = 200
 
 # If set to True, excludes black color from being used.
 EXCLUDE_BLACKS = True
+# Any colors below this will not be generated if EXCLUDE_BLACKS is set to True.
+# (Below Refers To Vertically on the Color Picker)
+# Example: EXCLUDE_BLACKS_THRESHOLD = "#222222"
+EXCLUDE_BLACKS_THRESHOLD = "#222222"
 
 # If set to True, ensures that the generated colors are readable by maintaining a certain contrast ratio with a white background.
 ENSURE_READABLE_COLORS = True
@@ -185,7 +194,10 @@ def get_random_color(color_range=None):
             continue
         if EXCLUDE_BRIGHT_COLORS and is_bright_color(color):
             continue
-        if EXCLUDE_BLACKS and color.lower() == "#000000":
+
+        if EXCLUDE_BLACKS and int(color[1:], 16) <= int(
+            EXCLUDE_BLACKS_THRESHOLD[1:], 16
+        ):
             continue
         if ENSURE_READABLE_COLORS and not is_readable_color(color):
             continue
@@ -367,14 +379,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Generate a file list for a GitHub repository with HTML links."
     )
+
     parser.add_argument(
-        "--directory", default=".", help="Root directory of the repository"
+        "--directory",
+        default=ROOT_DIRECTORY,
+        metavar="ROOT_DIRECTORY",
+        help="Root directory of the repository",
     )
     parser.add_argument(
-        "--repo_url", default=DEFAULT_GIT_REPO_URL, help="GitHub repository URL"
+        "--repo_url",
+        default=DEFAULT_GIT_REPO_URL,
+        metavar="REPO_URL",
+        help="GitHub repository URL",
     )
+
     parser.add_argument(
-        "--output_file", default=DEFAULT_OUTPUT_FILE, help="Output file name"
+        "--output_file",
+        default=DEFAULT_OUTPUT_FILE,
+        metavar="OUTPUT_FILE.html",
+        help="Output file name",
     )
     parser.add_argument(
         "--color_source",
@@ -390,18 +413,35 @@ if __name__ == "__main__":
         help="Color range (hex codes) for random color generation (e.g., --color_range #000000 #FFFFFF)",
     )
     parser.add_argument(
-        "--exclude_dark_colors", action="store_true", help="Exclude dark colors"
+        "--exclude_dark_colors",
+        action="store_true",
+        default=EXCLUDE_DARK_COLORS,
+        help="Exclude dark colors: True or False",
     )
     parser.add_argument(
-        "--exclude_bright_colors", action="store_true", help="Exclude bright colors"
+        "--exclude_bright_colors",
+        action="store_true",
+        default=EXCLUDE_BRIGHT_COLORS,
+        help="Exclude bright colors: True or False",
     )
     parser.add_argument(
-        "--exclude_blacks", action="store_true", help="Exclude black color"
+        "--exclude_blacks",
+        action="store_true",
+        default=EXCLUDE_BLACKS,
+        help="Exclude black color (below the threshhold): True or False",
+    )
+    parser.add_argument(
+        "--exclude_blacks_threshhold",
+        type=str,
+        metavar=("#22222"),
+        default=EXCLUDE_BLACKS_THRESHOLD,
+        help="Excludes all black colors below this point on the color chart vertically. Example: #222222",
     )
     parser.add_argument(
         "--ensure_readable_colors",
         action="store_true",
-        help="Ensure colors are readable",
+        default=ENSURE_READABLE_COLORS,
+        help="Ensure colors are readable: True or False",
     )
 
     args = parser.parse_args()
@@ -423,10 +463,29 @@ if __name__ == "__main__":
             logging.error(e)
             exit(1)
 
-    EXCLUDE_DARK_COLORS = args.exclude_dark_colors
-    EXCLUDE_BRIGHT_COLORS = args.exclude_bright_colors
-    EXCLUDE_BLACKS = args.exclude_blacks
-    ENSURE_READABLE_COLORS = args.ensure_readable_colors
+    # Only override the default value if the argument is provided
+    if args.exclude_dark_colors:
+        EXCLUDE_DARK_COLORS = args.exclude_dark_colors
+    if args.exclude_bright_colors:
+        EXCLUDE_BRIGHT_COLORS = args.exclude_bright_colors
+    if args.exclude_blacks:
+        EXCLUDE_BLACKS = args.exclude_blacks
+    if args.exclude_blacks_threshhold:
+        EXCLUDE_BLACKS_THRESHOLD = args.exclude_blacks_threshhold
+    if args.ensure_readable_colors:
+        ENSURE_READABLE_COLORS = args.ensure_readable_colors
+
+    # Log the values of all arguments
+    logging.info(f"ROOT_DIRECTORY is set to: {ROOT_DIRECTORY}")
+    logging.info(f"DIRECTORY is set to: {args.directory}")
+    logging.info(f"REPO_URL is set to: {args.repo_url}")
+    logging.info(f"COLOR_SOURCE is set to: {args.color_source}")
+    logging.info(f"COLOR_RANGE is set to: {args.color_range}")
+    logging.info(f"EXCLUDE_DARK_COLORS is set to: {EXCLUDE_DARK_COLORS}")
+    logging.info(f"EXCLUDE_BRIGHT_COLORS is set to: {EXCLUDE_BRIGHT_COLORS}")
+    logging.info(f"EXCLUDE_BLACKS is set to: {EXCLUDE_BLACKS}")
+    logging.info(f"EXCLUDE_BLACKS_THRESHHOLD is set to: {EXCLUDE_BLACKS_THRESHOLD}")
+    logging.info(f"ENSURE_READABLE_COLORS is set to: {ENSURE_READABLE_COLORS}")
 
     file_list = generate_file_list(args.directory, IGNORE_LIST)
     file_list_html = generate_file_list_with_links(
