@@ -132,7 +132,8 @@ def get_git_repo_url():
             url = url.replace(":", "/").replace(
                 "git@", "https://"
             )  # Convert the URL to HTTPS
-        elif url.startswith("git@gitlab.com:"):  # Check if the URL is a GitLab SSH URL
+        # Check if the URL is a GitLab SSH URL
+        elif url.startswith("git@gitlab.com:"):
             url = url.replace(":", "/").replace(
                 "git@", "https://gitlab.com/"
             )  # Convert the URL to HTTPS
@@ -286,7 +287,8 @@ def should_ignore(path, ignore_list):
         )  # Returns True if any part of the path is in the ignore list
     except ValueError as e:  # Handle errors
         logging.error(
-            f"\033[1;31mError in should_ignore function: {type(e).__name__}: {e}\033[0m"  # Log the error
+            # Log the error
+            f"\033[1;31mError in should_ignore function: {type(e).__name__}: {e}\033[0m"
         )
         return False  # Return False by default
 
@@ -306,121 +308,273 @@ def generate_file_list(directory, ignore_list):
       Logs the number of files generated at the specified log level.
       Logs an error message if an OSError or ValueError occurs during file list generation.
     """
-    file_list = set() # Using a set to avoid duplicates
-    try: # Try to generate the file list
-        for root, dirs, files in os.walk(directory): # Walk through the directory
+    file_list = set()  # Using a set to avoid duplicates
+    try:  # Try to generate the file list
+        # Walk through the directory
+        for root, dirs, files in os.walk(directory):
             # Filter directories in-place to avoid walking into ignored directories
             dirs[:] = list(
                 filter(
-                    lambda d: not should_ignore(os.path.join(root, d), ignore_list), # Filter out ignored directories
-                    dirs, # Directories to filter
+                    lambda d: not should_ignore(
+                        os.path.join(root, d), ignore_list
+                    ),  # Filter out ignored directories
+                    dirs,  # Directories to filter
                 )
             )
-            for file in files: # Iterate over the files
-                file_path = os.path.join(root, file) # Get the full file path
-                ignore_file = should_ignore(file_path, ignore_list) # Check if the file should be ignored
-                if not ignore_file: # If the file should not be ignored
-                    file_list.add(os.path.relpath(file_path, directory)) # Add the relative file path to the list
+            for file in files:  # Iterate over the files
+                file_path = os.path.join(root, file)  # Get the full file path
+                ignore_file = should_ignore(
+                    file_path, ignore_list
+                )  # Check if the file should be ignored
+                if not ignore_file:  # If the file should not be ignored
+                    file_list.add(
+                        os.path.relpath(file_path, directory)
+                    )  # Add the relative file path to the list
         logging.log(
             getattr(logging, LOG_LEVEL),
-            f"\033[1;32mGenerated file list with {len(file_list)} files.\033[0m", # Log the number of files generated
+            # Log the number of files generated
+            f"\033[1;32mGenerated file list with {len(file_list)} files.\033[0m",
         )
-    except (OSError, ValueError) as e: # Handle errors
+    except (OSError, ValueError) as e:  # Handle errors
         logging.error(
-            f"\033[1;31mError generating file list: {type(e).__name__}: {e}\033[0m" # Log the error
+            # Log the error
+            f"\033[1;31mError generating file list: {type(e).__name__}: {e}\033[0m"
         )
-    return list(file_list) # Return the list of files
+    return list(file_list)  # Return the list of files
 
 
-def calculate_luminance(hex_color):
-    try:
-        r, g, b = [int(hex_color[i : i + 2], 16) for i in (1, 3, 5)]
-        return 0.2126 * r + 0.7152 * g + 0.0722 * b
-    except ValueError as e:
+def calculate_luminance(hex_color):  # Calculate the luminance of a hex color
+    """
+    Calculate the luminance of a hex color.
+    Args:
+      hex_color (str): A string representing a hex color (e.g., "#RRGGBB").
+    Returns:
+      float: The calculated luminance value of the color. Returns 0 if an error occurs.
+    Raises:
+      ValueError: If the hex color string is not in the correct format.
+    """
+    try:  # Try to calculate the luminance
+        r, g, b = [
+            int(hex_color[i : i + 2], 16) for i in (1, 3, 5)
+        ]  # Convert the hex color to RGB values
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b  # Calculate the luminance
+    except ValueError as e:  # Handle errors
         logging.error(
+            # Log the error
             f"\033[1;31mError calculating luminance for color {hex_color}: {e}\033[0m"
         )
-        return 0
+        return 0  # Return 0 by default
 
 
-def is_dark_color(hex_color):
-    try:
-        luminance = calculate_luminance(hex_color)
-        return luminance < DARK_COLOR_LUMINANCE_THRESHOLD
-    except Exception as e:
-        logging.error(f"\033[1;31mError in is_dark_color function: {e}\033[0m")
-        return False
-
-
-def is_bright_color(hex_color):
-    try:
-        luminance = calculate_luminance(hex_color)
-        return luminance > BRIGHT_COLOR_LUMINANCE_THRESHOLD
-    except Exception as e:
-        logging.error(f"\033[1;31mError in is_bright_color function: {e}\033[0m")
-        return False
-
-
-def is_readable_color(hex_color):
-    try:
-        luminance = calculate_luminance(hex_color)
-        return 50 < luminance < 200
-    except Exception as e:
-        logging.error(f"\033[1;31mError in is_readable_color function: {e}\033[0m")
-        return False
-
-
-def get_random_color(color_range=None):
+def is_dark_color(hex_color):  # Determine if a hex color is dark
     """
-    Generates a random color (in hex) within the specified range if provided,
-    avoiding excluded colors.
-    """
+    Determines if a given hex color code represents a dark color.
 
-    if color_range and any(
-        int(color_range[0][i : i + 2], 16) > int(color_range[1][i : i + 2], 16)
-        for i in range(1, 7, 2)
+    Args:
+      hex_color (str): A string representing the hex color code (e.g., "#RRGGBB").
+
+    Returns:
+      bool: True if the color is considered dark, False otherwise.
+
+    Raises:
+      Exception: If there is an error in calculating the luminance.
+
+    Note:
+      This function relies on the `calculate_luminance` function and the
+      `DARK_COLOR_LUMINANCE_THRESHOLD` constant to determine if the color is dark.
+    """
+    try:  # Try to determine if the color is dark
+        luminance = calculate_luminance(
+            hex_color
+        )  # Calculate the luminance of the color
+        return (
+            luminance < DARK_COLOR_LUMINANCE_THRESHOLD
+        )  # Return True if the luminance is below the threshold
+    except Exception as e:  # Handle errors
+        logging.error(
+            f"\033[1;31mError in is_dark_color function: {e}\033[0m"
+        )  # Log the error
+        return False  # Return False by default
+
+
+def is_bright_color(hex_color):  # Determine if a hex color is bright
+    """
+    Determines if a given hex color is considered bright based on its luminance.
+
+    Args:
+      hex_color (str): The hex color code in the format '#RRGGBB'.
+
+    Returns:
+      bool: True if the color is bright, False otherwise.
+
+    Raises:
+      Exception: If there is an error in calculating the luminance.
+
+    Logs:
+      Error: Logs an error message if an exception occurs during luminance calculation.
+    """
+    try:  # Try to determine if the color is bright
+        luminance = calculate_luminance(
+            hex_color
+        )  # Calculate the luminance of the color
+        return (
+            luminance > BRIGHT_COLOR_LUMINANCE_THRESHOLD
+        )  # Return True if the luminance is above the threshold
+    except Exception as e:  # Handle errors
+        logging.error(
+            f"\033[1;31mError in is_bright_color function: {e}\033[0m"
+        )  # Log the error
+        return False  # Return False by default
+
+
+def is_readable_color(hex_color):  # Determine if a hex color is readable
+    """
+    Determines if a given hex color is within a readable luminance range.
+
+    Args:
+      hex_color (str): The hex color code (e.g., '#FFFFFF' for white).
+
+    Returns:
+      bool: True if the luminance of the color is between 50 and 200, False otherwise.
+
+    Raises:
+      Exception: If there is an error in calculating the luminance, it logs the error and returns False.
+    """
+    try:  # Try to determine if the color is readable
+        luminance = calculate_luminance(
+            hex_color
+        )  # Calculate the luminance of the color
+        return (
+            50 < luminance < 200
+        )  # Return True if the luminance is within the readable range
+    except Exception as e:  # Handle errors
+        logging.error(
+            f"\033[1;31mError in is_readable_color function: {e}\033[0m"
+        )  # Log the error
+        return False  # Return False by default
+
+
+def get_random_color(color_range=None):  # Generate a random color
+    """
+    Generate a random color in hexadecimal format.
+
+    If a color range is provided, the generated color will be within the specified range.
+    The color range should be a tuple of two hexadecimal color strings (e.g., ("#000000", "#FFFFFF")).
+    If the color range is invalid (i.e., the start color is greater than the end color), an error is logged, and "#000000" is returned.
+
+    Args:
+      color_range (tuple, optional): A tuple containing two hexadecimal color strings representing the range. Defaults to None.
+
+    Returns:
+      str: A hexadecimal color string.
+
+    Logs:
+      Error: If the color range is invalid or if a valid color could not be generated within the maximum attempts.
+    """
+    if color_range and any(  # Check if the color range is invalid
+        int(color_range[0][i : i + 2], 16)
+        > int(
+            color_range[1][i : i + 2], 16
+        )  # Check if the start color is greater than the end color
+        for i in range(1, 7, 2)  # Iterate over the color range
     ):
         logging.error(
+            # Log the error
             f"\033[1;31mInvalid color range: {color_range[0]} should be <= {color_range[1]}\033[0m"
         )
-        return "#000000"
-    for _ in range(MAX_ATTEMPTS):
-        if color_range:
-            r_min, g_min, b_min = [
-                int(color_range[0][i : i + 2], 16) for i in (1, 3, 5)
+        logging.warning(
+            # Log a warning if a random color is generated
+            "\033[1;33mGenerated a random color due to error in color range.\033[0m"
+        )
+        # Return a random color if the color range is invalid
+        return f"#{random.randint(0, 0xFFFFFF):06x}"
+    for _ in range(
+        MAX_ATTEMPTS
+    ):  # Try to generate a valid color within the maximum attempts
+        if color_range:  # Check if a color range is specified
+            r_min, g_min, b_min = [  # Get the RGB values of the start color
+                int(color_range[0][i : i + 2], 16)
+                for i in (1, 3, 5)  # Convert the hex color to RGB values
             ]
-            r_max, g_max, b_max = [
-                int(color_range[1][i : i + 2], 16) for i in (1, 3, 5)
-            ]
-            r = random.randint(r_min, r_max)
-            g = random.randint(g_min, g_max)
-            b = random.randint(b_min, b_max)
+            r_max, g_max, b_max = [  # Get the RGB values of the end color
+                int(
+                    color_range[1][i : i + 2], 16
+                )  # Convert the hex color to RGB values
+                for i in (1, 3, 5)  # Iterate over the color range
+            ]  # Get the RGB values of the end color
+            r = random.randint(
+                r_min, r_max
+            )  # Generate a random value for the red component
+            g = random.randint(
+                g_min, g_max
+            )  # Generate a random value for the green component
+            b = random.randint(
+                b_min, b_max
+            )  # Generate a random value for the blue component
+            # Format the RGB values as a hex color
             color = f"#{r:02x}{g:02x}{b:02x}"
-        else:
+        else:  # If no color range is specified (full random range)
+            # Generate a random color
             color = f"#{random.randint(0, 0xFFFFFF):06x}"
+        # Check if the color should not be excluded
         if not should_exclude_color(color):
-            return color
+            return color  # Return the color if it is valid
     logging.error(
+        # Log an error if a valid color could not be generated
         "\033[1;31mFailed to generate a valid color within max attempts.\033[0m"
     )
-    return "#000000"
+    logging.warning(
+        # Log a warning if a random color is generated
+        "\033[1;33mGenerated a random color due to error in color range.\033[0m"
+    )
+    # Return a random color if a valid color could not be generated
+    return f"#{random.randint(0, 0xFFFFFF):06x}"
 
 
-def should_exclude_color(color):
+def should_exclude_color(color):  # Determine if a color should be excluded
+    """
+    Determines if a given color should be excluded based on various criteria.
+
+    Args:
+      color (str): The color to be evaluated.
+
+    Returns:
+      bool: True if the color should be excluded, False otherwise.
+
+    The function checks the following conditions:
+    - If EXCLUDE_DARK_COLORS is set to True and the color is dark.
+    - If EXCLUDE_BRIGHT_COLORS is set to True and the color is bright.
+    - If EXCLUDE_BLACKS is set to True and the color is black.
+    - If ENSURE_READABLE_COLORS is set to True and the color is not readable.
+    """
+    # Check if the color should be excluded based on the exclusion settings
     if EXCLUDE_DARK_COLORS and is_dark_color(color):
-        return True
+        return True  # Exclude dark colors if the setting is enabled
     if EXCLUDE_BRIGHT_COLORS and is_bright_color(color):
-        return True
+        return True  # Exclude bright colors if the setting is enabled
     if EXCLUDE_BLACKS and is_black_color(color):
-        return True
+        return True  # Exclude black colors if the setting is enabled
     if ENSURE_READABLE_COLORS and not is_readable_color(color):
-        return True
-    return False
+        return True  # Exclude colors that are not readable if the setting is enabled
+    return False  # Do not exclude the color if none of the conditions are met
 
 
+# Determines if a given color is considered black based on a threshold.
 def is_black_color(color):
+    """
+    Determines if a given color is considered black based on a threshold.
+
+    Args:
+            color (str): A string representing a color in hexadecimal format (e.g., '#000000').
+
+    Returns:
+            bool: True if the color is considered black, False otherwise.
+    """
+    # Convert the color from hex format to an integer value
     color_int_value = int(color[1:], 16)
+    # Convert the threshold from hex format to an integer value
     threshold_value = int(EXCLUDE_BLACKS_THRESHOLD[1:], 16)
+    # Compare the color value to the threshold value
     return color_int_value <= threshold_value
 
 
@@ -626,338 +780,459 @@ if __name__ == "__main__":
     Args:
         args (argparse.Namespace): The command-line arguments parsed by argparse.
     """
-    parser = argparse.ArgumentParser(
+    parser = argparse.ArgumentParser(  # Create an argument parser
+        # Set the description for the parser
         description="Generate a file list for a GitHub repository with HTML links."
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the log level
         "--log-level",
-        default=LOG_LEVEL_SETTING,
-        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        default=LOG_LEVEL_SETTING,  # Set the default log level
+        choices=[
+            "DEBUG",
+            "INFO",
+            "WARNING",
+            "ERROR",
+            "CRITICAL",
+        ],  # Define the choices for log levels
+        # Set the help message
         help="\033[1;32mSet the logging level setting manually instead of pulling from environment\033[0m",
         type=str.upper,  # Automatically convert to uppercase
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the directory
         "--directory",
-        default=ROOT_DIRECTORY,
-        metavar="DIRECTORY",
+        default=ROOT_DIRECTORY,  # Set the default directory
+        metavar="DIRECTORY",  # Set the metavar for the argument
+        # Set the help message
         help="\033[1;34mRoot directory of the repository to generate the file list for. Default is the current directory.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the repository URL
         "--repo-url",
-        default=DEFAULT_GIT_REPO_URL,
-        metavar="REPO_URL",
+        default=DEFAULT_GIT_REPO_URL,  # Set the default repository URL
+        metavar="REPO_URL",  # Set the metavar for the argument
+        # Set the help message
         help="\033[1;36mGitHub repository URL to use for generating file links. Default is determined by the Git configuration.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the fallback repository URL
         "--fallback-repo-url",
-        default=FALLBACK_REPO_URL,
-        metavar="FALLBACK_REPO_URL",
+        default=FALLBACK_REPO_URL,  # Set the default fallback repository URL
+        metavar="FALLBACK_REPO_URL",  # Set the metavar for the argument
+        # Set the help message
         help="\033[1;35mFallback GitHub repository URL to use if the default URL cannot be determined.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the output file
         "--output-file",
-        default=DEFAULT_OUTPUT_FILE,
-        metavar="OUTPUT_FILE.html",
+        default=DEFAULT_OUTPUT_FILE,  # Set the default output file
+        metavar="OUTPUT_FILE.html",  # Set the metavar for the argument
+        # Set the help message
         help="\033[1;33mName of the output HTML file to save the generated file list. Default is 'file_list.html'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the color source
         "--color-source",
-        choices=["random", "list"],
-        default=DEFAULT_COLOR_SOURCE,
+        choices=["random", "list"],  # Define the choices for color sources
+        default=DEFAULT_COLOR_SOURCE,  # Set the default color source
+        # Set the help message
         help="\033[1;32mSource of colors for the file links. Choose 'random' for randomly generated colors or 'list' to use a predefined list of colors.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the color list
         "--color-list",
-        nargs="+",
-        metavar="COLOR",
-        default=DEFAULT_COLOR_LIST,
+        nargs="+",  # Accept multiple values
+        metavar="COLOR",  # Set the metavar for the argument
+        default=DEFAULT_COLOR_LIST,  # Set the default color list
+        # Set the help message
         help="\033[1;31mList of colors to use when the color source is set to 'list'. Provide colors in hex format (e.g., #FF0000).\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the color range
         "--color-range",
-        nargs=2,
-        metavar=("COLOR_MIN", "COLOR_MAX"),
-        default=DEFAULT_COLOR_RANGE,
+        nargs=2,  # Accept two values
+        metavar=("COLOR_MIN", "COLOR_MAX"),  # Set the metavar for the argument
+        default=DEFAULT_COLOR_RANGE,  # Set the default color range
+        # Set the help message
         help="\033[1;35mRange of colors (hex codes) for random color generation. Provide two hex codes representing the lower and upper bounds (e.g., --color-range #000000 #FFFFFF).\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument to exclude dark colors
         "--exclude-dark-colors",
-        action="store_true",
-        default=EXCLUDE_DARK_COLORS,
+        action="store_true",  # Store True if the argument is provided
+        default=EXCLUDE_DARK_COLORS,  # Set the default value
+        # Set the help message
         help="\033[1;36mExclude dark colors from being used for file links. Use this option to avoid dark colors.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument to exclude bright colors
         "--exclude-bright-colors",
-        action="store_true",
-        default=EXCLUDE_BRIGHT_COLORS,
+        action="store_true",  # Store True if the argument is provided
+        default=EXCLUDE_BRIGHT_COLORS,  # Set the default value
+        # Set the help message
         help="\033[1;33mExclude bright colors from being used for file links. Use this option to avoid bright colors.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument to exclude black colors
         "--exclude-blacks",
-        action="store_true",
-        default=EXCLUDE_BLACKS,
+        action="store_true",  # Store True if the argument is provided
+        default=EXCLUDE_BLACKS,  # Set the default value
+        # Set the help message
         help="\033[1;32mExclude black colors below a certain threshold from being used for file links. Use this option to avoid very dark colors.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the maximum number of attempts
         "--max-attempts",
-        type=int,
-        metavar="100",
-        default=MAX_ATTEMPTS,
+        type=int,  # Accept an integer value
+        metavar="100",  # Set the metavar for the argument
+        default=MAX_ATTEMPTS,  # Set the default value
+        # Set the help message
         help="\033[1;34mMaximum number of attempts to generate a valid color. Default is 100.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the threshold for excluding black colors
         "--exclude-blacks-threshold",
-        type=str,
-        metavar="#222222",
-        default=EXCLUDE_BLACKS_THRESHOLD,
+        type=str,  # Accept a string value
+        metavar="#222222",  # Set the metavar for the argument
+        default=EXCLUDE_BLACKS_THRESHOLD,  # Set the default value
+        # Set the help message
         help="\033[1;31mThreshold for excluding black colors. Any color below this threshold on the color chart will be excluded (e.g., #222222).\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument to ensure readable colors
         "--ensure-readable-colors",
-        action="store_true",
-        default=ENSURE_READABLE_COLORS,
+        action="store_true",  # Store True if the argument is provided
+        default=ENSURE_READABLE_COLORS,  # Set the default value
+        # Set the help message
         help="\033[1;34mEnsure that the generated colors are readable by maintaining a certain contrast ratio with a white background.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the repository root header
         "--repo-root-header",
-        type=str,
-        metavar=("Repo Root"),
-        default=REPO_ROOT_HEADER,
+        type=str,  # Accept a string value
+        metavar=("Repo Root"),  # Set the metavar for the argument
+        default=REPO_ROOT_HEADER,  # Set the default value
+        # Set the help message
         help="\033[1;35mHeader text for files located in the root of the repository. Default is 'Repo Root'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the header text
         "--header-text",
-        type=str,
-        metavar=("## File List"),
-        default=HEADER_TEXT,
+        type=str,  # Accept a string value
+        metavar=("## File List"),  # Set the metavar for the argument
+        default=HEADER_TEXT,  # Set the default value
+        # Set the help message
         help="\033[1;36mHeader text for the file list displayed at the top of the generated HTML file. Default is '## File List'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the introductory text
         "--intro-text",
-        type=str,
-        metavar=("# Here is a list of files included in this repository:"),
-        default=INTRO_TEXT,
+        type=str,  # Accept a string value
+        metavar=(
+            "# Here is a list of files included in this repository:"
+        ),  # Set the metavar for the argument
+        default=INTRO_TEXT,  # Set the default value
+        # Set the help message
         help="\033[1;33mIntroductory text for the file list displayed below the header in the generated HTML file. Default is '# Here is a list of files included in this repository:'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the dark color luminance threshold
         "--dark-color-luminance-threshold",
-        type=int,
-        metavar="128",
-        default=DARK_COLOR_LUMINANCE_THRESHOLD,
+        type=int,  # Accept an integer value
+        metavar="128",  # Set the metavar for the argument
+        default=DARK_COLOR_LUMINANCE_THRESHOLD,  # Set the default value
+        # Set the help message
         help="\033[1;32mLuminance threshold for determining if a color is dark. Colors with luminance below this value will be considered dark. Default is 128.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the bright color luminance threshold
         "--bright-color-luminance-threshold",
-        type=int,
-        metavar="200",
-        default=BRIGHT_COLOR_LUMINANCE_THRESHOLD,
+        type=int,  # Accept an integer value
+        metavar="200",  # Set the metavar for the argument
+        default=BRIGHT_COLOR_LUMINANCE_THRESHOLD,  # Set the default value
+        # Set the help message
         help="\033[1;31mLuminance threshold for determining if a color is bright. Colors with luminance above this value will be considered bright. Default is 200.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the chunk size
         "--chunk-size",
-        type=int,
-        metavar="40",
-        default=CHUNK_SIZE,
+        type=int,  # Accept an integer value
+        metavar="40",  # Set the metavar for the argument
+        default=CHUNK_SIZE,  # Set the default value
+        # Set the help message
         help="\033[1;34mNumber of lines per chunk for lazy loading the file list. Default is 40 lines per chunk.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the viewport size for mobile devices
         "--viewport-mobile",
-        type=int,
-        metavar="768",
-        default=VIEWPORT_MOBILE,
+        type=int,  # Accept an integer value
+        metavar="768",  # Set the metavar for the argument
+        default=VIEWPORT_MOBILE,  # Set the default value
+        # Set the help message
         help="\033[1;34mViewport size for mobile devices in pixels. Default is 768.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the viewport size for tablets
         "--viewport-tablet",
-        type=int,
-        metavar="1024",
-        default=VIEWPORT_TABLET,
+        type=int,  # Accept an integer value
+        metavar="1024",  # Set the metavar for the argument
+        default=VIEWPORT_TABLET,  # Set the default value
+        # Set the help message
         help="\033[1;34mViewport size for tablets in pixels. Default is 1024.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the viewport size for small desktops
         "--viewport-small-desktop",
-        type=int,
-        metavar="1440",
-        default=VIEWPORT_SMALL_DESKTOP,
+        type=int,  # Accept an integer value
+        metavar="1440",  # Set the metavar for the argument
+        default=VIEWPORT_SMALL_DESKTOP,  # Set the default value
+        # Set the help message
         help="\033[1;34mViewport size for small desktops in pixels. Default is 1440.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the root margin for the default viewport
         "--root-margin-default",
-        type=str,
-        metavar="0px 0px 400px 0px",
-        default=ROOT_MARGIN_DEFAULT,
+        type=str,  # Accept a string value
+        metavar="0px 0px 400px 0px",  # Set the metavar for the argument
+        default=ROOT_MARGIN_DEFAULT,  # Set the default value
+        # Set the help message
         help="\033[1;34mRoot margin for the IntersectionObserver for default viewport. Default is '0px 0px 400px 0px'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the root margin for small desktops
         "--root-margin-small-desktop",
-        type=str,
-        metavar="0px 0px 300px 0px",
-        default=ROOT_MARGIN_SMALL_DESKTOP,
+        type=str,  # Accept a string value
+        metavar="0px 0px 300px 0px",  # Set the metavar for the argument
+        default=ROOT_MARGIN_SMALL_DESKTOP,  # Set the default value
+        # Set the help message
         help="\033[1;34mRoot margin for the IntersectionObserver for small desktops. Default is '0px 0px 300px 0px'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the root margin for tablets
         "--root-margin-tablet",
-        type=str,
-        metavar="0px 0px 200px 0px",
-        default=ROOT_MARGIN_TABLET,
+        type=str,  # Accept a string value
+        metavar="0px 0px 200px 0px",  # Set the metavar for the argument
+        default=ROOT_MARGIN_TABLET,  # Set the default value
+        # Set the help message
         help="\033[1;34mRoot margin for the IntersectionObserver for tablets. Default is '0px 0px 200px 0px'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the root margin for mobile devices
         "--root-margin-mobile",
-        type=str,
-        metavar="0px 0px 100px 0px",
-        default=ROOT_MARGIN_MOBILE,
+        type=str,  # Accept a string value
+        metavar="0px 0px 100px 0px",  # Set the metavar for the argument
+        default=ROOT_MARGIN_MOBILE,  # Set the default value
+        # Set the help message
         help="\033[1;34mRoot margin for the IntersectionObserver for mobile devices. Default is '0px 0px 100px 0px'.\033[0m",
     )
-    parser.add_argument(
+    parser.add_argument(  # Add an argument for the file categories
         "--file-categories",
-        nargs="+",
-        metavar=("EXT", "NAME"),
-        default=None,
+        nargs="+",  # Accept multiple values
+        metavar=("EXT", "NAME"),  # Set the metavar for the argument
+        default=None,  # Set the default value
+        # Set the help message
         help="\033[1;32mList of file categories to include in the file list. Provide pairs of file extensions and category names (e.g., --file-categories .py Python .js JavaScript).\033[0m",
     )
-    parser.add_argument(
-        "--overwrite-file-categories",
-        action="store_true",
+    parser.add_argument(  # Add an argument to overwrite the default file categories
+        "--overwrite-file-categories",  # Set the argument name
+        action="store_true",  # Store True if the argument is provided
+        # Set the help message
         help="\033[1;32mOverwrite the default file categories with the provided ones.\033[0m",
     )
 
-    args = parser.parse_args()
+    args = parser.parse_args()  # Parse the command-line arguments
 
-    if args.file_categories:
-        additional_categories = [
+    if args.file_categories:  # Check if file categories are provided
+        additional_categories = [  # Create a list of additional categories
             {
-                "ext": args.file_categories[i],
-                "name": args.file_categories[i + 1],
-                "files": [],
+                "ext": args.file_categories[i],  # Set the file extension
+                "name": args.file_categories[i + 1],  # Set the category name
+                "files": [],  # Initialize an empty list for files
             }
-            for i in range(0, len(args.file_categories), 2)
+            for i in range(
+                0, len(args.file_categories), 2
+            )  # Iterate over the file categories in pairs
         ]
-        if args.overwrite_file_categories:
-            FILE_CATEGORIES = additional_categories
+        if args.overwrite_file_categories:  # Check if the overwrite flag is set
+            FILE_CATEGORIES = (
+                additional_categories  # Overwrite the default file categories
+            )
         else:
-            FILE_CATEGORIES.extend(additional_categories)
+            FILE_CATEGORIES.extend(
+                additional_categories
+            )  # Extend the default file categories with the additional ones
 
     # Default repo_url to fallback_repo_url if not provided
-    if not args.repo_url:
-        args.repo_url = args.fallback_repo_url
+    if not args.repo_url:  # Check if the repo_url argument is not provided
+        args.repo_url = (
+            args.fallback_repo_url
+        )  # Set repo_url to fallback_repo_url if not provided
 
-    if args.color_range:
+    if args.color_range:  # Check if the color_range argument is provided
         try:
-            if not all(
-                color.startswith("#")
+            if not all(  # Validate each color in the color_range
+                color.startswith("#")  # Check if the color starts with '#'
+                # Check if the color length is 7 characters
                 and len(color) == 7
-                and all(c in "0123456789abcdefABCDEF" for c in color[1:])
+                and all(
+                    c in "0123456789abcdefABCDEF" for c in color[1:]
+                )  # Check if all characters are valid hex digits
+                # Iterate over each color in the color_range
                 for color in args.color_range
             ):
-                raise ValueError(
+                raise ValueError(  # Raise a ValueError if any color is invalid
                     "\033[1;31mInvalid color code(s). Color codes must be in hex format (#RRGGBB).\033[0m"
                 )
-        except ValueError as e:
-            logging.error(e)
-            exit(1)
+        except ValueError as e:  # Handle the ValueError
+            logging.error(e)  # Log the error
+            exit(1)  # Exit the script with status code 1
 
     # Only override the default value if the argument is provided
-    LOG_LEVEL_SETTING = args.log_level.upper()
-    ROOT_DIRECTORY = args.directory
-    DEFAULT_GIT_REPO_URL = args.repo_url
+    LOG_LEVEL_SETTING = args.log_level.upper()  # Set the log level
+    ROOT_DIRECTORY = args.directory  # Set the root directory
+    DEFAULT_GIT_REPO_URL = args.repo_url  # Set the default Git repository URL
+    # Set the fallback Git repository URL
     FALLBACK_REPO_URL = args.fallback_repo_url
-    DEFAULT_OUTPUT_FILE = args.output_file
-    DEFAULT_COLOR_SOURCE = args.color_source
-    DEFAULT_COLOR_RANGE = args.color_range
-    EXCLUDE_DARK_COLORS = args.exclude_dark_colors
-    EXCLUDE_BRIGHT_COLORS = args.exclude_bright_colors
-    EXCLUDE_BLACKS = args.exclude_blacks
-    MAX_ATTEMPTS = args.max_attempts
-    EXCLUDE_BLACKS_THRESHOLD = args.exclude_blacks_threshold
-    ENSURE_READABLE_COLORS = args.ensure_readable_colors
-    REPO_ROOT_HEADER = args.repo_root_header
-    HEADER_TEXT = args.header_text
-    INTRO_TEXT = args.intro_text
-    DARK_COLOR_LUMINANCE_THRESHOLD = args.dark_color_luminance_threshold
-    BRIGHT_COLOR_LUMINANCE_THRESHOLD = args.bright_color_luminance_threshold
-    CHUNK_SIZE = args.chunk_size
+    DEFAULT_OUTPUT_FILE = args.output_file  # Set the default output file
+    DEFAULT_COLOR_SOURCE = args.color_source  # Set the default color source
+    DEFAULT_COLOR_RANGE = args.color_range  # Set the default color range
+    EXCLUDE_DARK_COLORS = args.exclude_dark_colors  # Set the exclusion of dark colors
+    EXCLUDE_BRIGHT_COLORS = (
+        args.exclude_bright_colors
+    )  # Set the exclusion of bright colors
+    EXCLUDE_BLACKS = args.exclude_blacks  # Set the exclusion of black colors
+    MAX_ATTEMPTS = (
+        args.max_attempts
+    )  # Set the maximum number of attempts to generate a valid color
+    EXCLUDE_BLACKS_THRESHOLD = (
+        args.exclude_blacks_threshold
+    )  # Set the threshold for excluding black colors
+    ENSURE_READABLE_COLORS = (
+        args.ensure_readable_colors
+    )  # Set the setting for ensuring readable colors
+    REPO_ROOT_HEADER = args.repo_root_header  # Set the repository root header
+    HEADER_TEXT = args.header_text  # Set the header text
+    INTRO_TEXT = args.intro_text  # Set the introductory text
+    DARK_COLOR_LUMINANCE_THRESHOLD = (
+        args.dark_color_luminance_threshold
+    )  # Set the dark color luminance threshold
+    BRIGHT_COLOR_LUMINANCE_THRESHOLD = (
+        args.bright_color_luminance_threshold
+    )  # Set the bright color luminance threshold
+    CHUNK_SIZE = args.chunk_size  # Set the chunk size for lazy loading
+    # Set the viewport size for mobile devices
     VIEWPORT_MOBILE = args.viewport_mobile
-    VIEWPORT_TABLET = args.viewport_tablet
-    VIEWPORT_SMALL_DESKTOP = args.viewport_small_desktop
-    ROOT_MARGIN_DEFAULT = args.root_margin_default
-    ROOT_MARGIN_SMALL_DESKTOP = args.root_margin_small_desktop
-    ROOT_MARGIN_TABLET = args.root_margin_tablet
-    ROOT_MARGIN_MOBILE = args.root_margin_mobile
+    VIEWPORT_TABLET = args.viewport_tablet  # Set the viewport size for tablets
+    VIEWPORT_SMALL_DESKTOP = (
+        args.viewport_small_desktop
+    )  # Set the viewport size for small desktops
+    ROOT_MARGIN_DEFAULT = (
+        args.root_margin_default
+    )  # Set the root margin for the default viewport
+    ROOT_MARGIN_SMALL_DESKTOP = (
+        args.root_margin_small_desktop
+    )  # Set the root margin for small desktops
+    ROOT_MARGIN_TABLET = args.root_margin_tablet  # Set the root margin for tablets
+    ROOT_MARGIN_MOBILE = (
+        args.root_margin_mobile
+    )  # Set the root margin for mobile devices
 
     # Set up logging
-    LOG_LEVEL = (os.getenv("LOG_LEVEL") or LOG_LEVEL_SETTING).upper()
+    LOG_LEVEL = (
+        os.getenv("LOG_LEVEL") or LOG_LEVEL_SETTING
+    ).upper()  # Get the log level from the environment variable or use the default setting
     logging.basicConfig(
-        level=getattr(logging, LOG_LEVEL_SETTING),
+        level=getattr(logging, LOG_LEVEL_SETTING),  # Set the logging level
+        # Set the logging format
         format="%(asctime)s - %(levelname)s - %(message)s",
     )
 
     # Log the values of all arguments
     logging.log(
         getattr(logging, LOG_LEVEL),
+        # Log the start of the script
         f"\033[1;32mStarting script with arguments:\033[0m {args}",
     )
-    logging.info(f"\033[1;32mFILE_CATEGORIES is set to:\033[0m {FILE_CATEGORIES}")
-    logging.info(f"\033[1;94mLOG_LEVEL is set to:\033[0m {args.log_level}")
     logging.info(
+        f"\033[1;32mFILE_CATEGORIES is set to:\033[0m {FILE_CATEGORIES}"
+    )  # Log the file categories
+    logging.info(
+        f"\033[1;94mLOG_LEVEL is set to:\033[0m {args.log_level}"
+    )  # Log the log level
+    logging.info(
+        # Log the repository root header
         f"\033[1;94mREPO_ROOT_HEADER is set to:\033[0m {args.repo_root_header}"
     )
-    logging.info(f"\033[1;95mHEADER_TEXT is set to:\033[0m {args.header_text}")
-    logging.info(f"\033[1;32mDIRECTORY is set to:\033[0m {args.directory}")
-    logging.info(f"\033[1;33mREPO_URL is set to:\033[0m {args.repo_url}")
     logging.info(
+        f"\033[1;95mHEADER_TEXT is set to:\033[0m {args.header_text}"
+    )  # Log the header text
+    logging.info(
+        f"\033[1;32mDIRECTORY is set to:\033[0m {args.directory}"
+    )  # Log the directory
+    logging.info(
+        f"\033[1;33mREPO_URL is set to:\033[0m {args.repo_url}"
+    )  # Log the repository URL
+    logging.info(
+        # Log the fallback repository URL
         f"\033[1;34mFALLBACK_REPO_URL is set to:\033[0m {args.fallback_repo_url}"
     )
-    logging.info(f"\033[1;35mCOLOR_SOURCE is set to:\033[0m {args.color_source}")
-    logging.info(f"\033[1;36mCOLOR_RANGE is set to:\033[0m {args.color_range}")
     logging.info(
+        f"\033[1;35mCOLOR_SOURCE is set to:\033[0m {args.color_source}"
+    )  # Log the color source
+    logging.info(
+        f"\033[1;36mCOLOR_RANGE is set to:\033[0m {args.color_range}"
+    )  # Log the color range
+    logging.info(
+        # Log the exclusion of dark colors
         f"\033[1;93mEXCLUDE_DARK_COLORS is set to:\033[0m {args.exclude_dark_colors}"
     )
     logging.info(
+        # Log the dark color luminance threshold
         f"\033[1;93mDARK_COLOR_LUMINANCE_THRESHOLD is set to:\033[0m {args.dark_color_luminance_threshold}"
     )
     logging.info(
+        # Log the exclusion of bright colors
         f"\033[1;91mEXCLUDE_BRIGHT_COLORS is set to:\033[0m {args.exclude_bright_colors}"
     )
     logging.info(
+        # Log the bright color luminance threshold
         f"\033[1;31mBRIGHT_COLOR_LUMINANCE_THRESHOLD is set to:\033[0m {args.bright_color_luminance_threshold}"
     )
-    logging.info(f"\033[1;35mEXCLUDE_BLACKS is set to:\033[0m {args.exclude_blacks}")
     logging.info(
+        f"\033[1;35mEXCLUDE_BLACKS is set to:\033[0m {args.exclude_blacks}"
+    )  # Log the exclusion of black colors
+    logging.info(
+        # Log the threshold for excluding black colors
         f"\033[1;35mEXCLUDE_BLACKS_THRESHOLD is set to:\033[0m {args.exclude_blacks_threshold}"
     )
-    logging.info(f"\033[1;35mMAX_ATTEMPTS is set to:\033[0m {args.max_attempts}")
     logging.info(
+        f"\033[1;35mMAX_ATTEMPTS is set to:\033[0m {args.max_attempts}"
+    )  # Log the maximum number of attempts to generate a valid color
+    logging.info(
+        # Log the setting for ensuring readable colors
         f"\033[1;93mENSURE_READABLE_COLORS is set to:\033[0m {args.ensure_readable_colors}"
     )
-    logging.info(f"\033[1;34mCHUNK_SIZE is set to:\033[0m {args.chunk_size}")
-    logging.info(f"\033[1;34mVIEWPORT_MOBILE is set to:\033[0m {args.viewport_mobile}")
-    logging.info(f"\033[1;34mVIEWPORT_TABLET is set to:\033[0m {args.viewport_tablet}")
     logging.info(
+        f"\033[1;34mCHUNK_SIZE is set to:\033[0m {args.chunk_size}"
+    )  # Log the chunk size for lazy loading
+    logging.info(
+        f"\033[1;34mVIEWPORT_MOBILE is set to:\033[0m {args.viewport_mobile}"
+    )  # Log the viewport size for mobile devices
+    logging.info(
+        f"\033[1;34mVIEWPORT_TABLET is set to:\033[0m {args.viewport_tablet}"
+    )  # Log the viewport size for tablets
+    logging.info(
+        # Log the viewport size for small desktops
         f"\033[1;34mVIEWPORT_SMALL_DESKTOP is set to:\033[0m {args.viewport_small_desktop}"
     )
     logging.info(
+        # Log the root margin for the default viewport
         f"\033[1;34mROOT_MARGIN_DEFAULT is set to:\033[0m {args.root_margin_default}"
     )
     logging.info(
+        # Log the root margin for small desktops
         f"\033[1;34mROOT_MARGIN_SMALL_DESKTOP is set to:\033[0m {args.root_margin_small_desktop}"
     )
     logging.info(
+        # Log the root margin for tablets
         f"\033[1;34mROOT_MARGIN_TABLET is set to:\033[0m {args.root_margin_tablet}"
     )
     logging.info(
+        # Log the root margin for mobile devices
         f"\033[1;34mROOT_MARGIN_MOBILE is set to:\033[0m {args.root_margin_mobile}"
     )
 
-    file_list = generate_file_list(args.directory, IGNORE_LIST)
-    file_list_html = generate_file_list_with_links(
-        file_list,
-        args.repo_url if args.repo_url else args.fallback_repo_url,
-        args.color_source,
-        args.color_range,
-        args.color_list,
+    file_list = generate_file_list(
+        args.directory, IGNORE_LIST
+    )  # Generate the file list
+    file_list_html = generate_file_list_with_links(  # Generate the file list with links
+        file_list,  # The file list
+        (
+            args.repo_url if args.repo_url else args.fallback_repo_url
+        ),  # The repository URL
+        args.color_source,  # The color source for the links
+        args.color_range,  # The color range for random colors
+        args.color_list,  # The list of colors
     )
 
-    save_file_list(file_list_html, args.output_file)
+    save_file_list(
+        file_list_html, args.output_file
+    )  # Save the file list to an HTML file
 
-    logging.log(getattr(logging, LOG_LEVEL), "\033[1;32mScript finished.\033[0m")
+    logging.log(
+        getattr(logging, LOG_LEVEL), "\033[1;32mScript finished.\033[0m"
+    )  # Log the completion of the script
