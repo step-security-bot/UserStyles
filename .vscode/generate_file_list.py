@@ -11,42 +11,42 @@ Main functionalities include:
 - Saving the generated HTML file list with lazy loading support.
 
 Usage:
-	Run the script with the desired command-line arguments to generate the HTML file list.
-	Example:
-		python generate_file_list.py --directory /path/to/repo --output-file file_list.html
+  Run the script with the desired command-line arguments to generate the HTML file list.
+  Example:
+    python generate_file_list.py --directory /path/to/repo --output-file file_list.html
 
 Configuration:
-	The script includes a configuration section where default values for various settings can be specified.
-	These settings can be overridden by command-line arguments.
+  The script includes a configuration section where default values for various settings can be specified.
+  These settings can be overridden by command-line arguments.
 
 Command-line Arguments:
-	--log-level: Set the logging level (default: INFO).
-	--directory: Root directory of the repository to generate the file list for (default: current directory).
-	--repo-url: GitHub repository URL to use for generating file links (default: determined by Git configuration).
-	--fallback-repo-url: Fallback GitHub repository URL if the default URL cannot be determined.
-	--output-file: Name of the output HTML file (default: file_list.html).
-	--color-source: Source of colors for the file links (options: "random", "list"; default: "random").
-	--color-list: List of colors to use when the color source is set to "list".
-	--color-range: Range of colors (hex codes) for random color generation.
-	--exclude-dark-colors: Exclude dark colors from being used for file links.
-	--exclude-bright-colors: Exclude bright colors from being used for file links.
-	--exclude-blacks: Exclude black colors below a certain threshold from being used for file links.
-	--max-attempts: Maximum number of attempts to generate a valid color (default: 100).
-	--exclude-blacks-threshold: Threshold for excluding black colors.
-	--ensure-readable-colors: Ensure that the generated colors are readable by maintaining a certain contrast ratio with a white background.
-	--repo-root-header: Header text for files located in the root of the repository.
-	--header-text: Header text for the file list displayed at the top of the generated HTML file.
-	--intro-text: Introductory text for the file list displayed below the header in the generated HTML file.
-	--dark-color-luminance-threshold: Luminance threshold for determining if a color is dark.
-	--bright-color-luminance-threshold: Luminance threshold for determining if a color is bright.
-	--chunk-size: Number of lines per chunk for lazy loading the file list (default: 40).
-	--viewport-mobile: Viewport size for mobile devices in pixels (default: 768).
-	--viewport-tablet: Viewport size for tablets in pixels (default: 1024).
-	--viewport-small-desktop: Viewport size for small desktops in pixels (default: 1440).
-	--root-margin-default: Root margin for the IntersectionObserver for default viewport.
-	--root-margin-small-desktop: Root margin for the IntersectionObserver for small desktops.
-	--root-margin-tablet: Root margin for the IntersectionObserver for tablets.
-	--root-margin-mobile: Root margin for the IntersectionObserver for mobile devices.
+  --log-level: Set the logging level (default: INFO).
+  --directory: Root directory of the repository to generate the file list for (default: current directory).
+  --repo-url: GitHub repository URL to use for generating file links (default: determined by Git configuration).
+  --fallback-repo-url: Fallback GitHub repository URL if the default URL cannot be determined.
+  --output-file: Name of the output HTML file (default: file_list.html).
+  --color-source: Source of colors for the file links (options: "random", "list"; default: "random").
+  --color-list: List of colors to use when the color source is set to "list".
+  --color-range: Range of colors (hex codes) for random color generation.
+  --exclude-dark-colors: Exclude dark colors from being used for file links.
+  --exclude-bright-colors: Exclude bright colors from being used for file links.
+  --exclude-blacks: Exclude black colors below a certain threshold from being used for file links.
+  --max-attempts: Maximum number of attempts to generate a valid color (default: 100).
+  --exclude-blacks-threshold: Threshold for excluding black colors.
+  --ensure-readable-colors: Ensure that the generated colors are readable by maintaining a certain contrast ratio with a white background.
+  --repo-root-header: Header text for files located in the root of the repository.
+  --header-text: Header text for the file list displayed at the top of the generated HTML file.
+  --intro-text: Introductory text for the file list displayed below the header in the generated HTML file.
+  --dark-color-luminance-threshold: Luminance threshold for determining if a color is dark.
+  --bright-color-luminance-threshold: Luminance threshold for determining if a color is bright.
+  --chunk-size: Number of lines per chunk for lazy loading the file list (default: 40).
+  --viewport-mobile: Viewport size for mobile devices in pixels (default: 768).
+  --viewport-tablet: Viewport size for tablets in pixels (default: 1024).
+  --viewport-small-desktop: Viewport size for small desktops in pixels (default: 1440).
+  --root-margin-default: Root margin for the IntersectionObserver for default viewport.
+  --root-margin-small-desktop: Root margin for the IntersectionObserver for small desktops.
+  --root-margin-tablet: Root margin for the IntersectionObserver for tablets.
+  --root-margin-mobile: Root margin for the IntersectionObserver for mobile devices.
 """
 
 import argparse
@@ -553,6 +553,7 @@ if __name__ == "__main__":
         default=LOG_LEVEL_SETTING,
         choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
         help="\033[1;32mSet the logging level setting manually instead of pulling from environment\033[0m",
+        type=str.upper,  # Automatically convert to uppercase
     )
     parser.add_argument(
         "--directory",
