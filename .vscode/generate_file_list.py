@@ -1,52 +1,85 @@
 """_summary_
 This script generates an HTML file list for a GitHub repository with links to each file.
-
-The script provides various configuration options that can be set via command-line arguments or defaults.
-It supports features such as color customization for file links, lazy loading of file lists, and exclusion of certain files or directories.
-
-Main functionalities include:
-- Retrieving the Git repository URL.
-- Generating a list of files in the repository, excluding specified files and directories.
-- Generating HTML links for the files with customizable colors.
-- Saving the generated HTML file list with lazy loading support.
-
-Usage:
-  Run the script with the desired command-line arguments to generate the HTML file list.
-  Example:
-    python generate_file_list.py --directory /path/to/repo --output-file file_list.html
+It supports various configurations, including color customization, lazy loading, and file categorization.
 
 Configuration:
-  The script includes a configuration section where default values for various settings can be specified.
-  These settings can be overridden by command-line arguments.
+- FALLBACK_REPO_URL: Fallback URL of the GitHub repository if the default URL cannot be determined.
+- DEFAULT_GIT_REPO_URL: Default URL of the GitHub repository.
+- ROOT_DIRECTORY: Root directory of the repository to generate the file list for.
+- DEFAULT_OUTPUT_FILE: Default name of the output HTML file.
+- DEFAULT_COLOR_SOURCE: Source of the colors used for the links ("random" or "list").
+- DEFAULT_COLOR_LIST: List of predefined colors to choose from when the color source is set to "list".
+- DEFAULT_COLOR_RANGE: Range of colors for random color generation.
+- IGNORE_LIST: List of files and folders to ignore during the directory walk.
+- CHUNK_SIZE: Number of lines per chunk for lazy loading.
+- VIEWPORT_MOBILE, VIEWPORT_TABLET, VIEWPORT_SMALL_DESKTOP: Viewport sizes for different devices.
+- ROOT_MARGIN_DEFAULT, ROOT_MARGIN_SMALL_DESKTOP, ROOT_MARGIN_TABLET, ROOT_MARGIN_MOBILE: Root margins for the IntersectionObserver.
+- FILE_CATEGORIES: Categories of files based on their extensions.
+- REPO_ROOT_HEADER: Header text for files in the root of the repository.
+- HEADER_TEXT: Header text for the file list.
+- INTRO_TEXT: Introductory text for the file list.
+- EXCLUDE_DARK_COLORS: Exclude dark colors from being used.
+- DARK_COLOR_LUMINANCE_THRESHOLD: Luminance threshold for determining if a color is dark.
+- EXCLUDE_BRIGHT_COLORS: Exclude bright colors from being used.
+- BRIGHT_COLOR_LUMINANCE_THRESHOLD: Luminance threshold for determining if a color is bright.
+- EXCLUDE_BLACKS: Exclude colors below the EXCLUDE_BLACKS_THRESHOLD color from being used.
+- EXCLUDE_BLACKS_THRESHOLD: Threshold for excluding black colors.
+- MAX_ATTEMPTS: Max attempts to try to find a color below the threshold.
+- ENSURE_READABLE_COLORS: Ensure that the generated colors are readable by maintaining a certain contrast ratio with a white background.
+- LOG_LEVEL_SETTING: Log level setting for the logger.
 
-Command-line Arguments:
-  --log-level: Set the logging level (default: INFO).
-  --directory: Root directory of the repository to generate the file list for (default: current directory).
-  --repo-url: GitHub repository URL to use for generating file links (default: determined by Git configuration).
-  --fallback-repo-url: Fallback GitHub repository URL if the default URL cannot be determined.
-  --output-file: Name of the output HTML file (default: file_list.html).
-  --color-source: Source of colors for the file links (options: "random", "list"; default: "random").
-  --color-list: List of colors to use when the color source is set to "list".
-  --color-range: Range of colors (hex codes) for random color generation.
-  --exclude-dark-colors: Exclude dark colors from being used for file links.
-  --exclude-bright-colors: Exclude bright colors from being used for file links.
-  --exclude-blacks: Exclude black colors below a certain threshold from being used for file links.
-  --max-attempts: Maximum number of attempts to generate a valid color (default: 100).
-  --exclude-blacks-threshold: Threshold for excluding black colors.
-  --ensure-readable-colors: Ensure that the generated colors are readable by maintaining a certain contrast ratio with a white background.
-  --repo-root-header: Header text for files located in the root of the repository.
-  --header-text: Header text for the file list displayed at the top of the generated HTML file.
-  --intro-text: Introductory text for the file list displayed below the header in the generated HTML file.
-  --dark-color-luminance-threshold: Luminance threshold for determining if a color is dark.
-  --bright-color-luminance-threshold: Luminance threshold for determining if a color is bright.
-  --chunk-size: Number of lines per chunk for lazy loading the file list (default: 40).
-  --viewport-mobile: Viewport size for mobile devices in pixels (default: 768).
-  --viewport-tablet: Viewport size for tablets in pixels (default: 1024).
-  --viewport-small-desktop: Viewport size for small desktops in pixels (default: 1440).
-  --root-margin-default: Root margin for the IntersectionObserver for default viewport.
-  --root-margin-small-desktop: Root margin for the IntersectionObserver for small desktops.
-  --root-margin-tablet: Root margin for the IntersectionObserver for tablets.
-  --root-margin-mobile: Root margin for the IntersectionObserver for mobile devices.
+Command-line arguments:
+- --log-level: Set the logging level setting manually instead of pulling from environment.
+- --directory: Root directory of the repository to generate the file list for. Default is the current directory.
+- --repo-url: GitHub repository URL to use for generating file links. Default is determined by the Git configuration.
+- --fallback-repo-url: Fallback GitHub repository URL to use if the default URL cannot be determined.
+- --output-file: Name of the output HTML file to save the generated file list. Default is 'file_list.html'.
+- --color-source: Source of colors for the file links. Choose 'random' for randomly generated colors or 'list' to use a predefined list of colors.
+- --color-list: List of colors to use when the color source is set to 'list'. Provide colors in hex format (e.g., #FF0000).
+- --color-range: Range of colors (hex codes) for random color generation. Provide two hex codes representing the lower and upper bounds (e.g., --color-range #000000 #FFFFFF).
+- --exclude-dark-colors: Exclude dark colors from being used for file links. Use this option to avoid dark colors.
+- --exclude-bright-colors: Exclude bright colors from being used for file links. Use this option to avoid bright colors.
+- --exclude-blacks: Exclude black colors below a certain threshold from being used for file links. Use this option to avoid very dark colors.
+- --max-attempts: Maximum number of attempts to generate a valid color. Default is 100.
+- --exclude-blacks-threshold: Threshold for excluding black colors. Any color below this threshold on the color chart will be excluded (e.g., #222222).
+- --ensure-readable-colors: Ensure that the generated colors are readable by maintaining a certain contrast ratio with a white background.
+- --repo-root-header: Header text for files located in the root of the repository. Default is 'Repo Root'.
+- --header-text: Header text for the file list displayed at the top of the generated HTML file. Default is '## File List'.
+- --intro-text: Introductory text for the file list displayed below the header in the generated HTML file. Default is '# Here is a list of files included in this repository:'.
+- --dark-color-luminance-threshold: Luminance threshold for determining if a color is dark. Colors with luminance below this value will be considered dark. Default is 128.
+- --bright-color-luminance-threshold: Luminance threshold for determining if a color is bright. Colors with luminance above this value will be considered bright. Default is 200.
+- --chunk-size: Number of lines per chunk for lazy loading the file list. Default is 40 lines per chunk.
+- --viewport-mobile: Viewport size for mobile devices in pixels. Default is 768.
+- --viewport-tablet: Viewport size for tablets in pixels. Default is 1024.
+- --viewport-small-desktop: Viewport size for small desktops in pixels. Default is 1440.
+- --root-margin-default: Root margin for the IntersectionObserver for default viewport. Default is '0px 0px 400px 0px'.
+- --root-margin-small-desktop: Root margin for the IntersectionObserver for small desktops. Default is '0px 0px 300px 0px'.
+- --root-margin-tablet: Root margin for the IntersectionObserver for tablets. Default is '0px 0px 200px 0px'.
+- --root-margin-mobile: Root margin for the IntersectionObserver for mobile devices. Default is '0px 0px 100px 0px'.
+- --file-categories: List of file categories to include in the file list. Provide pairs of file extensions and category names (e.g., --file-categories .py Python .js JavaScript).
+- --overwrite-file-categories: Overwrite the default file categories with the provided ones.
+
+Functions:
+- get_git_repo_url(): Retrieves the Git repository URL.
+- should_ignore(path, ignore_list): Determines if a path should be ignored based on the ignore list.
+- generate_file_list(directory, ignore_list): Generates a list of files in the specified directory, excluding ignored files.
+- calculate_luminance(hex_color): Calculates the luminance of a hex color.
+- is_dark_color(hex_color): Determines if a hex color is dark based on the luminance threshold.
+- is_bright_color(hex_color): Determines if a hex color is bright based on the luminance threshold.
+- is_readable_color(hex_color): Determines if a hex color is readable based on the luminance.
+- get_random_color(color_range=None): Generates a random color within the specified range, avoiding excluded colors.
+- should_exclude_color(color): Determines if a color should be excluded based on the exclusion settings.
+- is_black_color(color): Determines if a color is considered black based on the threshold.
+- generate_file_list_with_links(file_list, repo_url, color_source="random", color_range=None, color_list=None): Generates an HTML file list with links to each file.
+- sort_files_by_extension(files): Sorts files by their extensions.
+- save_file_list(file_list_html, output_file): Saves the generated HTML file list to the specified output file.
+- split_into_chunks(file_list_html, chunk_size): Splits the HTML file list into chunks of a specified size.
+- write_html_header(f): Writes the HTML header to the output file.
+- write_lazyload_placeholders(f, file_list_chunks): Writes placeholders for lazy loading the file list chunks.
+- write_lazyload_script(f, file_list_chunks): Writes the lazy loading script to the output file.
+
+Main entry point:
+- Parses command-line arguments, sets up logging, and generates the file list.
 """
 
 import argparse
@@ -69,41 +102,60 @@ from collections import defaultdict
 FALLBACK_REPO_URL = "https://github.com/author/repo"
 
 
+# Function to get the Git repository URL using the Git command-line interface
+# Returns the URL of the Git repository or the fallback URL if an error occurs
+# The URL is converted to an HTTPS URL if it is an SSH URL
+# The URL is stripped of the ".git" extension if present
+# The URL is formatted for GitHub, GitLab, or Bitbucket
+# Returns: str: The URL of the Git repository or the fallback URL
 def get_git_repo_url():
     try:
-        result = subprocess.run(
-            ["git", "config", "--get", "remote.origin.url"],
-            capture_output=True,
-            text=True,
-            check=True,
+        result = subprocess.run(  # Run the Git command to get the remote origin URL
+            [
+                "git",
+                "config",
+                "--get",
+                "remote.origin.url",
+            ],  # Get the remote origin URL
+            capture_output=True,  # Capture the output of the command
+            text=True,  # Return the output as text
+            check=True,  # Raise an exception if the command fails
         )
-        url = result.stdout.strip()
+        url = result.stdout.strip()  # Get the URL from the output and strip whitespace
 
         # Check if the URL ends with ".git" and remove it
-        if url.endswith(".git"):
-            url = url[:-4]
+        if url.endswith(".git"):  # Check if the URL ends with ".git"
+            url = url[:-4]  # Remove the ".git" extension
 
         # Ensure the URL is an HTTPS URL by converting SSH URLs if necessary
-        if url.startswith("git@github.com:"):
-            url = url.replace(":", "/").replace("git@", "https://")
-        elif url.startswith("git@gitlab.com:"):
-            url = url.replace(":", "/").replace("git@", "https://gitlab.com/")
-        elif url.startswith("git@bitbucket.org:"):
-            url = url.replace(":", "/").replace("git@", "https://bitbucket.org/")
+        if url.startswith("git@github.com:"):  # Check if the URL is a GitHub SSH URL
+            url = url.replace(":", "/").replace(
+                "git@", "https://"
+            )  # Convert the URL to HTTPS
+        elif url.startswith("git@gitlab.com:"):  # Check if the URL is a GitLab SSH URL
+            url = url.replace(":", "/").replace(
+                "git@", "https://gitlab.com/"
+            )  # Convert the URL to HTTPS
+        elif url.startswith(
+            "git@bitbucket.org:"
+        ):  # Check if the URL is a Bitbucket SSH URL
+            url = url.replace(":", "/").replace(
+                "git@", "https://bitbucket.org/"
+            )  # Convert the URL to HTTPS
 
-        return url
-    except subprocess.CalledProcessError as e:
+        return url  # Return the formatted URL
+    except subprocess.CalledProcessError as e:  # Handle errors from the Git command
         logging.error(
-            f"\033[1;31mError getting Git repository URL: {e}\033[0m", exc_info=True
+            f"\033[1;31mError getting Git repository URL: {e}\033[0m",
+            exc_info=True,  # Log the error
         )
-
-        return FALLBACK_REPO_URL
+        return FALLBACK_REPO_URL  # Return the fallback URL if an error occurs
 
 
 # --- Configuration ---
 # Default GitHub repository URL
 # Specifies the default URL of the GitHub repository.
-DEFAULT_GIT_REPO_URL = get_git_repo_url()
+DEFAULT_GIT_REPO_URL = get_git_repo_url()  # Get the Git repository URL
 
 # Root directory
 # Specifies the root directory of the repository to generate the file list for.
@@ -167,11 +219,11 @@ ROOT_MARGIN_MOBILE = "0px 0px 100px 0px"
 # - name: The display name of the category.
 # - files: An empty list that will be populated with files matching the extension.
 FILE_CATEGORIES = [
-    {"ext": ".user.css", "name": "Userstyles", "files": []},
-    {"ext": ".user.js", "name": "Userscripts", "files": []},
-    {"ext": ".css", "name": "CSS", "files": []},
-    {"ext": ".js", "name": "JavaScript", "files": []},
-    {"ext": ".yml", "name": "YAML", "files": []},
+    {"ext": ".user.css", "name": "Userstyles", "files": []},  # Userstyles category
+    {"ext": ".user.js", "name": "Userscripts", "files": []},  # Userscripts category
+    {"ext": ".css", "name": "CSS", "files": []},  # CSS category
+    {"ext": ".js", "name": "JavaScript", "files": []},  # JavaScript category
+    {"ext": ".yml", "name": "YAML", "files": []},  # YAML category
 ]
 
 # REPO_ROOT_HEADER determines the header text for files that are in the root of the repository.
@@ -216,39 +268,68 @@ LOG_LEVEL_SETTING = "INFO"
 
 
 def should_ignore(path, ignore_list):
+    """
+    Determines if a path should be ignored based on the ignore list.
+
+    Args:
+            path (str): The path to check.
+            ignore_list (list): The list of files and folders to ignore.
+
+    Returns:
+            bool: True if the path should be ignored, False otherwise.
+    """
     try:
-        path_parts = set(path.split(os.sep))
-        return any(ignore_item in path_parts for ignore_item in ignore_list)
-    except Exception as e:
-        logging.error(f"\033[1;31mError in should_ignore function: {e}\033[0m")
-        return False
+        path_parts = set(path.split(os.sep))  # Split the path into parts
+        # Check if any part of the path is in the ignore list
+        return any(
+            ignore_item in path_parts for ignore_item in ignore_list
+        )  # Returns True if any part of the path is in the ignore list
+    except ValueError as e:  # Handle errors
+        logging.error(
+            f"\033[1;31mError in should_ignore function: {type(e).__name__}: {e}\033[0m"  # Log the error
+        )
+        return False  # Return False by default
 
 
 def generate_file_list(directory, ignore_list):
-    file_list = set()
-    try:
-        for root, dirs, files in os.walk(directory):
+    """
+    Generate a list of files in a directory, excluding those that match the ignore list.
+
+    Args:
+      directory (str): The root directory to walk through.
+      ignore_list (list): A list of patterns or file paths to ignore.
+
+    Returns:
+      list: A list of relative file paths that do not match the ignore list.
+
+    Logs:
+      Logs the number of files generated at the specified log level.
+      Logs an error message if an OSError or ValueError occurs during file list generation.
+    """
+    file_list = set() # Using a set to avoid duplicates
+    try: # Try to generate the file list
+        for root, dirs, files in os.walk(directory): # Walk through the directory
             # Filter directories in-place to avoid walking into ignored directories
             dirs[:] = list(
                 filter(
-                    lambda d: not should_ignore(os.path.join(root, d), ignore_list),
-                    dirs,
+                    lambda d: not should_ignore(os.path.join(root, d), ignore_list), # Filter out ignored directories
+                    dirs, # Directories to filter
                 )
             )
-            for file in files:
-                file_path = os.path.join(root, file)
-                ignore_file = should_ignore(file_path, ignore_list)
-                if not ignore_file:
-                    file_list.add(os.path.relpath(file_path, directory))
+            for file in files: # Iterate over the files
+                file_path = os.path.join(root, file) # Get the full file path
+                ignore_file = should_ignore(file_path, ignore_list) # Check if the file should be ignored
+                if not ignore_file: # If the file should not be ignored
+                    file_list.add(os.path.relpath(file_path, directory)) # Add the relative file path to the list
         logging.log(
             getattr(logging, LOG_LEVEL),
-            f"\033[1;32mGenerated file list with {len(file_list)} files.\033[0m",
+            f"\033[1;32mGenerated file list with {len(file_list)} files.\033[0m", # Log the number of files generated
         )
-    except (OSError, ValueError) as e:
+    except (OSError, ValueError) as e: # Handle errors
         logging.error(
-            f"\033[1;31mError generating file list: {type(e).__name__}: {e}\033[0m"
+            f"\033[1;31mError generating file list: {type(e).__name__}: {e}\033[0m" # Log the error
         )
-    return list(file_list)
+    return list(file_list) # Return the list of files
 
 
 def calculate_luminance(hex_color):
@@ -728,8 +809,34 @@ if __name__ == "__main__":
         default=ROOT_MARGIN_MOBILE,
         help="\033[1;34mRoot margin for the IntersectionObserver for mobile devices. Default is '0px 0px 100px 0px'.\033[0m",
     )
+    parser.add_argument(
+        "--file-categories",
+        nargs="+",
+        metavar=("EXT", "NAME"),
+        default=None,
+        help="\033[1;32mList of file categories to include in the file list. Provide pairs of file extensions and category names (e.g., --file-categories .py Python .js JavaScript).\033[0m",
+    )
+    parser.add_argument(
+        "--overwrite-file-categories",
+        action="store_true",
+        help="\033[1;32mOverwrite the default file categories with the provided ones.\033[0m",
+    )
 
     args = parser.parse_args()
+
+    if args.file_categories:
+        additional_categories = [
+            {
+                "ext": args.file_categories[i],
+                "name": args.file_categories[i + 1],
+                "files": [],
+            }
+            for i in range(0, len(args.file_categories), 2)
+        ]
+        if args.overwrite_file_categories:
+            FILE_CATEGORIES = additional_categories
+        else:
+            FILE_CATEGORIES.extend(additional_categories)
 
     # Default repo_url to fallback_repo_url if not provided
     if not args.repo_url:
@@ -786,7 +893,11 @@ if __name__ == "__main__":
     )
 
     # Log the values of all arguments
-    print(f"\033[1;32mStarting script with arguments:\033[0m {args}")
+    logging.log(
+        getattr(logging, LOG_LEVEL),
+        f"\033[1;32mStarting script with arguments:\033[0m {args}",
+    )
+    logging.info(f"\033[1;32mFILE_CATEGORIES is set to:\033[0m {FILE_CATEGORIES}")
     logging.info(f"\033[1;94mLOG_LEVEL is set to:\033[0m {args.log_level}")
     logging.info(
         f"\033[1;94mREPO_ROOT_HEADER is set to:\033[0m {args.repo_root_header}"
