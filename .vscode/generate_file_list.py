@@ -92,6 +92,7 @@ import random
 import subprocess
 import urllib.parse
 from collections import defaultdict
+from tqdm import tqdm, trange
 
 # Anything set in the configuration section can be overridden by the command line arguments.
 # The command line arguments will take precedence over the configuration settings.
@@ -290,7 +291,7 @@ EXCLUDE_BLACKS = False
 # Example: EXCLUDE_BLACKS_THRESHOLD = "#222222"
 EXCLUDE_BLACKS_THRESHOLD = "#222222"
 # Max attempts to try to find a color below the threshold. Useful if you set the EXCLUDE_BLACKS_THRESHOLD really high.
-MAX_ATTEMPTS = 100
+MAX_ATTEMPTS = 1000000
 # If set to True, ensures that the generated colors are readable by maintaining a certain contrast ratio with a white background.
 ENSURE_READABLE_COLORS = False
 
@@ -506,7 +507,9 @@ def should_ignore(  # Determine if a path should be ignored based on the ignore 
 
 # Function to generate a list of files in a directory, excluding those that match the ignore list
 # Returns a list of relative file paths that do not match the ignore list
-def generate_file_list(directory, ignore_list):  # Generate a list of files in a directory
+
+
+def generate_file_list(directory, ignore_list):
     """
     Generate a list of files in a directory, excluding those that match the ignore list.
 
@@ -523,8 +526,8 @@ def generate_file_list(directory, ignore_list):  # Generate a list of files in a
     """
     file_list = set()  # Using a set to avoid duplicates
     try:  # Try to generate the file list
-        # Walk through the directory
-        for root, dirs, files in os.walk(directory):
+        # Walk through the directory with a progress bar
+        for root, dirs, files in tqdm(os.walk(directory), desc="Walking through directories"):
             # Filter directories in-place to avoid walking into ignored directories
             dirs[:] = list(
                 filter(
@@ -668,11 +671,18 @@ def is_readable_color(hex_color):  # Determine if a hex color is readable
         return False  # Return False by default
 
 
+# Function to generate a random ANSI color code
+def get_random_ansi_color():
+    return f"\033[38;5;{random.randint(0, 255)}m"
+
+
+# Generate a random ANSI color code
+random_color = get_random_ansi_color()
+
+
 # Function to get a random color
 # Returns a random color in hexadecimal format
-def get_random_color(
-    color_range=DEFAULT_COLOR_RANGE,
-):  # Generate a random color
+def get_random_color(color_range=DEFAULT_COLOR_RANGE):
     """
     Generate a random color in hexadecimal format.
 
@@ -689,65 +699,55 @@ def get_random_color(
     Logs:
       Error: If the color range is invalid or if a valid color could not be generated within the maximum attempts.
     """
-    try:
-        if color_range and any(  # Check if the color range is invalid
-            int(color_range[0][i : i + 2], 16)  # Check if the start color is greater than the end color
-            > int(color_range[1][i : i + 2], 16)  # Iterate over the color range
-            for i in range(  # Convert the hex color to RGB values
-                1, 7, 2  # Iterate over the color range
-            )  # Convert the hex color to RGB values
+    try:  # Try to generate a random color
+        if color_range and any(  # Check if the color range is invalid (start color is greater than end color)
+            int(color_range[0][i : i + 2], 16) > int(color_range[1][i : i + 2], 16) for i in range(1, 7, 2)
         ):
             logging.error(
-                # Log the error
                 f"\033[1;31mInvalid color range: {color_range[0]} should be <= {color_range[1]}\033[0m"
-            )
-            logging.warning(
-                # Log a warning if a random color is generated
-                "\033[1;33mGenerated a random color due to error in color range.\033[0m"
-            )
-            # Return a random color if the color range is invalid
-            return f"#{random.randint(0, 0xFFFFFF):06x}"
-        for _ in range(  # Iterate over the maximum attempts
-            MAX_ATTEMPTS  # Try to generate a valid color within the maximum attempts
-        ):  # Iterate over the maximum attempts
-            if color_range:  # Check if a color range is specified
-                r_min, g_min, b_min = [  # Get the RGB values of the start color
-                    int(color_range[0][i : i + 2], 16)  # Convert the hex color to RGB values
-                    for i in (1, 3, 5)  # Iterate over the color range
-                ]
-                r_max, g_max, b_max = [  # Get the RGB values of the end color
-                    int(  # Convert the hex color to RGB values
-                        color_range[1][i : i + 2], 16
-                    )  # Iterate over the color range
-                    for i in (  # Convert the hex color to RGB values
-                        1,  # Iterate over the color range
-                        3,
-                        5,
-                    )
-                ]  # Get the RGB values of the end color
+            )  # Log the error
+            logging.warning("\033[1;33mGenerated a random color due to error in color range.\033[0m")  # Log a warning
+            return f"#{random.randint(0, 0xFFFFFF):06x}"  # Return a random color if the range is invalid
+
+        show_progress = logging.getLogger().level in [
+            logging.DEBUG,
+            logging.INFO,
+        ]  # Check if the progress bar should be shown
+        progress_bar = (  # Create a progress bar range
+            trange(
+                MAX_ATTEMPTS,
+                desc="Generating random color",
+                bar_format=f"{random_color}{{l_bar}}{{bar}}{{r_bar}}\033[0m",
+                disable=not show_progress,
+            )  # Show the progress bar if the log level is DEBUG or INFO
+            if show_progress  # Show the progress bar if the log level is DEBUG or INFO
+            else range(MAX_ATTEMPTS)  # Otherwise, do not show the progress bar
+        )
+
+        for _ in progress_bar:  # Iterate over the progress bar range
+            if color_range:  # Check if a color range is provided
+                r_min, g_min, b_min = [
+                    int(color_range[0][i : i + 2], 16) for i in (1, 3, 5)
+                ]  # Get the minimum RGB values
+                r_max, g_max, b_max = [
+                    int(color_range[1][i : i + 2], 16) for i in (1, 3, 5)
+                ]  # Get the maximum RGB values
                 r = random.randint(r_min, r_max)  # Generate a random value for the red component
                 g = random.randint(g_min, g_max)  # Generate a random value for the green component
                 b = random.randint(b_min, b_max)  # Generate a random value for the blue component
-                # Format the RGB values as a hex color
-                color = f"#{r:02x}{g:02x}{b:02x}"  # Generate a random color within the specified range
-            else:  # If no color range is specified (full random range)
+                color = f"#{r:02x}{g:02x}{b:02x}"  # Combine the RGB values into a color string
+            else:  # If no color range is provided
                 color = f"#{random.randint(0, 0xFFFFFF):06x}"  # Generate a random color
-            # Check if the color should not be excluded
-            if not should_exclude_color(color):
-                return color  # Return the color if it is valid
-        logging.error(
-            # Log an error if a valid color could not be generated
-            "\033[1;31mFailed to generate a valid color within max attempts.\033[0m"
-        )
-        logging.warning(
-            # Log a warning if a random color is generated
-            "\033[1;33mGenerated a random color due to error in color range.\033[0m"
-        )
-        # Return a random color if a valid color could not be generated
-        return f"#{random.randint(0, 0xFFFFFF):06x}"
-    except Exception as e:
-        logging.error(f"\033[1;31mError generating random color: {e}\033[0m")
-        return f"#{random.randint(0, 0xFFFFFF):06x}"
+
+            if not should_exclude_color(color):  # Check if the color should not be excluded
+                return color  # Return the color if it should not be excluded
+
+        logging.error("\033[1;31mFailed to generate a valid color within max attempts.\033[0m")  # Log the error
+        logging.warning("\033[1;33mGenerated a random color due to error in color range.\033[0m")  # Log a warning
+        return f"#{random.randint(0, 0xFFFFFF):06x}"  # Return a random color if a valid color could not be generated within the maximum attempts
+    except Exception as e:  # Handle errors
+        logging.error(f"\033[1;31mError generating random color: {e}\033[0m")  # Log the error
+        return f"#{random.randint(0, 0xFFFFFF):06x}"  # Return a random color by default
 
 
 def should_exclude_color(color):  # Determine if a color should be excluded
@@ -1141,28 +1141,28 @@ if __name__ == "__main__":  # Main entry point of the script
     parser.add_argument(  # Add an argument for the directory
         "--directory",
         default=ROOT_DIRECTORY,  # Set the default directory
-        metavar="DIRECTORY",  # Set the metavar for the argument
+        metavar='"DIRECTORY"',  # Set the metavar for the argument
         # Set the help message
         help="\033[1;34mRoot directory of the repository to generate the file list for. Default is the current directory.\033[0m",
     )
     parser.add_argument(  # Add an argument for the repository URL
         "--repo-url",
         default=DEFAULT_GIT_REPO_URL,  # Set the default repository URL
-        metavar="REPO_URL",  # Set the metavar for the argument
+        metavar='"REPO_URL"',  # Set the metavar for the argument
         # Set the help message
         help="\033[1;36mGitHub repository URL to use for generating file links. Default is determined by the Git configuration.\033[0m",
     )
     parser.add_argument(  # Add an argument for the fallback repository URL
         "--fallback-repo-url",
         default=FALLBACK_REPO_URL,  # Set the default fallback repository URL
-        metavar="FALLBACK_REPO_URL",  # Set the metavar for the argument
+        metavar='"FALLBACK_REPO_URL"',  # Set the metavar for the argument
         # Set the help message
         help="\033[1;35mFallback GitHub repository URL to use if the default URL cannot be determined.\033[0m",
     )
     parser.add_argument(  # Add an argument for the output file
         "--output-file",
         default=DEFAULT_OUTPUT_FILE,  # Set the default output file
-        metavar="OUTPUT_FILE.html",  # Set the metavar for the argument
+        metavar='"OUTPUT_FILE.html"',  # Set the metavar for the argument
         # Set the help message
         help="\033[1;33mName of the output HTML file to save the generated file list. Default is 'file_list.html'.\033[0m",
     )
@@ -1221,7 +1221,7 @@ if __name__ == "__main__":  # Main entry point of the script
     parser.add_argument(  # Add an argument for the threshold for excluding black colors
         "--exclude-blacks-threshold",
         type=str,  # Accept a string value
-        metavar="#222222",  # Set the metavar for the argument
+        metavar='"#222222"',  # Set the metavar for the argument
         default=EXCLUDE_BLACKS_THRESHOLD,  # Set the default value
         # Set the help message
         help="\033[1;31mThreshold for excluding black colors. Any color below this threshold on the color chart will be excluded (e.g., #222222).\033[0m",
