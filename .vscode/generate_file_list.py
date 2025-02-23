@@ -112,18 +112,25 @@ FALLBACK_REPO_URL = "https://github.com/author/repo"
 # Returns: str: The URL of the Git repository or the fallback URL
 def get_git_repo_url():
     try:
-        result = subprocess.run(  # Run the Git command to get the remote origin URL
-            [
-                "git", # Git command
-                "config", # Git command to get the configuration
-                "--get", # Get the value of the configuration
-                "remote.origin.url", # Get the remote origin URL
-            ],  # Get the remote origin URL
-            capture_output=True,  # Capture the output of the command
-            text=True,  # Return the output as text
-            check=True,  # Raise an exception if the command fails
-        )
-        url = result.stdout.strip()  # Get the URL from the output and strip whitespace
+        try:
+            result = subprocess.run(  # Run the Git command to get the remote origin URL
+          [
+              "git",  # Git command
+              "config",  # Git command to get the configuration
+              "--get",  # Get the value of the configuration
+              "remote.origin.url",  # Get the remote origin URL
+          ],  # Get the remote origin URL
+          capture_output=True,  # Capture the output of the command
+          text=True,  # Return the output as text
+          check=True,  # Raise an exception if the command fails
+            )
+            url = result.stdout.strip()  # Get the URL from the output and strip whitespace
+        except subprocess.CalledProcessError as e:
+            logging.error(f"\033[1;31mError running Git command: {e}\033[0m", exc_info=True)
+            url = ""
+
+        if not url:
+            raise subprocess.CalledProcessError(1, "git config --get remote.origin.url")
 
         # Check if the URL ends with ".git" and remove it
         if url.endswith(".git"):  # Check if the URL ends with ".git"
@@ -131,17 +138,22 @@ def get_git_repo_url():
 
         # Ensure the URL is an HTTPS URL by converting SSH URLs if necessary
         if url.startswith("git@github.com:"):  # Check if the URL is a GitHub SSH URL
-            url = url.replace(":", "/").replace("git@", "https://")  # Convert the URL to HTTPS
+            url = url.replace("git@github.com:", "https://github.com/")  # Convert the URL to HTTPS
         # Check if the URL is a GitLab SSH URL
         elif url.startswith("git@gitlab.com:"):
-            url = url.replace(":", "/").replace("git@", "https://gitlab.com/")  # Convert the URL to HTTPS
+            url = url.replace("git@gitlab.com:", "https://gitlab.com/")  # Convert the URL to HTTPS
         elif url.startswith("git@bitbucket.org:"):  # Check if the URL is a Bitbucket SSH URL
-            url = url.replace(":", "/").replace("git@", "https://bitbucket.org/")  # Convert the URL to HTTPS
-
+            url = url.replace("git@bitbucket.org:", "https://bitbucket.org/")  # Convert the URL to HTTPS
         return url  # Return the formatted URL
     except subprocess.CalledProcessError as e:  # Handle errors from the Git command
         logging.error(
             f"\033[1;31mError getting Git repository URL: {e}\033[0m",
+            exc_info=True,  # Log the error
+        )
+        return FALLBACK_REPO_URL  # Return the fallback URL if an error occurs
+    except Exception as e:  # Handle any other exceptions
+        logging.error(
+            f"\033[1;31mUnexpected error: {e}\033[0m",
             exc_info=True,  # Log the error
         )
         return FALLBACK_REPO_URL  # Return the fallback URL if an error occurs
@@ -258,7 +270,7 @@ MAX_ATTEMPTS = 100
 ENSURE_READABLE_COLORS = True
 # Log Level Setting for the logger, defaults to INFO.
 # Choices: "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
-LOG_LEVEL_SETTING = "INFO"
+LOG_LEVEL_SETTING = "CRITICAL"
 # --- End Configuration ---
 
 
@@ -267,16 +279,18 @@ def should_ignore(path, ignore_list):  # Find out which files and directories to
     Determines if a path should be ignored based on the ignore list.
 
     Args:
-            path (str): The path to check.
-            ignore_list (list): The list of files and folders to ignore.
+        path (str): The path to check.
+        ignore_list (list): The list of files and folders to ignore.
 
     Returns:
-            bool: True if the path should be ignored, False otherwise.
+        bool: True if the path should be ignored, False otherwise.
     """
     try:
-        path_parts = set(path.split(os.sep))  # Split the path into parts
-        # Check if any part of the path is in the ignore list
-        return any(ignore_item in path_parts for ignore_item in ignore_list)  # Returns True if any part of the path is in the ignore list
+        normalized_path = os.path.normpath(path)  # Normalize the path to remove trailing slashes
+        for ignore_item in ignore_list:
+            if ignore_item in normalized_path.split(os.sep):
+                return True
+        return False
     except ValueError as e:  # Handle errors
         logging.error(
             # Log the error
@@ -285,7 +299,7 @@ def should_ignore(path, ignore_list):  # Find out which files and directories to
         return False  # Return False by default
 
 
-def generate_file_list(directory, ignore_list):  # Generate a list of files in a directory
+def generate_file_list(directory, ignore_list):
     """
     Generate a list of files in a directory, excluding those that match the ignore list.
 
@@ -315,9 +329,11 @@ def generate_file_list(directory, ignore_list):  # Generate a list of files in a
                 file_path = os.path.join(root, file)  # Get the full file path
                 ignore_file = should_ignore(file_path, ignore_list)  # Check if the file should be ignored
                 if not ignore_file:  # If the file should not be ignored
-                    file_list.add(os.path.relpath(file_path, directory))  # Add the relative file path to the list
+                    relative_path = os.path.relpath(file_path, directory)  # Get the relative file path
+                    normalized_path = relative_path.replace(os.sep, '/')  # Normalize the path to use Unix-like separators
+                    file_list.add(normalized_path)  # Add the normalized path to the list
         logging.log(
-            getattr(logging, LOG_LEVEL),
+            getattr(logging, LOG_LEVEL_SETTING),
             # Log the number of files generated
             f"\033[1;32mGenerated file list with {len(file_list)} files.\033[0m",
         )
@@ -326,7 +342,7 @@ def generate_file_list(directory, ignore_list):  # Generate a list of files in a
             # Log the error
             f"\033[1;31mError generating file list: {type(e).__name__}: {e}\033[0m"
         )
-    return list(file_list)  # Return the list of files
+    return sorted(file_list, key=lambda x: (os.path.dirname(x), os.path.basename(x)))  # Return the sorted list of files
 
 
 def calculate_luminance(hex_color):  # Calculate the luminance of a hex color
@@ -542,7 +558,7 @@ def is_black_color(color):  # Determines if a given color is considered black ba
         return False
 
 
-def generate_file_list_with_links(file_list, repo_url, color_source="random", color_range=None, color_list=None):  # Generate the file list with links
+def generate_file_list_with_links(file_list, repo_url, color_source="random", color_range=None, color_list=None):
     """Generates an HTML list of files with links to a repository, categorized by file type and folder.
 
     Args:
@@ -598,7 +614,7 @@ def generate_file_list_with_links(file_list, repo_url, color_source="random", co
                 file_list_html[folder].append(f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>')  # Add the file to the folder  # Create the HTML link
 
         logging.log(  # Log the number of HTML links generated
-            getattr(logging, LOG_LEVEL),
+            getattr(logging, LOG_LEVEL_SETTING),
             f"\033[1;32mGenerated HTML links for {len(file_list)} files.\033[0m",
         )
     except (OSError, ValueError, KeyError) as e:  # Handle errors
@@ -677,7 +693,7 @@ def save_file_list(file_list_html, output_file):  # Save the file list to an out
             write_lazyload_placeholders(f, file_list_chunks)
             write_lazyload_script(f, file_list_chunks)
         logging.log(
-            getattr(logging, LOG_LEVEL),
+            getattr(logging, LOG_LEVEL_SETTING),
             f"\033[1;32mFile list saved to {output_file}\033[0m",
         )
     except (IOError, OSError) as e:
@@ -766,19 +782,19 @@ def write_lazyload_script(f, file_list_chunks):
             "    const lazyLoadElements = document.querySelectorAll('.lazyload-placeholder');\n"
             "\n"
             '    if ("IntersectionObserver" in window) {\n'
-            f"        let rootMargin = '{ROOT_MARGIN_LARGE_DESKTOP}';\n"
+            "        let rootMargin = '0px 0px 400px 0px';\n"
             "        let threshold = 0.5;\n"
-            f"        if (window.innerWidth <= '{VIEWPORT_MOBILE}') {{  // Mobile devices\n"
-            f"            rootMargin = '{ROOT_MARGIN_MOBILE}';\n"
+            "        if (window.innerWidth <= 768) {  // Mobile devices\n"
+            "            rootMargin = '0px 0px 100px 0px';\n"
             "            threshold = 0.1;\n"
-            f"        }} else if (window.innerWidth <= '{VIEWPORT_TABLET}') {{  // Tablets\n"
-            f"            rootMargin = '{ROOT_MARGIN_TABLET}';\n"
+            "        } else if (window.innerWidth <= 1024) {  // Tablets\n"
+            "            rootMargin = '0px 0px 200px 0px';\n"
             "            threshold = 0.3;\n"
-            f"        }} else if (window.innerWidth <= '{VIEWPORT_SMALL_DESKTOP}') {{  // Small desktops\n"
-            f"            rootMargin = '{ROOT_MARGIN_SMALL_DESKTOP}';\n"
+            "        } else if (window.innerWidth <= 1440) {  // Small desktops\n"
+            "            rootMargin = '0px 0px 300px 0px';\n"
             "            threshold = 0.4;\n"
             "        } else {  // Large desktops\n"
-            f"            rootMargin = '{ROOT_MARGIN_LARGE_DESKTOP}';\n"
+            "            rootMargin = '0px 0px 400px 0px';\n"
             "            threshold = 0.5;\n"
             "        }\n"
             "        let observer = new IntersectionObserver((entries, observer) => {\n"
@@ -790,7 +806,9 @@ def write_lazyload_script(f, file_list_chunks):
             "                    switch(contentId) {\n"
         )
         for i in range(len(file_list_chunks)):
-            f.write(f"                        case 'file-list-{i+1}':\n" f"                            file_list_html = `<ul>{file_list_chunks[i]}</ul>`;\n" f"                            break;\n")
+            f.write(f"                        case 'file-list-{i+1}':\n")
+            f.write(f"                            file_list_html = `<ul>{file_list_chunks[i]}</ul>`;\n")
+            f.write(f"                            break;\n")
         f.write(
             "                    }\n"
             "                    placeholder.innerHTML = file_list_html;\n"
@@ -811,10 +829,18 @@ def write_lazyload_script(f, file_list_chunks):
             "            switch(contentId) {\n"
         )
         for i in range(len(file_list_chunks)):
-            f.write(f"                case 'file-list-{i+1}':\n" f"                    file_list_html = `<ul>{file_list_chunks[i]}</ul>`;\n" f"                    break;\n")
-        f.write("            }\n" "            placeholder.innerHTML = file_list_html;\n" "        });\n" "    }\n" "});\n" "</script>\n")
+            f.write(f"                case 'file-list-{i+1}':\n")
+            f.write(f"                    file_list_html = `<ul>{file_list_chunks[i]}</ul>`;\n")
+            f.write(f"                    break;\n")
+        f.write(
+            "            }\n"
+            "            placeholder.innerHTML = file_list_html;\n"
+            "        });\n"
+            "    }\n"
+            "});\n"
+            "</script>\n"
+        )
     except Exception as e:
-        # Log an error message if writing to the file fails
         logging.error(f"\033[1;31mError writing lazyload script: {e}\033[0m")
 
 
@@ -1235,4 +1261,4 @@ if __name__ == "__main__":  # Main entry point of the script
 
     save_file_list(file_list_html, args.output_file)  # Save the file list to an HTML file
 
-    logging.log(getattr(logging, LOG_LEVEL), "\033[1;32mScript finished.\033[0m")  # Log the completion of the script
+    logging.log(getattr(logging, LOG_LEVEL_SETTING), "\033[1;32mScript finished.\033[0m")  # Log the completion of the script
