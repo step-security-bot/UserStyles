@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: "0 0 * * *" # Runs once a day at 00:00 UTC
   workflow_dispatch: # Allows manual triggering
 
 permissions:
@@ -20,5 +18,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Generate Repo File List
-        uses: Nick2bad4u/generate-repo-file-list@github-action-published-final
+      - name: Run Generate Repo File List Action
+        uses: nick2bad4u/generate-repo-file-list@main
+        with:
+          log-level: "INFO"
+          directory: "."
+          repo-url: "https://github.com/${{ github.repository }}"
+          fallback-repo-url: "https://github.com/${{ github.repository }}"
+          output-format: "markdown"
+          output-file: "file_list.md"
+          color-source: "random"
+          color-list: "#FF0000 #00FF00 #0000FF #FFFF00 #FF00FF #00FFFF"
+          color-range-start: "#000000"
+          color-range-end: "#FFFFFF"
+          max-attempts: "1000000"
+          exclude-blacks-threshold: "#222222"
+          exclude-dark-colors: "false"
+          exclude-bright-colors: "false"
+          exclude-blacks: "false"
+          ensure-readable-colors: "false"
+          repo-root-header: "Repo Root"
+          header-text: "## File List"
+          intro-text: "# Here is a list of files included in this repository:"
+          dark-color-luminance-threshold: "128"
+          bright-color-luminance-threshold: "200"
+          chunk-size: "40"
+          viewport-mobile: "768"
+          viewport-tablet: "1024"
+          viewport-small-desktop: "1440"
+          root-margin-large-desktop: "0px 0px 400px 0px"
+          root-margin-small-desktop: "0px 0px 300px 0px"
+          root-margin-tablet: "0px 0px 200px 0px"
+          root-margin-mobile: "0px 0px 100px 0px"
