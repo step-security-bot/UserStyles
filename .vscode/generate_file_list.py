@@ -86,7 +86,6 @@ Main entry point:
 
 import argparse
 import logging
-import math
 import os
 import random
 import subprocess
@@ -131,7 +130,7 @@ def get_git_repo_url():
                 f"\033[1;31mError running Git command: {e}\033[0m",
                 exc_info=True,
             )
-            url = ""  # Set the URL to an empty string
+            return FALLBACK_REPO_URL  # Return the fallback URL if an error occurs
 
         if not url:  # Check if the URL is empty
             raise subprocess.CalledProcessError(  # Raise an error if the URL is empty
@@ -159,7 +158,7 @@ def get_git_repo_url():
         return FALLBACK_REPO_URL  # Return the fallback URL if an error occurs
     except Exception as e:  # Handle any other exceptions
         logging.error(
-            f"\033[1;31mUnexpected error: {e}\033[0m",
+            f"\033[1;31mUnexpected error: {e} (If you're seeing this on GitHub Actions, it may be normal.)\033[0m",
             exc_info=True,  # Log the error
         )
         return FALLBACK_REPO_URL  # Return the fallback URL if an error occurs
@@ -168,7 +167,8 @@ def get_git_repo_url():
 # --- Configuration ---
 # Default GitHub repository URL
 # Specifies the default URL of the GitHub repository.
-DEFAULT_GIT_REPO_URL = get_git_repo_url()  # Get the Git repository URL
+# This is only set like this for Github Actions, for running locally use get_git_repo_url()
+DEFAULT_GIT_REPO_URL = FALLBACK_REPO_URL
 
 # Root directory
 # Specifies the root directory of the repository to generate the file list for.
@@ -189,11 +189,11 @@ IGNORE_LIST = [
 # Output format
 # Specifies the format of the output file.
 # Options: "markdown", "html"
-DEFAULT_OUTPUT_FORMAT = "markdown"
+DEFAULT_OUTPUT_FORMAT = "html"
 
 # Output file name
 # Specifies the default name of the output file based on the format.
-DEFAULT_OUTPUT_FILE = "file_list.md" if DEFAULT_OUTPUT_FORMAT == "markdown" else "file_list.html"
+DEFAULT_OUTPUT_FILE = "file_list.md"
 
 # Color source
 # Specifies the source of the colors used for the links.
@@ -809,6 +809,7 @@ def is_black_color(
         logging.error(f"\033[1;31mError in is_black_color function: {e}\033[0m")
         return False
 
+
 def generate_file_list_with_links(
     file_list,
     repo_url,
@@ -1172,7 +1173,7 @@ if __name__ == "__main__":  # Main entry point of the script
     parser.add_argument(
         "--output-format",
         choices=["html", "markdown"],
-        default="html",
+        default=DEFAULT_OUTPUT_FORMAT,
         help="\033[1;32mOutput format for the file list. Choose 'html' for HTML format or 'markdown' for Markdown format. Default is 'html'.\033[0m",
     )
     parser.add_argument(  # Add an argument for the log level
@@ -1242,22 +1243,22 @@ if __name__ == "__main__":  # Main entry point of the script
     )
     parser.add_argument(  # Add an argument to exclude dark colors
         "--exclude-dark-colors",
-        action="store_true",  # Store True if the argument is provided
-        default=EXCLUDE_DARK_COLORS,  # Set the default value
+        choices=["true", "false"],  # Accept "true" or "false" as values
+        default="true" if EXCLUDE_DARK_COLORS else "false",  # Set the default value based on EXCLUDE_DARK_COLORS
         # Set the help message
         help="\033[1;36mExclude dark colors from being used for file links. Use this option to avoid dark colors.\033[0m",
     )
     parser.add_argument(  # Add an argument to exclude bright colors
         "--exclude-bright-colors",
-        action="store_true",  # Store True if the argument is provided
-        default=EXCLUDE_BRIGHT_COLORS,  # Set the default value
+        choices=["true", "false"],  # Accept "true" or "false" as values
+        default="true" if EXCLUDE_BRIGHT_COLORS else "false",  # Set the default value based on EXCLUDE_BRIGHT_COLORS
         # Set the help message
         help="\033[1;33mExclude bright colors from being used for file links. Use this option to avoid bright colors.\033[0m",
     )
     parser.add_argument(  # Add an argument to exclude black colors
         "--exclude-blacks",
-        action="store_true",  # Store True if the argument is provided
-        default=EXCLUDE_BLACKS,  # Set the default value
+        choices=["true", "false"],  # Accept "true" or "false" as values
+        default="true" if EXCLUDE_BLACKS else "false",  # Set the default value based on EXCLUDE_BLACKS
         # Set the help message
         help="\033[1;32mExclude black colors below a certain threshold from being used for file links. Use this option to avoid very dark colors.\033[0m",
     )
@@ -1279,8 +1280,8 @@ if __name__ == "__main__":  # Main entry point of the script
     )
     parser.add_argument(  # Add an argument to ensure readable colors
         "--ensure-readable-colors",
-        action="store_true",  # Store True if the argument is provided
-        default=ENSURE_READABLE_COLORS,  # Set the default value
+        choices=["true", "false"],  # Accept "true" or "false" as values
+        default="true" if ENSURE_READABLE_COLORS else "false",  # Set the default value based on ENSURE_READABLE_COLORS
         # Set the help message
         help="\033[1;34mEnsure that the generated colors are readable by maintaining a certain contrast ratio with a white background.\033[0m",
     )
@@ -1513,6 +1514,9 @@ if __name__ == "__main__":  # Main entry point of the script
     )  # Log the overwrite file categories argument
     logging.info(f"\033[1;32mIGNORE_LIST is set to:\033[0m {IGNORE_LIST}")  # Log the ignore list
     logging.info(
+        f"\033[1;32mDEFAULT_OUTPUT_FORMAT is set to:\033[0m {args.output_format}"
+    )  # Log the default output format
+    logging.info(
         f"\033[1;32mOVERWRITE_IGNORE_LIST is set to:\033[0m {args.overwrite_ignore_list}"
     )  # Log the overwrite ignore list argument
     logging.info(f"\033[1;94mLOG_LEVEL is set to:\033[0m {args.log_level}")  # Log the log level
@@ -1586,6 +1590,9 @@ if __name__ == "__main__":  # Main entry point of the script
         # Log the root margin for mobile devices
         f"\033[1;34mROOT_MARGIN_MOBILE is set to:\033[0m {args.root_margin_mobile}"
     )
+
+    if DEFAULT_OUTPUT_FORMAT == "html":  # Check if the output format is HTML
+        args.output_file = args.output_file.replace(".md", ".html")  # Replace .md with .html
 
     file_list = generate_file_list(args.directory, IGNORE_LIST)  # Generate the file list
     file_list_html = generate_file_list_with_links(  # Generate the file list with links
