@@ -69,7 +69,7 @@ jobs:
           exclude-dark-colors: "false"
           exclude-bright-colors: "false"
           exclude-blacks: "false"
-          ensure-readable-colors: "false"
+          ensure-readable-colors: "true"
           repo-root-header: "Repo Root"
           header-text: "## File List"
           intro-text: "# Here is a list of files included in this repository:"
