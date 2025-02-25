@@ -168,7 +168,7 @@ def get_git_repo_url():
 # Default GitHub repository URL
 # Specifies the default URL of the GitHub repository.
 # This is only set like this for Github Actions, for running locally use get_git_repo_url()
-DEFAULT_GIT_REPO_URL = FALLBACK_REPO_URL
+DEFAULT_GIT_REPO_URL = get_git_repo_url()
 
 # Root directory
 # Specifies the root directory of the repository to generate the file list for.
@@ -193,7 +193,7 @@ DEFAULT_OUTPUT_FORMAT = "html"
 
 # Output file name
 # Specifies the default name of the output file based on the format.
-DEFAULT_OUTPUT_FILE = "file_list.md"
+DEFAULT_OUTPUT_FILE = "file_list.html"
 
 # Color source
 # Specifies the source of the colors used for the links.
@@ -865,14 +865,15 @@ def generate_file_list_with_links(
             else:  # If the color source is invalid
                 color = get_random_color()  # Generate a random color
                 logging.warning(
-                    f"\033[1;33mGenerated a random color due to error in color source.\033[0m"
+                    "\033[1;33mGenerated a random color due to error in color source.\033[0m"
                 )  # Log a warning
 
             for category in FILE_CATEGORIES:  # Iterate over the file categories
                 if file.endswith(category["ext"]):  # Check if the file ends with the category extension
                     if output_format == "html":
+                        category_color = get_random_color(color_range)  # Generate a random color for the category header
                         category["files"].append(
-                            f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>'
+                            f'<li><a href="{file_url}" style="color: {category_color};">{file.replace(os.sep, "/")}</a></li>'
                         )  # Add the file to the category  # Create the HTML link
                     else:  # Markdown format
                         category["files"].append(
@@ -882,8 +883,9 @@ def generate_file_list_with_links(
             else:  # If the file does not belong to any category
                 folder = os.path.dirname(file)  # Get the folder name
                 if output_format == "html":
+                    category_color = get_random_color(color_range)  # Generate a random color for the category header
                     file_list_html[folder].append(
-                        f'<li><a href="{file_url}" style="color: {color};">{file.replace(os.sep, "/")}</a></li>'
+                        f'<li><a href="{file_url}" style="color: {category_color};">{file.replace(os.sep, "/")}</a></li>'
                     )  # Add the file to the folder  # Create the HTML link
                 else:  # Markdown format
                     file_list_html[folder].append(
@@ -906,12 +908,13 @@ def generate_file_list_with_links(
 
         if root_files:  # Check if there are root files
             if output_format == "html":
-                sorted_list.append(f"<li><h2>{REPO_ROOT_HEADER}</h2></li>")  # Add the root header
+                root_color = get_random_color(color_range)  # Generate a random color for the root header
+                sorted_list.append(f'<h2 style="color: {root_color};">{REPO_ROOT_HEADER}</h2>')  # Add the root header with color
                 sorted_list.extend(
                     sorted(root_files, key=lambda x: os.path.splitext(x)[1])
                 )  # Add the sorted root files
             else:  # Markdown format
-                sorted_list.append(f"## {REPO_ROOT_HEADER}")  # Add the root header
+                sorted_list.append(f'<h2 style="color: {color};">{REPO_ROOT_HEADER}</h2>')  # Add the root header with color
                 sorted_list.extend(
                     sorted(root_files, key=lambda x: os.path.splitext(x)[1])
                 )  # Add the sorted root files
@@ -919,7 +922,8 @@ def generate_file_list_with_links(
         for category in FILE_CATEGORIES:  # Iterate over the file categories
             if category["files"]:  # Check if the category has files
                 if output_format == "html":
-                    sorted_list.append(f'<li><h2>{category["name"]}</h2></li>')  # Add the category header
+                    category_color = get_random_color(color_range)  # Generate a random color for the category header
+                    sorted_list.append(f'<h2 style="color: {category_color};">{category["name"]}</h2>')  # Add the category header with color
                     sorted_list.extend(sorted(category["files"]))  # Add the sorted category files
                 else:  # Markdown format
                     sorted_list.append(f"## {category['name']}")  # Add the category header
@@ -927,7 +931,7 @@ def generate_file_list_with_links(
 
         for folder in sorted(file_list_html):  # Iterate over the folders
             if output_format == "html":
-                sorted_list.append(f"<li><h2>{folder}</h2></li>")  # Add the folder header
+                sorted_list.append(f'<h2 style="color: {color};">{folder}</h2>')  # Add the folder header with color
                 sorted_list.extend(
                     sort_files_by_extension(file_list_html[folder])
                 )  # Add the sorted files in the folder
@@ -937,8 +941,6 @@ def generate_file_list_with_links(
                     sort_files_by_extension(file_list_html[folder])
                 )  # Add the sorted files in the folder
 
-        if output_format == "html":
-            sorted_list.append("</ul>")  # Add the closing tag
         return "\n".join(sorted_list)  # Return the file list
     except Exception as e:  # Handle errors
         logging.error(f"\033[1;31mError generating sorted file list: {e}\033[0m")  # Log the error
