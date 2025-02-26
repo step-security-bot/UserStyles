@@ -69,7 +69,7 @@ jobs:
           exclude-dark-colors: "false"
           exclude-bright-colors: "false"
           exclude-blacks: "false"
-          ensure-readable-colors: "false"
+          ensure-readable-colors: "true"
           repo-root-header: "Repo Root"
           header-text: "## File List"
           intro-text: "# Here is a list of files included in this repository:"
@@ -155,7 +155,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update file list in README.md automatically with GitHub Action"
-          file_pattern: "README.md"
+          file_pattern: "README.md file_list.md file_list.html"
           commit_user_name: "{{ github.actor }}"
           commit_user_email: "{{ github.actor }}@users.noreply.github.com"
           commit_author: "{{ github.actor }} <{{ github.actor }}@users.noreply.github.com>"
