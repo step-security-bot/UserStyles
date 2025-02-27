@@ -263,6 +263,9 @@ pyrightconfig.json
 sync.ffs_db
 /.github/styles
 .history/
+.history/*
+.history\*
+.history
 test
 .vscode/__pycache__/
 __pycache__/
