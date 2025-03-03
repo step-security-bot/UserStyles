@@ -1,0 +1,181 @@
+/* ==UserStyle==
+@name           sportsurge.net - Black Mode [Customizable]
+@namespace      typpi.online
+@version        1.0.1
+@description    Dark Theme for SportSurge (sportsurge.net) with custom colors
+@author         Nick2bad4u
+@license        UnLicense
+@homepageURL    https://github.com/Nick2bad4u/UserStyles
+@supportURL     https://github.com/Nick2bad4u/UserStyles/issues
+
+@var color bs-body-color "Body Color" #212529
+@var color bs-body-bg-dark "Body Background Dark" #000000
+@var color bs-hover-bg "Hover Background" #193d1347
+@var color bs-header-color "Header Color" #5ee749b5
+@var color bs-header-bg "Header Background" #000
+@var color bs-header-border "Header Border" #5ee749b5
+@var color bs-link-hover-bg "Link Hover Background" #0a1908
+@var color bs-odd-bg "Odd Background" #0000008f
+@var color bs-even-bg "Even Background" #0e0e0e
+@var color bs-primary "Primary" #0d6efd
+@var color bs-secondary "Secondary" #6c757d
+@var color bs-success "Success" #198754
+@var color bs-info "Info" #0dcaf0
+@var color bs-warning "Warning" #ffc107
+@var color bs-danger "Danger" #dc3545
+@var color bs-light "Light" #f8f9fa
+@var color bs-dark "Dark" #212529
+@var color bs-blue "Blue" #0d6efd
+@var color bs-indigo "Indigo" #6610f2
+@var color bs-purple "Purple" #6f42c1
+@var color bs-pink "Pink" #d63384
+@var color bs-red "Red" #dc3545
+@var color bs-orange "Orange" #fd7e14
+@var color bs-yellow "Yellow" #ffc107
+@var color bs-green "Green" #198754
+@var color bs-teal "Teal" #20c997
+@var color bs-cyan "Cyan" #0dcaf0
+@var color bs-white "White" #fff
+@var color bs-gray "Gray" #6c757d
+@var color bs-gray-dark "Gray Dark" #343a40
+@var color bs-gray-100 "Gray 100" #f8f9fa
+@var color bs-gray-200 "Gray 200" #e9ecef
+@var color bs-gray-300 "Gray 300" #dee2e6
+@var color bs-gray-400 "Gray 400" #ced4da
+@var color bs-gray-500 "Gray 500" #adb5bd
+@var color bs-gray-600 "Gray 600" #6c757d
+@var color bs-gray-700 "Gray 700" #495057
+@var color bs-gray-800 "Gray 800" #343a40
+@var color bs-gray-900 "Gray 900" #212529
+@var color bs-body-bg "Body Background" #ffffff
+@var color bs-gradient-start "Gradient Start" #ffffff26
+@var color bs-gradient-end "Gradient End" #ffffff00
+==/UserStyle== */
+@-moz-document domain("sportsurge.net") {
+	:root {
+		--bs-body-color: var(bs-body-color);
+		--bs-body-bg-dark: var(bs-body-bg-dark);
+		--bs-hover-bg: var(bs-hover-bg);
+		--bs-header-color: var(bs-header-color);
+		--bs-header-bg: var(bs-header-bg);
+		--bs-header-border: var(bs-header-border);
+		--bs-link-hover-bg: var(bs-link-hover-bg);
+		--bs-odd-bg: var(bs-odd-bg);
+		--bs-even-bg: var(bs-even-bg);
+		--bs-primary: var(bs-primary);
+		--bs-secondary: var(bs-secondary);
+		--bs-success: var(bs-success);
+		--bs-info: var(bs-info);
+		--bs-warning: var(bs-warning);
+		--bs-danger: var(bs-danger);
+		--bs-light: var(bs-light);
+		--bs-dark: var(bs-dark);
+		--bs-blue: var(bs-blue);
+		--bs-indigo: var(bs-indigo);
+		--bs-purple: var(bs-purple);
+		--bs-pink: var(bs-pink);
+		--bs-red: var(bs-red);
+		--bs-orange: var(bs-orange);
+		--bs-yellow: var(bs-yellow);
+		--bs-green: var(bs-green);
+		--bs-teal: var(bs-teal);
+		--bs-cyan: var(bs-cyan);
+		--bs-white: var(bs-white);
+		--bs-gray: var(bs-gray);
+		--bs-gray-dark: var(bs-gray-dark);
+		--bs-gray-100: var(bs-gray-100);
+		--bs-gray-200: var(bs-gray-200);
+		--bs-gray-300: var(bs-gray-300);
+		--bs-gray-400: var(bs-gray-400);
+		--bs-gray-500: var(bs-gray-500);
+		--bs-gray-600: var(bs-gray-600);
+		--bs-gray-700: var(bs-gray-700);
+		--bs-gray-800: var(bs-gray-800);
+		--bs-gray-900: var(bs-gray-900);
+		--bs-body-bg: var(bs-body-bg);
+		--bs-gradient-start: var(bs-gradient-start);
+		--bs-gradient-end: var(bs-gradient-end);
+		--bs-gradient: linear-gradient(
+			180deg,
+			var(--bs-gradient-start),
+			var(--bs-gradient-end)
+		);
+		--bs-body-font-family: var(--bs-font-sans-serif);
+		--bs-body-font-size: 1rem;
+		--bs-body-font-weight: 400;
+		--bs-body-line-height: 1.5;
+	}
+
+	body,
+	.MaclariListele:nth-of-type(even),
+	.Basliklar,
+	.lgrdhw .game-forecast-link:nth-of-type(even) {
+		background-color: var(--bs-body-bg-dark) !important;
+	}
+
+	.MaclariListele:nth-of-type(odd) {
+		background-color: var(--bs-odd-bg) !important;
+	}
+
+	.lgrdhw .game-forecast-link:nth-of-type(odd) {
+		background-color: var(--bs-even-bg) !important;
+	}
+
+	.MaclariListele:hover,
+	form button:hover {
+		background-color: var(--bs-hover-bg) !important;
+	}
+
+	.HeaderUyari,
+	input,
+	select,
+	#__next
+		> div.DefaultPageLayout__LayoutBodyContainer-m5erbg-0.ioqCOx
+		> section
+		> div,
+	form button {
+		color: var(--bs-header-color) !important;
+		background-color: var(--bs-header-bg) !important;
+		border: 1px solid var(--bs-header-border) !important;
+		border-color: var(--bs-header-border) !important;
+	}
+
+	.YayinaGit:nth-child(8) {
+		color: var(--bs-header-color) !important;
+	}
+
+	.YayinaGit:nth-child(7) {
+		color: var(--bs-danger) !important;
+	}
+
+	.lgrdhw .game-forecast-link:hover {
+		background-color: var(--bs-link-hover-bg) !important;
+	}
+
+	#__next
+		> div.DefaultPageLayout__LayoutBodyContainer-m5erbg-0.ioqCOx
+		> section
+		> section
+		> div
+		> section
+		> section
+		> div
+		> table
+		> thead
+		> tr
+		> th:nth-child(6),
+	#__next
+		> div.DefaultPageLayout__LayoutBodyContainer-m5erbg-0.ioqCOx
+		> section
+		> section
+		> div
+		> section
+		> section
+		> div
+		> table
+		> tbody
+		> tr:nth-child(n)
+		> td:nth-child(6) {
+		display: none !important;
+	}
+}
