@@ -5,7 +5,7 @@
 @description  Still waiting for a vaporwave forum theme
 @homepageURL  https://github.com/Nick2bad4u/UserStyles
 @supportURL   https://github.com/Nick2bad4u/UserStyles/issues
-@version      2025.02.06
+@version      2025.03.03
 @license      CC0-1.0
 
 @var select remove-background-image "Remove Background Image" {
@@ -48,6 +48,7 @@ url-prefix("http://kiwifarms")
 		--unread-color: var(unread-color);
 		--remove-background-image: var(remove-background-image);
 		--custom-background-url: var(custom-background-url);
+		--logo-url: url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@be8d3396d4ccfc014c5f4b76c448a854b3aa527a/assets/kiwi-vaporwave-logo.png');
 	}
 
 	.block--category {
@@ -374,8 +375,8 @@ url-prefix("http://kiwifarms")
 	}
 
 	.p-nav-smallLogo img {
-		background: url('https://cdn.jsdelivr.net/gh/Nick2bad4u/UserStyles@be8d3396d4ccfc014c5f4b76c448a854b3aa527a/assets/kiwi-vaporwave-logo.png')
-			no-repeat !important;
+		background-image: var(--logo-url) !important;
+		background-repeat: no-repeat !important;
 		padding-top: 75px !important;
 		padding-left: 200px !important;
 		width: 0 !important;
